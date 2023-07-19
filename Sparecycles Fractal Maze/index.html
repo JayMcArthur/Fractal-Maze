@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<title>maze</title>
+		<script type='text/javascript' src='jquery-1.3.2.min.js'></script>
+		<script type='text/javascript' src='maze.js'></script>
+		<style type='text/css'>
+			#maze > canvas { float:left }
+			#maze + * { clear:left }
+		</style>
+	</head>
+	<body>
+		<div id='maze'><canvas style='float:left'></canvas>Moves:<div id='moves'></div><div id='description'>
+			<hr/>
+			<p>
+			The objective is to get from the top of the circle to the bottom.
+			This maze is recursive, but the circle only exists on the top level of the maze.
+			</p>
+		</div></div>
+		<p>
+		This maze was invented by the (clearly) brilliant Mark J. P. Wolf, and I found it 
+		<a href='http://www.maa.org/editorial/mathgames/mathgames_11_24_03.html'>here</a>,
+		and a couple of solutions <a href='http://www.mathpuzzle.com/18Nov2003.html'>here</a>.
+		Like <a href='../snakes/'>snakes</a>, <a href='maze.js'>code</a> 
+		and <a href='doc/'>documentation</a> is available.
+		</p>
+		These first two solutions come from the internet: a 
+        <span class='solution' 
+            name='long' 
+            path='nnwswsnnswsnnswwnwseeneswwnwwwneswwnwses'>
+			From <a href='http://www.mathpuzzle.com/18Nov2003.html'>here</a>. <br/>
+			I like this solution because it uses all 3 immediate submazes 
+			in their canonical order (they used to be labeled A,B,C clockwise from top left).
+			Here's <a href='?path=nnwswsnnswwnwwseeneswwnwwsswwnwses'>another</a> one 
+			with a simpler traversal through the first Red submaze.
+        </span>
+		and a <span type='button' class='solution' 
+            name='short' 
+            path='nnnwwnnsesnnswwnwses'>
+			From <a href='http://www.mathpuzzle.com/18Nov2003.html'>here</a>. <br/>
+			This is an easy solution to memorize: right through red, over to blue, 
+			in red twice, unwind around, up and left, back into red, in-and-out to the bottom,
+			and out.
+        </span> one.
+		Armed with this toy and a couple solutions, I set out to find my
+        <span class='solution'
+            name='first'
+            path='neewwnnsesnnnwnnwnnes'>
+			A good way of solving these is to pick a top-level path and just go for it.
+			Identify sub-goals as you recurse in and the challenge becomes keeping track of
+			which subgoal you're solving as you unwind.  With a little persistence, I believe most
+			if not all paths are actually connected.  This solution is noteworthy because of the complexity
+			of the red submaze's path compared that of the blue submaze.
+        </span>
+		solution,
+		and a chai later I found my
+        <span class='solution'
+            name='second'
+            path='nesssnnseennseseswwnwses'>
+			I like this one because of the fairly even balance of complexity between the red and
+			blue submaze traversals.
+        </span> and
+        <span class='solution'
+            name='third'
+            path='nnnwwnwseswwnwseees'>
+			This path targeted the little roundabout on the east side of the blue submaze, which 
+			had been unused (at any depth) in all my previously known solutions.  When I replayed this
+			maze, I noticed that the path only crosses itself once, a trait also shared with the
+			'short' solution from the internet.
+			I hypothesized the existence of a non-crossing solution, 
+			and I managed to find <a href='?path=nnnwwnwsswsnnnwnwswsnnswwnwwses'>one</a>.
+        </span>.
+		Then I
+        <span class='solution'
+            name='played'
+            path='nnnwwnwwneswwnwswwswwnwwwnnwnnewnnes'>
+			Long paths are long and fun.
+        </span>
+        <span class='solution'
+            name='around'
+            path='nnnwwnwsswwnwswwswwnwwwnnwnnewnnes'>
+			Long paths are long and fun.
+        </span>
+		for a 
+        <span class='solution'
+            name='while'
+            path='nnwswsnnswwnwseeneeswwnwseennseseswwnwses'>
+			Another solution developed by picking a target and following it, in this case the
+			green-line red-to-blue submaze connection.
+        </span>.
+		<span class='solution'
+			name='Worst Path Ever'
+			path='neewwnwseswwnwseeewwwswsnnswsnnnswwnwsesnnswsnnsweneswwnwwseeswwnwwwwnnwnwswsnnswsnnswwnwses'>
+			Worst PATH EVER. (PAX East 2010)
+		</span>
+	</body>
+</html>

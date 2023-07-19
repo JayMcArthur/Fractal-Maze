@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fractal Mazes</title>
+    <link rel="stylesheet" href="./maze.css">
+    <script src="model.js"></script>
+    <script src="editor.js"></script>
+    <script src="game.js"></script>
+    <script src="front.js"></script>
+</head>
+<body>
+<h1>FRACTAL MAZES</h1>
+<div id="front" class="page -active">
+    <div>
+        <div>
+            <button id="frontNew">Create New</button>
+            <button id="frontImportButton">Import</button>
+            <input type="file" id="frontImportMaze">
+            <button id="frontExportButton">Export</button>
+        </div>
+    </div>
+    <div class="horizontal-container">
+        <table id="frontMazeTable" cellpadding="0" cellspacing="5px">
+            <thead>
+            <tr>
+                <th><input type="checkbox" id="frontCheckAll"></th>
+                <th>Maze name</th>
+            </tr>
+            </thead>
+            <tbody id="frontMazeList"></tbody>
+        </table>
+        <div id="frontPreviewPanel">
+            <canvas id="frontPreview" width="240px" height="240px"></canvas>
+            <div class="frontPreviewFooter">
+                <button id="frontEdit">Edit</button>
+                <button id="frontPlay">Play</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="editor" class="page">
+    <h2>EDIT MAZE</h2>
+    <div class="field">Name: <input id="editorName"/></div>
+    <div class="field">Size: <select id="editorSize">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+    </select></div>
+    <div class="horizontal-container">
+        <div id="editorCanvasContainer">
+            <canvas id="editorBaseCanvas" width="600" height="600" class="canvas"></canvas>
+            <canvas id="editorCanvas" width="600" height="600" class="canvas"></canvas>
+        </div>
+        <div id="editorPath">
+            <span>PATHS</span>
+            <div><span>Color: </span><input type="color" id="editorPathColor"/></div>
+        </div>
+    </div>
+    <div>
+        <button id="editorNewSubMaze">New Sub Maze</button>
+    </div>
+    <div class="editorFooter">
+        <div>
+            <button id="editorDelete">Delete</button>
+        </div>
+        <div>
+            <button id="editorCancel">Cancel</button>
+            <button id="editorSave">Save</button>
+        </div>
+    </div>
+</div>
+<div id="game" class="page">
+    <h2>SOLVE MAZE: <span id="gameName"></span></h2>
+    <div><input type="checkbox" id="gameAnimation" checked> animate transitions</div>
+    <div class="horizontal-container">
+        <div id="gameCanvasContainer">
+            <canvas id="gameBaseCanvas" width="600" height="600" class="canvas"></canvas>
+            <canvas id="gameCanvas" width="600" height="600" class="canvas"></canvas>
+        </div>
+        <div class="gamePositionsPanel">
+            <table id="gameMovesTable" cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Move #</th>
+                    <th>Maze name</th>
+                    <th>Level</th>
+                    <th>From Gate</th>
+                    <th>To Gate</th>
+                </tr>
+                </thead>
+                <tbody id="gamePositions"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="gameFooter horizontal-container">
+        <div>
+            <button id="gameUndo">Undo</button>
+            <button id="gameRedo">Redo</button>
+        </div>
+        <div>
+            <button id="gameBack">Quit</button>
+            <button id="gameRestart">Restart</button>
+            <button id="gameSave">Save</button>
+        </div>
+    </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

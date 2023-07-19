@@ -1,0 +1,848 @@
+
+
+
+wu :: forums (http://www.ocf.berkeley.edu/~wwu/cgi-bin/yabb/YaBB.cgi)
+riddles >> hard >> fractal maze
+(Message started by: towr on Oct 23rd, 2003, 6:13am)
+
+
+Title: fractal maze
+Post by towr on Oct 23rd, 2003, 6:13am
+from http://www.mathpuzzle.com/
+
+find your way through the maze from - to +,
+A,B,C,D,E,F,G,H are smaller versions of the same maze, and if you enter them you have to exit them before you get to the end..
+Title: Re: fractal maze
+Post by James Fingas on Oct 23rd, 2003, 9:56am
+I haven't started on this one, but it's VERY COOL! Big thumbs up  8)
+Title: Re: fractal maze
+Post by towr on Oct 23rd, 2003, 10:06am
+Actually, it seems rather too easy to solve to count as hard  :-/ ..
+Despite the claims on mathpuzzle that its hard..
+Title: Re: fractal maze
+Post by James Fingas on Oct 23rd, 2003, 1:48pm
+I guess I must be doing it wrong. It's been plenty hard so far, and it's still not solved...
+Title: Re: fractal maze
+Post by towr on Oct 23rd, 2003, 2:02pm
+Well, if you're doing it by hand it may take a while, but I just programmed a maze-solver in prolog (attached for the interested, one note: I numbered the connections of the maze per side, clockwise)..
+Granted it took a while to write out all connections, but the basic algorithm is very simple..
+Title: Re: fractal maze
+Post by Rezyk on Oct 23rd, 2003, 3:48pm
+Here's a list of all the connections (in case it saves someone time/eyestrain).  In labelling the outer connections, I started at the top left and went clockwise from 0 to 31.
+
+0,7,17
+1,21,16,G16
+2,30,11,F3
+3,10,26,B22
+4,14,18,A7,C28
+5,8,27,A29,E5
+6,B2
+9,B19
+12,15,19,H10
+13,20,29,31,C22
+22,G18
+23,G19
+24,G9
+25,G26
+28,H3
+-,A2,C5,E2,E24
++,C16,F1,D16,H16,E23
+A13,D7
+A17,B30
+A27,C8
+B11,D9
+B21,D1
+C12,F0
+C19,F20
+D0,F8
+D17,H12
+D21,F13
+D29,F10
+D31,F7
+E9,F29
+E17,G4
+E20,G0
+E25,E27
+F24,H6
+F31,G25
+G1,H15
+G14,H26
+Title: Re: fractal maze
+Post by James Fingas on Oct 24th, 2003, 6:09am
+Okay, I found a solution. It didn't go as deep as I was looking before. Here's how NOT to do it (my original method):
+
+Notice that a lot of the pins in the maze are equivalent. Find two pins that are attached together, and, going around to A, B, C, ... H see what wires are connected to those pins. Consolidate the connections to the pins by eliminating all connections to the less used of the two. Now erase that pin from the maze. Continue erasing one pin at a time until you see an easy solution (I erased all but 8 of the pins, and then it was very easy).
+
+The problem with this method is that although it's very simple to use (well, unless you are using paint to erase the wires and change things  :P), when you get to the end and see a solution, you can't figure out how that solution came about. You would have to keep records of every change (maybe saving a version after each pin is eliminated).
+
+Horribly inefficient. Definitely don't do it this way. But if the maze was extremely difficult, and you didn't want to brute-force it, I think this method might be decent.
+
+My second strategy was to just print out 9 copies of the maze, labelling them A, B, C, ... H, and Z (the original). I did a breadth-first fill from the '-' and '+' terminals using a highlighter. It's still not easy to find a solution, until you realize a fundamental fact: on all the submazes, the pins and wires are coloured similarly to the original maze. So after doing a lot of filling and still having no solution, I compared the submazes to the original to see which pins were coloured differently. I quite quickly saw that pin b3 on submaze C was coloured differently, giving me an answer almost immediately.
+Title: Re: fractal maze
+Post by towr on Oct 25th, 2003, 10:03am
+
+on 10/24/03 at 12:23:08, THUDandBLUNDER wrote:
+James, why enjoy solving it when you can just write a program to enjoy solving it for you??
+I resent that..
+Programming a solver _is_ a way of solving a problem, and enjoyable at that..
+
+If you think you can do it better the old-fashioned way go ahead..
+Title: Re: fractal maze
+Post by sasto on Mar 22nd, 2009, 9:53pm
+What are some stratigies you guys use when solving a Fractal maze. If you could reply that would be great i needs this for a project
+Title: Re: fractal maze
+Post by towr on Mar 23rd, 2009, 1:58am
+
+on 03/22/09 at 21:53:39, sasto wrote:
+What are some stratigies you guys use when solving a Fractal maze. If you could reply that would be great i needs this for a project
+I used a breadth first algorithm, keeping track of what 'level' of the maze I was on. Just keep taking all possible steps until you're out, then backtrack to find the path leading there.
+Title: Re: fractal maze
+Post by Grimbal on Mar 23rd, 2009, 11:01am
+If I remember well, I ignored all inner circuits and drew a simplified circuit showing only what pins are connected directly.  That was my level 0 circuit.
+
+Then I replaced each chip with the level 0 circuit and simplified it to show what outer pins are now connected.  That was level 1 circuit.
+
+And so on.  after a few steps, + and - became connected.  I could then reconstruct the whole path.
+
+It doesn't necessarily give the shortest or simplest way, but it minimizes the maximum depth of recursion.
+Title: Re: fractal maze
+Post by howard roark on Mar 23rd, 2009, 10:26pm
+Can the solution ever enter one of those smaller versions of mazes? If yes, isn't that infinite recursion.
+Title: Re: fractal maze
+Post by towr on Mar 24th, 2009, 1:30am
+
+on 03/23/09 at 22:26:42, howard roark wrote:
+Can the solution ever enter one of those smaller versions of mazes?
+Moreso, it has to.
+
+
+Quote:
+If yes, isn't that infinite recursion.
+Only if you take a wrong turn. Just because you enter a smaller version of the same maze, doesn't mean you're on the same pathway. It's the same as with recursion in programming, you don't get infinite recursion just because you call the same function; the state you enter in recursion has to be different each time (different function arguments from previous calls, or changed global variables).
+Title: Re: fractal maze
+Post by brac37 on Apr 22nd, 2009, 6:15pm
+Do the + and - in the recursive wireframes conduct or not?
+
+The problem whether one can get from + and - is in P. First, you make a graph G1 with all direct connections of the 32 x 9 pins, just what Ryzek did. Next, you make the subgraph G1s of G1 with all connections of the outer 32 pins. After that, you compute G2 by first substituting G1s into G1 and next computing the transitive closure.
+
+The transitive closure of a graph is the graph that shows which vertexes are connected by a path. It can be computed by a triple loop through the vertexes in general with the Floyd–Warshall algorithm, and O(n^3) is polynomial.
+
+Next, you make the subgraph G2s of G2 with all connections of the outer 32 pins.  After that, you compute G3 by first substituting G2s into G1 and next computing the transitive closure. Next, you make the subgraph G3s of G3 with all connections of the outer 32 pins. After that, you compute G4 by first substituting G3s into G1 and next computing the transitive closure, etc.
+
+You stop when the new graph does not differ from the old one. The last graph tells you if + and - are connected.
+
+Another problem is to get an actual solution. For this problem, one can label each edge with the intermediate vertex that the Floyd–Warshall algorithm gives. The subgraphs with only 32 pins do not have labeled vertexes, so no label means either that you have a direct connection or that you must go into recursion.
+
+So one can recursively generate a solution with the labeled edges. A question is whether this is in P. The answer to this question is negative. Here are possible connections (i >= 0):
+
+z[0] -- z[1]
+z[2i+2] -- a[2i]
+a[2i+1] -- b[2i]
+b[2i+1] -- z[2i+3]
+
+One can see that
+
+d(z[2i+2],z[2i+3]) = 2 d(z[2i+2],z[2i+3]) + 3
+
+so the solution can be exponentially long. An interesting paradox.
+
+With only one recursive wireframe instead of two or eight, the solution is polynomial, because when you go from + to -, you can have only polynomially many positions. These positions are parametrized by wireframe position and recursion level, and the recursion level is less than the number of edges.
+
+If you want to compute the distance between + and -, then you just add lengths and take minimal lengths when computing the transitive closure with the Floyd–Warshall algorithm. But it is not clear that the algorithm will remain in P, because the recursion level cannot be estimated by the number of edges.
+
+The pumping lemma for context free grammars solves this problem. The idea of this lemma is the following. You can go into recursion from two pins, but if you go deeper and deeper, then you will go into recursion from two pins from which you already went into recursion. But doing that will of course give a path that is too long. So the recursion level is estimated by 8 x 32 x 32 (even 8 x 16 x 31).
+Title: Re: fractal maze
+Post by towr on Apr 23rd, 2009, 12:51am
+
+on 04/22/09 at 18:15:16, brac37 wrote:
+Do the + and - in the recursive wireframes conduct or not?
+It's not mentioned, and it doesn't matter in this case, at least.
+Title: Re: fractal maze
+Post by towr on Apr 23rd, 2009, 1:15am
+I don't see why you wouldn't be able to get a solution in polynomial time though. There is a fixed number of points and therefore a fixed number of connections. If you store (one of) the shortest path for each connection, and get one new connection for each recursion, it still works out to polynomial time.
+Title: Re: fractal maze
+Post by brac37 on Apr 23rd, 2009, 10:36am
+
+on 04/23/09 at 01:15:53, towr wrote:
+I don't see why you wouldn't be able to get a solution in polynomial time though. There is a fixed number of points and therefore a fixed number of connections. If you store (one of) the shortest path for each connection, and get one new connection for each recursion, it still works out to polynomial time.
+
+
+The solution may be exponential in length, so generating it may take exponentially much time in the input size (but not in the solution size). If you allow some straightforward compression, then you will be able to generate a solution in polynomial time.
+Title: Re: fractal maze
+Post by mathfridge on May 19th, 2009, 2:29am
+
+on 03/23/09 at 11:01:19, Grimbal wrote:
+If I remember well, I ignored all inner circuits and drew a simplified circuit showing only what pins are connected directly.  That was my level 0 circuit.
+
+Then I replaced each chip with the level 0 circuit and simplified it to show what outer pins are now connected.  That was level 1 circuit.
+
+And so on.  after a few steps, + and - became connected.  I could then reconstruct the whole path.
+
+It doesn't necessarily give the shortest or simplest way, but it minimizes the maximum depth of recursion.
+
+
+This is basically identical to the algorithm I came up with.  Assuming all level n circuits are found before seeking level n+1 circuits this should minimize circuit depth. The initial solution I came up with took 27 steps and had a circuit depth of 3. However this was by hand and I realized there was a shorter solution [hide]whose final path goes through chip F [/hide]at only depth 2. User error :P ;D
+
+This brings up a good question for this type of puzzle. What does an optimal solution look like? Is it depth of recursion or number of times you go in or out of chips? For example I found the following fractal mazes on line.
+
+http://www.mathpuzzle.com/DaedRecursive.gif
+
+The solution I found has a chip depth of 6 and a total of 42 steps in or out of chips. And:
+
+http://www.astrolog.org/labyrnth/maze/fractal2.gif
+
+The solution I found to this on had a chip depth of 7 and a total of 66 steps in or out of chips.
+
+So on this last maze, assuming my work is correct, we know that a 66 steps solution exists. Thus any solution with chip depth 34 or greater must take at least 68 steps but is there a solution with depth between 7 and 33 that has fewer steps? (Also my solution was by hand on each of these. So they might not actually be of smallest depth.)
+
+Thoughts any one? :)
+
+DC
+Title: Re: fractal maze
+Post by towr on May 19th, 2009, 2:54am
+
+on 05/19/09 at 02:29:21, mathfridge wrote:
+This brings up a good question for this type of puzzle. What does an optimal solution look like? Is it depth of recursion or number of times you go in or out of chips?
+Personally, I went for the latter. I think that's the easiest one to measure. You might conceivably make a very very long path that only has a shallow recursion depth.
+
+
+Quote:
+http://www.mathpuzzle.com/DaedRecursive.gif
+http://www.astrolog.org/labyrnth/maze/fractal2.gif
+I'll give these a try later :)
+Title: Re: fractal maze
+Post by Grimbal on May 29th, 2022, 3:04pm
+OK, well, I wrote a program.  Here is the result.
+It should be minimal, not necessarily unique.
+
+path: - C5 (5 A29 (29 13) A13 D7 (7 17) D17 H12 (12 15) H15 G1 (1 16) G16 16) C16 +
+length: 11
+
+Contacts are numbered clockwise from the top left.
+Between the brackets is what happens inside of a circuit.
+
+Anyway, all answers are here:
+
+In my simulator's notation:
+
+-|
+AN3 => XN3|A
+FN4 => XN4|FA
+XE3 => FE3|A
+DW3 => XW3|DA
+XW1 => DW1|A
+FN8 => XN8|FA
+XN1 => FN1|A
+CE5 => XE5|CA
+HE3 => XE3|HCA
+XW6 => HW6|CA
+GE7 => XE7|GCA
+XS6 => GS6|CA
+XS2 => CS2|A
+XW3 => AW3|
+EN6 => XN6|E
+XE1 => EE1|
+CW5 => XW5|C
+AW3 => XW3|AC
+XE6 => AE6|C
+DN8 => XN8|DC
+XS7 => DS7|C
+HE5 => XE5|HC
+XE8 => HE8|C
+GN2 => XN2|GC
+XS8 => GS8|C
+XS8 => CS8|
++|
+
+Also attached is the graphical representation.
+
+I also thought of a notation that can generally describe the 'outline' of the 
+solution.
+
+The outline for the shortest solution is C(ADHG).
+For Joseph DeVincentis' alternate C solution is CEADF(ADHG).
+For Brian Trial's E solution is E(G(B(HG)))EADF(ADHG).
+For my A solution is A(FDFC(HG))EC(ADHG).
+
+I'm having way too much fun with this maze =).
+
+I'm looking forward to the publication(?) of "100 Enigmatic Puzzles".
+Yogy Namara
+-------------
+I accidentally got to your site (linked from logicmazes) and wow... what can I say...
+
+I immediately fell in love with the fractal maze, and I want to explore
+this concept further, i.e. how does one go about solving such a maze?
+Also, I'm interested in a somewhat non-traditional aspect of maze solving:
+given an unsolvable fractal maze, is it possible to actually make that
+conclusion? What does it take to be able to make a claim like "Okay, I've
+explored 'all' possible paths, and I can positively conclude that this
+maze has no solution!".
+
+Anyway, attached is (hopefully) a solution, represented as a color coded 
+paths. Should be pretty straightforward, but feel free to ask for 
+clarification.
+
+Thanks again.
+
+Regards
+Yogy Namara
+----------------------------------------------
+Hello there,
+I think we solved the fractal maze.  We generated several solutions for it, 
+the most simple being the following:
+
+In C6 -> In A30  -> Out A14 -> In D8 -> Out D18 -> In H13 -> Out H16 -> In 
+G2 -> Out G17 -> Out C17
+
+the numbers correspond to the pins on each node numbered from the upper left 
+hand corner, clockwise, from 1-32.  this is hard to explain, but if you 
+follow that path there, it works.  also, we got several other solutions, but 
+they all started going into C.  are there any solutions that don't involve 
+starting in C?  just wondering
+
+chris czyzewicz
+--------------------------------
+Dear Ed,
+
+The Fractal Maze by Marc J.P. Wolf is fantastic!
+
+Up till yesterday (before seeing Mark's design), my interpretation of the term Fractal Maze was "a fractal pattern that looks and feels like a maze". An example of this interpretation is my Dragon's Maze at www.clickmazes.com, which I developped in the 1980's. For every layer added, the maze gets one level more complex. A fractal maze of this type is easily solved by first solving the previous level, starting at level 1 which is a "Belgian maze". A variation of the Dragon's Maze design is my Garden Maze, using a hexagonal grid instead of square.
+
+Mark Wolf found a very interesting different interpretation of the term
+Fractal Maze: "a maze that actually is a fractal". Mind-blowing indeed!
+Seeing his maze, immediately several wishes popped up in my mind.
+1) Could someone write a java or shockwave applet that implements a fractal maze of the Mark Wolf type? I can imagine a user interface, where the maze would blow up (enlarge itself) when a next level is entered. A simpler implementation would be a row of mazes, representing the different fractal levels.
+2) Could someone develop a Scott Kim style set of challenges, starting at the very beginner level? This way a larger audience could appreciate the subtleties of Mark Wolf's Fractal Maze concept.
+3) Could someone develop a mechanical implementation of a Mark Wolf type
+Fractal Maze? I guess that last challenge is a challenge to myself. I hope
+that there are "takers" for the other challenges.
+
+Best regards,
+
+M. Oskar van Deventer
+--------------------------------
+Hm, a fractal maze might actually have an infinite path as its only solution:
+
+        +-------+
+        |  +-+  |
+start ->|--|A|--|-> finish
+        |  +-+  |
+        +-------+
+
+(Pardon the boxology; the inner square A is a copy of the outer square.)
+I suppose it's arguable whether this counts as a solution.  Anyway, I
+guess even breadth-first search might not terminate unless it
+recognized infinite regression loops.
+
+--Doug Orleans
+--------------------------------
+Naming the sides North, South, East and West
+( NSEW ) such that the pins near the upper left
+corner are N1 and W1, and the pins near the
+lower right corner are S8 and E8, I found this
+solution first:
+ 
+minus
+IN  C, N6
+IN  A, W3
+OUT A, E6
+IN  D, N8
+OUT D, S7
+IN  H, E5
+OUT H, E8
+IN  G, N2
+OUT G, S8
+OUT C, S8
+PLUS
+ 
+I was a little disappointed that the solution
+didn't involve more recursion.  Here's a longer
+one that does.
+ 
+minus
+IN  E, W8
+IN  G, E2
+IN  B, S5
+IN  H, E3
+OUT H, W6
+IN  G, E7
+OUT G, S6
+OUT B, S2
+OUT G, W6
+OUT E, W7
+IN  E, W5
+OUT E, N6
+IN  A, W3
+OUT A, E6
+IN  D, N8
+OUT D, N1
+IN  F, E1
+IN  A, W3
+OUT A, E6
+IN  D, N8
+OUT D, S7
+IN  H, E5
+OUT H, E8
+IN  G, N2
+OUT G, S8
+OUT F, N2
+PLUS
+ 
+Best regards,
+ 
+Brian Trial
+--------------------------------
+Hi Ed...
+
+Just a note to add my vote of approval for the Fractal maze.
+I discussed the ins and outs of solving it will several 
+people - tho' never got round to trying. I assumed there
+would be much deeper recursion so it would really need a
+solver. Interesting to read the feedback from others. I'm
+tempting to try what Oskar suggests (my first thought was
+a 4x4x4 would be quite hard enough - so why not try generating
+a few) - but not sure I'll find the time. Fascinating idea.
+
+Andrea
+www.clickmazes.com
+--------------------------------
+
+What a great maze! I loved solving it.
+
+Solution:
+ From negative battery
+  Enter maze C at top 6
+   Enter maze A at left 3
+   Exit maze A at right 6
+   Enter maze D at top 8
+   Exit maze D at bottom 7
+   Enter maze H at right 5
+   Exit maze H at right 8
+   Enter maze G at top 2
+   Exit maze G at bottom 8
+  Exit maze C at bottom 8
+ Get to positive battery
+ 
+Luke Pebody
+-----------------
+Perhaps you could help me with a way to express my solution, as I'm finding
+it a bit awkward.
+
+In C (through the top-side, 3rd pin from the right)
+    in A (through the left-side, 3rd pin from the top)
+    out A (through the right-side, 3rd pin from the bottom)
+    in D (top-side, rightmost pin)
+    out D (bottom-side, 2nd pin from the right)
+    in H (right-side, 4th from the bottom)
+    out H (right-side, bottommost pin)
+    in G (top-side, 2nd pin from the left)
+    out G (bottom-side, rightmost pin)
+Out C (bottom-side, rightmost pin) --> PLUS
+
+Travis Taylor
+____________
+
+Ed,
+ 
+An interesting problem.  I would be interested to know if there are other solutions other than the one I came up with.  Or how quickly a computer was able to find the solution if programming a traditional search routine.  (I did this solution by hand.)
+ 
+Short answer:  Enter C, pass through A, pass through D, pass through H, pass through G, exit C and proceed to +.
+ 
+Thanks for the fun.
+ 
+Dr. Matthew E. Coppenbarger
+
+----------------------------------------------
+from MINUS
+ 
+go to into C at node 1 (my notation labels the nodes of each sub-maze clockwise starting at the top left)
+exit C from node 7
+ 
+go to E and enter at node 3
+exit E using node 2
+ 
+go to A and enter at node 7
+exit A at node 4
+ 
+go to D and enter at node 3
+exit D at node 1
+ 
+go to F and enter at node 5
+ 
+(note we are still within F)
+go to A and enter at node 7
+exit A at node 4
+ 
+(note we are still within F)
+go to D and enter at node 3
+this time we exit D at node 6
+ 
+(note we are still within F)
+go to H and enter at node 4
+exit H at node 5
+ 
+(note we are still within F)
+go to G and enter at node 2
+exit G at node 6
+ 
+(note we are still within F)
+now exit F at node 2
+ 
+go to PLUS
+ 
+ Colin Backhurst  - very interesting maze
+----------------------------------------------
+A solution to the fractal maze is
+- C6 CA30 CA14 CD8 CD18 CH13 CH16 CG2 CG17  C17 +
+The contacts are numbered clockwise from 1 to 32, with 1 in the upper 
+left.
+
+Alex Fink
+-----------------------------------------------
+
+There was no way I was going to solve the Fractal Maze by hand. It is 
+too "mind blowing". But I did write a program to solve it with a 
+modified breadth-first search. To reduce the number of states searched, 
+at each iteration I only probed into the new states in the outermost 
+layer. Where the pins are numbered 00 to 31 starting at the left pin on 
+the top side and proceeding clockwise, and nodes inside nested mazes are 
+preceded by the letters of all nested mazes, the solution path is:
+
+-, C05, CA29, CA13, CD07, CD17, CH12, CH15,, CG01, CG16, C16, +
+
+
+Here's my program, in Python. I modified it to not stop at the first
+solution, and it found this other path:
+-, C05, C27, E08, E05, A29, A13, D07, D00,  F08, FA29, FA13, FD07, FD17,
+FH12, FH15, FG01, FG16, F01, +
+
+But since it prunes any paths that lead into already explored states, it
+won't find other paths which lead into some portion of these solutions.
+
+It ran for a while without finding any path to the other exits.
+
+#!/usr/bin/python
+#
+# Solve Mark J P Wolf's Fractal maze, from mathpuzzle.com October 18, 2003.
+#
+# Plan of attack is a mutant breadth-first search. At any given step, we will
+# explore all new states at the outermost level at which there are new states.
+
+newstates=[["A02","C05","E02","E24"]]
+done={}
+done["A02"]=["-"]
+done["C05"]=["-"]
+done["E02"]=["-"]
+done["E24"]=["-"]
+
+smap={}
+smap["00"]=["07","17"]
+smap["01"]=["16","21","G16"]
+smap["02"]=["11","30","F03"]
+smap["03"]=["10","26","B22"]
+smap["04"]=["14","18","A07","C28"]
+smap["05"]=["08","27","A29","E05"]
+smap["06"]=["B02"]
+smap["07"]=["00","17"]
+smap["08"]=["05","27","A29","E05"]
+smap["09"]=["B19"]
+smap["10"]=["03","26","B22"]
+smap["11"]=["02","30","F03"]
+smap["12"]=["15","19","H10"]
+smap["13"]=["20","29","31","C22"]
+smap["14"]=["04","18","A07","C28"]
+smap["15"]=["12","19","H10"]
+smap["16"]=["01","21","G16"]
+smap["17"]=["00","07"]
+smap["18"]=["04","14","A07","C28"]
+smap["19"]=["12","15","H10"]
+smap["20"]=["13","29","31","C22"]
+smap["21"]=["01","16","G16"]
+smap["22"]=["G18"]
+smap["23"]=["G19"]
+smap["24"]=["G09"]
+smap["25"]=["G26"]
+smap["26"]=["03","10","B22"]
+smap["27"]=["05","08","A29","E05"]
+smap["28"]=["H03"]
+smap["29"]=["13","20","31","C22"]
+smap["30"]=["02","11","F03"]
+smap["31"]=["13","20","29","C22"]
+osmap={}
+osmap["A07"]=["04","14","18","C28"]
+osmap["A09"]=["B01"]
+osmap["A13"]=["D07"]
+osmap["A17"]=["B30"]
+osmap["A27"]=["C08"]
+osmap["A29"]=["05","08","27","E05"]
+osmap["B01"]=["A09"]
+osmap["B02"]=["06"]
+osmap["B11"]=["D09"]
+osmap["B19"]=["09"]
+osmap["B21"]=["D01"]
+osmap["B22"]=["03","10","26"]
+osmap["B30"]=["A17"]
+osmap["C08"]=["A27"]
+osmap["C12"]=["F00"]
+osmap["C16"]=["+"]
+osmap["C19"]=["F20"]
+osmap["C22"]=["13","20","29","31"]
+osmap["C27"]=["E08"]
+osmap["C28"]=["04","14","18","A07"]
+osmap["D00"]=["F08"]
+osmap["D01"]=["B21"]
+osmap["D07"]=["A13"]
+osmap["D09"]=["B11"]
+osmap["D16"]=["+"]
+osmap["D17"]=["H12"]
+osmap["D21"]=["F13"]
+osmap["D29"]=["F10"]
+osmap["D31"]=["F07"]
+osmap["E05"]=["05","08","27","A29"]
+osmap["E08"]=["C27"]
+osmap["E09"]=["F29"]
+osmap["E17"]=["G04"]
+osmap["E20"]=["G00"]
+osmap["E23"]=["+"]
+osmap["E25"]=["E27"]
+osmap["E27"]=["E25"]
+osmap["F00"]=["C12"]
+osmap["F01"]=["+"]
+osmap["F03"]=["02","11","30"]
+osmap["F07"]=["D31"]
+osmap["F08"]=["D00"]
+osmap["F10"]=["D29"]
+osmap["F13"]=["D21"]
+osmap["F20"]=["C19"]
+osmap["F24"]=["H06"]
+osmap["F29"]=["E09"]
+osmap["F31"]=["G25"]
+osmap["G00"]=["E20"]
+osmap["G01"]=["H15"]
+osmap["G04"]=["E17"]
+osmap["G09"]=["24"]
+osmap["G14"]=["H25"]
+osmap["G16"]=["01","16","21"]
+osmap["G18"]=["22"]
+osmap["G19"]=["23"]
+osmap["G25"]=["F31"]
+osmap["G26"]=["25"]
+osmap["H03"]=["28"]
+osmap["H06"]=["F24"]
+osmap["H10"]=["12","15","19"]
+osmap["H12"]=["D17"]
+osmap["H15"]=["G01"]
+osmap["H16"]=["+"]
+osmap["H25"]=["G14"]
+
+
+def gofrom(state):
+  #return the list of states which can be reached from the specified state
+  depth=len(state)-2
+  ns=[]
+  #part 1: go up a level, or out to another circuit on the same level
+  #look for state[-3:] in osmap
+  if osmap.has_key(state[-3:]):
+    stem=state[:-3]
+    for st in osmap[state[-3:]]:
+      #filter out paths to "01" and "B+" and the like
+      if stem=="":
+        if len(st)!=2:
+          ns.append(stem+st)
+      else:
+        if st!="+":
+          ns.append(stem+st)
+  #part 2: explore within/go down a level
+  #state[-2:] should always be in smap
+  stem=state[:-2]
+  for st in smap[state[-2:]]:
+    #filter out paths to +
+    if st!="+":
+      ns.append(stem+st)
+  return ns
+
+while not done.has_key("+"):
+  #locate new states to process
+  lev=-1
+  for i in range(len(newstates)):
+    if newstates[len(newstates)-i-1]!=[]:
+      lev=len(newstates)-i-1
+  if lev==-1:
+    hell="Ran out of states to explore."
+    print done.keys()
+    raise hell
+  states=newstates[lev][:]
+  newstates[lev]=[]
+  for sta in states:
+    ns=gofrom(sta)
+    for st in ns:
+      if not done.has_key(st):
+        done[st]=done[sta]+[sta]
+        if len(newstates)<len(st)-2:
+          #venturing down into a new depth
+          newstates.append([])
+        if st!="+":
+          newstates[len(st)-3].append(st)
+
+#done
+print done["+"]
+print done.keys()
+
+Joseph DeVincentis
+--------------------------------------
+
+Greetings! I found Mark Wolf's fractal Maze very interesting. Note the only 
+choices in the Maze are at the 11 "junction connecting wires" (and at the 
+PLUS and MINUS nodes) in each level. The only dead ends are at the 32 pins, 
+when a pin doesn't link up with a passage in an outer level. Let's label the 
+32 pins around the outside as follows: Pins 0-7 go from left to right across 
+the top, pins 8-15 go from top to bottom down the left side, pins 16-23 go 
+from left to right across the bottom, and pins 24-31 go from top to bottom 
+down the right side.
+
+The Maze can be readily solved by hand (as opposed to getting a computer to 
+do it) if approached in the right fashion. Trying to solve it "top down" by 
+moving a point through gets very confusing. Instead let's solve it "bottom 
+up" or inductively, by making the Maze as a whole easier in stages. Let's 
+draw lines across a chip between two pins, if there's a path that crosses 
+that chip between them. A solution to the Maze will inevitably go into and 
+come out of chips. At some point there must be a "base case", where the path 
+goes between outer pins without diving any deeper. Start with each pair of 
+pins that connect with each other on a level. For example, pins 20, 28, and 
+31 hook up with each other. Therefore we can draw a passage between C20 and 
+C28, since we know inside C we can go between 20 and 28. Once you've added 
+all such passages, treat it as a normal Maze and look for a solution in the 
+top level. If there isn't one yet, repeat the process, since the new chip 
+crossing passages will link up additional outer pins. The second iteration 
+linked up C5 and C23, which allowed the Maze to be solved.
+
+There are two different solutions that go two levels deep into submazes. The 
+shortest solution is just to enter chip C, then inside that chip enter and 
+cross chips A, D, H, and G, then exit C and you're at the goal. Specifically 
+this solution does the following:
+
+From MINUS enter C5
+Inside C from 5 enter A10
+Inside A from 10 leave 29
+In C from A29 enter D7
+Inside D from 7 leave 22
+In C from D22 enter H28
+Inside H from 28 leave 31
+In C from H31 enter G1
+Inside G from 1 leave 23
+In C from G23 leave 23
+From C23 passage leads to PLUS :)
+
+The longer depth two solution also first enters copy C. On the top level 
+cross chips C, E, A, D, F. Inside F right before the goal is the only place 
+where you go another level deeper, in which you cross A, D, H, G. Note A is 
+crossed in the exact same way in both depths (and D is entered the same way 
+but exited a different way)! Specifically this does the following:
+
+From MINUS enter C5
+Inside C from 5 leave 12
+From C12 enter E24
+Inside E from 24 leave 5
+From E5 enter A10
+Inside A from 10 leave 29
+From A29 enter D7
+Inside D from 7 leave 0
+From D0 enter F24
+Inside F from 24 enter A10
+Inside A from 10 leave 29
+In F from A29 enter D7
+Inside D from 7 leave 22
+In F from D22 enter H28
+Inside H from 28 leave 31
+In F from H31 enter G1
+Inside G from 1 leave 23
+In F from G23 leave 1
+From F1 passage leads to PLUS :)
+
+I have a Maze algorithms page at 
+http://www.astrolog.org/labyrnth/algrithm.htm which lists categories of 
+Mazes. I do list fractal Mazes as a type of tessellation, however the 
+fractal Mazes I've created before have a finite depth, where inner Mazes 
+aren't exact copies of outer Mazes. For example 
+http://www.astrolog.org/labyrnth/maze/fractal.gif for random 2x2 Mazes 
+nested seven levels deep. Even 
+http://www.astrolog.org/labyrnth/maze/crack.gif is somewhat of a fractal 
+Maze with gradually smaller line segments, like the surface of a leaf. I 
+also have infinite length Mazes, mentioned at the bottom of the page, 
+however they're just standard Mazes you keep on adding onto forever, so take 
+infinite space to describe. The other thing that's somewhat related to this 
+are my virtual fractal Mazes, which are fixed Mazes on an enormous but still 
+finite scale (e.g. a billion by billion passage square) which are done by 
+only actually rendering the passages near your location. The relevant part 
+of the Maze can be generated as needed in a fixed fashion, where the rest of 
+the Maze exists virtually, similar to moving the magnifying glass around a 
+Mandelbrot set at a particular resolution: 
+http://www.astrolog.org/labyrnth/daedalus/gigamaze.jpg
+
+Anyway, Mark's Maze is more a recursive Maze or an infinite fractal Maze, 
+since it's truly defined in terms of itself. Your state or position in the 
+Maze can be defined by where you are in a level, combined with the stack of 
+levels above you. Since the stack can be arbitrary length, the Maze has 
+infinite states. Most Mazes (and many other puzzles) involve a finite number 
+of states, where there's a finite number of choices at any point. The 
+difference here is that it's in effect an infinitely large Maze with hence 
+infinite states.
+
+O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O
+*       Walter D. "Cruiser1" Pullen :)                                    *
+O Find your way through life's Maze: http://www.astrolog.org/labyrnth.htm O
+*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+
+(Yes I can solve it.)
+codes are of the form bst
+                    b - block (M=minus, P=Plus, X=outside frame)
+                    s - side (1 top, 2 right, 3 bottom, 4, left)
+                    t - tab (numbered clockwise from 1 on each side)
+
+There are a few problems with this maze
+2 drawing errors.   Lines to B13 and C44 are not exact. While closer to
+those tabs, it is possible they could be to B14 and C43.
+A definition omission concerning how to treat "+" and "-" at deeper levels.
+Are they Goals, Dead-Ends, or simple connections?
+        Is the Maze completed if "+" is reached at a deeper level?
+        Is it legal to traverse the "+" and "-" at deeper levels?
+This also suggests,
+Is it possible to start at "-" at a deeper level?
+
+Solution is:
+          M31       (C16      (A46      A26)
+                              (D18      D32)
+                              (H25      H28)
+                              (G12      G31)
+                    C31)
+          P11
+
+Somewhat disappointing that the solution is relatively simplistic with
+a maximum depth of only 2.
+
+Some analysis spoilers......
+
+There may also be a bit of a philosophical problem.  Assuming that my
+analysis and choices (B13, C44, no traversing "+" and "-") were good,
+I found that the Maze is disconnected at the top level (depth 0).
+(and thus also at the deeper levels)
+Specifically into the following groups
+          M21,M31,M41,P11,P12, X12,X31,X36, X16,X21,X44
+          M32
+          P13, X15,X27,X33, X17, X13,X47,X24, X26,X35,X48,X46
+          P31
+          P32
+          X45, X25,X28,X34, X37
+          X22, X14,X23,X43
+          X38
+          X41, X42
+          X11,X18,X32
+Though the last group can be reasonablly excluded as it
+doesn't connect to a deeper depth.
+
+I found the maximum necessary depth to be 3 to connect the X's,
+4 to connect M41.  Also, as far as I can tell, if traversing "+" and "-"
+at the top level is also dis-allowed, there are no loops.
+
+Chris Worrell
