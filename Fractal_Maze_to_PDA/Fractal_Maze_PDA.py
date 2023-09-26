@@ -60,7 +60,7 @@ def create_path(n: int) -> str:  # JAM #1 Solver
     return num[n-1]["solve"]
 
 
-maze = 4
+maze = 5
 # Skeptic Play #1
 if maze == 1:
     path = '34126(21524126(21524126(2152'
@@ -236,6 +236,56 @@ elif maze == 4:
         final_states={'q2'},
         acceptance_mode='both'
     )
+# Skeptic Play #2 -- See PNG
+elif maze == 5:
+    path = (f'4736;847(5<4=76;847(5<4=748;1976;847(5<4=7(5<4=:')
+    stack_symbols = {'A', 'B', 'C', 'D', ''}
+    wires = 13
+    fake_states = {}
+
+    states = set()
+    input_symbols = set()
+    for i in range(wires):
+        states.add(f'q{chr(i + 49)}')
+        input_symbols.add(chr(i + 49))
+    input_symbols.add('(')
+    input_symbols.add(')')
+
+    maze = DPDA(
+        states=states,
+        input_symbols=input_symbols,
+        stack_symbols=stack_symbols,
+        transitions=translate_transitions([
+            ['1-4', 'C/'],
+            ['1-9', 'D/'],
+            ['1-;', '/A'],
+            ['2-8', '/A'],
+            ['2-:', '/A'],
+            ['3-5', '/A'],
+            ['3-6', '/A'],
+            ['3-7', 'D/'],
+            ['3-=', 'B/'],
+            ['4-7', 'D/'],
+            ['4-8', 'D/'],
+            ['4-<', 'B/'],
+            ['4-=', 'B/'],
+            ['5-7', '/C'],
+            ['5-:', '/C'],
+            ['5-<', 'B/'],
+            ['6-7', 'B/'],
+            ['6-;', '/C'],
+            ['7-7', '/C'],
+            ['7-9', 'D/'],
+            ['7-=', '/C'],
+            ['8-;', 'B/'],
+            [':-=', '/D']
+        ], stack_symbols),
+        initial_state='q8',
+        initial_stack_symbol='',
+        final_states={'q:'},
+        acceptance_mode='both'
+    )
+
 
 def main() -> None:
     print('Path Accepted') if maze.accepts_input(path) else print('Path Error')
