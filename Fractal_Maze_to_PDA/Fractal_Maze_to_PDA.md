@@ -29,7 +29,7 @@ Use transition list to find all paths from 1 to 2
 - Move 3: 1 → A2 (Red)
 - Move 4: A1 → B2 (Blue)
 - Move 5: A2 → BA2 (Yellow)
-![SP 1 - Move Image.png](SP 1 - Actions.jpg)
+![SP 1 - Move Image.png](SP_1_-_Actions.jpg)
 ### Move Graphs
 Show a graph representation of these moves
   - 1 → BBA1
