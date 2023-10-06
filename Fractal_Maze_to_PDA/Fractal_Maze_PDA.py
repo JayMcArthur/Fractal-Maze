@@ -236,7 +236,7 @@ elif maze == 4:
         final_states={'q2'},
         acceptance_mode='both'
     )
-# Skeptic Play #2 -- See PNG
+# Skeptic Play #3 -- See PNG
 elif maze == 5:
     path = (f'4736;847(5<4=76;847(5<4=748;1976;847(5<4=7(5<4=:')
     stack_symbols = {'A', 'B', 'C', 'D', ''}

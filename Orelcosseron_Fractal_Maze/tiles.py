@@ -158,7 +158,7 @@ class Tile(QObject):
         self.links[orientation].show()
         self.linked_block[orientation] = (block_name, exit_name)
 
-    def unsetLink(self, block_name, exit_tile):
+    def unsetLink(self, exit_name, exit_tile):
         orientation = exit_tile.exitOrientation(exit_name).opposite()
         self.links[orientation].hide()
         self.linked_block.pop(orientation)
