@@ -1,17 +1,20 @@
 # Fractal Mazes to Push Down Automata
 
+This shows an example of converting a maze to a PDA with a few extra side representations.
+
 ## Working Example
 
 ![Skeptic Play 1.jpg](Skeptic_Play_1.jpg)
 
 ### Label Lines as int
+Use numbers to represent paths not exits. It is possible that a path is connected to multiple exits which is why we do it this way.
 - Green = 1
 - Red = 2
 - Bottom Purple = 3
 - Blue = 4
 - Top Purple = 5
 - Yellow = 6
-### Exact Transition List  
+### Define Exact Transition List  
 All line connections, append going in and out of fractal level
 - 1 → A2
 - 1 → B3
@@ -23,7 +26,7 @@ All line connections, append going in and out of fractal level
 - 3 → B4
 - 6 → B6
 ### Condensed Move List 
-Use transition list to find all paths from 1 to 2
+Use transition list to find all paths from 1 to 2, This looks different in every maze as there isn't a 1 and 2. 
 - Move 1: 1 → BBA1 (Black)
 - Move 2: AB1 → 2 (Purple)
 - Move 3: 1 → A2 (Red)
@@ -31,7 +34,7 @@ Use transition list to find all paths from 1 to 2
 - Move 5: A2 → BA2 (Yellow)
 ![SP 1 - Move Image.png](SP_1_-_Actions.jpg)
 ### Move Graphs
-Show a graph representation of these moves
+Show a graph representation of these moves, this is one of those side things
   - 1 → BBA1
 
   ![SP 1 - Move 1.png](SP_1_-_M1.png)
@@ -87,6 +90,7 @@ Start at orgin point and get back with a different number at origin
 27. Green → out of B
 28. Purple → out of A
 29. Red → out of B to Finish
+
 ### Pushdown Automation Version 
 Machine = M = (K, Σ, Γ, Δ, s, F) where
   
@@ -105,6 +109,11 @@ M = {
   'F': {2}
 }  
 ```
+K is the lines we labeled earlier. 
+Σ is the move set which is just the lines plus the special `(` and `)` for when we stay on the same line but go in or out of a maze.
+Γ consists of each submaze.
+S is the starting line.
+F is the finishing line.
 ![SP 1 - Turing Machine.png](SP_1_-_Turing_Machine.png)
 
 [Online Editor](https://cs.odu.edu/~zeil/automat/automat.cgi?saved=1&saved=1&lang=eyJzcGVjaWZpY2F0aW9uIjoiYXV0b21hdG9uUERBIiwiY3JlYXRlZEJ5IjoiQW5vbnltb3VzIiwicHJvYmxlbUlEIjoiIiwidW5sb2NrxgxzdGF0ZXMiOlt7ImxhYmVsIjoiMSIsImluaXRpYWwiOnRydWUsImZpbsQNZmFsc2UsIngiOjIyLCJ5Ijo0NTZ9LMo6Msw6xy3HO8ZIeCI6NDc1xTsyODLMOzPaO8p2MTHGPDgwzDs03zvFOzI2OMZ3MTPMPDXfPMU8MzkwxTw0NTfMPDbfPMU8NTMzxTwxNjd9XSwidHJhbnNp5AG%2B5gF0ZnJvbecBc3Rv5wEHyGAzLEAvQiLEcscmxB3FJsQvyCYxLEIvQMwmyUzkAY7IJjIsQC9BzCbEHdNMQddM5AEoyCY10HLEHdNM7wC%2ByUzkAbDIJjTQcsQd1Uz2AL7uAJjPJukAmO4BCs9yyUzuAJjvAOTpAJjOTO8A5MlM5AIcyCY20HLEHdVM7QC%2BySbMTCjEclxuKfAAn%2BkCG%2B4Axe8An%2BkAxe4CZ8VMXX0%3D&saved=1)
@@ -114,3 +123,5 @@ Start: 1, Empty Stack
 End 2, Empty Stack
     
 Solution: 34126(21524126(21524126(2152
+
+This [file](./Fractal_Maze_PDA.py) contains all of the mazes I have converted to PDAs with solutions included
