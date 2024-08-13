@@ -27,7 +27,7 @@ LINE_COLOR #ff0000
 # maze. The tile's size must be set before declaring any component of the maze.
 # Format: TILE_SIZE size
 
-TILE_SIZE 60
+TILE_SIZE 120
 
 # TILE DESCRIPTION
 # Tiles are the basic components of the maze, each row of the maze is described
@@ -46,17 +46,13 @@ TILE_SIZE 60
 #           0501 = 0101|0001 => Two tiles with an horizontal path that has no exit eastward.
 
 # ======== MAZE ======== #
-0000000002020200000000
-0000000008101000000000
-0000000000100800000000
-0000000002100200000000
-0405010409101201020401
-0403060705130705130501
-0409080800001004010401
-0000000004031000000000
-0000000002100800000000
-0000000010100200000000
-0000000008080800000000
+00040701000000
+02000800020000
+14010004150100
+08000200080000
+00041501000000
+00000800020002
+00000004130509
 # ====== END MAZE ====== #
 
 # TELEPORT DESCRIPTION
@@ -70,7 +66,7 @@ TILE_SIZE 60
 # The player must be declared before any trophy/exit.
 # Format: PLAYER row col #RRGGBB
 
-PLAYER 10 06 #0000ff
+PLAYER 06 06 #0000ff
 
 # TROPHY DESCRIPTION
 # Trophies are an optional component of the maze.
@@ -81,7 +77,7 @@ PLAYER 10 06 #0000ff
 # When used, trophies must be declared before any exit.
 # Format: TROPHY row col #RRGGBB
 
-TROPHY 06 10 #42665c
+TROPHY 00 02 #42665c
 
 # EXIT DESCRIPTION
 # An exit allows the player to move outside the block they are
@@ -89,28 +85,30 @@ TROPHY 06 10 #42665c
 # Exits must be declared before any link can be made.
 # Format: EXIT name orientation row col
 
-EXIT 01 8 00 04
-EXIT 02 8 00 05
-EXIT 03 8 00 06
-EXIT 04 4 04 10
-EXIT 05 4 05 10
-EXIT 06 4 06 10
-EXIT 07 2 10 04
-EXIT 08 2 10 05
-EXIT 09 2 10 06
-EXIT 10 1 06 00
-EXIT 11 1 05 00
-EXIT 12 1 04 00
+EXIT 01 8 00 02
+EXIT 02 4 06 06
+EXIT 03 2 06 04
+EXIT 04 1 02 00
 
 # BLOCK DESCRIPTION
 # A block is a copy of the maze within itself.
 # Blocks must be declared before any link is added to them.
 # Format: BLOCK name row col width height #RRGGBB
 
-BLOCK A 00 00 04 04 #fff7ac
-BLOCK B 00 07 04 04 #a3d0e7
-BLOCK C 07 07 04 04 #daa5c1
-BLOCK D 07 00 04 04 #cbcbcb
+BLOCK A 00 00 01 01 #fff7ac
+BLOCK B 00 04 01 01 #fff7ac
+BLOCK C 00 06 01 01 #fff7ac
+
+BLOCK D 02 02 01 01 #fff7ac
+BLOCK E 02 06 01 01 #fff7ac
+
+BLOCK F 04 00 01 01 #fff7ac
+BLOCK G 04 04 01 01 #fff7ac
+BLOCK H 04 06 01 01 #fff7ac
+
+BLOCK I 06 00 01 01 #fff7ac
+BLOCK J 06 02 01 01 #fff7ac
+
 
 # LINK DESCRIPTION
 # A link allows the player to move inside a block.
@@ -120,29 +118,41 @@ BLOCK D 07 00 04 04 #cbcbcb
 # separated by '+'.
 # Format: LINK block_name[+block_name[+block_name[+...]]] exit_name row col
 
-LINK A 04 01 04
-LINK A 06 03 04
-LINK A 07 04 01
-LINK A 08 04 02
-LINK A 09 04 03
+LINK A 02 00 01
+LINK A 03 01 00
 
-LINK B 07 04 09
-LINK B 08 04 08
-LINK B 09 04 07
-LINK B 10 03 06
-LINK B 11 02 06
-LINK B 12 01 06
+LINK B 04 00 03
+LINK B 02 00 05
+LINK B 03 01 04
 
-LINK C 01 06 07
-LINK C 02 06 08
-LINK C 03 06 09
-LINK C 10 09 06
-LINK C 11 08 06
-LINK C 12 07 06
+LINK C 04 00 05
+LINK C 03 01 06
 
-LINK D 01 06 01
-LINK D 02 06 02
-LINK D 03 06 03
-LINK D 04 07 04
-LINK D 05 08 04
-LINK D 06 09 04
+LINK D 01 01 02
+LINK D 04 02 01
+LINK D 02 02 03
+LINK D 03 03 02
+
+LINK E 01 01 06
+LINK E 04 02 05
+LINK E 03 03 06
+
+LINK F 01 03 00
+LINK F 02 04 01
+LINK F 03 05 00
+
+LINK G 01 03 04
+LINK G 04 04 03
+LINK G 02 04 05
+LINK G 03 05 04
+
+LINK H 01 03 06
+LINK H 04 04 05
+LINK H 03 05 06
+
+LINK I 01 05 00
+LINK I 02 06 01
+
+LINK J 01 05 02
+LINK J 04 06 01
+LINK J 02 06 03

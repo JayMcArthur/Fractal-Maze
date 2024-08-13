@@ -1,7 +1,7 @@
 from automata.pda.dpda import DPDA
 
 
-# Helper function I created to created the transition diction for the PDA
+# Helper function I created to create the transition diction for the PDA
 # It takes dict_to_trans which contains an array of [paths connected, maze change]
 # Say ['1-2', '/A']
 # This would be path 1 connected to path 2
@@ -110,9 +110,9 @@ def define_maze(maze_num):
         path1 = f'3768{chr(10 + 48)}(8{chr(11 + 48)}1)4{chr(13 + 48)}{chr(10 + 48)}{chr(16 + 48)}139{chr(12 + 48)}8{chr(17 + 48)}'
         path = f'3768{chr(10 + 48)}(8{chr(11 + 48)}1){chr(15 + 48)}8{chr(10 + 48)})8{chr(17 + 48)}'
         stack_symbols = {'A', 'B', 'C', ''}
-        fake_states = {}  # Need to add a fake state to fix [f'3-7', 'A/'], or i did the maze wrong
+        fake_states = {}  # Need to add a fake state to fix [f'3-7', 'A/'], or I did the maze wrong
         fake_paths = []
-        wires = 18
+        wires = 18 + 1
 
         states = set()
         input_symbols = set()
@@ -136,7 +136,7 @@ def define_maze(maze_num):
                 [f'2-4', '/A'],
                 [f'3-5', '/A'],
                 [f'3-7', '/B'],
-                [f'3-7', 'A/'],  # Makes Path 1 error, Need to find a way around
+                # [f'3-7', 'A/'],  # Makes Path 1 error, Need to find a way around
                 [f'3-9', 'B/'],
                 [f'3-B', 'A/'],
                 [f'4-5', 'B/'],
@@ -153,7 +153,9 @@ def define_maze(maze_num):
                 [f'9-<', 'A/'],
                 [f':-:', '/A'],
                 [f':-=', 'B/'],
-                [f':-@', 'B/']
+                [f':-@', 'B/'],
+                [f'3-C', 'A/'],
+                [f'7-C', 'A/']
             ], stack_symbols),
             initial_state=f'q{chr(18 + 48)}',
             initial_stack_symbol='',
@@ -255,7 +257,7 @@ def define_maze(maze_num):
         )
     # Skeptic Play #3 -- See PNG
     elif int(maze_num) == 5:
-        path = (f'4736;847(5<4=76;847(5<4=748;1976;847(5<4=7(5<4=:')
+        path = f'4736;847(5<4=76;847(5<4=748;1976;847(5<4=7(5<4=:'
         stack_symbols = {'A', 'B', 'C', 'D', ''}
         wires = 13
         fake_states = {}
