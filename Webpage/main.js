@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             const mazeList = document.getElementById('mazeList');
-            data.mazes.forEach(maze => {
+            data.forEach(maze => {
                 const option = document.createElement('option');
                 option.value = maze.name;
                 option.text = maze.displayName;
