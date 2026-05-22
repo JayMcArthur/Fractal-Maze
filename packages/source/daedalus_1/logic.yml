@@ -1,0 +1,20 @@
+format: fmaze-logic-v0
+id: daedalus_1
+strategy: reference_record
+source_model: reference_record
+modeling_status:
+  status: planned
+  reason: >-
+    WIP/unverified reference record. The image is a clean recursive
+    circuit-maze drawing with visible submaze blocks, but no complete,
+    audited pin netlist or replayable step sequence has been derived in this
+    package.
+  next_step: >-
+    Trace every visible wire component into a pin-to-pin netlist, confirm
+    whether crossings connect only at same-color/marked junctions, then solve
+    the resulting recursive Port Graph and add an fmaze-solution-v0 replay.
+provenance:
+  notes:
+    - Image source is astrolog.org fractal2.gif, referenced in local mathpuzzle discussion.
+    - Local discussion says a hand solution was found with chip depth 7 and 66 chip-entry/exit steps, but does not provide a replayable path.
+    - Visible drawing appears to use colored wires to disambiguate overlapping routes; this package has not verified every endpoint or crossing.

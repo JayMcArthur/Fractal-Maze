@@ -1,0 +1,13 @@
+format: fmaze-package-v0
+id: tiny_repeated_tiled
+title: Tiny Repeated/Tiled Port Graph
+primary_authoring: repeated_tile_ports
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+provenance:
+  sources:
+    - type: handcrafted_fixture
+      note: Minimal repeated/tiled package used to lock the hand-authored package format before larger repeated mazes.

@@ -1,0 +1,15 @@
+format: fmaze-package-v0
+id: orelcosseron_block_maze
+title: Orelcosseron Block Maze Derived Port Graph
+primary_authoring: port_graph
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+provenance:
+  sources:
+    - type: package_logic
+      href: logic.yml
+    - type: derived_hand_conversion
+      note: WIP executable Port Graph derived into the package logic; needs playtest verification.

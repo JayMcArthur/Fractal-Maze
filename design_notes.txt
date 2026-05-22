@@ -1,0 +1,1090 @@
+# Fractal Maze Lab — Data Representation Design Notes
+
+## Goal
+
+Design a clean, extensible representation for fractal mazes that can support:
+
+* Finite recursive mazes
+* Infinite/self-similar mazes
+* Cantor-style / countably infinite maze structures
+* Solving and validation
+* Playback and interactive play
+* Visual skins and images
+* Maze editing
+* Conversion between human-friendly maze definitions and machine-friendly automata
+
+The core idea is to separate **maze logic** from **maze appearance**.
+
+The logical representation should describe what moves are possible and how recursion works. The visual representation should describe how to draw and interact with that logic.
+
+A Pushdown Automaton-like model makes sense as the internal logic layer because fractal mazes naturally involve entering and exiting nested copies of regions. A PDA gives us:
+
+* A finite control state
+* A stack representing recursive depth / nested maze contexts
+* Transitions that describe valid moves
+* A natural model for entering and leaving submazes
+* Compatibility with some infinite structures, as long as they can be described symbolically
+
+---
+
+# Core Design Principle
+
+A fractal maze should be represented in layers:
+
+```text
+Source Maze Definition
+        ↓
+Logical Maze Model
+        ↓
+PDA / Transition System
+        ↓
+Runtime State
+        ↓
+Visual Renderer / Player / Playback / Editor
+```
+
+Each layer has a different responsibility.
+
+## Layer 1: Source Maze Definition
+
+This is the human-editable format.
+
+It should be easy to write, read, version, and edit. It can include high-level concepts like rooms, tiles, portals, blocks, named submazes, and visual hints.
+
+This layer should not need to be the same as the PDA. It can be friendlier.
+
+Example consumers:
+
+* Editor
+* Import/export tools
+* Maze archive
+* Documentation generator
+* Compiler into the logical model
+
+## Layer 2: Logical Maze Model
+
+This is the normalized representation of the maze.
+
+It should remove ambiguity from the source format. For example, if the source format says there is a block named `A`, the logical model should know:
+
+* What block `A` means
+* Which entrances it has
+* Which exits it has
+* Which internal states belong to it
+* Whether it refers to itself or another maze
+* Whether it is finite, recursive, symbolic, or infinite
+
+Example consumers:
+
+* Validator
+* Solver
+* PDA compiler
+* Editor inspections
+* Renderer mapping
+
+## Layer 3: PDA / Transition System
+
+This is the core machine-readable logic.
+
+It should answer:
+
+> Given the current state and stack, what moves are legal, and what state/stack do they produce?
+
+This layer does not care about art, colors, sprite positions, or camera movement.
+
+Example consumers:
+
+* Solver
+* Runtime engine
+* Playback system
+* Proof/explanation system
+* Infinite maze reasoning
+
+## Layer 4: Runtime State
+
+This is the live play state.
+
+It includes the current PDA state, current stack, history, undo data, and maybe player-visible metadata.
+
+Example consumers:
+
+* Player UI
+* Playback UI
+* Solver replay
+* Save/load
+
+## Layer 5: Visual Representation
+
+This describes how to show the maze.
+
+It should not be the source of truth for whether a move is legal. It should consume the logical state and render it.
+
+Example consumers:
+
+* Web renderer
+* Desktop renderer
+* Editor canvas
+* Playback viewer
+* Screenshot/export tools
+
+---
+
+# Main Data Objects
+
+## Maze Package
+
+A maze package is the full archive object for a maze.
+
+It may contain:
+
+```yaml
+id: alice_hedge
+title: Alice and the Fractal Hedge Maze
+author: Mike Earnest
+source_url: https://example.com
+license: unknown
+version: 1
+logic:
+  format: fractal-maze-source-v1
+  file: logic.yml
+visual:
+  format: fractal-maze-visual-v1
+  file: visual.yml
+solutions:
+  - file: solutions/main.solution.yml
+metadata:
+  difficulty: unknown
+  tags:
+    - recursive
+    - finite
+    - classic
+```
+
+The package separates identity, logic, visuals, and solutions.
+
+This prevents the visual layer from becoming required for solving.
+
+---
+
+# Logical Concepts
+
+## State
+
+A logical state represents a position in the abstract maze.
+
+This may correspond to:
+
+* A tile
+* A path segment
+* A named region
+* A portal entrance
+* A portal exit
+* A symbolic location in an infinite structure
+
+Possible state ID examples:
+
+```text
+root.start
+root.path_12
+root.A.entry_north
+A.center
+A.exit_east
+```
+
+States should be stable IDs so solutions and visuals can refer to them.
+
+## Move
+
+A move is an input/action the player or solver can take.
+
+Simple examples:
+
+```text
+north
+south
+east
+west
+enter
+exit
+wait
+```
+
+For old-school grid mazes, moves may just be cardinal directions.
+
+For abstract graph mazes, moves may be named edges:
+
+```text
+move:left_path
+move:stairs_down
+enter:A
+exit:top
+```
+
+Important decision:
+
+The engine should support both:
+
+1. A small standard move set for grid mazes.
+2. Named symbolic moves for abstract/infinite mazes.
+
+## Stack Symbol
+
+A stack symbol represents a recursive context.
+
+Examples:
+
+```text
+ROOT
+A
+B
+C
+cantor.left
+cantor.middle_gap
+frame.inner
+```
+
+When entering a recursive block, the engine usually pushes a symbol. When exiting, it pops or rewrites symbols.
+
+## Transition
+
+A transition defines how one state changes to another.
+
+PDA-style transition shape:
+
+```yaml
+from: root.path_1
+input: east
+stack_top: ROOT
+to: root.path_2
+stack_action:
+  type: none
+```
+
+Push example:
+
+```yaml
+from: root.block_A_entry
+input: enter
+stack_top: ROOT
+to: A.start
+stack_action:
+  type: push
+  symbol: A
+```
+
+Pop example:
+
+```yaml
+from: A.exit_east
+input: exit
+stack_top: A
+to: root.after_A_east
+stack_action:
+  type: pop
+```
+
+Rewrite example:
+
+```yaml
+from: cantor.node
+input: descend_left
+stack_top: cantor.interval
+next: cantor.node
+stack_action:
+  type: replace
+  pop: cantor.interval
+  push:
+    - cantor.interval.left
+```
+
+Open question:
+
+Should transitions be limited to push/pop/no-op, or should they support arbitrary stack rewrites? For normal recursive mazes, push/pop/no-op is cleaner. For Cantor/infinite symbolic mazes, limited rewrite may be useful.
+
+---
+
+# Source Maze Definition Format
+
+The source format should be nicer than raw PDA transitions.
+
+A source maze could be graph-based, grid-based, or symbolic.
+
+## Option A: Graph Source Format
+
+This is probably the best first canonical format.
+
+```yaml
+id: simple_recursive_maze
+start: root.start
+goals:
+  - root.goal
+
+regions:
+  root:
+    states:
+      start: {}
+      path1: {}
+      block_A: { type: block, ref: A }
+      after_A: {}
+      goal: { type: goal }
+    edges:
+      - from: start
+        move: east
+        to: path1
+      - from: path1
+        move: east
+        to: block_A
+      - from: block_A
+        move: enter
+        enter_region: A
+        return_map:
+          east: after_A
+      - from: after_A
+        move: east
+        to: goal
+
+  A:
+    states:
+      start: {}
+      exit_east: { type: exit, exit_id: east }
+    edges:
+      - from: start
+        move: east
+        to: exit_east
+```
+
+Pros:
+
+* Easy to compile into PDA
+* Easier to hand-edit than tile grids
+* Works for non-grid mazes
+* Good for theory and solvers
+
+Cons:
+
+* Not as visual
+* Maze editor needs to provide a friendlier grid interface
+
+## Option B: Grid Source Format
+
+This is best for classic visual mazes.
+
+```yaml
+regions:
+  root:
+    grid:
+      - "########"
+      - "#S..A.G#"
+      - "########"
+    symbols:
+      S:
+        type: start
+      G:
+        type: goal
+      A:
+        type: block
+        ref: A
+        entrances:
+          default: A.start
+        exits:
+          east: root.after_A
+```
+
+Pros:
+
+* Human-readable for small mazes
+* Natural for editor/import/export
+* Easy to display
+
+Cons:
+
+* Harder to represent abstract or infinite structures
+* Requires symbol conventions
+* Can become awkward for recursive exits
+
+## Option C: Raw PDA Format
+
+This is the machine-level format.
+
+```yaml
+pda:
+  states:
+    - root.start
+    - root.path1
+    - A.start
+    - A.exit_east
+    - root.goal
+  stack_symbols:
+    - ROOT
+    - A
+  start_state: root.start
+  start_stack:
+    - ROOT
+  accepting:
+    type: final_state
+    states:
+      - root.goal
+  transitions:
+    - from: root.start
+      input: east
+      stack_top: ROOT
+      to: root.path1
+      stack_action:
+        type: none
+    - from: root.path1
+      input: enter
+      stack_top: ROOT
+      to: A.start
+      stack_action:
+        type: push
+        symbol: A
+```
+
+Pros:
+
+* Directly executable
+* Best for solver and proof tools
+* Can express things not easy in grid format
+
+Cons:
+
+* Verbose
+* Bad as the primary authoring format
+* Hard for visual editing
+
+## Recommendation
+
+Support three levels:
+
+1. **Graph source format** as the main canonical authoring format.
+2. **Grid source format** as a convenience layer for visual mazes.
+3. **Raw PDA format** as a compiled/intermediate/export format.
+
+The editor can eventually support both graph and grid views.
+
+---
+
+# Runtime State
+
+The runtime state should be small and serializable.
+
+```yaml
+maze_id: alice_hedge
+state: root.path_12
+stack:
+  - ROOT
+  - A
+  - B
+history:
+  - move: east
+    from: root.start
+    to: root.path_1
+  - move: enter
+    from: root.path_1
+    to: A.start
+```
+
+For playback, history should be enough to reconstruct the visible sequence.
+
+For undo, each transition should record both previous and next state/stack.
+
+```yaml
+move_record:
+  input: enter
+  from:
+    state: root.block_A
+    stack: [ROOT]
+  to:
+    state: A.start
+    stack: [ROOT, A]
+  transition_id: t_123
+```
+
+The visual layer should consume this runtime state but not mutate it directly.
+
+---
+
+# Visual Representation
+
+Visual data should map logical states to screen positions, artwork, and animation hints.
+
+It should not decide whether moves are legal.
+
+Example:
+
+```yaml
+visual:
+  default_view: root
+  views:
+    root:
+      type: grid
+      region: root
+      tile_size: 32
+      state_positions:
+        root.start: [1, 1]
+        root.path1: [2, 1]
+        root.block_A: [3, 1]
+        root.after_A: [4, 1]
+        root.goal: [5, 1]
+      sprites:
+        root.block_A:
+          type: block
+          label: A
+    A:
+      type: grid
+      region: A
+      tile_size: 32
+      state_positions:
+        A.start: [1, 1]
+        A.exit_east: [2, 1]
+```
+
+Visual layer responsibilities:
+
+* Draw the current region/view
+* Draw player position
+* Show stack breadcrumbs
+* Animate transition between regions
+* Show solution playback
+* Let editor place/move visual nodes
+
+Visual layer should consume:
+
+* Maze package metadata
+* Logical model state IDs
+* Runtime state
+* Optional solution history
+
+Visual layer should not own:
+
+* Legal movement
+* Stack rules
+* Goal detection
+* Solver correctness
+
+---
+
+# Editor Design
+
+The editor should edit the source maze definition, not the compiled PDA directly by default.
+
+## Editor Modes
+
+### Grid Mode
+
+Best for classic mazes.
+
+Features:
+
+* Paint walls
+* Paint paths
+* Place start/goal
+* Place block/submaze cells
+* Define entrances/exits
+* Define named regions
+* Preview region nesting
+
+### Graph Mode
+
+Best for abstract logic.
+
+Features:
+
+* Add state/node
+* Add edge/move
+* Add block entry transition
+* Add exit transition
+* Define stack behavior
+* Show compiled PDA preview
+
+### PDA Mode
+
+Advanced/debug mode.
+
+Features:
+
+* View generated transitions
+* Edit raw transitions if desired
+* Validate determinism/nondeterminism
+* Export to YAML/JSON
+
+## Editor Validation
+
+Validator should check:
+
+* Every state has a unique ID
+* Start state exists
+* Goal states exist
+* All transition targets exist
+* All stack symbols are declared
+* Every block reference points to a known region or symbolic generator
+* Every region exit maps back to a caller or valid return state
+* No visual state references missing logic states
+* No logic states are invisible unless intentionally marked hidden
+* Solver can detect whether the goal is reachable, unknown, or impossible
+
+---
+
+# Solving and Playback
+
+The solver consumes PDA/runtime logic, not visuals.
+
+Possible solver modes:
+
+## Finite Bounded Search
+
+For normal recursive mazes, search up to a max depth.
+
+Useful for:
+
+* Player hints
+* Simple solution finding
+* Debugging
+
+## Symbolic PDA Search
+
+Uses PDA structure directly.
+
+Useful for:
+
+* Detecting repeated state + stack patterns
+* Proving certain mazes solvable/unsolvable
+* Handling recursion better than naive BFS
+
+## Infinite/Cantor Search
+
+May require symbolic constraints instead of enumerating all states.
+
+For these, the system may return:
+
+```yaml
+result: unknown
+reason: requires_symbolic_reasoning
+```
+
+or:
+
+```yaml
+result: solved_symbolically
+proof: ...
+```
+
+Playback consumes solution records:
+
+```yaml
+solution:
+  maze_id: alice_hedge
+  start:
+    state: root.start
+    stack: [ROOT]
+  moves:
+    - east
+    - east
+    - enter
+    - north
+    - exit
+```
+
+The runtime engine replays moves by applying transitions. The visual layer renders each resulting state.
+
+---
+
+# Infinite and Cantor Maze Support
+
+Normal PDA works well when the maze has:
+
+* Finite states
+* Finite stack alphabet
+* Recursive nesting
+* Repeated substructure
+
+Cantor/infinite mazes may need symbolic generators.
+
+## Symbolic Region Generator
+
+Instead of listing every state, define a family of states.
+
+Example concept:
+
+```yaml
+symbolic_regions:
+  cantor_interval:
+    parameters:
+      - depth
+      - branch
+    states:
+      node: cantor.node({depth}, {branch})
+    transitions:
+      - from: node
+        move: left_third
+        to: node
+        stack_action:
+          type: push
+          symbol: cantor.left
+      - from: node
+        move: right_third
+        to: node
+        stack_action:
+          type: push
+          symbol: cantor.right
+```
+
+This lets the PDA remain finite in spirit, even if the represented maze is infinite.
+
+Open question:
+
+Do we want to support true symbolic parameters now, or start with finite recursive PDA and design the schema so symbolic parameters can be added later?
+
+Recommendation:
+
+Design for symbolic later, but implement finite recursive PDA first.
+
+---
+
+# What Consumes What
+
+## Archive Page
+
+Consumes:
+
+* Maze package metadata
+* Visual preview image
+* Playable status
+* Source links
+
+Does not need:
+
+* Full PDA
+* Solver internals
+
+## Web Player
+
+Consumes:
+
+* Maze package
+* Logical model or compiled PDA
+* Visual mapping
+* Runtime state
+* Optional solutions
+
+Produces:
+
+* Move history
+* Save state
+* Playback events
+
+## Desktop Player
+
+Consumes:
+
+* Same as web player if possible
+
+Long-term goal:
+
+The desktop and web player should share the same maze data format.
+
+## Solver
+
+Consumes:
+
+* Logical model or compiled PDA
+
+Produces:
+
+* Solution
+* Proof/trace
+* Reachability result
+* Diagnostics
+
+## PDA Converter
+
+Consumes:
+
+* Source maze definition
+* Logical maze model
+
+Produces:
+
+* PDA transitions
+* Stack alphabet
+* State graph
+* Validation warnings
+
+## Renderer
+
+Consumes:
+
+* Visual representation
+* Runtime state
+* Transition events
+
+Produces:
+
+* Display
+* Animation
+* Screenshot/export
+
+## Editor
+
+Consumes:
+
+* Source maze definition
+* Visual representation
+* Validation diagnostics
+
+Produces:
+
+* Updated source maze definition
+* Updated visual representation
+* Optional compiled PDA preview
+
+---
+
+# Proposed File Types
+
+## `.fmaze.yml`
+
+Human-authored maze source.
+
+Contains graph/grid/symbolic definitions.
+
+## `.fmaze.visual.yml`
+
+Visual mapping and appearance.
+
+Contains positions, sprites, labels, art references, and animation hints.
+
+## `.fmaze.pda.yml`
+
+Compiled PDA representation.
+
+Can be regenerated from source.
+
+## `.fmaze.solution.yml`
+
+Solution or playback file.
+
+Contains moves and/or transition records.
+
+## `.fmaze.package.yml`
+
+Top-level package manifest.
+
+References the logic, visual, source links, previews, and solutions.
+
+---
+
+# Important Design Decisions
+
+## Decision 1: Is the PDA the source of truth?
+
+Recommended answer:
+
+The PDA is the **runtime logic source of truth**, but not the preferred human authoring format.
+
+Humans edit graph/grid/symbolic source. The compiler produces PDA.
+
+## Decision 2: Should visuals affect gameplay?
+
+Recommended answer:
+
+No. Visuals should not define legal moves. Visuals only render and help users interact with the logic.
+
+The only exception is editor input. In the editor, dragging/drawing changes the source definition, which then recompiles into logic.
+
+## Decision 3: Should the engine allow nondeterminism?
+
+For mazes, deterministic movement is easier. But PDA theory supports nondeterminism.
+
+Recommendation:
+
+* Runtime player should require deterministic transitions for a given `(state, input, stack_top)`.
+* Solver/compiler may support nondeterministic PDA for abstract/theory modes.
+* Validator should warn when a playable maze has ambiguous moves.
+
+## Decision 4: Should moves be directional or symbolic?
+
+Recommendation:
+
+Both.
+
+Use standard directional moves for grid mazes, but internally represent all moves as symbols.
+
+```text
+north, south, east, west, enter, exit
+```
+
+are just common move symbols.
+
+## Decision 5: Should stack actions support arbitrary rewrites?
+
+Recommendation:
+
+Start with:
+
+* none
+* push
+* pop
+* replace
+
+Avoid arbitrary multi-symbol rewrites unless needed. Keep the model PDA-like and easy to reason about.
+
+## Decision 6: Should visuals be hand-authored or generated?
+
+Recommendation:
+
+Both.
+
+Grid mazes can generate visuals from the grid automatically.
+
+Graph mazes can have hand-authored layouts.
+
+Editor should eventually generate and modify visual mappings.
+
+---
+
+# Open Questions for Jay
+
+1. Do you want this to be mostly a **playable puzzle app**, a **theory/automata lab**, or both equally?
+
+2. Should the first version focus on converted package files, or should it define visual mapping before the package layer is complete?
+
+3. Do you want the web app to be the primary app, with desktop as secondary, or do you care about keeping both?
+
+4. For visuals, do you want mostly grid/tile mazes, or do you also want freeform node-graph visuals?
+
+5. Should solution files store only player inputs, or full transition records with state/stack before and after each move?
+
+6. Should the editor be safe/simple for normal users, or should it expose advanced PDA editing directly?
+
+7. Do you want to support infinite/Cantor mazes in the first real version, or just design the data model so they can fit later?
+
+8. Should maze packages be plain folders with YAML files, or single bundled JSON files for easy web loading?
+
+9. Do you care about multiplayer/race/sharing features later, or is this strictly single-player?
+
+10. Should imported maze images be treated as archival references only, or should the player support image-overlay mazes where the logic is mapped onto an image?
+
+---
+
+# Suggested MVP Spec
+
+Build the first version around this pipeline:
+
+```text
+.fmaze.yml source
+      ↓ compile
+.fmaze.pda.yml
+      ↓ run
+runtime state
+      ↓ render
+.fmaze.visual.yml
+```
+
+MVP features:
+
+* Define graph-based `.fmaze.yml`
+* Compile to PDA transitions
+* Validate states/transitions/stack symbols
+* Run moves against PDA
+* Save move history
+* Render basic grid or node view
+* Support solution playback
+* Keep visual data separate from logic
+
+Do not implement true symbolic infinite/Cantor support yet, but reserve schema fields for symbolic generators.
+
+---
+
+# Example Minimal Maze Package
+
+```yaml
+# simple.package.yml
+id: simple_recursive
+title: Simple Recursive Maze
+version: 1
+logic: simple.fmaze.yml
+visual: simple.visual.yml
+compiled: simple.pda.yml
+solutions:
+  - simple.solution.yml
+```
+
+```yaml
+# simple.fmaze.yml
+format: fractal-maze-source-v1
+id: simple_recursive
+start: root.start
+goals:
+  - root.goal
+regions:
+  root:
+    states:
+      start: { type: start }
+      block_A: { type: block, ref: A }
+      after_A: {}
+      goal: { type: goal }
+    edges:
+      - from: start
+        move: east
+        to: block_A
+      - from: block_A
+        move: enter
+        enter_region: A
+        return_exits:
+          east: after_A
+      - from: after_A
+        move: east
+        to: goal
+  A:
+    states:
+      start: { type: start }
+      exit_east: { type: exit, exit_id: east }
+    edges:
+      - from: start
+        move: east
+        to: exit_east
+```
+
+```yaml
+# simple.visual.yml
+format: fractal-maze-visual-v1
+views:
+  root:
+    type: grid
+    states:
+      root.start: [1, 1]
+      root.block_A: [2, 1]
+      root.after_A: [3, 1]
+      root.goal: [4, 1]
+  A:
+    type: grid
+    states:
+      A.start: [1, 1]
+      A.exit_east: [2, 1]
+```
+
+```yaml
+# simple.solution.yml
+format: fractal-maze-solution-v1
+maze_id: simple_recursive
+moves:
+  - east
+  - enter
+  - east
+  - exit:east
+  - east
+```
+
+---
+
+# Next Step
+
+After answering the open questions, this document should be refined into separate docs:
+
+1. `docs/architecture.md`
+2. `docs/data-format.md`
+3. `docs/pda-runtime.md`
+4. `docs/visual-format.md`
+5. `docs/editor-design.md`
+6. `docs/solver-design.md`

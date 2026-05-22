@@ -1,0 +1,25 @@
+format: fmaze-logic-v0
+id: luegarua_recursive_fractal_maze
+strategy: reference_record
+source_model: reference_record
+modeling_status:
+  status: reference_only
+  reason: >-
+    WIP/unverified image-only record. The drawing suggests a four-port
+    self-similar maze with one central recursive square, but no start/finish
+    convention or replayable path is encoded in the image.
+  next_step: >-
+    Resolve the intended start and goal ports, then trace each visible corridor
+    as directed or undirected port transitions before attempting pda_stack logic.
+provenance:
+  authoring_status: WIP/unverified reference record.
+  observed_structure:
+    - One central recursive square is drawn in blue.
+    - Outer boundary ports appear on all four sides of the frame.
+    - Corridor endpoints appear near the central square's left, top, right, and bottom sides.
+    - The right and lower corridor loops may touch or merely pass near each other.
+  unresolved_questions:
+    - Which boundary port is the start and which is the goal?
+    - Are the black corridors undirected, or is there an intended traversal direction?
+    - Do close approaches and overlaps in the hand-drawn black lines represent junctions?
+    - Where exactly are the recursive-square terminals relative to the blue square boundary?

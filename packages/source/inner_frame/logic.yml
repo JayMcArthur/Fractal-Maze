@@ -1,0 +1,162 @@
+format: fmaze-logic-v0
+id: inner_frame
+strategy: pda_stack
+source_model: port_graph
+start: p1
+goals:
+  - p2
+
+points:
+  - id: p1
+    label: "1"
+  - id: p2
+    label: "2"
+  - id: p3
+    label: "3"
+  - id: p4
+    label: "4"
+  - id: p5
+    label: "5"
+
+submazes:
+  - id: A
+
+ports:
+  - id: port_inner_frame_c1_pop
+    point: p1
+    context: [A]
+    label: "2"
+  - id: port_inner_frame_c1_push
+    point: p2
+    label: "1"
+  - id: port_inner_frame_c2_push
+    point: p1
+    label: "3"
+  - id: port_inner_frame_c2_pop
+    point: p3
+    context: [A]
+    label: "1"
+  - id: port_inner_frame_c3_push
+    point: p1
+    label: "4"
+  - id: port_inner_frame_c3_pop
+    point: p4
+    context: [A]
+    label: "1"
+  - id: port_inner_frame_c4_pop
+    point: p1
+    context: [A]
+    label: "5"
+  - id: port_inner_frame_c4_push
+    point: p5
+    label: "1"
+  - id: port_inner_frame_c5_pop
+    point: p2
+    context: [A]
+    label: "3"
+  - id: port_inner_frame_c5_push
+    point: p3
+    label: "2"
+  - id: port_inner_frame_c6_pop
+    point: p2
+    context: [A]
+    label: "4"
+  - id: port_inner_frame_c6_push
+    point: p4
+    label: "2"
+  - id: port_inner_frame_c7_pop
+    point: p4
+    context: [A]
+    label: "5"
+  - id: port_inner_frame_c7_push
+    point: p5
+    label: "4"
+  - id: port_inner_frame_c8_enter
+    point: p5
+    label: "("
+  - id: port_inner_frame_c8_exit
+    point: p5
+    context: [A]
+    label: ")"
+
+transitions:
+  - id: inner_frame_c1_pop
+    from_port: port_inner_frame_c1_pop
+    source: A.p1
+    target: p2
+    input: "2"
+  - id: inner_frame_c1_push
+    from_port: port_inner_frame_c1_push
+    source: p2
+    target: A.p1
+    input: "1"
+  - id: inner_frame_c2_push
+    from_port: port_inner_frame_c2_push
+    source: p1
+    target: A.p3
+    input: "3"
+  - id: inner_frame_c2_pop
+    from_port: port_inner_frame_c2_pop
+    source: A.p3
+    target: p1
+    input: "1"
+  - id: inner_frame_c3_push
+    from_port: port_inner_frame_c3_push
+    source: p1
+    target: A.p4
+    input: "4"
+  - id: inner_frame_c3_pop
+    from_port: port_inner_frame_c3_pop
+    source: A.p4
+    target: p1
+    input: "1"
+  - id: inner_frame_c4_pop
+    from_port: port_inner_frame_c4_pop
+    source: A.p1
+    target: p5
+    input: "5"
+  - id: inner_frame_c4_push
+    from_port: port_inner_frame_c4_push
+    source: p5
+    target: A.p1
+    input: "1"
+  - id: inner_frame_c5_pop
+    from_port: port_inner_frame_c5_pop
+    source: A.p2
+    target: p3
+    input: "3"
+  - id: inner_frame_c5_push
+    from_port: port_inner_frame_c5_push
+    source: p3
+    target: A.p2
+    input: "2"
+  - id: inner_frame_c6_pop
+    from_port: port_inner_frame_c6_pop
+    source: A.p2
+    target: p4
+    input: "4"
+  - id: inner_frame_c6_push
+    from_port: port_inner_frame_c6_push
+    source: p4
+    target: A.p2
+    input: "2"
+  - id: inner_frame_c7_pop
+    from_port: port_inner_frame_c7_pop
+    source: A.p4
+    target: p5
+    input: "5"
+  - id: inner_frame_c7_push
+    from_port: port_inner_frame_c7_push
+    source: p5
+    target: A.p4
+    input: "4"
+  - id: inner_frame_c8_enter
+    from_port: port_inner_frame_c8_enter
+    source: p5
+    target: A.p5
+    input: "("
+  - id: inner_frame_c8_exit
+    from_port: port_inner_frame_c8_exit
+    source: A.p5
+    target: p5
+    input: ")"

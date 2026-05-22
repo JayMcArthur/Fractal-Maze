@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fractal-maze-lab.local/schemas/visual.schema.json",
+  "title": "Fractal Maze Lab Visual Mapping File",
+  "type": "object",
+  "required": ["format", "maze", "logic", "assets", "views"],
+  "properties": {
+    "format": { "const": "fmaze-visual-v0" },
+    "maze": { "$ref": "#/$defs/id" },
+    "logic": { "$ref": "#/$defs/path" },
+    "default_view": { "$ref": "#/$defs/id" },
+    "assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/asset" }
+    },
+    "views": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/view" }
+    },
+    "anchors": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/anchor" }
+    },
+    "activation_points": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/activation_point" }
+    },
+    "route_segments": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/route_segment" }
+    },
+    "routes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/route" }
+    },
+    "action_presentations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/action_presentation" }
+    },
+    "provenance": { "type": "object" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:@()#;=-]+$"
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selector": {
+      "type": "string",
+      "pattern": "^#[A-Za-z_][A-Za-z0-9_.:-]*$"
+    },
+    "asset": {
+      "type": "object",
+      "required": ["id", "href", "media_type"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "href": { "$ref": "#/$defs/path" },
+        "media_type": {
+          "enum": ["image/svg+xml", "image/jpeg", "image/png", "image/webp", "application/pdf"]
+        },
+        "role": { "enum": ["source_reference", "playable", "generated"] },
+        "provenance": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "view": {
+      "type": "object",
+      "required": ["id", "kind", "asset"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "enum": ["authored_vector", "image_overlay", "generated"] },
+        "asset": { "$ref": "#/$defs/id" },
+        "default": { "type": "boolean" },
+        "coordinate_space": {
+          "type": "object",
+          "properties": {
+            "kind": { "enum": ["svg_viewbox", "image_pixels", "generated_units"] },
+            "width": { "type": "number" },
+            "height": { "type": "number" },
+            "view_box": {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": { "type": "number" }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "anchor": {
+      "type": "object",
+      "required": ["id", "logical_object", "view"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "logical_object": { "$ref": "#/$defs/id" },
+        "view": { "$ref": "#/$defs/id" },
+        "element": { "$ref": "#/$defs/selector" },
+        "position": { "$ref": "#/$defs/point" },
+        "label": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "activation_point": {
+      "type": "object",
+      "required": ["id", "view"],
+      "anyOf": [
+        { "required": ["transition_id"] },
+        { "required": ["port_id"] }
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "view": { "$ref": "#/$defs/id" },
+        "transition_id": { "$ref": "#/$defs/id" },
+        "port_id": { "$ref": "#/$defs/id" },
+        "element": { "$ref": "#/$defs/selector" },
+        "shape": { "$ref": "#/$defs/shape" },
+        "label": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "route_segment": {
+      "type": "object",
+      "required": ["id", "view"],
+      "oneOf": [
+        { "required": ["element"] },
+        { "required": ["geometry"] }
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "view": { "$ref": "#/$defs/id" },
+        "element": { "$ref": "#/$defs/selector" },
+        "geometry": { "$ref": "#/$defs/geometry" }
+      },
+      "additionalProperties": false
+    },
+    "route": {
+      "type": "object",
+      "required": ["id", "segments"],
+      "oneOf": [
+        { "required": ["transition_id"] },
+        { "required": ["transition_group_id"] }
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "transition_id": { "$ref": "#/$defs/id" },
+        "transition_group_id": { "$ref": "#/$defs/id" },
+        "segments": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/id" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "action_presentation": {
+      "type": "object",
+      "required": ["id", "transition_id", "label"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "transition_id": { "$ref": "#/$defs/id" },
+        "label": { "type": "string", "minLength": 1 },
+        "order": { "type": "integer" },
+        "activation_point": { "$ref": "#/$defs/id" },
+        "route": { "$ref": "#/$defs/id" }
+      },
+      "additionalProperties": false
+    },
+    "point": {
+      "type": "object",
+      "required": ["x", "y"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "shape": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": { "enum": ["circle", "rect"] },
+        "center": { "$ref": "#/$defs/point" },
+        "radius": { "type": "number", "exclusiveMinimum": 0 },
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "geometry": {
+      "type": "object",
+      "required": ["kind", "points"],
+      "properties": {
+        "kind": { "const": "polyline" },
+        "points": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/point" }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

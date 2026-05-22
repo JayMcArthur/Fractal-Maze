@@ -1,0 +1,197 @@
+format: fmaze-logic-v0
+id: skeptic_play_2_sierpinski
+strategy: pda_stack
+source_model: port_graph
+start: p03
+goals:
+  - p04
+modeling_status:
+  status: partial
+  reason: >-
+    Executable WIP Port Graph derived from compressed path components plus LINK/EXIT declarations,
+    but no human-verified logical solution record has been added yet.
+  next_step: >-
+    Verify the derived PDA edges against play behavior, solve the graph, and add a known solution record.
+provenance:
+  derived_edges:
+    - "p01 -> UP.p01 via exit 06"
+    - "p02 -> UP.p05 via exit 07"
+    - "p03 -> UP_RIGHT.p05 via exit 07"
+    - "p05 -> RIGHT.p01 via exit 01"
+    - "p04 -> RIGHT.p01 via exit 02"
+    - "p02 -> RIGHT.p02 via exit 03"
+    - "p01 -> RIGHT.p04 via exit 04"
+    - "p04 -> RIGHT_UP.p05 via exit 05"
+points:
+  - id: p01
+    label: "exit 01, exit 02, exit 06"
+    description: "compressed path component with 25 authored cells"
+  - id: p02
+    label: "exit 03"
+    description: "compressed path component with 18 authored cells"
+  - id: p03
+    label: "start"
+    description: "compressed path component with 2 authored cells"
+  - id: p04
+    label: "goal, exit 04"
+    description: "compressed path component with 15 authored cells"
+  - id: p05
+    label: "exit 05, exit 07"
+    description: "compressed path component with 17 authored cells"
+submazes:
+  - id: RIGHT
+  - id: UP
+ports:
+  - id: port_t_enter_UP_exit_06_at_12_1
+    point: p01
+    label: "UP:06:in"
+    kind: enter_terminal
+  - id: port_t_exit_UP_exit_06_at_12_1
+    point: p01
+    context: [UP]
+    label: "UP:06:out"
+    kind: exit_terminal
+  - id: port_t_enter_UP_exit_07_at_12_3
+    point: p02
+    label: "UP:07:in"
+    kind: enter_terminal
+  - id: port_t_exit_UP_exit_07_at_12_3
+    point: p05
+    context: [UP]
+    label: "UP:07:out"
+    kind: exit_terminal
+  - id: port_t_enter_UP_RIGHT_exit_07_at_12_7
+    point: p03
+    label: "UP_RIGHT:07:in"
+    kind: enter_terminal
+  - id: port_t_exit_UP_RIGHT_exit_07_at_12_7
+    point: p05
+    context: [UP, RIGHT]
+    label: "UP_RIGHT:07:out"
+    kind: exit_terminal
+  - id: port_t_enter_RIGHT_exit_01_at_18_11
+    point: p05
+    label: "RIGHT:01:in"
+    kind: enter_terminal
+  - id: port_t_exit_RIGHT_exit_01_at_18_11
+    point: p01
+    context: [RIGHT]
+    label: "RIGHT:01:out"
+    kind: exit_terminal
+  - id: port_t_enter_RIGHT_exit_02_at_19_11
+    point: p04
+    label: "RIGHT:02:in"
+    kind: enter_terminal
+  - id: port_t_exit_RIGHT_exit_02_at_19_11
+    point: p01
+    context: [RIGHT]
+    label: "RIGHT:02:out"
+    kind: exit_terminal
+  - id: port_t_enter_RIGHT_exit_03_at_20_11
+    point: p02
+    label: "RIGHT:03:in"
+    kind: enter_terminal
+  - id: port_t_exit_RIGHT_exit_03_at_20_11
+    point: p02
+    context: [RIGHT]
+    label: "RIGHT:03:out"
+    kind: exit_terminal
+  - id: port_t_enter_RIGHT_exit_04_at_21_11
+    point: p01
+    label: "RIGHT:04:in"
+    kind: enter_terminal
+  - id: port_t_exit_RIGHT_exit_04_at_21_11
+    point: p04
+    context: [RIGHT]
+    label: "RIGHT:04:out"
+    kind: exit_terminal
+  - id: port_t_enter_RIGHT_UP_exit_05_at_17_11
+    point: p04
+    label: "RIGHT_UP:05:in"
+    kind: enter_terminal
+  - id: port_t_exit_RIGHT_UP_exit_05_at_17_11
+    point: p05
+    context: [RIGHT, UP]
+    label: "RIGHT_UP:05:out"
+    kind: exit_terminal
+transitions:
+  - id: t_enter_UP_exit_06_at_12_1
+    from_port: port_t_enter_UP_exit_06_at_12_1
+    source: p01
+    target: UP.p01
+    input: "UP:06:in"
+  - id: t_exit_UP_exit_06_at_12_1
+    from_port: port_t_exit_UP_exit_06_at_12_1
+    source: UP.p01
+    target: p01
+    input: "UP:06:out"
+  - id: t_enter_UP_exit_07_at_12_3
+    from_port: port_t_enter_UP_exit_07_at_12_3
+    source: p02
+    target: UP.p05
+    input: "UP:07:in"
+  - id: t_exit_UP_exit_07_at_12_3
+    from_port: port_t_exit_UP_exit_07_at_12_3
+    source: UP.p05
+    target: p02
+    input: "UP:07:out"
+  - id: t_enter_UP_RIGHT_exit_07_at_12_7
+    from_port: port_t_enter_UP_RIGHT_exit_07_at_12_7
+    source: p03
+    target: UP.RIGHT.p05
+    input: "UP_RIGHT:07:in"
+  - id: t_exit_UP_RIGHT_exit_07_at_12_7
+    from_port: port_t_exit_UP_RIGHT_exit_07_at_12_7
+    source: UP.RIGHT.p05
+    target: p03
+    input: "UP_RIGHT:07:out"
+  - id: t_enter_RIGHT_exit_01_at_18_11
+    from_port: port_t_enter_RIGHT_exit_01_at_18_11
+    source: p05
+    target: RIGHT.p01
+    input: "RIGHT:01:in"
+  - id: t_exit_RIGHT_exit_01_at_18_11
+    from_port: port_t_exit_RIGHT_exit_01_at_18_11
+    source: RIGHT.p01
+    target: p05
+    input: "RIGHT:01:out"
+  - id: t_enter_RIGHT_exit_02_at_19_11
+    from_port: port_t_enter_RIGHT_exit_02_at_19_11
+    source: p04
+    target: RIGHT.p01
+    input: "RIGHT:02:in"
+  - id: t_exit_RIGHT_exit_02_at_19_11
+    from_port: port_t_exit_RIGHT_exit_02_at_19_11
+    source: RIGHT.p01
+    target: p04
+    input: "RIGHT:02:out"
+  - id: t_enter_RIGHT_exit_03_at_20_11
+    from_port: port_t_enter_RIGHT_exit_03_at_20_11
+    source: p02
+    target: RIGHT.p02
+    input: "RIGHT:03:in"
+  - id: t_exit_RIGHT_exit_03_at_20_11
+    from_port: port_t_exit_RIGHT_exit_03_at_20_11
+    source: RIGHT.p02
+    target: p02
+    input: "RIGHT:03:out"
+  - id: t_enter_RIGHT_exit_04_at_21_11
+    from_port: port_t_enter_RIGHT_exit_04_at_21_11
+    source: p01
+    target: RIGHT.p04
+    input: "RIGHT:04:in"
+  - id: t_exit_RIGHT_exit_04_at_21_11
+    from_port: port_t_exit_RIGHT_exit_04_at_21_11
+    source: RIGHT.p04
+    target: p01
+    input: "RIGHT:04:out"
+  - id: t_enter_RIGHT_UP_exit_05_at_17_11
+    from_port: port_t_enter_RIGHT_UP_exit_05_at_17_11
+    source: p04
+    target: RIGHT.UP.p05
+    input: "RIGHT_UP:05:in"
+  - id: t_exit_RIGHT_UP_exit_05_at_17_11
+    from_port: port_t_exit_RIGHT_UP_exit_05_at_17_11
+    source: RIGHT.UP.p05
+    target: p04
+    input: "RIGHT_UP:05:out"

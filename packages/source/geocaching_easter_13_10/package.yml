@@ -1,0 +1,25 @@
+format: fmaze-package-v0
+id: geocaching_easter_13_10
+title: Geocaching - Easter 13 #10
+primary_authoring: reference_record
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+provenance:
+  sources:
+    - type: image
+      href: ../../../Maze_Images/Geocaching_Easter_13-#10.png
+    - type: local_web_player
+      href: ../../../Webpage/fractal-maze-master/maze.js
+    - type: local_web_player_page
+      href: ../../../Webpage/fractal-maze-master/index.html
+    - type: upstream_repository
+      href: https://github.com/amurielagi/fractal-maze
+    - type: handwritten_record
+      note: WIP/unverified hand-authored reference record; executable port graph is deferred.
+  image_observations:
+    - Source image shows Start S and Finish F plus recursive boxes A, B, and C.
+    - Red, green, blue, cyan, magenta, and pink routes connect outer terminals, recursive boxes, and S/F.
+    - The bundled web player contains path definitions and compact solution strings, but these have not yet been normalized into a validated package replay.

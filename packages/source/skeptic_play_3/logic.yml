@@ -1,0 +1,436 @@
+format: fmaze-logic-v0
+id: skeptic_play_3
+strategy: pda_stack
+source_model: port_graph
+start: p8
+goals:
+  - p_colon
+
+points:
+  - id: p1
+    label: "1"
+  - id: p2
+    label: "2"
+  - id: p3
+    label: "3"
+  - id: p4
+    label: "4"
+  - id: p5
+    label: "5"
+  - id: p6
+    label: "6"
+  - id: p7
+    label: "7"
+  - id: p8
+    label: "8"
+  - id: p9
+    label: "9"
+  - id: p_colon
+    label: ":"
+  - id: p_semicolon
+    label: ";"
+  - id: p_lt
+    label: "<"
+  - id: p_eq
+    label: "="
+
+submazes:
+  - id: A
+  - id: B
+  - id: C
+  - id: D
+
+ports:
+  - id: port_skeptic_play_3_c1_pop
+    point: p1
+    context: [C]
+    label: "4"
+  - id: port_skeptic_play_3_c1_push
+    point: p4
+    label: "1"
+  - id: port_skeptic_play_3_c2_pop
+    point: p1
+    context: [D]
+    label: "9"
+  - id: port_skeptic_play_3_c2_push
+    point: p9
+    label: "1"
+  - id: port_skeptic_play_3_c3_push
+    point: p1
+    label: ";"
+  - id: port_skeptic_play_3_c3_pop
+    point: p_semicolon
+    context: [A]
+    label: "1"
+  - id: port_skeptic_play_3_c4_push
+    point: p2
+    label: "8"
+  - id: port_skeptic_play_3_c4_pop
+    point: p8
+    context: [A]
+    label: "2"
+  - id: port_skeptic_play_3_c5_push
+    point: p2
+    label: ":"
+  - id: port_skeptic_play_3_c5_pop
+    point: p_colon
+    context: [A]
+    label: "2"
+  - id: port_skeptic_play_3_c6_push
+    point: p3
+    label: "5"
+  - id: port_skeptic_play_3_c6_pop
+    point: p5
+    context: [A]
+    label: "3"
+  - id: port_skeptic_play_3_c7_push
+    point: p3
+    label: "6"
+  - id: port_skeptic_play_3_c7_pop
+    point: p6
+    context: [A]
+    label: "3"
+  - id: port_skeptic_play_3_c8_pop
+    point: p3
+    context: [D]
+    label: "7"
+  - id: port_skeptic_play_3_c8_push
+    point: p7
+    label: "3"
+  - id: port_skeptic_play_3_c9_pop
+    point: p3
+    context: [B]
+    label: "="
+  - id: port_skeptic_play_3_c9_push
+    point: p_eq
+    label: "3"
+  - id: port_skeptic_play_3_c10_pop
+    point: p4
+    context: [D]
+    label: "7"
+  - id: port_skeptic_play_3_c10_push
+    point: p7
+    label: "4"
+  - id: port_skeptic_play_3_c11_pop
+    point: p4
+    context: [D]
+    label: "8"
+  - id: port_skeptic_play_3_c11_push
+    point: p8
+    label: "4"
+  - id: port_skeptic_play_3_c12_pop
+    point: p4
+    context: [B]
+    label: "<"
+  - id: port_skeptic_play_3_c12_push
+    point: p_lt
+    label: "4"
+  - id: port_skeptic_play_3_c13_pop
+    point: p4
+    context: [B]
+    label: "="
+  - id: port_skeptic_play_3_c13_push
+    point: p_eq
+    label: "4"
+  - id: port_skeptic_play_3_c14_push
+    point: p5
+    label: "7"
+  - id: port_skeptic_play_3_c14_pop
+    point: p7
+    context: [C]
+    label: "5"
+  - id: port_skeptic_play_3_c15_push
+    point: p5
+    label: ":"
+  - id: port_skeptic_play_3_c15_pop
+    point: p_colon
+    context: [C]
+    label: "5"
+  - id: port_skeptic_play_3_c16_pop
+    point: p5
+    context: [B]
+    label: "<"
+  - id: port_skeptic_play_3_c16_push
+    point: p_lt
+    label: "5"
+  - id: port_skeptic_play_3_c17_pop
+    point: p6
+    context: [B]
+    label: "7"
+  - id: port_skeptic_play_3_c17_push
+    point: p7
+    label: "6"
+  - id: port_skeptic_play_3_c18_push
+    point: p6
+    label: ";"
+  - id: port_skeptic_play_3_c18_pop
+    point: p_semicolon
+    context: [C]
+    label: "6"
+  - id: port_skeptic_play_3_c19_enter
+    point: p7
+    label: "("
+  - id: port_skeptic_play_3_c19_exit
+    point: p7
+    context: [C]
+    label: ")"
+  - id: port_skeptic_play_3_c20_pop
+    point: p7
+    context: [D]
+    label: "9"
+  - id: port_skeptic_play_3_c20_push
+    point: p9
+    label: "7"
+  - id: port_skeptic_play_3_c21_push
+    point: p7
+    label: "="
+  - id: port_skeptic_play_3_c21_pop
+    point: p_eq
+    context: [C]
+    label: "7"
+  - id: port_skeptic_play_3_c22_pop
+    point: p8
+    context: [B]
+    label: ";"
+  - id: port_skeptic_play_3_c22_push
+    point: p_semicolon
+    label: "8"
+  - id: port_skeptic_play_3_c23_push
+    point: p_colon
+    label: "="
+  - id: port_skeptic_play_3_c23_pop
+    point: p_eq
+    context: [D]
+    label: ":"
+
+transitions:
+  - id: skeptic_play_3_c1_pop
+    from_port: port_skeptic_play_3_c1_pop
+    source: C.p1
+    target: p4
+    input: "4"
+  - id: skeptic_play_3_c1_push
+    from_port: port_skeptic_play_3_c1_push
+    source: p4
+    target: C.p1
+    input: "1"
+  - id: skeptic_play_3_c2_pop
+    from_port: port_skeptic_play_3_c2_pop
+    source: D.p1
+    target: p9
+    input: "9"
+  - id: skeptic_play_3_c2_push
+    from_port: port_skeptic_play_3_c2_push
+    source: p9
+    target: D.p1
+    input: "1"
+  - id: skeptic_play_3_c3_push
+    from_port: port_skeptic_play_3_c3_push
+    source: p1
+    target: A.p_semicolon
+    input: ";"
+  - id: skeptic_play_3_c3_pop
+    from_port: port_skeptic_play_3_c3_pop
+    source: A.p_semicolon
+    target: p1
+    input: "1"
+  - id: skeptic_play_3_c4_push
+    from_port: port_skeptic_play_3_c4_push
+    source: p2
+    target: A.p8
+    input: "8"
+  - id: skeptic_play_3_c4_pop
+    from_port: port_skeptic_play_3_c4_pop
+    source: A.p8
+    target: p2
+    input: "2"
+  - id: skeptic_play_3_c5_push
+    from_port: port_skeptic_play_3_c5_push
+    source: p2
+    target: A.p_colon
+    input: ":"
+  - id: skeptic_play_3_c5_pop
+    from_port: port_skeptic_play_3_c5_pop
+    source: A.p_colon
+    target: p2
+    input: "2"
+  - id: skeptic_play_3_c6_push
+    from_port: port_skeptic_play_3_c6_push
+    source: p3
+    target: A.p5
+    input: "5"
+  - id: skeptic_play_3_c6_pop
+    from_port: port_skeptic_play_3_c6_pop
+    source: A.p5
+    target: p3
+    input: "3"
+  - id: skeptic_play_3_c7_push
+    from_port: port_skeptic_play_3_c7_push
+    source: p3
+    target: A.p6
+    input: "6"
+  - id: skeptic_play_3_c7_pop
+    from_port: port_skeptic_play_3_c7_pop
+    source: A.p6
+    target: p3
+    input: "3"
+  - id: skeptic_play_3_c8_pop
+    from_port: port_skeptic_play_3_c8_pop
+    source: D.p3
+    target: p7
+    input: "7"
+  - id: skeptic_play_3_c8_push
+    from_port: port_skeptic_play_3_c8_push
+    source: p7
+    target: D.p3
+    input: "3"
+  - id: skeptic_play_3_c9_pop
+    from_port: port_skeptic_play_3_c9_pop
+    source: B.p3
+    target: p_eq
+    input: "="
+  - id: skeptic_play_3_c9_push
+    from_port: port_skeptic_play_3_c9_push
+    source: p_eq
+    target: B.p3
+    input: "3"
+  - id: skeptic_play_3_c10_pop
+    from_port: port_skeptic_play_3_c10_pop
+    source: D.p4
+    target: p7
+    input: "7"
+  - id: skeptic_play_3_c10_push
+    from_port: port_skeptic_play_3_c10_push
+    source: p7
+    target: D.p4
+    input: "4"
+  - id: skeptic_play_3_c11_pop
+    from_port: port_skeptic_play_3_c11_pop
+    source: D.p4
+    target: p8
+    input: "8"
+  - id: skeptic_play_3_c11_push
+    from_port: port_skeptic_play_3_c11_push
+    source: p8
+    target: D.p4
+    input: "4"
+  - id: skeptic_play_3_c12_pop
+    from_port: port_skeptic_play_3_c12_pop
+    source: B.p4
+    target: p_lt
+    input: "<"
+  - id: skeptic_play_3_c12_push
+    from_port: port_skeptic_play_3_c12_push
+    source: p_lt
+    target: B.p4
+    input: "4"
+  - id: skeptic_play_3_c13_pop
+    from_port: port_skeptic_play_3_c13_pop
+    source: B.p4
+    target: p_eq
+    input: "="
+  - id: skeptic_play_3_c13_push
+    from_port: port_skeptic_play_3_c13_push
+    source: p_eq
+    target: B.p4
+    input: "4"
+  - id: skeptic_play_3_c14_push
+    from_port: port_skeptic_play_3_c14_push
+    source: p5
+    target: C.p7
+    input: "7"
+  - id: skeptic_play_3_c14_pop
+    from_port: port_skeptic_play_3_c14_pop
+    source: C.p7
+    target: p5
+    input: "5"
+  - id: skeptic_play_3_c15_push
+    from_port: port_skeptic_play_3_c15_push
+    source: p5
+    target: C.p_colon
+    input: ":"
+  - id: skeptic_play_3_c15_pop
+    from_port: port_skeptic_play_3_c15_pop
+    source: C.p_colon
+    target: p5
+    input: "5"
+  - id: skeptic_play_3_c16_pop
+    from_port: port_skeptic_play_3_c16_pop
+    source: B.p5
+    target: p_lt
+    input: "<"
+  - id: skeptic_play_3_c16_push
+    from_port: port_skeptic_play_3_c16_push
+    source: p_lt
+    target: B.p5
+    input: "5"
+  - id: skeptic_play_3_c17_pop
+    from_port: port_skeptic_play_3_c17_pop
+    source: B.p6
+    target: p7
+    input: "7"
+  - id: skeptic_play_3_c17_push
+    from_port: port_skeptic_play_3_c17_push
+    source: p7
+    target: B.p6
+    input: "6"
+  - id: skeptic_play_3_c18_push
+    from_port: port_skeptic_play_3_c18_push
+    source: p6
+    target: C.p_semicolon
+    input: ";"
+  - id: skeptic_play_3_c18_pop
+    from_port: port_skeptic_play_3_c18_pop
+    source: C.p_semicolon
+    target: p6
+    input: "6"
+  - id: skeptic_play_3_c19_enter
+    from_port: port_skeptic_play_3_c19_enter
+    source: p7
+    target: C.p7
+    input: "("
+  - id: skeptic_play_3_c19_exit
+    from_port: port_skeptic_play_3_c19_exit
+    source: C.p7
+    target: p7
+    input: ")"
+  - id: skeptic_play_3_c20_pop
+    from_port: port_skeptic_play_3_c20_pop
+    source: D.p7
+    target: p9
+    input: "9"
+  - id: skeptic_play_3_c20_push
+    from_port: port_skeptic_play_3_c20_push
+    source: p9
+    target: D.p7
+    input: "7"
+  - id: skeptic_play_3_c21_push
+    from_port: port_skeptic_play_3_c21_push
+    source: p7
+    target: C.p_eq
+    input: "="
+  - id: skeptic_play_3_c21_pop
+    from_port: port_skeptic_play_3_c21_pop
+    source: C.p_eq
+    target: p7
+    input: "7"
+  - id: skeptic_play_3_c22_pop
+    from_port: port_skeptic_play_3_c22_pop
+    source: B.p8
+    target: p_semicolon
+    input: ";"
+  - id: skeptic_play_3_c22_push
+    from_port: port_skeptic_play_3_c22_push
+    source: p_semicolon
+    target: B.p8
+    input: "8"
+  - id: skeptic_play_3_c23_push
+    from_port: port_skeptic_play_3_c23_push
+    source: p_colon
+    target: D.p_eq
+    input: "="
+  - id: skeptic_play_3_c23_pop
+    from_port: port_skeptic_play_3_c23_pop
+    source: D.p_eq
+    target: p_colon
+    input: ":"

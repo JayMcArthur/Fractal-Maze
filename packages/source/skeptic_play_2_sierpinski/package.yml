@@ -1,0 +1,19 @@
+format: fmaze-package-v0
+id: skeptic_play_2_sierpinski
+title: Skeptic Play #2: Sierpinski Paths Derived Port Graph
+primary_authoring: port_graph
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+provenance:
+  sources:
+    - type: package_logic
+      href: logic.yml
+    - type: image
+      href: ../../../Maze_Images/Siggy/Skeptic_Play_2.jpg
+    - type: post
+      href: https://skepticsplay.blogspot.com/2014/02/fractal-maze-2-sierpinski-paths.html
+    - type: derived_hand_conversion
+      note: WIP executable Port Graph derived into the package logic; needs playtest verification.

@@ -1,0 +1,55 @@
+format: fmaze-solution-v0
+id: known
+maze: skeptic_play_3
+logic: ../logic.yml
+expects_goal: true
+
+steps:
+  - transition_id: skeptic_play_3_c11_push
+  - transition_id: skeptic_play_3_c10_pop
+  - transition_id: skeptic_play_3_c8_push
+  - transition_id: skeptic_play_3_c7_push
+  - transition_id: skeptic_play_3_c18_push
+  - transition_id: skeptic_play_3_c22_push
+  - transition_id: skeptic_play_3_c11_push
+  - transition_id: skeptic_play_3_c10_pop
+  - transition_id: skeptic_play_3_c19_enter
+  - transition_id: skeptic_play_3_c14_pop
+  - transition_id: skeptic_play_3_c16_pop
+  - transition_id: skeptic_play_3_c12_push
+  - transition_id: skeptic_play_3_c13_pop
+  - transition_id: skeptic_play_3_c21_pop
+  - transition_id: skeptic_play_3_c17_push
+  - transition_id: skeptic_play_3_c18_push
+  - transition_id: skeptic_play_3_c22_push
+  - transition_id: skeptic_play_3_c11_push
+  - transition_id: skeptic_play_3_c10_pop
+  - transition_id: skeptic_play_3_c19_enter
+  - transition_id: skeptic_play_3_c14_pop
+  - transition_id: skeptic_play_3_c16_pop
+  - transition_id: skeptic_play_3_c12_push
+  - transition_id: skeptic_play_3_c13_pop
+  - transition_id: skeptic_play_3_c21_pop
+  - transition_id: skeptic_play_3_c10_push
+  - transition_id: skeptic_play_3_c11_pop
+  - transition_id: skeptic_play_3_c22_pop
+  - transition_id: skeptic_play_3_c3_pop
+  - transition_id: skeptic_play_3_c2_pop
+  - transition_id: skeptic_play_3_c20_push
+  - transition_id: skeptic_play_3_c17_push
+  - transition_id: skeptic_play_3_c18_push
+  - transition_id: skeptic_play_3_c22_push
+  - transition_id: skeptic_play_3_c11_push
+  - transition_id: skeptic_play_3_c10_pop
+  - transition_id: skeptic_play_3_c19_enter
+  - transition_id: skeptic_play_3_c14_pop
+  - transition_id: skeptic_play_3_c16_pop
+  - transition_id: skeptic_play_3_c12_push
+  - transition_id: skeptic_play_3_c13_pop
+  - transition_id: skeptic_play_3_c21_pop
+  - transition_id: skeptic_play_3_c19_enter
+  - transition_id: skeptic_play_3_c14_pop
+  - transition_id: skeptic_play_3_c16_pop
+  - transition_id: skeptic_play_3_c12_push
+  - transition_id: skeptic_play_3_c13_pop
+  - transition_id: skeptic_play_3_c23_pop

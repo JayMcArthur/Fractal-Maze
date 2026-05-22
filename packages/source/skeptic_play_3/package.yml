@@ -1,0 +1,24 @@
+format: fmaze-package-v0
+id: skeptic_play_3
+title: Skeptic Play #3: Walls and Carpets
+primary_authoring: port_graph
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+solutions:
+  - id: known
+    href: solutions/known.yml
+    format: fmaze-solution-v0
+
+provenance:
+  sources:
+    - type: package_logic
+      href: logic.yml
+    - type: solution_record
+      href: solutions/known.yml
+    - type: image
+      href: ../../../Maze_Images/Siggy/Skeptic_Play_3.png
+    - type: handwritten_logic
+      note: Hand-authored Port Graph package from the existing PDA transition table.

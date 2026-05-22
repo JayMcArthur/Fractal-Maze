@@ -1,0 +1,19 @@
+format: fmaze-package-v0
+id: berkly
+title: Berkly
+primary_authoring: reference_record
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+provenance:
+  sources:
+    - type: image
+      href: ../../../Maze_Images/Mike_Earnest/Berkly.jpg
+    - type: handwritten_record
+      note: WIP/unverified hand-authored reference record from the source image.
+  image_observations:
+    - Source image shows Start and Finish labels plus two recursive blocks labeled 1 and 2.
+    - Red, green, blue, and purple traces appear to mark candidate paths through the outer maze and recursive blocks.
+    - The rendered image is low-resolution enough that line crossings, shared corridors, and terminal locations are not fully reliable.

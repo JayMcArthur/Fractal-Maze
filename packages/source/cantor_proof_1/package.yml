@@ -1,0 +1,18 @@
+format: fmaze-package-v0
+id: cantor_proof_1
+title: Cantor Proof Edge #1
+primary_authoring: port_graph
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+solutions:
+  - id: proof_assisted
+    href: solutions/proof_assisted.yml
+    format: fmaze-solution-v0
+
+provenance:
+  notes:
+    - Minimal package fixture for proof-assisted Port Graph execution.
+    - The proof edge represents a Cantor-style crossing that is logical, not physical visual movement.

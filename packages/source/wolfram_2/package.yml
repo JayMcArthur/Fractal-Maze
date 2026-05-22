@@ -1,0 +1,21 @@
+format: fmaze-package-v0
+id: wolfram_2
+title: Wolfram #2 Normalized Port Graph
+primary_authoring: port_graph
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+solutions:
+  - id: current_long
+    href: solutions/current_long.yml
+    format: fmaze-solution-v0
+  - id: short_repaired
+    href: solutions/short_repaired.yml
+    format: fmaze-solution-v0
+
+provenance:
+  notes:
+    - Normalizes the legacy Wolfram #2 PDA table into explicit source ports.
+    - Includes both 3-to-7 interpretations so the PDA can disambiguate by port instead of visible label.

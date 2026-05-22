@@ -1,0 +1,20 @@
+format: fmaze-package-v0
+id: infinite_hop_1
+title: Infinite Hop #1
+primary_authoring: port_graph
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+solutions:
+  - id: proof_assisted
+    href: solutions/proof_assisted.yml
+    format: fmaze-solution-v0
+
+provenance:
+  sources:
+    - type: article
+      href: https://freethoughtblogs.com/atrivialknot/2023/10/21/infinite-fractal-mazes/
+  notes:
+    - Minimal Source Package for Siggy's simplified Infinite Hop rule.

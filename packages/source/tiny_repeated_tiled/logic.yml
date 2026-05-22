@@ -1,0 +1,32 @@
+format: fmaze-logic-v0
+id: tiny_repeated_tiled
+strategy: tiled_port_graph
+source_model: repeated_tile_ports
+start:
+  x: 0
+  y: 0
+  terminal: W0
+goals:
+  - x: 1
+    y: 0
+    terminal: W1
+
+block_classes:
+  zero:
+    description: Origin block. Connects west entry W0 to east boundary E0.
+    edges:
+      - W0-E0
+  ny:
+    description: Positive x-axis block. Connects incoming W0 to goal terminal W1.
+    edges:
+      - W0-W1
+  nx:
+    description: Positive y-axis block. Not used by this tiny fixture.
+    edges: []
+  normal:
+    description: Interior block. Not used by this tiny fixture.
+    edges: []
+
+solver:
+  algorithm: bounded_tiled_port_bfs
+  default_state_limit: 20

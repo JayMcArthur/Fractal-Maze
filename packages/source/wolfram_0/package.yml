@@ -1,0 +1,26 @@
+format: fmaze-package-v0
+id: wolfram_0
+title: Wolfram 0 WIP Port Graph
+primary_authoring: port_graph
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+solutions:
+  - id: known
+    href: solutions/known.yml
+    format: fmaze-solution-v0
+
+provenance:
+  sources:
+    - type: image
+      href: ../../../Maze_Images/Mark_J_P_Wolf/Wolfram_0.jpg
+    - type: image_source
+      href: http://www.mathpuzzle.com/FractalMazeSimple.gif
+    - type: vector_reference
+      href: https://commons.wikimedia.org/wiki/File:Wolfram_fractal_maze.svg
+    - type: pda_notes
+      href: ../../../Papers/Fractal_Maze_to_PDA/Fractal_Maze_to_PDA.md
+    - type: handwritten_record
+      note: WIP executable port graph hand-authored from the visible image and vector reference topology.

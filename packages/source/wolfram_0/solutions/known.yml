@@ -1,0 +1,27 @@
+format: fmaze-solution-v0
+id: known
+maze: wolfram_0
+logic: ../logic.yml
+expects_goal: true
+provenance:
+  notes:
+    - >-
+      WIP solution derived from the visible Wolfram_0 topology and cross-checked
+      against the red solution trace in the Wikimedia SVG reference.
+    - >-
+      Address sequence: p8, Mp7, MMp6, MMMp5, MMMp6, MMp7,
+      Mp8, Mp1, MMp2, MMp3, Mp4, Mp3, Mp2, p1.
+steps:
+  - transition_id: t_p8_to_Mp7
+  - transition_id: t_p7_to_Mp6
+  - transition_id: t_p6_to_Mp5
+  - transition_id: t_p5_to_p6
+  - transition_id: t_Mp6_to_p7
+  - transition_id: t_Mp7_to_p8
+  - transition_id: t_Mp8_to_Mp1
+  - transition_id: t_p1_to_Mp2
+  - transition_id: t_p2_to_p3
+  - transition_id: t_Mp3_to_p4
+  - transition_id: t_Mp4_to_Mp3
+  - transition_id: t_p3_to_p2
+  - transition_id: t_Mp2_to_p1

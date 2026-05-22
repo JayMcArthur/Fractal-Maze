@@ -1,0 +1,20 @@
+format: fmaze-package-v0
+id: infinite_descent
+title: Infinite Descent
+primary_authoring: reference_record
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+provenance:
+  sources:
+    - type: image
+      href: ../../../Maze_Images/Siggy/Infinite_Descent.svg
+    - type: post
+      href: https://freethoughtblogs.com/atrivialknot/2023/10/21/infinite-fractal-mazes/
+    - type: handwritten_record
+      note: Hand-authored reference record after inspecting the visible maze, labels, nested boxes, and colored descent overlays in the SVG.
+  notes:
+    - The SVG shows top-level terminals 1 through 6, submazes A/B/C, second-level submazes AA through CC, and visible start/finish labels.
+    - It is not yet executable because the drawing does not provide a single formal infinite-hop/descent proof edge boundary, nor enough terminal semantics to decide which colored branches are support obligations and which are ordinary physical transitions.

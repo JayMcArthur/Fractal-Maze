@@ -1,0 +1,79 @@
+format: fmaze-logic-v0
+id: infinite_hop_1
+strategy: pda_stack
+source_model: port_graph
+start: p1
+goals:
+  - p2
+
+points:
+  - id: p1
+    label: "1"
+  - id: p2
+    label: "2"
+
+submazes:
+  - id: mA
+    label: "A"
+
+ports:
+  - id: p1_to_mA_p1
+    point: p1
+    label: "A1"
+  - id: p2_to_mA_p2
+    point: p2
+    label: "A2"
+
+transition_groups:
+  - id: g_p1_to_mA_p1
+    direction: one_way
+    forward:
+      id: t_p1_to_mA_p1
+      from_port: p1_to_mA_p1
+      source: p1
+      target: mA.p1
+      input: "A1"
+  - id: g_p2_to_mA_p2
+    direction: one_way
+    forward:
+      id: t_p2_to_mA_p2
+      from_port: p2_to_mA_p2
+      source: p2
+      target: mA.p2
+      input: "A2"
+
+proof_edges:
+  - id: pe_infinite_p1_to_p2
+    proof_type: infinite_hop
+    status: proved
+    source: p1
+    target: p2
+    input: "proof:p1_to_p2"
+    enabled_by_default: false
+    explanation: "Both p1 and p2 descend into the same A-prefix forever, so the simplified Infinite Hop rule allows a zero-width hop."
+    proof:
+      method: simplified_infinite_hop
+      summary: "Let S be empty and T be A. Show p1 reaches A.p1 and p2 reaches A.p2."
+      variables:
+        S: ""
+        T: mA
+        left:
+          point: p1
+        right:
+          point: p2
+      obligations:
+        - kind: path_exists
+          from: p1
+          to: mA.p1
+        - kind: path_exists
+          from: p2
+          to: mA.p2
+      steps:
+        - kind: physical
+          source: p1
+          target: mA.p1
+          reason: "Left side descends into A."
+        - kind: physical
+          source: p2
+          target: mA.p2
+          reason: "Right side descends into A."

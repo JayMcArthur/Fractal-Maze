@@ -1,0 +1,8 @@
+format: fmaze-logic-v0
+id: infinite_descent
+strategy: reference_record
+source_model: reference_record
+modeling_status:
+  status: partial
+  reason: "The SVG has enough visual structure to identify a repeated A/B/C descent family, top terminals 1-6, and second-level labels AA-CC, but it does not specify the exact convergent states required by the validator's simplified_infinite_hop rule. Multiple red, orange, and purple branches could be read either as physical transitions or as proof support."
+  next_step: "Resolve the proof terminal questions before conversion: identify the exact source and target of the infinite descent hop, name the common submaze prefix where the support obligations converge, and classify each colored branch as physical support, ordinary route, or explanatory overlay."

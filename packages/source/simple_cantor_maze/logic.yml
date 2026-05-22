@@ -1,0 +1,120 @@
+format: fmaze-logic-v0
+id: simple_cantor_maze
+strategy: pda_stack
+source_model: port_graph
+start: p1
+goals:
+  - p3
+
+points:
+  - id: p1
+    label: "1"
+    description: Outer top start gate from the SVG.
+  - id: p2
+    label: "2"
+    description: Midpoint between the A exit and B entry.
+  - id: p3
+    label: "3"
+    description: Outer bottom finish gate from the SVG.
+
+submazes:
+  - id: mA
+    label: "A"
+  - id: mB
+    label: "B"
+
+ports:
+  - id: p1_to_mA_p1
+    point: p1
+    label: "A1"
+    kind: enter_terminal
+  - id: mA_p3_to_p2
+    point: p3
+    context: [mA]
+    label: "2"
+    kind: exit_terminal
+  - id: p2_to_mB_p1
+    point: p2
+    label: "B1"
+    kind: enter_terminal
+  - id: mB_p3_to_p3
+    point: p3
+    context: [mB]
+    label: "3"
+    kind: exit_terminal
+
+transition_groups:
+  - id: g_p1_to_mA_p1
+    direction: one_way
+    forward:
+      id: t_p1_to_mA_p1
+      from_port: p1_to_mA_p1
+      source: p1
+      target: mA.p1
+      input: "A1"
+  - id: g_mA_p3_to_p2
+    direction: one_way
+    forward:
+      id: t_mA_p3_to_p2
+      from_port: mA_p3_to_p2
+      source: mA.p3
+      target: p2
+      input: "2"
+  - id: g_p2_to_mB_p1
+    direction: one_way
+    forward:
+      id: t_p2_to_mB_p1
+      from_port: p2_to_mB_p1
+      source: p2
+      target: mB.p1
+      input: "B1"
+  - id: g_mB_p3_to_p3
+    direction: one_way
+    forward:
+      id: t_mB_p3_to_p3
+      from_port: mB_p3_to_p3
+      source: mB.p3
+      target: p3
+      input: "3"
+
+proof_edges:
+  - id: pe_cantor_p1_to_p3
+    proof_type: cantor_hop
+    status: proved
+    source: p1
+    target: p3
+    input: "proof:p1_to_p3"
+    enabled_by_default: false
+    explanation: "The SVG's simple Cantor maze reaches the finish by descending into A, using the recursively repeated 1-to-3 crossing, crossing physically into B, and using the same crossing again."
+    proof:
+      method: simplified_cantor_hop
+      summary: "Assume every non-empty submaze context has the same p1-to-p3 crossing as the whole maze; the visible red support transitions connect the two recursive uses."
+      presuppositions:
+        - kind: same_connection_for_all_non_empty_T
+          source_template: T.p1
+          target_template: T.p3
+      steps:
+        - kind: physical
+          source: p1
+          target: mA.p1
+          reason: "The top red segment enters submaze A at terminal 1."
+        - kind: assumption
+          source: mA.p1
+          target: mA.p3
+          reason: "Apply the Cantor presupposition inside A."
+        - kind: physical
+          source: mA.p3
+          target: p2
+          reason: "The red middle connector exits A to point 2."
+        - kind: physical
+          source: p2
+          target: mB.p1
+          reason: "The same red middle connector enters B from point 2."
+        - kind: assumption
+          source: mB.p1
+          target: mB.p3
+          reason: "Apply the Cantor presupposition inside B."
+        - kind: physical
+          source: mB.p3
+          target: p3
+          reason: "The lower red segment exits B to the finish at point 3."

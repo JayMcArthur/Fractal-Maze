@@ -1,0 +1,21 @@
+format: fmaze-logic-v0
+id: daedalus_3
+strategy: reference_record
+source_model: reference_record
+modeling_status:
+  status: planned
+  reason: >-
+    WIP/unverified reference record. The source image is clean enough for a
+    manual trace, and local discussion records solution metrics, but this
+    package does not yet contain an audited terminal netlist or replayable
+    solution.
+  next_step: >-
+    Trace the colored-wire components into pin-to-pin transitions for the
+    seven visible recursive blocks, verify crossing/junction conventions,
+    then solve the recursive Port Graph and record the discovered transition
+    sequence.
+provenance:
+  notes:
+    - Image source is mathpuzzle.com DaedRecursive.gif, referenced in local discussion notes.
+    - Local discussion says a hand solution was found with chip depth 6 and 42 chip-entry/exit steps, but does not provide the path.
+    - Visible drawing appears to contain blocks 1 through 7 plus minus/plus terminals; terminal ordering and connectivity remain unverified.

@@ -1,0 +1,1049 @@
+I agree we may not need five layers. I’ll collapse this into a rougher “minimum viable model” and test it against one real maze plus infinite/Cantor-style cases.
+
+I found your repo currently separates archive/images, papers, package logic, and a placeholder web app, and your PDA paper already labels paths then derives transitions. I’m going to simplify the architecture around that instead of forcing extra layers.
+
+Fractal Maze Data Design Docs
+Fractal Maze Lab — Rough Maze Layer Design v0
+
+This is intentionally rough. The goal is to figure out the minimum number of layers that still lets the project handle:
+
+existing fractal mazes from the repo
+recursive finite mazes
+countably infinite fractal mazes
+Cantor-style mazes
+visual playback
+interactive play
+editor workflows
+future import/export
+
+The main question is whether we really need five layers. The current answer is probably no.
+
+A better first design is probably three layers:
+
+Maze Logic / PDA Core
+        ↓
+Runtime / Playback State
+        ↓
+Visual + Editor Layer
+
+Or even more simply:
+
+Logic Core  +  View Data
+
+The important separation is not “five layers.” The important separation is:
+
+The maze rules should not depend on the drawing.
+
+A maze should be playable, solvable, and testable without images. Images and graphics should be able to sit on top of the logic.
+
+Layer 1 — Maze Logic Core
+
+This is the real maze.
+
+It defines:
+
+states / junctions / path labels
+available moves
+recursive entries
+exits
+stack behavior
+goal conditions
+infinite-hop / Cantor-hop rules, when supported
+
+This layer should be independent from graphics.
+
+Why PDA makes sense here
+
+A normal fractal maze acts like a Pushdown Automaton:
+
+the player has a current state
+entering a nested maze pushes context onto a stack
+exiting a nested maze pops context from the stack
+the valid move depends on current state and stack/top context
+
+For example:
+
+state = 1
+stack = [ROOT]
+move = enter A
+
+
+result:
+state = A.entry
+stack = [ROOT, A]
+
+Then later:
+
+state = A.exit_2
+stack = [ROOT, A]
+move = exit
+
+
+result:
+state = 2
+stack = [ROOT]
+
+This matches the mental model in the existing PDA paper: label path segments, define exact transitions, condense into moves, and then reason over those moves.
+
+Logic Core should support multiple authoring styles
+
+The core runtime can be PDA-like, but that does not mean humans must write raw PDA transitions.
+
+Possible authoring inputs:
+
+Path graph — easiest first format for your current PDA approach.
+Grid format — useful for classic tile mazes and editor drawing.
+Raw PDA — useful for advanced/debug/theory mode.
+Symbolic infinite format — needed later for countably infinite and Cantor mazes.
+
+All of these should compile into the same kind of executable logic core.
+
+Layer 2 — Runtime / Playback State
+
+This is not the maze itself. This is one playthrough of the maze.
+
+It stores:
+
+current state
+current stack
+move history
+visited states
+undo/redo information
+optional solution/proof trace
+
+Example:
+
+runtime:
+  maze_id: skeptic_play_circle
+  current:
+    state: "1"
+    stack: ["ROOT"]
+  history:
+    - input: "move:B"
+      from:
+        state: "1"
+        stack: ["ROOT"]
+      to:
+        state: "B.3"
+        stack: ["ROOT", "B"]
+
+This layer is useful because playback and playing both consume the same thing.
+
+Why keep this separate?
+
+Because the visual layer should be able to ask:
+
+Where is the player right now?
+
+without owning the rules.
+
+The runtime layer should be controlled by the logic core. The visual layer sends an input like north or enter:A; the logic core says whether it is valid and produces the next runtime state.
+
+Layer 3 — Visual + Editor Layer
+
+This layer handles looks.
+
+It defines:
+
+images
+grid positions
+node positions
+colors
+line art
+animations
+labels
+camera/zoom
+editor handles
+visual grouping
+
+It does not decide whether a move is legal.
+
+Visual mapping
+
+Visual data maps logic IDs to screen data.
+
+Example:
+
+visual:
+  views:
+    root:
+      type: graph
+      nodes:
+        "1": { x: 100, y: 300, label: "1" }
+        "2": { x: 500, y: 300, label: "2" }
+        "A.entry": { x: 250, y: 200, label: "A" }
+      edges:
+        - from: "1"
+          to: "A.entry"
+          style: "red"
+
+For a grid maze:
+
+visual:
+  views:
+    root:
+      type: grid
+      tile_size: 32
+      states:
+        "root.start": [1, 1]
+        "root.block_A": [3, 1]
+        "root.goal": [5, 1]
+
+For an imported image maze:
+
+visual:
+  views:
+    root:
+      type: image_overlay
+      image: "images/skeptic_play_circle.png"
+      anchors:
+        "1": { x: 120, y: 430 }
+        "2": { x: 780, y: 430 }
+        "A": { x: 320, y: 260 }
+
+That lets old maze images become playable even if the exact walls are not reconstructed as tiles.
+
+Minimum Layer Recommendation
+
+Use this mental model:
+
+1. Logic Core
+   - PDA / graph / symbolic transitions
+   - knows what moves are legal
+   - knows stack behavior
+   - knows when solved
+
+
+2. Runtime State
+   - current state
+   - current stack
+   - move history
+   - solution playback
+
+
+3. Visual/Edit Data
+   - how to draw the maze
+   - how to map clicks/keys to logical moves
+   - how to edit and preview
+
+If we want to reduce even further:
+
+Maze File = Logic + Visuals
+Engine = Runtime + PDA executor
+
+But in the docs, keeping three concepts is probably cleaner.
+
+Data Model Draft
+Maze Package
+
+Top-level object.
+
+format: fmaze-package-v0
+id: skeptic_play_circle
+title: Skeptic Play Circle
+author: Siggy
+kind:
+  - recursive
+  - finite_solution
+logic: logic.yml
+visual: visual.yml
+solutions:
+  - solution.yml
+sources:
+  - type: post
+    url: "https://skepticsplay.blogspot.com/2010/10/fractal-maze.html"
+  - type: image
+    file: "images/skeptic_play_circle.png"
+Logic File
+
+The logic file can be one of several logic types.
+
+format: fmaze-logic-v0
+id: skeptic_play_circle
+logic_type: pda_graph
+start:
+  state: "1"
+  stack: ["ROOT"]
+goals:
+  - state: "2"
+    stack: ["ROOT"]
+
+
+states:
+  - id: "1"
+  - id: "2"
+  - id: "3"
+  - id: "4"
+  - id: "5"
+  - id: "6"
+
+
+stack_symbols:
+  - ROOT
+  - A
+  - B
+
+
+moves:
+  - id: "enter_A"
+  - id: "enter_B"
+  - id: "exit"
+  - id: "walk"
+
+
+transitions:
+  - id: "t1"
+    from: "1"
+    input: "enter_A"
+    stack_top: "ROOT"
+    to: "2"
+    stack_action:
+      type: push
+      symbol: "A"
+
+This example is intentionally not final. The main point is that logic can be executed without graphics.
+
+Better Path-Based Logic Format
+
+For many fractal mazes, the most natural representation is not tile-by-tile. It is:
+
+labeled path segments plus recursive transitions.
+
+This matches the existing PDA writeup.
+
+Example rough format:
+
+format: fmaze-logic-v0
+logic_type: path_pda
+id: skeptic_play_1
+
+
+junctions:
+  - "1"
+  - "2"
+  - "3"
+  - "4"
+  - "5"
+  - "6"
+
+
+submazes:
+  - "A"
+  - "B"
+
+
+start: "1"
+goal: "2"
+
+
+connections:
+  # From path 1, enter copy A and arrive at path 2 inside A
+  - from: "1"
+    to: "A.2"
+
+
+  # From path 1, enter copy B and arrive at path 3 inside B
+  - from: "1"
+    to: "B.3"
+
+
+  # From path A.1, exit A and arrive at path 4 in parent
+  - from: "A.1"
+    to: "4"
+
+
+  - from: "B.1"
+    to: "5"
+
+
+  - from: "B.2"
+    to: "4"
+
+
+  - from: "2"
+    to: "A.5"
+
+
+  - from: "A.2"
+    to: "6"
+
+
+  - from: "3"
+    to: "B.4"
+
+
+  - from: "6"
+    to: "B.6"
+
+This is close to the existing notation in the repo’s PDA paper.
+
+Then a compiler can convert each symbolic address into stack operations.
+
+Address notation
+
+Use strings like:
+
+1
+A.2
+B.3
+B.B.A.1
+
+or compact notation:
+
+1
+A2
+B3
+BBA1
+
+Recommendation:
+
+Use the dotted version internally because it is easier to parse:
+
+B.B.A.1
+
+Display can still show compact notation:
+
+BBA1
+What an address means
+
+An address has:
+
+submaze path + junction
+
+Example:
+
+B.B.A.1
+
+means:
+
+inside B
+  inside B
+    inside A
+      at junction 1
+
+This maps naturally to:
+
+stack: [ROOT, B, B, A]
+state: "1"
+
+This may be the cleanest base model for the mazes you are collecting.
+
+Do We Need PDA Transitions Explicitly?
+
+Maybe not as the hand-written file.
+
+For your project, a better split may be:
+
+Human source: address connections
+Compiled core: PDA transitions
+Runtime: state + stack
+Visuals: image/grid/graph overlay
+
+So the PDA is still the engine, but the editable source can be a simpler connection list.
+
+That gives you:
+
+easy hand authoring
+easier conversion from your paper
+better display for proofs
+clean runtime model
+Finite Recursive Maze Support
+
+Finite recursive maze rules:
+
+Maze has finite set of junctions/path segments.
+Maze has finite set of submaze labels.
+A location is represented by an address like A.B.3.
+Moving may add/remove/change address prefix.
+A valid solution is a finite sequence of moves from start to goal.
+
+The runtime state can be:
+
+state: "3"
+stack: ["ROOT", "A", "B"]
+
+or address string:
+
+address: "A.B.3"
+
+Recommendation:
+
+Internally use:
+
+stack: ["ROOT", "A", "B"]
+state: "3"
+
+For display/use in docs, use:
+
+AB3
+
+or:
+
+A.B.3
+Countably Infinite Maze Support
+
+Countably infinite fractal mazes allow something like an “infinite descent” move.
+
+This cannot be represented as a normal finite move sequence, because the player may need to go deeper forever.
+
+Instead, the logic needs proof-style moves.
+
+Add special move type: infinite_hop
+moves:
+  - id: infinite_hop_1_to_6
+    type: infinite_hop
+    from_pattern: "S.1"
+    to_pattern: "S.6"
+    induction:
+      variable: "S"
+      assumes:
+        - from: "S.A.1"
+          to: "S.A.6"
+      proves:
+        - from: "S.1"
+          to: "S.6"
+
+This is not normal walking. It is a proof shortcut allowed by the puzzle rules.
+
+The runtime could record it as one move:
+
+history:
+  - input: "infinite_hop_1_to_6"
+    kind: "proof_move"
+    from: "1"
+    to: "6"
+    explanation: "countably infinite descent"
+Important distinction
+
+There are two types of solution steps:
+
+Physical move — normal finite move through the maze.
+Proof move — allowed infinite/Cantor jump justified by a rule.
+
+This means the logic core should support both:
+
+transition_type: physical
+
+and:
+
+transition_type: proof
+Cantor Maze Support
+
+Cantor mazes require a stronger kind of proof move.
+
+Instead of hopping over countably many nested gaps, a Cantor hop reasons over all infinite submaze strings.
+
+From Siggy’s description, the Cantor hop rule works by assuming a connection for all non-empty submaze strings T, then proving the same connection at the current level.
+
+So the data model should not try to enumerate all states. It should represent a symbolic rule.
+
+Add special move type: cantor_hop
+moves:
+  - id: cantor_hop_1_to_3
+    type: cantor_hop
+    variables:
+      S: "any_submaze_string"
+      T: "any_non_empty_submaze_string"
+    claim:
+      from: "S.1"
+      to: "S.3"
+    assumes:
+      - from: "S.T.1"
+        to: "S.T.3"
+    proof_path:
+      - from: "S.1"
+        to: "S.A.1"
+        kind: physical
+      - from: "S.A.1"
+        to: "S.A.3"
+        kind: assumption
+      - from: "S.A.3"
+        to: "S.2"
+        kind: physical
+      - from: "S.2"
+        to: "S.B.1"
+        kind: physical
+      - from: "S.B.1"
+        to: "S.B.3"
+        kind: assumption
+      - from: "S.B.3"
+        to: "S.3"
+        kind: physical
+
+The runtime records it as a single high-level step, but the explanation view can expand the proof.
+
+history:
+  - input: "cantor_hop_1_to_3"
+    kind: "proof_move"
+    proof_type: "cantor_hop"
+    from: "1"
+    to: "3"
+Key idea
+
+Cantor/infinite moves are not normal PDA transitions.
+
+They are meta-transitions or proof transitions over the PDA/address system.
+
+So the full logic core might be:
+
+PDA transitions + proof rules
+
+Not pure PDA only.
+
+This is probably the cleanest way to include infinite/Cantor without making the whole engine impossible.
+
+Proposed Final Mental Model
+
+The maze logic has two levels:
+
+Base transitions
+Proof/meta transitions
+
+Base transitions describe ordinary finite movement.
+
+Proof/meta transitions describe infinite-hop and Cantor-hop reasoning.
+
+Then runtime and visuals sit on top.
+
+Maze Logic Core
+  ├─ base PDA/address transitions
+  └─ proof rules: infinite_hop, cantor_hop
+
+
+Runtime State
+  ├─ current address/state/stack
+  ├─ history
+  └─ playback trace
+
+
+Visual/Edit Layer
+  ├─ graph/grid/image display
+  ├─ input mapping
+  └─ editor tools
+
+This is probably better than a generic five-layer architecture.
+
+Existing Repo Conversion Example — Skeptic Play 1
+
+Your current PDA paper includes this transition list:
+
+1 → A2
+1 → B3
+A1 → 4
+B1 → 5
+B2 → 4
+2 → A5
+A2 → 6
+3 → B4
+6 → B6
+
+In the new source format, this becomes:
+
+format: fmaze-logic-v0
+id: skeptic_play_1
+logic_type: address_graph
+
+
+address_style:
+  separator: "."
+  display: compact
+
+
+junctions:
+  - "1"
+  - "2"
+  - "3"
+  - "4"
+  - "5"
+  - "6"
+
+
+submazes:
+  - "A"
+  - "B"
+
+
+start:
+  address: "1"
+
+
+goals:
+  - address: "2"
+
+
+base_connections:
+  - from: "1"
+    to: "A.2"
+    label: "red"
+  - from: "1"
+    to: "B.3"
+    label: "green"
+  - from: "A.1"
+    to: "4"
+  - from: "B.1"
+    to: "5"
+  - from: "B.2"
+    to: "4"
+  - from: "2"
+    to: "A.5"
+  - from: "A.2"
+    to: "6"
+  - from: "3"
+    to: "B.4"
+  - from: "6"
+    to: "B.6"
+
+Then the compiled runtime interpretation would map addresses like this:
+
+1       => stack [ROOT], state 1
+A.2     => stack [ROOT, A], state 2
+B.B.A.1 => stack [ROOT, B, B, A], state 1
+
+This means the core can execute transitions by pattern matching prefixes.
+
+How Base Connections Compile
+
+A connection like:
+
+1 → A.2
+
+means:
+
+from current level junction 1
+enter submaze A
+land at junction 2 inside A
+
+Runtime stack action:
+
+from:
+  state: "1"
+  stack: S
+to:
+  state: "2"
+  stack: S + ["A"]
+
+A connection like:
+
+A.1 → 4
+
+means:
+
+if currently inside A at junction 1
+exit A
+land at junction 4 in parent
+
+Runtime stack action:
+
+from:
+  state: "1"
+  stack: S + ["A"]
+to:
+  state: "4"
+  stack: S
+
+A connection like:
+
+B.2 → 4
+
+means:
+
+if currently inside B at junction 2
+exit B
+land at junction 4 in parent
+
+A connection like:
+
+6 → B.6
+
+means:
+
+from junction 6, enter B and land on 6 inside B
+
+This compact model may be easier than writing explicit PDA transitions by hand.
+
+What the Editor Should Edit
+
+The editor probably should not start as a raw PDA editor.
+
+It should edit this instead:
+
+junctions + submazes + base_connections + visual positions
+
+Editor objects:
+
+editor:
+  selected_view: root
+  tools:
+    - add_junction
+    - add_submaze
+    - connect_addresses
+    - mark_start
+    - mark_goal
+    - place_visual_node
+
+The editor can have an “advanced PDA view” that shows the compiled transitions, but normal authoring should be connection-based.
+
+Editor flow
+Create junctions
+Create submaze labels
+Draw connections like 1 → A.2
+Mark start/goal
+Place nodes/image anchors
+Validate
+Play/test
+Export package
+
+This matches your current thinking better than starting from tile grids.
+
+What the Visual Layer Needs
+
+Visuals need to answer:
+
+What should the current address look like?
+Where is each junction/submaze visually located?
+How do we animate entering/exiting a submaze?
+How do we show the stack/address?
+How do we display proof moves like infinite hop or Cantor hop?
+
+Visuals do not need to answer:
+
+Is this move legal?
+What happens to the stack?
+Is the maze solved?
+Is the proof valid?
+Visual modes
+
+Support three visual modes eventually:
+
+1. Graph visual
+
+Best for PDA/path mazes.
+
+Shows nodes and connections.
+
+2. Image overlay visual
+
+Best for imported mazes from the archive.
+
+Uses the original maze image and overlays clickable logical anchors.
+
+3. Grid visual
+
+Best for editor-created tile mazes.
+
+Can come later unless package verification needs it early.
+
+Recommendation:
+
+Start with graph visual + image overlay visual.
+
+Grid can come after the data model is stable.
+
+What Consumes What
+Logic executor
+
+Consumes:
+
+junctions
+submazes
+base_connections
+proof_rules
+
+Produces:
+
+legal moves
+next runtime state
+solved/not solved
+errors
+Solver
+
+Consumes:
+
+same as logic executor
+optional max depth
+optional proof rules
+
+Produces:
+
+solution moves
+proof trace
+unknown/unsolved result
+Player
+
+Consumes:
+
+runtime state
+visual data
+legal moves from logic executor
+
+Produces:
+
+user inputs
+move history
+Playback
+
+Consumes:
+
+move history or solution file
+logic executor
+visual data
+
+Produces:
+
+timeline
+animation frames
+explanation
+Editor
+
+Consumes:
+
+logic source
+visual data
+validation output
+
+Produces:
+
+updated logic source
+updated visual data
+test runtime
+Rough File Types
+maze.fmaze.yml
+
+The main file. Contains logic.
+
+format: fmaze-logic-v0
+id: example
+logic_type: address_graph
+junctions: []
+submazes: []
+start: {}
+goals: []
+base_connections: []
+proof_rules: []
+maze.visual.yml
+
+Optional visual mapping.
+
+format: fmaze-visual-v0
+maze_id: example
+views: {}
+maze.solution.yml
+
+Optional solution/playback.
+
+format: fmaze-solution-v0
+maze_id: example
+steps:
+  - type: physical
+    input: "connection:t1"
+  - type: proof
+    proof_rule: "cantor_hop_1_to_3"
+maze.package.yml
+
+Optional archive wrapper.
+
+format: fmaze-package-v0
+id: example
+title: Example Maze
+logic: maze.fmaze.yml
+visual: maze.visual.yml
+solutions:
+  - maze.solution.yml
+sources: []
+
+For web loading, these can be bundled into one JSON object later.
+
+Key Design Decision
+
+The base model should probably be address graph + PDA execution, not raw PDA.
+
+That means:
+
+Human/editor format: address connections
+Engine behavior: PDA stack transitions
+Advanced support: proof/meta transitions for infinite and Cantor moves
+
+This gives you the power of PDA without making every maze painful to define.
+
+Open Questions
+When you said “mandarin stuff,” did you mean Cantor mazes, Mandelbrot/fractal-looking mazes, or something else?
+Should compact address strings like BBA1 be allowed in files, or should files always use dotted addresses like B.B.A.1?
+Should every visual maze be playable from an image overlay, or do we eventually want to reconstruct full walls/paths?
+Should the editor begin as a graph/address editor rather than a grid editor?
+Should proof moves be allowed during normal play, or only in solver/explanation mode?
+Should a solution be allowed to mix physical moves and proof moves?
+Should base connections be directional, bidirectional, or explicitly one-way by default?
+Should the stack always represent submaze labels only, or should it support richer context objects later?
+Do we want to support nondeterministic moves, where one input could produce multiple legal transitions?
+Should converted grid-authored maze packages compile into this address-graph format, or directly into lower-level PDA/runtime objects?
+Current Recommendation
+
+Use a rough architecture of:
+
+Logic Core = Address Graph + PDA Stack Execution + Optional Proof Rules
+Runtime State = current address/stack + history
+Visual Layer = graph/image/grid views + editor data
+
+Do not make raw PDA the main authoring format.
+
+Do not make graphics the source of truth.
+
+Do support infinite/Cantor by adding proof rules on top of PDA, not by trying to force every infinite idea into normal step-by-step PDA execution.
+
+Start by converting one maze from the repo, probably Skeptic Play 1, because your PDA paper already gives the transition list.
+
+Thought for 1m 39s
+
+I updated the canvas with a rougher layer design.
+
+The key shift is:
+
+Logic Core = Address Graph + PDA Stack Execution + Optional Proof Rules
+Runtime State = current address/stack + history
+Visual Layer = graph/image/grid views + editor data
+
+I think this is better than the 5-layer design.
+
+The biggest design insight is that raw PDA probably should not be the thing you hand-write or edit first. Instead:
+
+Human/editor format: address connections
+Engine behavior: PDA stack transitions
+Advanced support: proof/meta transitions for infinite and Cantor moves
+
+So your existing transition notation:
+
+1 → A2
+A1 → 4
+B2 → 4
+6 → B6
+
+becomes the clean source format, and the engine interprets it as stack changes.
+
+Example:
+
+1 → A.2
+
+means:
+
+from state 1
+push A
+go to state 2
+
+And:
+
+A.1 → 4
+
+means:
+
+if stack top is A and state is 1
+pop A
+go to state 4
+
+For infinite/Cantor mazes, I added the idea that they should not be normal PDA moves. They should be proof/meta transitions on top of the PDA/address model:
+
+Base transitions = ordinary finite movement
+Proof transitions = infinite hop / Cantor hop
+
+That keeps the normal player/solver sane while still leaving room for the weird infinite stuff.
+
+One clarification: when you said “mandarin stuff,” I assumed you meant Cantor-style mazes from the infinite fractal maze article. If you meant Mandelbrot/fractal-looking mazes instead, that changes the visual/generation side more than the PDA side.

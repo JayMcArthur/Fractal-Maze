@@ -1,0 +1,21 @@
+format: fmaze-package-v0
+id: daedalus_1
+title: Daedalus 1
+primary_authoring: reference_record
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+provenance:
+  sources:
+    - type: image
+      href: ../../../Maze_Images/Daedalus_1.gif
+    - type: image_source
+      href: https://www.astrolog.org/labyrnth/maze/fractal2.gif
+    - type: local_discussion_notes
+      href: ../../../Papers/mathpuzzle.com_fractalmaze.txt
+    - type: package_notes
+      href: NOTES.md
+    - type: handwritten_record
+      note: WIP/unverified reference record; executable port graph is not derived.

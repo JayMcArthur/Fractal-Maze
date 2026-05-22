@@ -1,0 +1,30 @@
+format: fmaze-logic-v0
+id: geocaching_easter_13_10
+strategy: reference_record
+source_model: reference_record
+modeling_status:
+  status: reference_only
+  reason: >-
+    WIP/unverified reference record. The image and bundled web player provide
+    substantial structure, including recursive boxes A, B, and C and compact
+    solution strings, but an attempted direct normalization still needs a
+    validated replay to Finish before this can be marked executable.
+  next_step: >-
+    Convert the web-player path endpoints, enter/exit actions, and automatic
+    corridor traversal into pda_stack transitions, then replay one bundled
+    compact solution against tools/validate_package.py with expects_goal true.
+provenance:
+  authoring_status: WIP/unverified reference record.
+  observed_structure:
+    - Start S is drawn near the upper-left interior.
+    - Finish F is drawn near the lower-right interior.
+    - Recursive boxes A, B, and C are visible and connected by colored paths.
+    - The local JavaScript defines ordinary paths, enter actions for boxes A/B/C, exit actions for outer terminals, and special start/finish paths.
+  local_js_notes:
+    - Webpage/fractal-maze-master/maze.js defines red, green, blue, and special path arrays.
+    - Webpage/fractal-maze-master/index.html includes compact solution strings named long, short, first, second, third, played, around, while, and Worst Path Ever.
+  unresolved_questions:
+    - Should package solutions expand every automatic corridor traversal, or only user-choice moves from the compact path strings?
+    - How should web-player intermediate coordinate nodes be named so that replay records remain stable and reviewable?
+    - Does the provided Geocaching image exactly match the bundled web-player path definitions, or is it a visually similar derivative?
+    - Which bundled compact solution should be treated as the canonical reference solution after replay succeeds?

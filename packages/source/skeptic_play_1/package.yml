@@ -1,0 +1,24 @@
+format: fmaze-package-v0
+id: skeptic_play_1
+title: Skeptic Play #1
+primary_authoring: port_graph
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+visual:
+  href: visual.yml
+  format: fmaze-visual-v0
+
+solutions:
+  - id: known
+    href: solutions/known.yml
+    format: fmaze-solution-v0
+
+provenance:
+  sources:
+    - type: post
+      href: https://skepticsplay.blogspot.com/2010/10/fractal-maze.html
+    - type: image
+      href: ../../../Maze_Images/Siggy/Skeptic_Play_1.jpg

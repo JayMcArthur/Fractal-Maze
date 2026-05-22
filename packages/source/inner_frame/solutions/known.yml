@@ -1,0 +1,15 @@
+format: fmaze-solution-v0
+id: known
+maze: inner_frame
+logic: ../logic.yml
+expects_goal: true
+
+steps:
+  - transition_id: inner_frame_c3_push
+  - transition_id: inner_frame_c6_push
+  - transition_id: inner_frame_c1_push
+  - transition_id: inner_frame_c4_pop
+  - transition_id: inner_frame_c8_exit
+  - transition_id: inner_frame_c7_push
+  - transition_id: inner_frame_c3_pop
+  - transition_id: inner_frame_c1_pop

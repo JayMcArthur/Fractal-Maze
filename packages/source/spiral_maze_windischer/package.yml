@@ -1,0 +1,25 @@
+format: fmaze-package-v0
+id: spiral_maze_windischer
+title: Spiral Maze
+primary_authoring: reference_record
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+provenance:
+  sources:
+    - type: image
+      href: ../../../Maze_Images/Martin_Windischer/Windischer.png
+    - type: image
+      href: ../../../Maze_Images/Martin_Windischer/Windischer.gif
+    - type: recursion_points
+      href: ../../../Maze_Images/Martin_Windischer/Windischer_Recursion.jpg
+    - type: post
+      href: https://www.mathpuzzle.com/17Dec06.html
+    - type: handwritten_record
+      note: >-
+        Hand-authored reference record. A WIP executable conversion was
+        attempted from Windischer_Recursion.jpg, but the image annotations do
+        not uniquely determine PDA ports, recursive push/pop effects, or a
+        replayable known solution.

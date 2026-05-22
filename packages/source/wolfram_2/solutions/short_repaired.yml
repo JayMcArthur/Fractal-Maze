@@ -1,0 +1,23 @@
+format: fmaze-solution-v0
+id: short_repaired
+maze: wolfram_2
+logic: ../logic.yml
+expects_goal: true
+
+steps:
+  - transition_id: t_pB_to_mA_p3
+  - transition_id: t_mA_p3_to_p7
+  - transition_id: t_p7_to_mC_p6
+  - transition_id: t_p6_to_mB_p8
+  - transition_id: t_p8_to_mA_p_colon
+  - transition_id: t_p_colon_enter_mA_p_colon
+  - transition_id: t_mA_p_colon_to_p8
+  - transition_id: t_mA_p8_to_p_semicolon
+  - transition_id: t_p_semicolon_to_mA_p1
+  - transition_id: t_mA_p1_exit_p1
+  - transition_id: t_mB_p1_to_p_question
+  - transition_id: t_p_question_to_mA_p8
+  - transition_id: t_p8_to_mA_p_colon
+  - transition_id: t_mA_p_colon_exit_p_colon
+  - transition_id: t_mA_p_colon_to_p8
+  - transition_id: t_mC_p8_to_pA

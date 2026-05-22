@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fractal-maze-lab.local/schemas/solution.schema.json",
+  "title": "Fractal Maze Lab Solution Record",
+  "type": "object",
+  "required": ["format", "id", "maze", "logic", "steps"],
+  "properties": {
+    "format": { "const": "fmaze-solution-v0" },
+    "id": { "$ref": "#/$defs/id" },
+    "maze": { "$ref": "#/$defs/id" },
+    "logic": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expects_goal": { "type": "boolean" },
+    "steps": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/step" }
+    },
+    "visual_checkpoints": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "provenance": { "type": "object" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:@()#;=-]+$"
+    },
+    "step": {
+      "type": "object",
+      "oneOf": [
+        {
+          "required": ["transition_id"],
+          "properties": {
+            "transition_id": { "$ref": "#/$defs/id" },
+            "note": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        {
+          "required": ["prove_edge_id"],
+          "properties": {
+            "prove_edge_id": { "$ref": "#/$defs/id" },
+            "note": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        {
+          "required": ["proof_edge_id"],
+          "properties": {
+            "proof_edge_id": { "$ref": "#/$defs/id" },
+            "note": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,2089 @@
+format: fmaze-logic-v0
+id: wolfram_1
+strategy: pda_stack
+source_model: port_graph
+start: p_minus
+goals:
+  - p_plus
+modeling_status:
+  status: partial
+  reason: >-
+    Executable WIP normalized from local mathpuzzle.com solver maps and
+    checked against the published short solution, but not yet independently
+    traced terminal-by-terminal from the source image.
+  next_step: >-
+    Verify every pin and submaze terminal against Wolfram_1.gif and decide
+    whether plus/minus terminals inside recursive copies are dead ends,
+    forbidden, or ordinary passages.
+provenance:
+  notes:
+    - WIP/unverified hand-authored executable package for Wolfram #1.
+    - Pin numbering follows Alex Fink/Joseph DeVincentis notes in Papers/mathpuzzle.com_fractalmaze.txt.
+    - Root minus starts with the four entries used by the local solver map: A02, C05, E02, E24.
+    - Plus transitions are kept as solver-map exits; only p_plus at the root is a goal.
+points:
+  - id: p_minus
+    label: '-'
+  - id: p_plus
+    label: '+'
+  - id: p00
+    label: '00'
+  - id: p01
+    label: '01'
+  - id: p02
+    label: '02'
+  - id: p03
+    label: '03'
+  - id: p04
+    label: '04'
+  - id: p05
+    label: '05'
+  - id: p06
+    label: '06'
+  - id: p07
+    label: '07'
+  - id: p08
+    label: '08'
+  - id: p09
+    label: '09'
+  - id: p10
+    label: '10'
+  - id: p11
+    label: '11'
+  - id: p12
+    label: '12'
+  - id: p13
+    label: '13'
+  - id: p14
+    label: '14'
+  - id: p15
+    label: '15'
+  - id: p16
+    label: '16'
+  - id: p17
+    label: '17'
+  - id: p18
+    label: '18'
+  - id: p19
+    label: '19'
+  - id: p20
+    label: '20'
+  - id: p21
+    label: '21'
+  - id: p22
+    label: '22'
+  - id: p23
+    label: '23'
+  - id: p24
+    label: '24'
+  - id: p25
+    label: '25'
+  - id: p26
+    label: '26'
+  - id: p27
+    label: '27'
+  - id: p28
+    label: '28'
+  - id: p29
+    label: '29'
+  - id: p30
+    label: '30'
+  - id: p31
+    label: '31'
+submazes:
+  - id: A
+  - id: B
+  - id: C
+  - id: D
+  - id: E
+  - id: F
+  - id: G
+  - id: H
+ports:
+  - id: port_start_to_A02
+    point: p_minus
+    label: 'A02'
+    kind: boundary
+  - id: port_start_to_C05
+    point: p_minus
+    label: 'C05'
+    kind: boundary
+  - id: port_start_to_E02
+    point: p_minus
+    label: 'E02'
+    kind: boundary
+  - id: port_start_to_E24
+    point: p_minus
+    label: 'E24'
+    kind: boundary
+  - id: port_00_to_07
+    point: p00
+    label: '07'
+    kind: same_level_terminal
+  - id: port_00_to_17
+    point: p00
+    label: '17'
+    kind: same_level_terminal
+  - id: port_01_to_16
+    point: p01
+    label: '16'
+    kind: same_level_terminal
+  - id: port_01_to_21
+    point: p01
+    label: '21'
+    kind: same_level_terminal
+  - id: port_01_to_G16
+    point: p01
+    label: 'G16'
+    kind: enter_terminal
+  - id: port_02_to_11
+    point: p02
+    label: '11'
+    kind: same_level_terminal
+  - id: port_02_to_30
+    point: p02
+    label: '30'
+    kind: same_level_terminal
+  - id: port_02_to_F03
+    point: p02
+    label: 'F03'
+    kind: enter_terminal
+  - id: port_03_to_10
+    point: p03
+    label: '10'
+    kind: same_level_terminal
+  - id: port_03_to_26
+    point: p03
+    label: '26'
+    kind: same_level_terminal
+  - id: port_03_to_B22
+    point: p03
+    label: 'B22'
+    kind: enter_terminal
+  - id: port_04_to_14
+    point: p04
+    label: '14'
+    kind: same_level_terminal
+  - id: port_04_to_18
+    point: p04
+    label: '18'
+    kind: same_level_terminal
+  - id: port_04_to_A07
+    point: p04
+    label: 'A07'
+    kind: enter_terminal
+  - id: port_04_to_C28
+    point: p04
+    label: 'C28'
+    kind: enter_terminal
+  - id: port_05_to_08
+    point: p05
+    label: '08'
+    kind: same_level_terminal
+  - id: port_05_to_27
+    point: p05
+    label: '27'
+    kind: same_level_terminal
+  - id: port_05_to_A29
+    point: p05
+    label: 'A29'
+    kind: enter_terminal
+  - id: port_05_to_E05
+    point: p05
+    label: 'E05'
+    kind: enter_terminal
+  - id: port_06_to_B02
+    point: p06
+    label: 'B02'
+    kind: enter_terminal
+  - id: port_07_to_00
+    point: p07
+    label: '00'
+    kind: same_level_terminal
+  - id: port_07_to_17
+    point: p07
+    label: '17'
+    kind: same_level_terminal
+  - id: port_08_to_05
+    point: p08
+    label: '05'
+    kind: same_level_terminal
+  - id: port_08_to_27
+    point: p08
+    label: '27'
+    kind: same_level_terminal
+  - id: port_08_to_A29
+    point: p08
+    label: 'A29'
+    kind: enter_terminal
+  - id: port_08_to_E05
+    point: p08
+    label: 'E05'
+    kind: enter_terminal
+  - id: port_09_to_B19
+    point: p09
+    label: 'B19'
+    kind: enter_terminal
+  - id: port_10_to_03
+    point: p10
+    label: '03'
+    kind: same_level_terminal
+  - id: port_10_to_26
+    point: p10
+    label: '26'
+    kind: same_level_terminal
+  - id: port_10_to_B22
+    point: p10
+    label: 'B22'
+    kind: enter_terminal
+  - id: port_11_to_02
+    point: p11
+    label: '02'
+    kind: same_level_terminal
+  - id: port_11_to_30
+    point: p11
+    label: '30'
+    kind: same_level_terminal
+  - id: port_11_to_F03
+    point: p11
+    label: 'F03'
+    kind: enter_terminal
+  - id: port_12_to_15
+    point: p12
+    label: '15'
+    kind: same_level_terminal
+  - id: port_12_to_19
+    point: p12
+    label: '19'
+    kind: same_level_terminal
+  - id: port_12_to_H10
+    point: p12
+    label: 'H10'
+    kind: enter_terminal
+  - id: port_13_to_20
+    point: p13
+    label: '20'
+    kind: same_level_terminal
+  - id: port_13_to_29
+    point: p13
+    label: '29'
+    kind: same_level_terminal
+  - id: port_13_to_31
+    point: p13
+    label: '31'
+    kind: same_level_terminal
+  - id: port_13_to_C22
+    point: p13
+    label: 'C22'
+    kind: enter_terminal
+  - id: port_14_to_04
+    point: p14
+    label: '04'
+    kind: same_level_terminal
+  - id: port_14_to_18
+    point: p14
+    label: '18'
+    kind: same_level_terminal
+  - id: port_14_to_A07
+    point: p14
+    label: 'A07'
+    kind: enter_terminal
+  - id: port_14_to_C28
+    point: p14
+    label: 'C28'
+    kind: enter_terminal
+  - id: port_15_to_12
+    point: p15
+    label: '12'
+    kind: same_level_terminal
+  - id: port_15_to_19
+    point: p15
+    label: '19'
+    kind: same_level_terminal
+  - id: port_15_to_H10
+    point: p15
+    label: 'H10'
+    kind: enter_terminal
+  - id: port_16_to_01
+    point: p16
+    label: '01'
+    kind: same_level_terminal
+  - id: port_16_to_21
+    point: p16
+    label: '21'
+    kind: same_level_terminal
+  - id: port_16_to_G16
+    point: p16
+    label: 'G16'
+    kind: enter_terminal
+  - id: port_17_to_00
+    point: p17
+    label: '00'
+    kind: same_level_terminal
+  - id: port_17_to_07
+    point: p17
+    label: '07'
+    kind: same_level_terminal
+  - id: port_18_to_04
+    point: p18
+    label: '04'
+    kind: same_level_terminal
+  - id: port_18_to_14
+    point: p18
+    label: '14'
+    kind: same_level_terminal
+  - id: port_18_to_A07
+    point: p18
+    label: 'A07'
+    kind: enter_terminal
+  - id: port_18_to_C28
+    point: p18
+    label: 'C28'
+    kind: enter_terminal
+  - id: port_19_to_12
+    point: p19
+    label: '12'
+    kind: same_level_terminal
+  - id: port_19_to_15
+    point: p19
+    label: '15'
+    kind: same_level_terminal
+  - id: port_19_to_H10
+    point: p19
+    label: 'H10'
+    kind: enter_terminal
+  - id: port_20_to_13
+    point: p20
+    label: '13'
+    kind: same_level_terminal
+  - id: port_20_to_29
+    point: p20
+    label: '29'
+    kind: same_level_terminal
+  - id: port_20_to_31
+    point: p20
+    label: '31'
+    kind: same_level_terminal
+  - id: port_20_to_C22
+    point: p20
+    label: 'C22'
+    kind: enter_terminal
+  - id: port_21_to_01
+    point: p21
+    label: '01'
+    kind: same_level_terminal
+  - id: port_21_to_16
+    point: p21
+    label: '16'
+    kind: same_level_terminal
+  - id: port_21_to_G16
+    point: p21
+    label: 'G16'
+    kind: enter_terminal
+  - id: port_22_to_G18
+    point: p22
+    label: 'G18'
+    kind: enter_terminal
+  - id: port_23_to_G19
+    point: p23
+    label: 'G19'
+    kind: enter_terminal
+  - id: port_24_to_G09
+    point: p24
+    label: 'G09'
+    kind: enter_terminal
+  - id: port_25_to_G26
+    point: p25
+    label: 'G26'
+    kind: enter_terminal
+  - id: port_26_to_03
+    point: p26
+    label: '03'
+    kind: same_level_terminal
+  - id: port_26_to_10
+    point: p26
+    label: '10'
+    kind: same_level_terminal
+  - id: port_26_to_B22
+    point: p26
+    label: 'B22'
+    kind: enter_terminal
+  - id: port_27_to_05
+    point: p27
+    label: '05'
+    kind: same_level_terminal
+  - id: port_27_to_08
+    point: p27
+    label: '08'
+    kind: same_level_terminal
+  - id: port_27_to_A29
+    point: p27
+    label: 'A29'
+    kind: enter_terminal
+  - id: port_27_to_E05
+    point: p27
+    label: 'E05'
+    kind: enter_terminal
+  - id: port_28_to_H03
+    point: p28
+    label: 'H03'
+    kind: enter_terminal
+  - id: port_29_to_13
+    point: p29
+    label: '13'
+    kind: same_level_terminal
+  - id: port_29_to_20
+    point: p29
+    label: '20'
+    kind: same_level_terminal
+  - id: port_29_to_31
+    point: p29
+    label: '31'
+    kind: same_level_terminal
+  - id: port_29_to_C22
+    point: p29
+    label: 'C22'
+    kind: enter_terminal
+  - id: port_30_to_02
+    point: p30
+    label: '02'
+    kind: same_level_terminal
+  - id: port_30_to_11
+    point: p30
+    label: '11'
+    kind: same_level_terminal
+  - id: port_30_to_F03
+    point: p30
+    label: 'F03'
+    kind: enter_terminal
+  - id: port_31_to_13
+    point: p31
+    label: '13'
+    kind: same_level_terminal
+  - id: port_31_to_20
+    point: p31
+    label: '20'
+    kind: same_level_terminal
+  - id: port_31_to_29
+    point: p31
+    label: '29'
+    kind: same_level_terminal
+  - id: port_31_to_C22
+    point: p31
+    label: 'C22'
+    kind: enter_terminal
+  - id: port_A07_to_04
+    point: p07
+    context:
+      - A
+    label: '04'
+    kind: exit_terminal
+  - id: port_A07_to_14
+    point: p07
+    context:
+      - A
+    label: '14'
+    kind: exit_terminal
+  - id: port_A07_to_18
+    point: p07
+    context:
+      - A
+    label: '18'
+    kind: exit_terminal
+  - id: port_A07_to_C28
+    point: p07
+    context:
+      - A
+    label: 'C28'
+    kind: exit_terminal
+  - id: port_A09_to_B01
+    point: p09
+    context:
+      - A
+    label: 'B01'
+    kind: exit_terminal
+  - id: port_A13_to_D07
+    point: p13
+    context:
+      - A
+    label: 'D07'
+    kind: exit_terminal
+  - id: port_A17_to_B30
+    point: p17
+    context:
+      - A
+    label: 'B30'
+    kind: exit_terminal
+  - id: port_A27_to_C08
+    point: p27
+    context:
+      - A
+    label: 'C08'
+    kind: exit_terminal
+  - id: port_A29_to_05
+    point: p29
+    context:
+      - A
+    label: '05'
+    kind: exit_terminal
+  - id: port_A29_to_08
+    point: p29
+    context:
+      - A
+    label: '08'
+    kind: exit_terminal
+  - id: port_A29_to_27
+    point: p29
+    context:
+      - A
+    label: '27'
+    kind: exit_terminal
+  - id: port_A29_to_E05
+    point: p29
+    context:
+      - A
+    label: 'E05'
+    kind: exit_terminal
+  - id: port_B01_to_A09
+    point: p01
+    context:
+      - B
+    label: 'A09'
+    kind: exit_terminal
+  - id: port_B02_to_06
+    point: p02
+    context:
+      - B
+    label: '06'
+    kind: exit_terminal
+  - id: port_B11_to_D09
+    point: p11
+    context:
+      - B
+    label: 'D09'
+    kind: exit_terminal
+  - id: port_B19_to_09
+    point: p19
+    context:
+      - B
+    label: '09'
+    kind: exit_terminal
+  - id: port_B21_to_D01
+    point: p21
+    context:
+      - B
+    label: 'D01'
+    kind: exit_terminal
+  - id: port_B22_to_03
+    point: p22
+    context:
+      - B
+    label: '03'
+    kind: exit_terminal
+  - id: port_B22_to_10
+    point: p22
+    context:
+      - B
+    label: '10'
+    kind: exit_terminal
+  - id: port_B22_to_26
+    point: p22
+    context:
+      - B
+    label: '26'
+    kind: exit_terminal
+  - id: port_B30_to_A17
+    point: p30
+    context:
+      - B
+    label: 'A17'
+    kind: exit_terminal
+  - id: port_C08_to_A27
+    point: p08
+    context:
+      - C
+    label: 'A27'
+    kind: exit_terminal
+  - id: port_C12_to_F00
+    point: p12
+    context:
+      - C
+    label: 'F00'
+    kind: exit_terminal
+  - id: port_C16_to_plus
+    point: p16
+    context:
+      - C
+    label: '+'
+    kind: exit_terminal
+  - id: port_C19_to_F20
+    point: p19
+    context:
+      - C
+    label: 'F20'
+    kind: exit_terminal
+  - id: port_C22_to_13
+    point: p22
+    context:
+      - C
+    label: '13'
+    kind: exit_terminal
+  - id: port_C22_to_20
+    point: p22
+    context:
+      - C
+    label: '20'
+    kind: exit_terminal
+  - id: port_C22_to_29
+    point: p22
+    context:
+      - C
+    label: '29'
+    kind: exit_terminal
+  - id: port_C22_to_31
+    point: p22
+    context:
+      - C
+    label: '31'
+    kind: exit_terminal
+  - id: port_C27_to_E08
+    point: p27
+    context:
+      - C
+    label: 'E08'
+    kind: exit_terminal
+  - id: port_C28_to_04
+    point: p28
+    context:
+      - C
+    label: '04'
+    kind: exit_terminal
+  - id: port_C28_to_14
+    point: p28
+    context:
+      - C
+    label: '14'
+    kind: exit_terminal
+  - id: port_C28_to_18
+    point: p28
+    context:
+      - C
+    label: '18'
+    kind: exit_terminal
+  - id: port_C28_to_A07
+    point: p28
+    context:
+      - C
+    label: 'A07'
+    kind: exit_terminal
+  - id: port_D00_to_F08
+    point: p00
+    context:
+      - D
+    label: 'F08'
+    kind: exit_terminal
+  - id: port_D01_to_B21
+    point: p01
+    context:
+      - D
+    label: 'B21'
+    kind: exit_terminal
+  - id: port_D07_to_A13
+    point: p07
+    context:
+      - D
+    label: 'A13'
+    kind: exit_terminal
+  - id: port_D09_to_B11
+    point: p09
+    context:
+      - D
+    label: 'B11'
+    kind: exit_terminal
+  - id: port_D16_to_plus
+    point: p16
+    context:
+      - D
+    label: '+'
+    kind: exit_terminal
+  - id: port_D17_to_H12
+    point: p17
+    context:
+      - D
+    label: 'H12'
+    kind: exit_terminal
+  - id: port_D21_to_F13
+    point: p21
+    context:
+      - D
+    label: 'F13'
+    kind: exit_terminal
+  - id: port_D29_to_F10
+    point: p29
+    context:
+      - D
+    label: 'F10'
+    kind: exit_terminal
+  - id: port_D31_to_F07
+    point: p31
+    context:
+      - D
+    label: 'F07'
+    kind: exit_terminal
+  - id: port_E05_to_05
+    point: p05
+    context:
+      - E
+    label: '05'
+    kind: exit_terminal
+  - id: port_E05_to_08
+    point: p05
+    context:
+      - E
+    label: '08'
+    kind: exit_terminal
+  - id: port_E05_to_27
+    point: p05
+    context:
+      - E
+    label: '27'
+    kind: exit_terminal
+  - id: port_E05_to_A29
+    point: p05
+    context:
+      - E
+    label: 'A29'
+    kind: exit_terminal
+  - id: port_E08_to_C27
+    point: p08
+    context:
+      - E
+    label: 'C27'
+    kind: exit_terminal
+  - id: port_E09_to_F29
+    point: p09
+    context:
+      - E
+    label: 'F29'
+    kind: exit_terminal
+  - id: port_E17_to_G04
+    point: p17
+    context:
+      - E
+    label: 'G04'
+    kind: exit_terminal
+  - id: port_E20_to_G00
+    point: p20
+    context:
+      - E
+    label: 'G00'
+    kind: exit_terminal
+  - id: port_E23_to_plus
+    point: p23
+    context:
+      - E
+    label: '+'
+    kind: exit_terminal
+  - id: port_E25_to_E27
+    point: p25
+    context:
+      - E
+    label: 'E27'
+    kind: exit_terminal
+  - id: port_E27_to_E25
+    point: p27
+    context:
+      - E
+    label: 'E25'
+    kind: exit_terminal
+  - id: port_F00_to_C12
+    point: p00
+    context:
+      - F
+    label: 'C12'
+    kind: exit_terminal
+  - id: port_F01_to_plus
+    point: p01
+    context:
+      - F
+    label: '+'
+    kind: exit_terminal
+  - id: port_F03_to_02
+    point: p03
+    context:
+      - F
+    label: '02'
+    kind: exit_terminal
+  - id: port_F03_to_11
+    point: p03
+    context:
+      - F
+    label: '11'
+    kind: exit_terminal
+  - id: port_F03_to_30
+    point: p03
+    context:
+      - F
+    label: '30'
+    kind: exit_terminal
+  - id: port_F07_to_D31
+    point: p07
+    context:
+      - F
+    label: 'D31'
+    kind: exit_terminal
+  - id: port_F08_to_D00
+    point: p08
+    context:
+      - F
+    label: 'D00'
+    kind: exit_terminal
+  - id: port_F10_to_D29
+    point: p10
+    context:
+      - F
+    label: 'D29'
+    kind: exit_terminal
+  - id: port_F13_to_D21
+    point: p13
+    context:
+      - F
+    label: 'D21'
+    kind: exit_terminal
+  - id: port_F20_to_C19
+    point: p20
+    context:
+      - F
+    label: 'C19'
+    kind: exit_terminal
+  - id: port_F24_to_H06
+    point: p24
+    context:
+      - F
+    label: 'H06'
+    kind: exit_terminal
+  - id: port_F29_to_E09
+    point: p29
+    context:
+      - F
+    label: 'E09'
+    kind: exit_terminal
+  - id: port_F31_to_G25
+    point: p31
+    context:
+      - F
+    label: 'G25'
+    kind: exit_terminal
+  - id: port_G00_to_E20
+    point: p00
+    context:
+      - G
+    label: 'E20'
+    kind: exit_terminal
+  - id: port_G01_to_H15
+    point: p01
+    context:
+      - G
+    label: 'H15'
+    kind: exit_terminal
+  - id: port_G04_to_E17
+    point: p04
+    context:
+      - G
+    label: 'E17'
+    kind: exit_terminal
+  - id: port_G09_to_24
+    point: p09
+    context:
+      - G
+    label: '24'
+    kind: exit_terminal
+  - id: port_G14_to_H25
+    point: p14
+    context:
+      - G
+    label: 'H25'
+    kind: exit_terminal
+  - id: port_G16_to_01
+    point: p16
+    context:
+      - G
+    label: '01'
+    kind: exit_terminal
+  - id: port_G16_to_16
+    point: p16
+    context:
+      - G
+    label: '16'
+    kind: exit_terminal
+  - id: port_G16_to_21
+    point: p16
+    context:
+      - G
+    label: '21'
+    kind: exit_terminal
+  - id: port_G18_to_22
+    point: p18
+    context:
+      - G
+    label: '22'
+    kind: exit_terminal
+  - id: port_G19_to_23
+    point: p19
+    context:
+      - G
+    label: '23'
+    kind: exit_terminal
+  - id: port_G25_to_F31
+    point: p25
+    context:
+      - G
+    label: 'F31'
+    kind: exit_terminal
+  - id: port_G26_to_25
+    point: p26
+    context:
+      - G
+    label: '25'
+    kind: exit_terminal
+  - id: port_H03_to_28
+    point: p03
+    context:
+      - H
+    label: '28'
+    kind: exit_terminal
+  - id: port_H06_to_F24
+    point: p06
+    context:
+      - H
+    label: 'F24'
+    kind: exit_terminal
+  - id: port_H10_to_12
+    point: p10
+    context:
+      - H
+    label: '12'
+    kind: exit_terminal
+  - id: port_H10_to_15
+    point: p10
+    context:
+      - H
+    label: '15'
+    kind: exit_terminal
+  - id: port_H10_to_19
+    point: p10
+    context:
+      - H
+    label: '19'
+    kind: exit_terminal
+  - id: port_H12_to_D17
+    point: p12
+    context:
+      - H
+    label: 'D17'
+    kind: exit_terminal
+  - id: port_H15_to_G01
+    point: p15
+    context:
+      - H
+    label: 'G01'
+    kind: exit_terminal
+  - id: port_H16_to_plus
+    point: p16
+    context:
+      - H
+    label: '+'
+    kind: exit_terminal
+  - id: port_H25_to_G14
+    point: p25
+    context:
+      - H
+    label: 'G14'
+    kind: exit_terminal
+transitions:
+  - id: t_start_to_A02
+    from_port: port_start_to_A02
+    source: p_minus
+    target: A.p02
+    input: 'A02'
+    label: 'A02'
+  - id: t_start_to_C05
+    from_port: port_start_to_C05
+    source: p_minus
+    target: C.p05
+    input: 'C05'
+    label: 'C05'
+  - id: t_start_to_E02
+    from_port: port_start_to_E02
+    source: p_minus
+    target: E.p02
+    input: 'E02'
+    label: 'E02'
+  - id: t_start_to_E24
+    from_port: port_start_to_E24
+    source: p_minus
+    target: E.p24
+    input: 'E24'
+    label: 'E24'
+  - id: t_00_to_07
+    from_port: port_00_to_07
+    source: p00
+    target: p07
+    input: '07'
+    label: '07'
+  - id: t_00_to_17
+    from_port: port_00_to_17
+    source: p00
+    target: p17
+    input: '17'
+    label: '17'
+  - id: t_01_to_16
+    from_port: port_01_to_16
+    source: p01
+    target: p16
+    input: '16'
+    label: '16'
+  - id: t_01_to_21
+    from_port: port_01_to_21
+    source: p01
+    target: p21
+    input: '21'
+    label: '21'
+  - id: t_01_to_G16
+    from_port: port_01_to_G16
+    source: p01
+    target: G.p16
+    input: 'G16'
+    label: 'G16'
+  - id: t_02_to_11
+    from_port: port_02_to_11
+    source: p02
+    target: p11
+    input: '11'
+    label: '11'
+  - id: t_02_to_30
+    from_port: port_02_to_30
+    source: p02
+    target: p30
+    input: '30'
+    label: '30'
+  - id: t_02_to_F03
+    from_port: port_02_to_F03
+    source: p02
+    target: F.p03
+    input: 'F03'
+    label: 'F03'
+  - id: t_03_to_10
+    from_port: port_03_to_10
+    source: p03
+    target: p10
+    input: '10'
+    label: '10'
+  - id: t_03_to_26
+    from_port: port_03_to_26
+    source: p03
+    target: p26
+    input: '26'
+    label: '26'
+  - id: t_03_to_B22
+    from_port: port_03_to_B22
+    source: p03
+    target: B.p22
+    input: 'B22'
+    label: 'B22'
+  - id: t_04_to_14
+    from_port: port_04_to_14
+    source: p04
+    target: p14
+    input: '14'
+    label: '14'
+  - id: t_04_to_18
+    from_port: port_04_to_18
+    source: p04
+    target: p18
+    input: '18'
+    label: '18'
+  - id: t_04_to_A07
+    from_port: port_04_to_A07
+    source: p04
+    target: A.p07
+    input: 'A07'
+    label: 'A07'
+  - id: t_04_to_C28
+    from_port: port_04_to_C28
+    source: p04
+    target: C.p28
+    input: 'C28'
+    label: 'C28'
+  - id: t_05_to_08
+    from_port: port_05_to_08
+    source: p05
+    target: p08
+    input: '08'
+    label: '08'
+  - id: t_05_to_27
+    from_port: port_05_to_27
+    source: p05
+    target: p27
+    input: '27'
+    label: '27'
+  - id: t_05_to_A29
+    from_port: port_05_to_A29
+    source: p05
+    target: A.p29
+    input: 'A29'
+    label: 'A29'
+  - id: t_05_to_E05
+    from_port: port_05_to_E05
+    source: p05
+    target: E.p05
+    input: 'E05'
+    label: 'E05'
+  - id: t_06_to_B02
+    from_port: port_06_to_B02
+    source: p06
+    target: B.p02
+    input: 'B02'
+    label: 'B02'
+  - id: t_07_to_00
+    from_port: port_07_to_00
+    source: p07
+    target: p00
+    input: '00'
+    label: '00'
+  - id: t_07_to_17
+    from_port: port_07_to_17
+    source: p07
+    target: p17
+    input: '17'
+    label: '17'
+  - id: t_08_to_05
+    from_port: port_08_to_05
+    source: p08
+    target: p05
+    input: '05'
+    label: '05'
+  - id: t_08_to_27
+    from_port: port_08_to_27
+    source: p08
+    target: p27
+    input: '27'
+    label: '27'
+  - id: t_08_to_A29
+    from_port: port_08_to_A29
+    source: p08
+    target: A.p29
+    input: 'A29'
+    label: 'A29'
+  - id: t_08_to_E05
+    from_port: port_08_to_E05
+    source: p08
+    target: E.p05
+    input: 'E05'
+    label: 'E05'
+  - id: t_09_to_B19
+    from_port: port_09_to_B19
+    source: p09
+    target: B.p19
+    input: 'B19'
+    label: 'B19'
+  - id: t_10_to_03
+    from_port: port_10_to_03
+    source: p10
+    target: p03
+    input: '03'
+    label: '03'
+  - id: t_10_to_26
+    from_port: port_10_to_26
+    source: p10
+    target: p26
+    input: '26'
+    label: '26'
+  - id: t_10_to_B22
+    from_port: port_10_to_B22
+    source: p10
+    target: B.p22
+    input: 'B22'
+    label: 'B22'
+  - id: t_11_to_02
+    from_port: port_11_to_02
+    source: p11
+    target: p02
+    input: '02'
+    label: '02'
+  - id: t_11_to_30
+    from_port: port_11_to_30
+    source: p11
+    target: p30
+    input: '30'
+    label: '30'
+  - id: t_11_to_F03
+    from_port: port_11_to_F03
+    source: p11
+    target: F.p03
+    input: 'F03'
+    label: 'F03'
+  - id: t_12_to_15
+    from_port: port_12_to_15
+    source: p12
+    target: p15
+    input: '15'
+    label: '15'
+  - id: t_12_to_19
+    from_port: port_12_to_19
+    source: p12
+    target: p19
+    input: '19'
+    label: '19'
+  - id: t_12_to_H10
+    from_port: port_12_to_H10
+    source: p12
+    target: H.p10
+    input: 'H10'
+    label: 'H10'
+  - id: t_13_to_20
+    from_port: port_13_to_20
+    source: p13
+    target: p20
+    input: '20'
+    label: '20'
+  - id: t_13_to_29
+    from_port: port_13_to_29
+    source: p13
+    target: p29
+    input: '29'
+    label: '29'
+  - id: t_13_to_31
+    from_port: port_13_to_31
+    source: p13
+    target: p31
+    input: '31'
+    label: '31'
+  - id: t_13_to_C22
+    from_port: port_13_to_C22
+    source: p13
+    target: C.p22
+    input: 'C22'
+    label: 'C22'
+  - id: t_14_to_04
+    from_port: port_14_to_04
+    source: p14
+    target: p04
+    input: '04'
+    label: '04'
+  - id: t_14_to_18
+    from_port: port_14_to_18
+    source: p14
+    target: p18
+    input: '18'
+    label: '18'
+  - id: t_14_to_A07
+    from_port: port_14_to_A07
+    source: p14
+    target: A.p07
+    input: 'A07'
+    label: 'A07'
+  - id: t_14_to_C28
+    from_port: port_14_to_C28
+    source: p14
+    target: C.p28
+    input: 'C28'
+    label: 'C28'
+  - id: t_15_to_12
+    from_port: port_15_to_12
+    source: p15
+    target: p12
+    input: '12'
+    label: '12'
+  - id: t_15_to_19
+    from_port: port_15_to_19
+    source: p15
+    target: p19
+    input: '19'
+    label: '19'
+  - id: t_15_to_H10
+    from_port: port_15_to_H10
+    source: p15
+    target: H.p10
+    input: 'H10'
+    label: 'H10'
+  - id: t_16_to_01
+    from_port: port_16_to_01
+    source: p16
+    target: p01
+    input: '01'
+    label: '01'
+  - id: t_16_to_21
+    from_port: port_16_to_21
+    source: p16
+    target: p21
+    input: '21'
+    label: '21'
+  - id: t_16_to_G16
+    from_port: port_16_to_G16
+    source: p16
+    target: G.p16
+    input: 'G16'
+    label: 'G16'
+  - id: t_17_to_00
+    from_port: port_17_to_00
+    source: p17
+    target: p00
+    input: '00'
+    label: '00'
+  - id: t_17_to_07
+    from_port: port_17_to_07
+    source: p17
+    target: p07
+    input: '07'
+    label: '07'
+  - id: t_18_to_04
+    from_port: port_18_to_04
+    source: p18
+    target: p04
+    input: '04'
+    label: '04'
+  - id: t_18_to_14
+    from_port: port_18_to_14
+    source: p18
+    target: p14
+    input: '14'
+    label: '14'
+  - id: t_18_to_A07
+    from_port: port_18_to_A07
+    source: p18
+    target: A.p07
+    input: 'A07'
+    label: 'A07'
+  - id: t_18_to_C28
+    from_port: port_18_to_C28
+    source: p18
+    target: C.p28
+    input: 'C28'
+    label: 'C28'
+  - id: t_19_to_12
+    from_port: port_19_to_12
+    source: p19
+    target: p12
+    input: '12'
+    label: '12'
+  - id: t_19_to_15
+    from_port: port_19_to_15
+    source: p19
+    target: p15
+    input: '15'
+    label: '15'
+  - id: t_19_to_H10
+    from_port: port_19_to_H10
+    source: p19
+    target: H.p10
+    input: 'H10'
+    label: 'H10'
+  - id: t_20_to_13
+    from_port: port_20_to_13
+    source: p20
+    target: p13
+    input: '13'
+    label: '13'
+  - id: t_20_to_29
+    from_port: port_20_to_29
+    source: p20
+    target: p29
+    input: '29'
+    label: '29'
+  - id: t_20_to_31
+    from_port: port_20_to_31
+    source: p20
+    target: p31
+    input: '31'
+    label: '31'
+  - id: t_20_to_C22
+    from_port: port_20_to_C22
+    source: p20
+    target: C.p22
+    input: 'C22'
+    label: 'C22'
+  - id: t_21_to_01
+    from_port: port_21_to_01
+    source: p21
+    target: p01
+    input: '01'
+    label: '01'
+  - id: t_21_to_16
+    from_port: port_21_to_16
+    source: p21
+    target: p16
+    input: '16'
+    label: '16'
+  - id: t_21_to_G16
+    from_port: port_21_to_G16
+    source: p21
+    target: G.p16
+    input: 'G16'
+    label: 'G16'
+  - id: t_22_to_G18
+    from_port: port_22_to_G18
+    source: p22
+    target: G.p18
+    input: 'G18'
+    label: 'G18'
+  - id: t_23_to_G19
+    from_port: port_23_to_G19
+    source: p23
+    target: G.p19
+    input: 'G19'
+    label: 'G19'
+  - id: t_24_to_G09
+    from_port: port_24_to_G09
+    source: p24
+    target: G.p09
+    input: 'G09'
+    label: 'G09'
+  - id: t_25_to_G26
+    from_port: port_25_to_G26
+    source: p25
+    target: G.p26
+    input: 'G26'
+    label: 'G26'
+  - id: t_26_to_03
+    from_port: port_26_to_03
+    source: p26
+    target: p03
+    input: '03'
+    label: '03'
+  - id: t_26_to_10
+    from_port: port_26_to_10
+    source: p26
+    target: p10
+    input: '10'
+    label: '10'
+  - id: t_26_to_B22
+    from_port: port_26_to_B22
+    source: p26
+    target: B.p22
+    input: 'B22'
+    label: 'B22'
+  - id: t_27_to_05
+    from_port: port_27_to_05
+    source: p27
+    target: p05
+    input: '05'
+    label: '05'
+  - id: t_27_to_08
+    from_port: port_27_to_08
+    source: p27
+    target: p08
+    input: '08'
+    label: '08'
+  - id: t_27_to_A29
+    from_port: port_27_to_A29
+    source: p27
+    target: A.p29
+    input: 'A29'
+    label: 'A29'
+  - id: t_27_to_E05
+    from_port: port_27_to_E05
+    source: p27
+    target: E.p05
+    input: 'E05'
+    label: 'E05'
+  - id: t_28_to_H03
+    from_port: port_28_to_H03
+    source: p28
+    target: H.p03
+    input: 'H03'
+    label: 'H03'
+  - id: t_29_to_13
+    from_port: port_29_to_13
+    source: p29
+    target: p13
+    input: '13'
+    label: '13'
+  - id: t_29_to_20
+    from_port: port_29_to_20
+    source: p29
+    target: p20
+    input: '20'
+    label: '20'
+  - id: t_29_to_31
+    from_port: port_29_to_31
+    source: p29
+    target: p31
+    input: '31'
+    label: '31'
+  - id: t_29_to_C22
+    from_port: port_29_to_C22
+    source: p29
+    target: C.p22
+    input: 'C22'
+    label: 'C22'
+  - id: t_30_to_02
+    from_port: port_30_to_02
+    source: p30
+    target: p02
+    input: '02'
+    label: '02'
+  - id: t_30_to_11
+    from_port: port_30_to_11
+    source: p30
+    target: p11
+    input: '11'
+    label: '11'
+  - id: t_30_to_F03
+    from_port: port_30_to_F03
+    source: p30
+    target: F.p03
+    input: 'F03'
+    label: 'F03'
+  - id: t_31_to_13
+    from_port: port_31_to_13
+    source: p31
+    target: p13
+    input: '13'
+    label: '13'
+  - id: t_31_to_20
+    from_port: port_31_to_20
+    source: p31
+    target: p20
+    input: '20'
+    label: '20'
+  - id: t_31_to_29
+    from_port: port_31_to_29
+    source: p31
+    target: p29
+    input: '29'
+    label: '29'
+  - id: t_31_to_C22
+    from_port: port_31_to_C22
+    source: p31
+    target: C.p22
+    input: 'C22'
+    label: 'C22'
+  - id: t_A07_to_04
+    from_port: port_A07_to_04
+    source: A.p07
+    target: p04
+    input: '04'
+    label: '04'
+  - id: t_A07_to_14
+    from_port: port_A07_to_14
+    source: A.p07
+    target: p14
+    input: '14'
+    label: '14'
+  - id: t_A07_to_18
+    from_port: port_A07_to_18
+    source: A.p07
+    target: p18
+    input: '18'
+    label: '18'
+  - id: t_A07_to_C28
+    from_port: port_A07_to_C28
+    source: A.p07
+    target: C.p28
+    input: 'C28'
+    label: 'C28'
+  - id: t_A09_to_B01
+    from_port: port_A09_to_B01
+    source: A.p09
+    target: B.p01
+    input: 'B01'
+    label: 'B01'
+  - id: t_A13_to_D07
+    from_port: port_A13_to_D07
+    source: A.p13
+    target: D.p07
+    input: 'D07'
+    label: 'D07'
+  - id: t_A17_to_B30
+    from_port: port_A17_to_B30
+    source: A.p17
+    target: B.p30
+    input: 'B30'
+    label: 'B30'
+  - id: t_A27_to_C08
+    from_port: port_A27_to_C08
+    source: A.p27
+    target: C.p08
+    input: 'C08'
+    label: 'C08'
+  - id: t_A29_to_05
+    from_port: port_A29_to_05
+    source: A.p29
+    target: p05
+    input: '05'
+    label: '05'
+  - id: t_A29_to_08
+    from_port: port_A29_to_08
+    source: A.p29
+    target: p08
+    input: '08'
+    label: '08'
+  - id: t_A29_to_27
+    from_port: port_A29_to_27
+    source: A.p29
+    target: p27
+    input: '27'
+    label: '27'
+  - id: t_A29_to_E05
+    from_port: port_A29_to_E05
+    source: A.p29
+    target: E.p05
+    input: 'E05'
+    label: 'E05'
+  - id: t_B01_to_A09
+    from_port: port_B01_to_A09
+    source: B.p01
+    target: A.p09
+    input: 'A09'
+    label: 'A09'
+  - id: t_B02_to_06
+    from_port: port_B02_to_06
+    source: B.p02
+    target: p06
+    input: '06'
+    label: '06'
+  - id: t_B11_to_D09
+    from_port: port_B11_to_D09
+    source: B.p11
+    target: D.p09
+    input: 'D09'
+    label: 'D09'
+  - id: t_B19_to_09
+    from_port: port_B19_to_09
+    source: B.p19
+    target: p09
+    input: '09'
+    label: '09'
+  - id: t_B21_to_D01
+    from_port: port_B21_to_D01
+    source: B.p21
+    target: D.p01
+    input: 'D01'
+    label: 'D01'
+  - id: t_B22_to_03
+    from_port: port_B22_to_03
+    source: B.p22
+    target: p03
+    input: '03'
+    label: '03'
+  - id: t_B22_to_10
+    from_port: port_B22_to_10
+    source: B.p22
+    target: p10
+    input: '10'
+    label: '10'
+  - id: t_B22_to_26
+    from_port: port_B22_to_26
+    source: B.p22
+    target: p26
+    input: '26'
+    label: '26'
+  - id: t_B30_to_A17
+    from_port: port_B30_to_A17
+    source: B.p30
+    target: A.p17
+    input: 'A17'
+    label: 'A17'
+  - id: t_C08_to_A27
+    from_port: port_C08_to_A27
+    source: C.p08
+    target: A.p27
+    input: 'A27'
+    label: 'A27'
+  - id: t_C12_to_F00
+    from_port: port_C12_to_F00
+    source: C.p12
+    target: F.p00
+    input: 'F00'
+    label: 'F00'
+  - id: t_C16_to_plus
+    from_port: port_C16_to_plus
+    source: C.p16
+    target: p_plus
+    input: 'plus'
+    label: '+'
+  - id: t_C19_to_F20
+    from_port: port_C19_to_F20
+    source: C.p19
+    target: F.p20
+    input: 'F20'
+    label: 'F20'
+  - id: t_C22_to_13
+    from_port: port_C22_to_13
+    source: C.p22
+    target: p13
+    input: '13'
+    label: '13'
+  - id: t_C22_to_20
+    from_port: port_C22_to_20
+    source: C.p22
+    target: p20
+    input: '20'
+    label: '20'
+  - id: t_C22_to_29
+    from_port: port_C22_to_29
+    source: C.p22
+    target: p29
+    input: '29'
+    label: '29'
+  - id: t_C22_to_31
+    from_port: port_C22_to_31
+    source: C.p22
+    target: p31
+    input: '31'
+    label: '31'
+  - id: t_C27_to_E08
+    from_port: port_C27_to_E08
+    source: C.p27
+    target: E.p08
+    input: 'E08'
+    label: 'E08'
+  - id: t_C28_to_04
+    from_port: port_C28_to_04
+    source: C.p28
+    target: p04
+    input: '04'
+    label: '04'
+  - id: t_C28_to_14
+    from_port: port_C28_to_14
+    source: C.p28
+    target: p14
+    input: '14'
+    label: '14'
+  - id: t_C28_to_18
+    from_port: port_C28_to_18
+    source: C.p28
+    target: p18
+    input: '18'
+    label: '18'
+  - id: t_C28_to_A07
+    from_port: port_C28_to_A07
+    source: C.p28
+    target: A.p07
+    input: 'A07'
+    label: 'A07'
+  - id: t_D00_to_F08
+    from_port: port_D00_to_F08
+    source: D.p00
+    target: F.p08
+    input: 'F08'
+    label: 'F08'
+  - id: t_D01_to_B21
+    from_port: port_D01_to_B21
+    source: D.p01
+    target: B.p21
+    input: 'B21'
+    label: 'B21'
+  - id: t_D07_to_A13
+    from_port: port_D07_to_A13
+    source: D.p07
+    target: A.p13
+    input: 'A13'
+    label: 'A13'
+  - id: t_D09_to_B11
+    from_port: port_D09_to_B11
+    source: D.p09
+    target: B.p11
+    input: 'B11'
+    label: 'B11'
+  - id: t_D16_to_plus
+    from_port: port_D16_to_plus
+    source: D.p16
+    target: p_plus
+    input: 'plus'
+    label: '+'
+  - id: t_D17_to_H12
+    from_port: port_D17_to_H12
+    source: D.p17
+    target: H.p12
+    input: 'H12'
+    label: 'H12'
+  - id: t_D21_to_F13
+    from_port: port_D21_to_F13
+    source: D.p21
+    target: F.p13
+    input: 'F13'
+    label: 'F13'
+  - id: t_D29_to_F10
+    from_port: port_D29_to_F10
+    source: D.p29
+    target: F.p10
+    input: 'F10'
+    label: 'F10'
+  - id: t_D31_to_F07
+    from_port: port_D31_to_F07
+    source: D.p31
+    target: F.p07
+    input: 'F07'
+    label: 'F07'
+  - id: t_E05_to_05
+    from_port: port_E05_to_05
+    source: E.p05
+    target: p05
+    input: '05'
+    label: '05'
+  - id: t_E05_to_08
+    from_port: port_E05_to_08
+    source: E.p05
+    target: p08
+    input: '08'
+    label: '08'
+  - id: t_E05_to_27
+    from_port: port_E05_to_27
+    source: E.p05
+    target: p27
+    input: '27'
+    label: '27'
+  - id: t_E05_to_A29
+    from_port: port_E05_to_A29
+    source: E.p05
+    target: A.p29
+    input: 'A29'
+    label: 'A29'
+  - id: t_E08_to_C27
+    from_port: port_E08_to_C27
+    source: E.p08
+    target: C.p27
+    input: 'C27'
+    label: 'C27'
+  - id: t_E09_to_F29
+    from_port: port_E09_to_F29
+    source: E.p09
+    target: F.p29
+    input: 'F29'
+    label: 'F29'
+  - id: t_E17_to_G04
+    from_port: port_E17_to_G04
+    source: E.p17
+    target: G.p04
+    input: 'G04'
+    label: 'G04'
+  - id: t_E20_to_G00
+    from_port: port_E20_to_G00
+    source: E.p20
+    target: G.p00
+    input: 'G00'
+    label: 'G00'
+  - id: t_E23_to_plus
+    from_port: port_E23_to_plus
+    source: E.p23
+    target: p_plus
+    input: 'plus'
+    label: '+'
+  - id: t_E25_to_E27
+    from_port: port_E25_to_E27
+    source: E.p25
+    target: E.p27
+    input: 'E27'
+    label: 'E27'
+  - id: t_E27_to_E25
+    from_port: port_E27_to_E25
+    source: E.p27
+    target: E.p25
+    input: 'E25'
+    label: 'E25'
+  - id: t_F00_to_C12
+    from_port: port_F00_to_C12
+    source: F.p00
+    target: C.p12
+    input: 'C12'
+    label: 'C12'
+  - id: t_F01_to_plus
+    from_port: port_F01_to_plus
+    source: F.p01
+    target: p_plus
+    input: 'plus'
+    label: '+'
+  - id: t_F03_to_02
+    from_port: port_F03_to_02
+    source: F.p03
+    target: p02
+    input: '02'
+    label: '02'
+  - id: t_F03_to_11
+    from_port: port_F03_to_11
+    source: F.p03
+    target: p11
+    input: '11'
+    label: '11'
+  - id: t_F03_to_30
+    from_port: port_F03_to_30
+    source: F.p03
+    target: p30
+    input: '30'
+    label: '30'
+  - id: t_F07_to_D31
+    from_port: port_F07_to_D31
+    source: F.p07
+    target: D.p31
+    input: 'D31'
+    label: 'D31'
+  - id: t_F08_to_D00
+    from_port: port_F08_to_D00
+    source: F.p08
+    target: D.p00
+    input: 'D00'
+    label: 'D00'
+  - id: t_F10_to_D29
+    from_port: port_F10_to_D29
+    source: F.p10
+    target: D.p29
+    input: 'D29'
+    label: 'D29'
+  - id: t_F13_to_D21
+    from_port: port_F13_to_D21
+    source: F.p13
+    target: D.p21
+    input: 'D21'
+    label: 'D21'
+  - id: t_F20_to_C19
+    from_port: port_F20_to_C19
+    source: F.p20
+    target: C.p19
+    input: 'C19'
+    label: 'C19'
+  - id: t_F24_to_H06
+    from_port: port_F24_to_H06
+    source: F.p24
+    target: H.p06
+    input: 'H06'
+    label: 'H06'
+  - id: t_F29_to_E09
+    from_port: port_F29_to_E09
+    source: F.p29
+    target: E.p09
+    input: 'E09'
+    label: 'E09'
+  - id: t_F31_to_G25
+    from_port: port_F31_to_G25
+    source: F.p31
+    target: G.p25
+    input: 'G25'
+    label: 'G25'
+  - id: t_G00_to_E20
+    from_port: port_G00_to_E20
+    source: G.p00
+    target: E.p20
+    input: 'E20'
+    label: 'E20'
+  - id: t_G01_to_H15
+    from_port: port_G01_to_H15
+    source: G.p01
+    target: H.p15
+    input: 'H15'
+    label: 'H15'
+  - id: t_G04_to_E17
+    from_port: port_G04_to_E17
+    source: G.p04
+    target: E.p17
+    input: 'E17'
+    label: 'E17'
+  - id: t_G09_to_24
+    from_port: port_G09_to_24
+    source: G.p09
+    target: p24
+    input: '24'
+    label: '24'
+  - id: t_G14_to_H25
+    from_port: port_G14_to_H25
+    source: G.p14
+    target: H.p25
+    input: 'H25'
+    label: 'H25'
+  - id: t_G16_to_01
+    from_port: port_G16_to_01
+    source: G.p16
+    target: p01
+    input: '01'
+    label: '01'
+  - id: t_G16_to_16
+    from_port: port_G16_to_16
+    source: G.p16
+    target: p16
+    input: '16'
+    label: '16'
+  - id: t_G16_to_21
+    from_port: port_G16_to_21
+    source: G.p16
+    target: p21
+    input: '21'
+    label: '21'
+  - id: t_G18_to_22
+    from_port: port_G18_to_22
+    source: G.p18
+    target: p22
+    input: '22'
+    label: '22'
+  - id: t_G19_to_23
+    from_port: port_G19_to_23
+    source: G.p19
+    target: p23
+    input: '23'
+    label: '23'
+  - id: t_G25_to_F31
+    from_port: port_G25_to_F31
+    source: G.p25
+    target: F.p31
+    input: 'F31'
+    label: 'F31'
+  - id: t_G26_to_25
+    from_port: port_G26_to_25
+    source: G.p26
+    target: p25
+    input: '25'
+    label: '25'
+  - id: t_H03_to_28
+    from_port: port_H03_to_28
+    source: H.p03
+    target: p28
+    input: '28'
+    label: '28'
+  - id: t_H06_to_F24
+    from_port: port_H06_to_F24
+    source: H.p06
+    target: F.p24
+    input: 'F24'
+    label: 'F24'
+  - id: t_H10_to_12
+    from_port: port_H10_to_12
+    source: H.p10
+    target: p12
+    input: '12'
+    label: '12'
+  - id: t_H10_to_15
+    from_port: port_H10_to_15
+    source: H.p10
+    target: p15
+    input: '15'
+    label: '15'
+  - id: t_H10_to_19
+    from_port: port_H10_to_19
+    source: H.p10
+    target: p19
+    input: '19'
+    label: '19'
+  - id: t_H12_to_D17
+    from_port: port_H12_to_D17
+    source: H.p12
+    target: D.p17
+    input: 'D17'
+    label: 'D17'
+  - id: t_H15_to_G01
+    from_port: port_H15_to_G01
+    source: H.p15
+    target: G.p01
+    input: 'G01'
+    label: 'G01'
+  - id: t_H16_to_plus
+    from_port: port_H16_to_plus
+    source: H.p16
+    target: p_plus
+    input: 'plus'
+    label: '+'
+  - id: t_H25_to_G14
+    from_port: port_H25_to_G14
+    source: H.p25
+    target: G.p14
+    input: 'G14'
+    label: 'G14'
