@@ -1,0 +1,1340 @@
+{
+  "format": "fmaze-browser-v0",
+  "id": "alice_and_the_hedge_maze",
+  "title": "Alice and the Hedge Maze Derived Port Graph",
+  "primary_authoring": "port_graph",
+  "source_root": "packages/source/alice_and_the_hedge_maze",
+  "logic": {
+    "format": "fmaze-logic-v0",
+    "id": "alice_and_the_hedge_maze",
+    "strategy": "pda_stack",
+    "source_model": "port_graph",
+    "start": "p04",
+    "goals": [
+      "p01",
+      "p02",
+      "p03",
+      "p05",
+      "p07",
+      "p09",
+      "p11",
+      "p13",
+      "p14"
+    ],
+    "modeling_status": {
+      "status": "partial",
+      "reason": "Executable WIP Port Graph derived from compressed path components plus LINK/EXIT declarations, but no human-verified logical solution record has been added yet.",
+      "next_step": "Verify the derived PDA edges against play behavior, solve the graph, and add a known solution record."
+    },
+    "provenance": {
+      "derived_edges": [
+        "p04 -> A.p03 via exit 03",
+        "p01 -> A.p11 via exit 05",
+        "p02 -> A.p13 via exit 09",
+        "p07 -> A.p02 via exit 10",
+        "p01 -> A.p01 via exit 12",
+        "p03 -> B.p01 via exit 01",
+        "p03 -> B.p05 via exit 04",
+        "p05 -> B.p11 via exit 05",
+        "p05 -> B.p14 via exit 06",
+        "p09 -> B.p09 via exit 07",
+        "p10 -> B.p02 via exit 08",
+        "p06 -> B.p07 via exit 11",
+        "p06 -> B.p01 via exit 12",
+        "p08 -> C.p02 via exit 02",
+        "p02 -> C.p05 via exit 04",
+        "p13 -> C.p09 via exit 07",
+        "p13 -> C.p07 via exit 11",
+        "p08 -> C.p01 via exit 12",
+        "p10 -> D.p01 via exit 01",
+        "p10 -> D.p03 via exit 03",
+        "p11 -> D.p05 via exit 04",
+        "p11 -> D.p11 via exit 05",
+        "p14 -> D.p02 via exit 08",
+        "p09 -> D.p02 via exit 10",
+        "p12 -> D.p07 via exit 11",
+        "p12 -> D.p01 via exit 12"
+      ]
+    },
+    "points": [
+      {
+        "id": "p01",
+        "label": "goal, exit 01, exit 12",
+        "description": "compressed path component with 12 authored cells"
+      },
+      {
+        "id": "p02",
+        "label": "goal, exit 02, exit 08, exit 10",
+        "description": "compressed path component with 23 authored cells"
+      },
+      {
+        "id": "p03",
+        "label": "goal, exit 03",
+        "description": "compressed path component with 6 authored cells"
+      },
+      {
+        "id": "p04",
+        "label": "start",
+        "description": "compressed path component with 4 authored cells"
+      },
+      {
+        "id": "p05",
+        "label": "goal, exit 04",
+        "description": "compressed path component with 6 authored cells"
+      },
+      {
+        "id": "p06",
+        "label": "6",
+        "description": "compressed path component with 2 authored cells"
+      },
+      {
+        "id": "p07",
+        "label": "goal, exit 11",
+        "description": "compressed path component with 4 authored cells"
+      },
+      {
+        "id": "p08",
+        "label": "8",
+        "description": "compressed path component with 6 authored cells"
+      },
+      {
+        "id": "p09",
+        "label": "goal, exit 07",
+        "description": "compressed path component with 17 authored cells"
+      },
+      {
+        "id": "p10",
+        "label": "10",
+        "description": "compressed path component with 5 authored cells"
+      },
+      {
+        "id": "p11",
+        "label": "goal, exit 05",
+        "description": "compressed path component with 5 authored cells"
+      },
+      {
+        "id": "p12",
+        "label": "12",
+        "description": "compressed path component with 2 authored cells"
+      },
+      {
+        "id": "p13",
+        "label": "goal, exit 09",
+        "description": "compressed path component with 7 authored cells"
+      },
+      {
+        "id": "p14",
+        "label": "goal, exit 06",
+        "description": "compressed path component with 4 authored cells"
+      }
+    ],
+    "submazes": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "C"
+      },
+      {
+        "id": "D"
+      }
+    ],
+    "ports": [
+      {
+        "id": "port_t_enter_A_exit_03_at_1_4",
+        "point": "p04",
+        "label": "A:03:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_A_exit_03_at_1_4",
+        "point": "p03",
+        "context": [
+          "A"
+        ],
+        "label": "A:03:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_A_exit_05_at_3_5",
+        "point": "p01",
+        "label": "A:05:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_A_exit_05_at_3_5",
+        "point": "p11",
+        "context": [
+          "A"
+        ],
+        "label": "A:05:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_A_exit_09_at_5_2",
+        "point": "p02",
+        "label": "A:09:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_A_exit_09_at_5_2",
+        "point": "p13",
+        "context": [
+          "A"
+        ],
+        "label": "A:09:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_A_exit_10_at_4_1",
+        "point": "p07",
+        "label": "A:10:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_A_exit_10_at_4_1",
+        "point": "p02",
+        "context": [
+          "A"
+        ],
+        "label": "A:10:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_A_exit_12_at_2_1",
+        "point": "p01",
+        "label": "A:12:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_A_exit_12_at_2_1",
+        "point": "p01",
+        "context": [
+          "A"
+        ],
+        "label": "A:12:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_B_exit_01_at_1_8",
+        "point": "p03",
+        "label": "B:01:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_B_exit_01_at_1_8",
+        "point": "p01",
+        "context": [
+          "B"
+        ],
+        "label": "B:01:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_B_exit_04_at_2_11",
+        "point": "p03",
+        "label": "B:04:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_B_exit_04_at_2_11",
+        "point": "p05",
+        "context": [
+          "B"
+        ],
+        "label": "B:04:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_B_exit_05_at_3_11",
+        "point": "p05",
+        "label": "B:05:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_B_exit_05_at_3_11",
+        "point": "p11",
+        "context": [
+          "B"
+        ],
+        "label": "B:05:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_B_exit_06_at_4_11",
+        "point": "p05",
+        "label": "B:06:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_B_exit_06_at_4_11",
+        "point": "p14",
+        "context": [
+          "B"
+        ],
+        "label": "B:06:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_B_exit_07_at_5_10",
+        "point": "p09",
+        "label": "B:07:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_B_exit_07_at_5_10",
+        "point": "p09",
+        "context": [
+          "B"
+        ],
+        "label": "B:07:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_B_exit_08_at_5_9",
+        "point": "p10",
+        "label": "B:08:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_B_exit_08_at_5_9",
+        "point": "p02",
+        "context": [
+          "B"
+        ],
+        "label": "B:08:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_B_exit_11_at_3_7",
+        "point": "p06",
+        "label": "B:11:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_B_exit_11_at_3_7",
+        "point": "p07",
+        "context": [
+          "B"
+        ],
+        "label": "B:11:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_B_exit_12_at_2_7",
+        "point": "p06",
+        "label": "B:12:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_B_exit_12_at_2_7",
+        "point": "p01",
+        "context": [
+          "B"
+        ],
+        "label": "B:12:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_C_exit_02_at_7_3",
+        "point": "p08",
+        "label": "C:02:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_C_exit_02_at_7_3",
+        "point": "p02",
+        "context": [
+          "C"
+        ],
+        "label": "C:02:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_C_exit_04_at_8_5",
+        "point": "p02",
+        "label": "C:04:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_C_exit_04_at_8_5",
+        "point": "p05",
+        "context": [
+          "C"
+        ],
+        "label": "C:04:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_C_exit_07_at_11_4",
+        "point": "p13",
+        "label": "C:07:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_C_exit_07_at_11_4",
+        "point": "p09",
+        "context": [
+          "C"
+        ],
+        "label": "C:07:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_C_exit_11_at_9_1",
+        "point": "p13",
+        "label": "C:11:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_C_exit_11_at_9_1",
+        "point": "p07",
+        "context": [
+          "C"
+        ],
+        "label": "C:11:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_C_exit_12_at_8_1",
+        "point": "p08",
+        "label": "C:12:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_C_exit_12_at_8_1",
+        "point": "p01",
+        "context": [
+          "C"
+        ],
+        "label": "C:12:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_D_exit_01_at_7_8",
+        "point": "p10",
+        "label": "D:01:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_D_exit_01_at_7_8",
+        "point": "p01",
+        "context": [
+          "D"
+        ],
+        "label": "D:01:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_D_exit_03_at_7_10",
+        "point": "p10",
+        "label": "D:03:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_D_exit_03_at_7_10",
+        "point": "p03",
+        "context": [
+          "D"
+        ],
+        "label": "D:03:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_D_exit_04_at_8_11",
+        "point": "p11",
+        "label": "D:04:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_D_exit_04_at_8_11",
+        "point": "p05",
+        "context": [
+          "D"
+        ],
+        "label": "D:04:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_D_exit_05_at_9_11",
+        "point": "p11",
+        "label": "D:05:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_D_exit_05_at_9_11",
+        "point": "p11",
+        "context": [
+          "D"
+        ],
+        "label": "D:05:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_D_exit_08_at_11_9",
+        "point": "p14",
+        "label": "D:08:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_D_exit_08_at_11_9",
+        "point": "p02",
+        "context": [
+          "D"
+        ],
+        "label": "D:08:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_D_exit_10_at_10_7",
+        "point": "p09",
+        "label": "D:10:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_D_exit_10_at_10_7",
+        "point": "p02",
+        "context": [
+          "D"
+        ],
+        "label": "D:10:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_D_exit_11_at_9_7",
+        "point": "p12",
+        "label": "D:11:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_D_exit_11_at_9_7",
+        "point": "p07",
+        "context": [
+          "D"
+        ],
+        "label": "D:11:out",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_t_enter_D_exit_12_at_8_7",
+        "point": "p12",
+        "label": "D:12:in",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_t_exit_D_exit_12_at_8_7",
+        "point": "p01",
+        "context": [
+          "D"
+        ],
+        "label": "D:12:out",
+        "kind": "exit_terminal"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "t_enter_A_exit_03_at_1_4",
+        "from_port": "port_t_enter_A_exit_03_at_1_4",
+        "source": "p04",
+        "target": "A.p03",
+        "input": "A:03:in"
+      },
+      {
+        "id": "t_exit_A_exit_03_at_1_4",
+        "from_port": "port_t_exit_A_exit_03_at_1_4",
+        "source": "A.p03",
+        "target": "p04",
+        "input": "A:03:out"
+      },
+      {
+        "id": "t_enter_A_exit_05_at_3_5",
+        "from_port": "port_t_enter_A_exit_05_at_3_5",
+        "source": "p01",
+        "target": "A.p11",
+        "input": "A:05:in"
+      },
+      {
+        "id": "t_exit_A_exit_05_at_3_5",
+        "from_port": "port_t_exit_A_exit_05_at_3_5",
+        "source": "A.p11",
+        "target": "p01",
+        "input": "A:05:out"
+      },
+      {
+        "id": "t_enter_A_exit_09_at_5_2",
+        "from_port": "port_t_enter_A_exit_09_at_5_2",
+        "source": "p02",
+        "target": "A.p13",
+        "input": "A:09:in"
+      },
+      {
+        "id": "t_exit_A_exit_09_at_5_2",
+        "from_port": "port_t_exit_A_exit_09_at_5_2",
+        "source": "A.p13",
+        "target": "p02",
+        "input": "A:09:out"
+      },
+      {
+        "id": "t_enter_A_exit_10_at_4_1",
+        "from_port": "port_t_enter_A_exit_10_at_4_1",
+        "source": "p07",
+        "target": "A.p02",
+        "input": "A:10:in"
+      },
+      {
+        "id": "t_exit_A_exit_10_at_4_1",
+        "from_port": "port_t_exit_A_exit_10_at_4_1",
+        "source": "A.p02",
+        "target": "p07",
+        "input": "A:10:out"
+      },
+      {
+        "id": "t_enter_A_exit_12_at_2_1",
+        "from_port": "port_t_enter_A_exit_12_at_2_1",
+        "source": "p01",
+        "target": "A.p01",
+        "input": "A:12:in"
+      },
+      {
+        "id": "t_exit_A_exit_12_at_2_1",
+        "from_port": "port_t_exit_A_exit_12_at_2_1",
+        "source": "A.p01",
+        "target": "p01",
+        "input": "A:12:out"
+      },
+      {
+        "id": "t_enter_B_exit_01_at_1_8",
+        "from_port": "port_t_enter_B_exit_01_at_1_8",
+        "source": "p03",
+        "target": "B.p01",
+        "input": "B:01:in"
+      },
+      {
+        "id": "t_exit_B_exit_01_at_1_8",
+        "from_port": "port_t_exit_B_exit_01_at_1_8",
+        "source": "B.p01",
+        "target": "p03",
+        "input": "B:01:out"
+      },
+      {
+        "id": "t_enter_B_exit_04_at_2_11",
+        "from_port": "port_t_enter_B_exit_04_at_2_11",
+        "source": "p03",
+        "target": "B.p05",
+        "input": "B:04:in"
+      },
+      {
+        "id": "t_exit_B_exit_04_at_2_11",
+        "from_port": "port_t_exit_B_exit_04_at_2_11",
+        "source": "B.p05",
+        "target": "p03",
+        "input": "B:04:out"
+      },
+      {
+        "id": "t_enter_B_exit_05_at_3_11",
+        "from_port": "port_t_enter_B_exit_05_at_3_11",
+        "source": "p05",
+        "target": "B.p11",
+        "input": "B:05:in"
+      },
+      {
+        "id": "t_exit_B_exit_05_at_3_11",
+        "from_port": "port_t_exit_B_exit_05_at_3_11",
+        "source": "B.p11",
+        "target": "p05",
+        "input": "B:05:out"
+      },
+      {
+        "id": "t_enter_B_exit_06_at_4_11",
+        "from_port": "port_t_enter_B_exit_06_at_4_11",
+        "source": "p05",
+        "target": "B.p14",
+        "input": "B:06:in"
+      },
+      {
+        "id": "t_exit_B_exit_06_at_4_11",
+        "from_port": "port_t_exit_B_exit_06_at_4_11",
+        "source": "B.p14",
+        "target": "p05",
+        "input": "B:06:out"
+      },
+      {
+        "id": "t_enter_B_exit_07_at_5_10",
+        "from_port": "port_t_enter_B_exit_07_at_5_10",
+        "source": "p09",
+        "target": "B.p09",
+        "input": "B:07:in"
+      },
+      {
+        "id": "t_exit_B_exit_07_at_5_10",
+        "from_port": "port_t_exit_B_exit_07_at_5_10",
+        "source": "B.p09",
+        "target": "p09",
+        "input": "B:07:out"
+      },
+      {
+        "id": "t_enter_B_exit_08_at_5_9",
+        "from_port": "port_t_enter_B_exit_08_at_5_9",
+        "source": "p10",
+        "target": "B.p02",
+        "input": "B:08:in"
+      },
+      {
+        "id": "t_exit_B_exit_08_at_5_9",
+        "from_port": "port_t_exit_B_exit_08_at_5_9",
+        "source": "B.p02",
+        "target": "p10",
+        "input": "B:08:out"
+      },
+      {
+        "id": "t_enter_B_exit_11_at_3_7",
+        "from_port": "port_t_enter_B_exit_11_at_3_7",
+        "source": "p06",
+        "target": "B.p07",
+        "input": "B:11:in"
+      },
+      {
+        "id": "t_exit_B_exit_11_at_3_7",
+        "from_port": "port_t_exit_B_exit_11_at_3_7",
+        "source": "B.p07",
+        "target": "p06",
+        "input": "B:11:out"
+      },
+      {
+        "id": "t_enter_B_exit_12_at_2_7",
+        "from_port": "port_t_enter_B_exit_12_at_2_7",
+        "source": "p06",
+        "target": "B.p01",
+        "input": "B:12:in"
+      },
+      {
+        "id": "t_exit_B_exit_12_at_2_7",
+        "from_port": "port_t_exit_B_exit_12_at_2_7",
+        "source": "B.p01",
+        "target": "p06",
+        "input": "B:12:out"
+      },
+      {
+        "id": "t_enter_C_exit_02_at_7_3",
+        "from_port": "port_t_enter_C_exit_02_at_7_3",
+        "source": "p08",
+        "target": "C.p02",
+        "input": "C:02:in"
+      },
+      {
+        "id": "t_exit_C_exit_02_at_7_3",
+        "from_port": "port_t_exit_C_exit_02_at_7_3",
+        "source": "C.p02",
+        "target": "p08",
+        "input": "C:02:out"
+      },
+      {
+        "id": "t_enter_C_exit_04_at_8_5",
+        "from_port": "port_t_enter_C_exit_04_at_8_5",
+        "source": "p02",
+        "target": "C.p05",
+        "input": "C:04:in"
+      },
+      {
+        "id": "t_exit_C_exit_04_at_8_5",
+        "from_port": "port_t_exit_C_exit_04_at_8_5",
+        "source": "C.p05",
+        "target": "p02",
+        "input": "C:04:out"
+      },
+      {
+        "id": "t_enter_C_exit_07_at_11_4",
+        "from_port": "port_t_enter_C_exit_07_at_11_4",
+        "source": "p13",
+        "target": "C.p09",
+        "input": "C:07:in"
+      },
+      {
+        "id": "t_exit_C_exit_07_at_11_4",
+        "from_port": "port_t_exit_C_exit_07_at_11_4",
+        "source": "C.p09",
+        "target": "p13",
+        "input": "C:07:out"
+      },
+      {
+        "id": "t_enter_C_exit_11_at_9_1",
+        "from_port": "port_t_enter_C_exit_11_at_9_1",
+        "source": "p13",
+        "target": "C.p07",
+        "input": "C:11:in"
+      },
+      {
+        "id": "t_exit_C_exit_11_at_9_1",
+        "from_port": "port_t_exit_C_exit_11_at_9_1",
+        "source": "C.p07",
+        "target": "p13",
+        "input": "C:11:out"
+      },
+      {
+        "id": "t_enter_C_exit_12_at_8_1",
+        "from_port": "port_t_enter_C_exit_12_at_8_1",
+        "source": "p08",
+        "target": "C.p01",
+        "input": "C:12:in"
+      },
+      {
+        "id": "t_exit_C_exit_12_at_8_1",
+        "from_port": "port_t_exit_C_exit_12_at_8_1",
+        "source": "C.p01",
+        "target": "p08",
+        "input": "C:12:out"
+      },
+      {
+        "id": "t_enter_D_exit_01_at_7_8",
+        "from_port": "port_t_enter_D_exit_01_at_7_8",
+        "source": "p10",
+        "target": "D.p01",
+        "input": "D:01:in"
+      },
+      {
+        "id": "t_exit_D_exit_01_at_7_8",
+        "from_port": "port_t_exit_D_exit_01_at_7_8",
+        "source": "D.p01",
+        "target": "p10",
+        "input": "D:01:out"
+      },
+      {
+        "id": "t_enter_D_exit_03_at_7_10",
+        "from_port": "port_t_enter_D_exit_03_at_7_10",
+        "source": "p10",
+        "target": "D.p03",
+        "input": "D:03:in"
+      },
+      {
+        "id": "t_exit_D_exit_03_at_7_10",
+        "from_port": "port_t_exit_D_exit_03_at_7_10",
+        "source": "D.p03",
+        "target": "p10",
+        "input": "D:03:out"
+      },
+      {
+        "id": "t_enter_D_exit_04_at_8_11",
+        "from_port": "port_t_enter_D_exit_04_at_8_11",
+        "source": "p11",
+        "target": "D.p05",
+        "input": "D:04:in"
+      },
+      {
+        "id": "t_exit_D_exit_04_at_8_11",
+        "from_port": "port_t_exit_D_exit_04_at_8_11",
+        "source": "D.p05",
+        "target": "p11",
+        "input": "D:04:out"
+      },
+      {
+        "id": "t_enter_D_exit_05_at_9_11",
+        "from_port": "port_t_enter_D_exit_05_at_9_11",
+        "source": "p11",
+        "target": "D.p11",
+        "input": "D:05:in"
+      },
+      {
+        "id": "t_exit_D_exit_05_at_9_11",
+        "from_port": "port_t_exit_D_exit_05_at_9_11",
+        "source": "D.p11",
+        "target": "p11",
+        "input": "D:05:out"
+      },
+      {
+        "id": "t_enter_D_exit_08_at_11_9",
+        "from_port": "port_t_enter_D_exit_08_at_11_9",
+        "source": "p14",
+        "target": "D.p02",
+        "input": "D:08:in"
+      },
+      {
+        "id": "t_exit_D_exit_08_at_11_9",
+        "from_port": "port_t_exit_D_exit_08_at_11_9",
+        "source": "D.p02",
+        "target": "p14",
+        "input": "D:08:out"
+      },
+      {
+        "id": "t_enter_D_exit_10_at_10_7",
+        "from_port": "port_t_enter_D_exit_10_at_10_7",
+        "source": "p09",
+        "target": "D.p02",
+        "input": "D:10:in"
+      },
+      {
+        "id": "t_exit_D_exit_10_at_10_7",
+        "from_port": "port_t_exit_D_exit_10_at_10_7",
+        "source": "D.p02",
+        "target": "p09",
+        "input": "D:10:out"
+      },
+      {
+        "id": "t_enter_D_exit_11_at_9_7",
+        "from_port": "port_t_enter_D_exit_11_at_9_7",
+        "source": "p12",
+        "target": "D.p07",
+        "input": "D:11:in"
+      },
+      {
+        "id": "t_exit_D_exit_11_at_9_7",
+        "from_port": "port_t_exit_D_exit_11_at_9_7",
+        "source": "D.p07",
+        "target": "p12",
+        "input": "D:11:out"
+      },
+      {
+        "id": "t_enter_D_exit_12_at_8_7",
+        "from_port": "port_t_enter_D_exit_12_at_8_7",
+        "source": "p12",
+        "target": "D.p01",
+        "input": "D:12:in"
+      },
+      {
+        "id": "t_exit_D_exit_12_at_8_7",
+        "from_port": "port_t_exit_D_exit_12_at_8_7",
+        "source": "D.p01",
+        "target": "p12",
+        "input": "D:12:out"
+      }
+    ]
+  },
+  "auto_graph_layout": {
+    "algorithm": "level-bfs-v1",
+    "spacing": {
+      "x": 120.0,
+      "y": 100.0
+    },
+    "bounds": {
+      "width": 653.227132,
+      "height": 428.0
+    },
+    "points": {
+      "p01": {
+        "x": -120.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 0
+      },
+      "p02": {
+        "x": -300.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 0
+      },
+      "p03": {
+        "x": 0.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "p04": {
+        "x": 0.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "p05": {
+        "x": 0.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 1
+      },
+      "p06": {
+        "x": -180.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 1
+      },
+      "p07": {
+        "x": -120.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 0
+      },
+      "p08": {
+        "x": -60.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 2
+      },
+      "p09": {
+        "x": 0.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 1
+      },
+      "p10": {
+        "x": 120.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 2
+      },
+      "p11": {
+        "x": 60.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 3
+      },
+      "p12": {
+        "x": 180.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 4
+      },
+      "p13": {
+        "x": 120.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 2
+      },
+      "p14": {
+        "x": 300.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 5
+      }
+    },
+    "ports": {
+      "port_t_enter_A_exit_03_at_1_4": {
+        "x": 28.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "port_t_enter_A_exit_05_at_3_5": {
+        "x": -92.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 0
+      },
+      "port_t_enter_A_exit_09_at_5_2": {
+        "x": -272.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 0
+      },
+      "port_t_enter_A_exit_10_at_4_1": {
+        "x": -92.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 0
+      },
+      "port_t_enter_A_exit_12_at_2_1": {
+        "x": -100.201004,
+        "y": 219.798996,
+        "level": 2,
+        "column": 0
+      },
+      "port_t_enter_B_exit_01_at_1_8": {
+        "x": 28.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "port_t_enter_B_exit_04_at_2_11": {
+        "x": 0.0,
+        "y": 128.0,
+        "level": 1,
+        "column": 0
+      },
+      "port_t_enter_B_exit_05_at_3_11": {
+        "x": 28.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 1
+      },
+      "port_t_enter_B_exit_06_at_4_11": {
+        "x": 8.652476,
+        "y": 226.629596,
+        "level": 2,
+        "column": 1
+      },
+      "port_t_enter_B_exit_07_at_5_10": {
+        "x": 28.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 1
+      },
+      "port_t_enter_B_exit_08_at_5_9": {
+        "x": 148.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 2
+      },
+      "port_t_enter_B_exit_11_at_3_7": {
+        "x": -152.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 1
+      },
+      "port_t_enter_B_exit_12_at_2_7": {
+        "x": -208.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 1
+      },
+      "port_t_enter_C_exit_02_at_7_3": {
+        "x": -32.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 2
+      },
+      "port_t_enter_C_exit_04_at_8_5": {
+        "x": -282.54228,
+        "y": 321.891268,
+        "level": 3,
+        "column": 0
+      },
+      "port_t_enter_C_exit_07_at_11_4": {
+        "x": 148.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 2
+      },
+      "port_t_enter_C_exit_11_at_9_1": {
+        "x": 106.0,
+        "y": 424.2487,
+        "level": 4,
+        "column": 2
+      },
+      "port_t_enter_C_exit_12_at_8_1": {
+        "x": -88.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 2
+      },
+      "port_t_enter_D_exit_01_at_7_8": {
+        "x": 106.0,
+        "y": 224.24869999999999,
+        "level": 2,
+        "column": 2
+      },
+      "port_t_enter_D_exit_03_at_7_10": {
+        "x": 106.0,
+        "y": 175.75130000000001,
+        "level": 2,
+        "column": 2
+      },
+      "port_t_enter_D_exit_04_at_8_11": {
+        "x": 88.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 3
+      },
+      "port_t_enter_D_exit_05_at_9_11": {
+        "x": 68.65247600000001,
+        "y": 326.629596,
+        "level": 3,
+        "column": 3
+      },
+      "port_t_enter_D_exit_08_at_11_9": {
+        "x": 328.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 5
+      },
+      "port_t_enter_D_exit_10_at_10_7": {
+        "x": 0.0,
+        "y": 428.0,
+        "level": 4,
+        "column": 1
+      },
+      "port_t_enter_D_exit_11_at_9_7": {
+        "x": 208.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 4
+      },
+      "port_t_enter_D_exit_12_at_8_7": {
+        "x": 152.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 4
+      },
+      "port_t_exit_A_exit_03_at_1_4": {
+        "x": -28.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "port_t_exit_A_exit_05_at_3_5": {
+        "x": 37.347524,
+        "y": 316.45798,
+        "level": 3,
+        "column": 3
+      },
+      "port_t_exit_A_exit_09_at_5_2": {
+        "x": 106.0,
+        "y": 375.7513,
+        "level": 4,
+        "column": 2
+      },
+      "port_t_exit_A_exit_10_at_4_1": {
+        "x": -306.230588,
+        "y": 327.297984,
+        "level": 3,
+        "column": 0
+      },
+      "port_t_exit_A_exit_12_at_2_1": {
+        "x": -120.0,
+        "y": 228.0,
+        "level": 2,
+        "column": 0
+      },
+      "port_t_exit_B_exit_01_at_1_8": {
+        "x": -139.798996,
+        "y": 219.798996,
+        "level": 2,
+        "column": 0
+      },
+      "port_t_exit_B_exit_04_at_2_11": {
+        "x": -22.652476,
+        "y": 216.45798,
+        "level": 2,
+        "column": 1
+      },
+      "port_t_exit_B_exit_05_at_3_11": {
+        "x": 37.347524,
+        "y": 283.54202,
+        "level": 3,
+        "column": 3
+      },
+      "port_t_exit_B_exit_06_at_4_11": {
+        "x": 272.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 5
+      },
+      "port_t_exit_B_exit_07_at_5_10": {
+        "x": -28.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 1
+      },
+      "port_t_exit_B_exit_08_at_5_9": {
+        "x": -325.227132,
+        "y": 312.148752,
+        "level": 3,
+        "column": 0
+      },
+      "port_t_exit_B_exit_11_at_3_7": {
+        "x": -120.0,
+        "y": 428.0,
+        "level": 4,
+        "column": 0
+      },
+      "port_t_exit_B_exit_12_at_2_7": {
+        "x": -148.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 0
+      },
+      "port_t_exit_C_exit_02_at_7_3": {
+        "x": -325.227132,
+        "y": 287.851248,
+        "level": 3,
+        "column": 0
+      },
+      "port_t_exit_C_exit_04_at_8_5": {
+        "x": -22.652476,
+        "y": 183.54202,
+        "level": 2,
+        "column": 1
+      },
+      "port_t_exit_C_exit_07_at_11_4": {
+        "x": 0.0,
+        "y": 372.0,
+        "level": 4,
+        "column": 1
+      },
+      "port_t_exit_C_exit_11_at_9_1": {
+        "x": -148.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 0
+      },
+      "port_t_exit_C_exit_12_at_8_1": {
+        "x": -139.798996,
+        "y": 180.201004,
+        "level": 2,
+        "column": 0
+      },
+      "port_t_exit_D_exit_01_at_7_8": {
+        "x": -120.0,
+        "y": 172.0,
+        "level": 2,
+        "column": 0
+      },
+      "port_t_exit_D_exit_03_at_7_10": {
+        "x": 0.0,
+        "y": 72.0,
+        "level": 1,
+        "column": 0
+      },
+      "port_t_exit_D_exit_04_at_8_11": {
+        "x": 8.652476,
+        "y": 173.370404,
+        "level": 2,
+        "column": 1
+      },
+      "port_t_exit_D_exit_05_at_9_11": {
+        "x": 68.65247600000001,
+        "y": 273.370404,
+        "level": 3,
+        "column": 3
+      },
+      "port_t_exit_D_exit_08_at_11_9": {
+        "x": -306.230588,
+        "y": 272.702016,
+        "level": 3,
+        "column": 0
+      },
+      "port_t_exit_D_exit_10_at_10_7": {
+        "x": -282.54228,
+        "y": 278.108732,
+        "level": 3,
+        "column": 0
+      },
+      "port_t_exit_D_exit_11_at_9_7": {
+        "x": -120.0,
+        "y": 372.0,
+        "level": 4,
+        "column": 0
+      },
+      "port_t_exit_D_exit_12_at_8_7": {
+        "x": -100.201004,
+        "y": 180.201004,
+        "level": 2,
+        "column": 0
+      }
+    }
+  },
+  "modeling_status": {
+    "status": "partial",
+    "reason": "Executable WIP Port Graph derived from compressed path components plus LINK/EXIT declarations, but no human-verified logical solution record has been added yet.",
+    "next_step": "Verify the derived PDA edges against play behavior, solve the graph, and add a known solution record."
+  },
+  "provenance": {
+    "sources": [
+      {
+        "type": "package_logic",
+        "href": "logic.yml"
+      },
+      {
+        "type": "image",
+        "href": "../../../Maze_Images/Mike_Earnest/Alice_and_the_Hedge_Maze.png"
+      },
+      {
+        "type": "post",
+        "href": "https://puzzling.stackexchange.com/questions/37675/alice-and-the-fractal-hedge-maze"
+      },
+      {
+        "type": "derived_hand_conversion",
+        "note": "WIP executable Port Graph derived into the package logic; needs playtest verification."
+      }
+    ]
+  }
+}

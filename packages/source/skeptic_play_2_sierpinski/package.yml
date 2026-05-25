@@ -1,6 +1,6 @@
 format: fmaze-package-v0
 id: skeptic_play_2_sierpinski
-title: Skeptic Play #2: Sierpinski Paths Derived Port Graph
+title: "Skeptic Play #2: Sierpinski Paths Derived Port Graph"
 primary_authoring: port_graph
 
 logic:

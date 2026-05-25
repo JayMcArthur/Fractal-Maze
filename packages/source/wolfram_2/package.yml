@@ -1,6 +1,6 @@
 format: fmaze-package-v0
 id: wolfram_2
-title: Wolfram #2 Normalized Port Graph
+title: "Wolfram #2 Normalized Port Graph"
 primary_authoring: port_graph
 
 logic:

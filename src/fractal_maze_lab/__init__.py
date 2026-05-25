@@ -42,6 +42,17 @@ from .package_loader import (
     replay_solution,
 )
 from .package_validation import PackageValidationResult, ValidationIssue, validate_package_file
+from .graph_layout import AutoGraphLayout, LAYOUT_ALGORITHM, LaidPoint, layout_port_graph
+from .browser_export import (
+    BROWSER_FORMAT,
+    BrowserPackageExport,
+    ExportError,
+    build_catalogue_index,
+    discover_packages,
+    export_browser_package,
+    write_browser_package,
+    write_catalogue_index,
+)
 
 __all__ = [
     "Address",
@@ -86,4 +97,16 @@ __all__ = [
     "PackageValidationResult",
     "ValidationIssue",
     "validate_package_file",
+    "AutoGraphLayout",
+    "LAYOUT_ALGORITHM",
+    "LaidPoint",
+    "layout_port_graph",
+    "BROWSER_FORMAT",
+    "BrowserPackageExport",
+    "ExportError",
+    "build_catalogue_index",
+    "discover_packages",
+    "export_browser_package",
+    "write_browser_package",
+    "write_catalogue_index",
 ]

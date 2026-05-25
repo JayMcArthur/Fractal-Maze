@@ -1,0 +1,43 @@
+{
+  "format": "fmaze-browser-v0",
+  "id": "infinite_descent",
+  "title": "Infinite Descent",
+  "primary_authoring": "reference_record",
+  "source_root": "packages/source/infinite_descent",
+  "logic": {
+    "format": "fmaze-logic-v0",
+    "id": "infinite_descent",
+    "strategy": "reference_record",
+    "source_model": "reference_record",
+    "modeling_status": {
+      "status": "partial",
+      "reason": "The SVG has enough visual structure to identify a repeated A/B/C descent family, top terminals 1-6, and second-level labels AA-CC, but it does not specify the exact convergent states required by the validator's simplified_infinite_hop rule. Multiple red, orange, and purple branches could be read either as physical transitions or as proof support.",
+      "next_step": "Resolve the proof terminal questions before conversion: identify the exact source and target of the infinite descent hop, name the common submaze prefix where the support obligations converge, and classify each colored branch as physical support, ordinary route, or explanatory overlay."
+    }
+  },
+  "modeling_status": {
+    "status": "partial",
+    "reason": "The SVG has enough visual structure to identify a repeated A/B/C descent family, top terminals 1-6, and second-level labels AA-CC, but it does not specify the exact convergent states required by the validator's simplified_infinite_hop rule. Multiple red, orange, and purple branches could be read either as physical transitions or as proof support.",
+    "next_step": "Resolve the proof terminal questions before conversion: identify the exact source and target of the infinite descent hop, name the common submaze prefix where the support obligations converge, and classify each colored branch as physical support, ordinary route, or explanatory overlay."
+  },
+  "provenance": {
+    "sources": [
+      {
+        "type": "image",
+        "href": "../../../Maze_Images/Siggy/Infinite_Descent.svg"
+      },
+      {
+        "type": "post",
+        "href": "https://freethoughtblogs.com/atrivialknot/2023/10/21/infinite-fractal-mazes/"
+      },
+      {
+        "type": "handwritten_record",
+        "note": "Hand-authored reference record after inspecting the visible maze, labels, nested boxes, and colored descent overlays in the SVG."
+      }
+    ],
+    "notes": [
+      "The SVG shows top-level terminals 1 through 6, submazes A/B/C, second-level submazes AA through CC, and visible start/finish labels.",
+      "It is not yet executable because the drawing does not provide a single formal infinite-hop/descent proof edge boundary, nor enough terminal semantics to decide which colored branches are support obligations and which are ordinary physical transitions."
+    ]
+  }
+}

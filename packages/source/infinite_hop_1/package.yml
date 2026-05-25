@@ -1,6 +1,6 @@
 format: fmaze-package-v0
 id: infinite_hop_1
-title: Infinite Hop #1
+title: "Infinite Hop #1"
 primary_authoring: port_graph
 
 logic:

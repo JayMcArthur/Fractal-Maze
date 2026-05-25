@@ -1,0 +1,1176 @@
+{
+  "format": "fmaze-browser-v0",
+  "id": "skeptic_play_1",
+  "title": "Skeptic Play #1",
+  "primary_authoring": "port_graph",
+  "source_root": "packages/source/skeptic_play_1",
+  "logic": {
+    "format": "fmaze-logic-v0",
+    "id": "skeptic_play_1",
+    "strategy": "pda_stack",
+    "source_model": "port_graph",
+    "start": "p1",
+    "goals": [
+      "p2"
+    ],
+    "points": [
+      {
+        "id": "p1",
+        "label": "1"
+      },
+      {
+        "id": "p2",
+        "label": "2"
+      },
+      {
+        "id": "p3",
+        "label": "3"
+      },
+      {
+        "id": "p4",
+        "label": "4"
+      },
+      {
+        "id": "p5",
+        "label": "5"
+      },
+      {
+        "id": "p6",
+        "label": "6"
+      }
+    ],
+    "submazes": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "ports": [
+      {
+        "id": "p1_to_A_p2",
+        "point": "p1",
+        "label": "2"
+      },
+      {
+        "id": "A_p2_to_p1",
+        "point": "p2",
+        "context": [
+          "A"
+        ],
+        "label": "1"
+      },
+      {
+        "id": "p1_to_B_p3",
+        "point": "p1",
+        "label": "3"
+      },
+      {
+        "id": "B_p3_to_p1",
+        "point": "p3",
+        "context": [
+          "B"
+        ],
+        "label": "1"
+      },
+      {
+        "id": "A_p1_to_p4",
+        "point": "p1",
+        "context": [
+          "A"
+        ],
+        "label": "4"
+      },
+      {
+        "id": "p4_to_A_p1",
+        "point": "p4",
+        "label": "1"
+      },
+      {
+        "id": "B_p1_to_p5",
+        "point": "p1",
+        "context": [
+          "B"
+        ],
+        "label": "5"
+      },
+      {
+        "id": "p5_to_B_p1",
+        "point": "p5",
+        "label": "1"
+      },
+      {
+        "id": "B_p2_to_p4",
+        "point": "p2",
+        "context": [
+          "B"
+        ],
+        "label": "4"
+      },
+      {
+        "id": "p4_to_B_p2",
+        "point": "p4",
+        "label": "2"
+      },
+      {
+        "id": "p2_to_A_p5",
+        "point": "p2",
+        "label": "5"
+      },
+      {
+        "id": "A_p5_to_p2",
+        "point": "p5",
+        "context": [
+          "A"
+        ],
+        "label": "2"
+      },
+      {
+        "id": "A_p2_to_p6",
+        "point": "p2",
+        "context": [
+          "A"
+        ],
+        "label": "6"
+      },
+      {
+        "id": "p6_to_A_p2",
+        "point": "p6",
+        "label": "2"
+      },
+      {
+        "id": "p3_to_B_p4",
+        "point": "p3",
+        "label": "4"
+      },
+      {
+        "id": "B_p4_to_p3",
+        "point": "p4",
+        "context": [
+          "B"
+        ],
+        "label": "3"
+      },
+      {
+        "id": "p6_to_B_p6",
+        "point": "p6",
+        "label": "("
+      },
+      {
+        "id": "B_p6_to_p6",
+        "point": "p6",
+        "context": [
+          "B"
+        ],
+        "label": ")"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "t_p1_to_A_p2",
+        "from_port": "p1_to_A_p2",
+        "source": "p1",
+        "target": "A.p2",
+        "input": "2"
+      },
+      {
+        "id": "t_A_p2_to_p1",
+        "from_port": "A_p2_to_p1",
+        "source": "A.p2",
+        "target": "p1",
+        "input": "1"
+      },
+      {
+        "id": "t_p1_to_B_p3",
+        "from_port": "p1_to_B_p3",
+        "source": "p1",
+        "target": "B.p3",
+        "input": "3"
+      },
+      {
+        "id": "t_B_p3_to_p1",
+        "from_port": "B_p3_to_p1",
+        "source": "B.p3",
+        "target": "p1",
+        "input": "1"
+      },
+      {
+        "id": "t_A_p1_to_p4",
+        "from_port": "A_p1_to_p4",
+        "source": "A.p1",
+        "target": "p4",
+        "input": "4"
+      },
+      {
+        "id": "t_p4_to_A_p1",
+        "from_port": "p4_to_A_p1",
+        "source": "p4",
+        "target": "A.p1",
+        "input": "1"
+      },
+      {
+        "id": "t_B_p1_to_p5",
+        "from_port": "B_p1_to_p5",
+        "source": "B.p1",
+        "target": "p5",
+        "input": "5"
+      },
+      {
+        "id": "t_p5_to_B_p1",
+        "from_port": "p5_to_B_p1",
+        "source": "p5",
+        "target": "B.p1",
+        "input": "1"
+      },
+      {
+        "id": "t_B_p2_to_p4",
+        "from_port": "B_p2_to_p4",
+        "source": "B.p2",
+        "target": "p4",
+        "input": "4"
+      },
+      {
+        "id": "t_p4_to_B_p2",
+        "from_port": "p4_to_B_p2",
+        "source": "p4",
+        "target": "B.p2",
+        "input": "2"
+      },
+      {
+        "id": "t_p2_to_A_p5",
+        "from_port": "p2_to_A_p5",
+        "source": "p2",
+        "target": "A.p5",
+        "input": "5"
+      },
+      {
+        "id": "t_A_p5_to_p2",
+        "from_port": "A_p5_to_p2",
+        "source": "A.p5",
+        "target": "p2",
+        "input": "2"
+      },
+      {
+        "id": "t_A_p2_to_p6",
+        "from_port": "A_p2_to_p6",
+        "source": "A.p2",
+        "target": "p6",
+        "input": "6"
+      },
+      {
+        "id": "t_p6_to_A_p2",
+        "from_port": "p6_to_A_p2",
+        "source": "p6",
+        "target": "A.p2",
+        "input": "2"
+      },
+      {
+        "id": "t_p3_to_B_p4",
+        "from_port": "p3_to_B_p4",
+        "source": "p3",
+        "target": "B.p4",
+        "input": "4"
+      },
+      {
+        "id": "t_B_p4_to_p3",
+        "from_port": "B_p4_to_p3",
+        "source": "B.p4",
+        "target": "p3",
+        "input": "3"
+      },
+      {
+        "id": "t_p6_to_B_p6",
+        "from_port": "p6_to_B_p6",
+        "source": "p6",
+        "target": "B.p6",
+        "input": "("
+      },
+      {
+        "id": "t_B_p6_to_p6",
+        "from_port": "B_p6_to_p6",
+        "source": "B.p6",
+        "target": "p6",
+        "input": ")"
+      }
+    ]
+  },
+  "solutions": [
+    {
+      "format": "fmaze-solution-v0",
+      "id": "known",
+      "maze": "skeptic_play_1",
+      "logic": "../logic.yml",
+      "expects_goal": true,
+      "steps": [
+        {
+          "transition_id": "t_p1_to_B_p3"
+        },
+        {
+          "transition_id": "t_p3_to_B_p4"
+        },
+        {
+          "transition_id": "t_p4_to_A_p1"
+        },
+        {
+          "transition_id": "t_p1_to_A_p2"
+        },
+        {
+          "transition_id": "t_A_p2_to_p6"
+        },
+        {
+          "transition_id": "t_p6_to_B_p6"
+        },
+        {
+          "transition_id": "t_p6_to_A_p2"
+        },
+        {
+          "transition_id": "t_A_p2_to_p1"
+        },
+        {
+          "transition_id": "t_B_p1_to_p5"
+        },
+        {
+          "transition_id": "t_A_p5_to_p2"
+        },
+        {
+          "transition_id": "t_B_p2_to_p4"
+        },
+        {
+          "transition_id": "t_p4_to_A_p1"
+        },
+        {
+          "transition_id": "t_p1_to_A_p2"
+        },
+        {
+          "transition_id": "t_A_p2_to_p6"
+        },
+        {
+          "transition_id": "t_p6_to_B_p6"
+        },
+        {
+          "transition_id": "t_p6_to_A_p2"
+        },
+        {
+          "transition_id": "t_A_p2_to_p1"
+        },
+        {
+          "transition_id": "t_B_p1_to_p5"
+        },
+        {
+          "transition_id": "t_A_p5_to_p2"
+        },
+        {
+          "transition_id": "t_B_p2_to_p4"
+        },
+        {
+          "transition_id": "t_p4_to_A_p1"
+        },
+        {
+          "transition_id": "t_p1_to_A_p2"
+        },
+        {
+          "transition_id": "t_A_p2_to_p6"
+        },
+        {
+          "transition_id": "t_p6_to_B_p6"
+        },
+        {
+          "transition_id": "t_p6_to_A_p2"
+        },
+        {
+          "transition_id": "t_A_p2_to_p1"
+        },
+        {
+          "transition_id": "t_B_p1_to_p5"
+        },
+        {
+          "transition_id": "t_A_p5_to_p2"
+        }
+      ]
+    }
+  ],
+  "visual": {
+    "format": "fmaze-visual-v0",
+    "maze": "skeptic_play_1",
+    "logic": "logic.yml",
+    "default_view": "clean_vector",
+    "assets": [
+      {
+        "id": "clean_svg",
+        "href": "../../../Maze_Images/Siggy/Skeptic_Play_1.svg",
+        "media_type": "image/svg+xml",
+        "role": "playable"
+      },
+      {
+        "id": "source_jpg",
+        "href": "../../../Maze_Images/Siggy/Skeptic_Play_1.jpg",
+        "media_type": "image/jpeg",
+        "role": "source_reference"
+      }
+    ],
+    "views": [
+      {
+        "id": "clean_vector",
+        "kind": "authored_vector",
+        "asset": "clean_svg",
+        "default": true,
+        "coordinate_space": {
+          "kind": "svg_viewbox",
+          "view_box": [
+            0,
+            0,
+            210,
+            297
+          ]
+        }
+      },
+      {
+        "id": "source_scan",
+        "kind": "image_overlay",
+        "asset": "source_jpg"
+      }
+    ],
+    "anchors": [
+      {
+        "id": "p1_anchor",
+        "logical_object": "p1",
+        "view": "clean_vector",
+        "element": "#path5981-2",
+        "label": "1"
+      },
+      {
+        "id": "p2_anchor",
+        "logical_object": "p2",
+        "view": "clean_vector",
+        "element": "#path5981",
+        "label": "2"
+      },
+      {
+        "id": "p3_anchor",
+        "logical_object": "p3",
+        "view": "clean_vector",
+        "element": "#path11030-5-9",
+        "label": "3"
+      },
+      {
+        "id": "p4_anchor",
+        "logical_object": "p4",
+        "view": "clean_vector",
+        "element": "#path16283-3-7",
+        "label": "4"
+      },
+      {
+        "id": "p5_anchor",
+        "logical_object": "p5",
+        "view": "clean_vector",
+        "element": "#path16283-8",
+        "label": "5"
+      },
+      {
+        "id": "p6_anchor",
+        "logical_object": "p6",
+        "view": "clean_vector",
+        "element": "#path1999-9",
+        "label": "6"
+      }
+    ],
+    "activation_points": [
+      {
+        "id": "p1_to_A_p2_endpoint",
+        "transition_id": "t_p1_to_A_p2",
+        "port_id": "p1_to_A_p2",
+        "view": "clean_vector",
+        "element": "#path5981-2",
+        "label": "2"
+      },
+      {
+        "id": "A_p2_to_p1_endpoint",
+        "transition_id": "t_A_p2_to_p1",
+        "port_id": "A_p2_to_p1",
+        "view": "clean_vector",
+        "element": "#path5981",
+        "label": "1"
+      },
+      {
+        "id": "p1_to_B_p3_endpoint",
+        "transition_id": "t_p1_to_B_p3",
+        "port_id": "p1_to_B_p3",
+        "view": "clean_vector",
+        "element": "#path5981-2",
+        "label": "3"
+      },
+      {
+        "id": "B_p3_to_p1_endpoint",
+        "transition_id": "t_B_p3_to_p1",
+        "port_id": "B_p3_to_p1",
+        "view": "clean_vector",
+        "element": "#path11030-5-9",
+        "label": "1"
+      },
+      {
+        "id": "A_p1_to_p4_endpoint",
+        "transition_id": "t_A_p1_to_p4",
+        "port_id": "A_p1_to_p4",
+        "view": "clean_vector",
+        "element": "#path5981-2",
+        "label": "4"
+      },
+      {
+        "id": "p4_to_A_p1_endpoint",
+        "transition_id": "t_p4_to_A_p1",
+        "port_id": "p4_to_A_p1",
+        "view": "clean_vector",
+        "element": "#path16283-3-7",
+        "label": "1"
+      },
+      {
+        "id": "B_p1_to_p5_endpoint",
+        "transition_id": "t_B_p1_to_p5",
+        "port_id": "B_p1_to_p5",
+        "view": "clean_vector",
+        "element": "#path5981-2",
+        "label": "5"
+      },
+      {
+        "id": "p5_to_B_p1_endpoint",
+        "transition_id": "t_p5_to_B_p1",
+        "port_id": "p5_to_B_p1",
+        "view": "clean_vector",
+        "element": "#path16283-8",
+        "label": "1"
+      },
+      {
+        "id": "B_p2_to_p4_endpoint",
+        "transition_id": "t_B_p2_to_p4",
+        "port_id": "B_p2_to_p4",
+        "view": "clean_vector",
+        "element": "#path5981",
+        "label": "4"
+      },
+      {
+        "id": "p4_to_B_p2_endpoint",
+        "transition_id": "t_p4_to_B_p2",
+        "port_id": "p4_to_B_p2",
+        "view": "clean_vector",
+        "element": "#path16283-3-7",
+        "label": "2"
+      },
+      {
+        "id": "p2_to_A_p5_endpoint",
+        "transition_id": "t_p2_to_A_p5",
+        "port_id": "p2_to_A_p5",
+        "view": "clean_vector",
+        "element": "#path5981",
+        "label": "5"
+      },
+      {
+        "id": "A_p5_to_p2_endpoint",
+        "transition_id": "t_A_p5_to_p2",
+        "port_id": "A_p5_to_p2",
+        "view": "clean_vector",
+        "element": "#path16283-8",
+        "label": "2"
+      },
+      {
+        "id": "A_p2_to_p6_endpoint",
+        "transition_id": "t_A_p2_to_p6",
+        "port_id": "A_p2_to_p6",
+        "view": "clean_vector",
+        "element": "#path5981",
+        "label": "6"
+      },
+      {
+        "id": "p6_to_A_p2_endpoint",
+        "transition_id": "t_p6_to_A_p2",
+        "port_id": "p6_to_A_p2",
+        "view": "clean_vector",
+        "element": "#path1999-9",
+        "label": "2"
+      },
+      {
+        "id": "p3_to_B_p4_endpoint",
+        "transition_id": "t_p3_to_B_p4",
+        "port_id": "p3_to_B_p4",
+        "view": "clean_vector",
+        "element": "#path11030-5-9",
+        "label": "4"
+      },
+      {
+        "id": "B_p4_to_p3_endpoint",
+        "transition_id": "t_B_p4_to_p3",
+        "port_id": "B_p4_to_p3",
+        "view": "clean_vector",
+        "element": "#path16283-3-7",
+        "label": "3"
+      },
+      {
+        "id": "p6_to_B_p6_endpoint",
+        "transition_id": "t_p6_to_B_p6",
+        "port_id": "p6_to_B_p6",
+        "view": "clean_vector",
+        "element": "#path1999-9",
+        "label": "("
+      },
+      {
+        "id": "B_p6_to_p6_endpoint",
+        "transition_id": "t_B_p6_to_p6",
+        "port_id": "B_p6_to_p6",
+        "view": "clean_vector",
+        "element": "#path1999-9",
+        "label": ")"
+      }
+    ],
+    "route_segments": [
+      {
+        "id": "seg_p1_to_A_p2_main",
+        "view": "clean_vector",
+        "element": "#path10741-7"
+      },
+      {
+        "id": "seg_A_p2_to_p1_main",
+        "view": "clean_vector",
+        "element": "#path10741-7"
+      },
+      {
+        "id": "seg_p1_to_B_p3_main",
+        "view": "clean_vector",
+        "element": "#path11030-5-9"
+      },
+      {
+        "id": "seg_B_p3_to_p1_main",
+        "view": "clean_vector",
+        "element": "#path11030-5-9"
+      },
+      {
+        "id": "seg_A_p1_to_p4_main",
+        "view": "clean_vector",
+        "element": "#path15254-0-0"
+      },
+      {
+        "id": "seg_p4_to_A_p1_main",
+        "view": "clean_vector",
+        "element": "#path15254-0-0"
+      },
+      {
+        "id": "seg_B_p1_to_p5_main",
+        "view": "clean_vector",
+        "element": "#path16283-8"
+      },
+      {
+        "id": "seg_p5_to_B_p1_main",
+        "view": "clean_vector",
+        "element": "#path16283-8"
+      },
+      {
+        "id": "seg_B_p2_to_p4_main",
+        "view": "clean_vector",
+        "element": "#path16283-3-7"
+      },
+      {
+        "id": "seg_p4_to_B_p2_main",
+        "view": "clean_vector",
+        "element": "#path16283-3-7"
+      },
+      {
+        "id": "seg_p2_to_A_p5_main",
+        "view": "clean_vector",
+        "element": "#path18157-6"
+      },
+      {
+        "id": "seg_A_p5_to_p2_main",
+        "view": "clean_vector",
+        "element": "#path18157-6"
+      },
+      {
+        "id": "seg_A_p2_to_p6_main",
+        "view": "clean_vector",
+        "element": "#path1999-9"
+      },
+      {
+        "id": "seg_p6_to_A_p2_main",
+        "view": "clean_vector",
+        "element": "#path1999-9"
+      },
+      {
+        "id": "seg_p3_to_B_p4_main",
+        "view": "clean_vector",
+        "element": "#path15254-2"
+      },
+      {
+        "id": "seg_B_p4_to_p3_main",
+        "view": "clean_vector",
+        "element": "#path15254-2"
+      },
+      {
+        "id": "seg_p6_to_B_p6_main",
+        "view": "clean_vector",
+        "element": "#path5822-4"
+      },
+      {
+        "id": "seg_B_p6_to_p6_main",
+        "view": "clean_vector",
+        "element": "#path5822-4"
+      }
+    ],
+    "routes": [
+      {
+        "id": "route_p1_to_A_p2",
+        "transition_id": "t_p1_to_A_p2",
+        "segments": [
+          "seg_p1_to_A_p2_main"
+        ]
+      },
+      {
+        "id": "route_A_p2_to_p1",
+        "transition_id": "t_A_p2_to_p1",
+        "segments": [
+          "seg_A_p2_to_p1_main"
+        ]
+      },
+      {
+        "id": "route_p1_to_B_p3",
+        "transition_id": "t_p1_to_B_p3",
+        "segments": [
+          "seg_p1_to_B_p3_main"
+        ]
+      },
+      {
+        "id": "route_B_p3_to_p1",
+        "transition_id": "t_B_p3_to_p1",
+        "segments": [
+          "seg_B_p3_to_p1_main"
+        ]
+      },
+      {
+        "id": "route_A_p1_to_p4",
+        "transition_id": "t_A_p1_to_p4",
+        "segments": [
+          "seg_A_p1_to_p4_main"
+        ]
+      },
+      {
+        "id": "route_p4_to_A_p1",
+        "transition_id": "t_p4_to_A_p1",
+        "segments": [
+          "seg_p4_to_A_p1_main"
+        ]
+      },
+      {
+        "id": "route_B_p1_to_p5",
+        "transition_id": "t_B_p1_to_p5",
+        "segments": [
+          "seg_B_p1_to_p5_main"
+        ]
+      },
+      {
+        "id": "route_p5_to_B_p1",
+        "transition_id": "t_p5_to_B_p1",
+        "segments": [
+          "seg_p5_to_B_p1_main"
+        ]
+      },
+      {
+        "id": "route_B_p2_to_p4",
+        "transition_id": "t_B_p2_to_p4",
+        "segments": [
+          "seg_B_p2_to_p4_main"
+        ]
+      },
+      {
+        "id": "route_p4_to_B_p2",
+        "transition_id": "t_p4_to_B_p2",
+        "segments": [
+          "seg_p4_to_B_p2_main"
+        ]
+      },
+      {
+        "id": "route_p2_to_A_p5",
+        "transition_id": "t_p2_to_A_p5",
+        "segments": [
+          "seg_p2_to_A_p5_main"
+        ]
+      },
+      {
+        "id": "route_A_p5_to_p2",
+        "transition_id": "t_A_p5_to_p2",
+        "segments": [
+          "seg_A_p5_to_p2_main"
+        ]
+      },
+      {
+        "id": "route_A_p2_to_p6",
+        "transition_id": "t_A_p2_to_p6",
+        "segments": [
+          "seg_A_p2_to_p6_main"
+        ]
+      },
+      {
+        "id": "route_p6_to_A_p2",
+        "transition_id": "t_p6_to_A_p2",
+        "segments": [
+          "seg_p6_to_A_p2_main"
+        ]
+      },
+      {
+        "id": "route_p3_to_B_p4",
+        "transition_id": "t_p3_to_B_p4",
+        "segments": [
+          "seg_p3_to_B_p4_main"
+        ]
+      },
+      {
+        "id": "route_B_p4_to_p3",
+        "transition_id": "t_B_p4_to_p3",
+        "segments": [
+          "seg_B_p4_to_p3_main"
+        ]
+      },
+      {
+        "id": "route_p6_to_B_p6",
+        "transition_id": "t_p6_to_B_p6",
+        "segments": [
+          "seg_p6_to_B_p6_main"
+        ]
+      },
+      {
+        "id": "route_B_p6_to_p6",
+        "transition_id": "t_B_p6_to_p6",
+        "segments": [
+          "seg_B_p6_to_p6_main"
+        ]
+      }
+    ],
+    "action_presentations": [
+      {
+        "id": "action_p1_to_A_p2",
+        "transition_id": "t_p1_to_A_p2",
+        "label": "2 / enter A",
+        "order": 10,
+        "activation_point": "p1_to_A_p2_endpoint",
+        "route": "route_p1_to_A_p2"
+      },
+      {
+        "id": "action_A_p2_to_p1",
+        "transition_id": "t_A_p2_to_p1",
+        "label": "1 / exit A",
+        "order": 20,
+        "activation_point": "A_p2_to_p1_endpoint",
+        "route": "route_A_p2_to_p1"
+      },
+      {
+        "id": "action_p1_to_B_p3",
+        "transition_id": "t_p1_to_B_p3",
+        "label": "3 / enter B",
+        "order": 30,
+        "activation_point": "p1_to_B_p3_endpoint",
+        "route": "route_p1_to_B_p3"
+      },
+      {
+        "id": "action_B_p3_to_p1",
+        "transition_id": "t_B_p3_to_p1",
+        "label": "1 / exit B",
+        "order": 40,
+        "activation_point": "B_p3_to_p1_endpoint",
+        "route": "route_B_p3_to_p1"
+      },
+      {
+        "id": "action_A_p1_to_p4",
+        "transition_id": "t_A_p1_to_p4",
+        "label": "4 / exit A",
+        "order": 50,
+        "activation_point": "A_p1_to_p4_endpoint",
+        "route": "route_A_p1_to_p4"
+      },
+      {
+        "id": "action_p4_to_A_p1",
+        "transition_id": "t_p4_to_A_p1",
+        "label": "1 / enter A",
+        "order": 60,
+        "activation_point": "p4_to_A_p1_endpoint",
+        "route": "route_p4_to_A_p1"
+      },
+      {
+        "id": "action_B_p1_to_p5",
+        "transition_id": "t_B_p1_to_p5",
+        "label": "5 / exit B",
+        "order": 70,
+        "activation_point": "B_p1_to_p5_endpoint",
+        "route": "route_B_p1_to_p5"
+      },
+      {
+        "id": "action_p5_to_B_p1",
+        "transition_id": "t_p5_to_B_p1",
+        "label": "1 / enter B",
+        "order": 80,
+        "activation_point": "p5_to_B_p1_endpoint",
+        "route": "route_p5_to_B_p1"
+      },
+      {
+        "id": "action_B_p2_to_p4",
+        "transition_id": "t_B_p2_to_p4",
+        "label": "4 / exit B",
+        "order": 90,
+        "activation_point": "B_p2_to_p4_endpoint",
+        "route": "route_B_p2_to_p4"
+      },
+      {
+        "id": "action_p4_to_B_p2",
+        "transition_id": "t_p4_to_B_p2",
+        "label": "2 / enter B",
+        "order": 100,
+        "activation_point": "p4_to_B_p2_endpoint",
+        "route": "route_p4_to_B_p2"
+      },
+      {
+        "id": "action_p2_to_A_p5",
+        "transition_id": "t_p2_to_A_p5",
+        "label": "5 / enter A",
+        "order": 110,
+        "activation_point": "p2_to_A_p5_endpoint",
+        "route": "route_p2_to_A_p5"
+      },
+      {
+        "id": "action_A_p5_to_p2",
+        "transition_id": "t_A_p5_to_p2",
+        "label": "2 / exit A",
+        "order": 120,
+        "activation_point": "A_p5_to_p2_endpoint",
+        "route": "route_A_p5_to_p2"
+      },
+      {
+        "id": "action_A_p2_to_p6",
+        "transition_id": "t_A_p2_to_p6",
+        "label": "6 / exit A",
+        "order": 130,
+        "activation_point": "A_p2_to_p6_endpoint",
+        "route": "route_A_p2_to_p6"
+      },
+      {
+        "id": "action_p6_to_A_p2",
+        "transition_id": "t_p6_to_A_p2",
+        "label": "2 / enter A",
+        "order": 140,
+        "activation_point": "p6_to_A_p2_endpoint",
+        "route": "route_p6_to_A_p2"
+      },
+      {
+        "id": "action_p3_to_B_p4",
+        "transition_id": "t_p3_to_B_p4",
+        "label": "4 / enter B",
+        "order": 150,
+        "activation_point": "p3_to_B_p4_endpoint",
+        "route": "route_p3_to_B_p4"
+      },
+      {
+        "id": "action_B_p4_to_p3",
+        "transition_id": "t_B_p4_to_p3",
+        "label": "3 / exit B",
+        "order": 160,
+        "activation_point": "B_p4_to_p3_endpoint",
+        "route": "route_B_p4_to_p3"
+      },
+      {
+        "id": "action_p6_to_B_p6",
+        "transition_id": "t_p6_to_B_p6",
+        "label": "( / enter B",
+        "order": 170,
+        "activation_point": "p6_to_B_p6_endpoint",
+        "route": "route_p6_to_B_p6"
+      },
+      {
+        "id": "action_B_p6_to_p6",
+        "transition_id": "t_B_p6_to_p6",
+        "label": ") / exit B",
+        "order": 180,
+        "activation_point": "B_p6_to_p6_endpoint",
+        "route": "route_B_p6_to_p6"
+      }
+    ]
+  },
+  "visual_assets": [
+    {
+      "id": "clean_svg",
+      "href": "Maze_Images/Siggy/Skeptic_Play_1.svg",
+      "media_type": "image/svg+xml",
+      "role": "playable"
+    },
+    {
+      "id": "source_jpg",
+      "href": "Maze_Images/Siggy/Skeptic_Play_1.jpg",
+      "media_type": "image/jpeg",
+      "role": "source_reference"
+    }
+  ],
+  "auto_graph_layout": {
+    "algorithm": "level-bfs-v1",
+    "spacing": {
+      "x": 120.0,
+      "y": 100.0
+    },
+    "bounds": {
+      "width": 416.0,
+      "height": 252.24869999999999
+    },
+    "points": {
+      "p1": {
+        "x": 0.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "p2": {
+        "x": -180.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "p3": {
+        "x": -60.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 1
+      },
+      "p4": {
+        "x": 60.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 2
+      },
+      "p5": {
+        "x": 180.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 3
+      },
+      "p6": {
+        "x": 0.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 0
+      }
+    },
+    "ports": {
+      "A_p1_to_p4": {
+        "x": 28.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "A_p2_to_p1": {
+        "x": -152.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "A_p2_to_p6": {
+        "x": -180.0,
+        "y": 128.0,
+        "level": 1,
+        "column": 0
+      },
+      "A_p5_to_p2": {
+        "x": 208.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 3
+      },
+      "B_p1_to_p5": {
+        "x": 0.0,
+        "y": 28.0,
+        "level": 0,
+        "column": 0
+      },
+      "B_p2_to_p4": {
+        "x": -208.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "B_p3_to_p1": {
+        "x": -32.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 1
+      },
+      "B_p4_to_p3": {
+        "x": 88.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 2
+      },
+      "B_p6_to_p6": {
+        "x": 28.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 0
+      },
+      "p1_to_A_p2": {
+        "x": -28.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "p1_to_B_p3": {
+        "x": 0.0,
+        "y": -28.0,
+        "level": 0,
+        "column": 0
+      },
+      "p2_to_A_p5": {
+        "x": -180.0,
+        "y": 72.0,
+        "level": 1,
+        "column": 0
+      },
+      "p3_to_B_p4": {
+        "x": -88.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 1
+      },
+      "p4_to_A_p1": {
+        "x": 46.0,
+        "y": 124.2487,
+        "level": 1,
+        "column": 2
+      },
+      "p4_to_B_p2": {
+        "x": 46.0,
+        "y": 75.7513,
+        "level": 1,
+        "column": 2
+      },
+      "p5_to_B_p1": {
+        "x": 152.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 3
+      },
+      "p6_to_A_p2": {
+        "x": -14.0,
+        "y": 224.24869999999999,
+        "level": 2,
+        "column": 0
+      },
+      "p6_to_B_p6": {
+        "x": -14.0,
+        "y": 175.75130000000001,
+        "level": 2,
+        "column": 0
+      }
+    }
+  },
+  "provenance": {
+    "sources": [
+      {
+        "type": "post",
+        "href": "https://skepticsplay.blogspot.com/2010/10/fractal-maze.html"
+      },
+      {
+        "type": "image",
+        "href": "../../../Maze_Images/Siggy/Skeptic_Play_1.jpg"
+      }
+    ]
+  }
+}

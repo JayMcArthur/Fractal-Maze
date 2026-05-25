@@ -1,6 +1,6 @@
 format: fmaze-package-v0
 id: cantor_proof_1
-title: Cantor Proof Edge #1
+title: "Cantor Proof Edge #1"
 primary_authoring: port_graph
 
 logic:

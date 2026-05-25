@@ -1,0 +1,2339 @@
+{
+  "format": "fmaze-browser-v0",
+  "id": "jay_mcarthur_1",
+  "title": "A Long Path",
+  "primary_authoring": "port_graph",
+  "source_root": "packages/source/jay_mcarthur_1",
+  "logic": {
+    "format": "fmaze-logic-v0",
+    "id": "jay_mcarthur_1",
+    "strategy": "pda_stack",
+    "source_model": "port_graph",
+    "start": "p1",
+    "goals": [
+      "p9"
+    ],
+    "points": [
+      {
+        "id": "p1",
+        "label": "1"
+      },
+      {
+        "id": "p2",
+        "label": "2"
+      },
+      {
+        "id": "p3",
+        "label": "3"
+      },
+      {
+        "id": "p4",
+        "label": "4"
+      },
+      {
+        "id": "p5",
+        "label": "5"
+      },
+      {
+        "id": "p6",
+        "label": "6"
+      },
+      {
+        "id": "p7",
+        "label": "7"
+      },
+      {
+        "id": "p8",
+        "label": "8"
+      },
+      {
+        "id": "p9",
+        "label": "9"
+      }
+    ],
+    "submazes": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "C"
+      },
+      {
+        "id": "D"
+      },
+      {
+        "id": "E"
+      },
+      {
+        "id": "F"
+      },
+      {
+        "id": "G"
+      },
+      {
+        "id": "H"
+      }
+    ],
+    "ports": [
+      {
+        "id": "port_jay_mcarthur_1_c1_enter",
+        "point": "p1",
+        "label": "("
+      },
+      {
+        "id": "port_jay_mcarthur_1_c1_exit",
+        "point": "p1",
+        "context": [
+          "A"
+        ],
+        "label": ")"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c2_pop",
+        "point": "p1",
+        "context": [
+          "A"
+        ],
+        "label": "2"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c2_push",
+        "point": "p2",
+        "label": "1"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c3_pop",
+        "point": "p1",
+        "context": [
+          "B"
+        ],
+        "label": "3"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c3_push",
+        "point": "p3",
+        "label": "1"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c4_pop",
+        "point": "p1",
+        "context": [
+          "C"
+        ],
+        "label": "4"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c4_push",
+        "point": "p4",
+        "label": "1"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c5_pop",
+        "point": "p1",
+        "context": [
+          "D"
+        ],
+        "label": "5"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c5_push",
+        "point": "p5",
+        "label": "1"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c6_pop",
+        "point": "p1",
+        "context": [
+          "E"
+        ],
+        "label": "6"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c6_push",
+        "point": "p6",
+        "label": "1"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c7_pop",
+        "point": "p1",
+        "context": [
+          "F"
+        ],
+        "label": "7"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c7_push",
+        "point": "p7",
+        "label": "1"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c8_enter",
+        "point": "p2",
+        "label": "("
+      },
+      {
+        "id": "port_jay_mcarthur_1_c8_exit",
+        "point": "p2",
+        "context": [
+          "B"
+        ],
+        "label": ")"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c9_enter",
+        "point": "p3",
+        "label": "("
+      },
+      {
+        "id": "port_jay_mcarthur_1_c9_exit",
+        "point": "p3",
+        "context": [
+          "C"
+        ],
+        "label": ")"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c10_enter",
+        "point": "p4",
+        "label": "("
+      },
+      {
+        "id": "port_jay_mcarthur_1_c10_exit",
+        "point": "p4",
+        "context": [
+          "D"
+        ],
+        "label": ")"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c11_enter",
+        "point": "p5",
+        "label": "("
+      },
+      {
+        "id": "port_jay_mcarthur_1_c11_exit",
+        "point": "p5",
+        "context": [
+          "E"
+        ],
+        "label": ")"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c12_enter",
+        "point": "p6",
+        "label": "("
+      },
+      {
+        "id": "port_jay_mcarthur_1_c12_exit",
+        "point": "p6",
+        "context": [
+          "F"
+        ],
+        "label": ")"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c13_pop",
+        "point": "p1",
+        "context": [
+          "G"
+        ],
+        "label": "8"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c13_push",
+        "point": "p8",
+        "label": "1"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c14_pop",
+        "point": "p1",
+        "context": [
+          "H"
+        ],
+        "label": "9"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c14_push",
+        "point": "p9",
+        "label": "1"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c15_enter",
+        "point": "p7",
+        "label": "("
+      },
+      {
+        "id": "port_jay_mcarthur_1_c15_exit",
+        "point": "p7",
+        "context": [
+          "G"
+        ],
+        "label": ")"
+      },
+      {
+        "id": "port_jay_mcarthur_1_c16_enter",
+        "point": "p8",
+        "label": "("
+      },
+      {
+        "id": "port_jay_mcarthur_1_c16_exit",
+        "point": "p8",
+        "context": [
+          "H"
+        ],
+        "label": ")"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "jay_mcarthur_1_c1_enter",
+        "from_port": "port_jay_mcarthur_1_c1_enter",
+        "source": "p1",
+        "target": "A.p1",
+        "input": "("
+      },
+      {
+        "id": "jay_mcarthur_1_c1_exit",
+        "from_port": "port_jay_mcarthur_1_c1_exit",
+        "source": "A.p1",
+        "target": "p1",
+        "input": ")"
+      },
+      {
+        "id": "jay_mcarthur_1_c2_pop",
+        "from_port": "port_jay_mcarthur_1_c2_pop",
+        "source": "A.p1",
+        "target": "p2",
+        "input": "2"
+      },
+      {
+        "id": "jay_mcarthur_1_c2_push",
+        "from_port": "port_jay_mcarthur_1_c2_push",
+        "source": "p2",
+        "target": "A.p1",
+        "input": "1"
+      },
+      {
+        "id": "jay_mcarthur_1_c3_pop",
+        "from_port": "port_jay_mcarthur_1_c3_pop",
+        "source": "B.p1",
+        "target": "p3",
+        "input": "3"
+      },
+      {
+        "id": "jay_mcarthur_1_c3_push",
+        "from_port": "port_jay_mcarthur_1_c3_push",
+        "source": "p3",
+        "target": "B.p1",
+        "input": "1"
+      },
+      {
+        "id": "jay_mcarthur_1_c4_pop",
+        "from_port": "port_jay_mcarthur_1_c4_pop",
+        "source": "C.p1",
+        "target": "p4",
+        "input": "4"
+      },
+      {
+        "id": "jay_mcarthur_1_c4_push",
+        "from_port": "port_jay_mcarthur_1_c4_push",
+        "source": "p4",
+        "target": "C.p1",
+        "input": "1"
+      },
+      {
+        "id": "jay_mcarthur_1_c5_pop",
+        "from_port": "port_jay_mcarthur_1_c5_pop",
+        "source": "D.p1",
+        "target": "p5",
+        "input": "5"
+      },
+      {
+        "id": "jay_mcarthur_1_c5_push",
+        "from_port": "port_jay_mcarthur_1_c5_push",
+        "source": "p5",
+        "target": "D.p1",
+        "input": "1"
+      },
+      {
+        "id": "jay_mcarthur_1_c6_pop",
+        "from_port": "port_jay_mcarthur_1_c6_pop",
+        "source": "E.p1",
+        "target": "p6",
+        "input": "6"
+      },
+      {
+        "id": "jay_mcarthur_1_c6_push",
+        "from_port": "port_jay_mcarthur_1_c6_push",
+        "source": "p6",
+        "target": "E.p1",
+        "input": "1"
+      },
+      {
+        "id": "jay_mcarthur_1_c7_pop",
+        "from_port": "port_jay_mcarthur_1_c7_pop",
+        "source": "F.p1",
+        "target": "p7",
+        "input": "7"
+      },
+      {
+        "id": "jay_mcarthur_1_c7_push",
+        "from_port": "port_jay_mcarthur_1_c7_push",
+        "source": "p7",
+        "target": "F.p1",
+        "input": "1"
+      },
+      {
+        "id": "jay_mcarthur_1_c8_enter",
+        "from_port": "port_jay_mcarthur_1_c8_enter",
+        "source": "p2",
+        "target": "B.p2",
+        "input": "("
+      },
+      {
+        "id": "jay_mcarthur_1_c8_exit",
+        "from_port": "port_jay_mcarthur_1_c8_exit",
+        "source": "B.p2",
+        "target": "p2",
+        "input": ")"
+      },
+      {
+        "id": "jay_mcarthur_1_c9_enter",
+        "from_port": "port_jay_mcarthur_1_c9_enter",
+        "source": "p3",
+        "target": "C.p3",
+        "input": "("
+      },
+      {
+        "id": "jay_mcarthur_1_c9_exit",
+        "from_port": "port_jay_mcarthur_1_c9_exit",
+        "source": "C.p3",
+        "target": "p3",
+        "input": ")"
+      },
+      {
+        "id": "jay_mcarthur_1_c10_enter",
+        "from_port": "port_jay_mcarthur_1_c10_enter",
+        "source": "p4",
+        "target": "D.p4",
+        "input": "("
+      },
+      {
+        "id": "jay_mcarthur_1_c10_exit",
+        "from_port": "port_jay_mcarthur_1_c10_exit",
+        "source": "D.p4",
+        "target": "p4",
+        "input": ")"
+      },
+      {
+        "id": "jay_mcarthur_1_c11_enter",
+        "from_port": "port_jay_mcarthur_1_c11_enter",
+        "source": "p5",
+        "target": "E.p5",
+        "input": "("
+      },
+      {
+        "id": "jay_mcarthur_1_c11_exit",
+        "from_port": "port_jay_mcarthur_1_c11_exit",
+        "source": "E.p5",
+        "target": "p5",
+        "input": ")"
+      },
+      {
+        "id": "jay_mcarthur_1_c12_enter",
+        "from_port": "port_jay_mcarthur_1_c12_enter",
+        "source": "p6",
+        "target": "F.p6",
+        "input": "("
+      },
+      {
+        "id": "jay_mcarthur_1_c12_exit",
+        "from_port": "port_jay_mcarthur_1_c12_exit",
+        "source": "F.p6",
+        "target": "p6",
+        "input": ")"
+      },
+      {
+        "id": "jay_mcarthur_1_c13_pop",
+        "from_port": "port_jay_mcarthur_1_c13_pop",
+        "source": "G.p1",
+        "target": "p8",
+        "input": "8"
+      },
+      {
+        "id": "jay_mcarthur_1_c13_push",
+        "from_port": "port_jay_mcarthur_1_c13_push",
+        "source": "p8",
+        "target": "G.p1",
+        "input": "1"
+      },
+      {
+        "id": "jay_mcarthur_1_c14_pop",
+        "from_port": "port_jay_mcarthur_1_c14_pop",
+        "source": "H.p1",
+        "target": "p9",
+        "input": "9"
+      },
+      {
+        "id": "jay_mcarthur_1_c14_push",
+        "from_port": "port_jay_mcarthur_1_c14_push",
+        "source": "p9",
+        "target": "H.p1",
+        "input": "1"
+      },
+      {
+        "id": "jay_mcarthur_1_c15_enter",
+        "from_port": "port_jay_mcarthur_1_c15_enter",
+        "source": "p7",
+        "target": "G.p7",
+        "input": "("
+      },
+      {
+        "id": "jay_mcarthur_1_c15_exit",
+        "from_port": "port_jay_mcarthur_1_c15_exit",
+        "source": "G.p7",
+        "target": "p7",
+        "input": ")"
+      },
+      {
+        "id": "jay_mcarthur_1_c16_enter",
+        "from_port": "port_jay_mcarthur_1_c16_enter",
+        "source": "p8",
+        "target": "H.p8",
+        "input": "("
+      },
+      {
+        "id": "jay_mcarthur_1_c16_exit",
+        "from_port": "port_jay_mcarthur_1_c16_exit",
+        "source": "H.p8",
+        "target": "p8",
+        "input": ")"
+      }
+    ]
+  },
+  "solutions": [
+    {
+      "format": "fmaze-solution-v0",
+      "id": "known",
+      "maze": "jay_mcarthur_1",
+      "logic": "../logic.yml",
+      "expects_goal": true,
+      "steps": [
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c11_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c6_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c12_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c6_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c11_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c7_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c15_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c7_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c11_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c6_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c12_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c6_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c11_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c13_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c16_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c13_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c11_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c6_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c12_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c6_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c11_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c7_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c15_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c7_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c11_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c6_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c12_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c6_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c11_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c5_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c10_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c4_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c9_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c3_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_enter"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_pop"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c8_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c2_push"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c1_exit"
+        },
+        {
+          "transition_id": "jay_mcarthur_1_c14_pop"
+        }
+      ]
+    }
+  ],
+  "auto_graph_layout": {
+    "algorithm": "level-bfs-v1",
+    "spacing": {
+      "x": 120.0,
+      "y": 100.0
+    },
+    "bounds": {
+      "width": 882.0,
+      "height": 150.878296
+    },
+    "points": {
+      "p1": {
+        "x": 0.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "p2": {
+        "x": -420.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "p3": {
+        "x": -300.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 1
+      },
+      "p4": {
+        "x": -180.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 2
+      },
+      "p5": {
+        "x": -60.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 3
+      },
+      "p6": {
+        "x": 60.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 4
+      },
+      "p7": {
+        "x": 180.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 5
+      },
+      "p8": {
+        "x": 300.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 6
+      },
+      "p9": {
+        "x": 420.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 7
+      }
+    },
+    "ports": {
+      "port_jay_mcarthur_1_c10_enter": {
+        "x": -152.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 2
+      },
+      "port_jay_mcarthur_1_c10_exit": {
+        "x": -194.0,
+        "y": 124.2487,
+        "level": 1,
+        "column": 2
+      },
+      "port_jay_mcarthur_1_c11_enter": {
+        "x": -32.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 3
+      },
+      "port_jay_mcarthur_1_c11_exit": {
+        "x": -74.0,
+        "y": 124.2487,
+        "level": 1,
+        "column": 3
+      },
+      "port_jay_mcarthur_1_c12_enter": {
+        "x": 88.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 4
+      },
+      "port_jay_mcarthur_1_c12_exit": {
+        "x": 46.0,
+        "y": 124.2487,
+        "level": 1,
+        "column": 4
+      },
+      "port_jay_mcarthur_1_c13_pop": {
+        "x": 28.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c13_push": {
+        "x": 328.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 6
+      },
+      "port_jay_mcarthur_1_c14_pop": {
+        "x": 22.652476,
+        "y": 16.45798,
+        "level": 0,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c14_push": {
+        "x": 448.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 7
+      },
+      "port_jay_mcarthur_1_c15_enter": {
+        "x": 208.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 5
+      },
+      "port_jay_mcarthur_1_c15_exit": {
+        "x": 166.0,
+        "y": 124.2487,
+        "level": 1,
+        "column": 5
+      },
+      "port_jay_mcarthur_1_c16_enter": {
+        "x": 286.0,
+        "y": 124.2487,
+        "level": 1,
+        "column": 6
+      },
+      "port_jay_mcarthur_1_c16_exit": {
+        "x": 286.0,
+        "y": 75.7513,
+        "level": 1,
+        "column": 6
+      },
+      "port_jay_mcarthur_1_c1_enter": {
+        "x": 8.652476,
+        "y": 26.629596,
+        "level": 0,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c1_exit": {
+        "x": -8.652476,
+        "y": 26.629596,
+        "level": 0,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c2_pop": {
+        "x": -22.652476,
+        "y": 16.45798,
+        "level": 0,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c2_push": {
+        "x": -392.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c3_pop": {
+        "x": -28.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c3_push": {
+        "x": -272.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 1
+      },
+      "port_jay_mcarthur_1_c4_pop": {
+        "x": -22.652476,
+        "y": -16.45798,
+        "level": 0,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c4_push": {
+        "x": -194.0,
+        "y": 75.7513,
+        "level": 1,
+        "column": 2
+      },
+      "port_jay_mcarthur_1_c5_pop": {
+        "x": -8.652476,
+        "y": -26.629596,
+        "level": 0,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c5_push": {
+        "x": -74.0,
+        "y": 75.7513,
+        "level": 1,
+        "column": 3
+      },
+      "port_jay_mcarthur_1_c6_pop": {
+        "x": 8.652476,
+        "y": -26.629596,
+        "level": 0,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c6_push": {
+        "x": 46.0,
+        "y": 75.7513,
+        "level": 1,
+        "column": 4
+      },
+      "port_jay_mcarthur_1_c7_pop": {
+        "x": 22.652476,
+        "y": -16.45798,
+        "level": 0,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c7_push": {
+        "x": 166.0,
+        "y": 75.7513,
+        "level": 1,
+        "column": 5
+      },
+      "port_jay_mcarthur_1_c8_enter": {
+        "x": -434.0,
+        "y": 124.2487,
+        "level": 1,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c8_exit": {
+        "x": -434.0,
+        "y": 75.7513,
+        "level": 1,
+        "column": 0
+      },
+      "port_jay_mcarthur_1_c9_enter": {
+        "x": -314.0,
+        "y": 124.2487,
+        "level": 1,
+        "column": 1
+      },
+      "port_jay_mcarthur_1_c9_exit": {
+        "x": -314.0,
+        "y": 75.7513,
+        "level": 1,
+        "column": 1
+      }
+    }
+  },
+  "provenance": {
+    "sources": [
+      {
+        "type": "package_logic",
+        "href": "logic.yml"
+      },
+      {
+        "type": "solution_record",
+        "href": "solutions/known.yml"
+      },
+      {
+        "type": "image",
+        "href": "../../../Maze_Images/Jay_McArthur_-_A_Long_Path_v6.png"
+      },
+      {
+        "type": "handwritten_logic",
+        "note": "Hand-authored Port Graph package from the existing PDA transition table."
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "format": "fmaze-browser-v0",
+  "id": "first_cantor",
+  "title": "First Cantor",
+  "primary_authoring": "reference_record",
+  "source_root": "packages/source/first_cantor",
+  "logic": {
+    "format": "fmaze-logic-v0",
+    "id": "first_cantor",
+    "strategy": "reference_record",
+    "source_model": "reference_record",
+    "modeling_status": {
+      "status": "planned",
+      "reason": "The SVG exposes labels A/B/C, outer gates 1-8, an F marker, and several colored route overlays, but it does not encode a unique start state, goal terminal, or proof-edge boundary. A faithful pda_stack graph would require choosing whether 'start: any outer gate' means multiple packages, multiple starts, or an artificial dispatcher.",
+      "next_step": "Resolve three terminal questions before executable authoring: which outer gate is the canonical start for validation; whether the blue F square is the only goal or a named interior point; and which colored overlays are physical edges versus Cantor proof support steps."
+    }
+  },
+  "modeling_status": {
+    "status": "planned",
+    "reason": "The SVG exposes labels A/B/C, outer gates 1-8, an F marker, and several colored route overlays, but it does not encode a unique start state, goal terminal, or proof-edge boundary. A faithful pda_stack graph would require choosing whether 'start: any outer gate' means multiple packages, multiple starts, or an artificial dispatcher.",
+    "next_step": "Resolve three terminal questions before executable authoring: which outer gate is the canonical start for validation; whether the blue F square is the only goal or a named interior point; and which colored overlays are physical edges versus Cantor proof support steps."
+  },
+  "provenance": {
+    "sources": [
+      {
+        "type": "image",
+        "href": "../../../Maze_Images/Siggy/First_Cantor.svg"
+      },
+      {
+        "type": "post",
+        "href": "https://freethoughtblogs.com/atrivialknot/2023/10/21/infinite-fractal-mazes/"
+      },
+      {
+        "type": "handwritten_record",
+        "note": "Hand-authored reference record after inspecting the visible boxes, route overlays, labels, and finish marker in the SVG."
+      }
+    ],
+    "notes": [
+      {
+        "The SVG has outer gates 1 through 8, submazes A, B, and C, a blue F marker, and the caption \"start": "any outer gate\"."
+      },
+      "It is not yet executable because the SVG does not state which outer gate should be the package's single canonical start, whether F is the sole goal point or a visual marker inside the graph, and how the red, orange, and purple route overlays should be divided into physical support transitions versus proof obligations."
+    ]
+  }
+}

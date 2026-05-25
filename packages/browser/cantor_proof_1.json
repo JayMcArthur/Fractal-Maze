@@ -1,0 +1,298 @@
+{
+  "format": "fmaze-browser-v0",
+  "id": "cantor_proof_1",
+  "title": "Cantor Proof Edge #1",
+  "primary_authoring": "port_graph",
+  "source_root": "packages/source/cantor_proof_1",
+  "logic": {
+    "format": "fmaze-logic-v0",
+    "id": "cantor_proof_1",
+    "strategy": "pda_stack",
+    "source_model": "port_graph",
+    "start": "p1",
+    "goals": [
+      "p4"
+    ],
+    "points": [
+      {
+        "id": "p1",
+        "label": "1"
+      },
+      {
+        "id": "p2",
+        "label": "2"
+      },
+      {
+        "id": "p3",
+        "label": "3"
+      },
+      {
+        "id": "p4",
+        "label": "4"
+      }
+    ],
+    "submazes": [
+      {
+        "id": "mA",
+        "label": "A"
+      },
+      {
+        "id": "mB",
+        "label": "B"
+      }
+    ],
+    "ports": [
+      {
+        "id": "p1_to_p2",
+        "point": "p1",
+        "label": "2"
+      },
+      {
+        "id": "p1_to_mA_p1",
+        "point": "p1",
+        "label": "A1"
+      },
+      {
+        "id": "mA_p3_to_p2",
+        "point": "p3",
+        "context": [
+          "mA"
+        ],
+        "label": "2"
+      },
+      {
+        "id": "p2_to_mB_p1",
+        "point": "p2",
+        "label": "B1"
+      },
+      {
+        "id": "mB_p3_to_p3",
+        "point": "p3",
+        "context": [
+          "mB"
+        ],
+        "label": "3"
+      },
+      {
+        "id": "p3_to_p4",
+        "point": "p3",
+        "label": "4"
+      }
+    ],
+    "transition_groups": [
+      {
+        "id": "g_p1_to_p2",
+        "direction": "one_way",
+        "forward": {
+          "id": "t_p1_to_p2",
+          "from_port": "p1_to_p2",
+          "source": "p1",
+          "target": "p2",
+          "input": "2"
+        }
+      },
+      {
+        "id": "g_p3_to_p4",
+        "direction": "one_way",
+        "forward": {
+          "id": "t_p3_to_p4",
+          "from_port": "p3_to_p4",
+          "source": "p3",
+          "target": "p4",
+          "input": "4"
+        }
+      },
+      {
+        "id": "g_p1_to_mA_p1",
+        "direction": "one_way",
+        "forward": {
+          "id": "t_p1_to_mA_p1",
+          "from_port": "p1_to_mA_p1",
+          "source": "p1",
+          "target": "mA.p1",
+          "input": "A1"
+        }
+      },
+      {
+        "id": "g_mA_p3_to_p2",
+        "direction": "one_way",
+        "forward": {
+          "id": "t_mA_p3_to_p2",
+          "from_port": "mA_p3_to_p2",
+          "source": "mA.p3",
+          "target": "p2",
+          "input": "2"
+        }
+      },
+      {
+        "id": "g_p2_to_mB_p1",
+        "direction": "one_way",
+        "forward": {
+          "id": "t_p2_to_mB_p1",
+          "from_port": "p2_to_mB_p1",
+          "source": "p2",
+          "target": "mB.p1",
+          "input": "B1"
+        }
+      },
+      {
+        "id": "g_mB_p3_to_p3",
+        "direction": "one_way",
+        "forward": {
+          "id": "t_mB_p3_to_p3",
+          "from_port": "mB_p3_to_p3",
+          "source": "mB.p3",
+          "target": "p3",
+          "input": "3"
+        }
+      }
+    ],
+    "proof_edges": [
+      {
+        "id": "pe_cantor_p2_to_p3",
+        "proof_type": "cantor_hop",
+        "status": "proved",
+        "source": "p2",
+        "target": "p3",
+        "input": "proof:p2_to_p3",
+        "enabled_by_default": false,
+        "explanation": "A simplified Cantor-hop argument establishes a logical crossing from p2 to p3 without enumerating every nested point.",
+        "proof": {
+          "method": "simplified_cantor_hop",
+          "summary": "Presuppose the same p2-to-p3 connection inside every non-empty submaze string, then prove the top-level connection.",
+          "presuppositions": [
+            {
+              "kind": "same_connection_for_all_non_empty_T",
+              "source_template": "T.p2",
+              "target_template": "T.p3"
+            }
+          ],
+          "steps": [
+            {
+              "kind": "physical",
+              "source": "p2",
+              "target": "mB.p1",
+              "reason": "Move from p2 into a B submaze."
+            },
+            {
+              "kind": "assumption",
+              "source": "mB.p1",
+              "target": "mB.p3",
+              "reason": "Use the presupposed inner connection at non-empty submaze string B."
+            },
+            {
+              "kind": "physical",
+              "source": "mB.p3",
+              "target": "p3",
+              "reason": "Exit the B submaze at p3."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "solutions": [
+    {
+      "format": "fmaze-solution-v0",
+      "id": "proof_assisted",
+      "maze": "cantor_proof_1",
+      "logic": "../logic.yml",
+      "expects_goal": true,
+      "steps": [
+        {
+          "transition_id": "t_p1_to_p2"
+        },
+        {
+          "prove_edge_id": "pe_cantor_p2_to_p3"
+        },
+        {
+          "proof_edge_id": "pe_cantor_p2_to_p3"
+        },
+        {
+          "transition_id": "t_p3_to_p4"
+        }
+      ]
+    }
+  ],
+  "auto_graph_layout": {
+    "algorithm": "level-bfs-v1",
+    "spacing": {
+      "x": 120.0,
+      "y": 100.0
+    },
+    "bounds": {
+      "width": 56.0,
+      "height": 300.0
+    },
+    "points": {
+      "p1": {
+        "x": 0.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "p2": {
+        "x": 0.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "p3": {
+        "x": 0.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 0
+      },
+      "p4": {
+        "x": 0.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 0
+      }
+    },
+    "ports": {
+      "mA_p3_to_p2": {
+        "x": 28.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 0
+      },
+      "mB_p3_to_p3": {
+        "x": -14.0,
+        "y": 224.24869999999999,
+        "level": 2,
+        "column": 0
+      },
+      "p1_to_mA_p1": {
+        "x": 28.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "p1_to_p2": {
+        "x": -28.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "p2_to_mB_p1": {
+        "x": 28.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "p3_to_p4": {
+        "x": -14.0,
+        "y": 175.75130000000001,
+        "level": 2,
+        "column": 0
+      }
+    }
+  },
+  "provenance": {
+    "notes": [
+      "Minimal package fixture for proof-assisted Port Graph execution.",
+      "The proof edge represents a Cantor-style crossing that is logical, not physical visual movement."
+    ]
+  }
+}

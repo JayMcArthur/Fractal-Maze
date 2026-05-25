@@ -1,6 +1,6 @@
 format: fmaze-package-v0
 id: skeptic_play_3
-title: Skeptic Play #3: Walls and Carpets
+title: "Skeptic Play #3: Walls and Carpets"
 primary_authoring: port_graph
 
 logic:

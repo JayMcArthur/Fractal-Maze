@@ -2,3 +2,12 @@
 /.idea
 /Fractal_Maze_to_PDA/__pycache__
 /Orelcosseron_Fractal_Maze/__pycache__
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+web/node_modules/
+web/dist/
+web/.svelte-kit/
+web/.vite/
