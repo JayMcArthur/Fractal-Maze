@@ -1,0 +1,78 @@
+{
+  "captures": [
+    {
+      "file": "inner-frame-after-desktop.png",
+      "title": "Inner Frame flat joins",
+      "width": 1440,
+      "route": "play/matthias-weber"
+    },
+    {
+      "file": "wolfram-zero-desktop.png",
+      "title": "Wolfram 0 finish",
+      "width": 1440,
+      "route": "play/draft-maze-images-mark-j-p-wolf-wolfram-0-jpg"
+    },
+    {
+      "file": "omeometo-after-desktop.png",
+      "title": "Omeometo local view",
+      "width": 1440,
+      "route": "play/koteitan-block"
+    },
+    {
+      "file": "sp1-depth-two-desktop.png",
+      "title": "Skeptic Play 1 at depth two",
+      "width": 1440,
+      "route": "play/draft-maze-images-siggy-skeptic-play-1-svg"
+    },
+    {
+      "file": "snuke-corridors-desktop.png",
+      "title": "Snuke 3 in copy L",
+      "width": 1440,
+      "route": "play/draft-maze-images-snuke-snuke-3-png"
+    },
+    {
+      "file": "koteitan-corridors-desktop.png",
+      "title": "Koteitan corridor player",
+      "width": 1440,
+      "route": "play/ports-koteitan"
+    },
+    {
+      "file": "inner-frame-after-phone.png",
+      "title": "Inner Frame flat joins",
+      "width": 390,
+      "route": "play/matthias-weber"
+    },
+    {
+      "file": "wolfram-zero-phone.png",
+      "title": "Wolfram 0 finish",
+      "width": 390,
+      "route": "play/draft-maze-images-mark-j-p-wolf-wolfram-0-jpg"
+    },
+    {
+      "file": "omeometo-after-phone.png",
+      "title": "Omeometo local view",
+      "width": 390,
+      "route": "play/koteitan-block"
+    },
+    {
+      "file": "sp1-depth-two-phone.png",
+      "title": "Skeptic Play 1 at depth two",
+      "width": 390,
+      "route": "play/draft-maze-images-siggy-skeptic-play-1-svg"
+    },
+    {
+      "file": "snuke-corridors-phone.png",
+      "title": "Snuke 3 in copy L",
+      "width": 390,
+      "route": "play/draft-maze-images-snuke-snuke-3-png"
+    },
+    {
+      "file": "koteitan-corridors-phone.png",
+      "title": "Koteitan corridor player",
+      "width": 390,
+      "route": "play/ports-koteitan"
+    }
+  ],
+  "pageErrors": [],
+  "overflow": 0
+}

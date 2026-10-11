@@ -1,0 +1,932 @@
+{
+  "players": 28,
+  "clicks": 56,
+  "pageErrors": [],
+  "scope": "Center and top-left original-X-area clicks in bound source drawings at their catalog start; arbitrary deep histories remain separate work.",
+  "checks": [
+    {
+      "id": "pda-guide-1",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            423.4507331821851,
+            509.6196786618042
+          ],
+          "bounds": [
+            10.0,
+            78.0,
+            845.0,
+            845.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            423.4507331821851,
+            509.6196786618042
+          ],
+          "bounds": [
+            10.0,
+            78.0,
+            845.0,
+            845.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "pda-guide-5",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            486.0,
+            547.0
+          ],
+          "bounds": [
+            1.0,
+            3.0,
+            604.0,
+            604.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            486.0,
+            547.0
+          ],
+          "bounds": [
+            1.0,
+            3.0,
+            604.0,
+            604.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "proof-maze-images-siggy-first-cantor-svg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            37.919,
+            90.904
+          ],
+          "bounds": [
+            12.0,
+            8.0,
+            88.0,
+            94.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            37.919,
+            90.904
+          ],
+          "bounds": [
+            12.0,
+            8.0,
+            88.0,
+            94.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "proof-maze-images-siggy-infinite-descent-svg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            30.7145,
+            26.189
+          ],
+          "bounds": [
+            22.0,
+            9.0,
+            85.0,
+            74.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            64.5,
+            44.595
+          ],
+          "bounds": [
+            22.0,
+            9.0,
+            85.0,
+            74.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "proof-maze-images-siggy-simple-cantor-maze-svg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            73.562,
+            26.8603
+          ],
+          "bounds": [
+            42.0,
+            15.0,
+            65.0,
+            95.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            73.562,
+            26.8603
+          ],
+          "bounds": [
+            42.0,
+            15.0,
+            65.0,
+            95.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-siggy-skeptic-play-1-svg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            90.3137,
+            127.24360000000001
+          ],
+          "bounds": [
+            25.0,
+            10.0,
+            131.0,
+            132.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            89.7223814211731,
+            76.78329221778428
+          ],
+          "bounds": [
+            25.0,
+            10.0,
+            131.0,
+            132.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-siggy-skeptic-play-1-steps-svg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            90.3137,
+            127.30910000000002
+          ],
+          "bounds": [
+            25.0,
+            10.0,
+            131.0,
+            132.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            89.7223814211731,
+            76.78329221778428
+          ],
+          "bounds": [
+            25.0,
+            10.0,
+            131.0,
+            132.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-geocaching-easter-13-10-png",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            175.0,
+            114.0
+          ],
+          "bounds": [
+            2.0,
+            2.0,
+            604.0,
+            604.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            175.0,
+            114.0
+          ],
+          "bounds": [
+            2.0,
+            2.0,
+            604.0,
+            604.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-snuke-snuke-3-png",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            250.0,
+            60.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            1300.0,
+            1300.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            250.0,
+            60.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            1300.0,
+            1300.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-snuke-snuke-4-png",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            225.0,
+            60.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            1500.0,
+            1300.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            225.0,
+            60.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            1500.0,
+            1300.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            243.0,
+            106.0
+          ],
+          "bounds": [
+            10.0,
+            80.0,
+            920.0,
+            920.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            243.0,
+            106.0
+          ],
+          "bounds": [
+            10.0,
+            80.0,
+            920.0,
+            920.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-luegarua-webp",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            540.0,
+            24.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            1080.0,
+            1080.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            540.0,
+            24.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            1080.0,
+            1080.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-siggy-skeptic-play-3-png",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            486.0,
+            736.0
+          ],
+          "bounds": [
+            45.0,
+            35.0,
+            725.0,
+            725.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            486.0,
+            736.0
+          ],
+          "bounds": [
+            45.0,
+            35.0,
+            725.0,
+            725.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-siggy-skeptic-play-2-jpg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            438.3333,
+            626.6667
+          ],
+          "bounds": [
+            13.0,
+            8.0,
+            928.0,
+            928.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            438.3333,
+            626.6667
+          ],
+          "bounds": [
+            13.0,
+            8.0,
+            928.0,
+            928.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            145.0,
+            314.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            552.0,
+            558.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            145.0,
+            314.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            552.0,
+            558.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            145.0,
+            314.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            552.0,
+            558.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            145.0,
+            314.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            552.0,
+            558.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            248.545,
+            518.769
+          ],
+          "bounds": [
+            85.0,
+            180.0,
+            600.0,
+            600.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            248.545,
+            518.769
+          ],
+          "bounds": [
+            85.0,
+            180.0,
+            600.0,
+            600.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            127.0,
+            92.0
+          ],
+          "bounds": [
+            40.0,
+            40.0,
+            411.0,
+            412.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            127.0,
+            92.0
+          ],
+          "bounds": [
+            40.0,
+            40.0,
+            411.0,
+            412.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            217.8122,
+            155.7074
+          ],
+          "bounds": [
+            62.726,
+            62.9836,
+            732.7001,
+            734.1252999999999
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            217.8122,
+            155.7074
+          ],
+          "bounds": [
+            62.726,
+            62.9836,
+            732.7001,
+            734.1252999999999
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-snuke-snuke-2-jpg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            800.0,
+            50.0
+          ],
+          "bounds": [
+            20.0,
+            10.0,
+            1560.0,
+            1580.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            800.0,
+            50.0
+          ],
+          "bounds": [
+            20.0,
+            10.0,
+            1560.0,
+            1580.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-snuke-snuke-1-jpg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            706.41,
+            135.36
+          ],
+          "bounds": [
+            65.0,
+            100.0,
+            1300.0,
+            1250.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            706.41,
+            135.36
+          ],
+          "bounds": [
+            65.0,
+            100.0,
+            1300.0,
+            1250.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-daedalus-1-gif",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            114.0,
+            74.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            469.0,
+            469.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            114.0,
+            74.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            469.0,
+            469.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            124.0,
+            92.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            640.0,
+            304.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            124.0,
+            92.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            640.0,
+            304.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            227.8,
+            160.5
+          ],
+          "bounds": [
+            31.0,
+            37.5,
+            861.0,
+            861.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            227.8,
+            160.5
+          ],
+          "bounds": [
+            31.0,
+            37.5,
+            861.0,
+            861.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            266.0,
+            264.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            1452.0,
+            1452.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            266.0,
+            264.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            1452.0,
+            1452.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-the-inner-frame-pdf",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            198.906,
+            278.0
+          ],
+          "bounds": [
+            178.5,
+            239.0,
+            84.0,
+            79.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            220.50000000000003,
+            278.0
+          ],
+          "bounds": [
+            178.5,
+            239.0,
+            84.0,
+            79.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-jay-mcarthur-a-long-path-v6-png",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            442.0,
+            36.0
+          ],
+          "bounds": [
+            40.0,
+            24.0,
+            780.0,
+            624.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            442.0,
+            36.0
+          ],
+          "bounds": [
+            40.0,
+            24.0,
+            780.0,
+            624.0
+          ],
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "draft-maze-images-mike-earnest-berkly-jpg",
+      "positions": [
+        {
+          "click": "center",
+          "marker": [
+            336.0,
+            223.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            915.0,
+            915.0
+          ],
+          "visible": true
+        },
+        {
+          "click": "corner-x-area",
+          "marker": [
+            336.0,
+            223.0
+          ],
+          "bounds": [
+            0.0,
+            0.0,
+            915.0,
+            915.0
+          ],
+          "visible": true
+        }
+      ]
+    }
+  ]
+}

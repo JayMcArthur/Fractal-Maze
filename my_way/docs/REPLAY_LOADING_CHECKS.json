@@ -1,0 +1,107 @@
+{
+  "executedAt": "2026-10-11T05:45:41.410996+00:00",
+  "scope": "All 74 shared solution assets, live metadata listings and selected-only loading. Does not close missing source interpretations, richer-model equivalence or the full project goal.",
+  "sourceHashes": {
+    "src/app/library/bundledReplays.ts": "68b0e6db1f0607bfb43f21a8010294b76bf625bc365a79384cc0d6a0063de770",
+    "src/ui/player/MazePlayArea.tsx": "9f568d128d55268c818b0cabb9f149809768608e925e200857dfa5c8108bec14",
+    "src/ui/replay/MazeReplayBar.tsx": "71982d8f1bbb26ce67c28e1dbe41437536046d962e9fc3674623d975e6f647fc",
+    "src/ui/player/PlayerPage.tsx": "3f2e56b59406277a0f58c1bb446ea991586f895da8ba4beab436a3364dc92b5d",
+    "src/ui/replay/ReplayPage.tsx": "0e801d3fc93102befc36d6f46f3a7cbb4d759cd2851601e8e50ef5043dfa0d8d",
+    "src/data/manifests/shared-replays.json": "47c17066f337b041ee5f94a52ae6c1c7887d790a55f6650794e996d59b6dda58",
+    "scripts/prepare-shared-replays.py": "fbff3241f5ccd4bf2ab12666ac472542b5cd9412a7202ec38ea50ba55828d4bc",
+    "scripts/prepare-catalog-solutions.py": "d024e62a0853f81ccc998e1965fab46b78d2050db4d8c6c48e9cd211b972d5b6",
+    "scripts/check-shared-replays.py": "3829a48e6623b03bb8bf72c85d8d3309c90bfb71386ceb7d370a1dfba04b3bac",
+    "e2e/shared-replay-loading.spec.ts": "06c7deac35514e9f49a69c69f00bef44b57d720dc04ddc24fbcc6970fd1d94dc"
+  },
+  "inventory": {
+    "bundles": 74,
+    "variants": 64,
+    "uniqueIds": 74,
+    "validated": 63,
+    "wire": 11,
+    "wireValidated": 11,
+    "partial": [],
+    "failures": []
+  },
+  "storage": {
+    "indexBytes": 24526,
+    "payloadBytes": 5870741,
+    "largestPayloadBytes": 2293304,
+    "beforeReplayChunkBytes": 1178827,
+    "afterReplayChunkBytes": 21553
+  },
+  "startup": [
+    {
+      "route": "",
+      "beforeDecodedJavaScript": 450376,
+      "afterDecodedJavaScript": 450584,
+      "reductionPercent": -0.05,
+      "selectedRecordingRequests": []
+    },
+    {
+      "route": "library",
+      "beforeDecodedJavaScript": 3753406,
+      "afterDecodedJavaScript": 3753756,
+      "reductionPercent": -0.01,
+      "selectedRecordingRequests": []
+    },
+    {
+      "route": "play/alice-in-wonderland",
+      "beforeDecodedJavaScript": 5001961,
+      "afterDecodedJavaScript": 3845429,
+      "reductionPercent": 23.12,
+      "selectedRecordingRequests": []
+    },
+    {
+      "route": "play/1695993784968:0.6965701909885131",
+      "beforeDecodedJavaScript": 5001961,
+      "afterDecodedJavaScript": 3845429,
+      "reductionPercent": 23.12,
+      "selectedRecordingRequests": []
+    }
+  ],
+  "verification": {
+    "unitTests": 386,
+    "unitFiles": 35,
+    "unitLog": "/tmp/fractal-lazy-replay-full-unit.log",
+    "freshCoverageTests": 106,
+    "freshCoverageLog": "/tmp/fractal-lazy-replay-regenerated-coverage-unit.log",
+    "productionBrowserWorkflows": 103,
+    "browserLog": "/tmp/fractal-lazy-replay-full-production-browser.log",
+    "productionLoadingWorkflows": 4,
+    "productionLoadingLog": "/tmp/fractal-lazy-replay-production-focused.log",
+    "devLoadingWorkflows": 4,
+    "devLoadingLog": "/tmp/fractal-lazy-replay-final-dev-browser.log",
+    "lint": "/tmp/fractal-lazy-replay-lint.log",
+    "pagesBuild": "/tmp/fractal-lazy-replay-build.log",
+    "rootBuild": "/tmp/fractal-lazy-replay-root-build.log",
+    "staticHostingChecks": 64,
+    "hostingLog": "/tmp/fractal-lazy-replay-static-hosting.log",
+    "proofGates": 32,
+    "proofReplayImports": 128,
+    "repeatedFrames": 400
+  },
+  "quality": {
+    "files": 208,
+    "maxCyclomatic": 21,
+    "maxSourceLines": 555,
+    "explicitAnyUnknown": 0,
+    "violations": [],
+    "unmeasured": [
+      "Cognitive complexity",
+      "Halstead Difficulty",
+      "Instrumented statement/branch/function/line coverage",
+      "CRAP",
+      "Mutation survival",
+      "Dead code analysis",
+      "Duplication analysis",
+      "Python script complexity"
+    ]
+  },
+  "limitations": [
+    "Local preview Resource Timing sizes are not real-user network timings or compressed deployment bytes.",
+    "Library and Play still import the full catalog and large source models.",
+    "Original wire payloads retain their own native player until physical projection is checked.",
+    "Source interpretations, missing solutions, Windischer topology, richer-model contracts and original-request completion audit remain open."
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "format": "fmaze-browser-index-v0",
+  "packages": [
+    {
+      "id": "alice_and_the_hedge_maze",
+      "title": "Alice and the Hedge Maze Derived Port Graph",
+      "strategy": "pda_stack",
+      "status": "partial",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "berkly",
+      "title": "Berkly",
+      "strategy": "reference_record",
+      "status": "reference_only",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "cantor_proof_1",
+      "title": "Cantor Proof Edge #1",
+      "strategy": "pda_stack",
+      "status": "playable",
+      "has_visual": false,
+      "has_solutions": true
+    },
+    {
+      "id": "daedalus_1",
+      "title": "Daedalus 1",
+      "strategy": "reference_record",
+      "status": "planned",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "daedalus_2",
+      "title": "Daedalus 2",
+      "strategy": "reference_record",
+      "status": "planned",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "daedalus_3",
+      "title": "Daedalus 3",
+      "strategy": "reference_record",
+      "status": "planned",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "first_cantor",
+      "title": "First Cantor",
+      "strategy": "reference_record",
+      "status": "planned",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "geocaching_easter_13_10",
+      "title": "Geocaching - Easter 13 #10",
+      "strategy": "reference_record",
+      "status": "reference_only",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "infinite_descent",
+      "title": "Infinite Descent",
+      "strategy": "reference_record",
+      "status": "partial",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "infinite_hop_1",
+      "title": "Infinite Hop #1",
+      "strategy": "pda_stack",
+      "status": "playable",
+      "has_visual": false,
+      "has_solutions": true
+    },
+    {
+      "id": "inner_frame",
+      "title": "The Inner Frame",
+      "strategy": "pda_stack",
+      "status": "playable",
+      "has_visual": false,
+      "has_solutions": true
+    },
+    {
+      "id": "jay_mcarthur_1",
+      "title": "A Long Path",
+      "strategy": "pda_stack",
+      "status": "playable",
+      "has_visual": false,
+      "has_solutions": true
+    },
+    {
+      "id": "koteitan_fractal_block_default",
+      "title": "Koteitan Fractal Block Maze Default",
+      "strategy": "coordinate_path",
+      "status": "playable",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "luegarua_recursive_fractal_maze",
+      "title": "Luegarua Recursive Fractal Maze",
+      "strategy": "reference_record",
+      "status": "reference_only",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "orelcosseron_block_maze",
+      "title": "Orelcosseron Block Maze Derived Port Graph",
+      "strategy": "pda_stack",
+      "status": "partial",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "simple_cantor_maze",
+      "title": "Simple Cantor Maze",
+      "strategy": "pda_stack",
+      "status": "playable",
+      "has_visual": false,
+      "has_solutions": true
+    },
+    {
+      "id": "skeptic_play_1",
+      "title": "Skeptic Play #1",
+      "strategy": "pda_stack",
+      "status": "playable",
+      "has_visual": true,
+      "has_solutions": true
+    },
+    {
+      "id": "skeptic_play_2_sierpinski",
+      "title": "Skeptic Play #2: Sierpinski Paths Derived Port Graph",
+      "strategy": "pda_stack",
+      "status": "partial",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "skeptic_play_3",
+      "title": "Skeptic Play #3: Walls and Carpets",
+      "strategy": "pda_stack",
+      "status": "playable",
+      "has_visual": false,
+      "has_solutions": true
+    },
+    {
+      "id": "spiral_maze_windischer",
+      "title": "Spiral Maze",
+      "strategy": "reference_record",
+      "status": "reference_only",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "tiny_repeated_tiled",
+      "title": "Tiny Repeated/Tiled Port Graph",
+      "strategy": "tiled_port_graph",
+      "status": "playable",
+      "has_visual": false,
+      "has_solutions": false
+    },
+    {
+      "id": "wolfram_0",
+      "title": "Wolfram 0 WIP Port Graph",
+      "strategy": "pda_stack",
+      "status": "partial",
+      "has_visual": false,
+      "has_solutions": true
+    },
+    {
+      "id": "wolfram_1",
+      "title": "Wolfram 1 WIP Port Graph",
+      "strategy": "pda_stack",
+      "status": "partial",
+      "has_visual": false,
+      "has_solutions": true
+    },
+    {
+      "id": "wolfram_2",
+      "title": "Wolfram #2 Normalized Port Graph",
+      "strategy": "pda_stack",
+      "status": "playable",
+      "has_visual": false,
+      "has_solutions": true
+    }
+  ]
+}

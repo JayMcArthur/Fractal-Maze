@@ -1,0 +1,43 @@
+{
+  "scope": "Cold Home resource loads and exact preview bitmap after extracting the existing square canvas owner. Library/Play payload partitioning remains open.",
+  "beforeScriptDecodedBytes": 3733756,
+  "afterScriptDecodedBytes": 450376,
+  "reductionPercent": 87.9377227649584,
+  "beforePreviewHash": "5fbb8badbdda183f3382c8164596326ace0083eff2d5e8ebd690e48265bb72d7",
+  "afterPreviewHash": "5fbb8badbdda183f3382c8164596326ace0083eff2d5e8ebd690e48265bb72d7",
+  "identicalPreview": true,
+  "checks": {
+    "affectedProductionBrowserWorkflows": 31,
+    "log": "/tmp/fractal-home-final-browser.log",
+    "staticHosting": 56,
+    "hostingLog": "/tmp/fractal-home-final-hosting.log",
+    "productionBuild": "/tmp/fractal-home-final-build.log",
+    "rootBuild": "/tmp/fractal-home-root-build.log",
+    "lint": "/tmp/fractal-home-final-lint.log"
+  },
+  "quality": {
+    "files": 208,
+    "maxCyclomatic": 21,
+    "maxSourceLines": 555,
+    "explicitAnyUnknown": 0,
+    "unmeasured": "See CODE_QUALITY_CHECKS.json"
+  },
+  "remaining": {
+    "libraryScriptDecodedBytes": 3753406,
+    "alicePlayScriptDecodedBytes": 5001961,
+    "geometricPlayScriptDecodedBytes": 5001961
+  },
+  "rawBefore": "STARTUP_LOAD_BEFORE.json",
+  "rawAfter": "STARTUP_LOAD_CHECKS.json",
+  "finalSourceKeyboardFollowOn": {
+    "browserWorkflows": 26,
+    "browserLog": "/tmp/fractal-final-surface-direction-browser.log",
+    "unitTests": 35,
+    "unitLog": "/tmp/fractal-final-surface-direction-unit.log",
+    "staticHosting": 56,
+    "hostingLog": "/tmp/fractal-final-surface-direction-hosting.log",
+    "productionBuild": "/tmp/fractal-final-surface-direction-build.log",
+    "rootBuild": "/tmp/fractal-final-surface-direction-root-build.log",
+    "lint": "/tmp/fractal-final-surface-direction-lint.log"
+  }
+}

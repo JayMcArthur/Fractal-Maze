@@ -1,0 +1,37 @@
+{
+  "files": 72,
+  "maxCyclomatic": 21,
+  "maxLines": 509,
+  "explicitAnyOrUnknown": [],
+  "unmeasured": [
+    "cognitive complexity",
+    "Halstead Difficulty",
+    "coverage",
+    "CRAP",
+    "mutation survival",
+    "full dead code",
+    "full duplication"
+  ],
+  "originalHotspots": [
+    {
+      "file": "src/core/io/adapters/orelMazeAdapter.ts",
+      "line": 17,
+      "cyclomatic": 27
+    },
+    {
+      "file": "src/core/render/canvas/CanvasRenderer.ts",
+      "line": 48,
+      "cyclomatic": 34
+    },
+    {
+      "file": "src/ui/player/PlayerPage.tsx",
+      "line": 35,
+      "cyclomatic": 42
+    },
+    {
+      "file": "src/ui/solver/SolverPage.tsx",
+      "line": 21,
+      "cyclomatic": 27
+    }
+  ]
+}

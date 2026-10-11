@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,32150,i=>{i.v({mazes:["1 - Alice in Wonderland","2 - Sierpinski","3 - Microchip","4 - Square"]})}]);

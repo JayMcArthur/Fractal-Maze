@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fractal maze project screenshots</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f5f2; color: #202522; font: 16px/1.5 system-ui, sans-serif; }
+    main { max-width: 1560px; margin: auto; padding: 28px; }
+    h1 { margin: 0 0 8px; font-size: 30px; }
+    h2 { margin: 32px 0 12px; font-size: 21px; }
+    p { margin: 0 0 12px; max-width: 1000px; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    figure { margin: 0; background: white; border: 1px solid #d4d8d4; border-radius: 6px; overflow: hidden; }
+    figure a { display: block; background: #e4e6e2; }
+    figure img { display: block; width: 100%; height: 265px; object-fit: contain; }
+    figcaption { padding: 12px 14px; font-size: 14px; }
+    figcaption strong { display: block; font-size: 16px; margin-bottom: 4px; }
+    a { color: #21584a; }
+    .details { margin-top: 24px; }
+    .details a { margin-right: 18px; display: inline-block; }
+    @media (max-width: 950px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) { main { padding: 16px; } .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Fractal maze project screenshots</h1>
+  <p>Actual local captures from October 9, 2026. Select an image to inspect it at full size. The <a href="../PROJECT_INVENTORY.md">project inventory</a> records the formats, working features, and remaining implementation tasks.</p>
+  <h2>The three Orel corridor players</h2>
+  <div class="grid">
+    <figure><a href="python-player-1.png"><img src="python-player-1.png" alt="Original Python Alice maze with compact selector, position display, and nested mazes"></a><figcaption><strong>Orel Python player</strong>Nine mazes. Circular start pads, faded gates, deeper recursive detail, and animated camera transitions.</figcaption></figure>
+    <figure><a href="orel-web-alice.png"><img src="orel-web-alice.png" alt="Orel Next.js Alice player"></a><figcaption><strong>Orel web player</strong>Four mazes. Compact web port with recursively scaled HTML tiles.</figcaption></figure>
+    <figure><a href="custom-player-desktop.png"><img src="custom-player-desktop.png" alt="Current custom Alice player with telemetry and settings panels"></a><figcaption><strong>Current custom app</strong>Nine mazes plus editor, replay, solver, and import tools. Gate drawing and camera behavior differ from the reference.</figcaption></figure>
+  </div>
+  <h2>Other maze construction and interaction models</h2>
+  <div class="grid">
+    <figure><a href="amurielagi-player.png"><img src="amurielagi-player.png" alt="Amurielagi colored geometric paths, labeled submazes, and gate move table"></a><figcaption><strong>Amurielagi player and editor</strong>Twelve supplied mazes. Colored path geometry, named gates, nested submazes, and a gate traversal table.</figcaption></figure>
+    <figure><a href="koteitan-block.png"><img src="koteitan-block.png" alt="Koteitan black and white generating pattern next to recursive expansion and search frontier"></a><figcaption><strong>Koteitan fractal block maze</strong>Pattern editing, black-cell substitution, recursive zoom, and iterative-depth search visualization.</figcaption></figure>
+    <figure><a href="koteitan-repeated.png"><img src="koteitan-repeated.png" alt="Repeated-maze directed port graph with a numbered solution across coordinate blocks"></a><figcaption><strong>Koteitan repeated maze</strong>Directed terminals on repeated coordinate blocks. Separate CLI solver and maze generator.</figcaption></figure>
+    <figure><a href="sparecycles-wolf.png"><img src="sparecycles-wolf.png" alt="Mark J. P. Wolf maze with colored wires and recursive submazes"></a><figcaption><strong>Sparecycles Wolf player</strong>Canvas wire maze with supplied solutions and partial path display.</figcaption></figure>
+    <figure><a href="collection-scaffold.png"><img src="collection-scaffold.png" alt="Unfinished collection page with empty maze selector"></a><figcaption><strong>Early collection scaffold</strong>Placeholder renderer/reset logic; a JSON-shape error prevents the collection loading.</figcaption></figure>
+    <figure><a href="custom-solver-running.png"><img src="custom-solver-running.png" alt="Current square-maze solver reporting a 566-step solution"></a><figcaption><strong>Working custom square solver</strong>BFS found a 566-step Square solution. The C++ solver, C repeated solver, and five Python PDA examples also ran successfully.</figcaption></figure>
+  </div>
+  <h2>Concrete custom-app gaps</h2>
+  <div class="grid">
+    <figure><a href="custom-koteitan-imported.png"><img src="custom-koteitan-imported.png" alt="Custom app expands the original Koteitan pattern into sparse colored islands"></a><figcaption><strong>Different block construction</strong>The same Koteitan pattern expands open cells in this renderer, while the original expands black cells.</figcaption></figure>
+    <figure><a href="custom-amurielagi-import-preview.png"><img src="custom-amurielagi-import-preview.png" alt="Amurielagi import blocked by duplicate graph node id node-1"></a><figcaption><strong>Real Amurielagi import fails</strong>The bundled export is rejected for duplicate node IDs. Path geometry and connections also need a faithful representation.</figcaption></figure>
+    <figure><a href="custom-replay.png"><img src="custom-replay.png" alt="Saved replay opens with timeline controls but no rendered maze"></a><figcaption><strong>Replay has no maze</strong>A saved two-move Alice run reopens with controls but no canvas because its maze definition is unavailable.</figcaption></figure>
+    <figure><a href="custom-player-mobile.png"><img src="custom-player-mobile.png" alt="Long mobile layout with movement controls below the first viewport"></a><figcaption><strong>Mobile controls need space</strong>At 390 by 844, movement controls begin below the initial viewport.</figcaption></figure>
+    <figure><a href="custom-editor.png"><img src="custom-editor.png" alt="Direct catalog editor route opens a blank New Maze"></a><figcaption><strong>Catalog editing is disconnected</strong>The Alice editor URL opens New Maze because editor loading only checks local projects.</figcaption></figure>
+    <figure><a href="amurielagi-editor.png"><img src="amurielagi-editor.png" alt="Amurielagi path and submaze editor"></a><figcaption><strong>Geometric editing reference</strong>Original tools model colored paths and labeled gates directly; the current grid editor models cell connectivity.</figcaption></figure>
+  </div>
+  <h2>All nine Python and custom catalog mazes</h2>
+  <p>The maze called “Block Maze” in the Orel collection still uses the corridor format. It differs from Koteitan's fractal block construction.</p>
+  <div class="details">
+    <p>Alice: <a href="python-player-1.png">Python</a><a href="custom-alice-in-wonderland.png">Custom</a></p>
+    <p>Sierpinski: <a href="python-player-2.png">Python</a><a href="custom-sierpinski.png">Custom</a></p>
+    <p>Microchip: <a href="python-player-3.png">Python</a><a href="custom-microchip.png">Custom</a></p>
+    <p>Square: <a href="python-player-4.png">Python</a><a href="custom-square.png">Custom</a></p>
+    <p>A Long Path v4: <a href="python-player-5.png">Python</a><a href="custom-a-long-path-v4.png">Custom</a></p>
+    <p>A Long Path v8: <a href="python-player-6.png">Python</a><a href="custom-a-long-path-v8.png">Custom</a></p>
+    <p>Matthias Weber: <a href="python-player-7.png">Python</a><a href="custom-matthias-weber.png">Custom</a></p>
+    <p>Carpet: <a href="python-player-8.png">Python</a><a href="custom-skeptic-play-carpet.png">Custom</a></p>
+    <p>Block Maze: <a href="python-player-9.png">Python</a><a href="custom-block-maze.png">Custom</a></p>
+    <p>More captures: <a href="custom-library.png">Custom library</a><a href="amurielagi-library.png">Amurielagi library</a><a href="orel-web-2.png">Orel web Sierpinski</a><a href="orel-web-3.png">Orel web Microchip</a><a href="orel-web-4.png">Orel web Square</a></p>
+  </div>
+</main>
+</body>
+</html>

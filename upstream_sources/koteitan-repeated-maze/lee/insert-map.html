@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>insert_map test harness</title>
+<script src="prng.js"></script>
+<script src="draw_map.js"></script>
+<script src="random_route_gen.js"></script>
+<script src="insert_map.js"></script>
+<script src="check_equivalence.js"></script>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 1.5rem; }
+  h1 { font-size: 1.25rem; }
+  h2 { font-size: 1.05rem; margin-top: 1.25rem; }
+  h3 { font-size: 0.95rem; margin: 0.8rem 0 0.3rem; }
+  .summary { font-weight: bold; padding: 0.5rem 0.8rem; margin: 0.7rem 0;
+             background: #f0f0f0; border-left: 4px solid #2e7d32; }
+  .summary.bad { border-left-color: #c62828; }
+  table { border-collapse: collapse; font-size: 0.86rem; }
+  th, td { border: 1px solid #bbb; padding: 2px 8px; text-align: left; }
+  th { background: #f3f3f3; }
+  tr.pass td { background: #e8f5e9; }
+  tr.fail td { background: #ffebee; }
+  .matrix { border-collapse: collapse; font-family: "Menlo", monospace; font-size: 0.85rem; }
+  .matrix th, .matrix td { border: 1px solid #ccc; padding: 2px 6px; text-align: center; min-width: 1.5em; }
+  .matrix td.p { background: #c8e6c9; color: #1b5e20; }
+  .matrix td.f { background: #ffcdd2; color: #b71c1c; font-weight: bold; }
+  .random-pair { display: flex; gap: 0.8rem; margin-bottom: 0.8rem; align-items: flex-start; flex-wrap: wrap; }
+  .random-pair .cell { border: 1px solid #ddd; padding: 0.4rem 0.6rem; background: #fafafa; }
+  .random-pair .cell h4 { margin: 0 0 0.3rem; font-size: 0.9rem; }
+  canvas { background: white; }
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>insert_map test harness</h1>
+<p>Implements <code>lee/test-insert_map-spec.md</code>. Sections:
+D1–D4 (324 subport × direction × subport cases, deterministic),
+D5–D7 (3 regression cases, deterministic),
+Random (N=10 iterations of 10 row + 10 col interleaved insertions — seedable).</p>
+
+<div class="controls" style="padding:0.6rem 0.8rem;background:#f0f4f8;border-radius:4px;margin-bottom:0.8rem;">
+  <label>seed <input type="number" id="in-seed" placeholder="empty = random" style="width:10rem"></label>
+  <button id="btn-run">Run (use seed)</button>
+  <button id="btn-reroll">Re-roll (new random seed)</button>
+  <span style="margin-left:1rem">used seed: <code id="used-seed">-</code></span>
+</div>
+
+<div id="summary-global" class="summary"></div>
+
+<h2>D1–D4: subport adjacency matrix (324 cases)</h2>
+<div id="d1-d4"></div>
+
+<h2>D5–D7: regression cases</h2>
+<div id="d5-d7"></div>
+
+<h2>Random insertion iterations (N=10, 20 inserts each)</h2>
+<div id="random-section"></div>
+
+<script>
+// ============================================================
+// Constants: 9 subport chars + side definitions
+// ============================================================
+const CH_CROSS = '\u253C';
+const CH_DR    = '\u250C';
+const CH_DL    = '\u2510';
+const CH_UR    = '\u2514';
+const CH_UL    = '\u2518';
+const SUBPORTS = [' ', '|', '-', CH_CROSS, CH_DR, CH_DL, CH_UR, CH_UL, 'T'];
+const CHAR_SIDES = {
+  ' ': '',
+  '-': 'LR',
+  '|': 'UD',
+  [CH_CROSS]: 'LRUD',
+  [CH_DR]:    'RD',
+  [CH_DL]:    'LD',
+  [CH_UR]:    'RU',
+  [CH_UL]:    'LU',
+};
+function hasSide(c, side, T, pos) {
+  if (c === 'T') {
+    if (!T || !pos) return false;
+    const t = T.find(t0 => t0.x === pos.x && t0.y === pos.y);
+    if (!t) return false;
+    if (side === 'L' && t.dx === -1) return true;
+    if (side === 'R' && t.dx ===  1) return true;
+    if (side === 'U' && t.dy === -1) return true;
+    if (side === 'D' && t.dy ===  1) return true;
+    return false;
+  }
+  const s = CHAR_SIDES[c] || '';
+  return s.indexOf(side) >= 0;
+}
+
+// 'T' char + orientation toward the seam for the role (subport1 or subport2, given direction)
+function tOrientationTowardSeam(role, direction) {
+  // role: 'sp1' or 'sp2'
+  // direction: 'ABOVE', 'BELOW', 'LEFT', 'RIGHT' (subport2 relative to subport1)
+  // Returns {dx, dy} pointing toward the seam between sp1 and sp2
+  if (role === 'sp1') {
+    if (direction === 'ABOVE') return { dx: 0, dy: -1 };
+    if (direction === 'BELOW') return { dx: 0, dy:  1 };
+    if (direction === 'LEFT')  return { dx: -1, dy: 0 };
+    if (direction === 'RIGHT') return { dx:  1, dy: 0 };
+  } else {
+    if (direction === 'ABOVE') return { dx: 0, dy:  1 }; // sp2 above sp1 → sp2's seam side is D
+    if (direction === 'BELOW') return { dx: 0, dy: -1 };
+    if (direction === 'LEFT')  return { dx:  1, dy: 0 };
+    if (direction === 'RIGHT') return { dx: -1, dy: 0 };
+  }
+}
+
+function emptyMap(W, H) {
+  const m = new Array(W);
+  for (let x = 0; x < W; x++) m[x] = new Array(H).fill(' ');
+  return m;
+}
+function deepCopyM(m) {
+  return m.map(col => col.slice());
+}
+function deepCopyT(T) {
+  return T.map(t => ({ x: t.x, y: t.y, dx: t.dx, dy: t.dy }));
+}
+
+// ============================================================
+// D1–D4: 9 subports × 4 directions × 9 subports = 324 cases
+// ============================================================
+function runD1toD4() {
+  // Build a 5x5 map with subport1 at (2,2) and subport2 at the neighbor
+  // dictated by direction. Insert at the seam; check newM[seamX][seamY].
+
+  const results = [];
+  let pass = 0;
+
+  for (const direction of ['ABOVE', 'BELOW', 'LEFT', 'RIGHT']) {
+    for (const sp1 of SUBPORTS) {
+      for (const sp2 of SUBPORTS) {
+        // Place sp1 at (2,2), sp2 at neighbor position.
+        const W = 5, H = 5;
+        const m = emptyMap(W, H);
+        const sp1Pos = { x: 2, y: 2 };
+        let sp2Pos, insertArgs, seamOrigPos, expectedBridgeChar, insertDir, seamSideSp1, seamSideSp2;
+
+        if (direction === 'ABOVE') {
+          sp2Pos = { x: 2, y: 1 };
+          // Insert row between them: new row y=2 (sp1 shifts down to y=3)
+          insertArgs = [2, 'row']; // k=2
+          insertDir = 'row';
+          // After insert, seam cell is at (2, 2)
+          seamOrigPos = { x: 2, y: 2 };
+          seamSideSp1 = 'U';
+          seamSideSp2 = 'D';
+          expectedBridgeChar = '|';
+        } else if (direction === 'BELOW') {
+          sp2Pos = { x: 2, y: 3 };
+          insertArgs = [3, 'row'];
+          insertDir = 'row';
+          seamOrigPos = { x: 2, y: 3 };
+          seamSideSp1 = 'D';
+          seamSideSp2 = 'U';
+          expectedBridgeChar = '|';
+        } else if (direction === 'LEFT') {
+          sp2Pos = { x: 1, y: 2 };
+          insertArgs = [2, 'col'];
+          insertDir = 'col';
+          seamOrigPos = { x: 2, y: 2 };
+          seamSideSp1 = 'L';
+          seamSideSp2 = 'R';
+          expectedBridgeChar = '-';
+        } else { // RIGHT
+          sp2Pos = { x: 3, y: 2 };
+          insertArgs = [3, 'col'];
+          insertDir = 'col';
+          seamOrigPos = { x: 3, y: 2 };
+          seamSideSp1 = 'R';
+          seamSideSp2 = 'L';
+          expectedBridgeChar = '-';
+        }
+
+        m[sp1Pos.x][sp1Pos.y] = sp1;
+        m[sp2Pos.x][sp2Pos.y] = sp2;
+
+        const T = [];
+        if (sp1 === 'T') {
+          const o = tOrientationTowardSeam('sp1', direction);
+          T.push({ x: sp1Pos.x, y: sp1Pos.y, dx: o.dx, dy: o.dy });
+        }
+        if (sp2 === 'T') {
+          const o = tOrientationTowardSeam('sp2', direction);
+          T.push({ x: sp2Pos.x, y: sp2Pos.y, dx: o.dx, dy: o.dy });
+        }
+
+        // Compute expected BEFORE insert_map mutates T in place.
+        const sp1HasSeam = hasSide(sp1, seamSideSp1, T, sp1Pos);
+        const sp2HasSeam = hasSide(sp2, seamSideSp2, T, sp2Pos);
+        const expectedSeam = (sp1HasSeam && sp2HasSeam) ? expectedBridgeChar : ' ';
+
+        // insert_map signature: insert_map(m, x, y, dir, T?)
+        let newM;
+        try {
+          if (insertDir === 'col') newM = insert_map(m, insertArgs[0], 0, 'col', T);
+          else newM = insert_map(m, 0, insertArgs[0], 'row', T);
+        } catch (e) {
+          results.push({ direction, sp1, sp2, actual: 'THROW', expected: '?', pass: false, reason: e.message });
+          continue;
+        }
+
+        // Find actual seam cell in newM.
+        // For 'col' insertion at k, seam is at newM[k][seamOrigPos.y].
+        // For 'row' insertion at k, seam is at newM[seamOrigPos.x][k].
+        let actualSeam;
+        if (insertDir === 'col') actualSeam = newM[insertArgs[0]][seamOrigPos.y];
+        else actualSeam = newM[seamOrigPos.x][insertArgs[0]];
+
+        const ok = actualSeam === expectedSeam;
+        if (ok) pass++;
+        results.push({
+          direction, sp1, sp2,
+          seamSideSp1, seamSideSp2,
+          sp1HasSeam, sp2HasSeam,
+          expected: expectedSeam, actual: actualSeam, pass: ok,
+        });
+      }
+    }
+  }
+  return { results, pass, total: results.length };
+}
+
+function renderD1D4(report) {
+  const root = document.getElementById('d1-d4');
+  const sum = document.createElement('div');
+  sum.className = 'summary' + (report.pass === report.total ? '' : ' bad');
+  sum.textContent = `D1–D4: ${report.pass}/${report.total} PASS`;
+  root.appendChild(sum);
+
+  // Build 4 9x9 matrices (one per direction).
+  const byDir = {};
+  for (const r of report.results) {
+    if (!byDir[r.direction]) byDir[r.direction] = [];
+    byDir[r.direction].push(r);
+  }
+
+  for (const dir of ['ABOVE', 'BELOW', 'LEFT', 'RIGHT']) {
+    const h3 = document.createElement('h3');
+    h3.textContent = `Direction = ${dir}  (subport1 row, subport2 col)`;
+    root.appendChild(h3);
+
+    const tbl = document.createElement('table');
+    tbl.className = 'matrix';
+    const thead = document.createElement('thead');
+    let hdr = '<tr><th>sp1\\sp2</th>' + SUBPORTS.map(c => `<th>${c === ' ' ? '·' : c}</th>`).join('') + '</tr>';
+    thead.innerHTML = hdr;
+    tbl.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    for (const sp1 of SUBPORTS) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<th>${sp1 === ' ' ? '·' : sp1}</th>` + SUBPORTS.map(sp2 => {
+        const r = byDir[dir].find(x => x.sp1 === sp1 && x.sp2 === sp2);
+        if (!r) return '<td>?</td>';
+        const cls = r.pass ? 'p' : 'f';
+        const title = `expect=${JSON.stringify(r.expected)} actual=${JSON.stringify(r.actual)}`;
+        const mark = r.pass ? '✓' : '✗';
+        return `<td class="${cls}" title="${title}">${mark}</td>`;
+      }).join('');
+      tbody.appendChild(tr);
+    }
+    tbl.appendChild(tbody);
+    root.appendChild(tbl);
+
+    // Failures detail
+    const failures = byDir[dir].filter(r => !r.pass);
+    if (failures.length) {
+      const pre = document.createElement('pre');
+      pre.style.fontSize = '0.8rem';
+      pre.style.background = '#3a1f1f';
+      pre.style.color = '#f77';
+      pre.style.padding = '0.4rem 0.6rem';
+      pre.textContent = failures.map(f =>
+        `FAIL  ${f.direction}  sp1=${JSON.stringify(f.sp1)}  sp2=${JSON.stringify(f.sp2)}  ` +
+        `expect=${JSON.stringify(f.expected)}  actual=${JSON.stringify(f.actual)}` +
+        (f.reason ? ` [${f.reason}]` : '')
+      ).join('\n');
+      root.appendChild(pre);
+    }
+  }
+}
+
+// ============================================================
+// D5–D7
+// ============================================================
+function runD5toD7() {
+  const results = [];
+
+  // D5: empty map, insert at anywhere; T coords shift but no subports.
+  {
+    const W = 5, H = 5;
+    const m = emptyMap(W, H);
+    const T = [{ x: 1, y: 1, dx: 1, dy: 0 }, { x: 3, y: 3, dx: -1, dy: 0 }];
+    const Tsnap = deepCopyT(T);
+    const newM = insert_map(m, 2, 0, 'col', T);
+    // Expect: newM[2][y] all ' '; T[0].x unchanged (1 < 2), T[1].x = 4
+    let pass = true, reason = '';
+    for (let y = 0; y < H; y++) {
+      if (newM[2][y] !== ' ') { pass = false; reason = `seam (2,${y})='${newM[2][y]}' expected ' '`; break; }
+    }
+    if (pass && (T[0].x !== 1 || T[1].x !== 4)) { pass = false; reason = `T shift wrong: ${JSON.stringify(T)}`; }
+    if (pass && !check_equivalence(Tsnap, T)) { pass = false; reason = 'check_equivalence failed'; }
+    results.push({ name: 'D5 no-subport-insert', pass, reason });
+  }
+
+  // D6: insert at terminal boundary — terminal is at (3,3) dx=1; insert col at k=4.
+  {
+    const W = 5, H = 5;
+    const m = emptyMap(W, H);
+    m[3][3] = 'T';
+    const T = [{ x: 3, y: 3, dx: 1, dy: 0 }];
+    const Tsnap = deepCopyT(T);
+    const newM = insert_map(m, 4, 0, 'col', T);
+    // T shift: x >= 4 shifts, so T stays at x=3.
+    // Seam at x=4, y=3: sp1 is T at (3,3) with dx=1, seam side sp1 = 'R' → yes; sp2 is ' ' → no. Expect ' '.
+    let pass = true, reason = '';
+    if (newM[4][3] !== ' ') { pass = false; reason = `seam='${newM[4][3]}' expected ' '`; }
+    if (pass && T[0].x !== 3) { pass = false; reason = `T.x=${T[0].x} expected 3`; }
+    if (pass && !check_equivalence(Tsnap, T)) { pass = false; reason = 'check_equivalence failed'; }
+    results.push({ name: 'D6 insert-at-terminal-boundary', pass, reason });
+  }
+
+  // D7: insert row at y=0 — all terminals shift y by +1.
+  {
+    const W = 4, H = 4;
+    const m = emptyMap(W, H);
+    const T = [{ x: 1, y: 1, dx: 0, dy: 1 }, { x: 2, y: 3, dx: 0, dy: -1 }];
+    const Tsnap = deepCopyT(T);
+    const newM = insert_map(m, 0, 0, 'row', T);
+    let pass = true, reason = '';
+    if (newM[0].length !== H + 1) { pass = false; reason = `H not +1`; }
+    if (pass && (T[0].y !== 2 || T[1].y !== 4)) { pass = false; reason = `T shift wrong: ${JSON.stringify(T)}`; }
+    if (pass && !check_equivalence(Tsnap, T)) { pass = false; reason = 'check_equivalence failed'; }
+    results.push({ name: 'D7 insert-row-at-0', pass, reason });
+  }
+
+  return results;
+}
+
+function renderD5D7(results) {
+  const root = document.getElementById('d5-d7');
+  const pass = results.filter(r => r.pass).length;
+  const sum = document.createElement('div');
+  sum.className = 'summary' + (pass === results.length ? '' : ' bad');
+  sum.textContent = `D5–D7: ${pass}/${results.length} PASS`;
+  root.appendChild(sum);
+
+  const tbl = document.createElement('table');
+  tbl.innerHTML = '<thead><tr><th>#</th><th>name</th><th>result</th><th>reason</th></tr></thead><tbody></tbody>';
+  const tbody = tbl.querySelector('tbody');
+  results.forEach((r, i) => {
+    const tr = document.createElement('tr');
+    tr.className = r.pass ? 'pass' : 'fail';
+    tr.innerHTML = `<td>${i+1}</td><td><code>${r.name}</code></td><td>${r.pass ? 'PASS' : 'FAIL'}</td><td>${r.reason || ''}</td>`;
+    tbody.appendChild(tr);
+  });
+  root.appendChild(tbl);
+}
+
+// ============================================================
+// Random: N=10 iterations, (1 row + 1 col) × 10 interleaved.
+// ============================================================
+
+// BFS reachability test on subport matrix.
+function reachable(m, T, sIdx, eIdx) {
+  const s = T[sIdx], e = T[eIdx];
+  const W = m.length, H = m[0].length;
+  const seen = new Set();
+  const key = (x, y) => x + ',' + y;
+  const queue = [[s.x, s.y]];
+  seen.add(key(s.x, s.y));
+  while (queue.length) {
+    const [x, y] = queue.shift();
+    if (x === e.x && y === e.y) return true;
+    const c = m[x][y];
+    const sides = (c === 'T')
+      ? (() => {
+        const t = T.find(t0 => t0.x === x && t0.y === y);
+        if (!t) return '';
+        return (t.dx === -1 ? 'L' : t.dx === 1 ? 'R' : t.dy === -1 ? 'U' : t.dy === 1 ? 'D' : '');
+      })()
+      : (CHAR_SIDES[c] || '');
+    const neighborsTry = [
+      { side: 'L', nx: x-1, ny: y, fromSide: 'R' },
+      { side: 'R', nx: x+1, ny: y, fromSide: 'L' },
+      { side: 'U', nx: x, ny: y-1, fromSide: 'D' },
+      { side: 'D', nx: x, ny: y+1, fromSide: 'U' },
+    ];
+    for (const n of neighborsTry) {
+      if (sides.indexOf(n.side) < 0) continue;
+      if (n.nx < 0 || n.nx >= W || n.ny < 0 || n.ny >= H) continue;
+      const k = key(n.nx, n.ny);
+      if (seen.has(k)) continue;
+      const nc = m[n.nx][n.ny];
+      const nsides = (nc === 'T')
+        ? (() => {
+          const t = T.find(t0 => t0.x === n.nx && t0.y === n.ny);
+          if (!t) return '';
+          return (t.dx === -1 ? 'L' : t.dx === 1 ? 'R' : t.dy === -1 ? 'U' : t.dy === 1 ? 'D' : '');
+        })()
+        : (CHAR_SIDES[nc] || '');
+      if (nsides.indexOf(n.fromSide) < 0) continue;
+      seen.add(k);
+      queue.push([n.nx, n.ny]);
+    }
+  }
+  return false;
+}
+
+function genSingleRoute(W, H, rng) {
+  // Use random_route_gen with N=1 until we succeed.
+  for (let tries = 0; tries < 50; tries++) {
+    const r = random_route_gen(W, H, 1, rng);
+    if (r.P.length === 1) return r;
+  }
+  return null;
+}
+
+function runRandomIterations(N, rng) {
+  const pairs = [];
+  const W = 10, H = 10;
+  for (let iter = 0; iter < N; iter++) {
+    const gen = genSingleRoute(W, H, rng);
+    if (!gen) { pairs.push({ iter, error: 'could not generate route' }); continue; }
+    const m0 = deepCopyM(gen.m);
+    const Tin = deepCopyT(gen.T);
+
+    // Current state
+    let m = deepCopyM(m0);
+    const T = deepCopyT(Tin);
+
+    const ops = [];
+    let succeeded = true;
+    let errMsg = '';
+
+    try {
+      for (let step = 0; step < 10; step++) {
+        // 1 row insert between s and t (T[0] and T[1])
+        const ylo = Math.min(T[0].y, T[1].y);
+        const yhi = Math.max(T[0].y, T[1].y);
+        let yr;
+        if (ylo === yhi) yr = ylo + 1;
+        else yr = Math.floor(rng() * (yhi - ylo + 1)) + ylo;
+        m = insert_map(m, 0, yr, 'row', T);
+        ops.push({ k: yr, dir: 'row' });
+
+        // 1 col insert
+        const xlo = Math.min(T[0].x, T[1].x);
+        const xhi = Math.max(T[0].x, T[1].x);
+        let xr;
+        if (xlo === xhi) xr = xlo + 1;
+        else xr = Math.floor(rng() * (xhi - xlo + 1)) + xlo;
+        m = insert_map(m, xr, 0, 'col', T);
+        ops.push({ k: xr, dir: 'col' });
+      }
+    } catch (e) {
+      succeeded = false;
+      errMsg = 'insert_map threw: ' + e.message;
+    }
+
+    // E1 equivalence
+    const eq = check_equivalence_detailed(Tin, T);
+    // E2 reachable
+    const reach = succeeded && reachable(m, T, 0, 1);
+    // E3 dx/dy preserved (already covered by check_equivalence)
+    const dirsOk = Tin.every((t, i) => t.dx === T[i].dx && t.dy === T[i].dy);
+    // E4 size
+    const wOK = m.length === m0.length + 10;
+    const hOK = m[0].length === m0[0].length + 10;
+
+    const pass = succeeded && eq.ok && reach && dirsOk && wOK && hOK;
+    pairs.push({ iter, m0, Tin, m, T, P: gen.P, ops, pass,
+      eq: eq.ok, eqReason: eq.ok ? '' : eq.reason,
+      reach, dirsOk, wOK, hOK, errMsg });
+  }
+  return pairs;
+}
+
+function renderRandom(pairs) {
+  const root = document.getElementById('random-section');
+  const pass = pairs.filter(p => p.pass).length;
+  const sum = document.createElement('div');
+  sum.className = 'summary' + (pass === pairs.length ? '' : ' bad');
+  sum.textContent = `Random iterations: ${pass}/${pairs.length} PASS`;
+  root.appendChild(sum);
+
+  // Summary table
+  const tbl = document.createElement('table');
+  tbl.innerHTML = '<thead><tr><th>iter</th><th>W0 x H0 → W x H</th><th>eq</th><th>reach</th><th>dir</th><th>sizeOK</th><th>result</th></tr></thead><tbody></tbody>';
+  const tbody = tbl.querySelector('tbody');
+  pairs.forEach(p => {
+    const tr = document.createElement('tr');
+    tr.className = p.pass ? 'pass' : 'fail';
+    if (p.error) {
+      tr.innerHTML = `<td>${p.iter+1}</td><td colspan=5>ERROR: ${p.error}</td><td>FAIL</td>`;
+    } else {
+      tr.innerHTML = `<td>${p.iter+1}</td>
+        <td>${p.m0.length}x${p.m0[0].length} → ${p.m.length}x${p.m[0].length}</td>
+        <td>${p.eq ? 'OK' : p.eqReason}</td>
+        <td>${p.reach ? 'OK' : 'NG'}</td>
+        <td>${p.dirsOk ? 'OK' : 'NG'}</td>
+        <td>${p.wOK && p.hOK ? 'OK' : (`W${p.wOK?'OK':'NG'}/H${p.hOK?'OK':'NG'}`)}</td>
+        <td>${p.pass ? 'PASS' : 'FAIL'}${p.errMsg ? ' ('+p.errMsg+')' : ''}</td>`;
+    }
+    tbody.appendChild(tr);
+  });
+  root.appendChild(tbl);
+
+  // All 10 before/after pairs
+  pairs.forEach(p => {
+    if (p.error) return;
+    const row = document.createElement('div');
+    row.className = 'random-pair';
+
+    const before = document.createElement('div');
+    before.className = 'cell';
+    before.innerHTML = `<h4>Iter ${p.iter+1}: BEFORE (W=${p.m0.length}, H=${p.m0[0].length})</h4>`;
+    const cvB = document.createElement('canvas');
+    before.appendChild(cvB);
+    row.appendChild(before);
+
+    const after = document.createElement('div');
+    after.className = 'cell';
+    after.innerHTML = `<h4>AFTER (W=${p.m.length}, H=${p.m[0].length}) — ${p.pass ? 'PASS' : 'FAIL'}</h4>`;
+    const cvA = document.createElement('canvas');
+    after.appendChild(cvA);
+    row.appendChild(after);
+
+    root.appendChild(row);
+
+    // Draw after DOM is attached
+    draw_map(p.m0.length, p.m0[0].length, p.Tin, p.m0, { canvas: cvB, cellSize: 22, padding: 6, P: p.P });
+    draw_map(p.m.length, p.m[0].length, p.T, p.m, { canvas: cvA, cellSize: 22, padding: 6, P: p.P });
+  });
+}
+
+// ============================================================
+// Main
+// ============================================================
+function resolveSeed(forceReroll) {
+  const box = document.getElementById('in-seed');
+  let seed;
+  if (!forceReroll && box.value.trim() !== '') {
+    seed = parseInt(box.value, 10) | 0;
+  } else {
+    seed = (Math.random() * 0x100000000) >>> 0;
+    box.value = seed;
+  }
+  document.getElementById('used-seed').textContent = seed;
+  return seed;
+}
+
+function runAll(forceReroll) {
+  // Clear previous output
+  document.getElementById('d1-d4').innerHTML = '';
+  document.getElementById('d5-d7').innerHTML = '';
+  document.getElementById('random-section').innerHTML = '';
+
+  const seed = resolveSeed(forceReroll === true);
+  const rng = mulberry32(seed);
+
+  const d1d4 = runD1toD4();
+  renderD1D4(d1d4);
+
+  const d5d7 = runD5toD7();
+  renderD5D7(d5d7);
+
+  const randomPairs = runRandomIterations(10, rng);
+  renderRandom(randomPairs);
+
+  const d5d7Pass = d5d7.filter(r => r.pass).length;
+  const randomPass = randomPairs.filter(p => p.pass).length;
+  const totalPass = d1d4.pass + d5d7Pass + randomPass;
+  const totalAll = d1d4.total + d5d7.length + randomPairs.length;
+  const g = document.getElementById('summary-global');
+  g.className = 'summary' + (totalPass === totalAll ? '' : ' bad');
+  g.textContent = `TOTAL: ${totalPass}/${totalAll} PASS  `
+    + `(D1–D4: ${d1d4.pass}/${d1d4.total}, D5–D7: ${d5d7Pass}/${d5d7.length}, Random: ${randomPass}/${randomPairs.length}) `
+    + `[seed=${seed}]`;
+}
+
+document.getElementById('btn-run').addEventListener('click', function () { runAll(false); });
+document.getElementById('btn-reroll').addEventListener('click', function () { runAll(true); });
+
+runAll(true);
+</script>
+</body>
+</html>

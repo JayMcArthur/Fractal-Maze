@@ -1,0 +1,216 @@
+{
+  "executedAt": "2026-10-11T01:11:13.437Z",
+  "unit": {
+    "command": "npm test",
+    "files": 32,
+    "passed": 283
+  },
+  "browser": {
+    "command": "PLAYWRIGHT_BASE_URL=http://127.0.0.1:5176/Fractal-Maze/ npm run test:browser",
+    "passed": 78,
+    "production": true
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "warning": "Large catalog, artwork and bundled replay chunks"
+  },
+  "lint": {
+    "command": "npm run lint",
+    "passed": true,
+    "files": [
+      {
+        "file": "src/app/library/portPlayDocument.ts",
+        "maxCyclomatic": 16,
+        "sourceLines": 43,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/pathMaze/balancedEndpoints.ts",
+        "maxCyclomatic": 5,
+        "sourceLines": 46,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/pathMaze/balancedSearch.ts",
+        "maxCyclomatic": 18,
+        "sourceLines": 96,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/pathMaze/copyAddress.ts",
+        "maxCyclomatic": 3,
+        "sourceLines": 6,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/pathMaze/exportPDA.ts",
+        "maxCyclomatic": 2,
+        "sourceLines": 52,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/pathMaze/traversal.ts",
+        "maxCyclomatic": 11,
+        "sourceLines": 151,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/pathMaze/validation.ts",
+        "maxCyclomatic": 21,
+        "sourceLines": 156,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/play/pathGeometry.ts",
+        "maxCyclomatic": 15,
+        "sourceLines": 34,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/play/pathMovement.ts",
+        "maxCyclomatic": 9,
+        "sourceLines": 52,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/play/pathSession.ts",
+        "maxCyclomatic": 10,
+        "sourceLines": 150,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/play/portPDA.ts",
+        "maxCyclomatic": 11,
+        "sourceLines": 128,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/render/svg/BlockArtwork.tsx",
+        "maxCyclomatic": 4,
+        "sourceLines": 71,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/replay/nativeReplay.ts",
+        "maxCyclomatic": 15,
+        "sourceLines": 140,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/replay/portReplaySession.ts",
+        "maxCyclomatic": 3,
+        "sourceLines": 27,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/components/MazeCanvas.tsx",
+        "maxCyclomatic": 16,
+        "sourceLines": 196,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/player/FormatPlayer.tsx",
+        "maxCyclomatic": 11,
+        "sourceLines": 119,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/replay/ReplayPlayback.tsx",
+        "maxCyclomatic": 21,
+        "sourceLines": 329,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/solver/PDASolvePanel.tsx",
+        "maxCyclomatic": 10,
+        "sourceLines": 260,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/workbench/PathLocationMap.tsx",
+        "maxCyclomatic": 11,
+        "sourceLines": 40,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/workbench/PathMazeDrawing.tsx",
+        "maxCyclomatic": 12,
+        "sourceLines": 85,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/workbench/PathPlayer.tsx",
+        "maxCyclomatic": 15,
+        "sourceLines": 132,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/workbench/SourceRouteDrawing.tsx",
+        "maxCyclomatic": 10,
+        "sourceLines": 147,
+        "explicitAnyUnknown": 0
+      }
+    ],
+    "maxAllowedCyclomatic": 21
+  },
+  "portContracts": {
+    "bundled": [
+      "ports-koteitan",
+      "ports-snuke_no3",
+      "ports-snuke_no4"
+    ],
+    "bundledReachableDepth": 4,
+    "importedExhaustiveContexts": 248,
+    "importedDepth": 4,
+    "includes": [
+      "mutable root identity",
+      "root exit prohibited",
+      "directed exits",
+      "same-port and same-symbol replacement",
+      "fromBlock checked only on exits",
+      "negative fromBlock exit remains disabled",
+      "old native replay import/export",
+      "compound solver and human replay",
+      "exact nonempty endpoint stacks and shortest original witness"
+    ]
+  },
+  "rendering": {
+    "maze": "ports-koteitan",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "beforeBoardNodes": 7023,
+    "afterBoardNodes": 261,
+    "pixelDifferences": 0,
+    "method": "Playwright board screenshots compared with Pillow ImageChops"
+  },
+  "unmeasured": [
+    "cognitive complexity",
+    "Halstead difficulty",
+    "instrumented statements/branches/functions/lines coverage",
+    "CRAP",
+    "mutation testing",
+    "complete dead-code analysis",
+    "complete duplication analysis"
+  ],
+  "remaining": [
+    "unbounded Omeometo play",
+    "unresolved image conversions",
+    "missing solutions and proof construction",
+    "every-family visual/movement/replay audit",
+    "security/performance and static-host final pass"
+  ],
+  "screenshots": {
+    "gallery": "screenshots/port-pda/index.html",
+    "captures": 4,
+    "widths": [
+      1440,
+      390
+    ],
+    "pageErrors": 0,
+    "horizontalOverflow": 0,
+    "solutionAtDrawnFinish": true
+  }
+}

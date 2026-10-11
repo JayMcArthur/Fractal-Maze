@@ -1,0 +1,97 @@
+{
+  "scope": "Canonical physical PDA/block cutover for all twelve imported FRACTAL-MAZE.v2 templates and both catalog originals; exact declared source memberships, not certification of original author intent.",
+  "sourceHash": "c72e5ebc5543baa73482f700451067abc4d68b87331ec3c338a34d7a279e302e",
+  "sourceFiles": [
+    "src/core/play/geometricPDA.ts",
+    "src/core/play/geometricArtwork.ts",
+    "src/core/replay/geometricReplaySession.ts",
+    "src/app/library/geometricPlayDocument.ts",
+    "src/ui/player/FormatPlayer.tsx",
+    "src/ui/solver/SolverPage.tsx",
+    "src/ui/workbench/WorkbenchPage.tsx",
+    "src/ui/replay/ReplayPlayback.tsx",
+    "src/ui/replay/PathReplay.tsx",
+    "src/core/play/pathMovement.ts",
+    "src/core/play/sourceWalking.ts",
+    "src/core/pathMaze/traversal.ts",
+    "src/ui/workbench/PathRouteControls.tsx",
+    "src/ui/workbench/SourceRouteDrawing.tsx",
+    "src/core/render/svg/GeometricRenderer.tsx",
+    "src/test/geometricPDA.test.ts",
+    "e2e/geometric-pda.spec.ts",
+    "scripts/prepare-catalog-solutions.py",
+    "src/data/mazes/catalog-solutions.json",
+    "src/data/manifests/solution-coverage.json",
+    "src/ui/workbench/SourceRouteCanvas.tsx"
+  ],
+  "templates": 12,
+  "catalogOriginals": 2,
+  "nativeLegalMoveChecks": 24442,
+  "contexts": "Surface, each immediate child, and one two-level context for each final child symbol. Each legal native gate action maps to the same canonical state and a connected physical crossing.",
+  "floorGeometry": "Each original corridor bitmap equals the cell set covered by its orthogonal floor traces. No resampling, incidental point-order links or invented inter-corridor joins.",
+  "behavior": "The new player permits immediate physical reversal; the old arrival-gate exclusion remains only in archived-record validation. Detours trim at the same address/path/point, and explicit surface finishes remain a separate physical action.",
+  "unit": {
+    "fullTests": 312,
+    "files": 35,
+    "log": "/tmp/fractal-geometric-final-full-unit.log",
+    "focusedTests": 54,
+    "focusedLog": "/tmp/fractal-geometric-final-unit.log"
+  },
+  "browser": {
+    "fullWorkflows": 99,
+    "log": "/tmp/fractal-geometric-final-full-browser.log",
+    "affectedAfterLabelAndFoldoutPolish": 35,
+    "affectedLog": "/tmp/fractal-geometric-final-browser.log",
+    "production": true
+  },
+  "hosting": {
+    "checks": 56,
+    "mounts": [
+      "/Fractal-Maze/",
+      "/"
+    ],
+    "workers": [
+      "block substitution BFS",
+      "geometric balanced PDA"
+    ],
+    "log": "/tmp/fractal-geometric-final-hosting.log"
+  },
+  "quality": {
+    "files": 207,
+    "maxCyclomatic": 21,
+    "maxSourceLines": 555,
+    "explicitAnyUnknown": 0,
+    "violations": [],
+    "details": "CODE_QUALITY_CHECKS.json"
+  },
+  "builds": [
+    "Pages production",
+    "root production"
+  ],
+  "captures": [
+    "screenshots/geometric-pda/tsat-build-desktop.png",
+    "screenshots/geometric-pda/tsat-solver-replay.png",
+    "screenshots/geometric-pda/noke-child-phone.png"
+  ],
+  "visualReview": "All three refreshed captures inspected; final replay dot checked at exact source finish (27.5, 66.5), large crossing menu collapsed beside arrows, no page overflow in phone workflow.",
+  "solutionProducer": "Production compiler/balanced search regenerate original native gate fixtures and validate each action against that archived format. The geometric-only run preserves all other fixtures and coverage records.",
+  "nokeLieu": "No finite route in the current corridor/surface-finish model without a depth cutoff. Independent closed-relation review agrees; undocumented source intent remains open.",
+  "remaining": [
+    "Five other source/register examples lack verified solutions; Block Maze and Noke have negative finite-model evidence rather than fabricated solutions.",
+    "Windischer remains unbound and v6 image mapping deferred.",
+    "Richer-model representation, catalog/Library/Play loading and complete original-request audit remain open."
+  ],
+  "checkpoint": "Geometric cutover verification precedes the separate Home renderer/startup refinement; latter checks are recorded in STARTUP_LOAD_CHECKS.json and its follow-on report.",
+  "followOn": "Home renderer/startup changes are verified separately. Final keyboard review restricts the special finish direction to surface-symbol exits; ordinary copy exits always point outward, even when their destination path also contains a surface finish. Regression and source/browser checks are recorded in the final follow-on fields.",
+  "finalKeyboardFollowOn": {
+    "unitTests": 35,
+    "unitLog": "/tmp/fractal-final-surface-direction-unit.log",
+    "productionBrowserWorkflows": 26,
+    "browserLog": "/tmp/fractal-final-surface-direction-browser.log",
+    "build": "/tmp/fractal-final-surface-direction-build.log",
+    "rootBuild": "/tmp/fractal-final-surface-direction-root-build.log",
+    "lint": "/tmp/fractal-final-surface-direction-lint.log",
+    "staticHosting": 56,
+    "hostingLog": "/tmp/fractal-final-surface-direction-hosting.log"
+  }
+}

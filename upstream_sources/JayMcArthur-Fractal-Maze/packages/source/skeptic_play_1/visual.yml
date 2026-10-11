@@ -1,0 +1,408 @@
+format: fmaze-visual-v0
+maze: skeptic_play_1
+logic: logic.yml
+default_view: clean_vector
+
+assets:
+  - id: clean_svg
+    href: ../../../Maze_Images/Siggy/Skeptic_Play_1.svg
+    media_type: image/svg+xml
+    role: playable
+  - id: source_jpg
+    href: ../../../Maze_Images/Siggy/Skeptic_Play_1.jpg
+    media_type: image/jpeg
+    role: source_reference
+
+views:
+  - id: clean_vector
+    kind: authored_vector
+    asset: clean_svg
+    default: true
+    coordinate_space:
+      kind: svg_viewbox
+      view_box: [0, 0, 210, 297]
+  - id: source_scan
+    kind: image_overlay
+    asset: source_jpg
+
+anchors:
+  - id: p1_anchor
+    logical_object: p1
+    view: clean_vector
+    element: "#path5981-2"
+    label: "1"
+  - id: p2_anchor
+    logical_object: p2
+    view: clean_vector
+    element: "#path5981"
+    label: "2"
+  - id: p3_anchor
+    logical_object: p3
+    view: clean_vector
+    element: "#path11030-5-9"
+    label: "3"
+  - id: p4_anchor
+    logical_object: p4
+    view: clean_vector
+    element: "#path16283-3-7"
+    label: "4"
+  - id: p5_anchor
+    logical_object: p5
+    view: clean_vector
+    element: "#path16283-8"
+    label: "5"
+  - id: p6_anchor
+    logical_object: p6
+    view: clean_vector
+    element: "#path1999-9"
+    label: "6"
+
+activation_points:
+  - id: p1_to_A_p2_endpoint
+    transition_id: t_p1_to_A_p2
+    port_id: p1_to_A_p2
+    view: clean_vector
+    element: "#path5981-2"
+    label: "2"
+  - id: A_p2_to_p1_endpoint
+    transition_id: t_A_p2_to_p1
+    port_id: A_p2_to_p1
+    view: clean_vector
+    element: "#path5981"
+    label: "1"
+  - id: p1_to_B_p3_endpoint
+    transition_id: t_p1_to_B_p3
+    port_id: p1_to_B_p3
+    view: clean_vector
+    element: "#path5981-2"
+    label: "3"
+  - id: B_p3_to_p1_endpoint
+    transition_id: t_B_p3_to_p1
+    port_id: B_p3_to_p1
+    view: clean_vector
+    element: "#path11030-5-9"
+    label: "1"
+  - id: A_p1_to_p4_endpoint
+    transition_id: t_A_p1_to_p4
+    port_id: A_p1_to_p4
+    view: clean_vector
+    element: "#path5981-2"
+    label: "4"
+  - id: p4_to_A_p1_endpoint
+    transition_id: t_p4_to_A_p1
+    port_id: p4_to_A_p1
+    view: clean_vector
+    element: "#path16283-3-7"
+    label: "1"
+  - id: B_p1_to_p5_endpoint
+    transition_id: t_B_p1_to_p5
+    port_id: B_p1_to_p5
+    view: clean_vector
+    element: "#path5981-2"
+    label: "5"
+  - id: p5_to_B_p1_endpoint
+    transition_id: t_p5_to_B_p1
+    port_id: p5_to_B_p1
+    view: clean_vector
+    element: "#path16283-8"
+    label: "1"
+  - id: B_p2_to_p4_endpoint
+    transition_id: t_B_p2_to_p4
+    port_id: B_p2_to_p4
+    view: clean_vector
+    element: "#path5981"
+    label: "4"
+  - id: p4_to_B_p2_endpoint
+    transition_id: t_p4_to_B_p2
+    port_id: p4_to_B_p2
+    view: clean_vector
+    element: "#path16283-3-7"
+    label: "2"
+  - id: p2_to_A_p5_endpoint
+    transition_id: t_p2_to_A_p5
+    port_id: p2_to_A_p5
+    view: clean_vector
+    element: "#path5981"
+    label: "5"
+  - id: A_p5_to_p2_endpoint
+    transition_id: t_A_p5_to_p2
+    port_id: A_p5_to_p2
+    view: clean_vector
+    element: "#path16283-8"
+    label: "2"
+  - id: A_p2_to_p6_endpoint
+    transition_id: t_A_p2_to_p6
+    port_id: A_p2_to_p6
+    view: clean_vector
+    element: "#path5981"
+    label: "6"
+  - id: p6_to_A_p2_endpoint
+    transition_id: t_p6_to_A_p2
+    port_id: p6_to_A_p2
+    view: clean_vector
+    element: "#path1999-9"
+    label: "2"
+  - id: p3_to_B_p4_endpoint
+    transition_id: t_p3_to_B_p4
+    port_id: p3_to_B_p4
+    view: clean_vector
+    element: "#path11030-5-9"
+    label: "4"
+  - id: B_p4_to_p3_endpoint
+    transition_id: t_B_p4_to_p3
+    port_id: B_p4_to_p3
+    view: clean_vector
+    element: "#path16283-3-7"
+    label: "3"
+  - id: p6_to_B_p6_endpoint
+    transition_id: t_p6_to_B_p6
+    port_id: p6_to_B_p6
+    view: clean_vector
+    element: "#path1999-9"
+    label: "("
+  - id: B_p6_to_p6_endpoint
+    transition_id: t_B_p6_to_p6
+    port_id: B_p6_to_p6
+    view: clean_vector
+    element: "#path1999-9"
+    label: ")"
+
+route_segments:
+  - id: seg_p1_to_A_p2_main
+    view: clean_vector
+    element: "#path10741-7"
+  - id: seg_A_p2_to_p1_main
+    view: clean_vector
+    element: "#path10741-7"
+  - id: seg_p1_to_B_p3_main
+    view: clean_vector
+    element: "#path11030-5-9"
+  - id: seg_B_p3_to_p1_main
+    view: clean_vector
+    element: "#path11030-5-9"
+  - id: seg_A_p1_to_p4_main
+    view: clean_vector
+    element: "#path15254-0-0"
+  - id: seg_p4_to_A_p1_main
+    view: clean_vector
+    element: "#path15254-0-0"
+  - id: seg_B_p1_to_p5_main
+    view: clean_vector
+    element: "#path16283-8"
+  - id: seg_p5_to_B_p1_main
+    view: clean_vector
+    element: "#path16283-8"
+  - id: seg_B_p2_to_p4_main
+    view: clean_vector
+    element: "#path16283-3-7"
+  - id: seg_p4_to_B_p2_main
+    view: clean_vector
+    element: "#path16283-3-7"
+  - id: seg_p2_to_A_p5_main
+    view: clean_vector
+    element: "#path18157-6"
+  - id: seg_A_p5_to_p2_main
+    view: clean_vector
+    element: "#path18157-6"
+  - id: seg_A_p2_to_p6_main
+    view: clean_vector
+    element: "#path1999-9"
+  - id: seg_p6_to_A_p2_main
+    view: clean_vector
+    element: "#path1999-9"
+  - id: seg_p3_to_B_p4_main
+    view: clean_vector
+    element: "#path15254-2"
+  - id: seg_B_p4_to_p3_main
+    view: clean_vector
+    element: "#path15254-2"
+  - id: seg_p6_to_B_p6_main
+    view: clean_vector
+    element: "#path5822-4"
+  - id: seg_B_p6_to_p6_main
+    view: clean_vector
+    element: "#path5822-4"
+
+routes:
+  - id: route_p1_to_A_p2
+    transition_id: t_p1_to_A_p2
+    segments:
+      - seg_p1_to_A_p2_main
+  - id: route_A_p2_to_p1
+    transition_id: t_A_p2_to_p1
+    segments:
+      - seg_A_p2_to_p1_main
+  - id: route_p1_to_B_p3
+    transition_id: t_p1_to_B_p3
+    segments:
+      - seg_p1_to_B_p3_main
+  - id: route_B_p3_to_p1
+    transition_id: t_B_p3_to_p1
+    segments:
+      - seg_B_p3_to_p1_main
+  - id: route_A_p1_to_p4
+    transition_id: t_A_p1_to_p4
+    segments:
+      - seg_A_p1_to_p4_main
+  - id: route_p4_to_A_p1
+    transition_id: t_p4_to_A_p1
+    segments:
+      - seg_p4_to_A_p1_main
+  - id: route_B_p1_to_p5
+    transition_id: t_B_p1_to_p5
+    segments:
+      - seg_B_p1_to_p5_main
+  - id: route_p5_to_B_p1
+    transition_id: t_p5_to_B_p1
+    segments:
+      - seg_p5_to_B_p1_main
+  - id: route_B_p2_to_p4
+    transition_id: t_B_p2_to_p4
+    segments:
+      - seg_B_p2_to_p4_main
+  - id: route_p4_to_B_p2
+    transition_id: t_p4_to_B_p2
+    segments:
+      - seg_p4_to_B_p2_main
+  - id: route_p2_to_A_p5
+    transition_id: t_p2_to_A_p5
+    segments:
+      - seg_p2_to_A_p5_main
+  - id: route_A_p5_to_p2
+    transition_id: t_A_p5_to_p2
+    segments:
+      - seg_A_p5_to_p2_main
+  - id: route_A_p2_to_p6
+    transition_id: t_A_p2_to_p6
+    segments:
+      - seg_A_p2_to_p6_main
+  - id: route_p6_to_A_p2
+    transition_id: t_p6_to_A_p2
+    segments:
+      - seg_p6_to_A_p2_main
+  - id: route_p3_to_B_p4
+    transition_id: t_p3_to_B_p4
+    segments:
+      - seg_p3_to_B_p4_main
+  - id: route_B_p4_to_p3
+    transition_id: t_B_p4_to_p3
+    segments:
+      - seg_B_p4_to_p3_main
+  - id: route_p6_to_B_p6
+    transition_id: t_p6_to_B_p6
+    segments:
+      - seg_p6_to_B_p6_main
+  - id: route_B_p6_to_p6
+    transition_id: t_B_p6_to_p6
+    segments:
+      - seg_B_p6_to_p6_main
+
+action_presentations:
+  - id: action_p1_to_A_p2
+    transition_id: t_p1_to_A_p2
+    label: "2 / enter A"
+    order: 10
+    activation_point: p1_to_A_p2_endpoint
+    route: route_p1_to_A_p2
+  - id: action_A_p2_to_p1
+    transition_id: t_A_p2_to_p1
+    label: "1 / exit A"
+    order: 20
+    activation_point: A_p2_to_p1_endpoint
+    route: route_A_p2_to_p1
+  - id: action_p1_to_B_p3
+    transition_id: t_p1_to_B_p3
+    label: "3 / enter B"
+    order: 30
+    activation_point: p1_to_B_p3_endpoint
+    route: route_p1_to_B_p3
+  - id: action_B_p3_to_p1
+    transition_id: t_B_p3_to_p1
+    label: "1 / exit B"
+    order: 40
+    activation_point: B_p3_to_p1_endpoint
+    route: route_B_p3_to_p1
+  - id: action_A_p1_to_p4
+    transition_id: t_A_p1_to_p4
+    label: "4 / exit A"
+    order: 50
+    activation_point: A_p1_to_p4_endpoint
+    route: route_A_p1_to_p4
+  - id: action_p4_to_A_p1
+    transition_id: t_p4_to_A_p1
+    label: "1 / enter A"
+    order: 60
+    activation_point: p4_to_A_p1_endpoint
+    route: route_p4_to_A_p1
+  - id: action_B_p1_to_p5
+    transition_id: t_B_p1_to_p5
+    label: "5 / exit B"
+    order: 70
+    activation_point: B_p1_to_p5_endpoint
+    route: route_B_p1_to_p5
+  - id: action_p5_to_B_p1
+    transition_id: t_p5_to_B_p1
+    label: "1 / enter B"
+    order: 80
+    activation_point: p5_to_B_p1_endpoint
+    route: route_p5_to_B_p1
+  - id: action_B_p2_to_p4
+    transition_id: t_B_p2_to_p4
+    label: "4 / exit B"
+    order: 90
+    activation_point: B_p2_to_p4_endpoint
+    route: route_B_p2_to_p4
+  - id: action_p4_to_B_p2
+    transition_id: t_p4_to_B_p2
+    label: "2 / enter B"
+    order: 100
+    activation_point: p4_to_B_p2_endpoint
+    route: route_p4_to_B_p2
+  - id: action_p2_to_A_p5
+    transition_id: t_p2_to_A_p5
+    label: "5 / enter A"
+    order: 110
+    activation_point: p2_to_A_p5_endpoint
+    route: route_p2_to_A_p5
+  - id: action_A_p5_to_p2
+    transition_id: t_A_p5_to_p2
+    label: "2 / exit A"
+    order: 120
+    activation_point: A_p5_to_p2_endpoint
+    route: route_A_p5_to_p2
+  - id: action_A_p2_to_p6
+    transition_id: t_A_p2_to_p6
+    label: "6 / exit A"
+    order: 130
+    activation_point: A_p2_to_p6_endpoint
+    route: route_A_p2_to_p6
+  - id: action_p6_to_A_p2
+    transition_id: t_p6_to_A_p2
+    label: "2 / enter A"
+    order: 140
+    activation_point: p6_to_A_p2_endpoint
+    route: route_p6_to_A_p2
+  - id: action_p3_to_B_p4
+    transition_id: t_p3_to_B_p4
+    label: "4 / enter B"
+    order: 150
+    activation_point: p3_to_B_p4_endpoint
+    route: route_p3_to_B_p4
+  - id: action_B_p4_to_p3
+    transition_id: t_B_p4_to_p3
+    label: "3 / exit B"
+    order: 160
+    activation_point: B_p4_to_p3_endpoint
+    route: route_B_p4_to_p3
+  - id: action_p6_to_B_p6
+    transition_id: t_p6_to_B_p6
+    label: "( / enter B"
+    order: 170
+    activation_point: p6_to_B_p6_endpoint
+    route: route_p6_to_B_p6
+  - id: action_B_p6_to_p6
+    transition_id: t_B_p6_to_p6
+    label: ") / exit B"
+    order: 180
+    activation_point: B_p6_to_p6_endpoint
+    route: route_B_p6_to_p6

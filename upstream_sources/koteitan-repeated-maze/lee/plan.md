@@ -1,0 +1,172 @@
+# lee のアルゴリズム
+## 分担
+- claude code の標準機能である agent team を用いて manager, coder, tester で分担作業を行う。
+  - manager(userと話しているエージェント):ユーザーとの会話、とcoder tester の使役
+  - coder:コードの実装
+  - tester:テスト設計と実施
+- ルール
+  - エージェント同士の会話は英語で行う。
+  - managerは基本的にはコーディングをしてはいけない。コードを見るのはOK.
+  - tester はコード修正をしてはいけない。
+  - タスクが終了しても team を解散してはいけない
+## ディレクトリ構成
+lee/
+lee/index.html ... 描画テスト用
+lee/style.css  ... 描画テスト用
+lee/*.js ......... コード
+## タスク
+### 概要
+map上の2点間の経路を求めるタスク。
+### タスク定義
+#### 入力
+- 初期map幅: Win
+- 初期map高さ: Hin
+- 初期map: m_in[x][y]:
+  - x: mapの x 座標
+  - y: mapの y 座標
+  - 値: subport参照
+    - '#': 障害物
+- 初期terminal: Tin[i].{x,y,dx,dy}:
+  - i: terminalのインデックス
+  - x: terminalのx座標
+  - y: terminalのy座標
+  - dx: terminalの出発方向のx成分. -1, 0, or 1.
+  - dy: terminalの出発方向のy成分. -1, 0, or 1.
+    - |dx|+|dy|=1でなければならない。
+    - このterminalに繋がれたsubportは(x+dx, y+dy)に配置される。
+- port: P[i].{s,e}:
+  - i: portのインデックス
+  - s: portの開始terminalのインデックス
+  - e: portの終了terminalのインデックス
+#### 出力
+- 拡大map幅: W
+- 拡大map高さ: H
+- 拡大terminal: T[i].{x,y}:
+  - i: terminalのインデックス
+  - x: terminalのx座標
+  - y: terminalのy座標
+- subport: m[x][y]:
+  - x: subportの x 座標
+  - y: subportの y 座標
+  - 値:
+    - ' ': subportなし
+    - '|': 垂直方向のsubport
+    - '-': 水平方向のsubport
+    - '┼': 交差するsubport
+    - '┌': 右下方向のsubport
+    - '┐': 左下方向のsubport
+    - '└': 右上方向のsubport
+    - '┘': 左上方向のsubport
+    - 'T': terminal (terminalの場所はsubportを置けないことを示す)
+#### タスク要件
+- 拡大mapの等価性
+  - あらゆる2つの拡大terminal i,j  において、Tin[i].x と Tin[j].x の大小関係は、T[i].x と T[j].x の大小関係と同じでなければならない。
+  - あらゆる2つの拡大terminal i,j  において、Tin[i].y と Tin[j].y の大小関係は、T[i].y と T[j].y の大小関係と同じでなければならない。
+    - ここで、大小関係とは、小さい、等しい、大きいのいずれかを指す。
+  - Tin[i].dx == T[i].dx
+  - Tin[i].dy == T[i].dy
+- port到達性
+  - あらゆるport P[i] に対して、terminal P[i].s からterminal P[i].e までsubportを通じて到達できること。
+- port出発方向
+  - あらゆるterminalは(x+dx, y+dy)に綱がるsubportを持つこと。
+### Lee のアルゴリズム
+- port P[i] の接続を下記の方法で試みる。
+  - 列挿入状態 stt を 'none' に初期化する。
+  - 1. terminal s=T[P[i].s] から e=T[P[i].e] BFSを開始する。
+    - BFS 通過ルール: 通過後のマスがsubport 7種類 ('|', '-', '┼', '┌', '┐', '└', '┘') のいずれかで表せる場合のみ通過可能。
+      - 空マスを直進または曲がって通過: OK ('|', '-', '┌', '┐', '└', '┘')
+      - 既存 '-' を縦方向に通過: '┼' (OK)
+      - 既存 '|' を横方向に通過: '┼' (OK)
+      - 既存 L字 ('┌','┐','└','┘') に重ねる: NG
+      - 既存 '┼' に重ねる: NG
+      - 既存 '-' を横方向に通過: NG (同方向重複)
+      - 既存 '|' を縦方向に通過: NG (同方向重複)
+      - 障害物 '#' やterminal 'T': NG
+    - e に到達したら、subportを配置して、次のport P[i+1] の接続に移る。
+    - e に到達できず探索が終了したら、2. に進む。
+  - 2. 下記のいずれかの行列の挿入を行う:
+    -      if s.x==e.x の場合: s.x+s.dx に空列を挿入し、stt を 'col' に更新する
+    - else if s.y==e.y の場合: s.y+s.dy に空行を挿入し、stt を 'row' に更新する
+    - else if stt=='none' の場合: s.x+s.dx に空列を挿入し、stt を 'col' に更新する
+    - else if stt=='col'  の場合: e.y+e.dy に空行を挿入し、stt を 'both' に更新する
+    - else if stt=='row'  の場合: e.x+e.dx に空列を挿入し、stt を 'both' に更新する
+    - else if stt=='both' の場合: 到達しないはずだが、error='unsolved' として終了する
+  - 1. に戻る。
+
+## 実装手順
+- draw_map
+  - map描画関数 draw_map(W, H, T, m) を実装する。
+    - W: map幅
+    - H: map高さ
+    - T: terminalのリスト
+    - m: subportの行列
+    - 動作:
+      - canvas にmapを描画する。mapの中には下記を書く。
+        - map は border=gray, fill=white
+        - terminal は fill=blue, text=black, 出発方向を矢印で描く。
+          - text にはportのインデックスとs,eの別を書く。例えば '1s', '2e' など。
+        - subport は fill=white, line=black, lineで線を書く。
+- random_route_gen(W,H,N)
+  - WxHの白紙のmapを作って、そこにランダムなポートを下記の手順でNターン生成トライする:
+    - 空いているマスを選んでそこを始点terminal s とする。
+    - s からランダムに上下左右のいずれかの方向にsubportを伸ばしていく。
+    - 伸ばしていく途中で、伸ばせなくなったらそこを終点terminal e とする。
+    - ターミナルではないsubportを２つ以上生成されていない場合はそのターンは失敗として元に戻す。
+    - s と e の出発方向は、接続されたsubportの方向に設定する。
+- draw_map と random_route_gen を用いたテスト実施(tester)
+  - random_route_gen を用いて適当な map と port を生成する。
+  - draw_map を用いて、生成した map と port を lee/random-route-gen.html の canvasに描画する。
+  - textareaに参考用に monospace フォントで mapを描画する。
+  - ユーザーがcanvas と textarea を見て一致性を確認する。
+- check_equivalence
+  - 拡大等価性確認関数 result=check_equivalence(Tin, T) を実装する。
+    - Tin: 初期terminalのリスト
+    - T: 拡大terminalのリスト
+    - result: 等価であれば True, そうでなければ False
+    - アルゴリズム:
+      - 全てのterminalの x座標と y 座標の大小関係を確認。
+      - 全てのterminalの出発方向を確認。
+  - tester によるテスト設計
+  - ユーザーによるテスト仕様の確認
+  - testerによるテスト実施とcoderによる修正
+- insert_map
+  - 行列挿入操作 result=insert_map(m, x, y, dir) を実装する。
+    - m: 行列
+    - x: 挿入位置の x 座標
+    - y: 挿入位置の y 座標
+    - dir: 'col' または 'row'
+    - result[x][y]: 挿入後の行列
+    - 要件:
+      - subportが繋がっているところに挿入した場合、挿入した行/列に適切なsubportを配置する。
+  - テスト仕様
+    - ランダム挿入テスト
+      - 空の適当な大きさのmapを作り、１つのterminalを開始terminalsと決める。
+      - そこからランダムにsubportを伸ばしていき、行き詰ったらそこを終了terminaltとする。
+      - sとtの出発方向を接続されたsubportの方向に設定する。
+      - そこから、sとtの間にランダムに10行の挿入と10列の挿入を行う。
+      - check_equivalenceを用いて、挿入前と挿入後のterminalの等価性を確認する。
+  - testerによるテスト手順の設計
+  - ユーザーによるテスト手順の確認(規模など)
+  - testerによるテスト実施とcoderによる修正
+  - lee/insert-map.html で順次テスト結果を描画。
+- lee_algorithm
+  - Lee のアルゴリズム lee_algorithm(Tin, P) を実装する。
+    - Tin: 初期terminalのリスト
+    - P: portのリスト
+    - result: (W, H, T, m) のタプル
+      - W: 拡大map幅
+      - H: 拡大map高さ
+      - T: 拡大terminalのリスト
+      - m: subportの行列
+  - テスト設計
+    - mapを適当な大きさで初期化する。
+    - 複数のportをランダムに生成する。ただし、始点terminals と終点terminaleの出発方向は、下記を満たすように作る。
+      - s と e の x 座標が同じ場合、s と e の出発方向は同じでなければならない。
+      - s と e の y 座標が同じ場合、s と e の出発方向は同じでなければならない。
+      - s と e の x 座標も y 座標も異なる場合、s の出発方向は e のある方向を向いていなければならない。
+      - s と e の x 座標も y 座標も異なる場合、e の出発方向は s のある方向を向いていなければならない。
+    - lee_algorithm を実行して出力を得る。
+    - 拡大terminalの等価性を check_equivalence を用いて確認する。
+    - port到達性を確認する。
+  - testerによるテスト実施とcoderによる修正
+  - lee/lee_algorithm.html で順次テスト結果を描画。

@@ -1,0 +1,257 @@
+{
+  "executedAt": "2026-10-11T03:51:05.028975+00:00",
+  "start": {
+    "path": "10",
+    "address": []
+  },
+  "goal": {
+    "path": "1",
+    "address": []
+  },
+  "states": 11,
+  "connections": 58,
+  "copies": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J"
+  ],
+  "sourceTrophy": [
+    {
+      "row": 0,
+      "col": 2,
+      "color": "#42665c"
+    }
+  ],
+  "singleCopyLinks": true,
+  "contexts": 11,
+  "movementChecks": 766,
+  "failures": [],
+  "closedRelation": true,
+  "goalExcluded": true,
+  "balancedWitness": null,
+  "relation": {
+    "1": [
+      "1",
+      "3"
+    ],
+    "2": [
+      "2",
+      "4",
+      "5",
+      "6",
+      "9",
+      "11"
+    ],
+    "3": [
+      "1",
+      "3"
+    ],
+    "4": [
+      "2",
+      "4",
+      "5",
+      "6",
+      "9",
+      "11"
+    ],
+    "5": [
+      "2",
+      "4",
+      "5",
+      "6",
+      "9",
+      "11"
+    ],
+    "6": [
+      "2",
+      "4",
+      "5",
+      "6",
+      "9",
+      "11"
+    ],
+    "7": [
+      "7",
+      "8",
+      "10"
+    ],
+    "8": [
+      "7",
+      "8",
+      "10"
+    ],
+    "9": [
+      "2",
+      "4",
+      "5",
+      "6",
+      "9",
+      "11"
+    ],
+    "10": [
+      "7",
+      "8",
+      "10"
+    ],
+    "11": [
+      "2",
+      "4",
+      "5",
+      "6",
+      "9",
+      "11"
+    ]
+  },
+  "componentCells": {
+    "1": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "2": [
+      [
+        0,
+        5
+      ]
+    ],
+    "3": [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "4": [
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "5": [
+      [
+        1,
+        6
+      ]
+    ],
+    "6": [
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        4,
+        1
+      ]
+    ],
+    "7": [
+      [
+        3,
+        6
+      ]
+    ],
+    "8": [
+      [
+        4,
+        5
+      ]
+    ],
+    "9": [
+      [
+        5,
+        0
+      ]
+    ],
+    "10": [
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "11": [
+      [
+        6,
+        1
+      ]
+    ]
+  },
+  "scope": "Current Block Maze finite-only corridor rules. Native legal moves in root and every child-copy context checked against the PDA; closed balanced relation excludes the surface trophy. Does not assert any additional infinite-hop rule or author intent."
+}

@@ -1,0 +1,111 @@
+{
+  "executedAt": "2026-10-11T02:14:42.700569+00:00",
+  "unit": {
+    "command": "npm test",
+    "files": 33,
+    "passed": 291
+  },
+  "productionBrowser": {
+    "passed": 85,
+    "baseURL": "http://127.0.0.1:5176/Fractal-Maze/"
+  },
+  "lint": {
+    "passed": true,
+    "scope": [
+      {
+        "file": "src/app/library/pathCatalog.ts",
+        "maxCyclomatic": 10,
+        "sourceLines": 310,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/workbench/SavedProofEvidence.tsx",
+        "maxCyclomatic": 9,
+        "sourceLines": 43,
+        "explicitAnyUnknown": 0
+      }
+    ],
+    "maxAllowedCyclomatic": 21
+  },
+  "build": {
+    "passed": true,
+    "base": "/Fractal-Maze/",
+    "warning": "Large catalog/artwork/replay chunks"
+  },
+  "replays": {
+    "bundles": 72,
+    "variants": 62,
+    "uniqueIds": 72,
+    "validated": 61,
+    "wire": 11,
+    "partial": [],
+    "failures": []
+  },
+  "proofs": [
+    {
+      "maze": "First Cantor",
+      "start": "6",
+      "finish": "12",
+      "jointConnections": 4,
+      "manualUiConstruction": "passed",
+      "originalNotebookEmpty": true
+    },
+    {
+      "maze": "Infinite Descent",
+      "start": "1",
+      "finish": "6",
+      "sharedSetup": [
+        "A",
+        "A"
+      ],
+      "period": [
+        "B",
+        "C",
+        "A",
+        "C",
+        "B",
+        "C",
+        "B",
+        "C",
+        "A",
+        "C",
+        "B",
+        "C"
+      ],
+      "manualBothTrailsConstruction": "passed",
+      "originalNotebookEmpty": true
+    }
+  ],
+  "sourceCorrection": {
+    "maze": "Infinite Descent",
+    "stroke": "path9107",
+    "newGate": "Enter A to path 6",
+    "directedConnections": 22,
+    "cause": "Visible stroke excluded because the SVG path had a fill"
+  },
+  "screenshots": {
+    "production": true,
+    "captures": 10,
+    "pageErrors": 0,
+    "horizontalOverflow": 0,
+    "gallery": "screenshots/cantor-solution/index.html"
+  },
+  "unmeasured": [
+    "Cognitive complexity",
+    "Halstead Difficulty",
+    "Instrumented statement/branch/function/line coverage",
+    "CRAP",
+    "Mutation survival",
+    "Dead code analysis",
+    "Duplication analysis",
+    "Python generator complexity"
+  ],
+  "remaining": [
+    "Nine other variants have no verified shared solution",
+    "Three Windischer representations remain unbound",
+    "Source conversions remain WIP",
+    "Matched-descent certificate search is not a complete decision procedure for every infinite proof",
+    "Ordinary-PDA equivalence for coordinate/register/graph/tour models is unresolved",
+    "Every-family visual/movement/replay and final security/performance/static-host audits remain open"
+  ]
+}

@@ -1,0 +1,450 @@
+[
+  {
+    "family": "Alice and the Fractal Hedge Maze",
+    "models": [
+      {
+        "id": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+        "label": "Source drawing",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 14,
+        "copies": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "edges": 52
+      },
+      {
+        "id": "alice-in-wonderland",
+        "label": "Block remake",
+        "sharedWith": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+        "type": "pathPushdown",
+        "paths": 14,
+        "copies": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "edges": 52
+      }
+    ]
+  },
+  {
+    "family": "Skeptic Play 1",
+    "models": [
+      {
+        "id": "draft-maze-images-siggy-skeptic-play-1-svg",
+        "label": "Original SVG",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 6,
+        "copies": [
+          "A",
+          "B"
+        ],
+        "edges": 18
+      },
+      {
+        "id": "draft-maze-images-siggy-skeptic-play-1-steps-svg",
+        "label": "Annotated SVG",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 6,
+        "copies": [
+          "A",
+          "B"
+        ],
+        "edges": 18
+      },
+      {
+        "id": "pda-guide-1",
+        "label": "Photograph / guide PDA",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 6,
+        "copies": [
+          "A",
+          "B"
+        ],
+        "edges": 18
+      },
+      {
+        "id": "square",
+        "label": "Block remake",
+        "sharedWith": "draft-maze-images-siggy-skeptic-play-1-svg",
+        "type": "pathPushdown",
+        "paths": 6,
+        "copies": [
+          "A",
+          "B"
+        ],
+        "edges": 18
+      }
+    ]
+  },
+  {
+    "family": "Sierpinski Paths",
+    "models": [
+      {
+        "id": "draft-maze-images-siggy-skeptic-play-2-jpg",
+        "label": "Source drawing",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 7,
+        "copies": [
+          "A",
+          "B"
+        ],
+        "edges": 20
+      }
+    ]
+  },
+  {
+    "family": "Sierpinski corridor maze",
+    "models": [
+      {
+        "id": "sierpinski",
+        "label": "Block remake",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 9,
+        "copies": [
+          "UP",
+          "RIGHT"
+        ],
+        "edges": 20
+      }
+    ]
+  },
+  {
+    "family": "Skeptic Play 3",
+    "models": [
+      {
+        "id": "pda-guide-5",
+        "label": "Revised drawing / guide PDA",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 13,
+        "copies": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "edges": 46
+      },
+      {
+        "id": "draft-maze-images-siggy-skeptic-play-3-png",
+        "label": "Original carpet",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 14,
+        "copies": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "edges": 48
+      },
+      {
+        "id": "skeptic-play-carpet",
+        "label": "Block remake",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 13,
+        "copies": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "edges": 46
+      }
+    ]
+  },
+  {
+    "family": "Wolfram 0",
+    "models": [
+      {
+        "id": "draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+        "label": "Source drawing",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 7,
+        "copies": [
+          "A"
+        ],
+        "edges": 16
+      }
+    ]
+  },
+  {
+    "family": "Wolfram 1",
+    "models": [
+      {
+        "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+        "label": "Source drawing",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 39,
+        "copies": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "edges": 138
+      }
+    ]
+  },
+  {
+    "family": "Wolfram 2",
+    "models": [
+      {
+        "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+        "label": "Photograph",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 18,
+        "copies": [
+          "A",
+          "B",
+          "C"
+        ],
+        "edges": 54
+      },
+      {
+        "id": "microchip",
+        "label": "Block remake",
+        "sharedWith": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+        "type": "pathPushdown",
+        "paths": 18,
+        "copies": [
+          "A",
+          "B",
+          "C"
+        ],
+        "edges": 54
+      }
+    ]
+  },
+  {
+    "family": "Geocaching \u2014 Easter 13-#10",
+    "models": [
+      {
+        "id": "draft-maze-images-geocaching-easter-13-10-png",
+        "label": "Source drawing",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 12,
+        "copies": [
+          "A",
+          "B",
+          "C"
+        ],
+        "edges": 50
+      }
+    ]
+  },
+  {
+    "family": "Luegaria",
+    "models": [
+      {
+        "id": "draft-maze-images-luegarua-webp",
+        "label": "Source drawing",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 3,
+        "copies": [
+          "A"
+        ],
+        "edges": 8
+      }
+    ]
+  },
+  {
+    "family": "Daedalus 2 / Numb3rs",
+    "models": [
+      {
+        "id": "draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+        "label": "Source drawing",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 15,
+        "copies": [
+          "A",
+          "B",
+          "C"
+        ],
+        "edges": 54
+      }
+    ]
+  },
+  {
+    "family": "Inner Frame",
+    "models": [
+      {
+        "id": "draft-maze-images-the-inner-frame-pdf",
+        "label": "Source room diagrams",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 6,
+        "copies": [
+          "A"
+        ],
+        "edges": 16
+      },
+      {
+        "id": "matthias-weber",
+        "label": "Block remake",
+        "sharedWith": "draft-maze-images-the-inner-frame-pdf",
+        "type": "pathPushdown",
+        "paths": 6,
+        "copies": [
+          "A"
+        ],
+        "edges": 16
+      },
+      {
+        "id": "pda-guide-4",
+        "label": "Guide PDA",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 5,
+        "copies": [
+          "A"
+        ],
+        "edges": 16
+      }
+    ]
+  },
+  {
+    "family": "A Long Path",
+    "models": [
+      {
+        "id": "a-long-path-v4",
+        "label": "v4 block layout",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 5,
+        "copies": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "edges": 16
+      },
+      {
+        "id": "draft-maze-images-jay-mcarthur-a-long-path-v6-png",
+        "label": "v6 hexagon (WIP)",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 7,
+        "copies": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "edges": 24
+      },
+      {
+        "id": "a-long-path-v8",
+        "label": "v8 block layout",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 9,
+        "copies": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "edges": 32
+      },
+      {
+        "id": "pda-guide-6",
+        "label": "Six-copy PDA",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 7,
+        "copies": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "edges": 24
+      },
+      {
+        "id": "pda-guide-3",
+        "label": "Eight-copy PDA",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 9,
+        "copies": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "edges": 32
+      }
+    ]
+  },
+  {
+    "family": "Snuke 3",
+    "models": [
+      {
+        "id": "draft-maze-images-snuke-snuke-3-png",
+        "label": "Source drawing",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 3,
+        "copies": [
+          "L",
+          "R"
+        ],
+        "edges": 9
+      }
+    ]
+  },
+  {
+    "family": "Snuke 4",
+    "models": [
+      {
+        "id": "draft-maze-images-snuke-snuke-4-png",
+        "label": "Source drawing",
+        "sharedWith": null,
+        "type": "pathPushdown",
+        "paths": 4,
+        "copies": [
+          "L",
+          "R"
+        ],
+        "edges": 12
+      }
+    ]
+  }
+]

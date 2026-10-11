@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>test-check_equivalence</title>
+<script src="prng.js"></script>
+<script src="check_equivalence.js"></script>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 1.5rem; }
+  h1 { font-size: 1.25rem; }
+  h2 { font-size: 1.05rem; margin-top: 1.25rem; }
+  table { border-collapse: collapse; margin: 0.5rem 0; font-size: 0.86rem; }
+  th, td { border: 1px solid #bbb; padding: 2px 8px; }
+  th { background: #f3f3f3; text-align: left; }
+  tr.pass td { background: #e8f5e9; }
+  tr.fail td { background: #ffebee; }
+  .summary { font-weight: bold; padding: 0.5rem 0.8rem; margin: 1rem 0;
+             background: #f0f0f0; border-left: 4px solid #2e7d32; }
+  .summary.bad { border-left-color: #c62828; }
+  code { font-family: "Menlo", "Consolas", monospace; font-size: 0.85rem; }
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>check_equivalence test harness</h1>
+<div class="controls" style="padding:0.6rem 0.8rem;background:#f0f4f8;border-radius:4px;margin-bottom:0.8rem;">
+  <label>seed <input type="number" id="in-seed" placeholder="empty = random" style="width:10rem"></label>
+  <button id="btn-run">Run (use seed)</button>
+  <button id="btn-reroll">Re-roll (new random seed)</button>
+  <span style="margin-left:1rem">used seed: <code id="used-seed">-</code></span>
+</div>
+<div id="summary-global"></div>
+<div id="output"></div>
+
+<script>
+// ------------------------------------------------------------
+// Inline utility: shift_terminals(T, k, dir)
+// Represents an "insert empty row/col at k" operation on terminal coords only.
+// ------------------------------------------------------------
+function shift_terminals(T, k, dir) {
+  for (const t of T) {
+    if (dir === 'col' && t.x >= k) t.x += 1;
+    if (dir === 'row' && t.y >= k) t.y += 1;
+  }
+}
+
+function deepCopyT(T) {
+  return T.map(t => ({ x: t.x, y: t.y, dx: t.dx, dy: t.dy }));
+}
+
+function terminalToStr(T) {
+  return '[' + T.map(t => `{x:${t.x},y:${t.y},dx:${t.dx},dy:${t.dy}}`).join(', ') + ']';
+}
+
+// ------------------------------------------------------------
+// Test case registry
+// ------------------------------------------------------------
+const cases = [];
+
+function addCase(section, name, Tin, T, expected, note) {
+  cases.push({ section, name, Tin, T, expected, note: note || '' });
+}
+
+// ------------------------------------------------------------
+// A. Deterministic positives
+// ------------------------------------------------------------
+addCase('A', 'empty', [], [], true);
+addCase('A', 'single-identical',
+  [{x:0,y:0,dx:1,dy:0}],
+  [{x:0,y:0,dx:1,dy:0}], true);
+addCase('A', 'identity-three',
+  [{x:0,y:0,dx:1,dy:0},{x:1,y:2,dx:-1,dy:0},{x:3,y:4,dx:0,dy:1}],
+  [{x:0,y:0,dx:1,dy:0},{x:1,y:2,dx:-1,dy:0},{x:3,y:4,dx:0,dy:1}], true);
+addCase('A', 'translation',
+  [{x:0,y:0,dx:1,dy:0},{x:2,y:1,dx:-1,dy:0}],
+  [{x:5,y:3,dx:1,dy:0},{x:7,y:4,dx:-1,dy:0}], true);
+addCase('A', 'uniform-scale',
+  [{x:0,y:0,dx:1,dy:0},{x:1,y:1,dx:-1,dy:0},{x:2,y:2,dx:0,dy:1}],
+  [{x:0,y:0,dx:1,dy:0},{x:2,y:2,dx:-1,dy:0},{x:4,y:4,dx:0,dy:1}], true);
+addCase('A', 'non-uniform-stretch',
+  [{x:0,y:0,dx:1,dy:0},{x:1,y:0,dx:-1,dy:0},{x:2,y:0,dx:0,dy:1}],
+  [{x:0,y:0,dx:1,dy:0},{x:3,y:0,dx:-1,dy:0},{x:7,y:0,dx:0,dy:1}], true);
+addCase('A', 'preserved-ties',
+  [{x:1,y:0,dx:0,dy:1},{x:1,y:3,dx:0,dy:-1}],
+  [{x:5,y:0,dx:0,dy:1},{x:5,y:7,dx:0,dy:-1}], true);
+addCase('A', 'preserved-ties-y',
+  [{x:0,y:2,dx:1,dy:0},{x:3,y:2,dx:-1,dy:0}],
+  [{x:0,y:9,dx:1,dy:0},{x:7,y:9,dx:-1,dy:0}], true);
+addCase('A', 'all-four-dirs',
+  [{x:0,y:0,dx:1,dy:0},{x:1,y:1,dx:-1,dy:0},{x:2,y:2,dx:0,dy:1},{x:3,y:3,dx:0,dy:-1}],
+  [{x:0,y:0,dx:1,dy:0},{x:5,y:5,dx:-1,dy:0},{x:10,y:10,dx:0,dy:1},{x:15,y:15,dx:0,dy:-1}], true);
+
+// ------------------------------------------------------------
+// A-RANDOM deterministic: AR1..AR7 (shift-based positives)
+// ------------------------------------------------------------
+function runShiftCase(Tin, ops) {
+  const T = deepCopyT(Tin);
+  for (const op of ops) shift_terminals(T, op.k, op.dir);
+  return T;
+}
+
+// AR1
+{
+  const Tin = [{x:1,y:1,dx:1,dy:0},{x:3,y:2,dx:-1,dy:0}];
+  const T   = runShiftCase(Tin, [{k:0, dir:'col'}]);
+  addCase('A-RANDOM', 'AR1 col-shift-before', Tin, T, true, 'k=0 shifts all x');
+}
+// AR2
+{
+  const Tin = [{x:1,y:1,dx:1,dy:0},{x:3,y:2,dx:-1,dy:0}];
+  const T   = runShiftCase(Tin, [{k:2, dir:'col'}]);
+  addCase('A-RANDOM', 'AR2 col-shift-between', Tin, T, true, 'only x>=2 shifts');
+}
+// AR3
+{
+  const Tin = [{x:1,y:1,dx:1,dy:0},{x:3,y:2,dx:-1,dy:0}];
+  const T   = runShiftCase(Tin, [{k:5, dir:'col'}]);
+  addCase('A-RANDOM', 'AR3 col-shift-after-all', Tin, T, true, 'no shift');
+}
+// AR4: y-tie preserved (both shift by +1)
+{
+  const Tin = [{x:1,y:2,dx:0,dy:1},{x:3,y:2,dx:0,dy:-1}];
+  const T   = runShiftCase(Tin, [{k:2, dir:'row'}]);
+  addCase('A-RANDOM', 'AR4 row-shift-at-tie', Tin, T, true, 'tie preserved');
+}
+// AR5: mixed col then row
+{
+  const Tin = [{x:0,y:0,dx:1,dy:0},{x:2,y:2,dx:-1,dy:-1},{x:4,y:4,dx:0,dy:1}];
+  const T   = runShiftCase(Tin, [{k:1, dir:'col'},{k:3, dir:'row'}]);
+  addCase('A-RANDOM', 'AR5 mixed-col-then-row', Tin, T, true);
+}
+// AR6: inserts at each boundary
+{
+  const Tin = [{x:0,y:0,dx:1,dy:0},{x:5,y:5,dx:-1,dy:-1}];
+  const T   = runShiftCase(Tin, [
+    {k:0,dir:'col'},{k:7,dir:'col'},{k:0,dir:'row'},{k:7,dir:'row'}]);
+  addCase('A-RANDOM', 'AR6 shift-at-each-boundary', Tin, T, true);
+}
+// AR7: many terminals with ties + several shifts
+{
+  const Tin = [
+    {x:1,y:2,dx:0,dy:1},
+    {x:3,y:2,dx:0,dy:-1}, // y-tie with first
+    {x:5,y:4,dx:1,dy:0},
+    {x:1,y:6,dx:-1,dy:0}, // x-tie with first
+    {x:7,y:8,dx:0,dy:1},
+  ];
+  const T = runShiftCase(Tin, [
+    {k:2,dir:'col'},{k:5,dir:'row'},{k:4,dir:'col'}]);
+  addCase('A-RANDOM', 'AR7 many-terminals-3-shifts', Tin, T, true);
+}
+
+// ------------------------------------------------------------
+// B. Deterministic negatives
+// ------------------------------------------------------------
+addCase('B', 'B1 swapped-x',
+  [{x:0,y:0,dx:1,dy:0},{x:2,y:0,dx:-1,dy:0}],
+  [{x:5,y:0,dx:1,dy:0},{x:3,y:0,dx:-1,dy:0}], false);
+addCase('B', 'B2 swapped-y',
+  [{x:0,y:0,dx:0,dy:1},{x:0,y:2,dx:0,dy:-1}],
+  [{x:0,y:5,dx:0,dy:1},{x:0,y:3,dx:0,dy:-1}], false);
+addCase('B', 'B3 equal-became-different-x',
+  [{x:1,y:0,dx:0,dy:1},{x:1,y:2,dx:0,dy:-1}],
+  [{x:1,y:0,dx:0,dy:1},{x:2,y:2,dx:0,dy:-1}], false);
+addCase('B', 'B4 equal-became-different-y',
+  [{x:0,y:1,dx:1,dy:0},{x:2,y:1,dx:-1,dy:0}],
+  [{x:0,y:1,dx:1,dy:0},{x:2,y:2,dx:-1,dy:0}], false);
+addCase('B', 'B5 different-became-equal-x',
+  [{x:0,y:0,dx:1,dy:0},{x:2,y:1,dx:-1,dy:0}],
+  [{x:1,y:0,dx:1,dy:0},{x:1,y:1,dx:-1,dy:0}], false);
+addCase('B', 'B6 different-became-equal-y',
+  [{x:0,y:0,dx:1,dy:0},{x:1,y:2,dx:-1,dy:0}],
+  [{x:0,y:5,dx:1,dy:0},{x:1,y:5,dx:-1,dy:0}], false);
+addCase('B', 'B7 dx-flipped',
+  [{x:0,y:0,dx:1,dy:0}],
+  [{x:0,y:0,dx:-1,dy:0}], false);
+addCase('B', 'B8 dy-flipped',
+  [{x:0,y:0,dx:0,dy:1}],
+  [{x:0,y:0,dx:0,dy:-1}], false);
+addCase('B', 'B9 dx-zeroed',
+  [{x:0,y:0,dx:1,dy:0}],
+  [{x:0,y:0,dx:0,dy:0}], false);
+addCase('B', 'B10 dy-zeroed',
+  [{x:0,y:0,dx:0,dy:1}],
+  [{x:0,y:0,dx:0,dy:0}], false);
+addCase('B', 'B11 three-term-partial-swap',
+  [{x:0,y:0,dx:1,dy:0},{x:2,y:1,dx:-1,dy:0},{x:4,y:2,dx:0,dy:1}],
+  [{x:0,y:0,dx:1,dy:0},{x:4,y:1,dx:-1,dy:0},{x:2,y:2,dx:0,dy:1}], false);
+addCase('B', 'B12 order-broken-middle',
+  [{x:0,y:0,dx:1,dy:0},{x:1,y:0,dx:-1,dy:0},{x:2,y:0,dx:0,dy:1},{x:3,y:0,dx:0,dy:-1}],
+  [{x:0,y:0,dx:1,dy:0},{x:5,y:0,dx:-1,dy:0},{x:3,y:0,dx:0,dy:1},{x:8,y:0,dx:0,dy:-1}], false);
+
+// ------------------------------------------------------------
+// B-RANDOM deterministic
+// ------------------------------------------------------------
+// BR1: swap head/tail x
+{
+  const Tin = [{x:0,y:0,dx:1,dy:0},{x:2,y:1,dx:-1,dy:0},{x:4,y:2,dx:0,dy:1}];
+  const T = deepCopyT(Tin);
+  [T[0].x, T[2].x] = [T[2].x, T[0].x];
+  addCase('B-RANDOM', 'BR1 swap-x-head-tail', Tin, T, false);
+}
+// BR2: shift then swap
+{
+  const Tin = [{x:0,y:0,dx:1,dy:0},{x:2,y:1,dx:-1,dy:0},{x:4,y:2,dx:0,dy:1}];
+  const T = deepCopyT(Tin);
+  shift_terminals(T, 1, 'col'); // now [{x:0},{x:3},{x:5}]
+  [T[0].x, T[1].x] = [T[1].x, T[0].x];
+  addCase('B-RANDOM', 'BR2 swap-x-after-col-shift', Tin, T, false);
+}
+// BR3: swap head/tail y
+{
+  const Tin = [{x:0,y:1,dx:0,dy:1},{x:1,y:3,dx:-1,dy:0},{x:2,y:5,dx:0,dy:-1}];
+  const T = deepCopyT(Tin);
+  [T[0].y, T[2].y] = [T[2].y, T[0].y];
+  addCase('B-RANDOM', 'BR3 swap-y-head-tail', Tin, T, false);
+}
+
+// ------------------------------------------------------------
+// C. Edge cases
+// ------------------------------------------------------------
+addCase('C', 'C1 length-mismatch',
+  [{x:0,y:0,dx:1,dy:0}],
+  [], false);
+addCase('C', 'C2 single-dx-changed',
+  [{x:0,y:0,dx:1,dy:0}],
+  [{x:0,y:0,dx:-1,dy:0}], false);
+addCase('C', 'C3 single-dy-changed',
+  [{x:0,y:0,dx:0,dy:1}],
+  [{x:0,y:0,dx:0,dy:-1}], false);
+
+// ------------------------------------------------------------
+// Random case generators: AR-R, BR-R, BR-RY
+// rng is injected so seeded runs are reproducible.
+// ------------------------------------------------------------
+const DIRS = [[1,0],[-1,0],[0,1],[0,-1]];
+function randIntR(rng, lo, hi) { return lo + Math.floor(rng() * (hi - lo + 1)); }
+function randDirR(rng) {
+  const d = DIRS[Math.floor(rng() * DIRS.length)];
+  return { dx: d[0], dy: d[1] };
+}
+
+function genRandomTin(rng, range) {
+  const N = randIntR(rng, 3, 10);
+  const Tin = [];
+  for (let i = 0; i < N; i++) {
+    const d = randDirR(rng);
+    Tin.push({ x: randIntR(rng, 0, range - 1), y: randIntR(rng, 0, range - 1), dx: d.dx, dy: d.dy });
+  }
+  return Tin;
+}
+
+function applyRandomShifts(rng, T, count, range) {
+  const ops = [];
+  for (let i = 0; i < count; i++) {
+    const dir = rng() < 0.5 ? 'col' : 'row';
+    const k = randIntR(rng, 0, range);
+    shift_terminals(T, k, dir);
+    ops.push({ k, dir });
+    range += 1;
+  }
+  return ops;
+}
+
+function runARRandom(rng, idx) {
+  const range = 10;
+  const Tin = genRandomTin(rng, range);
+  const T = deepCopyT(Tin);
+  const K = randIntR(rng, 3, 10);
+  const ops = applyRandomShifts(rng, T, K, range);
+  cases.push({
+    section: 'A-RANDOM',
+    name: `AR-R iter#${idx + 1} (N=${Tin.length}, K=${K})`,
+    Tin, T, expected: true,
+    note: 'ops=' + JSON.stringify(ops),
+  });
+}
+
+function runBRRandomSwap(rng, idx, axis) {
+  const range = 10;
+  const Tin = genRandomTin(rng, range);
+  const T = deepCopyT(Tin);
+  const K = randIntR(rng, 3, 10);
+  applyRandomShifts(rng, T, K, range);
+  // Find two indices with different axis values
+  let i = -1, j = -1;
+  for (let tries = 0; tries < 50 && i === -1; tries++) {
+    const a = Math.floor(rng() * T.length);
+    const b = Math.floor(rng() * T.length);
+    if (a !== b && T[a][axis] !== T[b][axis]) { i = a; j = b; }
+  }
+  if (i === -1) {
+    // fallback: pick any differing pair
+    outer: for (let a = 0; a < T.length; a++) {
+      for (let b = a + 1; b < T.length; b++) {
+        if (T[a][axis] !== T[b][axis]) { i = a; j = b; break outer; }
+      }
+    }
+  }
+  if (i === -1) {
+    // all same on axis; impossible to swap meaningfully — skip with note
+    cases.push({
+      section: 'B-RANDOM',
+      name: `BR-R${axis === 'y' ? 'Y' : ''} iter#${idx + 1} (SKIP: all ${axis} equal)`,
+      Tin, T, expected: true, // neutral; force PASS
+      note: 'could not find differing pair; auto-skip (still runs check as positive)',
+    });
+    return;
+  }
+  [T[i][axis], T[j][axis]] = [T[j][axis], T[i][axis]];
+  cases.push({
+    section: 'B-RANDOM',
+    name: `BR-R${axis === 'y' ? 'Y' : ''} iter#${idx + 1} (swap ${axis}@[${i},${j}])`,
+    Tin, T, expected: false,
+    note: `swapped T[${i}].${axis} <-> T[${j}].${axis}`,
+  });
+}
+
+function generateRandomCases(rng) {
+  // Remove any previous random cases so reruns don't accumulate.
+  for (let i = cases.length - 1; i >= 0; i--) {
+    if (cases[i].section === 'A-RANDOM' && cases[i].name.startsWith('AR-R ')) cases.splice(i, 1);
+    else if (cases[i].section === 'B-RANDOM' && cases[i].name.startsWith('BR-R')) cases.splice(i, 1);
+  }
+  for (let i = 0; i < 20; i++) runARRandom(rng, i);
+  for (let i = 0; i < 20; i++) runBRRandomSwap(rng, i, 'x');
+  for (let i = 0; i < 20; i++) runBRRandomSwap(rng, i, 'y');
+}
+
+// ------------------------------------------------------------
+// Execute all cases and render
+// ------------------------------------------------------------
+function runAllAndRender() {
+  const out = document.getElementById('output');
+  out.innerHTML = '';
+  const bySec = new Map();
+  for (const c of cases) {
+    if (!bySec.has(c.section)) bySec.set(c.section, []);
+    bySec.get(c.section).push(c);
+  }
+
+  let passGlobal = 0, totalGlobal = 0;
+
+  for (const [section, arr] of bySec) {
+    const h2 = document.createElement('h2');
+    h2.textContent = 'Section ' + section;
+    out.appendChild(h2);
+
+    const tbl = document.createElement('table');
+    tbl.innerHTML = '<thead><tr>' +
+      '<th>#</th><th>name</th><th>expected</th><th>actual</th><th>result</th><th>note</th>' +
+      '</tr></thead><tbody></tbody>';
+    const tbody = tbl.querySelector('tbody');
+
+    let passLocal = 0;
+    arr.forEach((c, i) => {
+      let actual = false;
+      let reason = '';
+      try {
+        const d = check_equivalence_detailed(c.Tin, c.T);
+        actual = d.ok;
+        if (!d.ok) reason = d.reason + (d.i != null ? ` (i=${d.i}` + (d.j != null ? `, j=${d.j})` : ')') : '');
+      } catch (e) {
+        actual = false;
+        reason = 'threw: ' + e.message;
+      }
+      const pass = actual === c.expected;
+      if (pass) passLocal++;
+      totalGlobal++;
+      if (pass) passGlobal++;
+      const tr = document.createElement('tr');
+      tr.className = pass ? 'pass' : 'fail';
+      tr.innerHTML = `<td>${i+1}</td>
+        <td><code>${c.name}</code></td>
+        <td>${c.expected}</td>
+        <td>${actual}${reason ? ' <small>(' + reason + ')</small>' : ''}</td>
+        <td>${pass ? 'PASS' : 'FAIL'}</td>
+        <td><small>${c.note || ''}</small></td>`;
+      tbody.appendChild(tr);
+    });
+    out.appendChild(tbl);
+
+    const sum = document.createElement('div');
+    sum.className = 'summary' + (passLocal === arr.length ? '' : ' bad');
+    sum.textContent = `Section ${section}: ${passLocal}/${arr.length} PASS`;
+    out.appendChild(sum);
+  }
+
+  const g = document.getElementById('summary-global');
+  g.className = 'summary' + (passGlobal === totalGlobal ? '' : ' bad');
+  g.textContent = `TOTAL: ${passGlobal}/${totalGlobal} PASS  [seed=${window._usedSeed}]`;
+}
+
+function resolveSeed(forceReroll) {
+  const box = document.getElementById('in-seed');
+  let seed;
+  if (!forceReroll && box.value.trim() !== '') {
+    seed = parseInt(box.value, 10) | 0;
+  } else {
+    seed = (Math.random() * 0x100000000) >>> 0;
+    box.value = seed;
+  }
+  document.getElementById('used-seed').textContent = seed;
+  return seed;
+}
+
+function runWithSeed(forceReroll) {
+  const seed = resolveSeed(forceReroll === true);
+  window._usedSeed = seed;
+  const rng = mulberry32(seed);
+  generateRandomCases(rng);
+  runAllAndRender();
+}
+
+document.getElementById('btn-run').addEventListener('click', function () { runWithSeed(false); });
+document.getElementById('btn-reroll').addEventListener('click', function () { runWithSeed(true); });
+
+runWithSeed(true);
+</script>
+</body>
+</html>

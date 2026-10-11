@@ -1,0 +1,8 @@
+format: fmaze-logic-v0
+id: first_cantor
+strategy: reference_record
+source_model: reference_record
+modeling_status:
+  status: planned
+  reason: "The SVG exposes labels A/B/C, outer gates 1-8, an F marker, and several colored route overlays, but it does not encode a unique start state, goal terminal, or proof-edge boundary. A faithful pda_stack graph would require choosing whether 'start: any outer gate' means multiple packages, multiple starts, or an artificial dispatcher."
+  next_step: "Resolve three terminal questions before executable authoring: which outer gate is the canonical start for validation; whether the blue F square is the only goal or a named interior point; and which colored overlays are physical edges versus Cantor proof support steps."

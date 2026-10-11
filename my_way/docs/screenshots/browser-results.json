@@ -1,0 +1,222 @@
+[
+  {
+    "name": "custom-player-desktop",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/",
+    "title": "Fractal Maze",
+    "errors": [],
+    "canvases": 1,
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / MIKE EARNEST (ADAPTED BY ORELCOSSERON)\n\nAlice and the Fractal Hedge Maze\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n1:1\nMOVES\n0\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n13\u00d713\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-player-mobile",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/",
+    "title": "Fractal Maze",
+    "errors": [],
+    "canvases": 1,
+    "body": "Fractal\nMaze\nMenu\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / MIKE EARNEST (ADAPTED BY ORELCOSSERON)\n\nAlice and the Fractal Hedge Maze\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n1:1\nMOVES\n0\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n13\u00d713\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-library",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/library",
+    "title": "Fractal Maze",
+    "errors": [],
+    "canvases": 9,
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\nOREL COLLECTION / 9 FIELD FILES\n\nChoose your maze.\n\nEvery preview is live. Pick a field, use the keyboard, and follow the recursive trail.\n\n0\nSOLVED\n0\nREPLAYS\nImport maze\nSEARCH\nCOLLECTION\nAll mazes\nbeginner\nblocks\ncarpet\nclassic\nfractal\nhard\nintermediate\nlong-path\noriginal\nsierpinski\nsimple\nsquare\nShowing 9 of 9\nEnter maze \u2192\n\nCLASSIC / BEGINNER\n\nAlice and the Fractal Hedge Maze\n\nMike Earnest (adapted by Orelcosseron)\n\nsquareRecursive\nEnter maze \u2192\n\nFRACTAL / SIERPINSKI\n\nSierpinski\n\nOrelcosseron\n\nsquareRecursive\nEnter maze \u2192\n\nINTERMEDIATE\n\nMicrochip\n\nOrelcosseron\n\nsquareRecursive\nEnter maze \u2192\n\nSIMPLE / SQUARE\n\nSquare\n\nOrelcosseron\n\nsquareRecursive\nEnter maze \u2192\n\nLONG-PATH / ORIGINAL\n\nA Long Path v4\n\nJay McArthur\n\nsquareRecursive\nEnter maze \u2192\n\nLONG-PATH / ORIGINAL / HARD\n\nA Long Path v8\n\nJay McArthur\n\nsquareRecursive\nEnter maze \u2192\n\nINTERMEDIATE\n\nFractal Maze\n\nMatthias Weber\n\nsquareRecursive\nEnter maze \u2192\n\nCARPET / FRACTAL\n\nCarpet\n\nSkeptic Play\n\nsquareRecursive\nEnter maze \u2192\n\nBLOCKS / INTERMEDIATE\n\nBlock Maze\n\nOrelcosseron\n\nsquareRecursive"
+  },
+  {
+    "name": "custom-editor",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/editor/alice-in-wonderland",
+    "title": "Fractal Maze",
+    "errors": [],
+    "canvases": 1,
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\nMAZE WORKSHOP\nNew Maze\n\u21a9\n\u21aa\nSave\nExport\nPreview \u25b6\nStructure\nBlocks\nLinks\nPlayer\nInfo\n\nClick cell edges to toggle path connections. Walls are mirrored automatically.\n\nGrid Size\nRows\nCols\n\nTile size: 48px\n\nCanvas: 336 \u00d7 336px\n\nVALIDATION\n\n\u26a0\nValid with warnings\nW\nMaze has no exits and no trophies \u2014 no win condition defined"
+  },
+  {
+    "name": "custom-solver",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/solver",
+    "title": "Fractal Maze",
+    "errors": [],
+    "canvases": 0,
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\nAUTOMATED TRAVERSAL\n\nMaze Solver\nSelect Maze\n\u2014 Choose a maze \u2014\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\nConfig\nStrategy\nBFS\nIDDFS\nMax Depth\nMax Nodes\nTimeout (ms)\nStart\nStatus\nStatus\nidle\nNodes explored\n0\nCurrent depth\n0\nElapsed\n0.0s\nSelect a maze to preview"
+  },
+  {
+    "name": "orel-web-alice",
+    "url": "http://127.0.0.1:8767/fractal-maze/",
+    "errors": [],
+    "body": "1 - Alice in Wonderland\n2 - Sierpinski\n3 - Microchip\n4 - Square\nPosition: 0\n\u25b2\n\u25c0\n\u27f2\n\u25b6\n\u25bc"
+  },
+  {
+    "name": "amurielagi-library",
+    "url": "http://127.0.0.1:8765/amurielagi_fractal-maze-main/",
+    "title": "Fractal Mazes",
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 (File not found)"
+    ],
+    "canvases": 5,
+    "body": "FRACTAL MAZES\nCreate New Import Export\n\tMaze name\n\tEasy - Noke Lieu\n\tAlice fractal hedge maze - Mark Earnest\n\tCircular maze - trivialknot\n\tMaze 2 - Mark J. P. Wolf\n\tFractal Tomb\n\tWalls and carpets - trivialknot\n\tSierpinski Paths - trivialknot\n\tGeocaching - Easter 13-#10\n\tNumb3rs - Killer Chat\n\tTsat - Cubist\n\tRecursive Fractal Maze - Luegaria\n\tFractal Maze - Mark J P Wolf\nClone Play"
+  },
+  {
+    "name": "amurielagi-player",
+    "url": "http://127.0.0.1:8765/amurielagi_fractal-maze-main/",
+    "title": "Fractal Mazes",
+    "errors": [],
+    "canvases": 5,
+    "body": "FRACTAL MAZES\nSOLVE MAZE: Easy - Noke Lieu\n animate transitions\nMove #\tMaze name\tLevel\tFrom Gate\tTo Gate\n0\tS\t0\ts:3\t\nUndo Redo\nQuit Restart Save"
+  },
+  {
+    "name": "amurielagi-editor",
+    "url": "http://127.0.0.1:8765/amurielagi_fractal-maze-main/",
+    "title": "Fractal Mazes",
+    "errors": [],
+    "canvases": 5,
+    "body": "FRACTAL MAZES\nEDIT MAZE\nName: \nSize: \n1\n2\n3\n4\n5\n6\n7\n8\nNew Sub Maze\nDelete\nCancel Save"
+  },
+  {
+    "name": "koteitan-block",
+    "url": "http://127.0.0.1:8765/koteitan_fractalblockmaze-main/",
+    "title": "fractal block maze",
+    "errors": [],
+    "canvases": 1,
+    "body": "fractal block maze\n\nunit:\t\t\t\t\ndraw depth:\t\t\t\t\nsolver depth:\t\t\t\t\nsolver status:\t\t\t\t\n\nfractal block maze version 1.11\nprogrammed by koteitan code at github\ninspired by omeometo, \"fractal maze \u3068\u304b\", omeometo\u306e\u65e5\u8a18, 2018.12.28. (in Japanese)\n\t2022.09.10\tsolver solved original problem.\n\n\n\n"
+  },
+  {
+    "name": "koteitan-repeated",
+    "url": "http://127.0.0.1:8765/koteitan_repeated-maze-main/",
+    "title": "Repeated Maze Visualizer",
+    "errors": [],
+    "canvases": 2,
+    "body": "Repeated Maze Visualizer\nMaze:\nAnswer:\n normal  x,y only\nDraw Maze\nPath Start Goal"
+  },
+  {
+    "name": "sparecycles-wolf",
+    "url": "http://127.0.0.1:8765/Webpage/fractal-maze-master/",
+    "title": "maze",
+    "errors": [],
+    "canvases": 1,
+    "body": "Moves:\n\nThe objective is to get from the top of the circle to the bottom. This maze is recursive, but the circle only exists on the top level of the maze.\n\nThis maze was invented by the (clearly) brilliant Mark J. P. Wolf, and I found it here, and a couple of solutions here. Like snakes, code and documentation is available.\n\nThese first two solutions come from the internet: a  and a  one. Armed with this toy and a couple solutions, I set out to find my  solution, and a chai later I found my  and . Then I   for a . "
+  },
+  {
+    "name": "collection-scaffold",
+    "url": "http://127.0.0.1:8765/Webpage/",
+    "title": "Jay's Collection of Fractal Mazes",
+    "errors": [
+      "data.forEach is not a function"
+    ],
+    "canvases": 0,
+    "body": "Position: 0\nReset"
+  },
+  {
+    "name": "orel-web-2",
+    "url": "http://127.0.0.1:8767/fractal-maze/",
+    "errors": [],
+    "body": "1 - Alice in Wonderland\n2 - Sierpinski\n3 - Microchip\n4 - Square\nPosition: 0\n\u25b2\n\u25c0\n\u27f2\n\u25b6\n\u25bc"
+  },
+  {
+    "name": "orel-web-3",
+    "url": "http://127.0.0.1:8767/fractal-maze/",
+    "errors": [],
+    "body": "1 - Alice in Wonderland\n2 - Sierpinski\n3 - Microchip\n4 - Square\nPosition: 0\n\u25b2\n\u25c0\n\u27f2\n\u25b6\n\u25bc"
+  },
+  {
+    "name": "orel-web-4",
+    "url": "http://127.0.0.1:8767/fractal-maze/",
+    "errors": [],
+    "body": "1 - Alice in Wonderland\n2 - Sierpinski\n3 - Microchip\n4 - Square\nPosition: 0\n\u25b2\n\u25c0\n\u27f2\n\u25b6\n\u25bc"
+  },
+  {
+    "name": "custom-alice-in-wonderland",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/alice-in-wonderland",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / MIKE EARNEST (ADAPTED BY ORELCOSSERON)\n\nAlice and the Fractal Hedge Maze\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n1:1\nMOVES\n0\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n13\u00d713\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-sierpinski",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/sierpinski",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / ORELCOSSERON\n\nSierpinski\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n7:13\nMOVES\n0\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n24\u00d724\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-microchip",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/microchip",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / ORELCOSSERON\n\nMicrochip\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n6:13\nMOVES\n0\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n20\u00d720\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-square",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/square",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / ORELCOSSERON\n\nSquare\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n9:16\nMOVES\n0\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n19\u00d719\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-a-long-path-v4",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/a-long-path-v4",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / JAY MCARTHUR\n\nA Long Path v4\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n1:1\nMOVES\n0\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n7\u00d77\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-a-long-path-v8",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/a-long-path-v8",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / JAY MCARTHUR\n\nA Long Path v8\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n10:5\nMOVES\n0\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n11\u00d711\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-matthias-weber",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/matthias-weber",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / MATTHIAS WEBER\n\nFractal Maze\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n4:2\nMOVES\n0\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n10\u00d710\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-skeptic-play-carpet",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/skeptic-play-carpet",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / SKEPTIC PLAY\n\nCarpet\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n6:10\nMOVES\n0\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n11\u00d711\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-block-maze",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/block-maze",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / ORELCOSSERON\n\nBlock Maze\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n6:6\nMOVES\n0\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n7\u00d77\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-amurielagi-import-preview",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/alice-in-wonderland",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / MIKE EARNEST (ADAPTED BY ORELCOSSERON)\n\nAlice and the Fractal Hedge Maze\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n1:1\nMOVES\n0\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n13\u00d713\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192\nImport Maze\n\u00d7\n\nDrop a file here or click to browse\n\n.maze \u00b7 .fmaze \u00b7 FRACTAL-MAZE.v2 .json\n\nEasy - Noke Lieu\n\namurielagi FRACTAL-MAZE.v2\n\nType: graphLabeled\n\n1 error \u2014 maze cannot be loaded\n\nDuplicate graph node id \"node-1\"\n\nCancel\nLoad Maze"
+  },
+  {
+    "name": "custom-koteitan-imported",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/imported",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nImported maze\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nBLOCKRECURSIVE / UNKNOWN CONSTRUCTOR\n\nKoteitan Fractal Block Maze\nImport\nExport\nObserver mode\n\nRecursive bit-pattern field\n\nREPRESENTATION\n\nBlock recursion\nUnit\n4\u00d74\nPattern cells\n16\nStart\n2:3\nGoal\n1:0\nRender depth 2\n\nThis format is fully imported, validated, and rendered. Movement semantics are intentionally not borrowed from square-recursive mazes.\n\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-player-moved",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/alice-in-wonderland",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / MIKE EARNEST (ADAPTED BY ORELCOSSERON)\n\nAlice and the Fractal Hedge Maze\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n3:1\nMOVES\n2\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n13\u00d713\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-replay",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/replay/6b89351e-fecf-4cb4-ad4f-8fd76a770d3a",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\nReplay: Alice and the Fractal Hedge Maze\nExport JSON\nPlayer: human\nMoves: 2\nTime: 0.0s\nMax Depth: 0\nStatus: partial\n\u23ee\n\u23ea\n\u25b6\n\u23e9\n\u23ed\nSpeed:\n0.5x\n1x\n2x\n10x\n1 / 2"
+  },
+  {
+    "name": "custom-solver-running",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/solver",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\nAUTOMATED TRAVERSAL\n\nMaze Solver\nSelect Maze\n\u2014 Choose a maze \u2014\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\nConfig\nStrategy\nBFS\nIDDFS\nMax Depth\nMax Nodes\nTimeout (ms)\nStart\nStatus\nStatus\nsolved\nNodes explored\n91,723\nCurrent depth\n0\nElapsed\n2.2s\nSolution Found\n\n566 steps\n\nSave as Replay\nExport .fmaze"
+  },
+  {
+    "name": "amurielagi-alice",
+    "url": "http://127.0.0.1:8770/amurielagi_fractal-maze-main/",
+    "errors": [],
+    "body": "FRACTAL MAZES\nSOLVE MAZE: Alice fractal hedge maze - Mark Earnest\n animate transitions\nMove #\tMaze name\tLevel\tFrom Gate\tTo Gate\n0\tS\t0\ts:1\t\nUndo Redo\nQuit Restart Save"
+  },
+  {
+    "name": "sparecycles-solution",
+    "url": "http://127.0.0.1:8770/Webpage/fractal-maze-master/",
+    "errors": [],
+    "body": "Moves:\nnorth, north, north, west, west, north, north, south, east, south, north, north, south, west, west, north, west, south, east, south,\nFrom here.\nThis is an easy solution to memorize: right through red, over to blue, in red twice, unwind around, up and left, back into red, in-and-out to the bottom, and out.\n\nThis maze was invented by the (clearly) brilliant Mark J. P. Wolf, and I found it here, and a couple of solutions here. Like snakes, code and documentation is available.\n\nThese first two solutions come from the internet: a  and a  one. Armed with this toy and a couple solutions, I set out to find my  solution, and a chai later I found my  and . Then I   for a . "
+  }
+]

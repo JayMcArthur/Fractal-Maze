@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html><head><title>Sub-port drawing test</title></head>
+<body>
+<canvas id="cv" width="400" height="200"></canvas>
+<script>
+const cv = document.getElementById('cv');
+const ctx = cv.getContext('2d');
+
+const grid = [
+  [' ', '─', '│', '└'],
+  ['┘', '┌', '┐', '┼'],
+];
+const nR = 2, nC = 4;
+const cellW = 80, cellH = 80;
+
+ctx.strokeStyle = '#000';
+ctx.lineWidth = 3;
+ctx.lineCap = 'round';
+
+/* Draw grid lines (light gray) */
+ctx.save();
+ctx.strokeStyle = '#ddd';
+ctx.lineWidth = 1;
+for (let r = 0; r <= nR; r++) { ctx.beginPath(); ctx.moveTo(0,r*cellH); ctx.lineTo(nC*cellW,r*cellH); ctx.stroke(); }
+for (let c = 0; c <= nC; c++) { ctx.beginPath(); ctx.moveTo(c*cellW,0); ctx.lineTo(c*cellW,nR*cellH); ctx.stroke(); }
+ctx.restore();
+
+/* Draw hex labels */
+ctx.font = '12px monospace';
+ctx.fillStyle = '#999';
+const hex = '01234567';
+let idx = 0;
+for (let r = 0; r < nR; r++)
+  for (let c = 0; c < nC; c++)
+    ctx.fillText(hex[idx++], c*cellW+3, r*cellH+14);
+
+/* Draw sub-ports */
+ctx.strokeStyle = '#000';
+ctx.lineWidth = 3;
+ctx.lineCap = 'round';
+
+for (let r = 0; r < nR; r++) {
+  for (let c = 0; c < nC; c++) {
+    const shape = grid[r][c];
+    if (shape === ' ') continue;
+    const cx = (c + 0.5) * cellW;
+    const cy = (r + 0.5) * cellH;
+    const hw = cellW / 2, hh = cellH / 2;
+    ctx.beginPath();
+    if ('─┘┐┼┬┴┤'.includes(shape)) { ctx.moveTo(cx - hw, cy); ctx.lineTo(cx, cy); } /* left */
+    if ('─└┌┼┬┴├'.includes(shape)) { ctx.moveTo(cx, cy); ctx.lineTo(cx + hw, cy); } /* right */
+    if ('│└┘┼┴├┤'.includes(shape)) { ctx.moveTo(cx, cy - hh); ctx.lineTo(cx, cy); } /* up */
+    if ('│┌┐┼┬├┤'.includes(shape)) { ctx.moveTo(cx, cy); ctx.lineTo(cx, cy + hh); } /* down */
+    ctx.stroke();
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "custom-koteitan-imported",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/imported",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nImported maze\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nBLOCKRECURSIVE / UNKNOWN CONSTRUCTOR\n\nKoteitan Fractal Block Maze\nImport\nExport\nObserver mode\n\nRecursive bit-pattern field\n\nREPRESENTATION\n\nBlock recursion\nUnit\n4\u00d74\nPattern cells\n16\nStart\n2:3\nGoal\n1:0\nRender depth 2\n\nThis format is fully imported, validated, and rendered. Movement semantics are intentionally not borrowed from square-recursive mazes.\n\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-player-moved",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/play/alice-in-wonderland",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\u2190\nMAZE FIELD\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\n\u2192\n\nSQUARERECURSIVE / MIKE EARNEST (ADAPTED BY ORELCOSSERON)\n\nAlice and the Fractal Hedge Maze\nImport\nExport\nCURRENT POSITION\nSurface\nDEPTH\n0\nCELL\n3:1\nMOVES\n2\nBLOCKED\n0\nTIME\n00:01\n\u2191\n\u2190\n\u2192\n\u2193\n\nARROW KEYS \u00b7 WASD \u00b7 IJKL \u00b7 TOUCH\n\nLIVE RUN\n\nSession\nACTIVE\nRecursive depth\n0\nBacktracks\n0\nCheckpoints\n0\nField size\n13\u00d713\nUndo Z\nRestart R\nMark P\nSave replay\n\nFIELD OPTICS\n\nDisplay\nRecursive detail\n2\nBreadcrumb trail\nBlock labels\nHigh contrast\nKeyboard map\nH\n\u2192\nFullscreen field\nF\n\u2192\nBrowse collection\n\u2192"
+  },
+  {
+    "name": "custom-replay",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/replay/6b89351e-fecf-4cb4-ad4f-8fd76a770d3a",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\nReplay: Alice and the Fractal Hedge Maze\nExport JSON\nPlayer: human\nMoves: 2\nTime: 0.0s\nMax Depth: 0\nStatus: partial\n\u23ee\n\u23ea\n\u25b6\n\u23e9\n\u23ed\nSpeed:\n0.5x\n1x\n2x\n10x\n1 / 2"
+  },
+  {
+    "name": "custom-solver-running",
+    "url": "http://127.0.0.1:5173/Fractal-Maze/solver",
+    "errors": [],
+    "body": "Fractal\nMaze\nPlay\nLibrary\nBuild\nSolve\nAnalyze\nGuide\n\nAUTOMATED TRAVERSAL\n\nMaze Solver\nSelect Maze\n\u2014 Choose a maze \u2014\nAlice and the Fractal Hedge Maze\nSierpinski\nMicrochip\nSquare\nA Long Path v4\nA Long Path v8\nFractal Maze\nCarpet\nBlock Maze\nConfig\nStrategy\nBFS\nIDDFS\nMax Depth\nMax Nodes\nTimeout (ms)\nStart\nStatus\nStatus\nsolved\nNodes explored\n91,723\nCurrent depth\n0\nElapsed\n2.2s\nSolution Found\n\n566 steps\n\nSave as Replay\nExport .fmaze"
+  },
+  {
+    "name": "amurielagi-alice",
+    "url": "http://127.0.0.1:8770/amurielagi_fractal-maze-main/",
+    "errors": [],
+    "body": "FRACTAL MAZES\nSOLVE MAZE: Alice fractal hedge maze - Mark Earnest\n animate transitions\nMove #\tMaze name\tLevel\tFrom Gate\tTo Gate\n0\tS\t0\ts:1\t\nUndo Redo\nQuit Restart Save"
+  },
+  {
+    "name": "sparecycles-solution",
+    "url": "http://127.0.0.1:8770/Webpage/fractal-maze-master/",
+    "errors": [],
+    "body": "Moves:\nnorth, north, north, west, west, north, north, south, east, south, north, north, south, west, west, north, west, south, east, south,\nFrom here.\nThis is an easy solution to memorize: right through red, over to blue, in red twice, unwind around, up and left, back into red, in-and-out to the bottom, and out.\n\nThis maze was invented by the (clearly) brilliant Mark J. P. Wolf, and I found it here, and a couple of solutions here. Like snakes, code and documentation is available.\n\nThese first two solutions come from the internet: a  and a  one. Armed with this toy and a couple solutions, I set out to find my  solution, and a chai later I found my  and . Then I   for a . "
+  }
+]

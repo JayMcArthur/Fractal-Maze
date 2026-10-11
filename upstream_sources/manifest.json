@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-10-10",
+  "repositories": [
+    {
+      "repo": "https://github.com/Techtress/Alice-and-the-Fractal-Hedge-Maze-Solver.git",
+      "commit": "12a006fa6b4207c019a82408e8b592a568b1cda8",
+      "date": "2020-05-30T19:49:24-04:00"
+    },
+    {
+      "repo": "https://github.com/amurielagi/fractal-maze.git",
+      "commit": "6ebc935728f6bab8be7e8823eeb564841818db18",
+      "date": "2023-10-08T20:06:44-04:00"
+    },
+    {
+      "repo": "https://github.com/koteitan/fractal-maze-solver.git",
+      "commit": "7c217a05bb2c0901637c76da8b17d5fd75729cfd",
+      "date": "2025-02-02T15:10:02+09:00"
+    },
+    {
+      "repo": "https://github.com/koteitan/fractalblockmaze.git",
+      "commit": "816d42e76c3912501e575f3a4961b7cddc4abbe8",
+      "date": "2026-01-10T16:11:34+09:00"
+    },
+    {
+      "repo": "https://github.com/koteitan/repeated-maze.git",
+      "commit": "76ccfd42c72d3fef990f86a10e988d216c05f03d",
+      "date": "2026-10-04T02:40:10+09:00"
+    },
+    {
+      "repo": "https://github.com/orelcosseron/Fractal-Maze-Python.git",
+      "commit": "9b73dba7611dd455a9a806ca5103f6d876232c51",
+      "date": "2022-11-26T21:12:58+01:00"
+    },
+    {
+      "repo": "https://github.com/orelcosseron/fractal-maze.git",
+      "commit": "4dacf3363c9c6fd0e25a9e0f348e1174fa030f19",
+      "date": "2026-01-23T16:14:25+01:00"
+    },
+    {
+      "repo": "https://github.com/sparecycles/fractal-maze.git",
+      "commit": "e15dbf2dab4d3a4b0c767aea54c81f8b300b36d9",
+      "date": "2013-04-01T19:39:29-07:00"
+    },
+    {
+      "repo": "https://github.com/JayMcArthur/Fractal-Maze.git",
+      "commit": "1b3124221e3085a00b8d7144ac363d8da2a15ef7",
+      "date": "2026-05-25T11:26:05-06:00"
+    },
+    {
+      "repo": "https://github.com/CruiserOne/Daedalus.git",
+      "commit": "32af46ddf22e53c9bfd7bd7eacca1e249c60a5e8",
+      "date": "2024-11-07T19:30:32-08:00"
+    }
+  ]
+}

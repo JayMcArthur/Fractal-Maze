@@ -1,0 +1,142 @@
+[
+  {
+    "host": "http://127.0.0.1:8791/Fractal-Maze/",
+    "route": "",
+    "refresh": false,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8791/Fractal-Maze/",
+    "route": "",
+    "refresh": true,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8791/Fractal-Maze/",
+    "route": "solver?id=alice-in-wonderland",
+    "refresh": false,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8791/Fractal-Maze/",
+    "route": "solver?id=alice-in-wonderland",
+    "refresh": true,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8791/Fractal-Maze/",
+    "route": "play/alice-in-wonderland",
+    "refresh": false,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8791/Fractal-Maze/",
+    "route": "play/alice-in-wonderland",
+    "refresh": true,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8791/Fractal-Maze/",
+    "route": "play/alice-in-wonderland?replay=bundled-alice-in-wonderland",
+    "refresh": false,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8791/Fractal-Maze/",
+    "route": "play/alice-in-wonderland?replay=bundled-alice-in-wonderland",
+    "refresh": true,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8791/Fractal-Maze/",
+    "route": "workbench/simple-infinite-hop?tab=proof",
+    "refresh": false,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8791/Fractal-Maze/",
+    "route": "workbench/simple-infinite-hop?tab=proof",
+    "refresh": true,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8792/",
+    "route": "",
+    "refresh": false,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8792/",
+    "route": "",
+    "refresh": true,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8792/",
+    "route": "solver?id=alice-in-wonderland",
+    "refresh": false,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8792/",
+    "route": "solver?id=alice-in-wonderland",
+    "refresh": true,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8792/",
+    "route": "play/alice-in-wonderland",
+    "refresh": false,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8792/",
+    "route": "play/alice-in-wonderland",
+    "refresh": true,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8792/",
+    "route": "play/alice-in-wonderland?replay=bundled-alice-in-wonderland",
+    "refresh": false,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8792/",
+    "route": "play/alice-in-wonderland?replay=bundled-alice-in-wonderland",
+    "refresh": true,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8792/",
+    "route": "workbench/simple-infinite-hop?tab=proof",
+    "refresh": false,
+    "errors": [],
+    "csp": []
+  },
+  {
+    "host": "http://127.0.0.1:8792/",
+    "route": "workbench/simple-infinite-hop?tab=proof",
+    "refresh": true,
+    "errors": [],
+    "csp": []
+  }
+]

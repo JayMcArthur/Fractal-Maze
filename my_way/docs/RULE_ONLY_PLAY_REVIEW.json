@@ -1,0 +1,87 @@
+{
+  "scope": "Known path models with endpoints but no complete physical trace/gate binding; not an original image interpretation.",
+  "models": [
+    {
+      "id": "pda-guide-2",
+      "title": "Wolfram 2 \u2014 guide conversion",
+      "paths": 19,
+      "copies": 3,
+      "edges": 56,
+      "traceBindings": 0,
+      "gateBindings": 0,
+      "artwork": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Wires.png",
+      "rule": "finite",
+      "helpers": [
+        "C"
+      ],
+      "walks": 0
+    },
+    {
+      "id": "pda-guide-3",
+      "title": "Jay McArthur \u2014 eight-copy PDA",
+      "paths": 9,
+      "copies": 8,
+      "edges": 32,
+      "traceBindings": 0,
+      "gateBindings": 0,
+      "artwork": null,
+      "rule": "finite",
+      "helpers": [],
+      "walks": 0
+    },
+    {
+      "id": "pda-guide-4",
+      "title": "Inner Frame \u2014 guide PDA",
+      "paths": 5,
+      "copies": 1,
+      "edges": 16,
+      "traceBindings": 0,
+      "gateBindings": 0,
+      "artwork": "references/Maze_Images/The_Inner_Frame.png",
+      "rule": "finite",
+      "helpers": [
+        "5"
+      ],
+      "walks": 0
+    },
+    {
+      "id": "pda-guide-6",
+      "title": "Jay McArthur \u2014 A Long Path v6",
+      "paths": 7,
+      "copies": 6,
+      "edges": 24,
+      "traceBindings": 0,
+      "gateBindings": 0,
+      "artwork": "references/Maze_Images/Jay_McArthur_-_A_Long_Path_v6.png",
+      "rule": "finite",
+      "helpers": [],
+      "walks": 0
+    },
+    {
+      "id": "simple-infinite-hop",
+      "title": "Simple infinite hop",
+      "paths": 2,
+      "copies": 1,
+      "edges": 4,
+      "traceBindings": 0,
+      "gateBindings": 0,
+      "artwork": "references/generated/simple-infinite.svg",
+      "rule": "infiniteHop",
+      "helpers": [],
+      "walks": 0
+    },
+    {
+      "id": "simple-nested-infinite-hop",
+      "title": "Simple nested infinite hop",
+      "paths": 3,
+      "copies": 2,
+      "edges": 8,
+      "traceBindings": 0,
+      "gateBindings": 0,
+      "artwork": "references/generated/simple-nested-infinite.svg",
+      "rule": "infiniteHop",
+      "helpers": [],
+      "walks": 0
+    }
+  ]
+}

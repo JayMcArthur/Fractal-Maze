@@ -1,0 +1,53 @@
+{
+  "deepWitnessIndex": 226,
+  "captures": [
+    {
+      "name": "base",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    },
+    {
+      "name": "detail-25",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    },
+    {
+      "name": "depth-4",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    },
+    {
+      "name": "finish",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    },
+    {
+      "name": "base",
+      "width": 390,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    },
+    {
+      "name": "detail-25",
+      "width": 390,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    },
+    {
+      "name": "depth-4",
+      "width": 390,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    },
+    {
+      "name": "finish",
+      "width": 390,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    }
+  ]
+}

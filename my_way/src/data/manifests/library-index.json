@@ -1,0 +1,1612 @@
+{
+  "entries": [
+    {
+      "id": "alice-in-wonderland",
+      "title": "Alice and the Fractal Hedge Maze",
+      "author": "Mike Earnest (adapted by Orelcosseron)",
+      "source": "https://puzzling.stackexchange.com/questions/37675/alice-and-the-fractal-hedge-maze",
+      "file": "1_-_alice_in_wonderland.maze",
+      "representationType": "squareRecursive",
+      "tags": [
+        "classic",
+        "beginner"
+      ],
+      "preview": {
+        "definitionType": "squareRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/d12b009353e8be5e11c28b37.png"
+      }
+    },
+    {
+      "id": "sierpinski",
+      "title": "Sierpinski",
+      "author": "Orelcosseron",
+      "source": null,
+      "file": "2_-_sierpinski.maze",
+      "representationType": "squareRecursive",
+      "tags": [
+        "fractal",
+        "sierpinski"
+      ],
+      "preview": {
+        "definitionType": "squareRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/b63d64b55d7971f5695a4a57.png"
+      }
+    },
+    {
+      "id": "microchip",
+      "title": "Microchip",
+      "author": "Orelcosseron",
+      "source": null,
+      "file": "3_-_microchip.maze",
+      "representationType": "squareRecursive",
+      "tags": [
+        "intermediate"
+      ],
+      "preview": {
+        "definitionType": "squareRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/abf34636525588dddba0f7ee.png"
+      }
+    },
+    {
+      "id": "square",
+      "title": "Square",
+      "author": "Orelcosseron",
+      "source": null,
+      "file": "4_-_square.maze",
+      "representationType": "squareRecursive",
+      "tags": [
+        "simple",
+        "square"
+      ],
+      "preview": {
+        "definitionType": "squareRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/45d0e2396e0a732fd2a34624.png"
+      }
+    },
+    {
+      "id": "a-long-path-v4",
+      "title": "A Long Path v4",
+      "author": "Jay McArthur",
+      "source": null,
+      "file": "5_-_Jay_McArthur_-_A_Long_Path_v4.maze",
+      "representationType": "squareRecursive",
+      "tags": [
+        "long-path",
+        "original"
+      ],
+      "preview": {
+        "definitionType": "squareRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/cf272bd3c8c69b810e77ad3d.png"
+      }
+    },
+    {
+      "id": "a-long-path-v8",
+      "title": "A Long Path v8",
+      "author": "Jay McArthur",
+      "source": null,
+      "file": "6_-_Jay_McArthur_-_A_Long_Path_v8.maze",
+      "representationType": "squareRecursive",
+      "tags": [
+        "long-path",
+        "original",
+        "hard"
+      ],
+      "preview": {
+        "definitionType": "squareRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/74b3f719ff0671bc26b5603e.png"
+      }
+    },
+    {
+      "id": "matthias-weber",
+      "title": "Fractal Maze",
+      "author": "Matthias Weber",
+      "source": null,
+      "file": "7_-_Matthias_Weber_-_Fractal_Maze.maze",
+      "representationType": "squareRecursive",
+      "tags": [
+        "intermediate"
+      ],
+      "preview": {
+        "definitionType": "squareRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/65b239ed3cd4caf52b1478d5.png"
+      }
+    },
+    {
+      "id": "skeptic-play-carpet",
+      "title": "Carpet",
+      "author": "Skeptic Play",
+      "source": null,
+      "file": "8_-_Skeptic_Play_-_Carpet.maze",
+      "representationType": "squareRecursive",
+      "tags": [
+        "carpet",
+        "fractal"
+      ],
+      "preview": {
+        "definitionType": "squareRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/d50ec492e2356bf74e2a0ed7.png"
+      }
+    },
+    {
+      "id": "block-maze",
+      "title": "Block Maze",
+      "author": "Orelcosseron",
+      "source": null,
+      "file": "9_-_Block_Maze.maze",
+      "representationType": "squareRecursive",
+      "tags": [
+        "blocks",
+        "intermediate"
+      ],
+      "preview": {
+        "definitionType": "squareRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/4550421621c27ed6610eb95b.png"
+      }
+    },
+    {
+      "id": "1611103791037:0.9096318422296219",
+      "title": "Easy - Noke Lieu",
+      "author": "",
+      "source": null,
+      "file": "",
+      "representationType": "geometricRecursive",
+      "tags": [
+        "amurielagi",
+        "geometric"
+      ],
+      "preview": {
+        "definitionType": "geometricRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/c9d32260529328996f8d8793.png"
+      }
+    },
+    {
+      "id": "1695993784968:0.6965701909885131",
+      "title": "Tsat - Cubist",
+      "author": "",
+      "source": null,
+      "file": "",
+      "representationType": "geometricRecursive",
+      "tags": [
+        "amurielagi",
+        "geometric"
+      ],
+      "preview": {
+        "definitionType": "geometricRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/349f87b9f176acc8d30e19c8.png"
+      }
+    },
+    {
+      "id": "backlot",
+      "title": "Backlot",
+      "author": "Chris Yao",
+      "source": "https://puzzles.mit.edu/2020/puzzle/backlot/",
+      "file": "",
+      "representationType": "recursiveTour",
+      "tags": [
+        "recursive",
+        "logic",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "recursiveTour",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/source-assets/backlot-grid.png"
+      }
+    },
+    {
+      "id": "wolf-wire-original",
+      "title": "Mark J. P. Wolf \u2014 original wire maze",
+      "author": "Mark J. P. Wolf / sparecycles player",
+      "source": "Webpage/fractal-maze-master",
+      "file": "",
+      "representationType": "legacyWire",
+      "tags": [
+        "wire",
+        "recursive",
+        "wolf"
+      ],
+      "preview": {
+        "definitionType": "legacyWire",
+        "playable": true,
+        "review": null,
+        "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2.jpg"
+      }
+    },
+    {
+      "id": "ports-koteitan",
+      "title": "Koteitan recursive ports",
+      "author": "Koteitan",
+      "source": "koteitan_fractal-maze-solver-main/maze_koteitan.cpp",
+      "file": "",
+      "representationType": "recursivePorts",
+      "tags": [
+        "recursive",
+        "ports",
+        "koteitan"
+      ],
+      "preview": {
+        "definitionType": "recursivePorts",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/f4fe7db68d5195293855556d.png"
+      }
+    },
+    {
+      "id": "ports-snuke_no3",
+      "title": "Snuke fractal maze 3",
+      "author": "Snuke / Koteitan solver",
+      "source": "koteitan_fractal-maze-solver-main/maze_snuke_no3.cpp",
+      "file": "",
+      "representationType": "recursivePorts",
+      "tags": [
+        "recursive",
+        "ports",
+        "koteitan"
+      ],
+      "preview": {
+        "definitionType": "recursivePorts",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/9e764655188ff20a9231cd33.png"
+      }
+    },
+    {
+      "id": "ports-snuke_no4",
+      "title": "Snuke fractal maze 4",
+      "author": "Snuke / Koteitan solver",
+      "source": "koteitan_fractal-maze-solver-main/maze_snuke_no4.cpp",
+      "file": "",
+      "representationType": "recursivePorts",
+      "tags": [
+        "recursive",
+        "ports",
+        "koteitan"
+      ],
+      "preview": {
+        "definitionType": "recursivePorts",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/cb6040c225b6bb493a054e59.png"
+      }
+    },
+    {
+      "id": "koteitan-block",
+      "title": "Omeometo \u2014 fractal block maze",
+      "author": "Omeometo / Koteitan player",
+      "source": "https://omeometo.hatenablog.com/entry/2018/12/28/155549",
+      "file": "",
+      "representationType": "blockRecursive",
+      "tags": [
+        "blockRecursive",
+        "koteitan"
+      ],
+      "preview": {
+        "definitionType": "blockRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/e72fcb60c0c657c4512a8d4b.png"
+      }
+    },
+    {
+      "id": "repeated-directed-example",
+      "title": "Repeated directed maze \u2014 13-step example",
+      "author": "Koteitan",
+      "source": null,
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/f6e6d6341a13564b638e50f0.png"
+      }
+    },
+    {
+      "id": "portal-connections",
+      "title": "Portal connections",
+      "author": "",
+      "source": null,
+      "file": "",
+      "representationType": "graphLabeled",
+      "tags": [
+        "graph",
+        "example"
+      ],
+      "preview": {
+        "definitionType": "graphLabeled",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/852b0afbb7c68d0f1e1ebbe2.png"
+      }
+    },
+    {
+      "id": "koteitan-block-3",
+      "title": "Koteitan block pattern \u2014 3\u00d73",
+      "author": "Koteitan",
+      "source": "koteitan_fractalblockmaze-main/main.js",
+      "file": "",
+      "representationType": "blockRecursive",
+      "tags": [
+        "blockRecursive",
+        "koteitan"
+      ],
+      "preview": {
+        "definitionType": "blockRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/4023836dcb9fe11cf90087a5.png"
+      }
+    },
+    {
+      "id": "koteitan-block-5",
+      "title": "Koteitan block pattern \u2014 5\u00d75",
+      "author": "Koteitan",
+      "source": "koteitan_fractalblockmaze-main/main.js",
+      "file": "",
+      "representationType": "blockRecursive",
+      "tags": [
+        "blockRecursive",
+        "koteitan"
+      ],
+      "preview": {
+        "definitionType": "blockRecursive",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/d1fa5185543cb162fd668115.png"
+      }
+    },
+    {
+      "id": "repeated-cp6",
+      "title": "Counter pump \u2014 6 terminals",
+      "author": "Koteitan",
+      "source": "koteitan_repeated-maze-main/maze/counter-pump/cp6.txt",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/5e57eaa643a749b35c0d7439.png"
+      }
+    },
+    {
+      "id": "repeated-md3",
+      "title": "Minsky doubling \u2014 3 stages",
+      "author": "Koteitan",
+      "source": "koteitan_repeated-maze-main/maze/minsky-doubling/md3.txt",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/0bc964bce6bb55fd87478c74.png"
+      }
+    },
+    {
+      "id": "repeated-md4",
+      "title": "Minsky doubling \u2014 4 stages",
+      "author": "Koteitan",
+      "source": "koteitan_repeated-maze-main/maze/minsky-doubling/md4.txt",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/b6e948a7cff4195989bca165.png"
+      }
+    },
+    {
+      "id": "repeated-md5",
+      "title": "Minsky doubling \u2014 5 stages",
+      "author": "Koteitan",
+      "source": "koteitan_repeated-maze-main/maze/minsky-doubling/md5.txt",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/850d0e83e50f0ba16128d58f.png"
+      }
+    },
+    {
+      "id": "repeated-atomic-cp2-3",
+      "title": "Counter pump \u2014 cp2-3 (atomic)",
+      "author": "Koteitan",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump/cp2-3.maze",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/20d185543169cf2b0b07aafe.png"
+      }
+    },
+    {
+      "id": "repeated-atomic-cp2-4",
+      "title": "Counter pump \u2014 cp2-4 (atomic)",
+      "author": "Koteitan",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump/cp2-4.maze",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/fd24c324cd1eb7e914fd2102.png"
+      }
+    },
+    {
+      "id": "repeated-atomic-cp2-5",
+      "title": "Counter pump \u2014 cp2-5 (atomic)",
+      "author": "Koteitan",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump/cp2-5.maze",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/9be7d57cdd5433eae1b4bc3f.png"
+      }
+    },
+    {
+      "id": "repeated-atomic-cp2-6",
+      "title": "Counter pump \u2014 cp2-6 (atomic)",
+      "author": "Koteitan",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump/cp2-6.maze",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/ff563f1882133914c87817d9.png"
+      }
+    },
+    {
+      "id": "repeated-atomic-cp3-2",
+      "title": "Counter pump \u2014 cp3-2 (atomic)",
+      "author": "Koteitan",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump-3/cp3-2.maze",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/3c2ab7efe0ff557bd445ccb0.png"
+      }
+    },
+    {
+      "id": "repeated-atomic-cp3-3",
+      "title": "Counter pump \u2014 cp3-3 (atomic)",
+      "author": "Koteitan",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump-3/cp3-3.maze",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/2f33352b2fca83af52efcc91.png"
+      }
+    },
+    {
+      "id": "repeated-atomic-cp3-4",
+      "title": "Counter pump \u2014 cp3-4 (atomic)",
+      "author": "Koteitan",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump-3/cp3-4.maze",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/233392af5e07ce2f6b5b5ee1.png"
+      }
+    },
+    {
+      "id": "repeated-atomic-md3",
+      "title": "Minsky doubling \u2014 3 stages (atomic)",
+      "author": "Koteitan",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/minsky-doubling/md3.maze",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/c1a260d6da329ebe707f6ef5.png"
+      }
+    },
+    {
+      "id": "repeated-atomic-md4",
+      "title": "Minsky doubling \u2014 4 stages (atomic)",
+      "author": "Koteitan",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/minsky-doubling/md4.maze",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/2ca7989f5b5a704db5f8e1cf.png"
+      }
+    },
+    {
+      "id": "repeated-atomic-md5",
+      "title": "Minsky doubling \u2014 5 stages (atomic)",
+      "author": "Koteitan",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/minsky-doubling/md5.maze",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/00553b7417d521bb0a083cbc.png"
+      }
+    },
+    {
+      "id": "repeated-atomic-penta",
+      "title": "Pentation maze",
+      "author": "Koteitan",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/penta/penta.maze",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/7006b47c9b9891a773af17e9.png"
+      }
+    },
+    {
+      "id": "repeated-atomic-cp-n3-godel",
+      "title": "Three-register counter pump \u2014 compiled (WIP)",
+      "author": "Koteitan",
+      "source": "upstream_sources/koteitan-repeated-maze/tools/nd-to-2d/examples/cp_n3.hs",
+      "file": "",
+      "representationType": "repeatedDirected",
+      "tags": [
+        "koteitan",
+        "repeated",
+        "wip",
+        "research"
+      ],
+      "preview": {
+        "definitionType": "repeatedDirected",
+        "playable": true,
+        "review": null,
+        "asset": "library-covers/da19e500ea9d834886636bdb.png"
+      }
+    },
+    {
+      "id": "pda-guide-1",
+      "title": "Skeptic Play 1",
+      "author": "Source conversion",
+      "source": "Papers/Fractal_Maze_to_PDA/Fractal_Maze_to_PDA.md",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Siggy/Skeptic_Play_1.jpg"
+      }
+    },
+    {
+      "id": "pda-guide-2",
+      "title": "Wolfram 2 \u2014 guide conversion",
+      "author": "Source conversion",
+      "source": "Papers/Fractal_Maze_to_PDA/Fractal_Maze_to_PDA.md",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Wires.png"
+      }
+    },
+    {
+      "id": "pda-guide-3",
+      "title": "Jay McArthur \u2014 eight-copy PDA",
+      "author": "Source conversion",
+      "source": "Papers/Fractal_Maze_to_PDA/Fractal_Maze_to_PDA.md",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "library-covers/669fa8c76467b9bcb5ae5dcf.png"
+      }
+    },
+    {
+      "id": "pda-guide-4",
+      "title": "Inner Frame \u2014 guide PDA",
+      "author": "Source conversion",
+      "source": "Papers/Fractal_Maze_to_PDA/Fractal_Maze_to_PDA.md",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/The_Inner_Frame.png"
+      }
+    },
+    {
+      "id": "pda-guide-5",
+      "title": "Skeptic Play 3 \u2014 revised drawing",
+      "author": "Source conversion",
+      "source": null,
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Siggy/Skeptic_Play_3_Alt.png"
+      }
+    },
+    {
+      "id": "pda-guide-6",
+      "title": "Jay McArthur \u2014 A Long Path v6",
+      "author": "Source conversion",
+      "source": "Papers/Fractal_Maze_to_PDA/Fractal_Maze_to_PDA.md",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Jay_McArthur_-_A_Long_Path_v6.png"
+      }
+    },
+    {
+      "id": "draft-maze-images-martin-windischer-windischer-gif",
+      "title": "Windischer",
+      "author": "Martin Windischer",
+      "source": "Maze_Images/Martin_Windischer/Windischer.gif",
+      "file": "",
+      "representationType": "infiniteRule",
+      "tags": [
+        "paths",
+        "pda",
+        "wip",
+        "infinite",
+        "proof"
+      ],
+      "preview": {
+        "definitionType": "infiniteRule",
+        "playable": false,
+        "review": "wip",
+        "asset": "references/Maze_Images/Martin_Windischer/Windischer.gif"
+      }
+    },
+    {
+      "id": "draft-maze-images-martin-windischer-windischer-png",
+      "title": "Windischer",
+      "author": "Martin Windischer",
+      "source": "Maze_Images/Martin_Windischer/Windischer.png",
+      "file": "",
+      "representationType": "infiniteRule",
+      "tags": [
+        "paths",
+        "pda",
+        "wip",
+        "infinite",
+        "proof"
+      ],
+      "preview": {
+        "definitionType": "infiniteRule",
+        "playable": false,
+        "review": "wip",
+        "asset": "references/Maze_Images/Martin_Windischer/Windischer.png"
+      }
+    },
+    {
+      "id": "draft-maze-images-martin-windischer-windischer-recursion-jpg",
+      "title": "Windischer Recursion",
+      "author": "Martin Windischer",
+      "source": "Maze_Images/Martin_Windischer/Windischer_Recursion.jpg",
+      "file": "",
+      "representationType": "infiniteRule",
+      "tags": [
+        "paths",
+        "pda",
+        "wip",
+        "infinite",
+        "proof"
+      ],
+      "preview": {
+        "definitionType": "infiniteRule",
+        "playable": false,
+        "review": "wip",
+        "asset": "references/Maze_Images/Martin_Windischer/Windischer_Recursion.jpg"
+      }
+    },
+    {
+      "id": "proof-maze-images-siggy-first-cantor-svg",
+      "title": "First Cantor",
+      "author": "Siggy",
+      "source": "https://freethoughtblogs.com/atrivialknot/2023/10/21/infinite-fractal-mazes/",
+      "file": "",
+      "representationType": "infiniteRule",
+      "tags": [
+        "paths",
+        "pda",
+        "wip",
+        "infinite",
+        "proof"
+      ],
+      "preview": {
+        "definitionType": "infiniteRule",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Siggy/First_Cantor.svg"
+      }
+    },
+    {
+      "id": "proof-maze-images-siggy-infinite-descent-svg",
+      "title": "Infinite Descent",
+      "author": "Siggy",
+      "source": "https://freethoughtblogs.com/atrivialknot/2023/10/21/infinite-fractal-mazes/",
+      "file": "",
+      "representationType": "infiniteRule",
+      "tags": [
+        "paths",
+        "pda",
+        "wip",
+        "infinite",
+        "proof"
+      ],
+      "preview": {
+        "definitionType": "infiniteRule",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Siggy/Infinite_Descent.svg"
+      }
+    },
+    {
+      "id": "proof-maze-images-siggy-simple-cantor-maze-svg",
+      "title": "Simple Cantor Maze",
+      "author": "Siggy",
+      "source": "https://freethoughtblogs.com/atrivialknot/2023/10/21/infinite-fractal-mazes/",
+      "file": "",
+      "representationType": "infiniteRule",
+      "tags": [
+        "paths",
+        "pda",
+        "wip",
+        "infinite",
+        "proof"
+      ],
+      "preview": {
+        "definitionType": "infiniteRule",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Siggy/Simple_Cantor_Maze.svg"
+      }
+    },
+    {
+      "id": "draft-maze-images-siggy-skeptic-play-1-svg",
+      "title": "Skeptic Play 1 \u2014 source SVG",
+      "author": "Source conversion",
+      "source": "Papers/Fractal_Maze_to_PDA/Fractal_Maze_to_PDA.md",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Siggy/Skeptic_Play_1.svg"
+      }
+    },
+    {
+      "id": "draft-maze-images-siggy-skeptic-play-1-steps-svg",
+      "title": "Skeptic Play 1 \u2014 annotated routes",
+      "author": "Source conversion",
+      "source": "Papers/Fractal_Maze_to_PDA/Fractal_Maze_to_PDA.md",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Siggy/Skeptic_Play_1_Steps.svg"
+      }
+    },
+    {
+      "id": "draft-maze-images-geocaching-easter-13-10-png",
+      "title": "Geocaching Easter 13-#10",
+      "author": "Source conversion",
+      "source": null,
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Geocaching_Easter_13-10.png"
+      }
+    },
+    {
+      "id": "draft-maze-images-snuke-snuke-3-png",
+      "title": "Snuke 3",
+      "author": "Snuke",
+      "source": "Maze_Images/snuke/Snuke_3.png",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/snuke/Snuke_3.png"
+      }
+    },
+    {
+      "id": "draft-maze-images-snuke-snuke-4-png",
+      "title": "Snuke 4",
+      "author": "Snuke",
+      "source": "Maze_Images/snuke/Snuke_4.png",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/snuke/Snuke_4.png"
+      }
+    },
+    {
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+      "title": "Wolfram 0",
+      "author": "Mark J. P. Wolf",
+      "source": "Maze_Images/Mark_J_P_Wolf/Wolfram_0.jpg",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_0.jpg"
+      }
+    },
+    {
+      "id": "draft-maze-images-luegarua-webp",
+      "title": "Luegarua",
+      "author": "Luegarua",
+      "source": "Maze_Images/Luegarua.webp",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Luegarua.webp"
+      }
+    },
+    {
+      "id": "draft-maze-images-siggy-skeptic-play-3-png",
+      "title": "Skeptic Play 3",
+      "author": "Siggy",
+      "source": "Maze_Images/Siggy/Skeptic_Play_3.png",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Siggy/Skeptic_Play_3.png"
+      }
+    },
+    {
+      "id": "draft-maze-images-siggy-skeptic-play-2-jpg",
+      "title": "Skeptic Play 2",
+      "author": "Siggy",
+      "source": "Maze_Images/Siggy/Skeptic_Play_2.jpg",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Siggy/Skeptic_Play_2.jpg"
+      }
+    },
+    {
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png",
+      "title": "Wolfram 2 \u2014 Wires",
+      "author": "Mark J. P. Wolf",
+      "source": "Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Wires.png",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Wires.png"
+      }
+    },
+    {
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png",
+      "title": "Wolfram 2 \u2014 Nested",
+      "author": "Mark J. P. Wolf",
+      "source": "Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Nested.png",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Nested.png"
+      }
+    },
+    {
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+      "title": "Wolfram 2",
+      "author": "Mark J. P. Wolf",
+      "source": "Maze_Images/Mark_J_P_Wolf/Wolfram_2.jpg",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2.jpg"
+      }
+    },
+    {
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+      "title": "Wolfram 1",
+      "author": "Mark J. P. Wolf",
+      "source": "Maze_Images/Mark_J_P_Wolf/Wolfram_1.gif",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_1.gif"
+      }
+    },
+    {
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
+      "title": "Wolfram 1 \u2014 Solution",
+      "author": "Mark J. P. Wolf",
+      "source": "Maze_Images/Mark_J_P_Wolf/Wolfram_1_-_Solution.jpg",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_1_-_Solution.jpg"
+      }
+    },
+    {
+      "id": "draft-maze-images-snuke-snuke-2-jpg",
+      "title": "Snuke 2",
+      "author": "Snuke",
+      "source": "Maze_Images/snuke/Snuke_2.jpg",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/snuke/Snuke_2.jpg"
+      }
+    },
+    {
+      "id": "draft-maze-images-snuke-snuke-1-jpg",
+      "title": "Snuke 1",
+      "author": "Snuke",
+      "source": "Maze_Images/snuke/Snuke_1.jpg",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/snuke/Snuke_1.jpg"
+      }
+    },
+    {
+      "id": "draft-maze-images-daedalus-1-gif",
+      "title": "Daedalus 1",
+      "author": "Walter D. Pullen",
+      "source": "Maze_Images/Daedalus_1.gif",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Daedalus_1.gif"
+      }
+    },
+    {
+      "id": "draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+      "title": "Daedalus 3",
+      "author": "Ed Pegg Jr",
+      "source": "Maze_Images/Ed_Pegg_Jr/Daedalus_3.gif",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Ed_Pegg_Jr/Daedalus_3.gif"
+      }
+    },
+    {
+      "id": "draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+      "title": "Daedalus 2",
+      "author": "Ed Pegg Jr",
+      "source": "Maze_Images/Ed_Pegg_Jr/Daedalus_2.jpg",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Ed_Pegg_Jr/Daedalus_2.jpg"
+      }
+    },
+    {
+      "id": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+      "title": "Alice and the Hedge Maze",
+      "author": "Mike Earnest",
+      "source": "Maze_Images/Mike_Earnest/Alice_and_the_Hedge_Maze.png",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Mike_Earnest/Alice_and_the_Hedge_Maze.png"
+      }
+    },
+    {
+      "id": "draft-maze-images-the-inner-frame-pdf",
+      "title": "Inner Frame \u2014 source rooms",
+      "author": "Matthias Weber",
+      "source": "Maze_Images/The_Inner_Frame.png",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/The_Inner_Frame.png"
+      }
+    },
+    {
+      "id": "draft-maze-images-jay-mcarthur-a-long-path-v6-png",
+      "title": "Jay McArthur \u2014 A Long Path v6",
+      "author": "Jay McArthur",
+      "source": "Maze_Images/Jay_McArthur_-_A_Long_Path_v6.png",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Jay_McArthur_-_A_Long_Path_v6.png"
+      }
+    },
+    {
+      "id": "draft-maze-images-mike-earnest-berkly-jpg",
+      "title": "Berkly",
+      "author": "Mike Earnest",
+      "source": "Maze_Images/Mike_Earnest/Berkly.jpg",
+      "file": "",
+      "representationType": "pathPushdown",
+      "tags": [
+        "paths",
+        "pda",
+        "wip"
+      ],
+      "preview": {
+        "definitionType": "pathPushdown",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/Maze_Images/Mike_Earnest/Berkly.jpg"
+      }
+    },
+    {
+      "id": "simple-infinite-hop",
+      "title": "Simple infinite hop",
+      "author": "Rule examples after Siggy",
+      "source": "https://freethoughtblogs.com/atrivialknot/2023/10/21/infinite-fractal-mazes/",
+      "file": "",
+      "representationType": "infiniteRule",
+      "tags": [
+        "paths",
+        "pda",
+        "wip",
+        "infinite",
+        "proof"
+      ],
+      "preview": {
+        "definitionType": "infiniteRule",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/generated/simple-infinite.svg"
+      }
+    },
+    {
+      "id": "simple-nested-infinite-hop",
+      "title": "Simple nested infinite hop",
+      "author": "Rule examples after Siggy",
+      "source": "https://freethoughtblogs.com/atrivialknot/2023/10/21/infinite-fractal-mazes/",
+      "file": "",
+      "representationType": "infiniteRule",
+      "tags": [
+        "paths",
+        "pda",
+        "wip",
+        "infinite",
+        "proof"
+      ],
+      "preview": {
+        "definitionType": "infiniteRule",
+        "playable": true,
+        "review": "wip",
+        "asset": "references/generated/simple-nested-infinite.svg"
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "maze-images-daedalus-1-gif",
+      "draftId": "draft-maze-images-daedalus-1-gif",
+      "playableId": "draft-maze-images-daedalus-1-gif"
+    },
+    {
+      "id": "maze-images-ed-pegg-jr-daedalus-2-jpg",
+      "draftId": "draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+      "playableId": "draft-maze-images-ed-pegg-jr-daedalus-2-jpg"
+    },
+    {
+      "id": "maze-images-ed-pegg-jr-daedalus-3-gif",
+      "draftId": "draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+      "playableId": "draft-maze-images-ed-pegg-jr-daedalus-3-gif"
+    },
+    {
+      "id": "maze-images-geocaching-easter-13-10-png",
+      "draftId": "draft-maze-images-geocaching-easter-13-10-png",
+      "playableId": "draft-maze-images-geocaching-easter-13-10-png"
+    },
+    {
+      "id": "maze-images-jay-mcarthur-a-long-path-v6-png",
+      "draftId": "draft-maze-images-jay-mcarthur-a-long-path-v6-png",
+      "playableId": "draft-maze-images-jay-mcarthur-a-long-path-v6-png"
+    },
+    {
+      "id": "maze-images-luegarua-webp",
+      "draftId": "draft-maze-images-luegarua-webp",
+      "playableId": "draft-maze-images-luegarua-webp"
+    },
+    {
+      "id": "maze-images-mark-j-p-wolf-wolfram-0-jpg",
+      "draftId": "draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+      "playableId": "draft-maze-images-mark-j-p-wolf-wolfram-0-jpg"
+    },
+    {
+      "id": "maze-images-mark-j-p-wolf-wolfram-1-gif",
+      "draftId": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+      "playableId": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif"
+    },
+    {
+      "id": "maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
+      "draftId": "draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
+      "playableId": "draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg"
+    },
+    {
+      "id": "maze-images-mark-j-p-wolf-wolfram-2-jpg",
+      "draftId": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+      "playableId": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg"
+    },
+    {
+      "id": "maze-images-mark-j-p-wolf-wolfram-2-nested-png",
+      "draftId": "draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png",
+      "playableId": "draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png"
+    },
+    {
+      "id": "maze-images-mark-j-p-wolf-wolfram-2-wires-png",
+      "draftId": "draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png",
+      "playableId": "draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png"
+    },
+    {
+      "id": "maze-images-martin-windischer-windischer-gif",
+      "draftId": "draft-maze-images-martin-windischer-windischer-gif",
+      "playableId": null
+    },
+    {
+      "id": "maze-images-martin-windischer-windischer-png",
+      "draftId": "draft-maze-images-martin-windischer-windischer-png",
+      "playableId": null
+    },
+    {
+      "id": "maze-images-martin-windischer-windischer-recursion-jpg",
+      "draftId": "draft-maze-images-martin-windischer-windischer-recursion-jpg",
+      "playableId": null
+    },
+    {
+      "id": "maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+      "draftId": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+      "playableId": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png"
+    },
+    {
+      "id": "maze-images-mike-earnest-berkly-jpg",
+      "draftId": "draft-maze-images-mike-earnest-berkly-jpg",
+      "playableId": "draft-maze-images-mike-earnest-berkly-jpg"
+    },
+    {
+      "id": "maze-images-siggy-first-cantor-svg",
+      "draftId": "proof-maze-images-siggy-first-cantor-svg",
+      "playableId": "proof-maze-images-siggy-first-cantor-svg"
+    },
+    {
+      "id": "maze-images-siggy-infinite-descent-svg",
+      "draftId": "proof-maze-images-siggy-infinite-descent-svg",
+      "playableId": "proof-maze-images-siggy-infinite-descent-svg"
+    },
+    {
+      "id": "maze-images-siggy-simple-cantor-maze-svg",
+      "draftId": "proof-maze-images-siggy-simple-cantor-maze-svg",
+      "playableId": "proof-maze-images-siggy-simple-cantor-maze-svg"
+    },
+    {
+      "id": "maze-images-siggy-skeptic-play-1-jpg",
+      "draftId": "pda-guide-1",
+      "playableId": "pda-guide-1"
+    },
+    {
+      "id": "maze-images-siggy-skeptic-play-1-svg",
+      "draftId": "draft-maze-images-siggy-skeptic-play-1-svg",
+      "playableId": "draft-maze-images-siggy-skeptic-play-1-svg"
+    },
+    {
+      "id": "maze-images-siggy-skeptic-play-1-steps-svg",
+      "draftId": "draft-maze-images-siggy-skeptic-play-1-steps-svg",
+      "playableId": "draft-maze-images-siggy-skeptic-play-1-steps-svg"
+    },
+    {
+      "id": "maze-images-siggy-skeptic-play-2-jpg",
+      "draftId": "draft-maze-images-siggy-skeptic-play-2-jpg",
+      "playableId": "draft-maze-images-siggy-skeptic-play-2-jpg"
+    },
+    {
+      "id": "maze-images-siggy-skeptic-play-3-png",
+      "draftId": "draft-maze-images-siggy-skeptic-play-3-png",
+      "playableId": "draft-maze-images-siggy-skeptic-play-3-png"
+    },
+    {
+      "id": "maze-images-siggy-skeptic-play-3-alt-png",
+      "draftId": "pda-guide-5",
+      "playableId": "pda-guide-5"
+    },
+    {
+      "id": "maze-images-the-inner-frame-pdf",
+      "draftId": "draft-maze-images-the-inner-frame-pdf",
+      "playableId": "draft-maze-images-the-inner-frame-pdf"
+    },
+    {
+      "id": "maze-images-snuke-snuke-1-jpg",
+      "draftId": "draft-maze-images-snuke-snuke-1-jpg",
+      "playableId": "draft-maze-images-snuke-snuke-1-jpg"
+    },
+    {
+      "id": "maze-images-snuke-snuke-2-jpg",
+      "draftId": "draft-maze-images-snuke-snuke-2-jpg",
+      "playableId": "draft-maze-images-snuke-snuke-2-jpg"
+    },
+    {
+      "id": "maze-images-snuke-snuke-3-png",
+      "draftId": "draft-maze-images-snuke-snuke-3-png",
+      "playableId": "draft-maze-images-snuke-snuke-3-png"
+    },
+    {
+      "id": "maze-images-snuke-snuke-4-png",
+      "draftId": "draft-maze-images-snuke-snuke-4-png",
+      "playableId": "draft-maze-images-snuke-snuke-4-png"
+    },
+    {
+      "id": "papers-fractal-maze-to-pda-graph-solution-png",
+      "draftId": null,
+      "playableId": null
+    },
+    {
+      "id": "papers-fractal-maze-to-pda-sp-1-actions-jpg",
+      "draftId": null,
+      "playableId": null
+    },
+    {
+      "id": "papers-fractal-maze-to-pda-sp-1-m1-png",
+      "draftId": null,
+      "playableId": null
+    },
+    {
+      "id": "papers-fractal-maze-to-pda-sp-1-m2-png",
+      "draftId": null,
+      "playableId": null
+    },
+    {
+      "id": "papers-fractal-maze-to-pda-sp-1-m3-png",
+      "draftId": null,
+      "playableId": null
+    },
+    {
+      "id": "papers-fractal-maze-to-pda-sp-1-m4-png",
+      "draftId": null,
+      "playableId": null
+    },
+    {
+      "id": "papers-fractal-maze-to-pda-sp-1-m5-png",
+      "draftId": null,
+      "playableId": null
+    },
+    {
+      "id": "papers-fractal-maze-to-pda-sp-1-turing-machine-png",
+      "draftId": null,
+      "playableId": null
+    },
+    {
+      "id": "papers-fractal-maze-to-pda-sp-1-whole-graph-png",
+      "draftId": null,
+      "playableId": null
+    },
+    {
+      "id": "papers-fractal-maze-to-pda-skeptic-play-1-jpg",
+      "draftId": null,
+      "playableId": null
+    },
+    {
+      "id": "source-backlot",
+      "draftId": null,
+      "playableId": null
+    },
+    {
+      "id": "source-omeometo-block",
+      "draftId": null,
+      "playableId": null
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "captures": [
+    {
+      "file": "home.png",
+      "title": "Home",
+      "width": 1440,
+      "route": ""
+    },
+    {
+      "file": "alice-block.png",
+      "title": "Alice block view",
+      "width": 1440,
+      "route": "play/alice-in-wonderland"
+    },
+    {
+      "file": "alice-source.png",
+      "title": "Alice source view",
+      "width": 1440,
+      "route": "play/draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png"
+    },
+    {
+      "file": "solver.png",
+      "title": "Simplified PDA solver",
+      "width": 1440,
+      "route": "solver?id=alice-in-wonderland"
+    },
+    {
+      "file": "alice-replay.png",
+      "title": "Maze-local solution playback",
+      "width": 1440,
+      "route": "play/alice-in-wonderland?replay=bundled-alice-in-wonderland"
+    },
+    {
+      "file": "proof.png",
+      "title": "Empty manual proof notebook",
+      "width": 1440,
+      "route": "workbench/simple-infinite-hop?tab=proof"
+    },
+    {
+      "file": "home-phone.png",
+      "title": "Home",
+      "width": 390,
+      "route": ""
+    },
+    {
+      "file": "alice-block-phone.png",
+      "title": "Alice block view",
+      "width": 390,
+      "route": "play/alice-in-wonderland"
+    },
+    {
+      "file": "alice-source-phone.png",
+      "title": "Alice source view",
+      "width": 390,
+      "route": "play/draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png"
+    },
+    {
+      "file": "solver-phone.png",
+      "title": "Simplified PDA solver",
+      "width": 390,
+      "route": "solver?id=alice-in-wonderland"
+    },
+    {
+      "file": "alice-replay-phone.png",
+      "title": "Maze-local solution playback",
+      "width": 390,
+      "route": "play/alice-in-wonderland?replay=bundled-alice-in-wonderland"
+    },
+    {
+      "file": "proof-phone.png",
+      "title": "Empty manual proof notebook",
+      "width": 390,
+      "route": "workbench/simple-infinite-hop?tab=proof"
+    }
+  ],
+  "pageErrors": [],
+  "overflow": 0
+}

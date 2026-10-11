@@ -1,0 +1,85 @@
+{
+  "executedAt": "2026-10-11T04:31:51.720942+00:00",
+  "unit": {
+    "files": 34,
+    "passed": 306
+  },
+  "productionBrowser": {
+    "passed": 95,
+    "baseURL": "http://127.0.0.1:5176/Fractal-Maze/",
+    "fullSuite": "95 workflows passed before final readable-label/singular-move copy refinement",
+    "finalAffectedWorkflows": 3,
+    "finalAffectedResult": "All passed on final production build; manually constructed Cantor, Infinite Descent and duplicate simple claims"
+  },
+  "hosting": {
+    "passed": 40,
+    "mounts": [
+      "/Fractal-Maze/",
+      "/"
+    ],
+    "solverWorkers": "Both verified"
+  },
+  "proofGates": {
+    "documents": 2,
+    "gates": 32,
+    "covered": 32,
+    "walks": 196,
+    "crossings": 152,
+    "proofActions": 78,
+    "projections": 230,
+    "replayImports": 128,
+    "sourceHash": "f2a1a1a5af14df8de1b3b570e439fbe393efb84206df1dfaa576b03cf75fbeb0",
+    "sourceChangedDuringAudit": false,
+    "failures": []
+  },
+  "lint": "passed",
+  "typecheck": "passed in production build",
+  "builds": [
+    "Pages passed",
+    "Root passed"
+  ],
+  "quality": {
+    "productionFiles": 204,
+    "maxCyclomatic": 21,
+    "maxSourceLines": 553,
+    "explicitAnyUnknown": 0,
+    "violations": [],
+    "unmeasured": [
+      "Cognitive complexity",
+      "Halstead Difficulty",
+      "Instrumented statement/branch/function/line coverage",
+      "CRAP",
+      "Mutation survival",
+      "Dead code analysis",
+      "Duplication analysis",
+      "Python script complexity"
+    ]
+  },
+  "presentation": {
+    "captures": 4,
+    "visuallyInspected": 4,
+    "directory": "screenshots/live-proofs",
+    "viewports": {
+      "First Cantor": "390\u00d7844",
+      "Infinite Descent": "1440\u00d71000"
+    },
+    "finalLabelReview": "Proof connections display human-readable paths rather than internal claim UUIDs"
+  },
+  "contracts": [
+    "Only current checked saved claims become live actions; no automatic notebook insertion.",
+    "Witness-derived source/block boundaries include nested lemmas and joint Cantor hypotheses.",
+    "Address suffix substitution preserves surrounding recursive copies.",
+    "Canonical session supports physical walks, ordinary crossings, proof actions, undo and detour removal.",
+    "Selected geometry and checked claim snapshot are retained in replay export/import.",
+    "Import rejects forged hypotheses, stale claims, disconnected departures, false arrivals and witness disagreement.",
+    "Bound existing proof recordings reconstruct through the same physical session.",
+    "Pause/resume freezes final proof movement; seeking/import reach the exact recorded drawn finish.",
+    "Duplicate checked proofs expose one destination choice; schematic examples expose their controls."
+  ],
+  "limits": [
+    "32 proof gates were audited with explicitly loaded checked bundled Cantor certificates; this does not prove source fidelity or every possible arbitrary proof.",
+    "Original source interpretations remain WIP. Native geometric, register, coordinate and other model completion remains in the active plan.",
+    "Windischer remains unbound; v6 image mapping is deferred by request.",
+    "Complete source/solution coverage and the full optimization/security/original-request audit are not achieved."
+  ]
+}

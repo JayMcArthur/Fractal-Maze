@@ -1,0 +1,25 @@
+format: fmaze-package-v0
+id: simple_cantor_maze
+title: Simple Cantor Maze
+primary_authoring: port_graph
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+solutions:
+  - id: proof_assisted
+    href: solutions/proof_assisted.yml
+    format: fmaze-solution-v0
+
+provenance:
+  sources:
+    - type: image
+      href: ../../../Maze_Images/Siggy/Simple_Cantor_Maze.svg
+    - type: post
+      href: https://freethoughtblogs.com/atrivialknot/2023/10/21/infinite-fractal-mazes/
+    - type: handwritten_record
+      note: Hand-authored from the visible "simple cantor maze" SVG layer.
+  notes:
+    - The SVG has one outer frame, submazes A and B, numbered points 1, 2, and 3, and red physical connectors from 1 into A, A/B through 2, and B out to 3.
+    - The proof edge models the Cantor-style logical crossing from 1 to 3 by assuming the same 1-to-3 crossing inside each non-empty submaze context.

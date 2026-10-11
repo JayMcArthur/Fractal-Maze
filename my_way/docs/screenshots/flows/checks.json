@@ -1,0 +1,60 @@
+{
+  "checks": [
+    {
+      "name": "library",
+      "route": "library",
+      "overflow": false
+    },
+    {
+      "name": "build",
+      "route": "build",
+      "overflow": false
+    },
+    {
+      "name": "new-image",
+      "route": "workbench/new",
+      "overflow": false
+    },
+    {
+      "name": "guide",
+      "route": "docs",
+      "overflow": false
+    },
+    {
+      "name": "replays",
+      "route": "replays",
+      "overflow": false
+    },
+    {
+      "name": "atomic-maze",
+      "route": "play/repeated-atomic-cp2-3",
+      "overflow": false
+    },
+    {
+      "name": "penta",
+      "route": "play/repeated-atomic-penta",
+      "overflow": false
+    },
+    {
+      "name": "updated-source-editor",
+      "route": "programs/repeated-maze/index.html",
+      "overflow": false
+    },
+    {
+      "name": "build-phone",
+      "route": "build",
+      "overflow": false
+    },
+    {
+      "name": "guide-phone",
+      "route": "docs",
+      "overflow": false
+    },
+    {
+      "name": "library-phone",
+      "route": "library",
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,762 @@
+[
+  {
+    "id": "bundled-alice-in-wonderland",
+    "title": "Alice and the Fractal Hedge Maze",
+    "mazeId": "alice-in-wonderland",
+    "moves": 186,
+    "complete": true,
+    "format": "squareRecursive",
+    "proofAssisted": false,
+    "asset": "solutions/bb02b09719a5cdbfece220e1d0732c27ef3259fc8b467faf6a6ac6ad0f5c62b2.json"
+  },
+  {
+    "id": "bundled-sierpinski",
+    "title": "Sierpinski",
+    "mazeId": "sierpinski",
+    "moves": 121,
+    "complete": true,
+    "format": "squareRecursive",
+    "proofAssisted": false,
+    "asset": "solutions/9792bb41bc9b312186110a98083622df5de968cb1f66b966efb63237f58ac9bd.json"
+  },
+  {
+    "id": "bundled-microchip",
+    "title": "Microchip",
+    "mazeId": "microchip",
+    "moves": 241,
+    "complete": true,
+    "format": "squareRecursive",
+    "proofAssisted": false,
+    "asset": "solutions/7dddb8b7a38104e3043f581742ee2f2c0a2bf84fc515704a578af5b722f104c0.json"
+  },
+  {
+    "id": "bundled-square",
+    "title": "Square",
+    "mazeId": "square",
+    "moves": 566,
+    "complete": true,
+    "format": "squareRecursive",
+    "proofAssisted": false,
+    "asset": "solutions/b744f2b7907997208445cd08b3551af6482817cddec4682426f4be018e8c6f27.json"
+  },
+  {
+    "id": "bundled-a-long-path-v4",
+    "title": "A Long Path v4",
+    "mazeId": "a-long-path-v4",
+    "moves": 111,
+    "complete": true,
+    "format": "squareRecursive",
+    "proofAssisted": false,
+    "asset": "solutions/18ed45a5bf5902c738a33cd40dc3d581243cbbbe95cbd31ea90c14627f6248f6.json"
+  },
+  {
+    "id": "bundled-a-long-path-v8",
+    "title": "A Long Path v8",
+    "mazeId": "a-long-path-v8",
+    "moves": 3540,
+    "complete": true,
+    "format": "squareRecursive",
+    "proofAssisted": false,
+    "asset": "solutions/b8af6596e2acf12eb74bb9f2aa105a23ba9d48b422322f71f3b1f00b0c987467.json"
+  },
+  {
+    "id": "bundled-matthias-weber",
+    "title": "Fractal Maze",
+    "mazeId": "matthias-weber",
+    "moves": 55,
+    "complete": true,
+    "format": "squareRecursive",
+    "proofAssisted": false,
+    "asset": "solutions/5084d7484798beafb5b9695adb38a989465ef26d9eb3d4bb6b655ea99b02ede3.json"
+  },
+  {
+    "id": "bundled-skeptic-play-carpet",
+    "title": "Carpet",
+    "mazeId": "skeptic-play-carpet",
+    "moves": 184,
+    "complete": true,
+    "format": "squareRecursive",
+    "proofAssisted": false,
+    "asset": "solutions/1d590c6aaaf6b7491170072b52a9bf496986020e3420d11bfee5255f2ff0557f.json"
+  },
+  {
+    "id": "bundled-1695993784968:0.6965701909885131",
+    "title": "Tsat - Cubist",
+    "mazeId": "1695993784968:0.6965701909885131",
+    "moves": 3,
+    "complete": true,
+    "format": "geometricRecursive",
+    "proofAssisted": false,
+    "asset": "solutions/45888a07db3a4113178088800050a69340f1cc17f7b43979da7960f6d6a13cc7.json"
+  },
+  {
+    "id": "bundled-backlot",
+    "title": "Backlot",
+    "mazeId": "backlot",
+    "moves": 337,
+    "complete": true,
+    "format": "recursiveTour",
+    "proofAssisted": false,
+    "asset": "solutions/58adeb10041948f3bc2a2327775853f5af55e692280253a7bdd774ecd13d3f4a.json"
+  },
+  {
+    "id": "bundled-ports-koteitan",
+    "title": "Koteitan recursive ports",
+    "mazeId": "ports-koteitan",
+    "moves": 19,
+    "complete": true,
+    "format": "recursivePorts",
+    "proofAssisted": false,
+    "asset": "solutions/d1134857e1beeb87916397feca3cd77931e3f25ec53e8c9d99084aa64759433e.json"
+  },
+  {
+    "id": "bundled-ports-snuke_no3",
+    "title": "Snuke fractal maze 3",
+    "mazeId": "ports-snuke_no3",
+    "moves": 18,
+    "complete": true,
+    "format": "recursivePorts",
+    "proofAssisted": false,
+    "asset": "solutions/15705dbe64f44efec06185a1541c408c6ad7d244769121f27b9dd6755319cb05.json"
+  },
+  {
+    "id": "bundled-ports-snuke_no4",
+    "title": "Snuke fractal maze 4",
+    "mazeId": "ports-snuke_no4",
+    "moves": 40,
+    "complete": true,
+    "format": "recursivePorts",
+    "proofAssisted": false,
+    "asset": "solutions/7bb74134329a915b19327937568f34d0ffb60574a29d1822496344b5bf752a07.json"
+  },
+  {
+    "id": "bundled-koteitan-block",
+    "title": "Omeometo \u2014 fractal block maze",
+    "mazeId": "koteitan-block",
+    "moves": 1756,
+    "complete": true,
+    "format": "blockRecursive",
+    "proofAssisted": false,
+    "asset": "solutions/ed7b52f911feeb7962255fff2400b3f0a32e3db8a177e56b90b93f95df12a84f.json"
+  },
+  {
+    "id": "bundled-repeated-directed-example",
+    "title": "Repeated directed maze \u2014 13-step example",
+    "mazeId": "repeated-directed-example",
+    "moves": 13,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/ec193df1f1e6d46b02d80a354526c4e3dc0a14c48bcb3e5fc506d9be63faacbc.json"
+  },
+  {
+    "id": "bundled-portal-connections",
+    "title": "Portal connections",
+    "mazeId": "portal-connections",
+    "moves": 3,
+    "complete": true,
+    "format": "graphLabeled",
+    "proofAssisted": false,
+    "asset": "solutions/f7255febf9167bcbbf2231c296a8a2d56c66352d8b8c82054bd6e6cbd1619b7f.json"
+  },
+  {
+    "id": "bundled-koteitan-block-3",
+    "title": "Koteitan block pattern \u2014 3\u00d73",
+    "mazeId": "koteitan-block-3",
+    "moves": 9,
+    "complete": true,
+    "format": "fractalBlock",
+    "proofAssisted": false,
+    "asset": "solutions/7c65a0f89f7a572e8cd5353a79ff0e6f03b092119bc5c497a9c2a2599a7bd873.json"
+  },
+  {
+    "id": "bundled-koteitan-block-5",
+    "title": "Koteitan block pattern \u2014 5\u00d75",
+    "mazeId": "koteitan-block-5",
+    "moves": 3979,
+    "complete": true,
+    "format": "fractalBlock",
+    "proofAssisted": false,
+    "asset": "solutions/39b35a9969fe64fe450b356fd03f77534aa53df15d45a7fa2999efffaa1f62c9.json"
+  },
+  {
+    "id": "bundled-repeated-cp6",
+    "title": "Counter pump \u2014 6 terminals",
+    "mazeId": "repeated-cp6",
+    "moves": 257,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/3d8384aeebb40f621f484baa9c01d3e9bfdef2ce6c42a17332c6c1d1e52332fb.json"
+  },
+  {
+    "id": "bundled-repeated-md3",
+    "title": "Minsky doubling \u2014 3 stages",
+    "mazeId": "repeated-md3",
+    "moves": 144,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/f7a8393ca00e39d288005d5d24b3faf591323d9f33dea812d17fa003fa5318e4.json"
+  },
+  {
+    "id": "bundled-repeated-md4",
+    "title": "Minsky doubling \u2014 4 stages",
+    "mazeId": "repeated-md4",
+    "moves": 315,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/6a0bbc86fe472c1752f9e095ad1f9b09cf026e82d8a091ac159876c731ac4e15.json"
+  },
+  {
+    "id": "bundled-repeated-md5",
+    "title": "Minsky doubling \u2014 5 stages",
+    "mazeId": "repeated-md5",
+    "moves": 662,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/b95eb191f8ce32c7dfe33356fedf55f636b51b6bf4efd4e1352be9da846af288.json"
+  },
+  {
+    "id": "bundled-repeated-atomic-cp2-3",
+    "title": "Counter pump \u2014 cp2-3 (atomic)",
+    "mazeId": "repeated-atomic-cp2-3",
+    "moves": 59,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/b412a6f3699322f0e01ad6781bfca51b9aeb4c128f2833f75e2c199c0d83f8c8.json"
+  },
+  {
+    "id": "bundled-repeated-atomic-cp2-4",
+    "title": "Counter pump \u2014 cp2-4 (atomic)",
+    "mazeId": "repeated-atomic-cp2-4",
+    "moves": 98,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/3b0389de9c57853a2fe28bf03dd3dba6a5d065dcaeb07d10d052c206b0afcef8.json"
+  },
+  {
+    "id": "bundled-repeated-atomic-cp2-5",
+    "title": "Counter pump \u2014 cp2-5 (atomic)",
+    "mazeId": "repeated-atomic-cp2-5",
+    "moves": 147,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/03d29266775900e4cd8ca29376b79fe4f330003c2034ddd2452f3b6a86e192b4.json"
+  },
+  {
+    "id": "bundled-repeated-atomic-cp2-6",
+    "title": "Counter pump \u2014 cp2-6 (atomic)",
+    "mazeId": "repeated-atomic-cp2-6",
+    "moves": 206,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/073f52d4819f94903a2153295a5fc3b87e2f6bd6cf133cf8b425708cc33a3cb7.json"
+  },
+  {
+    "id": "bundled-repeated-atomic-cp3-2",
+    "title": "Counter pump \u2014 cp3-2 (atomic)",
+    "mazeId": "repeated-atomic-cp3-2",
+    "moves": 32783,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/5cfc1d4769a32ab29c5e0250b8419289eac983e560d25c0a373c1a1a2cea7a2e.json"
+  },
+  {
+    "id": "bundled-repeated-atomic-cp3-3",
+    "title": "Counter pump \u2014 cp3-3 (atomic)",
+    "mazeId": "repeated-atomic-cp3-3",
+    "moves": 1230549,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/13e5383e1eddc360072c5b837966927a3a496ad52f4a27ddd39459a95d8e89b3.json"
+  },
+  {
+    "id": "bundled-repeated-atomic-md3",
+    "title": "Minsky doubling \u2014 3 stages (atomic)",
+    "mazeId": "repeated-atomic-md3",
+    "moves": 117,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/a483024670200a5b65943b200453044442be638d7e820c82644fc66408aed3c8.json"
+  },
+  {
+    "id": "bundled-repeated-atomic-md4",
+    "title": "Minsky doubling \u2014 4 stages (atomic)",
+    "mazeId": "repeated-atomic-md4",
+    "moves": 245,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/49ae19d0ed496d649a2508c247b7e320fa6e7bc4dc708924b2a586a6fd471432.json"
+  },
+  {
+    "id": "bundled-repeated-atomic-md5",
+    "title": "Minsky doubling \u2014 5 stages (atomic)",
+    "mazeId": "repeated-atomic-md5",
+    "moves": 501,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/bc121b8eb0f0eecf00f1238f55c09f25f042d63df9670305c703de244881a81d.json"
+  },
+  {
+    "id": "bundled-repeated-atomic-cp-n3-godel",
+    "title": "Three-register counter pump \u2014 compiled (WIP)",
+    "mazeId": "repeated-atomic-cp-n3-godel",
+    "moves": 1230573,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/83dd857d501a93985a21671562284e9a06734a2b59d2b87d108d6e299be12d9d.json"
+  },
+  {
+    "id": "bundled-pda-guide-1",
+    "title": "Skeptic Play 1",
+    "mazeId": "pda-guide-1",
+    "moves": 28,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/d1fedd1d6c6ac432774d0d26c0e0fbfb886024e032194c64f13cee49b7e5fc5c.json"
+  },
+  {
+    "id": "bundled-pda-guide-2",
+    "title": "Wolfram 2 \u2014 guide conversion",
+    "mazeId": "pda-guide-2",
+    "moves": 20,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/eab99c980b9c6a6ef70e65228c614e48ee6175269f3f4f51093ab2af76919827.json"
+  },
+  {
+    "id": "bundled-pda-guide-3",
+    "title": "Jay McArthur \u2014 eight-copy PDA",
+    "mazeId": "pda-guide-3",
+    "moves": 510,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/dca0a8cda2fca25cf56ee49a7ed2cc1fb021b45a6664c4e6444641933c79af13.json"
+  },
+  {
+    "id": "bundled-pda-guide-4",
+    "title": "Inner Frame \u2014 guide PDA",
+    "mazeId": "pda-guide-4",
+    "moves": 8,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/e585c9ac1faf985b4f15c3a1e3012b9c11b4a930f8b6c823d5307d290df58fe7.json"
+  },
+  {
+    "id": "bundled-pda-guide-5",
+    "title": "Skeptic Play 3 \u2014 revised drawing",
+    "mazeId": "pda-guide-5",
+    "moves": 48,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/02b51e5fffa988afa842fe160b50c78f36e30d784fadb5600d0aab54ce20f67b.json"
+  },
+  {
+    "id": "bundled-pda-guide-6",
+    "title": "Jay McArthur \u2014 A Long Path v6",
+    "mazeId": "pda-guide-6",
+    "moves": 126,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/e808e2a827fd5452a2580f95135185f7dfe26199baf48728247eaad710f03e75.json"
+  },
+  {
+    "id": "bundled-proof-maze-images-siggy-first-cantor-svg",
+    "title": "First Cantor",
+    "mazeId": "proof-maze-images-siggy-first-cantor-svg",
+    "moves": 1,
+    "complete": true,
+    "format": "infiniteRule",
+    "proofAssisted": true,
+    "asset": "solutions/e6563326db462f9305ca5f4249c3624b41699d7883982ecafe05e0948dfba23b.json"
+  },
+  {
+    "id": "bundled-proof-maze-images-siggy-infinite-descent-svg",
+    "title": "Infinite Descent",
+    "mazeId": "proof-maze-images-siggy-infinite-descent-svg",
+    "moves": 1,
+    "complete": true,
+    "format": "infiniteRule",
+    "proofAssisted": true,
+    "asset": "solutions/1c374a8bd2e1880cc8a261b13cf95be7aaba8d1ed3ca1284a10f6e6862458d51.json"
+  },
+  {
+    "id": "bundled-proof-maze-images-siggy-simple-cantor-maze-svg",
+    "title": "Simple Cantor Maze",
+    "mazeId": "proof-maze-images-siggy-simple-cantor-maze-svg",
+    "moves": 1,
+    "complete": true,
+    "format": "infiniteRule",
+    "proofAssisted": true,
+    "asset": "solutions/d48741c4465247da7412f08d62573a1d57148f8f41a6753a6cab45a3762f318a.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-siggy-skeptic-play-1-svg",
+    "title": "Skeptic Play 1 \u2014 source SVG",
+    "mazeId": "draft-maze-images-siggy-skeptic-play-1-svg",
+    "moves": 28,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/286dacc73e1f93987e45849149761e775a4d75764a2c36f2b4b6e47bc12ab08a.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-siggy-skeptic-play-1-steps-svg",
+    "title": "Skeptic Play 1 \u2014 annotated routes",
+    "mazeId": "draft-maze-images-siggy-skeptic-play-1-steps-svg",
+    "moves": 28,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/4c9b4005e67fbd14b77de01a627f64b19bdd9123d618f098272e8ba97e6d319d.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-geocaching-easter-13-10-png",
+    "title": "Geocaching Easter 13-#10",
+    "mazeId": "draft-maze-images-geocaching-easter-13-10-png",
+    "moves": 22,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/411890e3b8b71b35a530a3e01a8179d2c3fb6ef086a0e4fdf884cd7b453ded08.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-snuke-snuke-3-png",
+    "title": "Snuke 3",
+    "mazeId": "draft-maze-images-snuke-snuke-3-png",
+    "moves": 18,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/89bb6018f8223228133a104fefba515e7d97046e0be6621252caa77c33104511.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-snuke-snuke-4-png",
+    "title": "Snuke 4",
+    "mazeId": "draft-maze-images-snuke-snuke-4-png",
+    "moves": 40,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/32725eec6daff7aa2b0db54b1a73f57f490ec5faff022b1b845e11b7d21ba849.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+    "title": "Wolfram 0",
+    "mazeId": "draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+    "moves": 12,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/91af53dd8548ab160f66e27d0a1c939bfe6fb5818c9dd5892077fe4492a04c84.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-luegarua-webp",
+    "title": "Luegarua",
+    "mazeId": "draft-maze-images-luegarua-webp",
+    "moves": 6,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/4d824ebe207fa86df5101b66e284bd114f964877c16f1a9661fe1336d0f8211f.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-siggy-skeptic-play-3-png",
+    "title": "Skeptic Play 3",
+    "mazeId": "draft-maze-images-siggy-skeptic-play-3-png",
+    "moves": 48,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/c2f8e86b602a3744e2dcbb5e23e83f6b81d3cea9f48164c67b214fa2153d19ef.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-siggy-skeptic-play-2-jpg",
+    "title": "Skeptic Play 2",
+    "mazeId": "draft-maze-images-siggy-skeptic-play-2-jpg",
+    "moves": 14,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/f1a7ac48267437863266a5908e8bfa0238590cde26837eca72e8710b91dbdbd9.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png",
+    "title": "Wolfram 2 \u2014 Wires",
+    "mazeId": "draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png",
+    "moves": 16,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/1db42e8b961c3216c7eabf883d525240acdbdbbd504b364e607faee6aa3b763e.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png",
+    "title": "Wolfram 2 \u2014 Nested",
+    "mazeId": "draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png",
+    "moves": 16,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/4fa3f19bc0528249362b55e836cd7c3b6ea3bdc1c54fb168c7ff13e2838bea9b.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+    "title": "Wolfram 2",
+    "mazeId": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+    "moves": 16,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/7746bb69bddaed77399cc7c2fa2d54d41eab7f30e5aa53f7324fd4f9ffcdad12.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+    "title": "Wolfram 1",
+    "mazeId": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+    "moves": 10,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/214919822f60cd5bd0fadef312722b0ad719819f3fe342bb58739bd957cc895a.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
+    "title": "Wolfram 1 \u2014 Solution",
+    "mazeId": "draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
+    "moves": 10,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/350c98119b71a85d07cc25234cc9eec199380a0e79632333a8bfb94e5d96a958.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-snuke-snuke-2-jpg",
+    "title": "Snuke 2",
+    "mazeId": "draft-maze-images-snuke-snuke-2-jpg",
+    "moves": 8,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/5c1b9302b2f96ca9276f3b70603b97e147745717e01465ba46d970916454955a.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-snuke-snuke-1-jpg",
+    "title": "Snuke 1",
+    "mazeId": "draft-maze-images-snuke-snuke-1-jpg",
+    "moves": 10,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/66c03f2a86cee4e8dfeb05cea3c6ec64a15e53cde8447e28a952ce52f2f7f456.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-daedalus-1-gif",
+    "title": "Daedalus 1",
+    "mazeId": "draft-maze-images-daedalus-1-gif",
+    "moves": 40,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/ae398a25662b5f6a59995e8353425985426c17e5126bf9e9ef1efb067c701fc2.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+    "title": "Daedalus 3",
+    "mazeId": "draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+    "moves": 42,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/aa5fc9f4f148a075096973b55bac2b771e552eca1cbfe722f208781b6fd9b166.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+    "title": "Daedalus 2",
+    "mazeId": "draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+    "moves": 8,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/d3f3a388ac54bc4af6c88c8adc6f08a7d500d1685cde0c0441d92cb41bc6876e.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+    "title": "Alice and the Hedge Maze",
+    "mazeId": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+    "moves": 24,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/e7763bb7e5a42deb2f9171b15126e4f4634b7ada7a315210285bb90b5a529e70.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-the-inner-frame-pdf",
+    "title": "Inner Frame \u2014 source rooms",
+    "mazeId": "draft-maze-images-the-inner-frame-pdf",
+    "moves": 6,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/6548275e91a0cfb6cf9391ccd23c39596df82eeb8d9e678fe35a93ba08fc7e9a.json"
+  },
+  {
+    "id": "bundled-draft-maze-images-jay-mcarthur-a-long-path-v6-png",
+    "title": "Jay McArthur \u2014 A Long Path v6",
+    "mazeId": "draft-maze-images-jay-mcarthur-a-long-path-v6-png",
+    "moves": 126,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/4db97bc1d83d3292147b350e1ade29354cc6aa36cf8ac41fc20c7016ce52ad81.json"
+  },
+  {
+    "id": "bundled-simple-infinite-hop",
+    "title": "Simple infinite hop",
+    "mazeId": "simple-infinite-hop",
+    "moves": 1,
+    "complete": true,
+    "format": "infiniteRule",
+    "proofAssisted": true,
+    "asset": "solutions/557a1c0241003e7b117518cfe05a3687ce19728dc41aa69b00a7f09d5c150b3d.json"
+  },
+  {
+    "id": "bundled-simple-nested-infinite-hop",
+    "title": "Simple nested infinite hop",
+    "mazeId": "simple-nested-infinite-hop",
+    "moves": 1,
+    "complete": true,
+    "format": "infiniteRule",
+    "proofAssisted": true,
+    "asset": "solutions/df9aa2c362ddad80d6ef7bfefb252bf3b0100e409dcd84eaed541b9d8278c14a.json"
+  },
+  {
+    "id": "bundled-wire-1",
+    "title": "Wolf wire maze \u2014 long",
+    "mazeId": "wolf-wire-original",
+    "moves": 91,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/9157fb7272ce522723fb3240c1779c793fd89d051fd396d6dd9ed28205039463.json"
+  },
+  {
+    "id": "bundled-wire-2",
+    "title": "Wolf wire maze \u2014 short",
+    "mazeId": "wolf-wire-original",
+    "moves": 40,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/da9d135871008b23e7e2e712840010829939105bacac849e3f880cb183dbfbb1.json"
+  },
+  {
+    "id": "bundled-wire-3",
+    "title": "Wolf wire maze \u2014 first",
+    "mazeId": "wolf-wire-original",
+    "moves": 50,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/85ac1d3c69ca7078f1103cb15a46a7ba8c7984d1f1fe15a61bc2045df0ec6f23.json"
+  },
+  {
+    "id": "bundled-wire-4",
+    "title": "Wolf wire maze \u2014 second",
+    "mazeId": "wolf-wire-original",
+    "moves": 51,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/3153866b827e757d8de3ae44e85d3575ef96d33788d64813a043a6c5bd19a098.json"
+  },
+  {
+    "id": "bundled-wire-5",
+    "title": "Wolf wire maze \u2014 third",
+    "mazeId": "wolf-wire-original",
+    "moves": 50,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/1478f278d0c65ee4c2da4677bb253ad85a7946054cadbb92078247c3b194d340.json"
+  },
+  {
+    "id": "bundled-wire-6",
+    "title": "Wolf wire maze \u2014 played",
+    "mazeId": "wolf-wire-original",
+    "moves": 87,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/257e79b0cf4d6a2d4a164f9cc49d6a3b11611f070f17801108607815af20ed78.json"
+  },
+  {
+    "id": "bundled-wire-7",
+    "title": "Wolf wire maze \u2014 around",
+    "mazeId": "wolf-wire-original",
+    "moves": 86,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/efdcdb63837dd3f9fc55f0c1357cb2fa421efa51003553248de1a1bb1789b693.json"
+  },
+  {
+    "id": "bundled-wire-8",
+    "title": "Wolf wire maze \u2014 while",
+    "mazeId": "wolf-wire-original",
+    "moves": 90,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/5df3cec4a1d273f3b402f6af1c300a3522f4a84eb8939528897c889295b92440.json"
+  },
+  {
+    "id": "bundled-wire-9",
+    "title": "Wolf wire maze \u2014 Worst Path Ever",
+    "mazeId": "wolf-wire-original",
+    "moves": 234,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/e2f5bfcf2774c9551ceaa7b29163d7f11cb36bfa586065bf73b2aada54c89964.json"
+  },
+  {
+    "id": "bundled-wire-10",
+    "title": "Wolf wire maze \u2014 another route",
+    "mazeId": "wolf-wire-original",
+    "moves": 80,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/864da4e046816c48893648184321ee8119cd54a30e17ae0e0265c9f24ef6a441.json"
+  },
+  {
+    "id": "bundled-wire-11",
+    "title": "Wolf wire maze \u2014 one route",
+    "mazeId": "wolf-wire-original",
+    "moves": 76,
+    "complete": true,
+    "format": "pathPushdown",
+    "proofAssisted": false,
+    "asset": "solutions/09d4ed4bb290d8bb1cf86160fb420ab98ad22be6ca2baaebfa681e37257f40c7.json"
+  }
+]

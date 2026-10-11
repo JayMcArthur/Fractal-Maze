@@ -1,0 +1,54 @@
+{
+  "captures": [
+    {
+      "file": "snuke3-1440.png",
+      "title": "Snuke 3",
+      "width": 1440,
+      "maze": "draft-maze-images-snuke-snuke-3-png"
+    },
+    {
+      "file": "skeptic1-1440.png",
+      "title": "Skeptic Play 1",
+      "width": 1440,
+      "maze": "draft-maze-images-siggy-skeptic-play-1-svg"
+    },
+    {
+      "file": "wolfram1-1440.png",
+      "title": "Wolfram 1",
+      "width": 1440,
+      "maze": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif"
+    },
+    {
+      "file": "inner-frame-1440.png",
+      "title": "Inner Frame",
+      "width": 1440,
+      "maze": "draft-maze-images-the-inner-frame-pdf"
+    },
+    {
+      "file": "snuke3-390.png",
+      "title": "Snuke 3",
+      "width": 390,
+      "maze": "draft-maze-images-snuke-snuke-3-png"
+    },
+    {
+      "file": "skeptic1-390.png",
+      "title": "Skeptic Play 1",
+      "width": 390,
+      "maze": "draft-maze-images-siggy-skeptic-play-1-svg"
+    },
+    {
+      "file": "wolfram1-390.png",
+      "title": "Wolfram 1",
+      "width": 390,
+      "maze": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif"
+    },
+    {
+      "file": "inner-frame-390.png",
+      "title": "Inner Frame",
+      "width": 390,
+      "maze": "draft-maze-images-the-inner-frame-pdf"
+    }
+  ],
+  "pageErrors": [],
+  "overflow": 0
+}

@@ -1,0 +1,51 @@
+{
+  "executedAt": "2026-10-11T06:26:01.429129+00:00",
+  "scope": "Shared Wolf Play/Solve/Build cutover, original document export, named physical PDA solutions and native connected-wire correspondence. Full suite/host evidence precedes the subsequent Library metadata partition.",
+  "sourceHashes": {
+    "src/app/library/wirePlayDocument.ts": "26ab9d99261fe293902a32ac7197d9b62779e284d2405d1522f8c57fd8d0e476",
+    "src/ui/player/PlayerPage.tsx": "ce1ffcfdfd8423d1e1235645bdfdad8e870ae64b5f6c3162c27a2f686dd51dc2",
+    "src/ui/player/FormatPlayer.tsx": "54faa783af1784e1979e9ab69b9b6dfa77e050ebdd37ae6dbb412bd974aeec20",
+    "src/ui/player/MazePlayArea.tsx": "befd6189e53b6218792ade1b83dbdfd4e54d9bc45c7fc89dd0fc98f922b2d0b4",
+    "src/data/manifests/shared-replays.json": "539283f61da7b125439e56f9226a1ea36eafafc10b122c0e34b3646a0cac50ff",
+    "scripts/wolf_wire.py": "19726ba1299369b65c54481af45b3ef8d0d452d5abe53215be10b1d22172c170",
+    "scripts/prepare-shared-replays.py": "29aa8e53c7d9d478fe3babe59d8e16fd06e039cb3ec5fbcd9396fb7415cd5fd2"
+  },
+  "native": {
+    "states": 18,
+    "connectedPinCallbacks": 54,
+    "surfaceGuards": 16,
+    "unboundEndpointPorts": 21,
+    "checkedSolutionCrossings": 370,
+    "sourceBlockImports": 22
+  },
+  "inventory": {
+    "bundles": 74,
+    "variants": 64,
+    "uniqueIds": 74,
+    "validated": 74,
+    "namedWireSolutions": 11,
+    "partial": [],
+    "failures": []
+  },
+  "verification": {
+    "unitTests": 398,
+    "unitFiles": 36,
+    "unitLog": "/tmp/fractal-wire-pda-full-unit.log",
+    "productionBrowserWorkflows": 106,
+    "browserLog": "/tmp/fractal-wire-pda-full-production-browser.log",
+    "staticHostingChecks": 72,
+    "hostingLog": "/tmp/fractal-wire-pda-static-hosting.log",
+    "pagesBuild": "/tmp/fractal-wire-pda-pages-build.log",
+    "rootBuild": "/tmp/fractal-wire-pda-root-build.log",
+    "proofGates": 32,
+    "proofReplayImports": 128,
+    "proofLog": "/tmp/fractal-wire-pda-proof-gates.log",
+    "repeatedFrames": 400,
+    "repeatedLog": "/tmp/fractal-wire-pda-repeated-presentation.log"
+  },
+  "limitations": [
+    "Unbound native ports are visible dead ends in shared Play, rather than invisible empty chip nodes.",
+    "Source transcriptions remain WIP; original-controller identity is not asserted for every arbitrary physical event.",
+    "Windischer, v6 source mapping, four register solutions, richer-model equivalence and full goal audit remain open."
+  ]
+}

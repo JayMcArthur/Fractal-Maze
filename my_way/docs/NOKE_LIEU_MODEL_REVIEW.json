@@ -1,0 +1,75 @@
+{
+  "executedAt": "2026-10-11T04:27:34.919652+00:00",
+  "id": "1611103791037:0.9096318422296219",
+  "title": "Easy - Noke Lieu",
+  "components": 11,
+  "connections": 32,
+  "copies": [
+    "A",
+    "B"
+  ],
+  "startComponent": "0",
+  "finishComponents": [
+    "5"
+  ],
+  "closedRelation": true,
+  "goalExcluded": true,
+  "balancedWitness": null,
+  "relation": {
+    "0": [
+      "0"
+    ],
+    "1": [
+      "1",
+      "6",
+      "9"
+    ],
+    "2": [
+      "2",
+      "4",
+      "8",
+      "10"
+    ],
+    "3": [
+      "3",
+      "5"
+    ],
+    "4": [
+      "2",
+      "4",
+      "8",
+      "10"
+    ],
+    "5": [
+      "3",
+      "5"
+    ],
+    "6": [
+      "1",
+      "6",
+      "9"
+    ],
+    "7": [
+      "7"
+    ],
+    "8": [
+      "2",
+      "4",
+      "8",
+      "10"
+    ],
+    "9": [
+      "1",
+      "6",
+      "9"
+    ],
+    "10": [
+      "2",
+      "4",
+      "8",
+      "10"
+    ]
+  },
+  "scope": "Current geometric gate memberships and surface-only finish rule. Balanced closure permits immediate reversal omitted by the choice UI, so it overapproximates native finite routes. Exclusion implies no native finite solution under these rules; original author interpretation is not certified.",
+  "nextImplementation": "Native geometric Play still uses geometricChoices/geometricMove. Canonical physical PDA and block cutover must preserve surface finish, boundary correspondence and existing replay snapshots."
+}

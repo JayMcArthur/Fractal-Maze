@@ -1,0 +1,890 @@
+{
+  "executedAt": "2026-10-11T06:36:38.561606+00:00",
+  "checkedCovers": 98,
+  "scope": "All 49 default families, decoded covers and viewport fit at desktop/phone widths. Saved-project rendering is covered by the browser workflows.",
+  "checks": [
+    {
+      "width": 1440,
+      "title": "Geocaching \u2014 Easter 13-#10",
+      "source": "/Fractal-Maze/references/Maze_Images/Geocaching_Easter_13-10.png",
+      "naturalSize": [
+        611,
+        609
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Backlot",
+      "source": "/Fractal-Maze/references/source-assets/backlot-grid.png",
+      "naturalSize": [
+        837,
+        803
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Daedalus 3",
+      "source": "/Fractal-Maze/references/Maze_Images/Ed_Pegg_Jr/Daedalus_3.gif",
+      "naturalSize": [
+        640,
+        304
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Daedalus 2 / Numb3rs",
+      "source": "/Fractal-Maze/references/Maze_Images/Ed_Pegg_Jr/Daedalus_2.jpg",
+      "naturalSize": [
+        936,
+        936
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "A Long Path",
+      "source": "/Fractal-Maze/library-covers/cf272bd3c8c69b810e77ad3d.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Koteitan recursive ports",
+      "source": "/Fractal-Maze/library-covers/f4fe7db68d5195293855556d.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Repeated directed maze \u2014 13-step example",
+      "source": "/Fractal-Maze/library-covers/f6e6d6341a13564b638e50f0.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Koteitan block pattern \u2014 3\u00d73",
+      "source": "/Fractal-Maze/library-covers/4023836dcb9fe11cf90087a5.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Koteitan block pattern \u2014 5\u00d75",
+      "source": "/Fractal-Maze/library-covers/d1fa5185543cb162fd668115.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Counter pump \u2014 6 terminals",
+      "source": "/Fractal-Maze/library-covers/5e57eaa643a749b35c0d7439.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Counter pump \u2014 cp2-3 (atomic)",
+      "source": "/Fractal-Maze/library-covers/20d185543169cf2b0b07aafe.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Counter pump \u2014 cp2-4 (atomic)",
+      "source": "/Fractal-Maze/library-covers/fd24c324cd1eb7e914fd2102.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Counter pump \u2014 cp2-5 (atomic)",
+      "source": "/Fractal-Maze/library-covers/9be7d57cdd5433eae1b4bc3f.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Counter pump \u2014 cp2-6 (atomic)",
+      "source": "/Fractal-Maze/library-covers/ff563f1882133914c87817d9.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Counter pump \u2014 cp3-2 (atomic)",
+      "source": "/Fractal-Maze/library-covers/3c2ab7efe0ff557bd445ccb0.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Counter pump \u2014 cp3-3 (atomic)",
+      "source": "/Fractal-Maze/library-covers/2f33352b2fca83af52efcc91.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Counter pump \u2014 cp3-4 (atomic)",
+      "source": "/Fractal-Maze/library-covers/233392af5e07ce2f6b5b5ee1.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Minsky doubling \u2014 3 stages",
+      "source": "/Fractal-Maze/library-covers/c1a260d6da329ebe707f6ef5.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Minsky doubling \u2014 4 stages",
+      "source": "/Fractal-Maze/library-covers/2ca7989f5b5a704db5f8e1cf.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Minsky doubling \u2014 5 stages",
+      "source": "/Fractal-Maze/library-covers/00553b7417d521bb0a083cbc.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Pentation maze",
+      "source": "/Fractal-Maze/library-covers/7006b47c9b9891a773af17e9.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Three-register counter pump \u2014 compiled (WIP)",
+      "source": "/Fractal-Maze/library-covers/c3274efae35b4920f48b8a2b.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Luegaria",
+      "source": "/Fractal-Maze/references/Maze_Images/Luegarua.webp",
+      "naturalSize": [
+        1080,
+        1080
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Wolfram 0",
+      "source": "/Fractal-Maze/references/Maze_Images/Mark_J_P_Wolf/Wolfram_0.jpg",
+      "naturalSize": [
+        949,
+        1014
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Wolfram 2",
+      "source": "/Fractal-Maze/references/Maze_Images/Mark_J_P_Wolf/Wolfram_2.jpg",
+      "naturalSize": [
+        1280,
+        960
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Wolfram 1",
+      "source": "/Fractal-Maze/references/Maze_Images/Mark_J_P_Wolf/Wolfram_1.gif",
+      "naturalSize": [
+        491,
+        492
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Windischer spiral",
+      "source": "/Fractal-Maze/references/Maze_Images/Martin_Windischer/Windischer.png",
+      "naturalSize": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Inner Frame",
+      "source": "/Fractal-Maze/references/Maze_Images/The_Inner_Frame.png",
+      "naturalSize": [
+        708,
+        1000
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Alice and the Fractal Hedge Maze",
+      "source": "/Fractal-Maze/references/Maze_Images/Mike_Earnest/Alice_and_the_Hedge_Maze.png",
+      "naturalSize": [
+        1452,
+        1452
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Berkly",
+      "source": "/Fractal-Maze/references/Maze_Images/Mike_Earnest/Berkly.jpg",
+      "naturalSize": [
+        915,
+        915
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Omeometo \u2014 fractal block maze",
+      "source": "/Fractal-Maze/library-covers/e72fcb60c0c657c4512a8d4b.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Sierpinski corridor maze",
+      "source": "/Fractal-Maze/library-covers/b63d64b55d7971f5695a4a57.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Block Maze",
+      "source": "/Fractal-Maze/library-covers/4550421621c27ed6610eb95b.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Simple infinite hop",
+      "source": "/Fractal-Maze/references/generated/simple-infinite.svg",
+      "naturalSize": [
+        200,
+        150
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Simple nested infinite hop",
+      "source": "/Fractal-Maze/references/generated/simple-nested-infinite.svg",
+      "naturalSize": [
+        176,
+        150
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Skeptic Play 3",
+      "source": "/Fractal-Maze/references/Maze_Images/Siggy/Skeptic_Play_3_Alt.png",
+      "naturalSize": [
+        612,
+        610
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "First Cantor",
+      "source": "/Fractal-Maze/references/Maze_Images/Siggy/First_Cantor.svg",
+      "naturalSize": [
+        794,
+        1123
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Infinite Descent",
+      "source": "/Fractal-Maze/references/Maze_Images/Siggy/Infinite_Descent.svg",
+      "naturalSize": [
+        794,
+        1123
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Simple Cantor Maze",
+      "source": "/Fractal-Maze/references/Maze_Images/Siggy/Simple_Cantor_Maze.svg",
+      "naturalSize": [
+        794,
+        1123
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Skeptic Play 1",
+      "source": "/Fractal-Maze/references/Maze_Images/Siggy/Skeptic_Play_1.svg",
+      "naturalSize": [
+        794,
+        1123
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Sierpinski Paths",
+      "source": "/Fractal-Maze/references/Maze_Images/Siggy/Skeptic_Play_2.jpg",
+      "naturalSize": [
+        943,
+        943
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Snuke 3",
+      "source": "/Fractal-Maze/references/Maze_Images/snuke/Snuke_3.png",
+      "naturalSize": [
+        1300,
+        1300
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Snuke 4",
+      "source": "/Fractal-Maze/references/Maze_Images/snuke/Snuke_4.png",
+      "naturalSize": [
+        1500,
+        1300
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Snuke 2",
+      "source": "/Fractal-Maze/references/Maze_Images/snuke/Snuke_2.jpg",
+      "naturalSize": [
+        1600,
+        1600
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Snuke 1",
+      "source": "/Fractal-Maze/references/Maze_Images/snuke/Snuke_1.jpg",
+      "naturalSize": [
+        1410,
+        1362
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Easy - Noke Lieu",
+      "source": "/Fractal-Maze/library-covers/c9d32260529328996f8d8793.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Tsat - Cubist",
+      "source": "/Fractal-Maze/library-covers/349f87b9f176acc8d30e19c8.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Portal connections",
+      "source": "/Fractal-Maze/library-covers/c0a33189eb63e496359b6383.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 1440,
+      "title": "Daedalus 1",
+      "source": "/Fractal-Maze/references/Maze_Images/Daedalus_1.gif",
+      "naturalSize": [
+        469,
+        469
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Geocaching \u2014 Easter 13-#10",
+      "source": "/Fractal-Maze/references/Maze_Images/Geocaching_Easter_13-10.png",
+      "naturalSize": [
+        611,
+        609
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Backlot",
+      "source": "/Fractal-Maze/references/source-assets/backlot-grid.png",
+      "naturalSize": [
+        837,
+        803
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Daedalus 3",
+      "source": "/Fractal-Maze/references/Maze_Images/Ed_Pegg_Jr/Daedalus_3.gif",
+      "naturalSize": [
+        640,
+        304
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Daedalus 2 / Numb3rs",
+      "source": "/Fractal-Maze/references/Maze_Images/Ed_Pegg_Jr/Daedalus_2.jpg",
+      "naturalSize": [
+        936,
+        936
+      ]
+    },
+    {
+      "width": 390,
+      "title": "A Long Path",
+      "source": "/Fractal-Maze/library-covers/cf272bd3c8c69b810e77ad3d.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Koteitan recursive ports",
+      "source": "/Fractal-Maze/library-covers/f4fe7db68d5195293855556d.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Repeated directed maze \u2014 13-step example",
+      "source": "/Fractal-Maze/library-covers/f6e6d6341a13564b638e50f0.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Koteitan block pattern \u2014 3\u00d73",
+      "source": "/Fractal-Maze/library-covers/4023836dcb9fe11cf90087a5.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Koteitan block pattern \u2014 5\u00d75",
+      "source": "/Fractal-Maze/library-covers/d1fa5185543cb162fd668115.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Counter pump \u2014 6 terminals",
+      "source": "/Fractal-Maze/library-covers/5e57eaa643a749b35c0d7439.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Counter pump \u2014 cp2-3 (atomic)",
+      "source": "/Fractal-Maze/library-covers/20d185543169cf2b0b07aafe.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Counter pump \u2014 cp2-4 (atomic)",
+      "source": "/Fractal-Maze/library-covers/fd24c324cd1eb7e914fd2102.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Counter pump \u2014 cp2-5 (atomic)",
+      "source": "/Fractal-Maze/library-covers/9be7d57cdd5433eae1b4bc3f.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Counter pump \u2014 cp2-6 (atomic)",
+      "source": "/Fractal-Maze/library-covers/ff563f1882133914c87817d9.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Counter pump \u2014 cp3-2 (atomic)",
+      "source": "/Fractal-Maze/library-covers/3c2ab7efe0ff557bd445ccb0.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Counter pump \u2014 cp3-3 (atomic)",
+      "source": "/Fractal-Maze/library-covers/2f33352b2fca83af52efcc91.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Counter pump \u2014 cp3-4 (atomic)",
+      "source": "/Fractal-Maze/library-covers/233392af5e07ce2f6b5b5ee1.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Minsky doubling \u2014 3 stages",
+      "source": "/Fractal-Maze/library-covers/c1a260d6da329ebe707f6ef5.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Minsky doubling \u2014 4 stages",
+      "source": "/Fractal-Maze/library-covers/2ca7989f5b5a704db5f8e1cf.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Minsky doubling \u2014 5 stages",
+      "source": "/Fractal-Maze/library-covers/00553b7417d521bb0a083cbc.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Pentation maze",
+      "source": "/Fractal-Maze/library-covers/7006b47c9b9891a773af17e9.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Three-register counter pump \u2014 compiled (WIP)",
+      "source": "/Fractal-Maze/library-covers/c3274efae35b4920f48b8a2b.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Luegaria",
+      "source": "/Fractal-Maze/references/Maze_Images/Luegarua.webp",
+      "naturalSize": [
+        1080,
+        1080
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Wolfram 0",
+      "source": "/Fractal-Maze/references/Maze_Images/Mark_J_P_Wolf/Wolfram_0.jpg",
+      "naturalSize": [
+        949,
+        1014
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Wolfram 2",
+      "source": "/Fractal-Maze/references/Maze_Images/Mark_J_P_Wolf/Wolfram_2.jpg",
+      "naturalSize": [
+        1280,
+        960
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Wolfram 1",
+      "source": "/Fractal-Maze/references/Maze_Images/Mark_J_P_Wolf/Wolfram_1.gif",
+      "naturalSize": [
+        491,
+        492
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Windischer spiral",
+      "source": "/Fractal-Maze/references/Maze_Images/Martin_Windischer/Windischer.png",
+      "naturalSize": [
+        1200,
+        1200
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Inner Frame",
+      "source": "/Fractal-Maze/references/Maze_Images/The_Inner_Frame.png",
+      "naturalSize": [
+        708,
+        1000
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Alice and the Fractal Hedge Maze",
+      "source": "/Fractal-Maze/references/Maze_Images/Mike_Earnest/Alice_and_the_Hedge_Maze.png",
+      "naturalSize": [
+        1452,
+        1452
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Berkly",
+      "source": "/Fractal-Maze/references/Maze_Images/Mike_Earnest/Berkly.jpg",
+      "naturalSize": [
+        915,
+        915
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Omeometo \u2014 fractal block maze",
+      "source": "/Fractal-Maze/library-covers/e72fcb60c0c657c4512a8d4b.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Sierpinski corridor maze",
+      "source": "/Fractal-Maze/library-covers/b63d64b55d7971f5695a4a57.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Block Maze",
+      "source": "/Fractal-Maze/library-covers/4550421621c27ed6610eb95b.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Simple infinite hop",
+      "source": "/Fractal-Maze/references/generated/simple-infinite.svg",
+      "naturalSize": [
+        200,
+        150
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Simple nested infinite hop",
+      "source": "/Fractal-Maze/references/generated/simple-nested-infinite.svg",
+      "naturalSize": [
+        176,
+        150
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Skeptic Play 3",
+      "source": "/Fractal-Maze/references/Maze_Images/Siggy/Skeptic_Play_3_Alt.png",
+      "naturalSize": [
+        612,
+        610
+      ]
+    },
+    {
+      "width": 390,
+      "title": "First Cantor",
+      "source": "/Fractal-Maze/references/Maze_Images/Siggy/First_Cantor.svg",
+      "naturalSize": [
+        794,
+        1123
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Infinite Descent",
+      "source": "/Fractal-Maze/references/Maze_Images/Siggy/Infinite_Descent.svg",
+      "naturalSize": [
+        794,
+        1123
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Simple Cantor Maze",
+      "source": "/Fractal-Maze/references/Maze_Images/Siggy/Simple_Cantor_Maze.svg",
+      "naturalSize": [
+        794,
+        1123
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Skeptic Play 1",
+      "source": "/Fractal-Maze/references/Maze_Images/Siggy/Skeptic_Play_1.svg",
+      "naturalSize": [
+        794,
+        1123
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Sierpinski Paths",
+      "source": "/Fractal-Maze/references/Maze_Images/Siggy/Skeptic_Play_2.jpg",
+      "naturalSize": [
+        943,
+        943
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Snuke 3",
+      "source": "/Fractal-Maze/references/Maze_Images/snuke/Snuke_3.png",
+      "naturalSize": [
+        1300,
+        1300
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Snuke 4",
+      "source": "/Fractal-Maze/references/Maze_Images/snuke/Snuke_4.png",
+      "naturalSize": [
+        1500,
+        1300
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Snuke 2",
+      "source": "/Fractal-Maze/references/Maze_Images/snuke/Snuke_2.jpg",
+      "naturalSize": [
+        1600,
+        1600
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Snuke 1",
+      "source": "/Fractal-Maze/references/Maze_Images/snuke/Snuke_1.jpg",
+      "naturalSize": [
+        1410,
+        1362
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Easy - Noke Lieu",
+      "source": "/Fractal-Maze/library-covers/c9d32260529328996f8d8793.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Tsat - Cubist",
+      "source": "/Fractal-Maze/library-covers/349f87b9f176acc8d30e19c8.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Portal connections",
+      "source": "/Fractal-Maze/library-covers/c0a33189eb63e496359b6383.png",
+      "naturalSize": [
+        720,
+        450
+      ]
+    },
+    {
+      "width": 390,
+      "title": "Daedalus 1",
+      "source": "/Fractal-Maze/references/Maze_Images/Daedalus_1.gif",
+      "naturalSize": [
+        469,
+        469
+      ]
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,887 @@
+{
+  "formatVersion": "1.0",
+  "representationType": "pathPushdown",
+  "metadata": {
+    "id": "draft-maze-images-jay-mcarthur-a-long-path-v6-png",
+    "title": "Jay McArthur \u2014 A Long Path v6",
+    "author": "Jay McArthur",
+    "tags": [
+      "paths",
+      "pda",
+      "wip"
+    ],
+    "createdAt": "2026-10-09T00:00:00Z",
+    "updatedAt": "2026-10-09T00:00:00Z",
+    "source": "Maze_Images/Jay_McArthur_-_A_Long_Path_v6.png"
+  },
+  "definition": {
+    "type": "pathPushdown",
+    "paths": [
+      {
+        "id": "1",
+        "label": "1",
+        "color": "#222222",
+        "helper": false
+      },
+      {
+        "id": "2",
+        "label": "2",
+        "color": "#222222",
+        "helper": false
+      },
+      {
+        "id": "3",
+        "label": "3",
+        "color": "#222222",
+        "helper": false
+      },
+      {
+        "id": "4",
+        "label": "4",
+        "color": "#222222",
+        "helper": false
+      },
+      {
+        "id": "5",
+        "label": "5",
+        "color": "#222222",
+        "helper": false
+      },
+      {
+        "id": "6",
+        "label": "6",
+        "color": "#222222",
+        "helper": false
+      },
+      {
+        "id": "7",
+        "label": "7",
+        "color": "#222222",
+        "helper": false
+      }
+    ],
+    "copies": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "connections": [
+      {
+        "id": "edge-0-in",
+        "from": "1",
+        "to": "1",
+        "operation": "enter",
+        "copy": "A",
+        "input": "(",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-0-out",
+        "from": "1",
+        "to": "1",
+        "operation": "exit",
+        "copy": "A",
+        "input": ")",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-1-in",
+        "from": "2",
+        "to": "1",
+        "operation": "enter",
+        "copy": "A",
+        "input": "1",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-1-out",
+        "from": "1",
+        "to": "2",
+        "operation": "exit",
+        "copy": "A",
+        "input": "2",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-2-in",
+        "from": "3",
+        "to": "1",
+        "operation": "enter",
+        "copy": "B",
+        "input": "1",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-2-out",
+        "from": "1",
+        "to": "3",
+        "operation": "exit",
+        "copy": "B",
+        "input": "3",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-3-in",
+        "from": "4",
+        "to": "1",
+        "operation": "enter",
+        "copy": "C",
+        "input": "1",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-3-out",
+        "from": "1",
+        "to": "4",
+        "operation": "exit",
+        "copy": "C",
+        "input": "4",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-4-in",
+        "from": "5",
+        "to": "1",
+        "operation": "enter",
+        "copy": "D",
+        "input": "1",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-4-out",
+        "from": "1",
+        "to": "5",
+        "operation": "exit",
+        "copy": "D",
+        "input": "5",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-5-in",
+        "from": "6",
+        "to": "1",
+        "operation": "enter",
+        "copy": "E",
+        "input": "1",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-5-out",
+        "from": "1",
+        "to": "6",
+        "operation": "exit",
+        "copy": "E",
+        "input": "6",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-6-in",
+        "from": "7",
+        "to": "1",
+        "operation": "enter",
+        "copy": "F",
+        "input": "1",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-6-out",
+        "from": "1",
+        "to": "7",
+        "operation": "exit",
+        "copy": "F",
+        "input": "7",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-7-in",
+        "from": "2",
+        "to": "2",
+        "operation": "enter",
+        "copy": "B",
+        "input": "(",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-7-out",
+        "from": "2",
+        "to": "2",
+        "operation": "exit",
+        "copy": "B",
+        "input": ")",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-8-in",
+        "from": "3",
+        "to": "3",
+        "operation": "enter",
+        "copy": "C",
+        "input": "(",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-8-out",
+        "from": "3",
+        "to": "3",
+        "operation": "exit",
+        "copy": "C",
+        "input": ")",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-9-in",
+        "from": "4",
+        "to": "4",
+        "operation": "enter",
+        "copy": "D",
+        "input": "(",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-9-out",
+        "from": "4",
+        "to": "4",
+        "operation": "exit",
+        "copy": "D",
+        "input": ")",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-10-in",
+        "from": "5",
+        "to": "5",
+        "operation": "enter",
+        "copy": "E",
+        "input": "(",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-10-out",
+        "from": "5",
+        "to": "5",
+        "operation": "exit",
+        "copy": "E",
+        "input": ")",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-11-in",
+        "from": "6",
+        "to": "6",
+        "operation": "enter",
+        "copy": "F",
+        "input": "(",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      },
+      {
+        "id": "edge-11-out",
+        "from": "6",
+        "to": "6",
+        "operation": "exit",
+        "copy": "F",
+        "input": ")",
+        "evidence": "Known v6 recurrence; WIP source channels and representative arrival anchors"
+      }
+    ],
+    "start": {
+      "path": "1",
+      "address": []
+    },
+    "goal": {
+      "path": "7",
+      "address": []
+    },
+    "allowedRule": "finite",
+    "providedInput": "(2(1)3(1(2)1)4(1(2(1)3)1(2)1)5(1(2(1)3(1(2)1)4)1(2(1)3)1(2)1)6(1(2(1)3(1(2)1)4(1(2(1)3)1(2)1)5)1(2(1)3(1(2)1)4)1(2(1)3)1(2)1)7",
+    "claims": [],
+    "review": "wip",
+    "notes": [
+      "Author clarification: follow the black routes, start at the top and exit at the bottom. The solution uses the same recurrence as v4/v8.",
+      "A\u2013F run counterclockwise from the top: green, yellow, orange, red, purple, blue. WIP: confirm this placement against the intended drawing.",
+      "The compressed black center is mapped into separate PDA channels. Overlapping traces there do not permit switching paths.",
+      "The image omits numbered outer pins for the internal paths. Copy arrivals use labeled path representatives; review these and the center bends before marking the conversion reviewed."
+    ]
+  },
+  "artwork": {
+    "asset": "references/Maze_Images/Jay_McArthur_-_A_Long_Path_v6.png",
+    "width": 860,
+    "height": 688,
+    "bounds": [
+      40,
+      24,
+      780,
+      624
+    ],
+    "traces": [
+      {
+        "id": "channel-1",
+        "path": "1",
+        "color": "#222222",
+        "points": [
+          [
+            442,
+            36
+          ],
+          [
+            442,
+            102
+          ],
+          [
+            534,
+            102
+          ],
+          [
+            534,
+            196
+          ],
+          [
+            473,
+            256
+          ],
+          [
+            473,
+            238
+          ]
+        ]
+      },
+      {
+        "id": "channel-2",
+        "path": "2",
+        "color": "#222222",
+        "points": [
+          [
+            442,
+            118
+          ],
+          [
+            362,
+            118
+          ],
+          [
+            362,
+            224
+          ],
+          [
+            399,
+            288
+          ],
+          [
+            386,
+            276
+          ],
+          [
+            357,
+            243
+          ]
+        ]
+      },
+      {
+        "id": "channel-3",
+        "path": "3",
+        "color": "#222222",
+        "points": [
+          [
+            298,
+            194
+          ],
+          [
+            218,
+            194
+          ],
+          [
+            218,
+            326
+          ],
+          [
+            331,
+            326
+          ],
+          [
+            370,
+            351
+          ],
+          [
+            386,
+            346
+          ],
+          [
+            353,
+            380
+          ]
+        ]
+      },
+      {
+        "id": "channel-4",
+        "path": "4",
+        "color": "#222222",
+        "points": [
+          [
+            298,
+            350
+          ],
+          [
+            222,
+            350
+          ],
+          [
+            222,
+            483
+          ],
+          [
+            336,
+            483
+          ],
+          [
+            412,
+            407
+          ],
+          [
+            412,
+            442
+          ]
+        ]
+      },
+      {
+        "id": "channel-5",
+        "path": "5",
+        "color": "#222222",
+        "points": [
+          [
+            442,
+            442
+          ],
+          [
+            442,
+            418
+          ],
+          [
+            502,
+            418
+          ],
+          [
+            502,
+            400
+          ],
+          [
+            515,
+            407
+          ],
+          [
+            525,
+            416
+          ]
+        ]
+      },
+      {
+        "id": "channel-6",
+        "path": "6",
+        "color": "#222222",
+        "points": [
+          [
+            586,
+            356
+          ],
+          [
+            586,
+            346
+          ],
+          [
+            534,
+            346
+          ],
+          [
+            534,
+            323
+          ],
+          [
+            510,
+            338
+          ],
+          [
+            499,
+            323
+          ],
+          [
+            523,
+            299
+          ],
+          [
+            535,
+            310
+          ]
+        ]
+      },
+      {
+        "id": "channel-7",
+        "path": "7",
+        "color": "#222222",
+        "points": [
+          [
+            586,
+            204
+          ],
+          [
+            586,
+            182
+          ],
+          [
+            656,
+            182
+          ],
+          [
+            744,
+            344
+          ],
+          [
+            600,
+            602
+          ],
+          [
+            442,
+            602
+          ],
+          [
+            442,
+            636
+          ]
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "id": "A",
+        "x": 376,
+        "y": 124,
+        "width": 132,
+        "height": 120
+      },
+      {
+        "id": "B",
+        "x": 232,
+        "y": 200,
+        "width": 132,
+        "height": 120
+      },
+      {
+        "id": "C",
+        "x": 232,
+        "y": 356,
+        "width": 132,
+        "height": 120
+      },
+      {
+        "id": "D",
+        "x": 376,
+        "y": 436,
+        "width": 132,
+        "height": 120
+      },
+      {
+        "id": "E",
+        "x": 520,
+        "y": 360,
+        "width": 132,
+        "height": 120
+      },
+      {
+        "id": "F",
+        "x": 520,
+        "y": 204,
+        "width": 132,
+        "height": 120
+      }
+    ],
+    "gates": [
+      {
+        "edge": "edge-0-in",
+        "from": [
+          473,
+          238
+        ],
+        "to": [
+          442,
+          36
+        ]
+      },
+      {
+        "edge": "edge-0-out",
+        "from": [
+          442,
+          36
+        ],
+        "to": [
+          473,
+          238
+        ]
+      },
+      {
+        "edge": "edge-1-in",
+        "from": [
+          442,
+          118
+        ],
+        "to": [
+          442,
+          36
+        ]
+      },
+      {
+        "edge": "edge-1-out",
+        "from": [
+          442,
+          36
+        ],
+        "to": [
+          442,
+          118
+        ]
+      },
+      {
+        "edge": "edge-2-in",
+        "from": [
+          298,
+          194
+        ],
+        "to": [
+          442,
+          36
+        ]
+      },
+      {
+        "edge": "edge-2-out",
+        "from": [
+          442,
+          36
+        ],
+        "to": [
+          298,
+          194
+        ]
+      },
+      {
+        "edge": "edge-3-in",
+        "from": [
+          298,
+          350
+        ],
+        "to": [
+          442,
+          36
+        ]
+      },
+      {
+        "edge": "edge-3-out",
+        "from": [
+          442,
+          36
+        ],
+        "to": [
+          298,
+          350
+        ]
+      },
+      {
+        "edge": "edge-4-in",
+        "from": [
+          442,
+          442
+        ],
+        "to": [
+          442,
+          36
+        ]
+      },
+      {
+        "edge": "edge-4-out",
+        "from": [
+          442,
+          36
+        ],
+        "to": [
+          442,
+          442
+        ]
+      },
+      {
+        "edge": "edge-5-in",
+        "from": [
+          586,
+          356
+        ],
+        "to": [
+          442,
+          36
+        ]
+      },
+      {
+        "edge": "edge-5-out",
+        "from": [
+          442,
+          36
+        ],
+        "to": [
+          586,
+          356
+        ]
+      },
+      {
+        "edge": "edge-6-in",
+        "from": [
+          586,
+          204
+        ],
+        "to": [
+          442,
+          36
+        ]
+      },
+      {
+        "edge": "edge-6-out",
+        "from": [
+          442,
+          36
+        ],
+        "to": [
+          586,
+          204
+        ]
+      },
+      {
+        "edge": "edge-7-in",
+        "from": [
+          357,
+          243
+        ],
+        "to": [
+          442,
+          118
+        ]
+      },
+      {
+        "edge": "edge-7-out",
+        "from": [
+          442,
+          118
+        ],
+        "to": [
+          357,
+          243
+        ]
+      },
+      {
+        "edge": "edge-8-in",
+        "from": [
+          353,
+          380
+        ],
+        "to": [
+          298,
+          194
+        ]
+      },
+      {
+        "edge": "edge-8-out",
+        "from": [
+          298,
+          194
+        ],
+        "to": [
+          353,
+          380
+        ]
+      },
+      {
+        "edge": "edge-9-in",
+        "from": [
+          412,
+          442
+        ],
+        "to": [
+          298,
+          350
+        ]
+      },
+      {
+        "edge": "edge-9-out",
+        "from": [
+          298,
+          350
+        ],
+        "to": [
+          412,
+          442
+        ]
+      },
+      {
+        "edge": "edge-10-in",
+        "from": [
+          525,
+          416
+        ],
+        "to": [
+          442,
+          442
+        ]
+      },
+      {
+        "edge": "edge-10-out",
+        "from": [
+          442,
+          442
+        ],
+        "to": [
+          525,
+          416
+        ]
+      },
+      {
+        "edge": "edge-11-in",
+        "from": [
+          535,
+          310
+        ],
+        "to": [
+          586,
+          356
+        ]
+      },
+      {
+        "edge": "edge-11-out",
+        "from": [
+          586,
+          356
+        ],
+        "to": [
+          535,
+          310
+        ]
+      }
+    ],
+    "start": [
+      442,
+      36
+    ],
+    "goal": [
+      442,
+      636
+    ]
+  },
+  "annotations": [],
+  "renderConfig": {
+    "preferredRenderer": "auto",
+    "maxDepth": 3,
+    "showBreadcrumbs": true,
+    "showBlockLabels": true,
+    "animationSpeed": "normal",
+    "colorScheme": "default"
+  },
+  "solverConfig": {
+    "maxDepth": 10,
+    "maxNodes": 100000,
+    "timeoutMs": 30000,
+    "strategy": "bfs"
+  }
+}

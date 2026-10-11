@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>lee_algorithm test harness</title>
+<script src="prng.js"></script>
+<script src="draw_map.js"></script>
+<script src="insert_map.js"></script>
+<script src="check_equivalence.js"></script>
+<script src="lee_algorithm.js"></script>
+<script src="lee_algorithm_testgen.js"></script>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 1.5rem; }
+  h1 { font-size: 1.25rem; }
+  h2 { font-size: 1.05rem; margin-top: 1.25rem; }
+  .controls { padding: 0.6rem 0.8rem; background: #f0f4f8; border-radius: 4px;
+              margin-bottom: 0.8rem; display: flex; gap: 0.8rem; align-items: center;
+              flex-wrap: wrap; }
+  label { font-size: 0.9rem; }
+  input[type=number] { width: 4rem; padding: 0.1rem 0.3rem; }
+  button { padding: 0.35rem 0.9rem; cursor: pointer; font-size: 0.95rem; }
+  table { border-collapse: collapse; font-size: 0.86rem; }
+  th, td { border: 1px solid #bbb; padding: 2px 8px; text-align: left; }
+  th { background: #f3f3f3; }
+  tr.pass td { background: #e8f5e9; }
+  tr.fail td { background: #ffebee; }
+  tr.err td  { background: #fff3e0; }
+  .summary { font-weight: bold; padding: 0.5rem 0.8rem; margin: 0.7rem 0;
+             background: #f0f0f0; border-left: 4px solid #2e7d32; }
+  .summary.bad  { border-left-color: #c62828; }
+  .summary.warn { border-left-color: #f57c00; }
+  .pair { display: flex; gap: 1rem; margin-bottom: 0.8rem; align-items: flex-start;
+          flex-wrap: wrap; border: 1px solid #e5e5e5; padding: 0.5rem; background: #fafafa; }
+  .pair h3 { margin: 0 0 0.3rem; font-size: 0.95rem; }
+  .pair .col { }
+  canvas { background: white; border: 1px solid #ddd; }
+  details pre { font-size: 0.8rem; background: #fff3f3; padding: 0.4rem; }
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>lee_algorithm test harness</h1>
+<p>Per <code>lee/plan.md</code>: generate random valid port configurations, run
+<code>lee_algorithm</code>, verify (1) <code>check_equivalence(Tin, T) === true</code>,
+(2) every port is reachable via subports on the final map.</p>
+
+<div class="controls">
+  <label>W <input type="number" id="in-W" value="10" min="4" max="40"></label>
+  <label>H <input type="number" id="in-H" value="10" min="4" max="40"></label>
+  <label>ports per iter <input type="number" id="in-P" value="10" min="1" max="30"></label>
+  <label>iterations <input type="number" id="in-N" value="10" min="1" max="100"></label>
+  <label>seed <input type="number" id="in-seed" placeholder="empty = random" style="width:10rem"></label>
+  <button id="btn-run">Run (use seed)</button>
+  <button id="btn-reroll">Re-roll (new random seed)</button>
+  <span style="margin-left:1rem">used seed: <code id="used-seed">-</code></span>
+</div>
+<div id="summary-global" class="summary"></div>
+<div id="output"></div>
+
+<script>
+// ============================================================
+// Subport side lookup (for BFS reachability verification)
+// ============================================================
+const CH_CROSS='\u253C', CH_DR='\u250C', CH_DL='\u2510', CH_UR='\u2514', CH_UL='\u2518';
+const CHAR_SIDES = {
+  ' ': '', '-': 'LR', '|': 'UD', [CH_CROSS]: 'LRUD',
+  [CH_DR]: 'RD', [CH_DL]: 'LD', [CH_UR]: 'RU', [CH_UL]: 'LU',
+};
+function sidesOf(c, T, x, y) {
+  if (c === 'T') {
+    const t = T.find(t0 => t0.x === x && t0.y === y);
+    if (!t) return '';
+    return (t.dx === -1 ? 'L' : t.dx === 1 ? 'R' : t.dy === -1 ? 'U' : t.dy === 1 ? 'D' : '');
+  }
+  return CHAR_SIDES[c] || '';
+}
+function reachablePort(m, T, sIdx, eIdx) {
+  const s = T[sIdx], e = T[eIdx];
+  const W = m.length, H = m[0].length;
+  const seen = new Set();
+  const key = (x, y) => x + ',' + y;
+  const queue = [[s.x, s.y]];
+  seen.add(key(s.x, s.y));
+  while (queue.length) {
+    const [x, y] = queue.shift();
+    if (x === e.x && y === e.y) return true;
+    const sides = sidesOf(m[x][y], T, x, y);
+    const tries = [
+      { s: 'L', nx: x-1, ny: y, f: 'R' },
+      { s: 'R', nx: x+1, ny: y, f: 'L' },
+      { s: 'U', nx: x, ny: y-1, f: 'D' },
+      { s: 'D', nx: x, ny: y+1, f: 'U' },
+    ];
+    for (const n of tries) {
+      if (sides.indexOf(n.s) < 0) continue;
+      if (n.nx < 0 || n.nx >= W || n.ny < 0 || n.ny >= H) continue;
+      const k = key(n.nx, n.ny);
+      if (seen.has(k)) continue;
+      const ns = sidesOf(m[n.nx][n.ny], T, n.nx, n.ny);
+      if (ns.indexOf(n.f) < 0) continue;
+      seen.add(k);
+      queue.push([n.nx, n.ny]);
+    }
+  }
+  return false;
+}
+
+// Port-config generator is the shared module — see lee/lee_algorithm_testgen.js.
+// Node harness (lee/test-lee_algorithm-node.js) consumes the same module so the
+// same seed produces identical Tin/P in either environment.
+
+function deepCopyT(T) { return T.map(t => ({ x: t.x, y: t.y, dx: t.dx, dy: t.dy })); }
+
+// ============================================================
+// Run iterations
+// ============================================================
+function runOnce(iterIdx, W, H, NPorts, rng) {
+  const cfg = generateTinP(W, H, NPorts, rng);
+  if (!cfg) return { iterIdx, skipped: 'could not place ports' };
+  const Tin = cfg.Tin, P = cfg.P;
+  const TinSnapshot = deepCopyT(Tin);
+
+  let res, error = null;
+  try {
+    res = lee_algorithm(TinSnapshot, P); // algorithm may mutate its own T copy; pass snapshot
+  } catch (e) {
+    error = e.message;
+    return { iterIdx, Tin, P, error };
+  }
+
+  const eq = check_equivalence_detailed(Tin, res.T);
+  let reachAll = true;
+  const reachResults = [];
+  for (let i = 0; i < P.length; i++) {
+    const r = reachablePort(res.m, res.T, P[i].s, P[i].e);
+    reachResults.push(r);
+    if (!r) reachAll = false;
+  }
+  const unsolved = !!res.error;
+  const pass = !unsolved && eq.ok && reachAll;
+  return { iterIdx, Tin, P, res, eq, reachResults, reachAll, unsolved, pass };
+}
+
+function render(all) {
+  const out = document.getElementById('output');
+  out.innerHTML = '';
+  const tbl = document.createElement('table');
+  tbl.innerHTML = '<thead><tr><th>iter</th><th>ports</th><th>W0xH0 → WxH</th><th>equivalence</th><th>reach all</th><th>unsolved?</th><th>result</th></tr></thead><tbody></tbody>';
+  const tbody = tbl.querySelector('tbody');
+  let pass = 0, skip = 0;
+  for (const r of all) {
+    const tr = document.createElement('tr');
+    if (r.skipped) {
+      tr.className = 'err';
+      tr.innerHTML = `<td>${r.iterIdx+1}</td><td colspan=5>SKIP: ${r.skipped}</td><td>-</td>`;
+      skip++;
+    } else if (r.error) {
+      tr.className = 'err';
+      tr.innerHTML = `<td>${r.iterIdx+1}</td><td>${r.P.length}</td><td colspan=3>ERROR: ${r.error}</td><td>-</td><td>ERROR</td>`;
+    } else {
+      tr.className = r.pass ? 'pass' : 'fail';
+      const w0 = Math.max(...r.Tin.map(t=>t.x))+1, h0 = Math.max(...r.Tin.map(t=>t.y))+1;
+      tr.innerHTML = `<td>${r.iterIdx+1}</td>
+        <td>${r.P.length}</td>
+        <td>${w0}x${h0} → ${r.res.W}x${r.res.H}</td>
+        <td>${r.eq.ok ? 'OK' : r.eq.reason}</td>
+        <td>${r.reachAll ? `${r.P.length}/${r.P.length}` : r.reachResults.map(x=>x?'✓':'✗').join('')}</td>
+        <td>${r.unsolved ? 'UNSOLVED (port '+r.res.failedPort+')' : '-'}</td>
+        <td>${r.pass ? 'PASS' : 'FAIL'}</td>`;
+      if (r.pass) pass++;
+    }
+    tbody.appendChild(tr);
+  }
+  out.appendChild(tbl);
+
+  // Draw each iteration (before/after).
+  all.forEach(r => {
+    if (r.skipped || r.error) return;
+    const pair = document.createElement('div');
+    pair.className = 'pair';
+
+    const before = document.createElement('div');
+    before.className = 'col';
+    const w0 = Math.max(...r.Tin.map(t=>t.x))+1;
+    const h0 = Math.max(...r.Tin.map(t=>t.y))+1;
+    const m0 = [];
+    for (let x = 0; x < w0; x++) {
+      m0.push(new Array(h0).fill(' '));
+    }
+    for (const t of r.Tin) m0[t.x][t.y] = 'T';
+    before.innerHTML = `<h3>Iter ${r.iterIdx+1}: BEFORE (${w0}x${h0}, ${r.P.length} ports)</h3>`;
+    const cvB = document.createElement('canvas');
+    before.appendChild(cvB);
+    pair.appendChild(before);
+
+    const after = document.createElement('div');
+    after.className = 'col';
+    after.innerHTML = `<h3>AFTER (${r.res.W}x${r.res.H}) — ${r.pass ? 'PASS' : 'FAIL'}${r.unsolved ? ' [UNSOLVED]' : ''}</h3>`;
+    const cvA = document.createElement('canvas');
+    after.appendChild(cvA);
+    pair.appendChild(after);
+
+    out.appendChild(pair);
+    draw_map(w0, h0, r.Tin, m0, { canvas: cvB, cellSize: 24, padding: 6, P: r.P });
+    draw_map(r.res.W, r.res.H, r.res.T, r.res.m, { canvas: cvA, cellSize: 24, padding: 6, P: r.P });
+
+    if (!r.pass) {
+      const det = document.createElement('details');
+      det.innerHTML = '<summary>Detail (Tin, P, T, m)</summary>';
+      const pre = document.createElement('pre');
+      pre.textContent = 'Tin = ' + JSON.stringify(r.Tin, null, 2) +
+        '\nP = ' + JSON.stringify(r.P, null, 2) +
+        '\nT = ' + JSON.stringify(r.res.T, null, 2) +
+        '\nreach = ' + JSON.stringify(r.reachResults) +
+        '\nequivalence = ' + JSON.stringify(r.eq);
+      det.appendChild(pre);
+      pair.appendChild(det);
+    }
+  });
+
+  const g = document.getElementById('summary-global');
+  const total = all.length - skip;
+  let cls = 'summary';
+  if (pass !== total) cls += ' bad';
+  else if (skip > 0) cls += ' warn';
+  g.className = cls;
+  g.textContent = `TOTAL: ${pass}/${total} PASS` + (skip ? ` (${skip} skipped)` : '');
+}
+
+function resolveSeed(forceReroll) {
+  const box = document.getElementById('in-seed');
+  let seed;
+  if (!forceReroll && box.value.trim() !== '') {
+    seed = parseInt(box.value, 10) | 0;
+  } else {
+    seed = (Math.random() * 0x100000000) >>> 0;
+    box.value = seed;
+  }
+  document.getElementById('used-seed').textContent = seed;
+  return seed;
+}
+
+function run(forceReroll) {
+  const W = parseInt(document.getElementById('in-W').value, 10);
+  const H = parseInt(document.getElementById('in-H').value, 10);
+  const NP = parseInt(document.getElementById('in-P').value, 10);
+  const N = parseInt(document.getElementById('in-N').value, 10);
+  const seed = resolveSeed(forceReroll === true);
+  const rng = mulberry32(seed);
+  const all = [];
+  for (let i = 0; i < N; i++) all.push(runOnce(i, W, H, NP, rng));
+  render(all);
+  // Append seed footer to global summary for visibility.
+  const g = document.getElementById('summary-global');
+  g.textContent = g.textContent + `  [seed=${seed}]`;
+}
+
+document.getElementById('btn-run').addEventListener('click', function () { run(false); });
+document.getElementById('btn-reroll').addEventListener('click', function () { run(true); });
+run(true);
+</script>
+</body>
+</html>

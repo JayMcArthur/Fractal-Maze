@@ -1,0 +1,632 @@
+{
+  "catalog": 74,
+  "library": 49,
+  "bundles": 74,
+  "rows": [
+    {
+      "reference": "maze-images-daedalus-1-gif",
+      "title": "Daedalus 1",
+      "asset": "references/Maze_Images/Daedalus_1.gif",
+      "id": "draft-maze-images-daedalus-1-gif",
+      "playable": "draft-maze-images-daedalus-1-gif",
+      "representation": "pathPushdown",
+      "paths": 37,
+      "transitions": 176,
+      "notes": [
+        "WIP: source lattice corridors and weave layers are bound to the real copy pins. Unconnected pins do not create transitions. Review hidden corner crossings.",
+        "Start at the minus box and finish at the plus box at the surface. The bundled finite input is generated from this topology, not an original author recording."
+      ],
+      "input": 40
+    },
+    {
+      "reference": "maze-images-ed-pegg-jr-daedalus-2-jpg",
+      "title": "Daedalus 2",
+      "asset": "references/Maze_Images/Ed_Pegg_Jr/Daedalus_2.jpg",
+      "id": "draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+      "playable": "draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+      "representation": "pathPushdown",
+      "paths": 15,
+      "transitions": 54,
+      "notes": [
+        "WIP: read directly from the photograph\u2019s fifteen wire circuits. This is a different maze from the thirteen-circuit author demo/native model.",
+        "Start at the minus and finish at the plus at the surface. Copy 1=A, 2=B, 3=C.",
+        "Continuous strokes and gapped underpasses stay separate. Extraction is stable across thresholds 135\u2013155; review blur and chip anchors.",
+        "The bundled finite route is generated from this photo conversion, not an author recording."
+      ],
+      "input": 8
+    },
+    {
+      "reference": "maze-images-ed-pegg-jr-daedalus-3-gif",
+      "title": "Daedalus 3",
+      "asset": "references/Maze_Images/Ed_Pegg_Jr/Daedalus_3.gif",
+      "id": "draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+      "playable": "draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+      "representation": "pathPushdown",
+      "paths": 38,
+      "transitions": 162,
+      "notes": [
+        "WIP: source lattice corridors and weave layers are bound to the real copy pins. Unconnected pins do not create transitions. Review hidden corner crossings.",
+        "Start at the minus box and finish at the plus box at the surface. The bundled finite input is generated from this topology, not an original author recording."
+      ],
+      "input": 42
+    },
+    {
+      "reference": "maze-images-geocaching-easter-13-10-png",
+      "title": "Geocaching Easter 13-#10",
+      "asset": "references/Maze_Images/Geocaching_Easter_13-10.png",
+      "id": "draft-maze-images-geocaching-easter-13-10-png",
+      "playable": "draft-maze-images-geocaching-easter-13-10-png",
+      "representation": "pathPushdown",
+      "paths": 12,
+      "transitions": 50,
+      "notes": [
+        "Source RGB strokes and chip pins form this playable WIP. Check crossings and start/finish against the artwork before marking reviewed."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-jay-mcarthur-a-long-path-v6-png",
+      "title": "Jay McArthur \u2014 A Long Path v6",
+      "asset": "references/Maze_Images/Jay_McArthur_-_A_Long_Path_v6.png",
+      "id": "draft-maze-images-jay-mcarthur-a-long-path-v6-png",
+      "playable": "draft-maze-images-jay-mcarthur-a-long-path-v6-png",
+      "representation": "pathPushdown",
+      "paths": 7,
+      "transitions": 24,
+      "notes": [
+        "Author clarification: follow the black routes, start at the top and exit at the bottom. The solution uses the same recurrence as v4/v8.",
+        "A\u2013F run counterclockwise from the top: green, yellow, orange, red, purple, blue. WIP: confirm this placement against the intended drawing.",
+        "The compressed black center is mapped into separate PDA channels. Overlapping traces there do not permit switching paths.",
+        "The image omits numbered outer pins for the internal paths. Copy arrivals use labeled path representatives; review these and the center bends before marking the conversion reviewed."
+      ],
+      "input": 126
+    },
+    {
+      "reference": "maze-images-luegarua-webp",
+      "title": "Luegarua",
+      "asset": "references/Maze_Images/Luegarua.webp",
+      "id": "draft-maze-images-luegarua-webp",
+      "playable": "draft-maze-images-luegarua-webp",
+      "representation": "pathPushdown",
+      "paths": 3,
+      "transitions": 8,
+      "notes": [
+        "North to south, following the original author\u2019s rules. All source pins match the imported three-circuit model. The bridge is separated by circuit. WIP: check stroke alignment around the bridge."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-mark-j-p-wolf-wolfram-0-jpg",
+      "title": "Wolfram 0",
+      "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_0.jpg",
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+      "playable": "draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+      "representation": "pathPushdown",
+      "paths": 7,
+      "transitions": 16,
+      "notes": [
+        "All seven photographed curves reproduce the imported source pin partition. WIP: check the blurred curve alignment."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-mark-j-p-wolf-wolfram-1-gif",
+      "title": "Wolfram 1",
+      "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_1.gif",
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+      "playable": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+      "representation": "pathPushdown",
+      "paths": 39,
+      "transitions": 138,
+      "notes": [
+        "Travel from the minus to the plus. The imported native model had these endpoints reversed.",
+        "All 39 source circuit partitions match the imported pins, including the C:27\u2013E:8 wire omitted in the old text transcription.",
+        "Only opposite collinear stroke ends are joined across drawn crossing gaps; crossings never join different circuits.",
+        "WIP: review source anchors and crossing alignment. The bundled route is computed from this conversion."
+      ],
+      "input": 10
+    },
+    {
+      "reference": "maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
+      "title": "Wolfram 1 \u2014 Solution",
+      "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_1_-_Solution.jpg",
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
+      "playable": "draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
+      "representation": "pathPushdown",
+      "paths": 39,
+      "transitions": 138,
+      "notes": [
+        "Travel from the minus to the plus. The imported native model had these endpoints reversed.",
+        "All 39 source circuit partitions match the imported pins, including the C:27\u2013E:8 wire omitted in the old text transcription.",
+        "Only opposite collinear stroke ends are joined across drawn crossing gaps; crossings never join different circuits.",
+        "WIP: review source anchors and crossing alignment. The bundled route is computed from this conversion."
+      ],
+      "input": 10
+    },
+    {
+      "reference": "maze-images-mark-j-p-wolf-wolfram-2-jpg",
+      "title": "Wolfram 2",
+      "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2.jpg",
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+      "playable": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+      "representation": "pathPushdown",
+      "paths": 18,
+      "transitions": 54,
+      "notes": [
+        "All source circuits reproduce the eighteen-path native model. Includes the disputed guide edge; no artificial nineteenth path. Colors do not allow turns at unmarked crossings. WIP: check source alignment.",
+        "WIP original photograph alignment: the verified wired circuits are mapped through source road landmarks. Review its vertex disks and slightly different chip positions."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-mark-j-p-wolf-wolfram-2-nested-png",
+      "title": "Wolfram 2 \u2014 Nested",
+      "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Nested.png",
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png",
+      "playable": "draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png",
+      "representation": "pathPushdown",
+      "paths": 18,
+      "transitions": 54,
+      "notes": [
+        "All source circuits reproduce the eighteen-path native model. Includes the disputed guide edge; no artificial nineteenth path. Colors do not allow turns at unmarked crossings. WIP: check source alignment.",
+        "WIP annotated view: the enlarged C frame is registered to its actual boundary with the adjacent parent roads. Movement keeps the verified primary eighteen-circuit topology; colored annotation disks and internal descendants are not extra junctions. Review the warped road geometry against the image."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-mark-j-p-wolf-wolfram-2-wires-png",
+      "title": "Wolfram 2 \u2014 Wires",
+      "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Wires.png",
+      "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png",
+      "playable": "draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png",
+      "representation": "pathPushdown",
+      "paths": 18,
+      "transitions": 54,
+      "notes": [
+        "All source circuits reproduce the eighteen-path native model. Includes the disputed guide edge; no artificial nineteenth path. Colors do not allow turns at unmarked crossings. WIP: check source alignment."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-martin-windischer-windischer-gif",
+      "title": "Windischer",
+      "asset": "references/Maze_Images/Martin_Windischer/Windischer.gif",
+      "id": "draft-maze-images-martin-windischer-windischer-gif",
+      "playable": null,
+      "representation": "infiniteRule",
+      "paths": 9,
+      "transitions": 0,
+      "notes": [
+        "WIP image conversion. Trace candidates follow the original pixels. Review connected paths, crossings, copy frames, and gate mappings; then choose the start and finish.",
+        "The author confirms infinite recursion toward one central limit point. PNG, GIF and the annotated layer image show the same puzzle.",
+        "Layer-boundary annotations do not yet determine a complete gate table. The earlier guessed gate pairs are removed. Confirm the travel surface and homologous terminals before adding enter/exit connections.",
+        "Infinite recursion does not automatically permit jumping through the center. Finite movement is selected until an extra limit rule is explicitly chosen and supported by witness routes.",
+        "Raster skeleton fragments can split a path at a crossing or printed label. Merge fragments by assigning the same path label. Frame positions and boundary matches are tentative."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-martin-windischer-windischer-png",
+      "title": "Windischer",
+      "asset": "references/Maze_Images/Martin_Windischer/Windischer.png",
+      "id": "draft-maze-images-martin-windischer-windischer-png",
+      "playable": null,
+      "representation": "infiniteRule",
+      "paths": 9,
+      "transitions": 0,
+      "notes": [
+        "WIP image conversion. Trace candidates follow the original pixels. Review connected paths, crossings, copy frames, and gate mappings; then choose the start and finish.",
+        "The author confirms infinite recursion toward one central limit point. PNG, GIF and the annotated layer image show the same puzzle.",
+        "Layer-boundary annotations do not yet determine a complete gate table. The earlier guessed gate pairs are removed. Confirm the travel surface and homologous terminals before adding enter/exit connections.",
+        "Infinite recursion does not automatically permit jumping through the center. Finite movement is selected until an extra limit rule is explicitly chosen and supported by witness routes.",
+        "Raster skeleton fragments can split a path at a crossing or printed label. Merge fragments by assigning the same path label. Frame positions and boundary matches are tentative."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-martin-windischer-windischer-recursion-jpg",
+      "title": "Windischer Recursion",
+      "asset": "references/Maze_Images/Martin_Windischer/Windischer_Recursion.jpg",
+      "id": "draft-maze-images-martin-windischer-windischer-recursion-jpg",
+      "playable": null,
+      "representation": "infiniteRule",
+      "paths": 14,
+      "transitions": 0,
+      "notes": [
+        "WIP image conversion. Trace candidates follow the original pixels. Review connected paths, crossings, copy frames, and gate mappings; then choose the start and finish.",
+        "The author confirms infinite recursion toward one central limit point. PNG, GIF and the annotated layer image show the same puzzle.",
+        "Layer-boundary annotations do not yet determine a complete gate table. The earlier guessed gate pairs are removed. Confirm the travel surface and homologous terminals before adding enter/exit connections.",
+        "Infinite recursion does not automatically permit jumping through the center. Finite movement is selected until an extra limit rule is explicitly chosen and supported by witness routes.",
+        "Raster skeleton fragments can split a path at a crossing or printed label. Merge fragments by assigning the same path label. Frame positions and boundary matches are tentative.",
+        "Copy-gate correspondence remains unresolved; no recursion connections have been invented. Use the connection table to finish the PDA."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+      "title": "Alice and the Hedge Maze",
+      "asset": "references/Maze_Images/Mike_Earnest/Alice_and_the_Hedge_Maze.png",
+      "id": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+      "playable": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+      "representation": "pathPushdown",
+      "paths": 14,
+      "transitions": 52,
+      "notes": [
+        "Escape through any of the twelve surface exits. The same path inside a smaller copy is not a finish.",
+        "All fourteen source corridor partitions match the imported native pins. The horizontal bridge and vertical underpass are separated.",
+        "WIP: review gate positions and bridge alignment. The bundled input is generated from this topology, not an original author recording."
+      ],
+      "input": 24
+    },
+    {
+      "reference": "maze-images-mike-earnest-berkly-jpg",
+      "title": "Berkly",
+      "asset": "references/Maze_Images/Mike_Earnest/Berkly.jpg",
+      "id": "draft-maze-images-mike-earnest-berkly-jpg",
+      "playable": "draft-maze-images-mike-earnest-berkly-jpg",
+      "representation": "pathPushdown",
+      "paths": 11,
+      "transitions": 32,
+      "notes": [
+        "Author clarification: colored lines are wires to follow, alongside the black wires. Start is above copy 1; Finish is below it.",
+        "WIP crossing interpretation: stay on the same wire at interior crossings. Branches on one wire connect. Confirm whether any differently colored crossing permits a turn.",
+        "Copies A and B are source blocks 1 and 2. Pins match clockwise around each block to the outer boundary.",
+        "This candidate has no finite balanced start-to-finish route. This is a finding about the candidate transcription, not a proof about the source maze. Review crossings and boundary pairing before relying on it."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-siggy-first-cantor-svg",
+      "title": "First Cantor",
+      "asset": "references/Maze_Images/Siggy/First_Cantor.svg",
+      "id": "proof-maze-images-siggy-first-cantor-svg",
+      "playable": "proof-maze-images-siggy-first-cantor-svg",
+      "representation": "infiniteRule",
+      "paths": 13,
+      "transitions": 48,
+      "notes": [
+        "WIP: review the gate-to-path conversion against the original SVG. Proofs check this topology and the selected movement rules.",
+        "Surface gate 1 is selected as the default start. The original allows any outer gate. Blue connected path 12 contains F."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-siggy-infinite-descent-svg",
+      "title": "Infinite Descent",
+      "asset": "references/Maze_Images/Siggy/Infinite_Descent.svg",
+      "id": "proof-maze-images-siggy-infinite-descent-svg",
+      "playable": "proof-maze-images-siggy-infinite-descent-svg",
+      "representation": "infiniteRule",
+      "paths": 6,
+      "transitions": 22,
+      "notes": [
+        "WIP: review the gate-to-path conversion against the original SVG. Proofs check this topology and the selected movement rules."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-siggy-simple-cantor-maze-svg",
+      "title": "Simple Cantor Maze",
+      "asset": "references/Maze_Images/Siggy/Simple_Cantor_Maze.svg",
+      "id": "proof-maze-images-siggy-simple-cantor-maze-svg",
+      "playable": "proof-maze-images-siggy-simple-cantor-maze-svg",
+      "representation": "infiniteRule",
+      "paths": 3,
+      "transitions": 8,
+      "notes": [
+        "WIP: review the gate-to-path conversion against the original SVG. Proofs check this topology and the selected movement rules."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-siggy-skeptic-play-1-jpg",
+      "title": "Skeptic Play 1",
+      "asset": "references/Maze_Images/Siggy/Skeptic_Play_1.jpg",
+      "id": "pda-guide-1",
+      "playable": "pda-guide-1",
+      "representation": "pathPushdown",
+      "paths": 6,
+      "transitions": 18,
+      "notes": [
+        "Connectivity follows Jay\u2019s path-labeling guide and Python fixture. Match the trace labels to the artwork before marking reviewed."
+      ],
+      "input": 28
+    },
+    {
+      "reference": "maze-images-siggy-skeptic-play-1-svg",
+      "title": "Skeptic Play 1",
+      "asset": "references/Maze_Images/Siggy/Skeptic_Play_1.svg",
+      "id": "draft-maze-images-siggy-skeptic-play-1-svg",
+      "playable": "draft-maze-images-siggy-skeptic-play-1-svg",
+      "representation": "pathPushdown",
+      "paths": 6,
+      "transitions": 18,
+      "notes": [
+        "Source curves, copy gates, and start/finish are bound to the guide PDA. WIP: check the conversion against the original artwork."
+      ],
+      "input": 28
+    },
+    {
+      "reference": "maze-images-siggy-skeptic-play-1-steps-svg",
+      "title": "Skeptic Play 1 Steps",
+      "asset": "references/Maze_Images/Siggy/Skeptic_Play_1_Steps.svg",
+      "id": "draft-maze-images-siggy-skeptic-play-1-steps-svg",
+      "playable": "draft-maze-images-siggy-skeptic-play-1-steps-svg",
+      "representation": "pathPushdown",
+      "paths": 6,
+      "transitions": 18,
+      "notes": [
+        "Source curves, copy gates, and start/finish are bound to the guide PDA. WIP: check the conversion against the original artwork."
+      ],
+      "input": 28
+    },
+    {
+      "reference": "maze-images-siggy-skeptic-play-2-jpg",
+      "title": "Skeptic Play 2",
+      "asset": "references/Maze_Images/Siggy/Skeptic_Play_2.jpg",
+      "id": "draft-maze-images-siggy-skeptic-play-2-jpg",
+      "playable": "draft-maze-images-siggy-skeptic-play-2-jpg",
+      "representation": "pathPushdown",
+      "paths": 7,
+      "transitions": 20,
+      "notes": [
+        "Follow colored wires from the hollow light-green circle to the filled dark-green circle. Black lines are square boundaries, not corridors. Finite solutions only.",
+        "Five connected source wires and two point helpers. Helpers 6 and 7 split direct AB/BA boundary crossings; they add no corridor and preserve the full copy address.",
+        "A is the upper-left recursive triangle; B is the lower-right triangle. Each playable square is the lower-left part of its triangle.",
+        "WIP: review screenshot alignment and the compound boundary interpretation against the source. The original sharp diagram resolves faded crossings; its topology differs from the seven-circuit native redraw.",
+        "Source rules and sharp diagram: https://skepticsplay.blogspot.com/2014/02/fractal-maze-2-sierpinski-paths.html"
+      ],
+      "input": 14
+    },
+    {
+      "reference": "maze-images-siggy-skeptic-play-3-png",
+      "title": "Skeptic Play 3",
+      "asset": "references/Maze_Images/Siggy/Skeptic_Play_3.png",
+      "id": "draft-maze-images-siggy-skeptic-play-3-png",
+      "playable": "draft-maze-images-siggy-skeptic-play-3-png",
+      "representation": "pathPushdown",
+      "paths": 14,
+      "transitions": 48,
+      "notes": [
+        "Walk through white passages; red lines are walls. Source pin partition matches the revised chip model after swapping the lower copy names, with the original\u2019s additional A:4 blind room retained. WIP: check wall corners and source gate alignment."
+      ],
+      "input": 48
+    },
+    {
+      "reference": "maze-images-siggy-skeptic-play-3-alt-png",
+      "title": "Skeptic Play 3 Alt",
+      "asset": "references/Maze_Images/Siggy/Skeptic_Play_3_Alt.png",
+      "id": "pda-guide-5",
+      "playable": "pda-guide-5",
+      "representation": "pathPushdown",
+      "paths": 13,
+      "transitions": 46,
+      "notes": [
+        "Source RGB strokes and chip pins form this playable WIP. Check crossings and start/finish against the artwork before marking reviewed."
+      ],
+      "input": 48
+    },
+    {
+      "reference": "maze-images-the-inner-frame-pdf",
+      "title": "The Inner Frame",
+      "asset": "references/Maze_Images/The_Inner_Frame.pdf",
+      "id": "draft-maze-images-the-inner-frame-pdf",
+      "playable": "draft-maze-images-the-inner-frame-pdf",
+      "representation": "pathPushdown",
+      "paths": 6,
+      "transitions": 16,
+      "notes": [
+        "Start at the left white room in Purple, level I. Finish at the left white room in Green, level I. Level 0 is unavailable.",
+        "Each A descends one level; an exit ascends one. The source example allows ascent into another parent color through the matching left/right port. Color is the current maze, not a remembered parent identity.",
+        "Six source circuits include the isolated left Red and right Yellow rooms. Their excursions return to their entry rooms; recording removes those detours.",
+        "The nondeterministic source model needs no artificial Fix 1 helper. The separate guide PDA preserves Jay\u2019s five-state deterministic conversion and its original eight-token example.",
+        "WIP: review white-port orientation and alignment. The player crops to the current source template; the PDF\u2019s expanded board and solution row remain reference illustrations.",
+        "Source rules and worked ascent: https://theinnerframe.org/2021/01/29/fractal-maze/"
+      ],
+      "input": 6
+    },
+    {
+      "reference": "maze-images-snuke-snuke-1-jpg",
+      "title": "Snuke 1",
+      "asset": "references/Maze_Images/snuke/Snuke_1.jpg",
+      "id": "draft-maze-images-snuke-snuke-1-jpg",
+      "playable": "draft-maze-images-snuke-snuke-1-jpg",
+      "representation": "pathPushdown",
+      "paths": 5,
+      "transitions": 10,
+      "notes": [
+        "WIP: parent arrowheads are transcribed separately from the smaller repeated arrows inside A. Review both directions on the S\u2013A1 and port 1\u2013A2 arcs.",
+        "Measured curves are projected onto the original black stroke centers; review alignment at arrowheads and close parallel arcs. Interior crossings do not connect.",
+        "The transcription has a finite ten-transition route to G. No unstated limit hops are assumed."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-snuke-snuke-2-jpg",
+      "title": "Snuke 2",
+      "asset": "references/Maze_Images/snuke/Snuke_2.jpg",
+      "id": "draft-maze-images-snuke-snuke-2-jpg",
+      "playable": "draft-maze-images-snuke-snuke-2-jpg",
+      "representation": "pathPushdown",
+      "paths": 6,
+      "transitions": 15,
+      "notes": [
+        "WIP: arrows are transcribed from the image; review the paired arrowheads and sibling-copy segments.",
+        "A finite eight-transition route reaches G using the sibling-copy wire. The image supplies no written limit-hop rules, so infinite hops are not assumed."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-snuke-snuke-3-png",
+      "title": "Snuke 3",
+      "asset": "references/Maze_Images/snuke/Snuke_3.png",
+      "id": "draft-maze-images-snuke-snuke-3-png",
+      "playable": "draft-maze-images-snuke-snuke-3-png",
+      "representation": "pathPushdown",
+      "paths": 3,
+      "transitions": 9,
+      "notes": [
+        "Movement matches the source C++ port rules. Arrows are directed; interior crossings are not junctions. WIP: check source alignment."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "maze-images-snuke-snuke-4-png",
+      "title": "Snuke 4",
+      "asset": "references/Maze_Images/snuke/Snuke_4.png",
+      "id": "draft-maze-images-snuke-snuke-4-png",
+      "playable": "draft-maze-images-snuke-snuke-4-png",
+      "representation": "pathPushdown",
+      "paths": 4,
+      "transitions": 12,
+      "notes": [
+        "Movement matches the source C++ port rules. Arrows are directed; interior crossings are not junctions. WIP: check source alignment."
+      ],
+      "input": 0
+    },
+    {
+      "reference": "papers-fractal-maze-to-pda-graph-solution-png",
+      "title": "Graph Solution",
+      "asset": "references/Papers/Fractal_Maze_to_PDA/Graph_Solution.png",
+      "id": null,
+      "playable": null,
+      "representation": null,
+      "paths": null,
+      "transitions": null,
+      "notes": null,
+      "input": 0
+    },
+    {
+      "reference": "papers-fractal-maze-to-pda-sp-1-actions-jpg",
+      "title": "SP 1 \u2014 Actions",
+      "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_Actions.jpg",
+      "id": null,
+      "playable": null,
+      "representation": null,
+      "paths": null,
+      "transitions": null,
+      "notes": null,
+      "input": 0
+    },
+    {
+      "reference": "papers-fractal-maze-to-pda-sp-1-m1-png",
+      "title": "SP 1 \u2014 M1",
+      "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_M1.png",
+      "id": null,
+      "playable": null,
+      "representation": null,
+      "paths": null,
+      "transitions": null,
+      "notes": null,
+      "input": 0
+    },
+    {
+      "reference": "papers-fractal-maze-to-pda-sp-1-m2-png",
+      "title": "SP 1 \u2014 M2",
+      "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_M2.png",
+      "id": null,
+      "playable": null,
+      "representation": null,
+      "paths": null,
+      "transitions": null,
+      "notes": null,
+      "input": 0
+    },
+    {
+      "reference": "papers-fractal-maze-to-pda-sp-1-m3-png",
+      "title": "SP 1 \u2014 M3",
+      "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_M3.png",
+      "id": null,
+      "playable": null,
+      "representation": null,
+      "paths": null,
+      "transitions": null,
+      "notes": null,
+      "input": 0
+    },
+    {
+      "reference": "papers-fractal-maze-to-pda-sp-1-m4-png",
+      "title": "SP 1 \u2014 M4",
+      "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_M4.png",
+      "id": null,
+      "playable": null,
+      "representation": null,
+      "paths": null,
+      "transitions": null,
+      "notes": null,
+      "input": 0
+    },
+    {
+      "reference": "papers-fractal-maze-to-pda-sp-1-m5-png",
+      "title": "SP 1 \u2014 M5",
+      "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_M5.png",
+      "id": null,
+      "playable": null,
+      "representation": null,
+      "paths": null,
+      "transitions": null,
+      "notes": null,
+      "input": 0
+    },
+    {
+      "reference": "papers-fractal-maze-to-pda-sp-1-turing-machine-png",
+      "title": "SP 1 \u2014 Turing Machine",
+      "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_Turing_Machine.png",
+      "id": null,
+      "playable": null,
+      "representation": null,
+      "paths": null,
+      "transitions": null,
+      "notes": null,
+      "input": 0
+    },
+    {
+      "reference": "papers-fractal-maze-to-pda-sp-1-whole-graph-png",
+      "title": "SP 1 \u2014 Whole Graph",
+      "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_Whole_Graph.png",
+      "id": null,
+      "playable": null,
+      "representation": null,
+      "paths": null,
+      "transitions": null,
+      "notes": null,
+      "input": 0
+    },
+    {
+      "reference": "papers-fractal-maze-to-pda-skeptic-play-1-jpg",
+      "title": "Skeptic Play 1",
+      "asset": "references/Papers/Fractal_Maze_to_PDA/Skeptic_Play_1.jpg",
+      "id": null,
+      "playable": null,
+      "representation": null,
+      "paths": null,
+      "transitions": null,
+      "notes": null,
+      "input": 0
+    },
+    {
+      "reference": "source-backlot",
+      "title": "Backlot",
+      "asset": "references/source-assets/backlot-grid.png",
+      "id": "backlot",
+      "playable": "backlot",
+      "representation": "recursiveTour",
+      "paths": null,
+      "transitions": null,
+      "notes": null,
+      "input": 0
+    },
+    {
+      "reference": "source-omeometo-block",
+      "title": "Omeometo \u2014 fractal block maze",
+      "asset": "references/source-assets/omeometo-block.png",
+      "id": "koteitan-block",
+      "playable": "koteitan-block",
+      "representation": "blockRecursive",
+      "paths": null,
+      "transitions": null,
+      "notes": null,
+      "input": 0
+    }
+  ]
+}

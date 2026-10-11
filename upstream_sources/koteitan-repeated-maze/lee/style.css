@@ -1,0 +1,96 @@
+/* Dark mode palette for lee/ test HTMLs.
+   Linked AFTER inline <style> blocks so the cascade lets these overrides win
+   on same-selector rules without needing !important.
+   Canvas drawing colors live in draw_map.js (handled separately). */
+
+body {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+h1, h2, h3, h4 {
+  color: #e0e0e0;
+}
+
+p {
+  color: #c0c0c0;
+}
+
+a { color: #6ea8fe; }
+a:visited { color: #b18cff; }
+
+code {
+  background: #2a2a2a;
+  color: #e0e0e0;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+pre {
+  background: #2a2a2a;
+  color: #e0e0e0;
+}
+
+/* Higher-specificity selector in lee_algorithm.html sets pre background —
+   match its specificity so the dark override wins without !important. */
+details pre {
+  background: #3a1f1f;
+  color: #f88;
+}
+
+input, button, select, textarea {
+  background: #2a2a2a;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+input::placeholder { color: #888; }
+
+button { cursor: pointer; }
+button:hover { background: #3a3a3a; }
+
+textarea {
+  border: 1px solid #444 !important;
+  background: #2a2a2a !important;
+  color: #e0e0e0 !important;
+}
+
+/* Tables: keep borders visible on dark bg. */
+table { color: #e0e0e0; }
+th, td { border: 1px solid #444; }
+th { background: #2a2a2a; }
+
+tr.pass td { background: #1f3a26; color: #4fc37f; }
+tr.fail td { background: #3a1f1f; color: #f77; }
+tr.err  td { background: #3a2b1f; color: #e0b060; }
+
+/* Matrix cells used in insert-map.html D1–D4 grid. */
+.matrix th, .matrix td { border: 1px solid #444; }
+.matrix td.p { background: #1f3a26; color: #4fc37f; }
+.matrix td.f { background: #3a1f1f; color: #f77; }
+
+/* Control/panel surfaces (used across all 4 HTMLs). */
+.controls {
+  background: #252525 !important;
+  color: #e0e0e0;
+}
+
+.panel {
+  background: #252525 !important;
+  border: 1px solid #444 !important;
+}
+
+.pair,
+.random-pair .cell {
+  background: #252525 !important;
+  border: 1px solid #444 !important;
+}
+
+/* Summary banners: soften the green/red/orange accents. */
+.summary {
+  background: #252525;
+  color: #e0e0e0;
+  border-left-color: #4fc37f;
+}
+.summary.bad  { border-left-color: #f77; }
+.summary.warn { border-left-color: #e0b060; }

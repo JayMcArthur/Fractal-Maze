@@ -1,0 +1,288 @@
+import { test, expect } from './fixtures'
+import { readFileSync } from 'node:fs'
+
+test('imports the complete geometric collection and preserves gate geometry on export', async ({ page }) => {
+  await page.goto('library')
+  await page.getByRole('button', { name: 'Import maze', exact: true }).click()
+  const collection = JSON.parse(readFileSync('src/data/mazes/geometric-collection.json', 'utf8'))
+  collection.forEach((maze: { uid: string; name: string }, index: number) => { maze.uid = `imported-gate-${index}`; maze.name = `Imported ${maze.name}` })
+  await page.locator('input[type=file]').setInputFiles({ name: 'collection.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(collection)) })
+  await expect(page.getByText('All 12 mazes will be saved to your library.')).toBeVisible()
+  await page.getByRole('button', { name: 'Load Maze', exact: true }).click()
+  await expect(page.getByRole('heading', { name: 'Imported Easy - Noke Lieu' })).toBeVisible()
+  await page.getByRole('button', { name: 'Enter A → path 4', exact: true }).click()
+  const depth = page.locator('.digital-hud__metrics > div').filter({ hasText: 'Depth' }).locator('dd')
+  await expect(page.getByRole('button', { name: 'Undo move', exact: true })).toBeEnabled()
+  await expect(depth).toHaveText('1')
+  await expect(page.getByTestId('source-player-marker')).toBeVisible()
+  await page.getByRole('button', { name: 'Undo move', exact: true }).click()
+  await page.reload()
+  await expect(depth).toHaveText('0')
+  await page.getByRole('button', { name: 'Export', exact: true }).click()
+  await page.getByRole('radio', { name: 'FRACTAL-MAZE.v2 (original path and gate data)' }).check()
+  const download = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Download', exact: true }).click()
+  const file = await (await download).path()
+  expect(JSON.parse(readFileSync(file!, 'utf8'))[0]).toEqual(collection[0])
+  await page.goto('library')
+  await expect(page.locator('.replay-shelf .library-card')).toHaveCount(12)
+  await page.reload()
+  await expect(page.locator('.replay-shelf .library-card')).toHaveCount(12)
+})
+
+test('block editing exports the current pattern and persists across reload', async ({ page }) => {
+  await page.goto('play/koteitan-block')
+  await page.getByRole('button', { name: 'Cell 0,0: black', exact: true }).click()
+  await expect(page.getByRole('button', { name: 'Cell 0,0: white', exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'Export', exact: true }).click()
+  const download = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Download', exact: true }).click()
+  const file = await (await download).path()
+  expect(JSON.parse(readFileSync(file!, 'utf8')).definition.pattern[0]).toBe(0)
+  await page.getByRole('button', { name: 'Save pattern' }).click()
+  await expect(page.getByText('Pattern saved', { exact: true })).toBeVisible()
+  await page.reload()
+  await expect(page.getByRole('button', { name: 'Cell 0,0: white', exact: true })).toBeVisible()
+})
+
+test('graph connections and repeated-maze search work through their player controls', async ({ page }) => {
+  await page.goto('play/portal-connections')
+  await page.getByRole('button', { name: 'Move to Inner entry', exact: true }).last().click()
+  await page.getByRole('button', { name: 'Move to Inner exit', exact: true }).last().click()
+  await page.getByRole('button', { name: 'Move to Finish', exact: true }).last().click()
+  await expect(page.getByRole('status')).toContainText('Exit reached')
+  await page.goto('play/repeated-directed-example')
+  await page.getByRole('button', { name: 'Find shortest route' }).click()
+  await expect(page.getByText(/Shortest route found: 13 directed connections/)).toBeVisible()
+  for (let index = 0; index < 13; index++) await page.getByRole('button', { name: 'Next step', exact: true }).click()
+  await expect(page.locator('.format-status')).toContainText('Goal reached · step 13')
+})
+
+for (const [motion, levels] of [['reduce', 1], ['no-preference', 2]] as const) {
+test(`Orel camera entry/exit, ${motion} motion, ${levels} recursive levels`, async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: motion })
+  await page.goto('library')
+  await page.getByRole('button', { name: 'Import maze', exact: true }).click()
+  const now = new Date().toISOString()
+  const fixture = {
+    formatVersion: '1.0', representationType: 'squareRecursive',
+    metadata: { id: 'camera-fixture', title: 'Camera fixture', tags: [], createdAt: now, updatedAt: now },
+    definition: { type: 'squareRecursive', tileSize: 50, grid: { rows: 2, cols: 2, cells: [0,0,0,0] }, colors: { outside: '#eeeeee', background: '#ffffff', path: '#aaaaaa', line: '#ff0000' },
+      blocks: [{ name: 'B', row: 0, col: 1, width: 1, height: 1, color: '#224488' }], links: [{ row: 0, col: 0, blockPath: Array.from({ length: levels }, () => 'B'), exitName: 'west' }], exits: [{ name: 'west', row: 0, col: 0, direction: 1 }], teleporters: [], trophies: [], player: { row: 0, col: 0, color: '#0000ff' } },
+    renderConfig: { preferredRenderer: 'canvas', maxDepth: 4, showBreadcrumbs: true, showBlockLabels: false, animationSpeed: 'normal' },
+    solverConfig: { strategy: 'bfs', maxDepth: 4, maxNodes: 1000, timeoutMs: 1000 }, annotations: [],
+  }
+  await page.locator('input[type=file]').setInputFiles({ name: 'camera.fmaze', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(fixture)) })
+  await page.getByRole('button', { name: 'Load Maze', exact: true }).click()
+  await expect(page.locator('canvas[aria-label="Camera fixture"]')).toBeVisible()
+  const rim = () => page.locator('canvas[aria-label="Camera fixture"]').evaluate((canvas: HTMLCanvasElement) => Array.from(canvas.getContext('2d')!.getImageData(0,0,1,1).data).slice(0,3))
+  await expect.poll(rim).toEqual([238,238,238])
+  await page.keyboard.press('ArrowRight')
+  await expect(page.locator('.digital-hud__metrics > div').filter({ hasText: 'Depth' })).toContainText(String(levels))
+  await expect.poll(rim).toEqual([34,68,136])
+  await page.keyboard.press('ArrowLeft')
+  await expect(page.locator('.digital-hud__metrics > div').filter({ hasText: 'Depth' })).toContainText('0')
+  await expect.poll(rim).toEqual([238,238,238])
+})
+
+}
+
+test('catalogue editing persists and replay keeps the original maze', async ({ page }) => {
+  await page.goto('play/alice-in-wonderland')
+  await expect(page.locator('canvas')).toBeVisible()
+  await page.keyboard.press('ArrowRight')
+  await page.keyboard.press('ArrowRight')
+  await page.getByRole('button', { name: 'Save replay', exact: true }).click()
+  await expect(page.locator('.replay-timeline')).toBeVisible()
+  const recorded = page.url()
+  await page.getByRole('button', { name: 'Edit', exact: true }).click()
+  await page.getByRole('button', { name: 'Info', exact: true }).click()
+  const title = page.getByRole('textbox', { name: 'Title', exact: true })
+  await expect(title).toHaveValue(/Alice/)
+  await title.fill('Edited Alice')
+  await page.getByRole('button', { name: 'Save', exact: true }).click()
+  await expect(page.getByRole('button', { name: '✓ Saved' })).toBeVisible()
+  await page.reload()
+  await page.getByRole('button', { name: 'Info', exact: true }).click()
+  await expect(title).toHaveValue('Edited Alice')
+  await page.goto('library')
+  await page.getByRole('searchbox').fill('Edited Alice')
+  await expect(page.getByRole('heading', { name: 'Edited Alice' })).toBeVisible()
+  await page.goto(recorded)
+  await expect(page.locator('.player-title h1')).toContainText('Alice')
+  await expect(page.locator('.player-title h1')).not.toContainText('Edited')
+  await expect(page.locator('canvas')).toBeVisible()
+  await expect(page.getByText('Step 0 of 2')).toBeVisible()
+  await page.getByRole('button', { name: 'Seek to end' }).click()
+  await expect(page.getByText('Step 2 of 2')).toBeVisible()
+  await page.getByRole('button', { name: 'Seek to start' }).click()
+  await page.getByRole('button', { name: 'Play replay' }).click()
+  await expect(page.getByText('Step 2 of 2')).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Play replay' })).toBeVisible()
+  await page.goto('solver?id=alice-in-wonderland')
+  await expect(page.locator('canvas[aria-label="Edited Alice"]')).toBeVisible()
+})
+
+test('phone controls fit in the viewport and move the player', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('play/alice-in-wonderland')
+  const east = page.getByRole('button', { name: 'Move east', exact: true })
+  await expect(east).toBeVisible()
+  const bounds = await east.boundingBox()
+  expect(bounds!.y + bounds!.height).toBeLessThan(844)
+  await east.click()
+  await expect(page.locator('.digital-hud__metrics > div').filter({ hasText: 'Moves' })).toContainText('1')
+})
+
+test('phone editor overlay stays aligned with its scaled canvas', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('editor/alice-in-wonderland')
+  await expect(page.locator('.editor-field canvas')).toBeVisible()
+  const canvas = await page.locator('.editor-field canvas').boundingBox()
+  const overlay = await page.locator('.editor-field svg').boundingBox()
+  expect(Math.abs(canvas!.width - overlay!.width)).toBeLessThan(1)
+  expect(Math.abs(canvas!.height - overlay!.height)).toBeLessThan(1)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390)
+})
+
+test('square solver worker saves a complete replay that reopens', async ({ page }) => {
+  await page.goto('solver?id=square')
+  await page.getByLabel('Solve method', { exact: true }).selectOption('grid')
+  await page.getByRole('button', { name: 'Start', exact: true }).click()
+  await expect(page.getByText('Solution Found', { exact: true })).toBeVisible({ timeout: 20000 })
+  await expect(page.getByText('566 steps', { exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'Save as Replay', exact: true }).click()
+  await expect(page.getByText('Replay saved.', { exact: false })).toBeVisible()
+  await page.getByRole('button', { name: 'Play solution', exact: true }).click()
+  await expect(page.getByText('Step 0 of 566', { exact: true })).toBeVisible()
+  await expect(page.locator('.replay-summary')).toContainText('solver')
+  await page.getByRole('button', { name: 'Seek to end' }).click()
+  await expect(page.getByText('Step 566 of 566', { exact: true })).toBeVisible()
+})
+
+test('unknown maze URLs show errors without creating a new project', async ({ page }) => {
+  await page.goto('editor/missing-project')
+  await expect(page.getByRole('heading', { name: 'Maze unavailable' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Save', exact: true })).toHaveCount(0)
+  await page.goto('play/missing-project')
+  await expect(page.getByRole('heading', { name: 'Maze not found' })).toBeVisible()
+  await expect(page.locator('canvas')).toHaveCount(0)
+})
+
+test('normal movement leaves static maze pixels unchanged', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' })
+  await page.goto('')
+  await expect(page.locator('canvas')).toBeVisible()
+  await page.waitForTimeout(200)
+  const box = (await page.locator('canvas').boundingBox())!
+  const clip = { x: box.x + box.width * .75, y: box.y + box.height * .75, width: 40, height: 40 }
+  const before = await page.screenshot({ clip })
+  for (const key of ['ArrowRight', 'ArrowRight', 'ArrowLeft', 'ArrowLeft']) {
+    await page.keyboard.press(key)
+    for (const delay of [0, 30, 120]) {
+      await page.waitForTimeout(delay)
+      expect((await page.screenshot({ clip })).equals(before)).toBe(true)
+    }
+  }
+})
+
+test('builder places player by mouse and keyboard, selects blocks, and edits teleporters', async ({ page }) => {
+  await page.goto('editor/alice-in-wonderland')
+  await expect(page.locator('.editor-field canvas')).toBeVisible()
+  await page.getByRole('button', { name: 'Player', exact: true }).click()
+  await page.getByRole('button', { name: 'Place player at row 1, column 2', exact: true }).click()
+  await expect(page.getByRole('spinbutton', { name: 'Col', exact: true })).toHaveValue('2')
+  const target = page.getByRole('button', { name: 'Place player at row 2, column 1', exact: true })
+  await target.focus(); await page.keyboard.press('Enter')
+  await expect(page.getByRole('spinbutton', { name: 'Row', exact: true })).toHaveValue('2')
+  await page.keyboard.press('Control+z')
+  await expect(page.getByRole('spinbutton', { name: 'Row', exact: true })).toHaveValue('1')
+  await page.getByRole('button', { name: 'Blocks', exact: true }).click()
+  await page.locator('.editor-field svg g rect').filter({ hasNotText: 'x' }).first().click()
+  await expect(page.getByText('Block A', { exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'Links', exact: true }).click()
+  await page.getByRole('spinbutton', { name: 'Teleporter Row', exact: true }).fill('1')
+  await page.getByRole('spinbutton', { name: 'Teleporter Column', exact: true }).fill('1')
+  await page.getByRole('button', { name: 'Add teleporter', exact: true }).click()
+  await expect(page.getByRole('button', { name: 'Remove teleporter at 1, 1', exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'Save', exact: true }).click()
+  await expect(page.getByRole('button', { name: '✓ Saved' })).toBeVisible()
+  await page.reload()
+  await page.getByRole('button', { name: 'Links', exact: true }).click()
+  await expect(page.getByRole('button', { name: 'Remove teleporter at 1, 1', exact: true })).toBeVisible()
+})
+
+for (const family of ['repeated', 'ports']) test(`${family} solution saves and plays in its maze`, async ({ page }) => {
+  await page.goto(`play/${family === 'repeated' ? 'repeated-md3' : 'ports-snuke_no3'}`)
+  if (family === 'repeated') await page.getByRole('button', { name: 'Load bundled solution' }).click()
+  else { await page.getByRole('link', { name: 'Solve & analyze', exact: false }).last().click(); await page.getByRole('button', { name: 'Find finite route' }).click(); await expect(page.getByRole('button', { name: 'Save & play replay' })).toBeEnabled() }
+  await page.getByRole('button', { name: 'Save & play replay' }).click()
+  await expect(page.locator('.replay-timeline')).toContainText('Step 0 of')
+  await page.getByRole('button', { name: 'Play replay' }).click()
+  await expect(page.locator('.replay-timeline')).not.toContainText('Step 0 of')
+  await page.getByRole('button', { name: 'Seek to end' }).click()
+  await page.getByRole('button', { name: 'Return to play', exact: true }).click()
+  await page.reload()
+  await expect(page.getByLabel('Maze replay', { exact: true }).locator('optgroup[label="Your recordings"] option')).toHaveCount(1)
+  const id = await page.getByLabel('Maze replay', { exact: true }).locator('optgroup[label="Your recordings"] option').getAttribute('value')
+  await page.getByLabel('Maze replay', { exact: true }).selectOption(id!)
+  await expect(page.locator('.replay-timeline')).toContainText('Step 0 of')
+})
+
+test('reference artwork and the original Wolf wire source remain accessible', async ({ page }) => {
+  await page.goto('library')
+  await page.getByRole('button', { name: /^Reference artwork \(\d+\)$/ }).click()
+  await expect(page.locator('.library-card')).toHaveCount(43)
+  await page.getByRole('searchbox').fill('Snuke 1')
+  await page.getByRole('link', { name: 'View artwork', exact: true }).click()
+  await expect(page.locator('.reference-frame img')).toBeVisible()
+  expect(await page.locator('.reference-frame img').evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+  await page.goto('programs/wolf/index.html')
+  await expect(page.locator('canvas')).toBeVisible()
+  await page.keyboard.press('ArrowUp')
+  await expect(page.locator('#moves')).toContainText('north')
+})
+
+for (const width of [1440, 390]) test(`library and home layouts at ${width}px`, async ({ page }) => {
+  await page.setViewportSize({ width, height: 1000 })
+  await page.goto('library')
+  const button = page.getByRole('button', { name: 'Import maze', exact: true }), link = page.getByRole('link', { name: 'Create maze', exact: true })
+  const a = (await button.boundingBox())!, b = (await link.boundingBox())!
+  expect(Math.abs(a.y - b.y)).toBeLessThan(1)
+  expect(Math.abs(a.height - b.height)).toBeLessThan(1)
+  expect(await link.evaluate((element) => getComputedStyle(element).alignItems)).toBe('center')
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width)
+  await page.goto('')
+  await expect(page.locator('.home-actions > a')).toHaveCount(3)
+  await expect(page.getByRole('heading', { name: 'How to play', exact: true })).toBeVisible()
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width)
+})
+
+test('exported replay imports into an empty browser library', async ({ page }) => {
+  await page.goto('play/repeated-md3')
+  await page.getByRole('button', { name: 'Load bundled solution' }).click()
+  await page.getByRole('button', { name: 'Save & play replay' }).click()
+  const downloadPromise = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Export replay' }).click()
+  const download = await downloadPromise, path = (await download.path())!
+  await page.evaluate(() => new Promise<void>((resolve, reject) => {
+    const request = indexedDB.open('fractal-maze', 3)
+    request.onsuccess = () => { const db = request.result, tx = db.transaction('replays', 'readwrite'); tx.objectStore('replays').clear(); tx.oncomplete = () => { db.close(); resolve() }; tx.onerror = () => reject(tx.error) }
+  }))
+  await page.goto('play/repeated-md3')
+  await expect(page.getByLabel('Maze replay', { exact: true }).locator('optgroup[label="Your recordings"] option')).toHaveCount(0)
+  await page.getByLabel('Import replay', { exact: true }).setInputFiles(path)
+  await expect(page.locator('.replay-timeline')).toContainText('Step 0 of')
+  await expect(page.getByLabel('Play maze')).toBeVisible()
+})
+
+test('first save preserves builder undo history', async ({ page }) => {
+  await page.goto('editor')
+  await page.getByRole('button', { name: 'Info', exact: true }).click()
+  const title = page.getByRole('textbox', { name: 'Title', exact: true })
+  await title.fill('A first saved maze')
+  await page.getByRole('button', { name: 'Save', exact: true }).click()
+  await expect(page.getByRole('button', { name: '✓ Saved' })).toBeVisible()
+  await page.keyboard.press('Control+z')
+  await expect(title).toHaveValue('New Maze')
+})

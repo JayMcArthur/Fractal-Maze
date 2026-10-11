@@ -1,0 +1,1 @@
+normal: E0->S0, E1->E0, W0->E0, W1->W0, W1->N1, W1->S1, N0->E1, N0->S1, N1->W0, N1->W1, S0->W0, S1->E0, S1->E1, S1->W0; nx: (none); ny: N0->N1
