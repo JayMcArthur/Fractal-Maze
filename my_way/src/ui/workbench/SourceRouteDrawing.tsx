@@ -35,6 +35,8 @@ export function SourceRouteDrawing({
 }) {
   const width = bounds[2]
   const cell = artwork.blockSize
+  const labelFont = cell ? Math.min(cell * .7, width / 45) : width / 45
+  const labelOffset = cell ? Math.min(cell * .95, width / 35) : width / 35
   const active = artwork.traces.filter((trace) => trace.path === marker.state.path)
   const goal =
     model.goal && copyAddress(model, model.goal).join('\0') === copyAddress(model, marker.state).join('\0')
@@ -125,10 +127,12 @@ export function SourceRouteDrawing({
                   strokeWidth={cell ? cell * .06 : width / 500}
                 />
                 <text
-                  x={point[0]}
-                  y={point[1] + (cell ? cell * .95 : width / 35)}
+                  x={Math.max(bounds[0] + labelFont * label.length / 3,
+                    Math.min(bounds[0] + width - labelFont * label.length / 3, point[0]))}
+                  y={point[1] + labelOffset + labelFont > bounds[1] + bounds[3]
+                    ? point[1] - labelOffset : point[1] + labelOffset}
                   textAnchor="middle"
-                  fontSize={cell ? cell * .7 : width / 45}
+                  fontSize={labelFont}
                   fill="#172f3a"
                   stroke="white"
                   strokeWidth={cell ? cell * .06 : width / 250}

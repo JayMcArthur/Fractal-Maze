@@ -1,0 +1,66 @@
+{
+  "captures": [
+    {
+      "id": "pda-guide-2",
+      "file": "pda-guide-2.png",
+      "width": 1440
+    },
+    {
+      "id": "pda-guide-3",
+      "file": "pda-guide-3.png",
+      "width": 1440
+    },
+    {
+      "id": "pda-guide-4",
+      "file": "pda-guide-4.png",
+      "width": 1440
+    },
+    {
+      "id": "pda-guide-6",
+      "file": "pda-guide-6.png",
+      "width": 1440
+    },
+    {
+      "id": "simple-infinite-hop",
+      "file": "simple-infinite-hop.png",
+      "width": 1440
+    },
+    {
+      "id": "simple-nested-infinite-hop",
+      "file": "simple-nested-infinite-hop.png",
+      "width": 1440
+    },
+    {
+      "id": "pda-guide-2",
+      "file": "pda-guide-2-phone.png",
+      "width": 390
+    },
+    {
+      "id": "pda-guide-3",
+      "file": "pda-guide-3-phone.png",
+      "width": 390
+    },
+    {
+      "id": "pda-guide-4",
+      "file": "pda-guide-4-phone.png",
+      "width": 390
+    },
+    {
+      "id": "pda-guide-6",
+      "file": "pda-guide-6-phone.png",
+      "width": 390
+    },
+    {
+      "id": "simple-infinite-hop",
+      "file": "simple-infinite-hop-phone.png",
+      "width": 390
+    },
+    {
+      "id": "simple-nested-infinite-hop",
+      "file": "simple-nested-infinite-hop-phone.png",
+      "width": 390
+    }
+  ],
+  "pageErrors": [],
+  "overflow": 0
+}

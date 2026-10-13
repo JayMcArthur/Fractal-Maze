@@ -106,17 +106,26 @@ export function trimNativeRoute(route: NativeRoute): NativeRoute {
   }
 }
 
+function physicalPathRoute(
+  maze: RecursiveMazeDocument,
+  route: NativeRoute,
+  source: 'human' | 'solver',
+  complete: boolean
+): NativeRoute {
+  if ((route.type === 'pathPushdown' || route.type === 'infiniteRule') && !route.physical && maze.artwork?.traces.length &&
+      (maze.definition.type === 'pathPushdown' || maze.definition.type === 'infiniteRule') &&
+      (maze.definition.surfaceSymbols || route.proofSteps || (source === 'solver' && complete && maze.artwork.blockSize)))
+    return { ...route, physical: pathRouteSession(maze.definition, maze.artwork, route, complete) }
+  return route
+}
+
 export function buildNativeReplay(
   maze: RecursiveMazeDocument,
   route: NativeRoute,
   source: 'human' | 'solver',
   complete: boolean
 ): ReplayDocument {
-  if ((route.type === 'pathPushdown' || route.type === 'infiniteRule') && !route.physical && maze.artwork?.traces.length &&
-      (maze.definition.type === 'pathPushdown' || maze.definition.type === 'infiniteRule') &&
-      (maze.definition.surfaceSymbols || route.proofSteps))
-    route = { ...route, physical: pathRouteSession(maze.definition, maze.artwork, route) }
-  route = trimNativeRoute(route)
+  route = trimNativeRoute(physicalPathRoute(maze, route, source, complete))
   const now = new Date().toISOString()
   return structuredClone({
     formatVersion: '1.0',

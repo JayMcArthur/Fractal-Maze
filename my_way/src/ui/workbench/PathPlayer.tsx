@@ -1,4 +1,5 @@
-import { type ReactNode } from 'react'
+import { type ReactNode, useMemo } from 'react'
+import { rulePlayDocument } from '../../app/library/rulePlayDocument'
 import { Link } from 'react-router-dom'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
 import type { PathMazeDefinition } from '../../core/model/pathMaze'
@@ -19,8 +20,9 @@ export function PathPlayer({
   model: PathMazeDefinition
   children?: ReactNode
 }) {
+  const playable = useMemo(() => rulePlayDocument(doc) ?? doc, [doc])
   const { session, frame, route, animating, current, shown, finished, playArtwork, blockArtwork, availableEdges, proofMoves, useProof,
-    onWalk, onArtworkChange, move, undo, reset, markSaved, setAnimating, setVisibleState } = usePathSession(doc, model)
+    onWalk, onArtworkChange, move, undo, reset, markSaved, setAnimating, setVisibleState } = usePathSession(playable, model)
   const pathLabel = model.paths.find((path) => path.id === shown?.path)?.label
   const address = shown ? copyAddress(model, shown) : []
   return (
@@ -52,7 +54,7 @@ export function PathPlayer({
         <div className="path-player__drawing player-field">
           <PathMazeDrawing
             model={model}
-            artwork={doc.artwork}
+            artwork={playable.artwork}
             blockArtwork={blockArtwork}
             busy={animating}
             current={current}

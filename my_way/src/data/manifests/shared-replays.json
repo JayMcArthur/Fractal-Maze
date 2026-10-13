@@ -7,7 +7,7 @@
     "complete": true,
     "format": "squareRecursive",
     "proofAssisted": false,
-    "asset": "solutions/bb02b09719a5cdbfece220e1d0732c27ef3259fc8b467faf6a6ac6ad0f5c62b2.json"
+    "asset": "solutions/abdcbb86488781816c9281f586346aa57056fae4c0f3c6234aea8057b4641d47.json"
   },
   {
     "id": "bundled-sierpinski",
@@ -17,7 +17,7 @@
     "complete": true,
     "format": "squareRecursive",
     "proofAssisted": false,
-    "asset": "solutions/9792bb41bc9b312186110a98083622df5de968cb1f66b966efb63237f58ac9bd.json"
+    "asset": "solutions/09154755c8a0250cd73f7aa48127327bdb56bd8464adceb8b8c45984088673d0.json"
   },
   {
     "id": "bundled-microchip",
@@ -27,7 +27,7 @@
     "complete": true,
     "format": "squareRecursive",
     "proofAssisted": false,
-    "asset": "solutions/7dddb8b7a38104e3043f581742ee2f2c0a2bf84fc515704a578af5b722f104c0.json"
+    "asset": "solutions/3630a3414240d7bfa60fbd0042fb36ad42232731254d49644e50fabd25d63754.json"
   },
   {
     "id": "bundled-square",
@@ -37,7 +37,7 @@
     "complete": true,
     "format": "squareRecursive",
     "proofAssisted": false,
-    "asset": "solutions/b744f2b7907997208445cd08b3551af6482817cddec4682426f4be018e8c6f27.json"
+    "asset": "solutions/27f4c35721cef203f35934339a0793d6e9dc62bbafadf23ad62ef33de28d0be5.json"
   },
   {
     "id": "bundled-a-long-path-v4",
@@ -47,7 +47,7 @@
     "complete": true,
     "format": "squareRecursive",
     "proofAssisted": false,
-    "asset": "solutions/18ed45a5bf5902c738a33cd40dc3d581243cbbbe95cbd31ea90c14627f6248f6.json"
+    "asset": "solutions/3de69ed1fecb82cdd7259a341ac3555b6dce4876836b9db6fc002492a8983cf1.json"
   },
   {
     "id": "bundled-a-long-path-v8",
@@ -57,7 +57,7 @@
     "complete": true,
     "format": "squareRecursive",
     "proofAssisted": false,
-    "asset": "solutions/b8af6596e2acf12eb74bb9f2aa105a23ba9d48b422322f71f3b1f00b0c987467.json"
+    "asset": "solutions/606a109eff4e2b4670b8224ec810bd5744731c9f5f13534184a50e585e82ad58.json"
   },
   {
     "id": "bundled-matthias-weber",
@@ -67,7 +67,7 @@
     "complete": true,
     "format": "squareRecursive",
     "proofAssisted": false,
-    "asset": "solutions/5084d7484798beafb5b9695adb38a989465ef26d9eb3d4bb6b655ea99b02ede3.json"
+    "asset": "solutions/02c9decbf19f00e2e15ff5b7d4723a3f7dba053950ee10d7c23f27b3083164f1.json"
   },
   {
     "id": "bundled-skeptic-play-carpet",
@@ -77,7 +77,7 @@
     "complete": true,
     "format": "squareRecursive",
     "proofAssisted": false,
-    "asset": "solutions/1d590c6aaaf6b7491170072b52a9bf496986020e3420d11bfee5255f2ff0557f.json"
+    "asset": "solutions/defc024de69df5092386ea639e3cb7b113bcb1936ef55c90cb58f4f3b62fd11b.json"
   },
   {
     "id": "bundled-1695993784968:0.6965701909885131",
@@ -87,7 +87,7 @@
     "complete": true,
     "format": "geometricRecursive",
     "proofAssisted": false,
-    "asset": "solutions/45888a07db3a4113178088800050a69340f1cc17f7b43979da7960f6d6a13cc7.json"
+    "asset": "solutions/b679103f386ede0597656fec36f1338fe9fd7f10fcbc845b193785a1cc7f57f8.json"
   },
   {
     "id": "bundled-backlot",
@@ -97,7 +97,7 @@
     "complete": true,
     "format": "recursiveTour",
     "proofAssisted": false,
-    "asset": "solutions/58adeb10041948f3bc2a2327775853f5af55e692280253a7bdd774ecd13d3f4a.json"
+    "asset": "solutions/141e47ffb6cfb705198db444fcbfa1e2d0932eb0bd8d185e3421b9b1c6d845b1.json"
   },
   {
     "id": "bundled-ports-koteitan",
@@ -107,7 +107,7 @@
     "complete": true,
     "format": "recursivePorts",
     "proofAssisted": false,
-    "asset": "solutions/d1134857e1beeb87916397feca3cd77931e3f25ec53e8c9d99084aa64759433e.json"
+    "asset": "solutions/6e8052b9ccfb0e66661b8b9044edd059b594fd93e729253bec93e1e0fbfdd679.json"
   },
   {
     "id": "bundled-ports-snuke_no3",
@@ -117,7 +117,7 @@
     "complete": true,
     "format": "recursivePorts",
     "proofAssisted": false,
-    "asset": "solutions/15705dbe64f44efec06185a1541c408c6ad7d244769121f27b9dd6755319cb05.json"
+    "asset": "solutions/0cf660d5a3d2104a8997a1d296266d460bc23b033da3599fb8f5b0dce53cf9b4.json"
   },
   {
     "id": "bundled-ports-snuke_no4",
@@ -127,7 +127,7 @@
     "complete": true,
     "format": "recursivePorts",
     "proofAssisted": false,
-    "asset": "solutions/7bb74134329a915b19327937568f34d0ffb60574a29d1822496344b5bf752a07.json"
+    "asset": "solutions/4a816fa6b7376159413972a2b592a3f3a0ed847cf3a7dd86e5ddef042f211348.json"
   },
   {
     "id": "bundled-koteitan-block",
@@ -137,7 +137,7 @@
     "complete": true,
     "format": "blockRecursive",
     "proofAssisted": false,
-    "asset": "solutions/ed7b52f911feeb7962255fff2400b3f0a32e3db8a177e56b90b93f95df12a84f.json"
+    "asset": "solutions/ceefd6643a29c9a03518eedae68dc64da4e30d481baa02292c777447a90d1005.json"
   },
   {
     "id": "bundled-repeated-directed-example",
@@ -147,7 +147,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/ec193df1f1e6d46b02d80a354526c4e3dc0a14c48bcb3e5fc506d9be63faacbc.json"
+    "asset": "solutions/07587c8ebe66a2b27feb3a886e6a908a98ebc3eebd92e6d70c3dbb24cecacdcd.json"
   },
   {
     "id": "bundled-portal-connections",
@@ -157,7 +157,7 @@
     "complete": true,
     "format": "graphLabeled",
     "proofAssisted": false,
-    "asset": "solutions/f7255febf9167bcbbf2231c296a8a2d56c66352d8b8c82054bd6e6cbd1619b7f.json"
+    "asset": "solutions/a4618edb3c13702f31d0aca505e78dd977902e0e50a122fec4e7e85979165fa9.json"
   },
   {
     "id": "bundled-koteitan-block-3",
@@ -167,7 +167,7 @@
     "complete": true,
     "format": "fractalBlock",
     "proofAssisted": false,
-    "asset": "solutions/7c65a0f89f7a572e8cd5353a79ff0e6f03b092119bc5c497a9c2a2599a7bd873.json"
+    "asset": "solutions/3f46b5425c0c0b531da65acb3196512fd0ac908ce44686a246f33cf23e01cb11.json"
   },
   {
     "id": "bundled-koteitan-block-5",
@@ -177,7 +177,7 @@
     "complete": true,
     "format": "fractalBlock",
     "proofAssisted": false,
-    "asset": "solutions/39b35a9969fe64fe450b356fd03f77534aa53df15d45a7fa2999efffaa1f62c9.json"
+    "asset": "solutions/d93f6a8ec82b3fa3b36a3746977c6cfd9bf74fd36bfd6dc01977d0aa9892a9d2.json"
   },
   {
     "id": "bundled-repeated-cp6",
@@ -187,7 +187,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/3d8384aeebb40f621f484baa9c01d3e9bfdef2ce6c42a17332c6c1d1e52332fb.json"
+    "asset": "solutions/e15e0e8b451b41d32c328216409250b82407d49cb176a11c572e56ebefe75ea6.json"
   },
   {
     "id": "bundled-repeated-md3",
@@ -197,7 +197,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/f7a8393ca00e39d288005d5d24b3faf591323d9f33dea812d17fa003fa5318e4.json"
+    "asset": "solutions/623ac541b737bf928a887b4702fdd6ecd0039171be2a582955f413891cb2034c.json"
   },
   {
     "id": "bundled-repeated-md4",
@@ -207,7 +207,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/6a0bbc86fe472c1752f9e095ad1f9b09cf026e82d8a091ac159876c731ac4e15.json"
+    "asset": "solutions/1983823fce5211a31c8ff136abe0ec02703c4d01107a9285f444c05d377427f8.json"
   },
   {
     "id": "bundled-repeated-md5",
@@ -217,7 +217,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/b95eb191f8ce32c7dfe33356fedf55f636b51b6bf4efd4e1352be9da846af288.json"
+    "asset": "solutions/82fc818553595d479aa542cc342e5db1c2338ce4422711fe54da4a61b8ad2ea7.json"
   },
   {
     "id": "bundled-repeated-atomic-cp2-3",
@@ -227,7 +227,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/b412a6f3699322f0e01ad6781bfca51b9aeb4c128f2833f75e2c199c0d83f8c8.json"
+    "asset": "solutions/b701b8dbe0b6da0d5929d3ee8a31c324b9bcff61448ef166facebeb86bd2d19b.json"
   },
   {
     "id": "bundled-repeated-atomic-cp2-4",
@@ -237,7 +237,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/3b0389de9c57853a2fe28bf03dd3dba6a5d065dcaeb07d10d052c206b0afcef8.json"
+    "asset": "solutions/d5634fae371f742472d94e921df479d805f46bcba4066eab97a8f71569db7768.json"
   },
   {
     "id": "bundled-repeated-atomic-cp2-5",
@@ -247,7 +247,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/03d29266775900e4cd8ca29376b79fe4f330003c2034ddd2452f3b6a86e192b4.json"
+    "asset": "solutions/1ee3b155b5ad6a03a67b7be540804c9f4d58a005069ae2dfb8f0dcce65c004a3.json"
   },
   {
     "id": "bundled-repeated-atomic-cp2-6",
@@ -257,7 +257,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/073f52d4819f94903a2153295a5fc3b87e2f6bd6cf133cf8b425708cc33a3cb7.json"
+    "asset": "solutions/a5ed788093f2dbf0b8adb4af2d12239182ede747a9f670ac626a2f9be1243798.json"
   },
   {
     "id": "bundled-repeated-atomic-cp3-2",
@@ -267,7 +267,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/5cfc1d4769a32ab29c5e0250b8419289eac983e560d25c0a373c1a1a2cea7a2e.json"
+    "asset": "solutions/ceb211a9411f134bc090fc0da97b9b9ed1da6a4a56daa44c26dad524bbee6245.json"
   },
   {
     "id": "bundled-repeated-atomic-cp3-3",
@@ -277,7 +277,17 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/13e5383e1eddc360072c5b837966927a3a496ad52f4a27ddd39459a95d8e89b3.json"
+    "asset": "solutions/cee1a4a836150628dcec74da65a7406d8e3a745ce4f98561c98e309bbf613c31.json"
+  },
+  {
+    "id": "bundled-repeated-atomic-cp3-4",
+    "title": "Counter pump \u2014 cp3-4 (atomic)",
+    "mazeId": "repeated-atomic-cp3-4",
+    "moves": 40511987,
+    "complete": true,
+    "format": "repeatedDirected",
+    "proofAssisted": false,
+    "asset": "solutions/762d83a9595475d3cbbcb21eff3d9e6095bef9aa37f62dc5b033af033c0f4558.json"
   },
   {
     "id": "bundled-repeated-atomic-md3",
@@ -287,7 +297,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/a483024670200a5b65943b200453044442be638d7e820c82644fc66408aed3c8.json"
+    "asset": "solutions/dff76398fb64e794fe47331928b44a0b0a4ecd9d301e53053c3cf5a9a19aaebb.json"
   },
   {
     "id": "bundled-repeated-atomic-md4",
@@ -297,7 +307,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/49ae19d0ed496d649a2508c247b7e320fa6e7bc4dc708924b2a586a6fd471432.json"
+    "asset": "solutions/6f733468d5183a9526eeed3f08ec73e77d9720b4032727d86d460a94e933f373.json"
   },
   {
     "id": "bundled-repeated-atomic-md5",
@@ -307,7 +317,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/bc121b8eb0f0eecf00f1238f55c09f25f042d63df9670305c703de244881a81d.json"
+    "asset": "solutions/fd9222a76c6abad58716d28b551c6a94759700e47c510c11ab929a9dce026adb.json"
   },
   {
     "id": "bundled-repeated-atomic-cp-n3-godel",
@@ -317,7 +327,7 @@
     "complete": true,
     "format": "repeatedDirected",
     "proofAssisted": false,
-    "asset": "solutions/83dd857d501a93985a21671562284e9a06734a2b59d2b87d108d6e299be12d9d.json"
+    "asset": "solutions/eac8743feb5e48d92182307a9533e55c4a3b110e9369963d51dc4d37b11f7ba1.json"
   },
   {
     "id": "bundled-pda-guide-1",
@@ -327,7 +337,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/d1fedd1d6c6ac432774d0d26c0e0fbfb886024e032194c64f13cee49b7e5fc5c.json"
+    "asset": "solutions/cb73d2f8652abd1eb00a432c294ca30fa9bd057c13b95a0a0a9e6d6f0d52cc8e.json"
   },
   {
     "id": "bundled-pda-guide-2",
@@ -337,7 +347,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/eab99c980b9c6a6ef70e65228c614e48ee6175269f3f4f51093ab2af76919827.json"
+    "asset": "solutions/3eed692d1e1266d163aa3f9530695ae7f1439ac04e83d1d0489d3195fc7a7921.json"
   },
   {
     "id": "bundled-pda-guide-3",
@@ -347,7 +357,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/dca0a8cda2fca25cf56ee49a7ed2cc1fb021b45a6664c4e6444641933c79af13.json"
+    "asset": "solutions/5ebfa1de023e6c37e401fedacd724c4a5f4503064ab9ccc965d4dbdaf46038c1.json"
   },
   {
     "id": "bundled-pda-guide-4",
@@ -357,7 +367,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/e585c9ac1faf985b4f15c3a1e3012b9c11b4a930f8b6c823d5307d290df58fe7.json"
+    "asset": "solutions/283f400341ee22486d1193f2aa553ffcb463347caed9a5ef9942e7a5b7b5fa53.json"
   },
   {
     "id": "bundled-pda-guide-5",
@@ -367,7 +377,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/02b51e5fffa988afa842fe160b50c78f36e30d784fadb5600d0aab54ce20f67b.json"
+    "asset": "solutions/1c52add0aff9fd83bbb1b1623480a9768d4a05859850005e108b9552e1eb38fb.json"
   },
   {
     "id": "bundled-pda-guide-6",
@@ -377,7 +387,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/e808e2a827fd5452a2580f95135185f7dfe26199baf48728247eaad710f03e75.json"
+    "asset": "solutions/ff5cfc9a21119d6137ac27b7a2ef6fcd7bdff46d548dd734bc3ce82baa57c4cf.json"
   },
   {
     "id": "bundled-proof-maze-images-siggy-first-cantor-svg",
@@ -387,7 +397,7 @@
     "complete": true,
     "format": "infiniteRule",
     "proofAssisted": true,
-    "asset": "solutions/e6563326db462f9305ca5f4249c3624b41699d7883982ecafe05e0948dfba23b.json"
+    "asset": "solutions/da9877be12791db86fac03acad9e75576b59c8462b0c482e3b1e5ea2b3c908c2.json"
   },
   {
     "id": "bundled-proof-maze-images-siggy-infinite-descent-svg",
@@ -397,7 +407,7 @@
     "complete": true,
     "format": "infiniteRule",
     "proofAssisted": true,
-    "asset": "solutions/1c374a8bd2e1880cc8a261b13cf95be7aaba8d1ed3ca1284a10f6e6862458d51.json"
+    "asset": "solutions/d27f22986318d9698f1e33faff0f9a7b86d4114b1199fa305a8885266eba1954.json"
   },
   {
     "id": "bundled-proof-maze-images-siggy-simple-cantor-maze-svg",
@@ -407,7 +417,7 @@
     "complete": true,
     "format": "infiniteRule",
     "proofAssisted": true,
-    "asset": "solutions/d48741c4465247da7412f08d62573a1d57148f8f41a6753a6cab45a3762f318a.json"
+    "asset": "solutions/bc1ec70ab681d5bde492b9aeb563294edab15a95f5171f37dec777c9b3474348.json"
   },
   {
     "id": "bundled-draft-maze-images-siggy-skeptic-play-1-svg",
@@ -417,7 +427,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/286dacc73e1f93987e45849149761e775a4d75764a2c36f2b4b6e47bc12ab08a.json"
+    "asset": "solutions/5535373a09330aab66143b3c15b254824636bb60065634e62b4ac326476ef0a8.json"
   },
   {
     "id": "bundled-draft-maze-images-siggy-skeptic-play-1-steps-svg",
@@ -427,7 +437,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/4c9b4005e67fbd14b77de01a627f64b19bdd9123d618f098272e8ba97e6d319d.json"
+    "asset": "solutions/e73f3c0008e23d7f8f938c52d50f076765746f89d6d075e9995ccffad2eaff61.json"
   },
   {
     "id": "bundled-draft-maze-images-geocaching-easter-13-10-png",
@@ -437,7 +447,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/411890e3b8b71b35a530a3e01a8179d2c3fb6ef086a0e4fdf884cd7b453ded08.json"
+    "asset": "solutions/dacbe33ba0f360d144f873c29535b17781814fde8aca2b6086139623958ffadc.json"
   },
   {
     "id": "bundled-draft-maze-images-snuke-snuke-3-png",
@@ -447,7 +457,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/89bb6018f8223228133a104fefba515e7d97046e0be6621252caa77c33104511.json"
+    "asset": "solutions/7b3a9de029d0e902efd10f171e1c6dc152ac48b675db460f129d20c3b529887f.json"
   },
   {
     "id": "bundled-draft-maze-images-snuke-snuke-4-png",
@@ -457,7 +467,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/32725eec6daff7aa2b0db54b1a73f57f490ec5faff022b1b845e11b7d21ba849.json"
+    "asset": "solutions/a7b638122c260d5d826bec21a7c828c03d559c5cfb1ebfc18b824b6fe5523b18.json"
   },
   {
     "id": "bundled-draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
@@ -467,7 +477,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/91af53dd8548ab160f66e27d0a1c939bfe6fb5818c9dd5892077fe4492a04c84.json"
+    "asset": "solutions/79b7f34f6ff65bb3b506b583a0ff7ddafc52aeb06dbd73e3731bd38cebd45478.json"
   },
   {
     "id": "bundled-draft-maze-images-luegarua-webp",
@@ -477,7 +487,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/4d824ebe207fa86df5101b66e284bd114f964877c16f1a9661fe1336d0f8211f.json"
+    "asset": "solutions/eb4a0c23f451151569d17b874c5d71491f4e5b4312fda0e7773ec6ffe6aad8e8.json"
   },
   {
     "id": "bundled-draft-maze-images-siggy-skeptic-play-3-png",
@@ -487,7 +497,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/c2f8e86b602a3744e2dcbb5e23e83f6b81d3cea9f48164c67b214fa2153d19ef.json"
+    "asset": "solutions/cbdd113351950f2943878167fa9dc984024c6529329b3aba998b20409e29aab8.json"
   },
   {
     "id": "bundled-draft-maze-images-siggy-skeptic-play-2-jpg",
@@ -497,7 +507,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/f1a7ac48267437863266a5908e8bfa0238590cde26837eca72e8710b91dbdbd9.json"
+    "asset": "solutions/e88003069924e6f3a16a7420acfe3aa267b9b6ed07f15fe9e3b7b2d9334caa29.json"
   },
   {
     "id": "bundled-draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png",
@@ -507,7 +517,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/1db42e8b961c3216c7eabf883d525240acdbdbbd504b364e607faee6aa3b763e.json"
+    "asset": "solutions/24f94104768ec2f4f326c294dd108c9c6b06f830abf184d9191ea9ef2633fe59.json"
   },
   {
     "id": "bundled-draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png",
@@ -517,7 +527,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/4fa3f19bc0528249362b55e836cd7c3b6ea3bdc1c54fb168c7ff13e2838bea9b.json"
+    "asset": "solutions/972954c28505e1fbf58274c001f9cfe18184c72a46570b612a18e404bbfd383d.json"
   },
   {
     "id": "bundled-draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
@@ -527,7 +537,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/7746bb69bddaed77399cc7c2fa2d54d41eab7f30e5aa53f7324fd4f9ffcdad12.json"
+    "asset": "solutions/83732042c77f37aec6b55ee5e1f9e79e5bd84a3d88efcdc37ab529365a0e6b7e.json"
   },
   {
     "id": "bundled-draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
@@ -537,7 +547,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/214919822f60cd5bd0fadef312722b0ad719819f3fe342bb58739bd957cc895a.json"
+    "asset": "solutions/be74453a31dfd2a6f818ded0b3701fcd356418f542e57bc091c0225ed6ea3315.json"
   },
   {
     "id": "bundled-draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
@@ -547,7 +557,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/350c98119b71a85d07cc25234cc9eec199380a0e79632333a8bfb94e5d96a958.json"
+    "asset": "solutions/444882a767cc26a36516f0fc7f8ed73018c80a49f11c46e4088e505fd0c922cd.json"
   },
   {
     "id": "bundled-draft-maze-images-snuke-snuke-2-jpg",
@@ -557,7 +567,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/5c1b9302b2f96ca9276f3b70603b97e147745717e01465ba46d970916454955a.json"
+    "asset": "solutions/c6bdb4f373f6280c175a1ee61715c675c591a58b19e50b3c419c778f0bba2107.json"
   },
   {
     "id": "bundled-draft-maze-images-snuke-snuke-1-jpg",
@@ -567,7 +577,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/66c03f2a86cee4e8dfeb05cea3c6ec64a15e53cde8447e28a952ce52f2f7f456.json"
+    "asset": "solutions/3d6fd3e36ddc42ee1e11ca7f2a42ee69b363453b9e0c6f1a666228daf35d33e9.json"
   },
   {
     "id": "bundled-draft-maze-images-daedalus-1-gif",
@@ -577,7 +587,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/ae398a25662b5f6a59995e8353425985426c17e5126bf9e9ef1efb067c701fc2.json"
+    "asset": "solutions/71a91562ce861e6530a1159c185945fd29105d6cd4e98bf1091981e06b33be47.json"
   },
   {
     "id": "bundled-draft-maze-images-ed-pegg-jr-daedalus-3-gif",
@@ -587,7 +597,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/aa5fc9f4f148a075096973b55bac2b771e552eca1cbfe722f208781b6fd9b166.json"
+    "asset": "solutions/09bec9f521fec304db064d9e33a51bbf6553a36e853d737ad1a74dbe597f8684.json"
   },
   {
     "id": "bundled-draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
@@ -597,7 +607,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/d3f3a388ac54bc4af6c88c8adc6f08a7d500d1685cde0c0441d92cb41bc6876e.json"
+    "asset": "solutions/7bd7b93122f7e12a816dd5485cc3b68a60075118aaf42b189327f863cf5f22be.json"
   },
   {
     "id": "bundled-draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
@@ -607,7 +617,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/e7763bb7e5a42deb2f9171b15126e4f4634b7ada7a315210285bb90b5a529e70.json"
+    "asset": "solutions/a302d666cf7a9908a0814abc807072523a9c02a6dfa4defb7499f8f789d6e6fe.json"
   },
   {
     "id": "bundled-draft-maze-images-the-inner-frame-pdf",
@@ -617,7 +627,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/6548275e91a0cfb6cf9391ccd23c39596df82eeb8d9e678fe35a93ba08fc7e9a.json"
+    "asset": "solutions/c0067c2210740c1c8412be0790dea0c19a77ab5baf0c355900b8a65464a40a25.json"
   },
   {
     "id": "bundled-draft-maze-images-jay-mcarthur-a-long-path-v6-png",
@@ -627,7 +637,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/4db97bc1d83d3292147b350e1ade29354cc6aa36cf8ac41fc20c7016ce52ad81.json"
+    "asset": "solutions/e04f3c4cb568cb5a31f00faffbf8058f70e8c04a19fecc2a5d7ecd9ab6ea3a29.json"
   },
   {
     "id": "bundled-simple-infinite-hop",
@@ -637,7 +647,7 @@
     "complete": true,
     "format": "infiniteRule",
     "proofAssisted": true,
-    "asset": "solutions/557a1c0241003e7b117518cfe05a3687ce19728dc41aa69b00a7f09d5c150b3d.json"
+    "asset": "solutions/6c8f4159ce29c992e4338d194fa83b0d3b9bdadc087b7bf56a12b25424eae66f.json"
   },
   {
     "id": "bundled-simple-nested-infinite-hop",
@@ -647,7 +657,7 @@
     "complete": true,
     "format": "infiniteRule",
     "proofAssisted": true,
-    "asset": "solutions/df9aa2c362ddad80d6ef7bfefb252bf3b0100e409dcd84eaed541b9d8278c14a.json"
+    "asset": "solutions/1b8dfb4d5c5af7a9db0674bdfe90ad5e0a7fab1762e254800e4a317f729c103c.json"
   },
   {
     "id": "bundled-wire-1",
@@ -657,7 +667,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/9157fb7272ce522723fb3240c1779c793fd89d051fd396d6dd9ed28205039463.json"
+    "asset": "solutions/0b59ac663f940a7cbaafd24d7382727d55c9d8038f850807ebc814fa04a48a31.json"
   },
   {
     "id": "bundled-wire-2",
@@ -667,7 +677,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/da9d135871008b23e7e2e712840010829939105bacac849e3f880cb183dbfbb1.json"
+    "asset": "solutions/2d1750d58643f7b02267744ee01fa52cf24f883560821b6d45fc368acfde2a6c.json"
   },
   {
     "id": "bundled-wire-3",
@@ -677,7 +687,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/85ac1d3c69ca7078f1103cb15a46a7ba8c7984d1f1fe15a61bc2045df0ec6f23.json"
+    "asset": "solutions/b399362ab1240f1bd7c6e22bc9930a4af8c47a568cd7d419473b38a1c20ec3b4.json"
   },
   {
     "id": "bundled-wire-4",
@@ -687,7 +697,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/3153866b827e757d8de3ae44e85d3575ef96d33788d64813a043a6c5bd19a098.json"
+    "asset": "solutions/142742579f38f721ea3a0950567d99f77901b94814d2ce18f5a91e927222b911.json"
   },
   {
     "id": "bundled-wire-5",
@@ -697,7 +707,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/1478f278d0c65ee4c2da4677bb253ad85a7946054cadbb92078247c3b194d340.json"
+    "asset": "solutions/039a23bfc894f37d0796f76dbab4cbedcbad4a625c5a8839b73008ee08a3680b.json"
   },
   {
     "id": "bundled-wire-6",
@@ -707,7 +717,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/257e79b0cf4d6a2d4a164f9cc49d6a3b11611f070f17801108607815af20ed78.json"
+    "asset": "solutions/f53f1274e27bd70f06650cfe942a9ba6575c135970a3146c1d3fd113de79f92c.json"
   },
   {
     "id": "bundled-wire-7",
@@ -717,7 +727,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/efdcdb63837dd3f9fc55f0c1357cb2fa421efa51003553248de1a1bb1789b693.json"
+    "asset": "solutions/480e830af853a7d72bcc1ced764fcb91b9a809980973be149121b0ba3a97265f.json"
   },
   {
     "id": "bundled-wire-8",
@@ -727,7 +737,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/5df3cec4a1d273f3b402f6af1c300a3522f4a84eb8939528897c889295b92440.json"
+    "asset": "solutions/261203172a39f2e5b5de6df55c6ea2b409dc0590a8d2923b1aa2c3ea4c3d03e0.json"
   },
   {
     "id": "bundled-wire-9",
@@ -737,7 +747,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/e2f5bfcf2774c9551ceaa7b29163d7f11cb36bfa586065bf73b2aada54c89964.json"
+    "asset": "solutions/4d73f6bd0e6869d90936e137beb6166bef39d3d6abbdc6b40c903d1a41f3350e.json"
   },
   {
     "id": "bundled-wire-10",
@@ -747,7 +757,7 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/864da4e046816c48893648184321ee8119cd54a30e17ae0e0265c9f24ef6a441.json"
+    "asset": "solutions/eea9afc839d6262d6ad368b582c6096699039c0b6d1910de05672e6966f33399.json"
   },
   {
     "id": "bundled-wire-11",
@@ -757,6 +767,6 @@
     "complete": true,
     "format": "pathPushdown",
     "proofAssisted": false,
-    "asset": "solutions/09d4ed4bb290d8bb1cf86160fb420ab98ad22be6ca2baaebfa681e37257f40c7.json"
+    "asset": "solutions/3ccd252cc3e746c0067731dd354f56d2abf4157bdb313f0e45445573079b2bd1.json"
   }
 ]

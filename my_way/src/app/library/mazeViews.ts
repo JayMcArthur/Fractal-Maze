@@ -90,8 +90,8 @@ export const mazeFamilies: MazeFamily[] = [
     views: [
       source('the-inner-frame-pdf', 'Source room diagrams'),
       grid('matthias-weber'),
-      guide(4),
     ],
+    recordings: [{ ...guide(4), label: 'Earlier guide model' }],
   },
   {
     title: 'A Long Path',
@@ -100,8 +100,8 @@ export const mazeFamilies: MazeFamily[] = [
       { ...grid('a-long-path-v4'), label: 'v4 block layout' },
       source('jay-mcarthur-a-long-path-v6-png', 'v6 hexagon (WIP)'),
       { ...grid('a-long-path-v8'), label: 'v8 block layout' },
-      { ...guide(6), label: 'Six-copy PDA' },
-      { ...guide(3), label: 'Eight-copy PDA' },
+      { ...guide(6), label: 'Six-copy block layout' },
+      { ...guide(3), label: 'Eight-copy block layout' },
     ],
   },
   {
@@ -150,6 +150,7 @@ const retiredViews = new Set([
   'ports-snuke_no4',
   'wolf-wire-original',
   'pda-guide-2',
+  'pda-guide-4',
   'draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg',
   'draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png',
   'draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png',

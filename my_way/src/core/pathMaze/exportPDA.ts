@@ -1,8 +1,9 @@
 import type { PathMazeDefinition } from '../model/pathMaze'
 
 /** Stack is written bottom-to-top. ⊥ is a real bottom marker, retained by every transition. */
-export function exportPathPDA(model: PathMazeDefinition) {
-  const bottom = '⊥'
+export function exportPathPDA(model: PathMazeDefinition, title?: string) {
+  let bottom = '⊥'
+  while (model.copies.includes(bottom)) bottom += '⊥'
   const transitions = model.connections.flatMap((edge) => {
     if (edge.operation === 'exit')
       return [
@@ -13,6 +14,7 @@ export function exportPathPDA(model: PathMazeDefinition) {
           push: [] as string[],
           to: edge.to,
           source: edge.id,
+          evidence: edge.evidence,
         },
       ]
     return [bottom, ...model.copies].map((top) => ({
@@ -22,10 +24,14 @@ export function exportPathPDA(model: PathMazeDefinition) {
       push: edge.operation === 'enter' ? [top, edge.copy] : [top],
       to: edge.to,
       source: edge.id,
+      evidence: edge.evidence,
     }))
   })
   return {
     format: 'path-pda/1',
+    ...(title ? { title } : {}),
+    representationType: model.type,
+    allowedRule: model.allowedRule,
     review: model.review,
     semantics:
       'Nondeterministic finite path traversal; empty input is epsilon; push arrays are bottom-to-top.',
@@ -41,6 +47,7 @@ export function exportPathPDA(model: PathMazeDefinition) {
       'Any declared finish path at its exact copy address; surface acceptance requires only the bottom marker.',
     transitions,
     notes: model.notes,
+    providedInput: model.providedInput,
     ...(model.type === 'infiniteRule'
       ? {
           extraMovementRule: model.allowedRule,

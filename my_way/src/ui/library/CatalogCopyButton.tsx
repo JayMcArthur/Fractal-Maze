@@ -11,11 +11,9 @@ export function CatalogCopyButton({ id }: { id: string }) {
     setBusy(true)
     setError('')
     try {
-      const [{ loadCatalogMaze }, { hydrateArtwork }] = await Promise.all([
-        import('../../app/library/catalog'),
-        import('../../app/library/pathCatalog'),
-      ])
-      const doc = await hydrateArtwork(loadCatalogMaze(id)!)
+      const { loadCatalogDocument } = await import('../../app/library/loadCatalogDocument')
+      const doc = await loadCatalogDocument(id)
+      if (!doc) throw new Error('The catalog maze is unavailable.')
       const now = new Date().toISOString()
       doc.metadata = {
         ...doc.metadata,

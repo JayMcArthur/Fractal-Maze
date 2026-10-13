@@ -272,14 +272,6 @@
     ]
   },
   {
-    "id": "repeated-atomic-cp3-4",
-    "title": "Counter pump \u2014 cp3-4 (atomic)",
-    "type": "repeatedDirected",
-    "status": "bounded",
-    "detail": "Repeated BFS: coordinate 65536, 1500000 states.",
-    "visited": 1500000
-  },
-  {
     "id": "repeated-atomic-md3",
     "title": "Minsky doubling \u2014 3 stages (atomic)",
     "type": "repeatedDirected",
@@ -673,6 +665,15 @@
     "status": "solution",
     "replays": [
       "bundled-repeated-atomic-cp-n3-godel"
+    ]
+  },
+  {
+    "id": "repeated-atomic-cp3-4",
+    "title": "Counter pump \u2014 cp3-4 (atomic)",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-atomic-cp3-4"
     ]
   }
 ]

@@ -2,44 +2,6 @@
   "scope": "Every recovered physical move and compact state checked against production. Complete snapshot imports use symbolic boundary validation, with exact canonical-state intersection checks.",
   "checks": [
     {
-      "mazeId": "repeated-atomic-cp3-3",
-      "moves": 1230549,
-      "finish": {
-        "x": 0,
-        "y": 0,
-        "terminal": "W1"
-      },
-      "runs": 277,
-      "storedMoves": 2455,
-      "replayBytes": 63195,
-      "importMs": 49.200000047683716,
-      "passed": true,
-      "evidence": {
-        "id": "cp3-3",
-        "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump-3/cp3-3-2d.hs",
-        "sourceHash": "83f6d724857d21c700e3d32ac35fe0ef910f4a27ee5183b6feca6566b9dbe454",
-        "mazeHash": "3030fe7ac0aa34aac3601772d900907bca5be14f3c2e28c23da31314dc89d772",
-        "sourceSteps": 615746,
-        "legalMazeMoves": 1230549,
-        "maxCoordinate": 27000,
-        "start": [
-          0,
-          0,
-          "W0"
-        ],
-        "limit": 700000,
-        "result": "halt",
-        "stoppedState": [
-          0,
-          0,
-          1
-        ],
-        "terminal": "W1",
-        "trimmedMoves": 1230549,
-        "inputHash": "020d9c58350fa7ee03a05e8686230fe80618a9dce22f5118dfc0ce7563989e8b"
-      }
-    },
-    {
       "mazeId": "repeated-atomic-cp-n3-godel",
       "moves": 1230573,
       "finish": {
@@ -74,7 +36,87 @@
         ],
         "terminal": "W1",
         "trimmedMoves": 1230573,
-        "inputHash": "31545d96b27065c12948f69d416ca1843a93d624e837e7e33f8eef5b2820620e"
+        "inputHash": "ec59e30d3dfa371f1fa43dfe2931358615e5ba8db3d19eaa76f657b66acf3513",
+        "inputNewlines": "LF"
+      }
+    },
+    {
+      "mazeId": "repeated-atomic-cp3-4",
+      "moves": 40511987,
+      "finish": {
+        "x": 0,
+        "y": 0,
+        "terminal": "W1"
+      },
+      "runs": 587,
+      "storedMoves": 5185,
+      "importMs": 212.8999999910593,
+      "allMovesMs": 141288.29999999702,
+      "passed": true,
+      "evidence": {
+        "id": "cp3-4",
+        "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump-3/cp3-4-2d.hs",
+        "sourceHash": "2f3c626851748b47c23d520b04069a3799566ca7b6bfab20704d192ea7b6b0bb",
+        "mazeHash": "9aef33ec406793eaee54e27a7925108602e5d1ff3ac20c3de8c099e834b47660",
+        "sourceSteps": 20256567,
+        "legalMazeMoves": 40511987,
+        "maxCoordinate": 810000,
+        "start": [
+          0,
+          0,
+          "W0"
+        ],
+        "limit": 30000000,
+        "result": "halt",
+        "stoppedState": [
+          0,
+          0,
+          1
+        ],
+        "terminal": "W1",
+        "trimmedMoves": 40511987,
+        "inputHash": "2f3c626851748b47c23d520b04069a3799566ca7b6bfab20704d192ea7b6b0bb",
+        "inputNewlines": "LF"
+      }
+    },
+    {
+      "mazeId": "repeated-atomic-cp3-3",
+      "moves": 1230549,
+      "finish": {
+        "x": 0,
+        "y": 0,
+        "terminal": "W1"
+      },
+      "runs": 277,
+      "storedMoves": 2455,
+      "replayBytes": 63195,
+      "expandedCheckMs": 5032.0999999940395,
+      "importMs": 81.40000000596046,
+      "passed": true,
+      "evidence": {
+        "id": "cp3-3",
+        "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump-3/cp3-3-2d.hs",
+        "sourceHash": "83f6d724857d21c700e3d32ac35fe0ef910f4a27ee5183b6feca6566b9dbe454",
+        "mazeHash": "3030fe7ac0aa34aac3601772d900907bca5be14f3c2e28c23da31314dc89d772",
+        "sourceSteps": 615746,
+        "legalMazeMoves": 1230549,
+        "maxCoordinate": 27000,
+        "start": [
+          0,
+          0,
+          "W0"
+        ],
+        "limit": 700000,
+        "result": "halt",
+        "stoppedState": [
+          0,
+          0,
+          1
+        ],
+        "terminal": "W1",
+        "trimmedMoves": 1230549,
+        "inputHash": "83f6d724857d21c700e3d32ac35fe0ef910f4a27ee5183b6feca6566b9dbe454",
+        "inputNewlines": "LF"
       }
     }
   ]

@@ -3,7 +3,7 @@ import { PlayHeader } from './PlayHeader'
 import { MazePlayArea } from './MazePlayArea'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { findCatalogEntry } from '../../app/library'
+import { catalogIndex } from '../../app/library/catalogIndex'
 import { adjacentMaze } from '../../app/library/mazeViews'
 import { MazeViewSelect } from '../library/MazeViewSelect'
 import { listSolves, saveSolve, saveProject } from '../../app/projects/db'
@@ -51,7 +51,7 @@ export function SquarePlayer({ doc, replay }: { doc: RecursiveMazeDocument; repl
   const [highContrast, setHighContrast] = useState(false)
   const [showTools, setShowTools] = useState(false)
 
-  const entry = findCatalogEntry(doc.metadata.id)
+  const entry = catalogIndex.find(entry => entry.id === doc.metadata.id)
   const moveCount = history.length
   const elapsedMs = Math.max(0, (completedAtMs ?? clock) - sessionStartMs)
   const markSaved = useRunGuard(!replay && moveCount > 0 && !isWon, history)

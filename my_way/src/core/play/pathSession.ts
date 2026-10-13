@@ -1,5 +1,5 @@
 import type { MazeArtwork, PathMazeDefinition, PathState } from '../model/pathMaze'
-import { distance, type ArtworkPoint } from '../pathMaze/artworkRoutes'
+import { artworkRoute, distance, type ArtworkPoint } from '../pathMaze/artworkRoutes'
 import { reachesGoal, sameState, type PathRoute } from '../pathMaze/traversal'
 import { pathMoveSequence } from './pathMovement'
 import { pathArrivalPoint, pathMotionRoutes } from './pathGeometry'
@@ -152,7 +152,7 @@ export function sessionPathRoute(session: PathSession): PathRoute & { proofSteps
 
 /** Group a solver witness into the same complete crossings used by live play. */
 export function pathRouteSession(model: PathMazeDefinition, artwork: MazeArtwork,
-  route: PathRoute & { proofSteps?: ProofStep[] }): PathSession {
+  route: PathRoute & { proofSteps?: ProofStep[] }, complete = false): PathSession {
   const session = initialPathSession(model, artwork)
   if (!sameState(session.positions[0].state, route.states[0]))
     throw new Error('Recorded route must start at the maze entry.')
@@ -178,5 +178,19 @@ export function pathRouteSession(model: PathMazeDefinition, artwork: MazeArtwork
     session.moves.push(crossed.move)
     index += crossed.move.route.edges.length
   }
+  if (complete) walkToFinish(session, model, artwork)
   return session
+}
+
+function walkToFinish(session: PathSession, model: PathMazeDefinition, artwork: MazeArtwork) {
+  const last = session.positions.at(-1)!
+  if (pathSessionFinished(model, artwork, last)) return
+  if (!reachesGoal(model, last.state) || !last.point)
+    throw new Error('Solution must reach the maze finish state.')
+  const finish = artwork.finishes?.find(finish => sameState(finish.state, last.state))?.point ?? artwork.goal
+  const points = finish && artworkRoute(artwork, last.state.path, last.point, finish)
+  if (!points || points.length < 2)
+    throw new Error('Solution cannot walk to the drawn finish.')
+  session.moves.push({ kind: 'walk', points })
+  session.positions.push({ state: last.state, point: finish })
 }

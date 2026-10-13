@@ -39,11 +39,12 @@ export function PathMazeDrawing({
   motionPaused?: boolean
   onArtworkChange?: (artwork: MazeArtwork) => void
 }) {
+  const physical = artwork && current &&
+    (artwork.gates?.length || artwork.blockSize) &&
+    artwork.traces.some(trace => trace.path === current.path)
   return (
     <>
-      {artwork?.gates?.length &&
-      current &&
-      artwork.traces.some((trace) => trace.path === current.path) ? (
+      {physical ? (
         <SourceRouteCanvas
           artwork={artwork}
           blockArtwork={blockArtwork}
@@ -77,8 +78,7 @@ export function PathMazeDrawing({
           ))}
         </div>
       )}
-      {(!artwork?.gates?.length || !current ||
-        !artwork.traces.some(trace => trace.path === current.path)) && controls}
+      {!physical && controls}
       {current && (
         <p className="path-state-caption">
           Address: {stateLabel(current, model)}.{' '}

@@ -1,5 +1,6 @@
 import { TraceShape } from '../../core/render/svg/TraceShape'
 import { CorridorArtwork } from '../../core/render/svg/CorridorArtwork'
+import { BlockArtwork } from '../../core/render/svg/BlockArtwork'
 import type { MazeArtwork } from '../../core/model/pathMaze'
 
 import { assetUrl } from '../../core/io/assetUrl'
@@ -22,6 +23,8 @@ export function ArtworkView({
     >
       {artwork.asset ? (
         <image href={assetUrl(artwork.asset)} width={display.width} height={display.height} />
+      ) : artwork.blockSize ? (
+        <BlockArtwork artwork={artwork} bounds={display.bounds} />
       ) : (
         <CorridorArtwork artwork={artwork} bounds={display.bounds} />
       )}

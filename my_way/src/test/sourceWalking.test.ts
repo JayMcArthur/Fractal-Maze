@@ -1,6 +1,9 @@
 import { expect, it } from 'vitest'
 import type { MazeArtwork } from '../core/model/pathMaze'
-import { walkSource } from '../core/play/sourceWalking'
+import { sourceGateDirection, walkSource } from '../core/play/sourceWalking'
+import { loadCatalogMaze } from '../app/library/catalog'
+import { createBlockArtwork } from '../core/play/blockArtwork'
+import type { PathMazeDefinition } from '../core/model/pathMaze'
 
 const artwork = (traces: MazeArtwork['traces'], gates?: MazeArtwork['gates']): MazeArtwork => ({
   asset: 'test.svg',
@@ -113,4 +116,13 @@ it('passes a bend that is only the arrival point of another path', () => {
     [{ edge: 'other-path', from: [80, 80], to: [10, 0] }]
   )
   expect(walkSource(art, '1', [0, 0], 4)?.at(-1)).toEqual([10, 20])
+})
+
+it('continues through Inner Frame room doors using the drawn approach in both displays', () => {
+  const doc = loadCatalogMaze('draft-maze-images-the-inner-frame-pdf')!
+  const model = doc.definition as PathMazeDefinition
+  const source = doc.artwork!, blocks = createBlockArtwork(source, model)
+  const entries = model.connections.filter(edge => edge.operation === 'enter')
+  expect(entries.map(edge => sourceGateDirection(source, edge, model))).toEqual([4, 1, 1, 4, 1, 1, 4, 4])
+  expect(entries.map(edge => sourceGateDirection(blocks, edge, model))).toEqual([4, 2, 1, 2, 1, 2, 4, 2])
 })

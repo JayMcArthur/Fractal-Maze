@@ -5,7 +5,7 @@ import { portPlayDocument } from '../../app/library/portPlayDocument'
 import { geometricPlayDocument } from '../../app/library/geometricPlayDocument'
 import { wirePlayDocument } from '../../app/library/wirePlayDocument'
 import { loadProject, saveProject } from '../../app/projects/db'
-import { emptyPathModel, pathDocument } from '../../app/library/pathCatalog'
+import { emptyPathModel, pathDocument } from '../../app/library/pathDocument'
 import { referenceDraftId } from '../../app/library/catalogIndex'
 import references from '../../data/manifests/references.json'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
@@ -265,7 +265,7 @@ function Workbench({
         disabled={issues.some((issue) => issue.severity === 'error')}
         onClick={() =>
           downloadFile(
-            JSON.stringify(exportPathPDA(model), null, 2),
+            JSON.stringify(exportPathPDA(model, doc.metadata.title), null, 2),
             doc.metadata.title + '.pda.json',
             'application/json'
           )

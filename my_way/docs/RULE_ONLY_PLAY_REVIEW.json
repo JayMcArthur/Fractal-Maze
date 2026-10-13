@@ -1,5 +1,5 @@
 {
-  "scope": "Known path models with endpoints but no complete physical trace/gate binding; not an original image interpretation.",
+  "scope": "Original rule-only documents and their derived physical block bindings. Block play does not establish original-image fidelity.",
   "models": [
     {
       "id": "pda-guide-2",
@@ -14,7 +14,10 @@
       "helpers": [
         "C"
       ],
-      "walks": 0
+      "walks": 0,
+      "blockPlay": true,
+      "blockTraceBindings": 75,
+      "blockGateBindings": 56
     },
     {
       "id": "pda-guide-3",
@@ -27,7 +30,10 @@
       "artwork": null,
       "rule": "finite",
       "helpers": [],
-      "walks": 0
+      "walks": 0,
+      "blockPlay": true,
+      "blockTraceBindings": 143,
+      "blockGateBindings": 32
     },
     {
       "id": "pda-guide-4",
@@ -42,7 +48,10 @@
       "helpers": [
         "5"
       ],
-      "walks": 0
+      "walks": 0,
+      "blockPlay": true,
+      "blockTraceBindings": 21,
+      "blockGateBindings": 16
     },
     {
       "id": "pda-guide-6",
@@ -55,7 +64,10 @@
       "artwork": "references/Maze_Images/Jay_McArthur_-_A_Long_Path_v6.png",
       "rule": "finite",
       "helpers": [],
-      "walks": 0
+      "walks": 0,
+      "blockPlay": true,
+      "blockTraceBindings": 138,
+      "blockGateBindings": 24
     },
     {
       "id": "simple-infinite-hop",
@@ -68,7 +80,10 @@
       "artwork": "references/generated/simple-infinite.svg",
       "rule": "infiniteHop",
       "helpers": [],
-      "walks": 0
+      "walks": 0,
+      "blockPlay": true,
+      "blockTraceBindings": 6,
+      "blockGateBindings": 4
     },
     {
       "id": "simple-nested-infinite-hop",
@@ -81,7 +96,11 @@
       "artwork": "references/generated/simple-nested-infinite.svg",
       "rule": "infiniteHop",
       "helpers": [],
-      "walks": 0
+      "walks": 0,
+      "blockPlay": true,
+      "blockTraceBindings": 11,
+      "blockGateBindings": 8
     }
-  ]
+  ],
+  "missingBlockPlay": []
 }

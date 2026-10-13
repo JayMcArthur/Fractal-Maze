@@ -2,7 +2,10 @@ import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocume
 import { compileSquarePDA, alignAlicePDA } from '../../core/play/squarePDA'
 import { alignSquareModel } from '../../core/play/matchPDA'
 import { viewsForMaze } from './mazeViews'
-import { pathDocs } from './pathCatalog'
+import sources from '../../data/manifests/square-source-models.json'
+import { pathMazeSchema } from '../../core/pathMaze/validation'
+
+const models = Object.fromEntries(Object.entries(sources).map(([id, model]) => [id, pathMazeSchema.parse(model)]))
 
 /** Only a verified port mapping allows a remake to reuse a source PDA. */
 export function squarePlayPDA(doc: RecursiveMazeDocument) {
@@ -10,7 +13,7 @@ export function squarePlayPDA(doc: RecursiveMazeDocument) {
   const compiled = compileSquarePDA(doc.definition)
   const views = viewsForMaze(doc.metadata.id)
   for (const view of views) {
-    const source = pathDocs.find((doc) => doc.metadata.id === view.id)?.definition
+    const source = models[view.id]
     if (!source || source.type !== 'pathPushdown') continue
     const matched =
       doc.metadata.id === 'alice-in-wonderland'

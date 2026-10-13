@@ -114,7 +114,7 @@ async function normalizeStoredReplay(record: ReplayRecord): Promise<ReplayRecord
   // Recover existing saved runs once; all new runs contain an immutable maze snapshot.
   if (!record.doc.maze) {
     const project = await db.get('projects', record.mazeId)
-    const maze = project?.doc ?? (await import('../library/catalog')).loadCatalogMaze(record.mazeId)
+    const maze = project?.doc ?? await (await import('../library/loadCatalogDocument')).loadCatalogDocument(record.mazeId)
     if (!maze)
       throw new Error(
         'The maze for this older replay is unavailable. Import its maze and save it to your library.'

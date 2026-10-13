@@ -60,3 +60,13 @@ python scripts/check-static-hosting.py /tmp/fractal-root-build
 Set `PLAYWRIGHT_CHROMIUM_EXECUTABLE` if using an existing browser. `npm audit --omit=dev` and the complete `npm audit` both report zero known vulnerabilities in the current lockfile. Large catalog/artwork chunks still produce build warnings. This validates local static artifacts; publishing remains a separate action.
 
 The latest build passes 80 direct-link/refresh checks on Pages and root hosting, including shared Wolf Play/Solve/Build, geometric playback, proof solutions, both million-move register recordings and worker execution. Recording and cover URLs use the configured base. Publish the complete contents of `dist`, including `solutions/` and `library-covers/`. Shared recordings load only on selection; Library uses a generated metadata/cover index while saved-project previews load their actual renderer. [Current hosting results](STATIC_HOSTING_CHECKS.json), [Library loading checks](LIBRARY_LOADING_CHECKS.json), [Wolf cutover](WIRE_PDA_CHECKS.json).
+
+## October 12 loading and recovery checks
+
+Play now fetches one selected, validated maze document from `mazes/`, instead of importing every catalog model and drawing. The authored canonical catalog still supplies the asset generator and contract checks. All 74 generated documents match their canonical rules, hydrated artwork and metadata; concurrent loads share the request while returning independent editable copies, and failed loads remain retryable. Runtime adapters use small model/artwork bindings without pulling in the authoring catalog.
+
+Cold production Play loads 824 KB of decoded JavaScript, down from 3.88 MB (79% less), plus its selected JSON: about 4 KB for Alice and 17 KB for Tsat. Home's canvas hash is unchanged. These are Resource Timing body sizes on a local preview, not simulated user-network or gzip-transfer benchmarks. [Current measurement](STARTUP_LOAD_CHECKS.json), [before partitioning](STARTUP_LOAD_BEFORE_PARTITION.json).
+
+The complete production browser suite passes 129 workflows. Static Pages/root checks pass 100 direct-link/refresh cases, including all three compact register solutions and worker execution. All 77 shared snapshots import successfully. Current dependency audit has zero known vulnerabilities. Authored production TypeScript quality measurements are in [the current report](CODE_QUALITY_CHECKS.json); unavailable metrics remain explicitly unmeasured.
+
+Publish the complete `dist` directory, including `mazes/`, `solutions/`, `library-covers/` and `references/`. The recovered historical Python/Svelte source is outside the active app's build and has no runtime dependency installation. [Historical recovery scope](HISTORICAL_WORK_REVIEW.md).

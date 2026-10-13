@@ -8,9 +8,11 @@ import { orelMazeImportAdapter } from './adapters/orelMazeAdapter'
 import { amurielagiImportAdapter } from './adapters/amurielagiAdapter'
 import { koteitanImportAdapter } from './adapters/koteitanAdapter'
 import { repeatedImportAdapter } from './adapters/repeatedAdapter'
+import { pathPDAImportAdapter } from './adapters/pathPDAAdapter'
 
 export const ALL_IMPORT_ADAPTERS: ImportAdapter[] = [
   fmazeImportAdapter,       // check canonical first — most specific
+  pathPDAImportAdapter,
   amurielagiImportAdapter,  // FRACTAL-MAZE.v2 JSON
   koteitanImportAdapter,    // fractal block JSON
   repeatedImportAdapter,

@@ -1,4 +1,4 @@
-import type { PathMazeDefinition, MazeArtwork, ArtworkTrace, PathConnection } from '../model/pathMaze'
+import type { PathMazeDefinition, PathConnection } from '../model/pathMaze'
 import type { RecursivePortsDefinition, PortState } from '../model/recursivePorts'
 
 const mutableRoot = (def: RecursivePortsDefinition) =>
@@ -64,65 +64,5 @@ export function compilePortPDA(def: RecursivePortsDefinition): PathMazeDefinitio
     claims: [],
     review: 'reviewed',
     notes: [],
-  }
-}
-
-/** A corridor layout for rule-only imports, without inventing connections at crossings. */
-export function portArtwork(model: PathMazeDefinition): MazeArtwork {
-  const copies = model.copies.filter(copy => !model.surfaceSymbols?.includes(copy))
-  const paths = model.paths.filter(path => !path.helper)
-  const width = 600,
-    height = 265 + Math.ceil(copies.length / 5) * 95
-  const columns = Math.min(5, copies.length)
-  const frames = copies.map((id, i) => ({
-    id,
-    x: 20 + (i % columns) * (560 / columns),
-    y: 240 + Math.floor(i / columns) * 95,
-    width: 520 / columns,
-    height: 75,
-  }))
-  const point = (path: string): [number, number] => {
-    const helper = model.paths.find(item => item.id === path)?.helper
-    const row = helper ? model.connections.find(edge => edge.to === path)!.from : path
-    return [helper ? 580 : 20,
-      30 + paths.findIndex(item => item.id === row) * 160 / Math.max(1, paths.length - 1)]
-  }
-  const traces: ArtworkTrace[] = paths.map((path) => ({
-    id: `line-${path.id}`,
-    path: path.id,
-    color: path.color,
-    points: [point(path.id), [580, point(path.id)[1]]],
-  }))
-  const gates = model.connections.map((edge) => {
-    const helper = model.paths.find(path => path.id === edge.from && path.helper)
-    const fromPath = helper ? model.connections.find(first => first.to === helper.id)!.from : edge.from
-    const frame = frames.find((frame) => frame.id === edge.copy)
-    const from: [number, number] =
-      edge.operation === 'enter' && frame && !helper
-        ? [frame.x + frame.width / 2, frame.y]
-        : [580, point(fromPath)[1]]
-    if (edge.operation === 'enter' && frame && !helper)
-      traces.push({
-        id: edge.id,
-        path: edge.from,
-        color: '#eab350',
-        points: [[from[0], point(edge.from)[1]], from],
-      })
-    return { edge: edge.id, from, to: point(edge.to) }
-  })
-  for (const helper of model.paths.filter(path => path.helper)) {
-    const location = point(helper.id)
-    traces.push({ id: `point-${helper.id}`, path: helper.id, color: '#eab350', points: [location, location] })
-  }
-  return {
-    asset: '',
-    width,
-    height,
-    bounds: [0, 0, width, height],
-    frames,
-    traces,
-    gates,
-    start: model.start ? point(model.start.path) : undefined,
-    goal: model.goal ? [580, point(model.goal.path)[1]] : undefined,
   }
 }

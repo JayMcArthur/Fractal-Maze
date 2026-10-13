@@ -1,3 +1,4 @@
+import { pathDocument, emptyPathModel } from './pathDocument'
 import fixtures from '../../data/mazes/path-fixtures.json'
 import imageRegistry from '../../data/mazes/artwork-registry.json'
 import infinite from '../../data/mazes/infinite-fixtures.json'
@@ -19,13 +20,10 @@ import innerFrameRooms from '../../data/mazes/inner-frame-rooms.json'
 import jayHexagon from '../../data/mazes/jay-hexagon.json'
 import berkly from '../../data/mazes/berkly-artwork.json'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
-import type { MazeArtwork, MazePath, PathMazeDefinition } from '../../core/model/pathMaze'
+import type { MazePath, PathMazeDefinition } from '../../core/model/pathMaze'
 import { artworkSchema, pathMazeSchema } from '../../core/pathMaze/validation'
 import { connectionsFromPairs } from '../../core/pathMaze/traversal'
-import { defaultRenderConfig } from '../../core/model/renderConfig'
-import { defaultSolverConfig } from '../../core/model/solverInterface'
 
-const date = '2026-10-09T00:00:00Z'
 export const fixtureReferences: Record<number, string> = {
   1: 'maze-images-siggy-skeptic-play-1-jpg',
   2: 'maze-images-mark-j-p-wolf-wolfram-2-wires-png',
@@ -59,47 +57,6 @@ const sourceRows = [
   ...jayHexagon,
   ...berkly,
 ]
-export function pathDocument(
-  id: string,
-  title: string,
-  definition: PathMazeDefinition,
-  artwork?: MazeArtwork
-): RecursiveMazeDocument {
-  return {
-    formatVersion: '1.0',
-    representationType: definition.type,
-    metadata: {
-      id,
-      title,
-      author: 'Source conversion',
-      tags: [
-        'paths',
-        'pda',
-        'wip',
-        ...(definition.type === 'infiniteRule' ? ['infinite', 'proof'] : []),
-      ],
-      createdAt: date,
-      updatedAt: date,
-    },
-    definition,
-    artwork,
-    annotations: [],
-    renderConfig: { ...defaultRenderConfig },
-    solverConfig: { ...defaultSolverConfig },
-  }
-}
-export const emptyPathModel = (): PathMazeDefinition => ({
-  type: 'pathPushdown',
-  paths: [],
-  copies: [],
-  connections: [],
-  start: null,
-  goal: null,
-  allowedRule: 'finite',
-  claims: [],
-  review: 'wip',
-  notes: [],
-})
 const fixtureDocs = fixtures.map((fixture) => {
   const bound = raster.find((row) => row.fixture === fixture.fixture)
   if (bound)

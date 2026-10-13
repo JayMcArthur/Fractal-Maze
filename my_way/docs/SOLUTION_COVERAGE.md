@@ -1,25 +1,26 @@
-# Shared solution coverage — October 11, 2026
+# Shared solution coverage — October 12, 2026
 
-The app has **74 document variants in 49 author-grouped maze families**. **76 complete shared replays cover 66 variants**, including eleven named Wolf solutions converted to physical PDA snapshots. Five variants use checked infinite/Cantor proof certificates. Shared solutions are visible by default; opening one does not overwrite a project or populate its empty proof notebook.
+The app has **74 document variants in 49 author-grouped maze families**. **77 complete shared replays cover 67 variants**, including eleven named Wolf solutions converted to physical PDA snapshots. Five variants use checked infinite/Cantor proof certificates. Shared solutions are visible by default; opening one does not overwrite a project or populate its empty proof notebook.
 
-The earlier publication checkpoint reconstructed and re-imported **63/63** native snapshots. The Wolf cutover checks all eleven additional routes in both source and block geometry: **22/22** complete snapshots import. The original strings are checked against the actual native controller before conversion. All 76 IDs remain unique and complete. [Wolf model review](WOLF_WIRE_MODEL_REVIEW.json), [published round-trip results](SHARED_REPLAY_CHECKS.json), [exhaustive per-variant inventory](../src/data/manifests/solution-coverage.json).
+The earlier publication checkpoint reconstructed and re-imported **63/63** native snapshots. The Wolf cutover checks all eleven additional routes in both source and block geometry: **22/22** complete snapshots import. The original strings are checked against the actual native controller before conversion. All 77 IDs remain unique and complete. [Wolf model review](WOLF_WIRE_MODEL_REVIEW.json), [published round-trip results](SHARED_REPLAY_CHECKS.json), [exhaustive per-variant inventory](../src/data/manifests/solution-coverage.json).
 
 The catalog retains 31 generated solution fixtures after removing ten redundant geometric remake defaults. Balanced PDA closure recovers path, geometric and corridor witnesses missed by bounded walking; every restored native move is checked before publication. Generated proof solutions include First Cantor, Infinite Descent, Simple Cantor, Simple Infinite Hop and Nested Infinite Lemma. First Cantor opens at permitted outer gate 6 and has a checked four-connection joint Cantor certificate. Each obligation has its own descendant witness; unused obligations are removed. This proves a solution under the declared topology/rule, not source conversion completeness. Setup/repeating-word construction, scope containment, distinct tails, checked-claim composition and complete joint Cantor obligations have regression tests.
 
 Koteitan’s original rules allow bottom-edge entry and top-edge exit. The 3×3 and 5×5 catalog patterns now choose white base cells on those edges for Play. Checked exact-coordinate solutions use 9 moves at detail 2 and 3,979 moves at detail 5, respectively. This chooses permitted entries/exits; it does not change the substitution or assert every edge point is connected.
 
-The cp3-3 and regenerated three-register compiler examples now have complete source-guided recordings: **1,230,549** and **1,230,573** physical moves. Both run from (0,0,W0) to (0,0,W1), within coordinate 27,000. Every recovered move and compact playback position is checked against production; each embedded snapshot is about 63–64 KB. The compiled example's former (0,1) endpoints contradicted the current atomic converter and are corrected. These recordings use the existing register movement rules, not a claimed ordinary-PDA conversion. [Source/production checks](REGISTER_SOLUTION_CHECKS.json).
+The cp3-3 and regenerated three-register compiler examples have complete source-guided recordings: **1,230,549** and **1,230,573** physical moves. Both run from (0,0,W0) to (0,0,W1), within coordinate 27,000. Every recovered move and compact playback position is checked against production; each embedded snapshot is about 63–64 KB. The compiled example's former (0,1) endpoints contradicted the current atomic converter and are corrected. These recordings use the existing register movement rules, not a claimed ordinary-PDA conversion. [Source/production checks](REGISTER_SOLUTION_CHECKS.json).
+
+The supplied cp3-4 input now also halts after **20,256,567 source instructions**. Its **40,511,987 physical moves** reach the same origin exit, with maximum coordinate 810,000. Every expanded move was checked against production movement. Only 5,185 moves in 587 translated runs are stored; the embedded snapshot is about 99 KB, and readable export stays below 500 KB. Source recovery keeps a bounded pending-state window and cycle detection rather than retaining all forty million states. The production importer independently checks canonical-state detours and boundary legality symbolically.
 
 ## Variants without a recovered solution
 
-**5 other variants** remain without a verified replay; **three Windischer views** remain unbound pending their exact gate topology and limit-crossing rule. A bounded search or missing certificate is not a proof of impossibility. Source conversions remain WIP even when their declared model has a checked solution.
+**4 other variants** remain without a verified replay; **three Windischer views** remain unbound pending their exact gate topology and limit-crossing rule. A bounded search or missing certificate is not a proof of impossibility. Source conversions remain WIP even when their declared model has a checked solution.
 
 | Variant | Result | Search/model limit |
 | --- | --- | --- |
 | Block Maze (`block-maze`) | no-finite-route in current rules | An independently checked closed balanced relation excludes the surface trophy. All 766 legal native moves across root/every child context agree with the compiled PDA; links have one copy symbol. This does not infer a missing infinite-hop rule or change the source endpoints. |
 | Easy - Noke Lieu (`1611103791037:0.9096318422296219`) | no-finite-route in current rules | The production canonical PDA closure and an independently checked closed balanced relation both exclude the surface finish without a recursion-depth cutoff. This concerns the current corridor/finish definition, not a claim about undocumented author rules. |
-| Counter pump — cp3-4 (atomic) (`repeated-atomic-cp3-4`) | bounded | Repeated BFS: coordinate 65536, 1500000 states. |
-| Pentation maze (`repeated-atomic-penta`) | bounded | Repeated BFS: coordinate 65536, 1500000 states. |
+| Pentation maze (`repeated-atomic-penta`) | bounded | Repeated BFS: coordinate 65536, 1500000 states. Exact supplied initial_a=4 source trace: 10,000,000 instructions and 20,538,770 legal moves, no halt within that budget. |
 | Windischer (`draft-maze-images-martin-windischer-windischer-gif`) | unbound | Exact gate topology and limit-crossing interpretation remain unresolved. |
 | Windischer (`draft-maze-images-martin-windischer-windischer-png`) | unbound | Exact gate topology and limit-crossing interpretation remain unresolved. |
 | Windischer Recursion (`draft-maze-images-martin-windischer-windischer-recursion-jpg`) | unbound | Exact gate topology and limit-crossing interpretation remain unresolved. |
@@ -30,7 +31,7 @@ The cp3-3 and regenerated three-register compiler examples now have complete sou
 With the development server running at `http://127.0.0.1:5174/Fractal-Maze/`, run these scripts from `my_way` in order:
 
 ```bash
-python scripts/prepare-register-solutions.py
+python scripts/prepare-register-solutions.py  # Includes cp3-4; every expanded move is checked
 python scripts/prepare-catalog-solutions.py
 python scripts/prepare-square-solutions.py
 python scripts/prepare-generalized-proofs.py
@@ -51,4 +52,4 @@ Geometric fixture generation now uses the same production compiler and balanced 
 
 The [Berkly model review](BERKLY_MODEL_REVIEW.json) checks an independent closed balanced relation and every declared gate anchor against its assigned trace. Reproduce with `python scripts/review-berkly.py`. The published inventory retains this scoped negative classification. `prepare-catalog-solutions.py --maze draft-maze-images-mike-earnest-berkly-jpg` regenerates only that coverage record, preserving all other fixtures. Provided solutions are discovered from current source definitions, independently of the generated replay index.
 
-Shared solution publication emits one validated asset per recording and a metadata manifest. Run `prepare-shared-replays.py` after the source/solution passes; `check-shared-replays.py` fetches and imports all 76 published snapshots. The eleven Wolf recordings use the shared block player with the photograph retained in their maze snapshots. Current source/snapshot equality tests cover all recordings, including compiled Wolf definitions and explicit proof claims. Asset filenames include the payload hash so regenerated recordings receive new URLs. [Earlier loading verification](REPLAY_LOADING_CHECKS.json).
+Shared solution publication emits one validated asset per recording and a metadata manifest. Run `prepare-shared-replays.py` after the source/solution passes; `check-shared-replays.py` fetches and imports all 77 published snapshots. The eleven Wolf recordings use the shared block player with the photograph retained in their maze snapshots. Current source/snapshot equality tests cover all recordings, including compiled Wolf definitions and explicit proof claims. Asset filenames include the payload hash so regenerated recordings receive new URLs. [Earlier loading verification](REPLAY_LOADING_CHECKS.json).

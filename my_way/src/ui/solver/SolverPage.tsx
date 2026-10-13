@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import type { MazeView } from '../../app/library/mazeViews'
 import type { PathMazeDefinition } from '../../core/model/pathMaze'
 import { mazeCatalog, viewsForMaze } from '../../app/library/mazeViews'
-import { catalog } from '../../app/library/catalog'
+import { catalogIndex as catalog } from '../../app/library/catalogIndex'
 import { listProjects, type ProjectRecord } from '../../app/projects/db'
 import { loadMazeDocument } from '../../app/projects/loadMazeDocument'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
@@ -11,6 +11,7 @@ import { squarePlayPDA } from '../../app/library/playPDA'
 import { portPlayDocument } from '../../app/library/portPlayDocument'
 import { geometricPlayDocument } from '../../app/library/geometricPlayDocument'
 import { wirePlayDocument } from '../../app/library/wirePlayDocument'
+import { rulePlayDocument } from '../../app/library/rulePlayDocument'
 import { NavBar } from '../components/NavBar'
 import { CorridorSolvePanel } from './CorridorSolvePanel'
 import { PDASolvePanel } from './PDASolvePanel'
@@ -84,7 +85,7 @@ export function SolverPage() {
   const storedDoc = result?.id === selected ? result.doc : undefined
   const doc = useMemo(
     () =>
-      storedDoc ? geometricPlayDocument(storedDoc) ?? portPlayDocument(storedDoc) ?? wirePlayDocument(storedDoc) ?? storedDoc : undefined,
+      storedDoc ? geometricPlayDocument(storedDoc) ?? portPlayDocument(storedDoc) ?? wirePlayDocument(storedDoc) ?? rulePlayDocument(storedDoc) ?? storedDoc : undefined,
     [storedDoc]
   )
   const binding = useMemo(

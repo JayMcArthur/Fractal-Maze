@@ -42,8 +42,8 @@ describe('Format auto-detection', () => {
     expect(adapter).toBeNull()
   })
 
-  it('registers all five supported import formats', () => {
-    expect(ALL_IMPORT_ADAPTERS.length).toBe(5)
+  it('registers all six supported import formats', () => {
+    expect(ALL_IMPORT_ADAPTERS.length).toBe(6)
   })
 
   it('detects Koteitan block JSON', () => {

@@ -50,7 +50,7 @@ export function SaveRouteButton({
     <>
       <button
         className="control control--primary"
-        disabled={disabled || busy || nativeRouteStepCount(route) < 1}
+        disabled={disabled || busy || (nativeRouteStepCount(route) < 1 && !complete)}
         onClick={() => {
           void save()
         }}

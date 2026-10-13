@@ -154,7 +154,7 @@ export function PDASolvePanel({
             className="control"
             onClick={() =>
               downloadFile(
-                JSON.stringify(exportPathPDA(model), null, 2),
+                JSON.stringify(exportPathPDA(model, doc.metadata.title), null, 2),
                 `${doc.metadata.title}.pda.json`
               )
             }

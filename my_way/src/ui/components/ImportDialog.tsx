@@ -41,7 +41,7 @@ export function ImportDialog({ onImport, onClose, initialFile }: ImportDialogPro
       const raw = e.target?.result as string
       const adapter = detectAdapter(raw)
       if (!adapter) {
-        setError(`Unrecognised format. Supported: .maze · .fmaze · FRACTAL-MAZE.v2 · Koteitan block JSON`)
+        setError('Unrecognised format. Supported: .maze · .fmaze · .pda.json · FRACTAL-MAZE.v2 · Koteitan block JSON · repeated maze text')
         return
       }
       try {
@@ -121,7 +121,7 @@ export function ImportDialog({ onImport, onClose, initialFile }: ImportDialogPro
           <p className="text-gray-300 mb-1">
             {initialFile ? `Loaded: ${initialFile.name}` : 'Drop a file here or click to browse'}
           </p>
-          <p className="text-gray-500 text-sm">.maze · .fmaze · block/gate .json · repeated .txt</p>
+          <p className="text-gray-500 text-sm">.maze · .fmaze · .pda.json · block/gate .json · repeated .txt</p>
           <input
             ref={fileInputRef}
             type="file"

@@ -2,6 +2,7 @@ import { SquareMazeCanvas, type SquareMazeCanvasProps as MazeCanvasProps } from 
 import { TourRenderer } from '../../core/render/svg/TourRenderer'
 import { useEffect, useRef, useMemo } from 'react'
 import { portPlayDocument } from '../../app/library/portPlayDocument'
+import { rulePlayDocument } from '../../app/library/rulePlayDocument'
 import { BlockRecursiveRenderer } from '../../core/render/canvas/BlockRecursiveRenderer'
 import { GeometricRenderer } from '../../core/render/svg/GeometricRenderer'
 import type { GeometricRecursiveDefinition } from '../../core/model/geometricRecursive'
@@ -10,7 +11,8 @@ import type { RepeatedDirectedDefinition } from '../../core/model/repeatedDirect
 import { GraphLabeledRenderer } from '../../core/render/svg/GraphLabeledRenderer'
 import { PathMazeDrawing } from '../workbench/PathMazeDrawing'
 export function MazeCanvas({ doc: original, ...props }: MazeCanvasProps) {
-  const doc = useMemo(() => portPlayDocument(original) ?? original, [original])
+  const doc = useMemo(() => portPlayDocument(original) ??
+    (!original.artwork?.asset ? rulePlayDocument(original) : null) ?? original, [original])
   if (doc.definition.type === 'recursiveTour')
     return <TourRenderer def={doc.definition} artwork={doc.artwork} />
   if (doc.definition.type === 'pathPushdown' || doc.definition.type === 'infiniteRule')

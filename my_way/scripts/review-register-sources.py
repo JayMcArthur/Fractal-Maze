@@ -11,6 +11,7 @@ import json
 import subprocess
 import sys
 from collections import defaultdict, deque
+from functools import lru_cache
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -47,7 +48,7 @@ def local_route(adj, start, goal):
     return None
 
 
-def review(row, source_text, source_name, limit, start, record=None):
+def review(row, source_text, source_name, limit, start, record=None, trace=None):
     rules = defaultdict(list)
     for rule in converter.parse_file(source_text):
         rules[rule[0]].append(rule)
@@ -55,12 +56,23 @@ def review(row, source_text, source_name, limit, start, record=None):
     x, y = start
     pc = 0
     terminal = ('W', 0)
-    seen = set()
+    anchor = (x, y, pc)
+    cycle_length, cycle_power = 0, 1
     moves = 0
     route = [(x, y, 'W', 0)] if record else []
     route_indices = {route[0]: 0} if record else {}
+    if trace:
+        trace((x, y, 'W', 0))
+
+    @lru_cache(maxsize=None)
+    def passage(block, start, goal):
+        return local_route(adj[block], start, goal)
 
     def append(state):
+        if trace:
+            trace(state)
+        if not record:
+            return
         if state in route_indices:
             index = route_indices[state]
             for old in route[index + 1:]:
@@ -76,17 +88,20 @@ def review(row, source_text, source_name, limit, start, record=None):
               'start': [x, y, 'W0'], 'limit': limit}
     for step in range(limit):
         state = (x, y, pc)
-        if state in seen:
+        if step and state == anchor:
             result['result'] = 'source-cycle'
             break
-        seen.add(state)
+        if cycle_length == cycle_power:
+            anchor = state
+            cycle_power *= 2
+            cycle_length = 0
         block = 'normal' if x and y else 'nx' if y else 'ny' if x else 'zero'
         if pc == 1:
-            path = local_route(adj[block], terminal, ('W', 1))
+            path = passage(block, terminal, ('W', 1))
             result['result'] = 'halt' if path else 'halt-without-maze-exit'
             if path:
                 moves += len(path) - 1
-                if record:
+                if record or trace:
                     for side, index in path[1:]:
                         append((x, y, side, index))
                 terminal = ('W', 1)
@@ -103,17 +118,18 @@ def review(row, source_text, source_name, limit, start, record=None):
         if dx or dy:
             side, opposite = {(-1, 0): ('W', 'E'), (1, 0): ('E', 'W'),
                               (0, -1): ('S', 'N'), (0, 1): ('N', 'S')}[(dx, dy)]
-            path = local_route(adj[block], terminal, (side, target))
+            path = passage(block, terminal, (side, target))
             if path is None:
                 result.update(result='disconnected-source-outlet', requested=[side, target])
                 break
             moves += len(path)
-            if record:
+            if record or trace:
                 for direction, index in path[1:]:
                     append((x, y, direction, index))
                 append((x + dx, y + dy, opposite, target))
             terminal = (opposite, target)
         x, y, pc = x + dx, y + dy, target
+        cycle_length += 1
         result['sourceSteps'] = step + 1
         result['maxCoordinate'] = max(result['maxCoordinate'], x, y)
     else:

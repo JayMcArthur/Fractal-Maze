@@ -1,0 +1,159 @@
+{
+  "checkedAt": "2026-10-12T04:34:19.807897+00:00",
+  "scope": "Local retained worktree; no deployment claim. Original-image mappings remain separately reviewed.",
+  "ruleOnlyVariants": [
+    {
+      "id": "pda-guide-2",
+      "title": "Wolfram 2 \u2014 guide conversion",
+      "paths": 19,
+      "copies": 3,
+      "edges": 56,
+      "traceBindings": 0,
+      "gateBindings": 0,
+      "artwork": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Wires.png",
+      "rule": "finite",
+      "helpers": [
+        "C"
+      ],
+      "walks": 0,
+      "blockPlay": true,
+      "blockTraceBindings": 75,
+      "blockGateBindings": 56
+    },
+    {
+      "id": "pda-guide-3",
+      "title": "Jay McArthur \u2014 eight-copy PDA",
+      "paths": 9,
+      "copies": 8,
+      "edges": 32,
+      "traceBindings": 0,
+      "gateBindings": 0,
+      "artwork": null,
+      "rule": "finite",
+      "helpers": [],
+      "walks": 0,
+      "blockPlay": true,
+      "blockTraceBindings": 143,
+      "blockGateBindings": 32
+    },
+    {
+      "id": "pda-guide-4",
+      "title": "Inner Frame \u2014 guide PDA",
+      "paths": 5,
+      "copies": 1,
+      "edges": 16,
+      "traceBindings": 0,
+      "gateBindings": 0,
+      "artwork": "references/Maze_Images/The_Inner_Frame.png",
+      "rule": "finite",
+      "helpers": [
+        "5"
+      ],
+      "walks": 0,
+      "blockPlay": true,
+      "blockTraceBindings": 21,
+      "blockGateBindings": 16
+    },
+    {
+      "id": "pda-guide-6",
+      "title": "Jay McArthur \u2014 A Long Path v6",
+      "paths": 7,
+      "copies": 6,
+      "edges": 24,
+      "traceBindings": 0,
+      "gateBindings": 0,
+      "artwork": "references/Maze_Images/Jay_McArthur_-_A_Long_Path_v6.png",
+      "rule": "finite",
+      "helpers": [],
+      "walks": 0,
+      "blockPlay": true,
+      "blockTraceBindings": 138,
+      "blockGateBindings": 24
+    },
+    {
+      "id": "simple-infinite-hop",
+      "title": "Simple infinite hop",
+      "paths": 2,
+      "copies": 1,
+      "edges": 4,
+      "traceBindings": 0,
+      "gateBindings": 0,
+      "artwork": "references/generated/simple-infinite.svg",
+      "rule": "infiniteHop",
+      "helpers": [],
+      "walks": 0,
+      "blockPlay": true,
+      "blockTraceBindings": 6,
+      "blockGateBindings": 4
+    },
+    {
+      "id": "simple-nested-infinite-hop",
+      "title": "Simple nested infinite hop",
+      "paths": 3,
+      "copies": 2,
+      "edges": 8,
+      "traceBindings": 0,
+      "gateBindings": 0,
+      "artwork": "references/generated/simple-nested-infinite.svg",
+      "rule": "infiniteHop",
+      "helpers": [],
+      "walks": 0,
+      "blockPlay": true,
+      "blockTraceBindings": 11,
+      "blockGateBindings": 8
+    }
+  ],
+  "unitTests": {
+    "passed": 427,
+    "files": 39,
+    "command": "npm test -- --maxWorkers=1"
+  },
+  "productionBrowserWorkflows": {
+    "passed": 126,
+    "command": "PLAYWRIGHT_BASE_URL=http://127.0.0.1:5176/Fractal-Maze/ npm run test:browser -- --workers=2"
+  },
+  "staticHostingChecks": {
+    "passed": 96,
+    "mounts": [
+      "/Fractal-Maze/",
+      "/"
+    ],
+    "report": "STATIC_HOSTING_CHECKS.json"
+  },
+  "sharedRecordings": {
+    "bundles": 76,
+    "variants": 66,
+    "uniqueIds": 76,
+    "validated": 76,
+    "namedWireSolutions": 11,
+    "partial": [],
+    "failures": []
+  },
+  "codeQuality": {
+    "report": "CODE_QUALITY_CHECKS.json",
+    "files": 217,
+    "maxCyclomatic": 21,
+    "explicitAnyUnknown": 0
+  },
+  "dependencyAudit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "captures": {
+    "gallery": "screenshots/rule-blocks/index.html",
+    "count": 12,
+    "pageErrors": [],
+    "horizontalOverflow": 0
+  },
+  "remaining": [
+    "cp3-4 and Pentation supplied initial_a=4 have no verified complete replay",
+    "Block Maze, Noke Lieu and Berkly have negative finite results only for their current models/transcription",
+    "Three Windischer images remain unbound",
+    "v6 original image mapping remains deferred; the six-copy block recurrence is playable",
+    "Richer model contracts, Play/catalog loading and the full original proof/UI/source-fidelity audit remain open"
+  ]
+}

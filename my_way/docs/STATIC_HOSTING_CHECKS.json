@@ -235,6 +235,24 @@
   },
   {
     "mount": "/Fractal-Maze/",
+    "route": "play/repeated-atomic-cp3-4?replay=bundled-repeated-atomic-cp3-4",
+    "refresh": false,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/Fractal-Maze/",
+    "route": "play/repeated-atomic-cp3-4?replay=bundled-repeated-atomic-cp3-4",
+    "refresh": true,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/Fractal-Maze/",
     "route": "play/repeated-atomic-cp-n3-godel?replay=bundled-repeated-atomic-cp-n3-godel",
     "refresh": false,
     "pageErrors": [],
@@ -353,6 +371,78 @@
   {
     "mount": "/Fractal-Maze/",
     "route": "play/proof-maze-images-siggy-infinite-descent-svg?replay=bundled-proof-maze-images-siggy-infinite-descent-svg",
+    "refresh": true,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/Fractal-Maze/",
+    "route": "play/pda-guide-6",
+    "refresh": false,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/Fractal-Maze/",
+    "route": "play/pda-guide-6",
+    "refresh": true,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/Fractal-Maze/",
+    "route": "play/pda-guide-3?replay=bundled-pda-guide-3",
+    "refresh": false,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/Fractal-Maze/",
+    "route": "play/pda-guide-3?replay=bundled-pda-guide-3",
+    "refresh": true,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/Fractal-Maze/",
+    "route": "solver?id=pda-guide-6",
+    "refresh": false,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": true
+  },
+  {
+    "mount": "/Fractal-Maze/",
+    "route": "solver?id=pda-guide-6",
+    "refresh": true,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": true
+  },
+  {
+    "mount": "/Fractal-Maze/",
+    "route": "workbench/simple-nested-infinite-hop?tab=play",
+    "refresh": false,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/Fractal-Maze/",
+    "route": "workbench/simple-nested-infinite-hop?tab=play",
     "refresh": true,
     "pageErrors": [],
     "csp": [],
@@ -595,6 +685,24 @@
   },
   {
     "mount": "/",
+    "route": "play/repeated-atomic-cp3-4?replay=bundled-repeated-atomic-cp3-4",
+    "refresh": false,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/",
+    "route": "play/repeated-atomic-cp3-4?replay=bundled-repeated-atomic-cp3-4",
+    "refresh": true,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/",
     "route": "play/repeated-atomic-cp-n3-godel?replay=bundled-repeated-atomic-cp-n3-godel",
     "refresh": false,
     "pageErrors": [],
@@ -713,6 +821,78 @@
   {
     "mount": "/",
     "route": "play/proof-maze-images-siggy-infinite-descent-svg?replay=bundled-proof-maze-images-siggy-infinite-descent-svg",
+    "refresh": true,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/",
+    "route": "play/pda-guide-6",
+    "refresh": false,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/",
+    "route": "play/pda-guide-6",
+    "refresh": true,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/",
+    "route": "play/pda-guide-3?replay=bundled-pda-guide-3",
+    "refresh": false,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/",
+    "route": "play/pda-guide-3?replay=bundled-pda-guide-3",
+    "refresh": true,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/",
+    "route": "solver?id=pda-guide-6",
+    "refresh": false,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": true
+  },
+  {
+    "mount": "/",
+    "route": "solver?id=pda-guide-6",
+    "refresh": true,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": true
+  },
+  {
+    "mount": "/",
+    "route": "workbench/simple-nested-infinite-hop?tab=play",
+    "refresh": false,
+    "pageErrors": [],
+    "csp": [],
+    "failedResources": [],
+    "workerChecked": false
+  },
+  {
+    "mount": "/",
+    "route": "workbench/simple-nested-infinite-hop?tab=play",
     "refresh": true,
     "pageErrors": [],
     "csp": [],

@@ -50,13 +50,18 @@ async def check_hosts(root_build):
               ('play/koteitan-block-3', None),
               ('play/koteitan-block-5?replay=bundled-koteitan-block-5', None),
               ('play/repeated-atomic-cp3-3?replay=bundled-repeated-atomic-cp3-3', None),
+              ('play/repeated-atomic-cp3-4?replay=bundled-repeated-atomic-cp3-4', None),
               ('play/repeated-atomic-cp-n3-godel?replay=bundled-repeated-atomic-cp-n3-godel', None),
               ('play/1695993784968:0.6965701909885131', None),
               ('play/1695993784968:0.6965701909885131?replay=bundled-1695993784968:0.6965701909885131', None),
               ('solver?id=1695993784968:0.6965701909885131', 'Solve & analyze'),
               ('workbench/1695993784968:0.6965701909885131?tab=play', 'Tsat - Cubist'),
               ('workbench/proof-maze-images-siggy-infinite-descent-svg?tab=proof', 'Your proof notebook'),
-              ('play/proof-maze-images-siggy-infinite-descent-svg?replay=bundled-proof-maze-images-siggy-infinite-descent-svg', None)]
+              ('play/proof-maze-images-siggy-infinite-descent-svg?replay=bundled-proof-maze-images-siggy-infinite-descent-svg', None),
+              ('play/pda-guide-6', None),
+              ('play/pda-guide-3?replay=bundled-pda-guide-3', None),
+              ('solver?id=pda-guide-6', 'Solve & analyze'),
+              ('workbench/simple-nested-infinite-hop?tab=play', 'Simple nested infinite hop')]
     checks = []
     with tempfile.TemporaryDirectory(prefix='fractal-static-') as temporary:
         pages_root = Path(temporary)
@@ -96,7 +101,7 @@ async def check_hosts(root_build):
                                 await page.get_by_label('Search detail', exact=True).fill('2')
                                 await page.get_by_role('button', name='Find finite route', exact=True).click()
                                 await expect(page.locator('section > .format-note[role="status"]')).to_contain_text('Solution loaded')
-                            if route in ['solver?id=1695993784968:0.6965701909885131', 'solver?id=wolf-wire-original']:
+                            if route in ['solver?id=1695993784968:0.6965701909885131', 'solver?id=wolf-wire-original', 'solver?id=pda-guide-6']:
                                 await page.get_by_role('button', name='Find finite route', exact=True).click()
                                 await expect(page.get_by_role('button', name='Save & play replay', exact=True)).to_be_enabled()
                             assert page.url == base + route, page.url
@@ -104,7 +109,7 @@ async def check_hosts(root_build):
                             assert not errors and not csp and not failed_resources, (route, errors, csp, failed_resources)
                             checks.append(dict(mount=mount, route=route, refresh=refresh,
                                                pageErrors=list(errors), csp=csp, failedResources=list(failed_resources),
-                                               workerChecked=route in ['play/koteitan-block-3', 'solver?id=1695993784968:0.6965701909885131', 'solver?id=wolf-wire-original']))
+                                               workerChecked=route in ['play/koteitan-block-3', 'solver?id=1695993784968:0.6965701909885131', 'solver?id=wolf-wire-original', 'solver?id=pda-guide-6']))
                     await browser.close()
             finally:
                 server.shutdown()

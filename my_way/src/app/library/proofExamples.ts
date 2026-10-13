@@ -1,4 +1,4 @@
-import { emptyPathModel, pathDocument } from './pathCatalog'
+import { emptyPathModel, pathDocument } from './pathDocument'
 import { connectionsFromPairs } from '../../core/pathMaze/traversal'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
 

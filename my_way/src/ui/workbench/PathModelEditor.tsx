@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { PathMazeDefinition } from '../../core/model/pathMaze'
-import { connectionsFromPairs } from '../../core/pathMaze/traversal'
 import { PathEndpointsEditor } from './PathEndpointsEditor'
+import { ConnectionTextEntry } from './ConnectionTextEntry'
 
 export function PathModelEditor({
   model,
@@ -44,9 +44,12 @@ export function PathModelEditor({
               evidence: note || 'Manual image review',
             },
           ]
-        : connectionsFromPairs([[`${from}-${to}`, `/${copy}`]], note || 'Manual image review').map(
-            (edge, index) => ({ ...edge, id: `${id}-${index}` })
-          )
+        : [
+            { id: `${id}-0`, from, to, operation: 'enter' as const, copy,
+              input: from === to ? '(' : to.length === 1 ? to : '', evidence: note || 'Manual image review' },
+            { id: `${id}-1`, from: to, to: from, operation: 'exit' as const, copy,
+              input: from === to ? ')' : from.length === 1 ? from : '', evidence: note || 'Manual image review' },
+          ]
     const selected = bidirectional ? edges : [edges[operation === 'exit' ? 1 : 0]]
     onChange({ ...model, connections: [...model.connections, ...selected], review: 'wip' })
   }
@@ -289,6 +292,7 @@ export function PathModelEditor({
             Add connection
           </button>
         </div>
+        <ConnectionTextEntry model={model} onChange={onChange} />
         <details>
           <summary>{model.connections.length} PDA transitions · inspect and remove</summary>
           <div className="transition-list">

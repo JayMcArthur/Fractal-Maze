@@ -1,9 +1,11 @@
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
-import { compilePortPDA, portArtwork } from '../../core/play/portPDA'
-import { pathDocs } from './pathCatalog'
+import { compilePortPDA } from '../../core/play/portPDA'
+import sources from '../../data/mazes/snuke-artwork.json'
+import { artworkSchema, pathMazeSchema } from '../../core/pathMaze/validation'
 import { stateKey } from '../../core/pathMaze/traversal'
 import type { PathMazeDefinition } from '../../core/model/pathMaze'
 import { createBlockArtwork } from '../../core/play/blockArtwork'
+import { ruleArtwork } from '../../core/play/ruleArtwork'
 
 const transitions = (model: PathMazeDefinition) =>
   [
@@ -21,7 +23,8 @@ export function portPlayDocument(doc: RecursiveMazeDocument): RecursiveMazeDocum
   const model = compilePortPDA(doc.definition)
   const sourceId =
     doc.metadata.id.replace('ports-snuke_no', 'draft-maze-images-snuke-snuke-') + '-png'
-  const candidate = pathDocs.find((source) => source.metadata.id === sourceId)
+  const row = sources.find(source => `draft-${source.reference}` === sourceId)
+  const candidate = row ? { definition: pathMazeSchema.parse(row.definition), artwork: artworkSchema.parse(row.artwork) } : undefined
   const rules = candidate?.definition
   const source =
     rules?.type === 'pathPushdown' &&
@@ -38,6 +41,6 @@ export function portPlayDocument(doc: RecursiveMazeDocument): RecursiveMazeDocum
     ...doc,
     representationType: 'pathPushdown',
     definition: source?.definition ?? model,
-    artwork: source?.artwork ?? createBlockArtwork(portArtwork(model), model),
+    artwork: source?.artwork ?? createBlockArtwork(ruleArtwork(model, model.paths.filter(path => path.helper).map(path => path.id)), model),
   }
 }

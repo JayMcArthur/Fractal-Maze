@@ -1,0 +1,372 @@
+[
+  {
+    "id": "alice-in-wonderland",
+    "asset": "mazes/25b6d784e450225380ed496aff9ac6b2c7bc65eec88d5784be4c4bb22af6baaf.json",
+    "bytes": 4143
+  },
+  {
+    "id": "sierpinski",
+    "asset": "mazes/5f3532ddac6ce77dd88b48a896c3cb03bd1931f98d0c4a989fda42de964e817f.json",
+    "bytes": 3701
+  },
+  {
+    "id": "microchip",
+    "asset": "mazes/5d113dd8688a71eba85d06214b449726b0789521c3b7e21dc963eaed7f1adf11.json",
+    "bytes": 6197
+  },
+  {
+    "id": "square",
+    "asset": "mazes/40986d5115338242157dc91feb668e33e275236d5e58397a0c98feb032c4d7cc.json",
+    "bytes": 3194
+  },
+  {
+    "id": "a-long-path-v4",
+    "asset": "mazes/cdb8163a8fcc5ebf1562e2b4edfa524387c54a2a36835f82c1322118c7326688.json",
+    "bytes": 2093
+  },
+  {
+    "id": "a-long-path-v8",
+    "asset": "mazes/5a0238502bde4d5c5c504afb5a050cbe41e60a7a3c9b1b906ad417df03fca5d2.json",
+    "bytes": 3559
+  },
+  {
+    "id": "matthias-weber",
+    "asset": "mazes/8b81767af52ce344611664206996ea0262f7e08afd6f3d3e49a25a203c9cc287.json",
+    "bytes": 2456
+  },
+  {
+    "id": "skeptic-play-carpet",
+    "asset": "mazes/46da251ab8ad0abbebc0d43efd92ec612631b0466ebbb668649d6c27e2dc8143.json",
+    "bytes": 3085
+  },
+  {
+    "id": "block-maze",
+    "asset": "mazes/158b9bedfbd4a18d4f11bf3107c18dce4a797aa98bb12067fbeb3a98b9dac7d5.json",
+    "bytes": 3291
+  },
+  {
+    "id": "1611103791037:0.9096318422296219",
+    "asset": "mazes/2c361a1aedd7538e6c0d1d6d7608130f6207531a184213cf7b1f3802fd649046.json",
+    "bytes": 16787
+  },
+  {
+    "id": "1695993784968:0.6965701909885131",
+    "asset": "mazes/fe8559da5a54c0d73ee6617761394d80d3ea2714fd491fb6a8834a7ada029c2a.json",
+    "bytes": 17302
+  },
+  {
+    "id": "backlot",
+    "asset": "mazes/d165e6cb5c958c331ceb461c61fbc2bba526a2cedeb0063fc262ac44a3041119.json",
+    "bytes": 3508
+  },
+  {
+    "id": "wolf-wire-original",
+    "asset": "mazes/6e5064ba03fa2458cf00cdea4f99a5f3dbe0f01bf3c359133d06bb281ca346c9.json",
+    "bytes": 661
+  },
+  {
+    "id": "ports-koteitan",
+    "asset": "mazes/d07305f90d7ccd6aee87ccd882de9ea9f88544e81da9287f787644a627faff97.json",
+    "bytes": 1705
+  },
+  {
+    "id": "ports-snuke_no3",
+    "asset": "mazes/bf64808199dbee40c45d1695d92b64fe1eee5a822bb1d7031fd19d7bb1a1b7f1.json",
+    "bytes": 906
+  },
+  {
+    "id": "ports-snuke_no4",
+    "asset": "mazes/031b81c2e05dc8465d7c0f16104706d61ed2f432b283438a5cd9d8f8e9a6a83d.json",
+    "bytes": 897
+  },
+  {
+    "id": "koteitan-block",
+    "asset": "mazes/b5637faeaf59a76e49eeea634cb399e08e06f04ce5d2afe4f746c1d36b4c0390.json",
+    "bytes": 13049
+  },
+  {
+    "id": "repeated-directed-example",
+    "asset": "mazes/376f09d77327a5ebea6f615be3eee4be12243fcab92aef22491385b357bfd85b.json",
+    "bytes": 1068
+  },
+  {
+    "id": "portal-connections",
+    "asset": "mazes/0d04432735d7b95de5353c7698bba767a3be887050481994bbba4a9f3cf6dc74.json",
+    "bytes": 986
+  },
+  {
+    "id": "koteitan-block-3",
+    "asset": "mazes/e382291eebccf0ed821251e94538a8fb2aca06be075598690c3980f3a14482e7.json",
+    "bytes": 664
+  },
+  {
+    "id": "koteitan-block-5",
+    "asset": "mazes/dec616364ce19eae098ae0579f6e5cec3d0341d219f5b839fa4ad148fbaaac8c.json",
+    "bytes": 696
+  },
+  {
+    "id": "repeated-cp6",
+    "asset": "mazes/03b2a409c5e893491d430fda9c566c8751ab936b2cffb379335d6282f3ad7397.json",
+    "bytes": 9239
+  },
+  {
+    "id": "repeated-md3",
+    "asset": "mazes/801d31f7835a8b9a406e8f5626224abefdb9f3e14c1a06a76fea942a1b4b775e.json",
+    "bytes": 6268
+  },
+  {
+    "id": "repeated-md4",
+    "asset": "mazes/f81c079f41b6658e650681566900d95268a55531d0edff145a32845ab0b8554d.json",
+    "bytes": 12069
+  },
+  {
+    "id": "repeated-md5",
+    "asset": "mazes/cd2e54d221e5e1d6f03edd1a6adcbebba30148ec02746b2b98a038a4cc4ccf7a.json",
+    "bytes": 23662
+  },
+  {
+    "id": "repeated-atomic-cp2-3",
+    "asset": "mazes/4e57ec8eadc70b6fcb1ffca3f9c81e7099d90796bdd95cb15a343c993b3ff762.json",
+    "bytes": 4064
+  },
+  {
+    "id": "repeated-atomic-cp2-4",
+    "asset": "mazes/d785a5df16c943f1f86676b70302c7f32b2402b11a0855377c736363884284dc.json",
+    "bytes": 5519
+  },
+  {
+    "id": "repeated-atomic-cp2-5",
+    "asset": "mazes/7559e0f3d02e041acc08a831c9e2e5c5323f096cea941871aefacaf63747abe0.json",
+    "bytes": 7312
+  },
+  {
+    "id": "repeated-atomic-cp2-6",
+    "asset": "mazes/63b376d3fedf4b826ab5c59cfbde2c80bc8c7f8ef0e0813e8797ebc418cb49c7.json",
+    "bytes": 9396
+  },
+  {
+    "id": "repeated-atomic-cp3-2",
+    "asset": "mazes/083ec172807d885fd5e43478a9290e6a781ccc45bd7f4816a9222fd0c4e07b81.json",
+    "bytes": 1157137
+  },
+  {
+    "id": "repeated-atomic-cp3-3",
+    "asset": "mazes/5ee542aaae1c2728856adf692c390e6ec087a62406ecd08a2dbc1ebb76778c0c.json",
+    "bytes": 24173
+  },
+  {
+    "id": "repeated-atomic-cp3-4",
+    "asset": "mazes/e65cc2983f5752d06ce19fec3e1c2a1763b93d51bb326fe0ef1191785a79415c.json",
+    "bytes": 27043
+  },
+  {
+    "id": "repeated-atomic-md3",
+    "asset": "mazes/236e9f3f6024646175f8d70ceae8d7af38150c8a574ce59f93da060ae22e9b23.json",
+    "bytes": 7023
+  },
+  {
+    "id": "repeated-atomic-md4",
+    "asset": "mazes/35b754355645ae3809798f0585e09e116defc2c066c97ddfdce44ff50069a871.json",
+    "bytes": 11801
+  },
+  {
+    "id": "repeated-atomic-md5",
+    "asset": "mazes/288d9f7875bafb9396f0781242f2fbfa5f30888fd57258d1877fe2c0eb518064.json",
+    "bytes": 20779
+  },
+  {
+    "id": "repeated-atomic-penta",
+    "asset": "mazes/e19fd1022791d777cc1530ca8c5ff45308f5cb69fd7826256283a0a56de19deb.json",
+    "bytes": 681002
+  },
+  {
+    "id": "repeated-atomic-cp-n3-godel",
+    "asset": "mazes/8b779091de03786a1c89d482deedf5392a8b7cc5c024bc3ce4ab2976af4a9ecc.json",
+    "bytes": 25081
+  },
+  {
+    "id": "pda-guide-1",
+    "asset": "mazes/8710a07f7c99d8300b73c2e817115219c1181473df2d1590d6543314a876b237.json",
+    "bytes": 131131
+  },
+  {
+    "id": "pda-guide-2",
+    "asset": "mazes/a7e4f598fe4f05603dfef79bec578c66a3b71cfefd31d27b6d6e71742426e41f.json",
+    "bytes": 23499
+  },
+  {
+    "id": "pda-guide-3",
+    "asset": "mazes/442513f4c449814fe748badeeb7c97b531806288e0ced10970877fcb04b9ff26.json",
+    "bytes": 6617
+  },
+  {
+    "id": "pda-guide-4",
+    "asset": "mazes/fded089c1dc0c3f5a04f8f1909839bbc64bd9a8ff08bb8172900ec5f6447f8de.json",
+    "bytes": 3733
+  },
+  {
+    "id": "pda-guide-5",
+    "asset": "mazes/dd17ff1c62767a298823fb2a2c27f1524e22518afacd0769d7b690656d58d605.json",
+    "bytes": 19368
+  },
+  {
+    "id": "pda-guide-6",
+    "asset": "mazes/78a08193422bebcf069187e21b4b0016a2b199f051de2ae5a1951e214790712a.json",
+    "bytes": 23180
+  },
+  {
+    "id": "draft-maze-images-martin-windischer-windischer-gif",
+    "asset": "mazes/1730f94b16f6bfc248fe2abb0ee665eb8e997ea5d79de1db60c2482f4bb2e7c3.json",
+    "bytes": 134527
+  },
+  {
+    "id": "draft-maze-images-martin-windischer-windischer-png",
+    "asset": "mazes/61f73f8ef8cec6db0b28bc3cd16eaa691bbd04da55101af2f029287eddc62f8e.json",
+    "bytes": 134527
+  },
+  {
+    "id": "draft-maze-images-martin-windischer-windischer-recursion-jpg",
+    "asset": "mazes/9a768ed7ecdf639b817407df3a8138c4e753a985eec513895cee8c785b395e2c.json",
+    "bytes": 57044
+  },
+  {
+    "id": "proof-maze-images-siggy-first-cantor-svg",
+    "asset": "mazes/118c8e6ecc31d4e8519bf9354d31b2b6893ed1524324791aa7f91e91ef72f1ca.json",
+    "bytes": 205162
+  },
+  {
+    "id": "proof-maze-images-siggy-infinite-descent-svg",
+    "asset": "mazes/7ffb8a8eca617b823682357389e9ee517ee2484be41461547999fc90d5bfe74f.json",
+    "bytes": 113966
+  },
+  {
+    "id": "proof-maze-images-siggy-simple-cantor-maze-svg",
+    "asset": "mazes/b79aaee42847056fc7a5e3facc8f216a18fd293ba06e3cc3b8f3609995273998.json",
+    "bytes": 11467
+  },
+  {
+    "id": "draft-maze-images-siggy-skeptic-play-1-svg",
+    "asset": "mazes/ca8af09dee42f7a964a51695d70888ecf44212002ff7d13286ccb481f09ceca2.json",
+    "bytes": 126020
+  },
+  {
+    "id": "draft-maze-images-siggy-skeptic-play-1-steps-svg",
+    "asset": "mazes/19b1040a6c6bcf85c738e1f88ecb54ded3526a04530d403516719eb366d19973.json",
+    "bytes": 126038
+  },
+  {
+    "id": "draft-maze-images-geocaching-easter-13-10-png",
+    "asset": "mazes/91d38750b6b4a8ff2adb9d35955da2f201d15e3a7216f9f889fa0eaa3a4614ab.json",
+    "bytes": 24771
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-3-png",
+    "asset": "mazes/edee7a1ed4358b7352b1316eca2e1a824a0331c6ccd22030d3341c2e0d19a8c2.json",
+    "bytes": 4151
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-4-png",
+    "asset": "mazes/dfd77b569cf6bafbb6879955df7000091205ba696c38601a69d1febf97470041.json",
+    "bytes": 5220
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+    "asset": "mazes/d5b08e78e3698651ed7d390465c34ec25ec82c2075ad218ee193bf157cb04abb.json",
+    "bytes": 14177
+  },
+  {
+    "id": "draft-maze-images-luegarua-webp",
+    "asset": "mazes/6d0d2dcfba5ddcc547f6e9f297970306de1beddd8aa7dd3112bd3736001bef0b.json",
+    "bytes": 25612
+  },
+  {
+    "id": "draft-maze-images-siggy-skeptic-play-3-png",
+    "asset": "mazes/c38d368ac937b81db57705c9e5f5ca61f378b3e1deb5a7e150fc4a459523bd8e.json",
+    "bytes": 56569
+  },
+  {
+    "id": "draft-maze-images-siggy-skeptic-play-2-jpg",
+    "asset": "mazes/1e510f46c9d64ac727f5e030cfef935feb93f0da22d1baea72eee9835468f5b5.json",
+    "bytes": 8926
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png",
+    "asset": "mazes/1089ccf43db02b0380662f3f656f69012d16ced641bd5ef6b0234f2edb54c34e.json",
+    "bytes": 35368
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png",
+    "asset": "mazes/e55cec5987e027d46baf7b81d49bd8f9356be5af18d1578ba6cdb0d403a3f829.json",
+    "bytes": 36442
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+    "asset": "mazes/02e1986ca44d3fece637da5f71257d4b68bd6fe15937c2255f86a2fc5f67f53c.json",
+    "bytes": 40566
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+    "asset": "mazes/56346c7d66320bffdfb2a3037bd3acdb6ad4336b2ec0bcacdfa5a99e3f27c831.json",
+    "bytes": 98473
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
+    "asset": "mazes/1c86cde2143700246ccdea7f2030b6ea2820ec8434748826359fdb3f1651ffba.json",
+    "bytes": 120244
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-2-jpg",
+    "asset": "mazes/73fb89acde7a1c066654fd2fabcf62486e4564220f1942ec326f8a3c48b92950.json",
+    "bytes": 6329
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-1-jpg",
+    "asset": "mazes/ffce62dc2ca48e66f310c7c4738b4eab2c8f55ab6c359d6fa94db60c34ca52af.json",
+    "bytes": 28072
+  },
+  {
+    "id": "draft-maze-images-daedalus-1-gif",
+    "asset": "mazes/c9dd536403f805daf52ab872a14073a8fd668b72b980d3f927a01a1d68a50749.json",
+    "bytes": 83135
+  },
+  {
+    "id": "draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+    "asset": "mazes/ead6ea1480f59ef91652bea7af22b0e1e6b1fa2b2f5bbc6de046bdf7ab4d240c.json",
+    "bytes": 72122
+  },
+  {
+    "id": "draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+    "asset": "mazes/1be9e81c4dda03619b588432d49c0daf721a15353d4c065b4d511fb4060efc10.json",
+    "bytes": 27654
+  },
+  {
+    "id": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+    "asset": "mazes/267f9a18490fa44249c03c0cf0a05ff51a3e40ed70b5b982e1c5b4917df99026.json",
+    "bytes": 27995
+  },
+  {
+    "id": "draft-maze-images-the-inner-frame-pdf",
+    "asset": "mazes/02950a51c88106da675502c5988bb29fac0c2b763ea77f8ac9abb4e40b985328.json",
+    "bytes": 11603
+  },
+  {
+    "id": "draft-maze-images-jay-mcarthur-a-long-path-v6-png",
+    "asset": "mazes/646ccee74d8d33c49ed2e2ccf35c8fcf94f8d99cac0067877d468d7fb1417a8b.json",
+    "bytes": 8717
+  },
+  {
+    "id": "draft-maze-images-mike-earnest-berkly-jpg",
+    "asset": "mazes/4ea122df32311a0c6632d8c67784f21ed80c93666a06387f0898716e5a49da1d.json",
+    "bytes": 10830
+  },
+  {
+    "id": "simple-infinite-hop",
+    "asset": "mazes/57aa853874210f9740e9c0fe0b2f2c4133e2addbe73acb321134a03914b5223a.json",
+    "bytes": 1838
+  },
+  {
+    "id": "simple-nested-infinite-hop",
+    "asset": "mazes/d81dab1ade0cf3acf445b9792b00827de50985e07c8ea9c4336207d504f17d4b.json",
+    "bytes": 2479
+  }
+]

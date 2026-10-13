@@ -21,7 +21,7 @@ import { wirePlayDocument } from '../app/library/wirePlayDocument'
 
 describe('shared solution inventory', () => {
   it.each(register)('keeps the source-checked register solution current for $mazeId', (fixture) => {
-    const source = readFileSync(`../${fixture.evidence.source}`)
+    const source = readFileSync(`../${fixture.evidence.source}`, 'utf8').replace(/\r\n?/g, '\n')
     expect(createHash('sha256').update(source).digest('hex')).toBe(fixture.evidence.inputHash)
     const row = atomic.find(row => `repeated-atomic-${row.id}` === fixture.mazeId)!
     expect(createHash('sha256').update(row.raw).digest('hex')).toBe(fixture.evidence.mazeHash)

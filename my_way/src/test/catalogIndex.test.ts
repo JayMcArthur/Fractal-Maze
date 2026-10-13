@@ -3,7 +3,7 @@ import { existsSync } from 'node:fs'
 import { catalog, loadCatalogMaze } from '../app/library/catalog'
 import { catalogIndex, referenceDraftId, sourcePlayableId } from '../app/library/catalogIndex'
 import references from '../data/manifests/references.json'
-import { mazeEntry } from '../app/library/mazeViews'
+import { mazeCatalog, mazeEntry, replayViewsForMaze, viewsForMaze } from '../app/library/mazeViews'
 
 it('keeps every Library entry, original cover, review and launch decision current with its actual model', () => {
   expect(catalogIndex.map(entry => entry.id)).toEqual(catalog.map(entry => entry.id))
@@ -31,4 +31,11 @@ it('binds every reference Play link to its real source gates and preserves unbou
   }
   expect(referenceDraftId('maze-images-martin-windischer-windischer-png')).toBe('draft-maze-images-martin-windischer-windischer-png')
   expect(sourcePlayableId('maze-images-martin-windischer-windischer-png')).toBeUndefined()
+})
+
+it('keeps the earlier Inner Frame guide in recordings without presenting it as the source maze', () => {
+  const id = 'draft-maze-images-the-inner-frame-pdf'
+  expect(viewsForMaze(id).map(view => view.id)).toEqual([id, 'matthias-weber'])
+  expect(replayViewsForMaze(id).map(view => view.id)).toContain('pda-guide-4')
+  expect(mazeCatalog.some(entry => entry.id === 'pda-guide-4')).toBe(false)
 })

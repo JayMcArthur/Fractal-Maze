@@ -18,10 +18,15 @@ import { portReplaySession } from '../../core/replay/portReplaySession'
 import { portPlayDocument } from '../../app/library/portPlayDocument'
 import { geometricPlayDocument } from '../../app/library/geometricPlayDocument'
 import { geometricReplaySession } from '../../core/replay/geometricReplaySession'
+import { rulePlayDocument } from '../../app/library/rulePlayDocument'
 
 export function ReplayPlayback({ doc: original }: { doc: ReplayDocument }) {
   const doc = useMemo(() => {
     const route = original.nativeRoute
+    if (route && (route.type === 'pathPushdown' || route.type === 'infiniteRule') && !original.playArtwork) {
+      const maze = rulePlayDocument(original.maze)
+      if (maze) return { ...original, maze }
+    }
     if (route?.type === 'geometricRecursive' && original.maze.definition.type === 'geometricRecursive') {
       const maze = geometricPlayDocument(original.maze)!
       const model = maze.definition as PathMazeDefinition

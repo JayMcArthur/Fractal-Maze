@@ -3,7 +3,7 @@ import { readFileSync, statSync } from 'node:fs'
 import type { BundledReplay } from '../src/app/library/bundledReplays'
 
 const index = JSON.parse(readFileSync('src/data/manifests/shared-replays.json', 'utf8')) as BundledReplay[]
-for (const suffix of ['cp3-3', 'cp-n3-godel']) {
+for (const suffix of ['cp3-3', 'cp-n3-godel', 'cp3-4']) {
   test(`the recovered ${suffix} solution plays, seeks, pauses and round-trips beneath its maze`, async ({ page }) => {
     const bundle = index.find(row => row.mazeId === `repeated-atomic-${suffix}`)!
     const errors: string[] = []
@@ -40,7 +40,8 @@ for (const suffix of ['cp3-3', 'cp-n3-godel']) {
     const download = page.waitForEvent('download')
     await page.getByRole('button', { name: 'Export replay', exact: true }).click()
     const path = (await (await download).path())!
-    expect(statSync(path).size).toBeLessThan(300000)
+    // Even the 40-million-move solution stays below half a megabyte when exported.
+    expect(statSync(path).size).toBeLessThan(suffix === 'cp3-4' ? 500000 : 300000)
     expect(JSON.parse(readFileSync(path, 'utf8'))).toEqual(JSON.parse(readFileSync(`public/${bundle.asset}`, 'utf8')))
     await page.getByRole('button', { name: 'Return to play', exact: true }).click()
     await expect(select).toHaveValue('')

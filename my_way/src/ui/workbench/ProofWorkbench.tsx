@@ -95,7 +95,6 @@ export function ProofWorkbench({
             change({
               setup: { first: steps, second: claim.setup?.second ?? [] },
               first: [],
-              second: [],
             })
           }
         />
@@ -109,7 +108,6 @@ export function ProofWorkbench({
             onSetupChange={(steps) =>
               change({
                 setup: { first: claim.setup?.first ?? [], second: steps },
-                first: [],
                 second: [],
               })
             }

@@ -39,7 +39,7 @@ Alice opens in its block view; its original drawing remains selectable. Ten dupl
 
 ## Build and convert
 
-Build (`/build`) opens four choices: corridor drawing, a fresh image/PDA conversion, editing a Library maze, and constructing an infinite proof. A new image workspace (`/workbench/new`) gets a fresh project ID and editable name. Upload or choose artwork, label connected paths, place frames and anchors, and declare enter/exit transitions. Save keeps it in this browser; export produces a portable `.fmaze`.
+Build (`/build`) opens four choices: corridor drawing, a fresh image/PDA conversion, editing a Library maze, and constructing an infinite proof. A new image workspace (`/workbench/new`) gets a fresh project ID and editable name. Upload or choose artwork, label connected paths, place frames and anchors, and declare enter/exit transitions. Save keeps it in this browser; export produces a portable `.fmaze`. Connection text entry accepts one directed copy boundary per line or explicit two-way arrows, with whole-batch validation. Current `.pda.json` exports can be imported as separate block mazes, retaining names, directed rules, exact endpoints and stack guards. PDA-only exports contain the underlying movement model; use `.fmaze` to retain source artwork and proof notebooks.
 
 Conversion belongs in Build and the Solve & analyze workspace. The native corridor builder exposes structure, blocks, links, player/finish, previews, undo/redo, save and export. Richer native formats keep the original maze and create a separate WIP tracing project. Geometric and recursive-port definitions instead compile directly into the actual playable PDA in Build.
 
@@ -47,7 +47,7 @@ Conversion belongs in Build and the Solve & analyze workspace. The native corrid
 
 Solve & analyze has title/author search and author/type filters. Families open the view matching a type filter. Source and corridor views use simplified PDA search; corridor grid BFS/IDDFS remains available. Other representations link their native search controls. A result opens under its maze in Play. Search limits are displayed; bounded failure is not an infinite-maze proof.
 
-The replay bar beneath Play combines player recordings, saved solver routes and 74 shared solution replays covering 64 document variants. Library has no replay cards and there is no Replays navigation tab. Remaining solutions are listed in [coverage](SOLUTION_COVERAGE.md). Replay snapshots preserve the recorded maze independently of later edits. Playback, speed, stepping, seeking, import and export operate on that snapshot.
+The replay bar beneath Play combines player recordings, saved solver routes and 77 shared solution replays covering 67 document variants. Library has no replay cards and there is no Replays navigation tab. Remaining solutions are listed in [coverage](SOLUTION_COVERAGE.md). Replay snapshots preserve the recorded maze independently of later edits. Playback, speed, stepping, seeking, import and export operate on that snapshot.
 
 A revisit removes the detour using the copy address, path and physical point. New source/block recordings retain keyboard and mouse walks as well as the exact PDA copy transitions, together with the selected immutable geometry. Undo and restart restore the actual path position. Older gate-only recordings reconstruct their travel between anchors and remain playable. Playback can pause and resume the final movement before its drawn endpoint.
 
