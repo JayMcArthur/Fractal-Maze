@@ -39,7 +39,7 @@ Direct Build, proof-workspace and Alice replay routes, plus their refreshes, pas
 
 The CSP is delivered as HTML because GitHub Pages does not let this repository configure response headers. On a website you control, also use equivalent response headers, `X-Content-Type-Options: nosniff`, and a `frame-ancestors` policy appropriate to whether you want other sites to embed the app. Full security certification, unavailable complexity/mutation metrics and mathematical completeness of the hop rules are not claimed.
 
-Build/deployment guidance follows the [official Vite static-hosting documentation](https://vite.dev/guide/static-deploy.html). See the current [execution plan](AUTHORS_PROOFS_SOLUTIONS_PLAN.md) for verification and remaining solution gaps.
+Build/deployment guidance follows the [official Vite static-hosting documentation](https://vite.dev/guide/static-deploy.html). See the [current SilverBullet plan](http://localhost:8313/yoss/Projects/FractalMaze/Plan) for verification and remaining solution gaps.
 
 ## Unified Play follow-up
 

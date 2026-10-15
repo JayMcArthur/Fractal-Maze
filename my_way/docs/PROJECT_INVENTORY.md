@@ -17,9 +17,9 @@ maze representations. Existing staged changes and reference sources are preserve
 
 ## Earlier notes
 
-- `../../goals.md`: broad product specification for a static web application
+- [Current SilverBullet plan](http://localhost:8313/yoss/Projects/FractalMaze/Plan): current product scope
   with editing, multiple representations, legacy imports, replay, and solvers.
-- `PRODUCT_OVERHAUL.md`: later maze-first interface and capability boundaries.
+- Earlier product and interface plans remain in normal Git history.
 - `../README.md`: current application controls and claimed supported features.
 - `../../readme.md`: historical maze/image catalog and project references.
 - `../../Papers/Fractal_Maze_to_PDA/Fractal_Maze_to_PDA.md`: Jay's maze-to-PDA
@@ -184,7 +184,7 @@ Square solver finds its 566-step route, saves it as a solver replay, and reopens
 it correctly. IDDFS no longer confuses action depth with recursive depth; bounded
 search outcomes are not presented as proof that an infinite maze is unsolvable.
 
-See [the active implementation record](IMPLEMENTATION_PLAN.md), the current
+See [current SilverBullet plan](http://localhost:8313/yoss/Projects/FractalMaze/Plan), the current
 [README](../README.md), and [finished captures](screenshots/finished/index.html).
 The historical screenshots and comparison gallery remain useful before/after
 references. Block solving and geometric editing stay in their original programs;
@@ -206,7 +206,7 @@ port/repeated routes, and file import/export. Builder cell placement, block
 selection, teleporters, metadata undo, and first-save history were repaired.
 Library action alignment and full thumbnails were corrected; Guide was rebuilt.
 
-See [the review and residual plan](REVIEW_PLAN.md) and
+See [current SilverBullet plan](http://localhost:8313/yoss/Projects/FractalMaze/Plan) and
 [review captures](screenshots/review/index.html). Image-only rules, full geometric
 authoring, block walking/solving, and general symbolic PDA execution remain
 explicit limits; no rules were invented from artwork.

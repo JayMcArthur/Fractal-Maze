@@ -1,6 +1,6 @@
 # Source maze conversion inventory
 
-Library groups 74 document variants into 49 maze entries. The bar beneath Play offers 74 shared solutions covering 64 variants. [Solution coverage](SOLUTION_COVERAGE.md) names the remaining seven variants without replays and three unbound Windischer views. All 43 source/reference assets remain available. The original 31 puzzle-artwork assets include 28 bound path/PDA views and three unfinished Windischer conversions. Backlot adds a constrained source-grid player; Omeometo’s exact image is linked to its recursive block player. Berkly remains a crossing candidate. [The active completion plan](COMPLETE_MAZES_PLAN.md) tracks the remaining model, source and proof work.
+Library groups 74 document variants into 49 maze entries. The bar beneath Play offers 74 shared solutions covering 64 variants. [Solution coverage](SOLUTION_COVERAGE.md) names the remaining seven variants without replays and three unbound Windischer views. All 43 source/reference assets remain available. The original 31 puzzle-artwork assets include 28 bound path/PDA views and three unfinished Windischer conversions. Backlot adds a constrained source-grid player; Omeometo’s exact image is linked to its recursive block player. Berkly remains a crossing candidate. [current SilverBullet plan](http://localhost:8313/yoss/Projects/FractalMaze/Plan) tracks the remaining model, source and proof work.
 
 All source conversions stay **WIP** for Jay’s visual and interpretation review. A bound route is executable; it does not certify that every crossing interpretation or image alignment is correct. Research diagrams are reference workspaces, not invented puzzles.
 
@@ -71,7 +71,7 @@ Berkly’s candidate is navigable but its crossing rule is awaiting review. Wind
 
 New source/block replays record physical keyboard and pointer walks, exact copy-transition witnesses and their selected immutable artwork. Older gate-only recordings reconstruct their original anchor travel. Switching between a source drawing and its generated block display projects the full live history and retains the PDA path/address. Four source/authored-corridor pairs also share their checked PDA; selecting a different document starts a new run.
 
-[Source status data](SOURCE_MAZE_STATUS.json) records the actual catalog state. [Execution plan](PLAYABLE_ARTWORK_PLAN.md), [product flows](PRODUCT_FLOWS.md), [upstream refresh](UPSTREAM_REFRESH.md), and [source screenshots](screenshots/playable/index.html) track the remaining work.
+[Source status data](SOURCE_MAZE_STATUS.json) records the actual catalog state. [current SilverBullet plan](http://localhost:8313/yoss/Projects/FractalMaze/Plan), [product flows](PRODUCT_FLOWS.md), [upstream refresh](UPSTREAM_REFRESH.md), and [source screenshots](screenshots/playable/index.html) track the remaining work.
 
 October 10 source-player correction: Alice now renders at its native 1452×1452 coordinate space, and First Cantor includes its filled blue finish junction. Redundant geometric remake views are removed from defaults. See [source playability checks](SOURCE_PLAYABILITY.md).
 
