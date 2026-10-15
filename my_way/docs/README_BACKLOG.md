@@ -43,7 +43,10 @@ The committed three-register example `3dcp.maze` omits its boundary sections. Ru
 
 All 31 original `Maze_Images` files are covered by reference records. Geocaching’s `#` is removed only from the URL-safe asset filename; its original source path is preserved.
 
-## Unfinished conversion and WIP review
+## Source Interpretation Reference
+
+Current implementation tasks and block-only scope live in the
+[SilverBullet plan](http://localhost:8313/yoss/Projects/FractalMaze/Plan). The following observations preserve source evidence.
 
 Windischer's playable conversion remains in scope. Jay's instruction to skip one image mapping applied to v6. Windischer's travel surface and homologous layer gates remain unconfirmed; its three artwork views and conversion workspaces are retained. Berkly's colored and black wires are bound, but its crossing rule still needs review; the delivered WIP separate-wire candidate has no finite witness. Neither is presented as a verified source-maze proof.
 

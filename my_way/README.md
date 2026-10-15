@@ -4,6 +4,12 @@ A local-first React/TypeScript application for recursive mazes. It uses the orig
 programs in this repository as geometry and movement references, with a shared
 library, imports, exports, and browser persistence.
 
+## Planning
+
+Current plans, tickets and handoffs live in [SilverBullet](http://localhost:8313/yoss/Projects/FractalMaze/Plan).
+From this checkout, run `workspace notes context` and `workspace notes plan`.
+Build instructions, formats and source references remain in this repository.
+
 ## Run
 
 ```bash
@@ -105,9 +111,7 @@ all three production solver workers, normal movement without a field flash, firs
 notes, and baseline failures. [Finished screenshot gallery](docs/screenshots/finished/index.html)
 contains 30 captures, including every bundled corridor and geometric maze.
 [Latest review screenshots](docs/screenshots/review/index.html) show the updated library, guide, builder, and new maze families.
-[PDA conversion inventory](docs/PDA_CONVERSIONS.md) identifies which drafts need gate/crossing review. [Workbench screenshots](docs/screenshots/workbench/index.html) show tracing, proof construction and phone layouts. [Workbench plan](docs/PDA_WORKBENCH_PLAN.md) and [fresh residual audit](docs/PDA_RESIDUAL_PLAN.md) record this implementation.
-[Original implementation plan and residual audit](docs/IMPLEMENTATION_PLAN.md) record scope
-and verification.
+[PDA conversion inventory](docs/PDA_CONVERSIONS.md) identifies which drafts need gate/crossing review. [Workbench screenshots](docs/screenshots/workbench/index.html) show tracing, proof construction and phone layouts. The [current SilverBullet plan](http://localhost:8313/yoss/Projects/FractalMaze/Plan) tracks remaining work; the linked checks record implementation evidence.
 
 ## Limits
 
@@ -139,7 +143,7 @@ site data removes those records; exported files remain independent artifacts.
 
 [Unified Play report](docs/UNIFIED_PLAY.md) records the shared movement model, maze-local replay bar, combined solver, Home and final verification. [Current screenshots](docs/screenshots/play-refinement/index.html).
 
-Checked claims are now usable in live source/block Play and physical replay recording. [Live proof checks](docs/LIVE_PROOF_CHECKS.json) record manual construction, saved playback and the 32 previously finite-unreachable Cantor gate checks. The full maze/model/source completion work remains in [the active plan](docs/COMPLETE_MAZES_PLAN.md).
+Checked claims are now usable in live source/block Play and physical replay recording. [Live proof checks](docs/LIVE_PROOF_CHECKS.json) record manual construction, saved playback and the 32 previously finite-unreachable Cantor gate checks. The full maze/model/source completion work remains in [current SilverBullet plan](http://localhost:8313/yoss/Projects/FractalMaze/Plan).
 
 The geometric cutover covers all twelve import templates and both remaining catalog originals; [checks](docs/GEOMETRIC_PDA_CHECKS.json) record 24,442 native move correspondences, 312 unit tests and 99 production browser workflows. Home’s exact Alice preview now loads 450 KB of decoded JavaScript instead of 3.7 MB; [startup checks](docs/HOME_STARTUP_CHECKS.json) preserve the identical canvas hash and final 31-workflow/56-hosting checks. Library and Play data loading remain in the active completion plan.
 
