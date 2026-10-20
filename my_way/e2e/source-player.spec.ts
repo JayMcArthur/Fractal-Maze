@@ -264,6 +264,11 @@ test('unfinished mazes show an image and WIP in Play from cards and saved projec
   await expect(page).toHaveURL(/play\//)
 
   await page.goto('library')
+  await saved.getByRole('link', { name: 'Edit draft', exact: true }).click()
+  await expect(page).toHaveURL(/workbench\//)
+  await expect(page.getByRole('heading', { name: 'Unfinished wire drawing', exact: true })).toBeVisible()
+
+  await page.goto('library')
   const ready = page.locator('.library-card').filter({ has: page.getByRole('heading', { name: 'Skeptic Play 1', exact: true }) })
   await ready.getByRole('link', { name: 'Play', exact: true }).click()
   await expect(page.locator('.maze-stage canvas')).toBeVisible()
