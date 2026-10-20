@@ -9,7 +9,6 @@ import type { PathPlayFrame } from '../../core/play/pathSession'
 export function PathMazeDrawing({
   model,
   artwork,
-  blockArtwork,
   busy,
   current,
   arrivalEdges,
@@ -20,12 +19,10 @@ export function PathMazeDrawing({
   controls,
   onWalk,
   motionPaused,
-  onArtworkChange,
   frame,
 }: {
   model: PathMazeDefinition
   artwork?: MazeArtwork
-  blockArtwork?: MazeArtwork
   busy?: boolean
   current?: PathState
   arrivalEdges?: string[]
@@ -37,7 +34,6 @@ export function PathMazeDrawing({
   onWalk?: (points: ArtworkPoint[]) => void
   frame?: PathPlayFrame
   motionPaused?: boolean
-  onArtworkChange?: (artwork: MazeArtwork) => void
 }) {
   const physical = artwork && current &&
     (artwork.gates?.length || artwork.blockSize) &&
@@ -47,7 +43,6 @@ export function PathMazeDrawing({
       {physical ? (
         <SourceRouteCanvas
           artwork={artwork}
-          blockArtwork={blockArtwork}
           busy={busy}
           model={model}
           current={current}
@@ -58,7 +53,6 @@ export function PathMazeDrawing({
           animationMs={animationMs}
           controls={controls}
           onWalk={onWalk}
-          onArtworkChange={onArtworkChange}
           motionPaused={motionPaused}
           frame={frame}
         />

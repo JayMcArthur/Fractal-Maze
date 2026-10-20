@@ -1,5 +1,5 @@
 import { SourceRouteDrawing } from './SourceRouteDrawing'
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useState, type ReactNode } from 'react'
 import type { MazeArtwork, PathMazeDefinition, PathState } from '../../core/model/pathMaze'
 import {
   artworkRoute,
@@ -17,13 +17,12 @@ import { walkSource, sourceGateDirection } from '../../core/play/sourceWalking'
 import { keyToDirection } from '../player/movementKeys'
 import type { DirectionBit } from '../../core/model/squareRecursive'
 import { artworkDisplayGeometry } from '../../core/pathMaze/artworkDisplayGeometry'
-import { blockCamera, createBlockArtwork } from '../../core/play/blockArtwork'
+import { blockCamera } from '../../core/play/blockArtwork'
 import { usePathMotion } from './usePathMotion'
 import { pathCrossing, type PathPlayFrame } from '../../core/play/pathSession'
 
 export function SourceRouteCanvas({
-  artwork: sourceArtwork,
-  blockArtwork,
+  artwork,
   busy = false,
   model,
   current,
@@ -32,14 +31,12 @@ export function SourceRouteCanvas({
   onMotionChange,
   onVisibleStateChange,
   onWalk,
-  onArtworkChange,
   controls,
   motionPaused = false,
   animationMs = 500,
   frame,
 }: {
   artwork: MazeArtwork
-  blockArtwork?: MazeArtwork
   busy?: boolean
   model: PathMazeDefinition
   current: PathState
@@ -49,14 +46,11 @@ export function SourceRouteCanvas({
   onVisibleStateChange?: (state: PathState) => void
   onWalk?: (points: ArtworkPoint[]) => void
   frame?: PathPlayFrame
-  onArtworkChange?: (artwork: MazeArtwork) => void
   controls?: ReactNode
   motionPaused?: boolean
   animationMs?: number
 }) {
-  const [corridors, setCorridors] = useState(!!sourceArtwork.blockSize || !!onMove)
-  const blocks = useMemo(() => blockArtwork ?? createBlockArtwork(sourceArtwork, model), [blockArtwork, sourceArtwork, model])
-  const artwork = corridors ? blocks : sourceArtwork
+  const corridors = !!artwork.blockSize
   const [localView, setLocalView] = useState(true)
   const [notice, setNotice] = useState('')
   const { marker, markerRef, walking } = usePathMotion({ artwork, model, current,
@@ -171,12 +165,8 @@ export function SourceRouteCanvas({
         }}
       />
       <SourcePlayControls notice={notice} walking={busy || walking} playable={!!onMove}
-        canChangeLayout={!!onArtworkChange}
-        blocks={corridors} sourceAsset={sourceArtwork.asset} localView={localView}
-        onStyleChange={next => {
-          setCorridors(next)
-          onArtworkChange?.(next ? blocks : sourceArtwork)
-        }} onLocalViewChange={setLocalView} onDirection={walk} controls={controls} />
+        blocks={corridors} localView={localView}
+        onLocalViewChange={setLocalView} onDirection={walk} controls={controls} />
     </div>
   )
 }

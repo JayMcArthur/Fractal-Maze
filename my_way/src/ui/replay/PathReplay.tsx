@@ -3,7 +3,8 @@ import type { NativeRoute } from '../../core/replay/nativeReplay'
 import type { ReplayDocument } from '../../core/replay/ReplayDocument'
 import type { PathMazeDefinition, ProofStep } from '../../core/model/pathMaze'
 import type { PathPlayFrame } from '../../core/play/pathSession'
-import { stateLabel } from '../../core/pathMaze/traversal'
+import { stateLabel, reachesGoal, sameState } from '../../core/pathMaze/traversal'
+import { pathArrivalPoint } from '../../core/play/pathGeometry'
 import { checkedClaims, declaredConnections } from '../../core/pathMaze/proofs'
 import { PathMazeDrawing } from '../workbench/PathMazeDrawing'
 import { SavedProofEvidence } from '../workbench/SavedProofEvidence'
@@ -15,6 +16,7 @@ export function PathReplay({
   doc,
   route,
   step,
+  animateStep,
   speed,
   onSourceMotion,
   motionPaused,
@@ -22,6 +24,7 @@ export function PathReplay({
   doc: ReplayDocument
   route: PathRecording
   step: number
+  animateStep: boolean
   speed: number
   onSourceMotion: (moving: boolean) => void
   motionPaused: boolean
@@ -40,6 +43,17 @@ export function PathReplay({
     }
   }, [route, step])
   const model = doc.maze.definition as PathMazeDefinition
+  const artwork = doc.playArtwork ?? doc.maze.artwork
+  const drawingFrame = useMemo<PathPlayFrame | undefined>(() => {
+    if (animateStep) return frame
+    if (frame) return { position: frame.position }
+    const state = route.states[step]
+    if (!artwork?.traces.some(trace => trace.path === state.path)) return undefined
+    const finish = artwork.finishes?.find(finish => sameState(finish.state, state))?.point ?? artwork.goal
+    const point = reachesGoal(model, state) && finish ? finish
+      : pathArrivalPoint(artwork, model, state, step ? route.edges[step - 1] : undefined)
+    return { position: { state, point } }
+  }, [frame, animateStep, artwork, model, route, step])
   return (
     <div className="path-replay">
       <p className="format-status">
@@ -47,9 +61,9 @@ export function PathReplay({
       </p>
       <PathMazeDrawing
         model={doc.maze.definition as PathMazeDefinition}
-        artwork={doc.playArtwork ?? doc.maze.artwork}
+        artwork={artwork}
         current={frame?.position.state ?? route.states[step]}
-        frame={frame}
+        frame={drawingFrame}
         arrivalEdges={arrivalEdges}
         animationMs={500 / speed}
         onMotionChange={onSourceMotion}

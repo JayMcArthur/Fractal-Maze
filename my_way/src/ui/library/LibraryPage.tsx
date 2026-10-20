@@ -6,10 +6,13 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { mazeCatalog, viewsForMaze } from '../../app/library/mazeViews'
 import { authorCollections } from '../../app/library/authorCollections'
-import { listProjects, listSolves } from '../../app/projects/db'
+import { saveProject, listProjects, listSolves } from '../../app/projects/db'
 import type { ProjectRecord, SolveRecord } from '../../app/projects/db'
 import { ImportDialog } from '../components/ImportDialog'
 import { NavBar } from '../components/NavBar'
+import { MazeCoverPicker } from '../components/MazeCoverPicker'
+import { loadMazeDocument } from '../../app/projects/loadMazeDocument'
+import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
 
 
 export function LibraryPage() {
@@ -23,6 +26,18 @@ export function LibraryPage() {
   const [solves, setSolves] = useState<SolveRecord[]>([])
   const [projects, setProjects] = useState<ProjectRecord[]>([])
   const navigate = useNavigate()
+  const [coverDoc, setCoverDoc] = useState<RecursiveMazeDocument>()
+  const [coverError, setCoverError] = useState('')
+  const openCover = async (id: string) => {
+    setCoverError('')
+    try {
+      const doc = await loadMazeDocument(id)
+      if (!doc) throw new Error('This maze is unavailable.')
+      setCoverDoc(doc)
+    } catch (failure) {
+      setCoverError(failure instanceof Error ? failure.message : 'Could not open maze.')
+    }
+  }
 
   useEffect(() => {
     void listProjects().then(setProjects)
@@ -84,7 +99,7 @@ export function LibraryPage() {
             <p className="maze-kicker">Maze collection / {mazeCatalog.length} mazes</p>
             <h1>Choose your maze.</h1>
             <p>
-              Browse by author, then choose a maze and its drawing or remake.
+              Browse by author, then choose a maze and its block layout.
             </p>
           </div>
           <div className="library-heading__stats" aria-label="Library progress">
@@ -101,6 +116,7 @@ export function LibraryPage() {
           </div>
         </header>
 
+        {coverError && <p role="alert">{coverError}</p>}
         <div className="collection-tabs" aria-label="Library collections">
           <button
             className={collection === 'mazes' ? 'control control--primary' : 'control'}
@@ -205,6 +221,7 @@ export function LibraryPage() {
               <div className="library-grid">{group.entries.map((entry) => (
               <MazeCard
                 key={entry.id}
+                onCoverClick={() => { void openCover(entry.id) }}
                 entry={entry}
                 solve={solveMap.get(entry.id)}
                 savedDoc={projectMap.get(entry.id)}
@@ -239,6 +256,7 @@ export function LibraryPage() {
               {savedProjects.map((project) => (
                 <MazeCard
                   key={project.id}
+                  onCoverClick={() => { void openCover(project.id) }}
                   savedDoc={project.doc}
                   entry={{
                     id: project.id,
@@ -257,6 +275,24 @@ export function LibraryPage() {
 
       </main>
 
+      {coverDoc && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+          <div role="dialog" aria-modal="true" aria-label={`Cover for ${coverDoc.metadata.title}`}
+            className="bg-gray-800 rounded-xl w-full max-w-lg p-6">
+            <MazeCoverPicker cover={coverDoc.metadata.cover} onChange={cover =>
+              setCoverDoc({ ...coverDoc, metadata: { ...coverDoc.metadata, cover } })} />
+            <div className="button-row">
+              <button className="control" onClick={() => setCoverDoc(undefined)}>Cancel</button>
+              <button className="control control--primary" onClick={() => {
+                void saveProject({ ...coverDoc, metadata: { ...coverDoc.metadata, updatedAt: new Date().toISOString() } })
+                  .then(() => listProjects()).then(setProjects).then(() => setCoverDoc(undefined))
+                  .catch((failure: Error) => setCoverError(failure.message))
+              }}>Save cover</button>
+            </div>
+            {coverError && <p role="alert">{coverError}</p>}
+          </div>
+        </div>
+      )}
       {showImport && (
         <ImportDialog
           onImport={(doc) => {

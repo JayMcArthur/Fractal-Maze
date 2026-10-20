@@ -1,0 +1,56 @@
+import { test, expect } from './fixtures'
+import { readFileSync } from 'node:fs'
+
+const id = 'draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png'
+const image = { name: 'cover.svg', mimeType: 'image/svg+xml', buffer: Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100"><rect fill="teal" width="200" height="100"/></svg>') }
+
+for (const width of [1440, 390]) test(`cover editing preserves the maze and survives storage and export at ${width}px`, async ({ page }) => {
+  await page.setViewportSize({ width, height: 900 })
+  await page.goto(`workbench/${id}`)
+  const download = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Export workbench', exact: true }).click()
+  const original = JSON.parse(readFileSync((await (await download).path())!, 'utf8'))
+  await page.getByLabel('Choose cover image', { exact: true }).setInputFiles(image)
+  await expect(page.getByAltText('Custom maze cover')).toBeVisible()
+  await page.getByRole('button', { name: 'Save workbench', exact: true }).click()
+  await expect(page.getByRole('status')).toContainText('Saved to library')
+  await page.reload()
+  await expect(page.getByAltText('Custom maze cover')).toBeVisible()
+  const exported = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Export workbench', exact: true }).click()
+  const file = (await (await exported).path())!
+  const saved = JSON.parse(readFileSync(file, 'utf8'))
+  expect(saved.metadata.cover).toMatch(/^data:image\/svg\+xml;base64,/)
+  expect(saved.metadata.id).toBe(original.metadata.id)
+  expect(saved.definition).toEqual(original.definition)
+  expect(saved.artwork).toEqual(original.artwork)
+  await page.goto('library')
+  const card = page.locator('.library-card').filter({ has: page.getByRole('heading', { name: original.metadata.title, exact: true }) })
+  await expect(card.locator('img')).toHaveAttribute('src', saved.metadata.cover)
+  await card.getByRole('button', { name: 'Cover image', exact: true }).click()
+  const dialog = page.getByRole('dialog')
+  await dialog.getByRole('button', { name: 'Remove cover', exact: true }).click()
+  await dialog.getByRole('button', { name: 'Save cover', exact: true }).click()
+  await expect(dialog).toHaveCount(0)
+  await card.getByRole('button', { name: 'Cover image', exact: true }).click()
+  await expect(page.getByAltText('Custom maze cover')).toHaveCount(0)
+  await page.getByRole('button', { name: 'Cancel', exact: true }).click()
+  await page.getByRole('button', { name: 'Import maze', exact: true }).click()
+  await page.locator('input[type=file]').setInputFiles(file)
+  await page.getByRole('button', { name: 'Load Maze', exact: true }).click()
+  await expect(page.getByLabel('Display style')).toHaveCount(0)
+  await expect(page.locator('.source-artwork > .block-maze-artwork')).toBeVisible()
+  await page.goto('library')
+  await expect(card.locator('img')).toHaveAttribute('src', saved.metadata.cover)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+})
+
+test('a bad cover upload leaves the existing cover and model intact', async ({ page }) => {
+  await page.goto('workbench/pda-guide-6')
+  await page.getByLabel('Choose cover image', { exact: true }).setInputFiles(image)
+  await expect(page.getByAltText('Custom maze cover')).toBeVisible()
+  const src = await page.getByAltText('Custom maze cover').getAttribute('src')
+  await page.getByLabel('Choose cover image', { exact: true }).setInputFiles({ name: 'broken.png', mimeType: 'image/png', buffer: Buffer.from('not an image') })
+  await expect(page.getByRole('alert')).toContainText('Could not open')
+  await expect(page.getByAltText('Custom maze cover')).toHaveAttribute('src', src!)
+})

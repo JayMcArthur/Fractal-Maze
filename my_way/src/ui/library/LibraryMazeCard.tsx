@@ -17,10 +17,12 @@ export function MazeCard({
   entry,
   solve,
   savedDoc,
+  onCoverClick,
 }: {
   entry: CatalogEntry
   solve?: SolveRecord
   savedDoc?: RecursiveMazeDocument
+  onCoverClick: () => void
 }) {
   const preview = catalogIndex.find((maze) => maze.id === entry.id)?.preview
   const details = savedDoc ? savedCardDetails(savedDoc) : preview!
@@ -33,7 +35,9 @@ export function MazeCard({
   return (
     <article className="library-card">
       <Link to={to} className="library-card__preview">
-        {savedDoc ? (
+        {savedDoc?.metadata.cover ? (
+          <img src={savedDoc?.metadata.cover} alt={title} loading="lazy" />
+        ) : savedDoc ? (
           <CardPreview doc={savedDoc} />
         ) : (
           <img src={assetUrl(preview!.asset)} alt={title} loading="lazy" />
@@ -63,6 +67,7 @@ export function MazeCard({
         details={details}
         saved={!!savedDoc}
         pathModel={pathModel}
+        onCoverClick={onCoverClick}
       />
     </article>
   )
@@ -102,15 +107,18 @@ function MazeCardActions({
   details,
   saved,
   pathModel,
+  onCoverClick,
 }: {
   entry: CatalogEntry
   to: string
   details: ReturnType<typeof savedCardDetails>
   saved: boolean
   pathModel: boolean
+  onCoverClick: () => void
 }) {
   return (
     <div className="library-card__actions">
+      <button className="control" onClick={onCoverClick}>Cover image</button>
       <Link className="control" to={to}>
         {details.playable ? 'Play' : 'Review conversion'}
       </Link>

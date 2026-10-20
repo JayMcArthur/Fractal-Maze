@@ -16,7 +16,6 @@ import {
   pathSessionFinished,
 } from '../core/play/pathSession'
 import { createBlockArtwork } from '../core/play/blockArtwork'
-import { projectPathSession } from '../core/play/pathLayout'
 import { buildNativeReplay } from '../core/replay/nativeReplay'
 import { importReplay } from '../core/replay/importReplay'
 import { pathDocs } from '../app/library/pathCatalog'
@@ -86,14 +85,6 @@ it('uses a checked connection with a visible finish, physical undo and a validat
   expect(imported.nativeRoute).toEqual(replay.nativeRoute)
   expect(imported.metrics.totalMoves).toBe(2)
   expect(sessionPathRoute(session).proofSteps).toEqual([step])
-})
-
-it('retains the same proof and physical history across source/block projection', () => {
-  const blocks = createBlockArtwork(source, model)
-  const session = crossProofSession(initialPathSession(model, source), model, source, step)
-  const projected = projectPathSession(session, source, blocks, model)
-  expect(sessionPathRoute(projected)).toEqual(sessionPathRoute(session))
-  expect(projectPathSession(projected, blocks, source, model)).toEqual(session)
 })
 
 it('rejects stale proofs, invented hypotheses and forged arrival positions', () => {

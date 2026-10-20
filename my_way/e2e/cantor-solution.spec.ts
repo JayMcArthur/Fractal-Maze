@@ -39,7 +39,6 @@ async function playCheckedProof(page: Page, finish: string) {
   await expect(page.getByTestId('source-player-marker')).toBeVisible()
   await page.evaluate(() => window.scrollTo(0, 0))
   await page.screenshot({ path: `docs/screenshots/live-proofs/path-${finish}-blocks.png`, fullPage: true })
-  await page.getByLabel('Display style', { exact: true }).selectOption('source')
   await expect(page.locator('.path-controls [role=status]')).toHaveText('Finish reached.')
   await page.getByRole('button', { name: 'Undo move', exact: true }).click()
   await expect(page.locator('.path-controls [role=status]')).not.toHaveText('Finish reached.')
@@ -125,14 +124,11 @@ test('the original Cantor solution can be constructed using only the notebook co
   await playCheckedProof(page, '12')
 })
 
-test('the restored Infinite Descent branch enters A6 and keeps that state when changing the view', async ({ page }) => {
+test('the restored Infinite Descent block branch enters A6', async ({ page }) => {
   await page.goto('play/proof-maze-images-siggy-infinite-descent-svg')
-  await page.getByLabel('Display style', { exact: true }).selectOption('source')
-  const drawing = page.getByRole('img', { name: 'Playable source maze routes' })
-  await drawing.getByRole('button', { name: 'Enter A to path 6', exact: true }).click()
+  await page.getByRole('button', { name: 'Enter A → path 6', exact: true }).click()
   await expect(page.locator('.digital-hud__metrics > div').filter({ hasText: 'Depth' })).toContainText('1')
   await expect(page.locator('.digital-hud__metrics > div').filter({ hasText: 'Path' })).toContainText('6')
-  await page.getByLabel('Display style', { exact: true }).selectOption({ label: 'Block remake' })
   await expect(page.locator('.digital-hud__metrics > div').filter({ hasText: 'Depth' })).toContainText('1')
   await expect(page.getByTestId('source-player-marker')).toBeVisible()
 })

@@ -12,9 +12,6 @@ import { walkSource } from '../core/play/sourceWalking'
 import { buildNativeReplay, replayStepCount } from '../core/replay/nativeReplay'
 import { importReplay } from '../core/replay/importReplay'
 import { pathDocs } from '../app/library/pathCatalog'
-import { createBlockArtwork } from '../core/play/blockArtwork'
-import { projectPathSession } from '../core/play/pathLayout'
-import { availableMoves } from '../core/pathMaze/traversal'
 import { artworkRoute, distance } from '../core/pathMaze/artworkRoutes'
 import { pathCrossing } from '../core/play/pathSession'
 
@@ -86,32 +83,6 @@ it('cannot cross to another Snuke gate after walking down a one-way branch', () 
   expect(session.positions.at(-1)!.point).toEqual([450, 150])
   expect(pathCrossing(model, art, session.positions.at(-1)!, 'arrow-1')).toBeNull()
   expect(pathCrossing(model, art, session.positions.at(-1)!, 'arrow-0')).not.toBeNull()
-})
-
-it('a block step into a one-way branch cannot join the other branch return wire', () => {
-  const doc = pathDocs.find(doc => doc.metadata.id === 'draft-maze-images-snuke-snuke-2-jpg')!
-  if (doc.definition.type !== 'pathPushdown') throw new Error('Expected Snuke PDA')
-  const model = doc.definition, blocks = createBlockArtwork(doc.artwork!, model)
-  const session = walkPathSession(initialPathSession(model, blocks),
-    walkSource(blocks, model.start!.path, blocks.start!, 1)!)
-  expect(pathCrossing(model, blocks, session.positions.at(-1)!, 'arrow-1')).toBeNull()
-  const projected = projectPathSession(session, blocks, doc.artwork!, model)
-  expect(pathCrossing(model, doc.artwork!, projected.positions.at(-1)!, 'arrow-1')).toBeNull()
-})
-
-it('projects a shared block prefix onto the source branch used by the recorded crossing', () => {
-  const doc = pathDocs.find(doc => doc.metadata.id === 'draft-maze-images-snuke-snuke-1-jpg')!
-  if (doc.definition.type !== 'pathPushdown') throw new Error('Expected Snuke PDA')
-  const model = doc.definition, blocks = createBlockArtwork(doc.artwork!, model)
-  let session = initialPathSession(model, blocks)
-  for (const edge of ['arrow-0', 'arrow-7', 'arrow-6'])
-    session = crossPathSession(session, model, blocks, edge)
-  const current = session.positions.at(-1)!
-  session = walkPathSession(session, walkSource(blocks, current.state.path, current.point!, 4)!)
-  session = crossPathSession(session, model, blocks, 'arrow-5')
-  expect(session.positions.at(-1)!.state.path).toBe('2')
-  const projected = projectPathSession(session, blocks, doc.artwork!, model)
-  expect(sessionPathRoute(projected)).toEqual(sessionPathRoute(session))
 })
 
 it('undo and restart retain the actual physical position before any gate crossing', () => {
@@ -253,113 +224,6 @@ it('a route ending at a stroke junction does not take an extra trip along the ot
   const route = artworkRoute(junction, '1', [120, 90], [120, 100])!
   expect(route.slice(1).reduce((sum, point, i) => sum + distance(route[i], point), 0)).toBe(10)
 })
-
-it('bound sources and blocks preserve their logical history and validate their physical first moves', () => {
-  for (const doc of pathDocs) {
-    if (
-      !doc.artwork?.gates?.length ||
-      (doc.definition.type !== 'pathPushdown' && doc.definition.type !== 'infiniteRule') ||
-      !doc.definition.start
-    )
-      continue
-    const source = doc.artwork,
-      model = doc.definition
-    const blocks = createBlockArtwork(source, model)
-    for (const artwork of [source, blocks]) {
-      let physical = initialPathSession(model, artwork)
-      const first = physical.positions[0]
-      const directions = [1, 2, 4, 8] as const
-      const walking = directions
-        .map((direction) => walkSource(artwork, first.state.path, first.point!, direction))
-        .find(Boolean)
-      if (walking) physical = walkPathSession(physical, walking)
-      const edge = availableMoves(model, physical.positions.at(-1)!.state)[0]?.edge
-      if (edge) physical = crossPathSession(physical, model, artwork, edge.id)
-      const replay = buildNativeReplay(
-        doc,
-        { type: model.type, ...sessionPathRoute(physical), physical },
-        'human',
-        false
-      )
-      replay.playArtwork = artwork
-      expect(() => importReplay(JSON.stringify(replay)), doc.metadata.id).not.toThrow()
-      const other = artwork === source ? blocks : source
-      const projected = projectPathSession(physical, artwork, other, model)
-      expect(sessionPathRoute(projected), doc.metadata.id).toEqual(sessionPathRoute(physical))
-      expect(projected.moves.filter((move) => move.kind === 'walk').length, doc.metadata.id).toBe(
-        physical.moves.filter((move) => move.kind === 'walk').length
-      )
-      const switchedReplay = buildNativeReplay(
-        doc,
-        { type: model.type, ...sessionPathRoute(projected), physical: projected },
-        'human',
-        false
-      )
-      switchedReplay.playArtwork = other
-      expect(
-        () => importReplay(JSON.stringify(switchedReplay)),
-        `${doc.metadata.id} switched`
-      ).not.toThrow()
-    }
-    const edge = availableMoves(model, model.start)[0]?.edge
-    if (!edge) continue
-    const physical = crossPathSession(initialPathSession(model, source), model, source, edge.id)
-    const projected = projectPathSession(physical, source, blocks, model)
-    expect(sessionPathRoute(projected), doc.metadata.id).toEqual(sessionPathRoute(physical))
-    expect(projectPathSession(projected, blocks, source, model), doc.metadata.id).toEqual(physical)
-  }
-}, 10000)
-
-it('longer bound-maze histories keep every PDA witness when switching their physical layout', () => {
-  for (const doc of pathDocs) {
-    if (
-      !doc.artwork?.gates?.length ||
-      (doc.definition.type !== 'pathPushdown' && doc.definition.type !== 'infiniteRule') ||
-      !doc.definition.start
-    )
-      continue
-    const model = doc.definition,
-      source = doc.artwork,
-      blocks = createBlockArtwork(source, model)
-    for (const artwork of [source, blocks]) {
-      let physical = initialPathSession(model, artwork)
-      for (let step = 0; step < 4; step++) {
-        const current = physical.positions.at(-1)!
-        if (pathSessionFinished(model, artwork, current)) break
-        expect(current.point, doc.metadata.id).toBeDefined()
-        const gates = availableMoves(model, current.state)
-        const stops = gates.flatMap(
-          ({ edge }) =>
-            artwork.gates?.filter((gate) => gate.edge === edge.id).map((gate) => gate.from) ?? []
-        )
-        const walking = ([1, 2, 4, 8] as const)
-          .map((direction) =>
-            walkSource(artwork, current.state.path, current.point!, direction, stops)
-          )
-          .find(Boolean)
-        if (walking) physical = walkPathSession(physical, walking)
-        if (!gates.length) break
-        physical = crossPathSession(physical, model, artwork, gates[step % gates.length].edge.id)
-      }
-      const other = artwork === source ? blocks : source
-      const projected = projectPathSession(physical, artwork, other, model)
-      expect(sessionPathRoute(projected), doc.metadata.id).toEqual(sessionPathRoute(physical))
-      for (const [layout, history] of [
-        [artwork, physical],
-        [other, projected],
-      ] as const) {
-        const replay = buildNativeReplay(
-          doc,
-          { type: model.type, ...sessionPathRoute(history), physical: history },
-          'human',
-          false
-        )
-        replay.playArtwork = layout
-        expect(() => importReplay(JSON.stringify(replay)), doc.metadata.id).not.toThrow()
-      }
-    }
-  }
-}, 20000)
 
 it('touching block corridors on one PDA path form a junction at an interior crossing', () => {
   const blocks = {

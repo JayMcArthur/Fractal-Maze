@@ -13,11 +13,17 @@ Build instructions, formats and source references remain in this repository.
 ## Run
 
 ```bash
-npm install
-npm run dev
+nix develop path:. --command npm ci
+nix develop path:. --command npm run dev
 ```
 
-Open the Vite URL at `/Fractal-Maze/`. The application opens on Home. Bound source mazes open their block remake in Play; their original drawings remain selectable and serve as covers.
+On NixOS, run these commands from `my_way`; the locked shell provides Node 22.23.3, Chromium and the Python tools used for offline checks. Prefix test/build commands with `nix develop path:. --command` too. Other hosts can install the exact Node version in `.node-version`, then use `npm ci`. CI reads that same version file.
+
+Open the Vite URL at `/Fractal-Maze/`. The application opens on Home. All new path-maze runs use block controls. Original drawings remain references and Library covers; immutable older replays keep their recorded layout.
+
+## Maze covers
+
+Choose **Cover image** on any Library maze card, then upload and save an image. Build also has a cover picker. Covers are stored in `.fmaze` metadata and browser storage; they do not replace the movement artwork, rules, start, finish or maze ID. Remove the custom cover to restore the default preview. SVG, PNG, JPEG, WebP and GIF files up to 5 MB are supported.
 
 ## What works
 
@@ -34,7 +40,7 @@ The library groups 74 document variants into 49 maze entries by author, with sel
 | Recursive ports | Shared PDA-backed block movement for bundled and imported rules, including copy replacement and root changes | Import canonical definitions | Exact balanced PDA search or bounded stack BFS; verified Koteitan route; maze-local replays |
 | Path-labeled PDA | Source artwork, connected-path highlights, explicit copy stack, manual traversal | Source-coordinate SVG/raster tracing, connected paths, frames, directed transitions and endpoints | Bounded BFS, supplied guide inputs, saved full/partial replays |
 | Infinite/Cantor rules | Original source SVGs and finite movement | Empty proof notebook: choose claims, build witnesses, add joint Cantor hypotheses and reuse checked lemmas | Explicit proof checking under the selected movement rules |
-| Wolf wire maze | Shared PDA block/source movement, copy depth, undo and physical replay playback | Inspect the compiled model in Build; original-format export retained | Balanced PDA search and eleven named source solutions |
+| Wolf wire maze | Shared PDA block movement, copy depth, undo and physical replay playback | Inspect the compiled model in Build; original-format export retained | Balanced PDA search and eleven named source solutions |
 
 `.fmaze` preserves each native definition. Orel `.maze`, Koteitan block JSON,
 Amurielagi `FRACTAL-MAZE.v2` collections, and repeated directed-port text import
@@ -45,7 +51,7 @@ Replays include an immutable maze snapshot. Choose shared solutions or saved rec
 in the bar beneath the maze in Play. Play/pause, step, seek, adjust speed, export or
 import `.fmaze-solution.json` files there. Solver results open in the same player.
 Shared choices use a small index; a recording loads only when selected.
-The 76 bundled solutions cover 66 document variants; Wolf's eleven original solutions
+The 77 bundled solutions cover 67 document variants; Wolf's eleven original solutions
 now use the shared physical replay player. [Coverage](docs/SOLUTION_COVERAGE.md) records remaining gaps.
 The cp3-3 and compiled three-register examples have source-checked solutions of about 1.23 million moves each, stored as compact translated patterns. Regenerate them with `python scripts/prepare-register-solutions.py`; their atomic start/finish use the origin.
 After changing catalog definitions or solution fixtures, regenerate the published
@@ -57,7 +63,7 @@ their current document.
 
 **Solve & analyze** combines title/author search, author/type filters, view selection,
 PDA simplification, balanced copy search, grid BFS/IDDFS and manual proof construction.
-Source drawings support keyboard/touch walking, stopping at junctions and copy gates.
+Block layouts support keyboard/touch walking, stopping at junctions and copy gates.
 Alice, Square, Microchip and Inner Frame have verified source/corridor PDA mappings.
 
 Orel controls: arrows, WASD, IJKL, or the on-screen buttons to move; Z to undo;
@@ -74,7 +80,7 @@ an SVG/raster drawing or select another source layout without replacing the PDA.
 
 **Save workbench** preserves the model, artwork, review notes and unfinished proof.
 **Export workbench** creates a complete `.fmaze`; **Export PDA** creates its finite
-transition specification. **Play** provides source walking and explicit stack movement. **Solve & analyze** provides
+transition specification. **Play** provides block walking and recursive copy movement. **Solve & analyze** provides
 finite-route search and guide-input replay. A rejected input retains its last legal
 route for inspection and saves as a partial replay when it has not reached the goal.
 
@@ -139,7 +145,7 @@ site data removes those records; exported files remain independent artifacts.
 
 [Upstream additions and what we adopted](docs/UPSTREAM_CHANGELOG.md) lists all ten refreshed programs. [Static hosting and security](docs/STATIC_HOSTING.md) covers GitHub Pages and website deployment. [Current review gallery](docs/screenshots/authors-proofs/index.html) shows author collections, Build and proof replay.
 
-[Source image playability audit](docs/SOURCE_PLAYABILITY.md) records the Alice pixel-space correction, SVG finish-junction fix and every tested source player. Duplicate geometric remake views are removed; Home opens Alice in its block view; both views remain selectable.
+[Source image playability audit](docs/SOURCE_PLAYABILITY.md) records the Alice pixel-space correction, SVG finish-junction fix and every tested source player. Duplicate geometric remake views are removed; Home opens Alice in its block view. New runs use blocks.
 
 [Unified Play report](docs/UNIFIED_PLAY.md) records the shared movement model, maze-local replay bar, combined solver, Home and final verification. [Current screenshots](docs/screenshots/play-refinement/index.html).
 

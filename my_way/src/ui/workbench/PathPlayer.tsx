@@ -21,8 +21,8 @@ export function PathPlayer({
   children?: ReactNode
 }) {
   const playable = useMemo(() => rulePlayDocument(doc) ?? doc, [doc])
-  const { session, frame, route, animating, current, shown, finished, playArtwork, blockArtwork, availableEdges, proofMoves, useProof,
-    onWalk, onArtworkChange, move, undo, reset, markSaved, setAnimating, setVisibleState } = usePathSession(playable, model)
+  const { session, frame, route, animating, current, shown, finished, playArtwork, availableEdges, proofMoves, useProof,
+    onWalk, move, undo, reset, markSaved, setAnimating, setVisibleState } = usePathSession(playable, model)
   const pathLabel = model.paths.find((path) => path.id === shown?.path)?.label
   const address = shown ? copyAddress(model, shown) : []
   return (
@@ -54,8 +54,7 @@ export function PathPlayer({
         <div className="path-player__drawing player-field">
           <PathMazeDrawing
             model={model}
-            artwork={playable.artwork}
-            blockArtwork={blockArtwork}
+            artwork={playArtwork}
             busy={animating}
             current={current}
             frame={frame}
@@ -63,7 +62,6 @@ export function PathPlayer({
             onMotionChange={setAnimating}
             onVisibleStateChange={setVisibleState}
             onWalk={onWalk}
-            onArtworkChange={onArtworkChange}
             controls={
               <>
                 <PathMoveChoices

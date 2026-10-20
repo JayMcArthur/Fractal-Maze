@@ -24,12 +24,12 @@ describe('catalog experience', () => {
 
   it('keeps requested Wolfram views and excludes superseded player presentations', () => {
     expect(viewsForMaze('microchip').map((view) => view.label)).toEqual([
-      'Photograph',
+      'Photograph-derived blocks',
       'Block remake',
     ])
     expect(
       viewsForMaze('draft-maze-images-mark-j-p-wolf-wolfram-1-gif').map((view) => view.label)
-    ).toEqual(['Source drawing'])
+    ).toEqual(['Source-derived blocks'])
     expect(
       mazeCatalog.some((entry) =>
         ['ports-snuke_no3', 'ports-snuke_no4', 'wolf-wire-original'].includes(

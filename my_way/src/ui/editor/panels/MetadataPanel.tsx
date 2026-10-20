@@ -1,3 +1,4 @@
+import { MazeCoverPicker } from '../../components/MazeCoverPicker'
 import type { RecursiveMazeDocument } from '../../../core/model/RecursiveMazeDocument'
 import type { useEditorStore } from '../../../app/store/editorSlice'
 
@@ -13,6 +14,7 @@ export function MetadataPanel({ doc, store }: MetadataPanelProps) {
 
   return (
     <div className="flex flex-col gap-3 text-sm">
+      <MazeCoverPicker cover={metadata.cover} onChange={cover => store.updateMetadata({ cover })} />
       <label className="flex flex-col gap-1">
         <span className="text-gray-300 font-semibold">Title</span>
         <input

@@ -24,18 +24,18 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version-file: my_way/.node-version
           cache: npm
           cache-dependency-path: my_way/package-lock.json
       - run: npm ci
       - run: npm audit --omit=dev
       - run: npm run lint
-      - run: npm test
+      - run: npm test -- --maxWorkers=2
       - run: npm run build
       - name: Install browser
         run: npx playwright install --with-deps chromium
       - name: Browser workflows
-        run: npm run test:browser
+        run: npm run test:browser -- --workers=2
       - uses: actions/upload-pages-artifact@v3
         with:
           path: my_way/dist

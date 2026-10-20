@@ -1,21 +1,22 @@
 import { test, expect } from './fixtures'
 
-test('the first key after a layout change records the walk that is shown', async ({ page }) => {
+test('the first block key records the walk that is shown', async ({ page }) => {
   await page.clock.install({ time: new Date('2026-10-10T12:00:00Z') })
   await page.goto('play/draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png')
   await expect(page.getByTestId('source-player-marker')).toBeVisible()
   await page.clock.pauseAt(new Date('2026-10-10T12:01:00Z'))
-  await page.getByLabel('Display style').selectOption('source')
-  await expect(page.getByTestId('source-player-marker')).toHaveAttribute('cx', '266')
+  const marker = page.getByTestId('source-player-marker')
+  const initial = [await marker.getAttribute('cx'), await marker.getAttribute('cy')]
   await page.keyboard.press('ArrowRight')
   await page.clock.runFor(2000)
-  await expect(page.getByTestId('source-player-marker')).toHaveAttribute('cx', '514')
+  const target = [await marker.getAttribute('cx'), await marker.getAttribute('cy')]
+  expect(target).not.toEqual(initial)
   await page.getByRole('button', { name: 'Save & play replay', exact: true }).click()
   await expect(page.getByLabel('Replay position')).toHaveAttribute('max', '1')
   await page.getByRole('button', { name: 'Seek to end', exact: true }).click()
   await page.clock.runFor(2000)
-  await expect(page.getByTestId('source-player-marker')).toHaveAttribute('cx', '514')
-  await expect(page.getByTestId('source-player-marker')).toHaveAttribute('cy', '318')
+  await expect(marker).toHaveAttribute('cx', target[0]!)
+  await expect(marker).toHaveAttribute('cy', target[1]!)
 })
 
 test('movement keeps the instruction row and direction controls in place', async ({ page }) => {
@@ -29,7 +30,7 @@ test('movement keeps the instruction row and direction controls in place', async
   const height = (await help.boundingBox())!.height
   await page.getByRole('button', { name: 'Enter A → path 7', exact: true }).click()
   await expect(page.getByRole('button', { name: 'Move north', exact: true })).toBeDisabled()
-  await expect(page.getByLabel('Display style')).toBeDisabled()
+  await expect(page.getByLabel('Display style')).toHaveCount(0)
   await page.keyboard.press('ArrowRight')
   await page.clock.runFor(20)
   await expect(moving).toBeDisabled()
@@ -41,12 +42,12 @@ test('movement keeps the instruction row and direction controls in place', async
   await expect(page.getByLabel('Replay position')).toHaveAttribute('max', '1')
 })
 
-test('Play defaults to a block remake using the SVG PDA and can switch back at depth two', async ({ page }) => {
+test('block play retains the SVG PDA and depth through two nested copies', async ({ page }) => {
   await page.clock.install({ time: new Date('2026-10-10T12:00:00Z') })
   await page.goto('play/draft-maze-images-siggy-skeptic-play-1-svg')
   await expect(page.getByTestId('source-player-marker')).toBeVisible()
   await page.clock.pauseAt(new Date('2026-10-10T12:01:00Z'))
-  await expect(page.getByLabel('Display style')).toHaveValue('corridors')
+  await expect(page.getByLabel('Display style')).toHaveCount(0)
   const board = page.locator('.source-artwork').first()
   await expect(page.getByRole('img', { name: 'Whole maze and your current position' })).toBeVisible()
   await expect(board.locator('.block-maze-artwork').first()).toBeVisible()
@@ -64,8 +65,7 @@ test('Play defaults to a block remake using the SVG PDA and can switch back at d
   await expect(depth).toHaveText('2')
   const cell = Number(await board.locator('.block-maze-artwork').first().getAttribute('data-cell-size'))
   expect(Number(await page.getByTestId('source-player-marker').getAttribute('r'))).toBeLessThan(cell / 2)
-  await page.getByLabel('Display style').selectOption('source')
-  await expect(board.locator('image')).toBeVisible()
+  await expect(board.locator('image')).toHaveCount(0)
   await expect(depth).toHaveText('2')
   await page.getByRole('button', { name: 'Exit A to path 2', exact: true }).click()
   await page.clock.runFor(6000)
@@ -74,10 +74,10 @@ test('Play defaults to a block remake using the SVG PDA and can switch back at d
 
 test('a saved block-view run replays and exports its block geometry with the original source intact', async ({ page }) => {
   await page.goto('play/draft-maze-images-siggy-skeptic-play-1-svg')
-  await expect(page.getByLabel('Display style')).toHaveValue('corridors')
+  await expect(page.getByLabel('Display style')).toHaveCount(0)
   await page.getByRole('button', { name: 'Enter A → path 2', exact: true }).click()
   await expect(page.getByRole('button', { name: 'Save & play replay', exact: true })).toBeEnabled()
-  await expect(page.getByLabel('Display style')).toBeEnabled()
+  await expect(page.getByLabel('Display style')).toHaveCount(0)
   await page.getByRole('button', { name: 'Save & play replay', exact: true }).click()
   await expect(page.locator('.path-replay .block-maze-artwork').first()).toBeVisible()
   const download = page.waitForEvent('download')

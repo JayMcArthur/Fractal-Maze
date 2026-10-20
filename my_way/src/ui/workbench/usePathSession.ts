@@ -12,9 +12,7 @@ import {
   type PathPlayFrame,
   type PathSession,
 } from '../../core/play/pathSession'
-import { projectPathSession } from '../../core/play/pathLayout'
 import { createBlockArtwork } from '../../core/play/blockArtwork'
-import type { MazeArtwork } from '../../core/model/pathMaze'
 import type { ArtworkPoint } from '../../core/pathMaze/artworkRoutes'
 import { availableMoves } from '../../core/pathMaze/traversal'
 import { availableProofMoves, proofCrossing, type CheckedProofStep } from '../../core/play/proofMovement'
@@ -22,10 +20,9 @@ import { useRunGuard } from '../player/useRunGuard'
 
 /** Canonical play history owns both PDA transitions and movement within a path. */
 export function usePathSession(doc: RecursiveMazeDocument, model: PathMazeDefinition) {
-  const blockArtwork = useMemo(() => doc.artwork?.gates?.length && model.start &&
+  const playArtwork = useMemo(() => doc.artwork && model.start &&
     doc.artwork.traces.some(trace => trace.path === model.start!.path)
-      ? createBlockArtwork(doc.artwork, model) : undefined, [doc.artwork, model])
-  const [playArtwork, setPlayArtwork] = useState(blockArtwork ?? doc.artwork)
+      ? createBlockArtwork(doc.artwork, model) : doc.artwork, [doc.artwork, model])
   const [session, setSession] = useState(() => initialPathSession(model, playArtwork))
   const [frame, setFrame] = useState<PathPlayFrame | undefined>(() =>
     session.positions.length ? { position: session.positions[0] } : undefined
@@ -59,18 +56,6 @@ export function usePathSession(doc: RecursiveMazeDocument, model: PathMazeDefini
       })
     },
     [session, current, commit, animating, finished]
-  )
-  const onArtworkChange = useCallback(
-    (artwork: MazeArtwork) => {
-      if (artwork === playArtwork) return
-      const next = playArtwork
-        ? projectPathSession(session, playArtwork, artwork, model)
-        : initialPathSession(model, artwork)
-      setPlayArtwork(artwork)
-      setSession(next)
-      if (next.positions.length) setFrame({ position: next.positions.at(-1)! })
-    },
-    [playArtwork, session, model]
   )
   const move = useCallback(
     (id: string) => {
@@ -138,12 +123,10 @@ export function usePathSession(doc: RecursiveMazeDocument, model: PathMazeDefini
     shown,
     finished,
     playArtwork,
-    blockArtwork,
     availableEdges,
     proofMoves,
     useProof,
     onWalk,
-    onArtworkChange,
     move,
     undo,
     reset,

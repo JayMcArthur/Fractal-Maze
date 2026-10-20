@@ -54,6 +54,7 @@ export function ReplayPlayback({ doc: original }: { doc: ReplayDocument }) {
   const {
     doc: loadedDoc,
     currentStep,
+    animateStep,
     isPlaying,
     speed,
     currentPosition,
@@ -103,6 +104,7 @@ export function ReplayPlayback({ doc: original }: { doc: ReplayDocument }) {
       <ReplayField
         doc={doc}
         currentStep={currentStep}
+        animateStep={animateStep}
         speed={speed}
         currentPosition={currentPosition}
         trail={trail}
@@ -207,6 +209,7 @@ export function ReplayPlayback({ doc: original }: { doc: ReplayDocument }) {
 function ReplayField({
   doc,
   currentStep,
+  animateStep,
   speed,
   currentPosition,
   trail,
@@ -215,6 +218,7 @@ function ReplayField({
 }: {
   doc: ReplayDocument
   currentStep: number
+  animateStep: boolean
   speed: number
   currentPosition: PlayerPosition
   trail: PlayerPosition[]
@@ -247,6 +251,7 @@ function ReplayField({
           doc={doc}
           route={doc.nativeRoute}
           step={currentStep}
+          animateStep={animateStep}
           speed={speed}
           onSourceMotion={onSourceMotion}
           motionPaused={motionPaused}

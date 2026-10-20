@@ -85,37 +85,36 @@ test('Skeptic Play 1 SVG depth changes when the marker crosses the copy boundary
 }) => {
   await page.clock.install({ time: new Date('2026-10-10T12:00:00Z') })
   await page.goto('play/draft-maze-images-siggy-skeptic-play-1-svg')
-  await page.getByLabel('Display style').selectOption('source')
   await expect(page.getByTestId('source-player-marker')).toBeVisible()
   await page.clock.pauseAt(new Date('2026-10-10T12:01:00Z'))
   const depth = page
     .locator('.digital-hud__metrics > div')
     .filter({ hasText: 'Depth' })
     .locator('dd')
-  await page.getByRole('button', { name: 'Enter A to path 2', exact: true }).click()
+  await page.getByRole('button', { name: 'Enter A → path 2', exact: true }).click()
   await expect(depth).toHaveText('0')
   await page.clock.runFor(6000)
   await expect(depth).toHaveText('1')
-  await page.getByRole('button', { name: 'Enter A to path 5', exact: true }).click()
+  await page.getByRole('button', { name: 'Enter A → path 5', exact: true }).click()
   await expect(depth).toHaveText('1')
   await page.clock.runFor(6000)
   await expect(depth).toHaveText('2')
-  await page.getByRole('button', { name: 'Exit A to path 2', exact: true }).click()
+  await page.getByRole('button', { name: 'Exit A → path 2', exact: true }).click()
   await expect(depth).toHaveText('2')
   await page.clock.runFor(6000)
   await expect(depth).toHaveText('1')
-  await page.getByRole('button', { name: 'Exit A to path 1', exact: true }).click()
+  await page.getByRole('button', { name: 'Exit A → path 1', exact: true }).click()
   await page.clock.runFor(6000)
   await expect(depth).toHaveText('0')
 })
 
-test('Snuke block and source displays keep one logical position and update the parent-copy dot', async ({
+test('Snuke block movement keeps its logical position and updates the parent-copy dot', async ({
   page,
 }) => {
   await page.clock.install({ time: new Date('2026-10-10T12:00:00Z') })
   await page.goto('play/draft-maze-images-snuke-snuke-3-png')
   await page.clock.pauseAt(new Date('2026-10-10T12:01:00Z'))
-  await expect(page.getByLabel('Display style')).toHaveValue('corridors')
+  await expect(page.getByLabel('Display style')).toHaveCount(0)
   await page.getByRole('button', { name: 'Enter L → path Port 1', exact: true }).click()
   await page.clock.runFor(6000)
   const parent = page.getByTestId('parent-player-marker')
@@ -132,7 +131,6 @@ test('Snuke block and source displays keep one logical position and update the p
   const marker = page.getByTestId('source-player-marker')
   const path = page.locator('.digital-hud__metrics > div').filter({ hasText: 'Path' }).locator('dd')
   const currentPath = await path.textContent()
-  await page.getByLabel('Display style').selectOption('source')
   await page.clock.runFor(100)
   await expect(depth).toHaveText('1')
   await expect(path).toHaveText(currentPath!)
@@ -144,5 +142,5 @@ test('Snuke block and source displays keep one logical position and update the p
   })).toBe(true)
   await expect(
     page.getByRole('img', { name: 'Playable source maze routes' }).locator('image')
-  ).toBeVisible()
+  ).toHaveCount(0)
 })

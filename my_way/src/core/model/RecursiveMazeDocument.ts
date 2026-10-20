@@ -38,6 +38,7 @@ export interface MazeMetadata {
   title: string
   author?: string
   source?: string
+  cover?: string
   tags: string[]
   license?: string
   createdAt: string // ISO8601

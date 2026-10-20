@@ -103,7 +103,7 @@ const document = {
   annotations: [],
 }
 
-test('long source motion takes time proportional to distance and replay waits for it', async ({
+test('long block motion takes time proportional to distance and replay waits for it', async ({
   page,
 }) => {
   await page.clock.install({ time: new Date('2026-10-10T12:00:00Z') })
@@ -115,15 +115,14 @@ test('long source motion takes time proportional to distance and replay waits fo
     buffer: Buffer.from(JSON.stringify(document)),
   })
   await page.getByRole('button', { name: 'Load Maze', exact: true }).click()
-  await page.getByLabel('Display style').selectOption('source')
   await page.clock.pauseAt(new Date('2026-10-10T12:01:00Z'))
-  await page.getByRole('button', { name: 'Enter A to path 2', exact: true }).click()
+  await page.getByRole('button', { name: 'Enter A → path 2', exact: true }).click()
   await page.clock.runFor(2000)
   await expect(page.getByRole('button', { name: 'Undo move', exact: true })).toBeDisabled()
   await expect(page.locator('.digital-hud__metrics').getByText('0', { exact: true })).toBeVisible()
   await page.clock.runFor(12000)
   await expect(page.getByRole('button', { name: 'Undo move', exact: true })).toBeEnabled()
-  await page.getByRole('button', { name: 'Walk to path 3', exact: true }).click()
+  await page.getByRole('button', { name: 'Walk → path 3', exact: true }).click()
   await page.clock.runFor(5000)
   await page.getByRole('button', { name: 'Save & play replay', exact: true }).click()
   await expect(page.getByRole('button', { name: 'Play replay', exact: true })).toBeVisible()

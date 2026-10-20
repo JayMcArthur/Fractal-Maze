@@ -169,15 +169,13 @@ test('a recorded rule-only run keeps its original source document and selected b
   expect(recorded.nativeRoute.physical.moves).toHaveLength(1)
 })
 
-for (const source of [true, false])
-  test(`Inner Frame room entry continues by keyboard in ${source ? 'source' : 'block'} display`, async ({
+test('Inner Frame room entry continues by keyboard in blocks', async ({
     page,
   }) => {
     await page.goto('play/draft-maze-images-the-inner-frame-pdf')
-    if (source) await page.getByLabel('Display style').selectOption('source')
-    else await page.getByLabel('Local view', { exact: true }).uncheck()
+    await page.getByLabel('Local view', { exact: true }).uncheck()
     const board = page.getByRole('img', { name: 'Playable source maze routes', exact: true })
-    const target = source ? [218.8322, 252.0557] : [215.6875, 252.125]
+    const target = [215.6875, 252.125]
     await board.scrollIntoViewIfNeeded()
     const screen = await board.evaluate((svg, point) => {
       const screen = new DOMPoint(...point).matrixTransform((svg as SVGSVGElement).getScreenCTM()!)
@@ -196,9 +194,8 @@ for (const source of [true, false])
     await page.keyboard.press('ArrowRight')
     await expect(page.getByTestId('source-player-marker')).toHaveAttribute(
       'cx',
-      source ? '220.5' : '217'
+      '217'
     )
-    if (!source) {
       await expect(east).toBeEnabled()
       await page.keyboard.press('ArrowRight')
       await expect(page.getByTestId('source-player-marker')).toHaveAttribute('cx', '218.3125')
@@ -208,7 +205,6 @@ for (const source of [true, false])
       await expect(east).toBeEnabled()
       await page.keyboard.press('ArrowRight')
       await expect(page.getByTestId('source-player-marker')).toHaveAttribute('cx', '220.9375')
-    }
     await expect(east).toBeEnabled()
     await page.keyboard.press('ArrowRight')
     await expect(

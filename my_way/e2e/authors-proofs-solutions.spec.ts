@@ -95,7 +95,7 @@ test('the original wire import uses the shared block controls', async ({
 }) => {
   await page.goto('play/wolf-wire-original')
   await expect(page.getByTestId('source-player-marker')).toBeVisible()
-  await expect(page.getByLabel('Display style')).toHaveValue('corridors')
+  await expect(page.getByLabel('Display style')).toHaveCount(0)
   await page.getByRole('button', { name: 'Move north', exact: true }).click()
   await expect(page.getByRole('button', { name: 'Undo move', exact: true })).toBeEnabled()
   await expect(page.locator('iframe')).toHaveCount(0)

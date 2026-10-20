@@ -606,3 +606,7 @@ kbd { border: 1px solid currentColor; border-radius: 3px; padding: 1px 5px; opac
 .digital-hud__position { min-width: 0; max-width: 40%; }
 @media (max-width: 780px) { .source-parent-view { width: 80px; } .digital-hud__position { max-width: none; } .source-movement-controls .witness-choices { min-width: 140px; } }
 .source-display-style { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 4px 12px; font-size: .8rem; color: #526052; }
+
+.maze-cover-picker { padding: 1rem; border: 1px solid var(--line, #405346); border-radius: .75rem; margin-bottom: 1rem; }
+.maze-cover-picker img { display: block; width: 100%; max-height: 14rem; object-fit: contain; margin: .75rem 0; }
+.maze-cover-picker p { font-size: .875rem; margin-top: .75rem; }

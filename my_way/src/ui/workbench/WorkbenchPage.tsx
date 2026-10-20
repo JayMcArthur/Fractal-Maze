@@ -13,6 +13,7 @@ import type { MazeArtwork, PathMazeDefinition } from '../../core/model/pathMaze'
 import { validateMaze } from '../../core/validate/validateMaze'
 import { downloadFile } from '../../core/io/downloadFile'
 import { NavBar } from '../components/NavBar'
+import { MazeCoverPicker } from '../components/MazeCoverPicker'
 import { MazeCanvas } from '../components/MazeCanvas'
 import { TraceEditor } from './TraceEditor'
 import { PathModelEditor } from './PathModelEditor'
@@ -38,7 +39,7 @@ export function WorkbenchPage() {
     const load = async () => {
       let doc =
         id === 'new'
-          ? pathDocument(crypto.randomUUID(), 'Untitled image maze', emptyPathModel())
+          ? pathDocument(crypto.randomUUID(), 'Untitled block maze', emptyPathModel())
           : await loadMazeDocument(id)
       let original: RecursiveMazeDocument | undefined
       const reference = references.find((reference) => reference.id === id)
@@ -394,6 +395,8 @@ function Workbench({
         {tab === 'trace' && (
           <div className="workbench-layout">
             <section className="workbench-source">
+              <MazeCoverPicker cover={doc.metadata.cover} onChange={cover =>
+                update({ ...doc, metadata: { ...doc.metadata, cover } })} />
               <div className="workbench-card source-selector">
                 <h2>Original layout</h2>
                 <div className="workbench-toolbar">

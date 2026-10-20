@@ -29,3 +29,5 @@ A.2 -> 3
 All lines validate before the model changes. Errors identify the invalid line; a failed batch adds nothing. IDs remain distinct even when two connections share an input label. Editing marks the model WIP. The dropdown form also retains full path IDs, including hyphens.
 
 Proof setup trails are independent: editing a left/right setup invalidates that side's repeat while retaining the other side. Every proof edit invalidates the prior check; the checker revalidates both witnesses before a claim can be saved or used. The supported infinite/Cantor certificate rules require bidirectional ordinary connections; one-way models retain their finite traversal rules.
+
+A complete `.fmaze` may carry `metadata.cover`, an optional base64 SVG/PNG/JPEG/WebP/GIF image. It is used only by Library cards. Removing or replacing a cover does not edit movement artwork, the PDA, maze identity or replay snapshots. A PDA-only export carries movement rules rather than presentation metadata.

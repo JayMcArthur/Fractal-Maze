@@ -8,6 +8,7 @@ export interface ReplayState {
   doc: ReplayDocument | null
   currentStep: number
   isPlaying: boolean
+  animateStep: boolean
   speed: 0.5 | 1 | 2 | 10
   currentPosition: PlayerPosition
   trail: PlayerPosition[]
@@ -20,42 +21,45 @@ export interface ReplayState {
   setSpeed(s: ReplayState['speed']): void
 }
 
-export const useReplayStore = create<ReplayState>((set, get) => ({
-  doc: null,
-  currentStep: 0,
-  isPlaying: false,
-  speed: 1,
-  currentPosition: { blockStack: ['0'], row: 0, col: 0 },
-  trail: [],
-  loadReplay(doc) {
-    set({ doc, currentStep: 0, isPlaying: false, ...replayFrame(doc, 0) })
-  },
-  play() {
-    const { doc, currentStep } = get()
-    if (!doc || !replayStepCount(doc)) return
-    if (currentStep === replayStepCount(doc)) get().seekTo(0)
-    set({ isPlaying: true })
-  },
-  pause() {
-    set({ isPlaying: false })
-  },
-  stepForward() {
-    get().seekTo(get().currentStep + 1)
-  },
-  stepBack() {
-    get().seekTo(get().currentStep - 1)
-  },
-  seekTo(step) {
+export const useReplayStore = create<ReplayState>((set, get) => {
+  const selectStep = (step: number, animateStep: boolean) => {
     const { doc } = get()
     if (!doc) return
     const currentStep = Math.max(0, Math.min(step, replayStepCount(doc)))
-    set({
-      currentStep,
-      ...replayFrame(doc, currentStep),
-      ...(currentStep === replayStepCount(doc) ? { isPlaying: false } : {}),
-    })
-  },
-  setSpeed(speed) {
-    set({ speed })
-  },
-}))
+    set({ currentStep, animateStep, ...replayFrame(doc, currentStep),
+      ...(currentStep === replayStepCount(doc) ? { isPlaying: false } : {}) })
+  }
+  return {
+    doc: null,
+    currentStep: 0,
+    isPlaying: false,
+    animateStep: false,
+    speed: 1,
+    currentPosition: { blockStack: ['0'], row: 0, col: 0 },
+    trail: [],
+    loadReplay(doc) {
+      set({ doc, currentStep: 0, isPlaying: false, animateStep: false, ...replayFrame(doc, 0) })
+    },
+    play() {
+      const { doc, currentStep } = get()
+      if (!doc || !replayStepCount(doc)) return
+      if (currentStep === replayStepCount(doc)) get().seekTo(0)
+      set({ isPlaying: true })
+    },
+    pause() {
+      set({ isPlaying: false })
+    },
+    stepForward() {
+      selectStep(get().currentStep + 1, true)
+    },
+    stepBack() {
+      selectStep(get().currentStep - 1, false)
+    },
+    seekTo(step) {
+      selectStep(step, false)
+    },
+    setSpeed(speed) {
+      set({ speed })
+    },
+  }
+})

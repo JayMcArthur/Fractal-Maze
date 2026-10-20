@@ -16,35 +16,21 @@ test('Wolfram 2 keeps its original solutions while offering only photograph and 
   await expect(page.getByLabel('Maze replay', { exact: true })).toHaveValue(id)
 })
 
-test('source keyboard movement stops at a gate and waits for a second directional choice', async ({
-  page,
-}) => {
+test('block keyboard movement advances a cell and undo restores the start', async ({ page }) => {
   await page.goto(`play/${sourceAlice}`)
-  await page.getByLabel('Display style').selectOption('source')
   const marker = page.getByTestId('source-player-marker')
   await expect(marker).toBeVisible()
+  const start = [await marker.getAttribute('cx'), await marker.getAttribute('cy')]
   await page.keyboard.press('ArrowRight')
-  await expect.poll(() => marker.getAttribute('cx')).toBe('514')
-  await expect.poll(() => marker.getAttribute('cy')).toBe('318')
-  await expect(page.locator('.digital-hud__position')).toContainText('Surface')
-  await expect(page.locator('.digital-hud__metrics > div').filter({ hasText: 'Path' })).toContainText('5')
-  await page.waitForTimeout(650)
-  await expect(marker).toHaveAttribute('cx', '514')
-  await page.keyboard.press('ArrowDown')
-  await expect(page.locator('.digital-hud__position')).toContainText('A')
-  await expect(page.locator('.digital-hud__metrics > div').filter({ hasText: 'Path' })).toContainText('7')
-  await expect.poll(() => marker.getAttribute('cy')).toBe('104')
   await expect(page.getByRole('button', { name: 'Undo move', exact: true })).toBeEnabled()
-  await page.keyboard.press('ArrowUp')
+  const next = [await marker.getAttribute('cx'), await marker.getAttribute('cy')]
+  expect(next).not.toEqual(start)
   await expect(page.locator('.digital-hud__position')).toContainText('Surface')
-  await expect(page.locator('.digital-hud__metrics > div').filter({ hasText: 'Path' })).toContainText('5')
-  await expect(page.getByLabel('Display style')).toBeEnabled()
-  await expect(page.getByRole('button', { name: 'Save & play replay' })).toBeEnabled()
-  await expect(marker).toHaveAttribute('cx', '514')
-  await expect(marker).toHaveAttribute('cy', '318')
+  await expect(page.getByLabel('Display style')).toHaveCount(0)
+  await page.waitForTimeout(150)
+  expect([await marker.getAttribute('cx'), await marker.getAttribute('cy')]).toEqual(next)
   await page.getByRole('button', { name: 'Undo move', exact: true }).click()
-  await expect.poll(() => marker.getAttribute('cx')).toBe('266')
-  await expect(marker).toHaveAttribute('cy', '264')
+  expect([await marker.getAttribute('cx'), await marker.getAttribute('cy')]).toEqual(start)
   await expect(page.getByRole('button', { name: 'Save & play replay' })).toBeDisabled()
 })
 
@@ -69,7 +55,7 @@ test('replays belong to their maze in Play and never appear in Library or the ma
     page
       .getByLabel('Maze replay', { exact: true })
       .locator('option')
-      .filter({ hasText: 'Source drawing' })
+      .filter({ hasText: 'Source-derived blocks' })
   ).toHaveCount(1)
   await expect(
     page

@@ -20,7 +20,7 @@ interface MazeFamily {
   views: MazeView[]
   recordings?: MazeView[]
 }
-const source = (reference: string, label = 'Source drawing'): MazeView => ({
+const source = (reference: string, label = 'Source-derived blocks'): MazeView => ({
   id: `draft-maze-images-${reference}`,
   label,
 })
@@ -38,9 +38,9 @@ export const mazeFamilies: MazeFamily[] = [
     title: 'Skeptic Play 1',
     author: 'Siggy',
     views: [
-      source('siggy-skeptic-play-1-svg', 'Original SVG'),
-      source('siggy-skeptic-play-1-steps-svg', 'Annotated SVG'),
-      { ...guide(1), label: 'Photograph / guide PDA' },
+      source('siggy-skeptic-play-1-svg', 'Original block layout'),
+      source('siggy-skeptic-play-1-steps-svg', 'Annotated block layout'),
+      { ...guide(1), label: 'Guide block layout' },
       grid('square'),
     ],
   },
@@ -50,8 +50,8 @@ export const mazeFamilies: MazeFamily[] = [
     title: 'Skeptic Play 3',
     author: 'Siggy',
     views: [
-      { ...guide(5), label: 'Revised drawing / guide PDA' },
-      source('siggy-skeptic-play-3-png', 'Original carpet'),
+      { ...guide(5), label: 'Revised block layout' },
+      source('siggy-skeptic-play-3-png', 'Original block layout'),
       grid('skeptic-play-carpet'),
     ],
   },
@@ -65,7 +65,7 @@ export const mazeFamilies: MazeFamily[] = [
   {
     title: 'Wolfram 2',
     author: 'Mark J. P. Wolf',
-    views: [source('mark-j-p-wolf-wolfram-2-jpg', 'Photograph'), grid('microchip')],
+    views: [source('mark-j-p-wolf-wolfram-2-jpg', 'Photograph-derived blocks'), grid('microchip')],
     recordings: [
       { id: 'wolf-wire-original', label: 'Original solutions' },
       source('mark-j-p-wolf-wolfram-2-wires-png', 'Earlier wire drawing'),
@@ -88,7 +88,7 @@ export const mazeFamilies: MazeFamily[] = [
     title: 'Inner Frame',
     author: 'Matthias Weber',
     views: [
-      source('the-inner-frame-pdf', 'Source room diagrams'),
+      source('the-inner-frame-pdf', 'Room blocks'),
       grid('matthias-weber'),
     ],
     recordings: [{ ...guide(4), label: 'Earlier guide model' }],
@@ -98,7 +98,7 @@ export const mazeFamilies: MazeFamily[] = [
     author: 'Jay McArthur',
     views: [
       { ...grid('a-long-path-v4'), label: 'v4 block layout' },
-      source('jay-mcarthur-a-long-path-v6-png', 'v6 hexagon (WIP)'),
+      source('jay-mcarthur-a-long-path-v6-png', 'v6 block layout'),
       { ...grid('a-long-path-v8'), label: 'v8 block layout' },
       { ...guide(6), label: 'Six-copy block layout' },
       { ...guide(3), label: 'Eight-copy block layout' },
