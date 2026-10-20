@@ -53,7 +53,7 @@ export function SourceRouteCanvas({
   const corridors = !!artwork.blockSize
   const [localView, setLocalView] = useState(true)
   const [notice, setNotice] = useState('')
-  const { marker, markerRef, walking } = usePathMotion({ artwork, model, current,
+  const { marker, markerRef } = usePathMotion({ artwork, model, current,
     arrivalEdges, frame, motionPaused, animationMs, onMotionChange, onVisibleStateChange })
   const display = artworkDisplayGeometry(artwork)
   const bounds = artwork.views?.find(view => view.paths.includes(marker.state.path))?.bounds ?? display.bounds
@@ -61,7 +61,7 @@ export function SourceRouteCanvas({
 
   const walk = useCallback(
     (direction: DirectionBit) => {
-      if (!onMove || busy || walking || !sameState(markerRef.current.state, current)) return
+      if (!onMove || busy || !sameState(markerRef.current.state, current)) return
       const point = markerRef.current.point
       const gate = availableMoves(model, current).find(({ edge }) => {
         const drawn = artwork.gates?.find((gate) => gate.edge === edge.id)
@@ -95,7 +95,7 @@ export function SourceRouteCanvas({
           'No single route matches that direction. Choose another direction, or click the route you want.'
         )
     },
-    [onMove, busy, walking, current, model, artwork, width, onWalk, markerRef]
+    [onMove, busy, current, model, artwork, width, onWalk, markerRef]
   )
   useEffect(() => {
     if (!onMove) return
@@ -121,7 +121,7 @@ export function SourceRouteCanvas({
     return () => window.removeEventListener('keydown', keydown)
   }, [onMove, walk])
   const moves =
-    onMove && !busy && !walking && sameState(marker.state, current)
+    onMove && !busy && sameState(marker.state, current)
       ? availableMoves(model, current).filter(({ edge }) => pathCrossing(model, artwork, marker, edge.id))
       : []
   const active = artwork.traces.filter((trace) => trace.path === marker.state.path)
@@ -138,7 +138,7 @@ export function SourceRouteCanvas({
         moves={moves}
         onMove={onMove}
         onPointerDown={(event) => {
-          if (!onMove || busy || walking || event.target instanceof SVGCircleElement) return
+          if (!onMove || busy || event.target instanceof SVGCircleElement) return
           const matrix = event.currentTarget.getScreenCTM()
           if (!matrix) return
           const p = new DOMPoint(event.clientX, event.clientY).matrixTransform(matrix.inverse())
@@ -164,7 +164,7 @@ export function SourceRouteCanvas({
             )
         }}
       />
-      <SourcePlayControls notice={notice} walking={busy || walking} playable={!!onMove}
+      <SourcePlayControls notice={notice} walking={busy} playable={!!onMove}
         blocks={corridors} localView={localView}
         onLocalViewChange={setLocalView} onDirection={walk} controls={controls} />
     </div>

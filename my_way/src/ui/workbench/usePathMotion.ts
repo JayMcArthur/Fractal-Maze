@@ -39,7 +39,6 @@ export function usePathMotion({
     state: current,
     point: frame?.position.point ?? pathArrivalPoint(artwork, model, current, arrivalEdges?.at(-1)),
   }))
-  const [walking, setWalking] = useState(false)
   const markerRef = useRef(marker)
   const animation = useRef(0)
   const paused = useRef(motionPaused)
@@ -63,7 +62,6 @@ export function usePathMotion({
       const duration = (length / view[2]) * animationMs * 4
       let elapsed = 0,
         previousTime = performance.now()
-      setWalking(true)
       onMotionChange?.(true)
       function frame(now: number) {
         if (!paused.current) elapsed += now - previousTime
@@ -105,7 +103,6 @@ export function usePathMotion({
     }
     previousArtwork.current = artwork
     const settle = (point: ArtworkPoint) => {
-      setWalking(false)
       onMotionChange?.(false)
       const next = { state: current, point }
       markerRef.current = next
@@ -166,5 +163,5 @@ export function usePathMotion({
 
   const displayed = frame && !frame.move
     ? { state: current, point: frame.position.point ?? marker.point } : marker
-  return { marker: displayed, markerRef, walking }
+  return { marker: displayed, markerRef }
 }
