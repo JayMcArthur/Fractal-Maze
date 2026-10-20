@@ -11,6 +11,7 @@ export function SourcePlayControls({
   onLocalViewChange,
   onDirection,
   controls,
+  instruction,
 }: {
   notice: string
   walking: boolean
@@ -20,11 +21,12 @@ export function SourcePlayControls({
   onLocalViewChange: (local: boolean) => void
   onDirection: (direction: DirectionBit) => void
   controls?: ReactNode
+  instruction?: string
 }) {
   return (
     <>
       <p className="source-route-help" aria-live="polite">
-        {notice ||
+        {notice || instruction ||
           (playable
             ? blocks
               ? 'Arrows / WASD / IJKL move one block. Choose a direction at a junction, or click a route or gate.'

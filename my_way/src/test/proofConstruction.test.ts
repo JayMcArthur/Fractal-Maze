@@ -5,6 +5,9 @@ import { checkClaim, checkedClaims } from '../core/pathMaze/proofs'
 import { connectionsFromPairs } from '../core/pathMaze/traversal'
 import { buildNativeReplay } from '../core/replay/nativeReplay'
 import { importReplay } from '../core/replay/importReplay'
+import { inferInfinitePeriod } from '../core/pathMaze/inferInfinitePeriod'
+import { pathDocs } from '../app/library/pathCatalog'
+import solutions from '../data/mazes/catalog-solutions.json'
 
 const edge = (reference: string): ProofStep => ({ kind: 'edge', reference, reverse: false })
 const steps = (...indices: number[]) => indices.map(i => edge(`edge-${i}-in`))
@@ -19,6 +22,35 @@ const model = () => ({
 })
 
 describe('generalized infinite proof construction', () => {
+  it('infers the common repetition from independently built trails without a supplied word', () => {
+    const proof = { ...setupProof(), period: [] }
+    expect(inferInfinitePeriod(model(), proof)).toEqual(['B', 'A', 'C'])
+    expect(proof.period).toEqual([])
+    expect(inferInfinitePeriod(model(), { ...proof, second: [] })).toBeNull()
+    expect(inferInfinitePeriod(model(), { ...proof, second: steps(5, 1, 3) })).toBeNull()
+  })
+  it('infers an inserted word while retaining different setup tails', () => {
+    const proof = { ...setupProof(), period: [] }
+    proof.setup = { first: steps(0, 2, 4, 0), second: steps(1, 3, 5, 3) }
+    proof.first = [edge('edge-0-out'), ...steps(2, 0, 4, 0)]
+    proof.second = [edge('edge-3-out'), ...steps(3, 1, 5, 3)]
+    expect(inferInfinitePeriod(model(), proof)).toEqual(['B', 'A', 'C'])
+  })
+  it('does not infer a proof from an empty, illegal or scope-escaping walk', () => {
+    const proof = { ...setupProof(), period: [] }
+    expect(inferInfinitePeriod(model(), { ...proof, first: [] })).toBeNull()
+    expect(inferInfinitePeriod(model(), { ...proof, first: [edge('missing')] })).toBeNull()
+    proof.first = [edge('edge-4-out'), edge('edge-4-in'), ...proof.first]
+    expect(inferInfinitePeriod(model(), proof)).toBeNull()
+  })
+  it('infers the actual twelve-copy Infinite Descent certificate', () => {
+    const id = 'proof-maze-images-siggy-infinite-descent-svg'
+    const doc = pathDocs.find(doc => doc.metadata.id === id)!
+    const claim = solutions.find(row => row.mazeId === id)!.claims![0] as ProofClaim
+    expect(claim.period).toHaveLength(12)
+    expect(inferInfinitePeriod(doc.definition as PathMazeDefinition, { ...claim, period: [] }))
+      .toEqual(claim.period)
+  })
   it('checks ABC setup and BAC repetition on independent left and right paths', () => {
     const proof = setupProof(), result = checkClaim(model(), proof)
     expect(result.valid).toBe(true)

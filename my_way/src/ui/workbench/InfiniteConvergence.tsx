@@ -37,7 +37,7 @@ export function InfiniteConvergence({
             ? 'The recorded trails repeat toward the same limit address.'
             : 'Both repeating witnesses reach their targets. Check the proof to validate the connection.'
           : claim.period.length === 0
-            ? 'Choose the repeating word, then build one repetition on each side.'
+            ? 'Build both trails by moving through the mazes. Their shared repeating copies will be detected.'
             : 'Complete both repeating witnesses to compare their trails.'}
       </p>
       {claim.period.length > 0 && (

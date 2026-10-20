@@ -1,5 +1,5 @@
 import { SourceRouteDrawing } from './SourceRouteDrawing'
-import { useCallback, useState, type ReactNode } from 'react'
+import { useCallback, useState, type ReactNode, type RefObject } from 'react'
 import type { MazeArtwork, PathMazeDefinition, PathState } from '../../core/model/pathMaze'
 import {
   artworkRoute,
@@ -35,6 +35,8 @@ export function SourceRouteCanvas({
   motionPaused = false,
   animationMs = 500,
   frame,
+  keyboardScope,
+  trail,
 }: {
   artwork: MazeArtwork
   busy?: boolean
@@ -46,6 +48,8 @@ export function SourceRouteCanvas({
   onVisibleStateChange?: (state: PathState) => void
   onWalk?: (points: ArtworkPoint[]) => void
   frame?: PathPlayFrame
+  keyboardScope?: RefObject<HTMLDivElement | null>
+  trail?: ArtworkPoint[][]
   controls?: ReactNode
   motionPaused?: boolean
   animationMs?: number
@@ -97,7 +101,7 @@ export function SourceRouteCanvas({
     },
     [onMove, busy, current, model, artwork, width, onWalk, markerRef]
   )
-  useMovementKeyboard({ enabled: !!onMove, move: walk })
+  useMovementKeyboard({ enabled: !!onMove, move: walk, scope: keyboardScope })
   const moves =
     onMove && !busy && sameState(marker.state, current)
       ? availableMoves(model, current).filter(({ edge }) => pathCrossing(model, artwork, marker, edge.id))
@@ -112,6 +116,7 @@ export function SourceRouteCanvas({
         bounds={bounds}
         display={display}
         corridors={corridors}
+        trail={trail}
         camera={corridors && localView ? blockCamera(bounds, marker.point, artwork.blockSize!) : undefined}
         moves={moves}
         onMove={onMove}
@@ -143,6 +148,7 @@ export function SourceRouteCanvas({
         }}
       />
       <SourcePlayControls notice={notice} walking={busy} playable={!!onMove}
+        instruction={keyboardScope ? 'Follow the corridors, or click a gate to enter the next copy.' : undefined}
         blocks={corridors} localView={localView}
         onLocalViewChange={setLocalView} onDirection={walk} controls={controls} />
     </div>

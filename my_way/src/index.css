@@ -622,7 +622,7 @@ kbd { border: 1px solid currentColor; border-radius: 3px; padding: 1px 5px; opac
 .proof-dialog__footer .control { flex-shrink: 0; }
 .proof-dialog label { display: flex; flex-direction: column; gap: 6px; font-size: .78rem; font-weight: 700; color: #59645e; }
 .proof-dialog input:not([type=checkbox]), .proof-dialog select { min-height: 38px; max-width: 100%; padding: 7px 9px; border: 1px solid #cdd5ca; border-radius: 4px; background: #f9faf6; color: #1b241e; }
-.proof-dialog .proof-check { position: sticky; bottom: -20px; border-color: #9ab68d; box-shadow: 0 -4px 16px #1111; }
+.proof-dialog .proof-check { position: sticky; top: -20px; z-index: 2; border-color: #9ab68d; box-shadow: 0 -4px 16px #1111; }
 .maze-wip { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(240px, .7fr); gap: 32px; align-items: center; margin: 24px 0; }
 .maze-wip > img { width: 100%; max-height: 70dvh; object-fit: contain; border: 1px solid var(--line); border-radius: 7px; }
 .maze-wip h2 { font-size: clamp(1.5rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -.04em; margin: 18px 0 12px; }
@@ -634,7 +634,7 @@ kbd { border: 1px solid currentColor; border-radius: 3px; padding: 1px 5px; opac
   .proof-dialog__body { padding: 14px; }
   .proof-dialog .workbench-card { padding: 14px; }
   .proof-dialog .witness-grid { grid-template-columns: 1fr; }
-  .proof-dialog .proof-check { bottom: -14px; }
+  .proof-dialog .proof-check { top: -14px; }
   .proof-dialog__footer p { font-size: .72rem; }
   .maze-wip { grid-template-columns: 1fr; gap: 18px; }
 }
@@ -644,3 +644,31 @@ kbd { border: 1px solid currentColor; border-radius: 3px; padding: 1px 5px; opac
 .maze-credits ul { display: flex; flex-wrap: wrap; gap: 12px 20px; margin: 0; padding: 0; list-style: none; align-items: start; max-width: 720px; }
 .maze-credits a { text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
 .maze-wip .signal-badge { color: #315836; background: #e4eedf; border-color: #b5c8ac; }
+
+/* Witness boards use the same corridors as Play, with one keyboard owner at a time. */
+.witness-maze { min-width: 0; padding: 8px; border: 2px solid transparent; border-radius: 8px; background: #eef1e8; }
+.witness-maze:focus-within { border-color: #2967be; outline: none; }
+.witness-maze__position { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 4px 2px 10px; font-size: .78rem; }
+.witness-maze .source-artwork { max-height: 280px; min-height: 180px; }
+.witness-maze .source-route-help { font-size: .72rem; }
+.witness-maze .source-route-player { min-width: 0; }
+.witness-maze .source-movement-controls { flex-wrap: wrap; }
+.witness-text-steps { margin: 12px 0; font-size: .8rem; }
+.witness-text-steps summary { cursor: pointer; }
+.witness-text-steps .witness-choices { margin-top: 10px; }
+.path-proof-actions { position: fixed; z-index: 30; inset: auto 16px 16px; width: fit-content; max-width: calc(100% - 32px); margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 10px 14px; border: 1px solid #8fa58d; border-radius: 8px; background: var(--paper); box-shadow: 0 4px 20px #0003; }
+.path-proof-actions > span { font-size: .76rem; font-weight: 700; color: #405643; }
+.path-proof-actions .control { background: #244e41; color: #fff; border-color: #244e41; }
+.path-play-session:has(.path-proof-actions) { padding-bottom: 90px; }
+
+.witness .witness-current { padding: 6px 10px; margin-top: 8px; font-size: .78rem; }
+.source-gate { outline: none; }
+.source-gate-focus { display: none; }
+.source-gate:focus-visible .source-gate-focus { display: inline; }
+
+.proof-connection > .workbench-toolbar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.proof-connection > .workbench-toolbar label { min-width: 0; }
+@media (max-width: 600px) {
+  .proof-connection > .workbench-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .proof-connection .proof-rule-picker { grid-column: 1 / -1; }
+}

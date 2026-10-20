@@ -2,24 +2,20 @@ import { SaveProofReplay } from './SaveProofReplay'
 import { ProvenConnections } from './ProvenConnections'
 import { SavedProofEvidence } from './SavedProofEvidence'
 import { InfiniteConvergence } from './InfiniteConvergence'
-import { WitnessRoute } from './WitnessRoute'
+import { ProofWitness } from './ProofWitness'
+import { inferInfinitePeriod } from '../../core/pathMaze/inferInfinitePeriod'
+import { compactBlockArtwork } from '../../core/play/compactBlockArtwork'
+import { rulePlayDocument } from '../../app/library/rulePlayDocument'
 import { ProofClaimEditor } from './ProofClaimEditor'
 import { CantorGroupEditor } from './CantorGroupEditor'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import type {
   PathMazeDefinition,
-  PathState,
+  MazeArtwork,
   ProofClaim,
   ProofStep,
 } from '../../core/model/pathMaze'
-import {
-  applyProofStep,
-  checkClaim,
-  checkedClaims,
-  declaredConnections,
-  traceWitness,
-  infiniteWitness,
-} from '../../core/pathMaze/proofs'
+import { checkClaim, checkedClaims, traceWitness } from '../../core/pathMaze/proofs'
 import type { ProofCheck } from '../../core/pathMaze/proofs'
 import { stateLabel } from '../../core/pathMaze/traversal'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
@@ -41,7 +37,9 @@ export function ProofWorkbench({
   onChange,
   inPlay = false,
   claimsInUse = false,
+  artwork,
 }: {
+  artwork?: MazeArtwork
   inPlay?: boolean
   claimsInUse?: boolean
   model: PathMazeDefinition
@@ -51,15 +49,53 @@ export function ProofWorkbench({
   const [initialClaim] = useState(() => emptyClaim(model))
   const claim = model.draftClaim ?? initialClaim
   const accepted = checkedClaims(model)
+  const drawing = useMemo(() => {
+    if (artwork) return artwork
+    if (!document) return undefined
+    const source = (rulePlayDocument(document) ?? document).artwork
+    return source && compactBlockArtwork(source, model)
+  }, [artwork, document, model])
   const change = (patch: Partial<ProofClaim>) => {
     const next = { ...claim, ...patch }
-    onChange({ ...model, draftClaim: next })
+    const period = inferInfinitePeriod(model, next, accepted)
+    onChange({ ...model, draftClaim: period ? { ...next, period } : next })
+  }
+  const changeSetup = (side: 'first' | 'second', steps: ProofStep[], chooseScope = false) => {
+    const setup = {
+      first: claim.setup?.first ?? [],
+      second: claim.setup?.second ?? [],
+      [side]: steps,
+    }
+    let scope = claim.scope
+    if (chooseScope) {
+      const anchors = (['first', 'second'] as const).map(
+        (key) =>
+          traceWitness(
+            model,
+            key === 'first' ? claim.from : claim.to,
+            setup[key],
+            claim,
+            accepted
+          ).states.at(-1)!.address
+      )
+      scope = []
+      for (
+        let i = 0;
+        i < Math.min(anchors[0].length, anchors[1].length) && anchors[0][i] === anchors[1][i];
+        i++
+      )
+        scope.push(anchors[0][i])
+    }
+    change({ setup, scope, [side]: [] })
   }
   return (
     <div className="proof-workbench">
       <header className="proof-intro">
         {!inPlay && <h2>Your proof notebook</h2>}
-        <p>Choose the lines to connect, build the trails, then check your proof.</p>
+        <p>
+          Choose the starting lines. Click a maze to control it with the arrow keys or on-screen
+          arrows. Crossing gates records your trail.
+        </p>
         <details className="proof-help">
           <summary>How the proof rules work</summary>
           <p>
@@ -83,43 +119,43 @@ export function ProofWorkbench({
           <CantorGroupEditor model={model} claim={claim} onChange={change} />
         </details>
       )}
+      <ProofCheckPanel
+        model={model}
+        claim={claim}
+        accepted={accepted}
+        document={document}
+        onChange={onChange}
+      />
       <h2 className="proof-step">
         2. Build {claim.rule === 'infiniteHop' ? 'both trails' : 'the trail'}
       </h2>
       <div
         className={`witness-grid${claim.rule !== 'infiniteHop' && !claim.companions?.length ? ' witness-grid--single' : ''}`}
       >
-        <Witness
+        <ProofWitness
+          artwork={drawing}
           model={model}
           claim={claim}
           accepted={accepted}
           side="first"
           onChange={(steps) => change({ first: steps })}
-          onSetupChange={(steps) =>
-            change({
-              setup: { first: steps, second: claim.setup?.second ?? [] },
-              first: [],
-            })
-          }
+          onSetupChange={(steps, chooseScope) => changeSetup('first', steps, chooseScope)}
         />
         {claim.rule === 'infiniteHop' && (
-          <Witness
+          <ProofWitness
+            artwork={drawing}
             model={model}
             claim={claim}
             accepted={accepted}
             side="second"
             onChange={(steps) => change({ second: steps })}
-            onSetupChange={(steps) =>
-              change({
-                setup: { first: claim.setup?.first ?? [], second: steps },
-                second: [],
-              })
-            }
+            onSetupChange={(steps, chooseScope) => changeSetup('second', steps, chooseScope)}
           />
         )}
         {(claim.companions ?? []).map((pair, index) => (
-          <Witness
+          <ProofWitness
             key={pair.id}
+            artwork={drawing}
             model={model}
             claim={claim}
             accepted={accepted}
@@ -137,13 +173,6 @@ export function ProofWorkbench({
       {claim.rule === 'infiniteHop' && (
         <InfiniteConvergence model={model} claim={claim} accepted={accepted} />
       )}
-      <ProofCheckPanel
-        model={model}
-        claim={claim}
-        accepted={accepted}
-        document={document}
-        onChange={onChange}
-      />
       {accepted.length > 0 && <ProvenConnections claims={accepted} />}
       <section className="workbench-card">
         <h2>Saved claims ({model.claims.length})</h2>
@@ -216,7 +245,22 @@ function ProofCheckPanel({
     <section className="workbench-card proof-check">
       <button
         className="control control--primary"
-        onClick={() => setChecked({ claim, model, result: checkClaim(model, claim, accepted) })}
+        onClick={() =>
+          setChecked({
+            claim,
+            model,
+            result:
+              claim.rule === 'infiniteHop' && !claim.period.length
+                ? {
+                    valid: false,
+                    message:
+                      'Complete both trails to detect their repeating copies, then check again.',
+                    first: [],
+                    second: [],
+                  }
+                : checkClaim(model, claim, accepted),
+          })
+        }
       >
         Check my proof
       </button>
@@ -242,178 +286,4 @@ function ProofCheckPanel({
       )}
     </section>
   )
-}
-
-function Witness({
-  model,
-  claim,
-  accepted,
-  side,
-  onChange,
-  phase = 'cycle',
-  onSetupChange,
-}: {
-  model: PathMazeDefinition
-  claim: ProofClaim
-  accepted: ProofClaim[]
-  side: 'first' | 'second' | number
-  onChange: (steps: ProofStep[]) => void
-  phase?: 'setup' | 'cycle'
-  onSetupChange?: (steps: ProofStep[]) => void
-}) {
-  const { start, steps, target, infinite } = witnessData(model, claim, accepted, side, phase)
-  const traced = traceWitness(model, start, steps, claim, accepted)
-  const current = traced.states.at(-1)!
-  const choices = witnessChoices(model, claim, accepted, current)
-  return (
-    <section className={phase === 'setup' ? 'witness-setup' : 'workbench-card witness'}>
-      <h2>
-        {phase === 'setup'
-          ? 'Setup trail'
-          : typeof side === 'number'
-            ? `Witness for connection ${side + 2}`
-            : side === 'first'
-              ? claim.rule === 'infiniteHop'
-                ? 'Left trail'
-                : 'Trail'
-              : 'Right trail'}
-      </h2>
-      {phase === 'cycle' && infinite && claim.setup && onSetupChange && (
-        <Witness
-          model={model}
-          claim={claim}
-          accepted={accepted}
-          side={side}
-          phase="setup"
-          onChange={onSetupChange}
-        />
-      )}
-      <p className="witness-goal">
-        {phase === 'setup'
-          ? 'Move to the copy where repetition begins.'
-          : `${infinite ? 'Repeat to' : 'Reach'} ${stateLabel(target)}`}
-      </p>
-      <div className="witness-current">
-        <span>Now</span>
-        <strong>{stateLabel(current)}</strong>
-      </div>
-      {traced.error && (
-        <p className="proof-invalid" role="alert">
-          {traced.error}
-        </p>
-      )}
-      {steps.length > 0 && (
-        <details className="witness-history">
-          <summary>
-            Trail history · {steps.length} {steps.length === 1 ? 'step' : 'steps'}
-          </summary>
-          <WitnessRoute model={model} states={traced.states} steps={steps} error={null} />
-        </details>
-      )}
-      <div className="witness-choices">
-        {choices.map((choice, index) => (
-          <button
-            className="control"
-            key={index}
-            disabled={!!traced.error}
-            onClick={() => onChange([...steps, choice.step])}
-          >
-            {choice.label}
-          </button>
-        ))}
-      </div>
-      {!choices.length && (
-        <p className="workbench-help">
-          No legal step at this address. Review the connections or undo a step.
-        </p>
-      )}
-      <div className="button-row">
-        <button
-          className="control"
-          disabled={!steps.length}
-          onClick={() => onChange(steps.slice(0, -1))}
-        >
-          Undo witness step
-        </button>
-        <button className="control" disabled={!steps.length} onClick={() => onChange([])}>
-          Clear witness
-        </button>
-      </div>
-    </section>
-  )
-}
-
-function witnessChoices(
-  model: PathMazeDefinition,
-  claim: ProofClaim,
-  accepted: ProofClaim[],
-  current: PathState
-) {
-  const choices: { step: ProofStep; label: string; next: PathState }[] = []
-  const add = (step: ProofStep, label: string) => {
-    const next = applyProofStep(
-      model,
-      current,
-      step,
-      claim,
-      claim.rule === 'finite' ? accepted.filter((lemma) => lemma.rule === 'finite') : accepted
-    )
-    if (next) choices.push({ step, label, next })
-  }
-  model.connections.forEach((edge) =>
-    add(
-      { kind: 'edge', reference: edge.id, reverse: false },
-      `${edge.operation} ${edge.copy} → ${model.paths.find((path) => path.id === edge.to)?.label}`
-    )
-  )
-  accepted.forEach((lemma, index) =>
-    declaredConnections(lemma).forEach((pair, connection) =>
-      [false, true].forEach((reverse) =>
-        add(
-          { kind: 'lemma', reference: pair.id, reverse },
-          `Use checked claim ${index + 1}${connection ? ` connection ${connection + 1}` : ''}${reverse ? ' backwards' : ''}`
-        )
-      )
-    )
-  )
-  if (claim.rule === 'cantorHop')
-    declaredConnections(claim).forEach((pair, index) =>
-      [false, true].forEach((reverse) =>
-        add(
-          { kind: 'hypothesis', reference: pair.id, reverse },
-          `Use descendant hypothesis${index ? ` ${index + 1}` : ''}${reverse ? ' backwards' : ''}`
-        )
-      )
-    )
-  return choices
-}
-
-function witnessData(
-  model: PathMazeDefinition,
-  claim: ProofClaim,
-  accepted: ProofClaim[],
-  side: 'first' | 'second' | number,
-  phase: 'setup' | 'cycle'
-) {
-  const companion = typeof side === 'number' ? claim.companions![side] : null
-  const infinite =
-    !companion && claim.rule === 'infiniteHop'
-      ? infiniteWitness(model, claim, accepted, side as 'first' | 'second')
-      : null
-  const start =
-    phase === 'cycle' && infinite
-      ? infinite.anchor
-      : companion
-        ? companion.from
-        : side === 'first'
-          ? claim.from
-          : claim.to
-  const steps =
-    phase === 'setup'
-      ? claim.setup![side as 'first' | 'second']
-      : companion
-        ? companion.witness
-        : claim[side as 'first' | 'second']
-  const target = companion ? companion.to : infinite ? infinite.target : claim.to
-  return { start, steps, target, infinite }
 }

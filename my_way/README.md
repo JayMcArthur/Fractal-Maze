@@ -37,12 +37,17 @@ models support balanced PDA search and bounded stack search; square corridors
 also support grid BFS/IDDFS. Coordinate/pattern families retain their native
 searches. A bounded search failure does not prove a maze impossible.
 
-**Proof notebook** opens over the current path-maze run. Choose endpoints and a
-movement rule, build the witness trails, then check the proof. Infinite hops use
-left/right setup trails followed by the same repeating copy word. Cantor groups
-require witnesses for all related connections. Checked claims become available
-in Play and are retained in proof-assisted replays. Claims used by the current
-run stay fixed until those moves are undone. The notebook begins empty.
+**Proof notebook** opens over the current path-maze run. For an infinite hop,
+choose the left and right starting lines and move through the two block mazes.
+Click a board to control it with the keyboard, or use its arrows and gates.
+The notebook detects the common repeating copies from both recorded trails.
+Use **Start repetition here** to mark finite setup routes before the repeating part.
+Check and save the connection, then return to Play; a **Use proof** action stays
+visible when that checked connection can be followed. Saved connections can also
+be reused while building another witness. Advanced controls retain explicit copy
+addresses and certificate editing. Cantor groups still require every related
+witness. Claims used by a run remain fixed until their moves are undone, and
+proof-assisted replays retain their evidence. The notebook begins empty.
 
 Square controls: arrows, WASD, IJKL or on-screen arrows; Z to undo, R to restart,
 H for help and F for fullscreen. Path blocks support keyboard/touch walking,

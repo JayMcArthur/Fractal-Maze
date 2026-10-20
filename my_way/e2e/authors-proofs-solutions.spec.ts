@@ -1,3 +1,4 @@
+import { openProofDetails } from './proofControls'
 import { test, expect } from './fixtures'
 
 test('Library groups authors, filters them and keeps source views together', async ({ page }) => {
@@ -26,11 +27,11 @@ test('two setup trails repeat at one scope, compose a solution and replay its ch
   page,
 }) => {
   await page.goto('workbench/simple-infinite-hop?tab=proof')
+  await openProofDetails(page)
   await page.getByLabel('Build setup trails before the repeating part').check()
-  await page
-    .getByText('Advanced · copy addresses and shared starting copy', { exact: true })
-    .click()
+  await openProofDetails(page)
   await page.getByLabel('Claim scope').fill('A')
+  await openProofDetails(page)
   await page.getByLabel('Repeating word').fill('AA')
   const left = page.locator('.witness').nth(0),
     right = page.locator('.witness').nth(1)
@@ -44,11 +45,11 @@ test('two setup trails repeat at one scope, compose a solution and replay its ch
     .click()
   for (let i = 0; i < 2; i++) {
     await left
-      .locator(':scope > .witness-choices')
+      .locator(':scope > .witness-text-steps .witness-choices')
       .getByRole('button', { name: 'enter A → 1', exact: true })
       .click()
     await right
-      .locator(':scope > .witness-choices')
+      .locator(':scope > .witness-text-steps .witness-choices')
       .getByRole('button', { name: 'enter A → 2', exact: true })
       .click()
   }
@@ -109,12 +110,12 @@ test('static-host redirects restore the selected workspace and its query', async
   await expect(page.getByRole('heading', { name: 'Your proof notebook' })).toBeVisible()
 })
 
-test('proof view keeps trails usable without artwork, histories or address settings covering the controls', async ({
+test('proof view keeps graphical trails usable with histories and address settings collapsed', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('workbench/simple-infinite-hop?tab=proof')
-  await expect(page.locator('.proof-workbench svg')).toHaveCount(0)
+  await expect(page.locator('.proof-workbench .witness-maze')).toHaveCount(2)
   await expect(page.getByLabel('Claim from address')).not.toBeVisible()
   await expect(page.getByRole('button', { name: 'Export PDA', exact: true })).not.toBeVisible()
   await page.locator('.workbench-exports summary').click()
@@ -125,6 +126,7 @@ test('proof view keeps trails usable without artwork, histories or address setti
   expect(exportBox!.x).toBeGreaterThanOrEqual(0)
   expect(exportBox!.x + exportBox!.width).toBeLessThanOrEqual(390)
   await page.locator('.workbench-exports summary').click()
+  await openProofDetails(page)
   await page.getByLabel('Repeating word').fill('A')
   const left = page.locator('.witness').nth(0),
     right = page.locator('.witness').nth(1)

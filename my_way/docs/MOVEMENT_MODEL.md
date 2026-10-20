@@ -66,6 +66,18 @@ proof-assisted recording retains the claims and proof steps. It must not be
 presented as a finite PDA solution. The notebook checks the supported certificates;
 it does not decide every possible infinite derivation.
 
+Graphical proof witnesses use the same compact block geometry and ordinary path
+crossings as Play. Each board owns its physical cursor; only legal PDA crossings
+become certificate steps. Focus scopes keyboard holds to one board, while the
+underlying live run remains blocked by the dialog. `inferInfinitePeriod` derives
+the inserted copy word from both witness endpoints, including setup tails, then
+rechecks the candidate with `checkClaim`. It never searches for witness routes or
+weakens the checker. Marking a repeat anchor derives the common setup scope;
+explicit scope/period editing remains available for general certificates. Existing
+saved claims provide reusable proof connections; Cantor assumptions retain their
+strict descendant requirements. A fixed Play action exposes only physically
+available checked connections and records the same proof-assisted movement.
+
 ## Native families with additional state
 
 | Definition | State that must be retained |

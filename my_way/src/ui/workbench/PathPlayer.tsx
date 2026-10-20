@@ -33,7 +33,7 @@ export function PathPlayer({
   const address = shown ? copyAddress(model, shown) : []
   return (
     <div className="path-play-session">
-      {proofOpen && <ProofDialog title={doc.metadata.title} model={notebook} onChange={setNotebook}
+      {proofOpen && <ProofDialog title={doc.metadata.title} model={notebook} artwork={playArtwork} onChange={setNotebook}
           claimsInUse={session.moves.some(move => move.kind === 'lemma')}
           onClose={() => {
             // Changing proof claims must not replay the previous physical move.
@@ -64,6 +64,13 @@ export function PathPlayer({
           </div>
         </dl>
       </section>
+      {!finished && proofMoves.length > 0 && (
+        <aside className="path-proof-actions" aria-label="Available proof moves">
+          <span>Checked connection</span>
+          <PathProofChoices model={model} current={current} moves={proofMoves}
+            busy={animating} onMove={useProof} />
+        </aside>
+      )}
       <div className="path-player player-layout">
         <div className="path-player__drawing player-field">
           <PathMazeDrawing
@@ -77,7 +84,6 @@ export function PathPlayer({
             onVisibleStateChange={setVisibleState}
             onWalk={onWalk}
             controls={
-              <>
                 <PathMoveChoices
                 model={model}
                 current={current}
@@ -85,9 +91,6 @@ export function PathPlayer({
                 availableEdges={availableEdges}
                 onMove={move}
                 />
-                <PathProofChoices model={model} current={current} moves={proofMoves}
-                  busy={animating || finished} onMove={useProof} />
-              </>
             }
           />
         </div>

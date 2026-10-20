@@ -21,6 +21,7 @@ export function SourceRouteDrawing({
   onMove,
   onPointerDown,
   camera,
+  trail,
 }: {
   artwork: MazeArtwork
   model: PathMazeDefinition
@@ -32,6 +33,7 @@ export function SourceRouteDrawing({
   onMove?: (edge: string) => void
   onPointerDown: (event: PointerEvent<SVGSVGElement>) => void
   camera?: number[]
+  trail?: ArtworkPoint[][]
 }) {
   const width = bounds[2]
   const cell = artwork.blockSize
@@ -66,6 +68,11 @@ export function SourceRouteDrawing({
             <TraceShape trace={trace} />
           </g>
         ))}
+        {trail?.map((points, index) => (
+          <polyline key={index} className="witness-ink" points={points.map(point => point.join(',')).join(' ')}
+            fill="none" stroke="#2967be" strokeWidth={cell ? cell * .22 : width / 180}
+            strokeLinecap="round" strokeLinejoin="round" pointerEvents="none" />
+        ))}
         {moves.map(({ edge }) => {
           const gate = artwork.gates?.find((gate) => gate.edge === edge.id)
           const { action, path: pathLabel } = pathMoveDescription(model, marker.state, edge)
@@ -94,6 +101,9 @@ export function SourceRouteDrawing({
                   stroke="#21665e"
                   strokeWidth={cell ? cell * .06 : width / 500}
                 />
+                <circle className="source-gate-focus" cx={gate.from[0]} cy={gate.from[1]}
+                  r={cell ? cell * .65 : width / 55} fill="none" stroke="#2967be"
+                  strokeWidth={cell ? cell * .12 : width / 300} pointerEvents="none" />
                 <title>
                   {action} → path {pathLabel}
                 </title>
