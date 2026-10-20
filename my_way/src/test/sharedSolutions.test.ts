@@ -1,3 +1,4 @@
+import { compilePlayDocument } from '../app/library/compilePlayDocument'
 import { describe, expect, it } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { createHash } from 'node:crypto'
@@ -17,7 +18,6 @@ import { resolveMove } from '../core/solver/common/movementResolver'
 import type { SquareRecursiveDefinition } from '../core/model/squareRecursive'
 import { samePosition } from '../core/replay/replayFrame'
 import { hydrateArtwork } from '../app/library/pathCatalog'
-import { wirePlayDocument } from '../app/library/wirePlayDocument'
 
 describe('shared solution inventory', () => {
   it.each(register)('keeps the source-checked register solution current for $mazeId', (fixture) => {
@@ -43,7 +43,9 @@ describe('shared solution inventory', () => {
     expect(replay.metrics.totalMoves).toBe(bundle.moves)
     expect(replay.nativeRoute?.type ?? replay.maze.definition.type).toBe(bundle.format)
     const source = structuredClone(loadCatalogMaze(bundle.mazeId)!)
-    const current = await hydrateArtwork(wirePlayDocument(source) ?? source)
+    const current = await hydrateArtwork(
+      source.definition.type === 'legacyWire' ? compilePlayDocument(source) : source
+    )
     if (bundle.proofAssisted &&
         (current.definition.type === 'infiniteRule' || current.definition.type === 'pathPushdown') &&
         (replay.maze.definition.type === 'infiniteRule' || replay.maze.definition.type === 'pathPushdown')) {

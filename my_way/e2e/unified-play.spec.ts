@@ -1,4 +1,6 @@
 import { test, expect } from './fixtures'
+import { readFileSync } from 'node:fs'
+import type { ReplayDocument } from '../src/core/replay/ReplayDocument'
 
 const sourceAlice = 'draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png'
 
@@ -152,4 +154,41 @@ test('solving a workbench preview saves the current edits instead of loading the
   await page.getByRole('button', { name: 'Save & play replay', exact: true }).click()
   await page.getByRole('button', { name: 'Seek to end', exact: true }).click()
   await expect(page.locator('.replay-summary')).toContainText('complete')
+})
+
+test('changing solver mazes resets search state while retaining the library filters', async ({ page }) => {
+  await page.goto('solver?id=square')
+  await page.getByLabel('Solve method', { exact: true }).selectOption('grid')
+  await page.getByLabel('Search solver mazes').fill('Alice')
+  await page.getByRole('group', { name: 'Matching mazes' }).getByRole('button').click()
+  await expect(page.getByLabel('Solve method', { exact: true })).toHaveValue('pda')
+  await expect(page.getByLabel('Search solver mazes')).toHaveValue('Alice')
+  await expect(page.getByRole('heading', { name: 'Simplified PDA', exact: true })).toBeVisible()
+})
+
+test('solver type filters use saved alternate models rather than their original catalog types', async ({ page }) => {
+  const bundles: { asset: string; format: string }[] = JSON.parse(
+    readFileSync('src/data/manifests/shared-replays.json', 'utf8')
+  )
+  const bundle = bundles.find(bundle => bundle.format === 'infiniteRule')!
+  const replay = JSON.parse(readFileSync(`public/${bundle.asset}`, 'utf8')) as ReplayDocument
+  const doc = replay.maze
+  doc.metadata.id = 'a-long-path-v8'
+  doc.metadata.title = 'Edited infinite alternate'
+  await page.goto('library')
+  await page.getByRole('button', { name: 'Import maze', exact: true }).click()
+  await page.locator('input[type=file]').setInputFiles({
+    name: 'alternate.fmaze', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(doc)),
+  })
+  await page.getByRole('button', { name: 'Load Maze', exact: true }).click()
+  await expect(page).toHaveURL(/\/play\/a-long-path-v8$/)
+  await page.goto('solver')
+  await page.getByLabel('Search solver mazes').fill('A Long Path')
+  await page.getByLabel('Solver maze type', { exact: true }).selectOption('infinite')
+  const choices = page.getByRole('group', { name: 'Matching mazes' }).getByRole('button')
+  await expect(choices).toHaveCount(1)
+  await choices.click()
+  await expect(page).toHaveURL(/solver\?id=a-long-path-v8$/)
+  await expect(page.getByRole('heading', { name: 'Edited infinite alternate', exact: true })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Construct an infinite proof' })).toBeVisible()
 })

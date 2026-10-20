@@ -1,8 +1,6 @@
+import { compilePlayDocument } from '../app/library/compilePlayDocument'
 import { expect, it } from 'vitest'
 import { catalog, loadCatalogMaze } from '../app/library/catalog'
-import { portPlayDocument } from '../app/library/portPlayDocument'
-import { geometricPlayDocument } from '../app/library/geometricPlayDocument'
-import { wirePlayDocument } from '../app/library/wirePlayDocument'
 import { squarePlayPDA } from '../app/library/playPDA'
 import { exportPathPDA } from '../core/pathMaze/exportPDA'
 import { importPathPDA } from '../core/pathMaze/importPDA'
@@ -15,7 +13,7 @@ it('round-trips every catalog PDA and compiled navigation model without changing
   let checked = 0
   for (const entry of catalog) {
     const original = loadCatalogMaze(entry.id)!
-    const doc = portPlayDocument(original) ?? geometricPlayDocument(original) ?? wirePlayDocument(original) ?? original
+    const doc = compilePlayDocument(original)
     const model = doc.definition.type === 'squareRecursive' ? squarePlayPDA(doc)?.model :
       doc.definition.type === 'pathPushdown' || doc.definition.type === 'infiniteRule' ? doc.definition : null
     if (!model) continue

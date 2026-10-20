@@ -1,9 +1,7 @@
+import { compilePlayDocument } from '../../app/library/compilePlayDocument'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { loadMazeDocument } from '../../app/projects/loadMazeDocument'
-import { portPlayDocument } from '../../app/library/portPlayDocument'
-import { geometricPlayDocument } from '../../app/library/geometricPlayDocument'
-import { wirePlayDocument } from '../../app/library/wirePlayDocument'
 import { loadProject, saveProject } from '../../app/projects/db'
 import { emptyPathModel, pathDocument } from '../../app/library/pathDocument'
 import { referenceDraftId } from '../../app/library/catalogIndex'
@@ -61,7 +59,7 @@ export function WorkbenchPage() {
         )
       }
       if (!doc) throw new Error('This maze or reference is not in the collection.')
-      doc = geometricPlayDocument(doc) ?? portPlayDocument(doc) ?? wirePlayDocument(doc) ?? doc
+      doc = compilePlayDocument(doc)
       if (doc.definition.type !== 'pathPushdown' && doc.definition.type !== 'infiniteRule') {
         original = doc
         const saved = await loadProject(`${id}-pda-wip`)
