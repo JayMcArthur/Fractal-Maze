@@ -144,3 +144,17 @@ test('the last recorded block walk can pause and resume before its endpoint', as
   expect(await point(marker)).toEqual(target)
   await expect(page.getByRole('button', { name: 'Play replay', exact: true })).toBeVisible()
 })
+
+test('a restart during movement accepts the next key before another animation frame', async ({ page }) => {
+  await page.clock.install({ time: new Date('2026-10-10T12:00:00Z') })
+  await page.goto(alice)
+  await expect(page.getByTestId('source-player-marker')).toBeVisible()
+  await page.clock.pauseAt(new Date('2026-10-10T12:01:00Z'))
+  await page.keyboard.press('ArrowRight')
+  await page.clock.runFor(16)
+  await expect(page.getByRole('button', { name: 'Undo move', exact: true })).toBeDisabled()
+  await page.getByRole('button', { name: 'Restart path', exact: true }).click()
+  await page.keyboard.press('ArrowRight')
+  await page.clock.runFor(2000)
+  await expect(page.getByRole('button', { name: 'Save & play replay', exact: true })).toBeEnabled()
+})

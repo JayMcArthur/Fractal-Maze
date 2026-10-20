@@ -36,6 +36,14 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Browser workflows
         run: npm run test:browser -- --workers=2
+      - name: Keep failed browser context
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-failure-context
+          path: my_way/test-results
+          if-no-files-found: ignore
+          retention-days: 7
       - uses: actions/upload-pages-artifact@v3
         with:
           path: my_way/dist
