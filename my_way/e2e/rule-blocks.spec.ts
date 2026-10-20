@@ -1,3 +1,6 @@
+import { compactBlockArtwork } from '../src/core/play/compactBlockArtwork'
+import { createBlockArtwork } from '../src/core/play/blockArtwork'
+import type { ReplayDocument } from '../src/core/replay/ReplayDocument'
 import { expect, test } from './fixtures'
 import { readFileSync } from 'node:fs'
 
@@ -172,10 +175,23 @@ test('a recorded rule-only run keeps its original source document and selected b
 test('Inner Frame room entry continues by keyboard in blocks', async ({
     page,
   }) => {
+    await page.setViewportSize({ width: 1440, height: 1000 })
     await page.goto('play/draft-maze-images-the-inner-frame-pdf')
     await page.getByLabel('Local view', { exact: true }).uncheck()
     const board = page.getByRole('img', { name: 'Playable source maze routes', exact: true })
-    const target = [215.6875, 252.125]
+    const bundle = bundles.find(bundle => bundle.mazeId === 'draft-maze-images-the-inner-frame-pdf')!
+    const original = JSON.parse(readFileSync(`public/${bundle.asset}`, 'utf8')) as ReplayDocument
+    const model = original.maze.definition
+    if (model.type !== 'pathPushdown') throw new Error('Expected Inner Frame path model')
+    const before = createBlockArtwork(original.maze.artwork!, model)
+    const compact = compactBlockArtwork(original.maze.artwork!, model)
+    const oldTarget = [215.6875, 252.125]
+    const traceIndex = before.traces.findIndex(trace => trace.points.some(point =>
+      Math.hypot(point[0] - oldTarget[0], point[1] - oldTarget[1]) < 1e-6))
+    expect(traceIndex).toBeGreaterThanOrEqual(0)
+    const vertex = before.traces[traceIndex].points.findIndex(point =>
+      Math.hypot(point[0] - oldTarget[0], point[1] - oldTarget[1]) < 1e-6)
+    const target = compact.traces[traceIndex].points[vertex]
     await board.scrollIntoViewIfNeeded()
     const screen = await board.evaluate((svg, point) => {
       const screen = new DOMPoint(...point).matrixTransform((svg as SVGSVGElement).getScreenCTM()!)
@@ -191,26 +207,17 @@ test('Inner Frame room entry continues by keyboard in blocks', async ({
       .toBeLessThan(0.0001)
     const east = page.getByRole('button', { name: 'Move east', exact: true })
     await expect(east).toBeEnabled()
-    await page.keyboard.press('ArrowRight')
-    await expect(page.getByTestId('source-player-marker')).toHaveAttribute(
-      'cx',
-      '217'
-    )
+    const gate = compact.gates!.find(gate => gate.edge === 'room-0-enter')!
+    const steps = Math.round((gate.from[0] - target[0]) / compact.blockSize!)
+    expect(steps).toBeGreaterThan(0)
+    for (let step = 1; step <= steps; step++) {
       await expect(east).toBeEnabled()
       await page.keyboard.press('ArrowRight')
-      await expect(page.getByTestId('source-player-marker')).toHaveAttribute('cx', '218.3125')
-      await expect(east).toBeEnabled()
-      await page.keyboard.press('ArrowRight')
-      await expect(page.getByTestId('source-player-marker')).toHaveAttribute('cx', '219.625')
-      await expect(east).toBeEnabled()
-      await page.keyboard.press('ArrowRight')
-      await expect(page.getByTestId('source-player-marker')).toHaveAttribute('cx', '220.9375')
+      await expect.poll(async () => Number(await page.getByTestId('source-player-marker').getAttribute('cx')))
+        .toBeCloseTo(target[0] + compact.blockSize! * step, 6)
+    }
     await expect(east).toBeEnabled()
     await page.keyboard.press('ArrowRight')
-    await expect(
-      page.locator('.digital-hud__metrics > div').filter({ hasText: 'Depth' })
-    ).toContainText('1')
-    await expect(
-      page.locator('.digital-hud__metrics > div').filter({ hasText: 'Path' })
-    ).toContainText('Y · left')
+    await expect(page.locator('.digital-hud__metrics > div').filter({ hasText: 'Depth' })).toContainText('1')
+    await expect(page.locator('.digital-hud__metrics > div').filter({ hasText: 'Path' })).toContainText('Y · left')
   })

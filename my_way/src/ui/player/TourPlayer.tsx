@@ -1,5 +1,6 @@
 import { useRunGuard } from './useRunGuard'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
+import { useMovementKeyboard } from './movementKeys'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
 import type { RecursiveTourDefinition, TourGate } from '../../core/model/recursiveTour'
 import {
@@ -14,16 +15,6 @@ import { TourRenderer } from '../../core/render/svg/TourRenderer'
 import { SaveRouteButton } from '../replay/SaveRouteButton'
 import { TouchPad } from '../components/TouchPad'
 
-const keys: Record<string, TourGate> = {
-  ArrowUp: 'N',
-  ArrowRight: 'E',
-  ArrowDown: 'S',
-  ArrowLeft: 'W',
-  w: 'N',
-  d: 'E',
-  s: 'S',
-  a: 'W',
-}
 const bits: Record<number, TourGate> = { 8: 'N', 4: 'E', 2: 'S', 1: 'W' }
 
 export function TourPlayer({ doc }: { doc: RecursiveMazeDocument }) {
@@ -59,18 +50,7 @@ export function TourPlayer({ doc }: { doc: RecursiveMazeDocument }) {
     },
     [def, state, history, step]
   )
-  useEffect(() => {
-    const handler = (event: KeyboardEvent) => {
-      if ((event.target as HTMLElement).closest('input,select,textarea,button,a')) return
-      const direction = keys[event.key]
-      if (direction) {
-        event.preventDefault()
-        move(direction)
-      }
-    }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [move])
+  useMovementKeyboard({ enabled: !complete, move: direction => move(bits[direction]) })
   const restart = () => {
     setHistory([startTour(def)])
     setStep(0)

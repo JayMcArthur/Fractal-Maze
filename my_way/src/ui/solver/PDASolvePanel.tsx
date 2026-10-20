@@ -13,6 +13,7 @@ import { PathInputControls } from '../workbench/PathInputControls'
 import { reachesGoal } from '../../core/pathMaze/traversal'
 import { PathMazeDrawing } from '../workbench/PathMazeDrawing'
 import { MazeCanvas } from '../components/MazeCanvas'
+import { compactBlockArtwork } from '../../core/play/compactBlockArtwork'
 
 export function PDASolvePanel({
   doc,
@@ -214,6 +215,8 @@ function PDAPreview({
   step: number
   onStep: (step: number) => void
 }) {
+  const artwork = useMemo(() => doc.definition.type !== 'squareRecursive' && doc.artwork
+    ? compactBlockArtwork(doc.artwork, model) : undefined, [doc, model])
   const arrivalEdges = useMemo(
     () => (route && step ? [route.edges[step - 1]] : undefined),
     [route, step]
@@ -225,7 +228,7 @@ function PDAPreview({
       ) : (
         <PathMazeDrawing
           model={model}
-          artwork={doc.artwork}
+          artwork={artwork}
           current={route?.states[step] ?? model.start ?? undefined}
           arrivalEdges={arrivalEdges}
         />
