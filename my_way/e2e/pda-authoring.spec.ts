@@ -1,3 +1,4 @@
+import { openProofDetails } from './proofControls'
 import { expect, test } from './fixtures'
 import { readFileSync } from 'node:fs'
 import { exportPathPDA } from '../src/core/pathMaze/exportPDA'
@@ -118,15 +119,17 @@ test('an imported PDA supports user-built ABC setup and BAC repetition, with the
   const id = new URL(page.url()).pathname.split('/play/')[1]
   await page.goto(`workbench/${id}?tab=proof`)
   await expect(page.getByText('No saved proofs yet.', { exact: true })).toBeVisible()
+  await openProofDetails(page)
   await page.getByLabel('Build setup trails before the repeating part').check()
-  await page.getByText('Advanced · copy addresses and shared starting copy', { exact: true }).click()
+  await openProofDetails(page)
   await page.getByLabel('Claim scope').fill('ABC')
+  await openProofDetails(page)
   await page.getByLabel('Repeating word').fill('BAC')
   for (const [index, path] of ['1', '2'].entries()) {
     const witness = page.locator('.witness').nth(index)
     for (const copy of ['A', 'B', 'C']) await witness.locator('.witness-setup')
       .getByRole('button', { name: `enter ${copy} → ${path}`, exact: true }).click()
-    for (const copy of ['B', 'A', 'C']) await witness.locator(':scope > .witness-choices')
+    for (const copy of ['B', 'A', 'C']) await witness.locator(':scope > .witness-text-steps .witness-choices')
       .getByRole('button', { name: `enter ${copy} → ${path}`, exact: true }).click()
   }
   await expect(page.getByRole('region', { name: 'Infinite trail comparison' })).toContainText('Both repeating witnesses reach their targets')
@@ -135,7 +138,7 @@ test('an imported PDA supports user-built ABC setup and BAC repetition, with the
   await expect(left.locator(':scope > .witness-current')).toContainText('AB · 1')
   await expect(page.locator('.witness').nth(1).locator(':scope > .witness-current')).toContainText('ABCBAC · 2')
   await left.locator('.witness-setup').getByRole('button', { name: 'enter C → 1', exact: true }).click()
-  for (const copy of ['B', 'A', 'C']) await left.locator(':scope > .witness-choices')
+  for (const copy of ['B', 'A', 'C']) await left.locator(':scope > .witness-text-steps .witness-choices')
     .getByRole('button', { name: `enter ${copy} → 1`, exact: true }).click()
   await expect(page.getByRole('region', { name: 'Infinite trail comparison' })).toContainText('Both repeating witnesses reach their targets')
   await page.getByRole('button', { name: 'Check my proof', exact: true }).click()

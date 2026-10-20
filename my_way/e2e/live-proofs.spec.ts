@@ -1,8 +1,10 @@
+import { openProofDetails } from './proofControls'
 import { expect, test } from './fixtures'
 
 test('a manually checked infinite connection is usable in live Play', async ({ page }) => {
   await page.goto('workbench/simple-infinite-hop?tab=proof')
   for (let index = 0; index < 2; index++) {
+    await openProofDetails(page)
     await page.getByLabel('Repeating word', { exact: true }).fill('A')
     const witnesses = page.locator('section.witness')
     await witnesses.nth(0).getByRole('button', { name: 'enter A → 1', exact: true }).click()

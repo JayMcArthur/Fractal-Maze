@@ -1,3 +1,4 @@
+import { openProofDetails } from './proofControls'
 import { test, expect } from './fixtures'
 import { readFileSync } from 'node:fs'
 const references: { title: string; asset: string }[] = JSON.parse(
@@ -159,6 +160,7 @@ test('Cantor notebook starts empty and checks only a witness constructed by the 
 test('nested infinite-hop witnesses use a previously checked lemma', async ({ page }) => {
   await page.goto('workbench/simple-nested-infinite-hop?tab=proof')
   await page.getByLabel('Claim to path').selectOption('2')
+  await openProofDetails(page)
   await page.getByLabel('Repeating word').fill('A')
   const first = page.locator('.witness').nth(0),
     second = page.locator('.witness').nth(1)
@@ -167,6 +169,7 @@ test('nested infinite-hop witnesses use a previously checked lemma', async ({ pa
   await page.getByRole('button', { name: 'Check my proof' }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('infinite-hop rules')
   await page.getByRole('button', { name: 'Save checked claim' }).click()
+  await openProofDetails(page)
   await page.getByLabel('Repeating word').fill('B')
   await first.getByRole('button', { name: 'Use checked claim 1', exact: true }).click()
   await first.getByRole('button', { name: 'enter B → 1', exact: true }).click()

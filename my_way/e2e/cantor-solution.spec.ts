@@ -1,3 +1,4 @@
+import { openProofDetails } from './proofControls'
 import { expect, test } from './fixtures'
 import { readFileSync } from 'node:fs'
 import type { Locator, Page } from '@playwright/test'
@@ -94,7 +95,9 @@ test('First Cantor shared solution exposes every joint witness without filling t
   const replay = JSON.parse(readFileSync(file, 'utf8'))
   expect(replay.maze.definition.start).toEqual({ path: '6', address: [] })
   expect(replay.maze.definition.claims[0].companions).toHaveLength(3)
+  const beforeImport = page.url()
   await page.getByLabel('Import replay', { exact: true }).setInputFiles(file)
+  await expect(page).not.toHaveURL(beforeImport)
   await page.getByRole('button', { name: 'Seek to end', exact: true }).click()
   await expect(page.locator('.saved-proof-witness')).toHaveCount(4)
   await page.goto(`workbench/${id}?tab=proof`)
@@ -159,18 +162,19 @@ test('the twelve-copy Infinite Descent repetition can be constructed on both sid
   await page.setViewportSize({ width: 1440, height: 1000 })
   await page.goto(`workbench/${descentId}?tab=proof`)
   await expect(page.getByRole('heading', { name: 'Saved claims (0)' })).toBeVisible()
-  await page.getByLabel('Repeating word', { exact: true }).fill(descent.period.join(' '))
-  await page.getByText('Advanced · copy addresses and shared starting copy', { exact: true }).click()
+  await openProofDetails(page)
   await page.getByLabel('Claim scope', { exact: true }).fill(descent.scope.join(' '))
+  await openProofDetails(page)
   await page.getByLabel('Build setup trails before the repeating part', { exact: true }).check()
   const panels = page.locator('section.witness')
   for (const [index, side] of (['first', 'second'] as const).entries()) {
     await buildWitness(panels.nth(index).locator('.witness-setup .witness-choices'), descent.setup![side], descentSource.pairs)
   }
-  await buildWitness(panels.nth(0).locator(':scope > .witness-choices'), descent.first, descentSource.pairs)
+  await buildWitness(panels.nth(0).locator(':scope > .witness-text-steps .witness-choices'), descent.first, descentSource.pairs)
   await page.getByRole('button', { name: 'Check my proof', exact: true }).click()
-  await expect(page.locator('.proof-check [role=status]')).toContainText('required witness routes')
-  await buildWitness(panels.nth(1).locator(':scope > .witness-choices'), descent.second, descentSource.pairs)
+  await expect(page.locator('.proof-check [role=status]')).toContainText('Complete both trails')
+  await buildWitness(panels.nth(1).locator(':scope > .witness-text-steps .witness-choices'), descent.second, descentSource.pairs)
+  await expect(page.getByLabel('Repeating word', { exact: true })).toHaveValue(descent.period.join(' '))
   await page.getByRole('button', { name: 'Check my proof', exact: true }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('Derivation checked under infinite-hop rules')
   await page.getByRole('button', { name: 'Save checked claim', exact: true }).click()

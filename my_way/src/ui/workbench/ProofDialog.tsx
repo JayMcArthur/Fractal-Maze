@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useRef } from 'react'
-import type { PathMazeDefinition } from '../../core/model/pathMaze'
+import type { MazeArtwork, PathMazeDefinition } from '../../core/model/pathMaze'
+import { checkedClaims } from '../../core/pathMaze/proofs'
 const ProofWorkbench = lazy(() =>
   import('./ProofWorkbench').then((module) => ({ default: module.ProofWorkbench }))
 )
@@ -10,12 +11,14 @@ export default function ProofDialog({
   claimsInUse,
   onChange,
   onClose,
+  artwork,
 }: {
   title: string
   claimsInUse: boolean
   model: PathMazeDefinition
   onChange: (model: PathMazeDefinition) => void
   onClose: () => void
+  artwork?: MazeArtwork
 }) {
   const ref = useRef<HTMLDialogElement>(null)
   useEffect(() => {
@@ -55,11 +58,13 @@ export default function ProofDialog({
       </header>
       <div className="proof-dialog__body">
         <Suspense fallback={<p role="status">Opening proof notebook…</p>}>
-          <ProofWorkbench model={model} onChange={onChange} inPlay claimsInUse={claimsInUse} />
+          <ProofWorkbench model={model} artwork={artwork} onChange={onChange} inPlay claimsInUse={claimsInUse} />
         </Suspense>
       </div>
       <footer className="proof-dialog__footer">
-        <p>Save a checked claim to make its connection available in this run.</p>
+        <p>{checkedClaims(model).length
+          ? 'Your checked connections are ready. Return to the maze to use the highlighted proof action.'
+          : 'Build the trails, check them, then save the connection to use it in your run.'}</p>
         <button className="control control--primary" onClick={onClose}>
           Return to maze
         </button>

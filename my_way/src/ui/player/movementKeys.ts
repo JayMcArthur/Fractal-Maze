@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef, type RefObject } from 'react'
 import type { DirectionBit } from '../../core/model/squareRecursive'
 
 export function keyToDirection(key: string): DirectionBit | null {
@@ -19,11 +19,13 @@ export function keyToDirection(key: string): DirectionBit | null {
   return directions[key.length === 1 ? key.toLowerCase() : key] ?? null
 }
 
-function keyboardBlocked(target: EventTarget | null) {
+function keyboardBlocked(target: EventTarget | null, scope?: HTMLElement | null) {
+  const dialog = document.querySelector('[role="dialog"]')
   return (
     (target instanceof Element &&
       target.closest('input,select,textarea,[contenteditable]:not([contenteditable="false"])')) ||
-    document.querySelector('[role="dialog"]')
+    (scope && (!(target instanceof Node) || !scope.contains(target))) ||
+    (dialog && (!scope || !dialog.contains(scope)))
   )
 }
 
@@ -31,9 +33,11 @@ function keyboardBlocked(target: EventTarget | null) {
 export function useMovementKeyboard({
   enabled,
   move,
+  scope,
 }: {
   enabled: boolean
   move: (direction: DirectionBit) => void
+  scope?: RefObject<HTMLDivElement | null>
 }) {
   const latestMove = useRef(move)
   useLayoutEffect(() => {
@@ -48,7 +52,7 @@ export function useMovementKeyboard({
       window.clearTimeout(timer)
     }
     const repeat = () => {
-      if (!held || keyboardBlocked(document.activeElement) || document.hidden) {
+      if (!held || keyboardBlocked(document.activeElement, scope?.current) || document.hidden) {
         cancel()
         return
       }
@@ -56,7 +60,7 @@ export function useMovementKeyboard({
       timer = window.setTimeout(repeat, 120)
     }
     const keydown = (event: KeyboardEvent) => {
-      if (event.ctrlKey || event.metaKey || event.altKey || keyboardBlocked(event.target)) {
+      if (event.ctrlKey || event.metaKey || event.altKey || keyboardBlocked(event.target, scope?.current)) {
         cancel()
         return
       }
@@ -73,7 +77,7 @@ export function useMovementKeyboard({
       if (held?.key === event.key.toLowerCase()) cancel()
     }
     const focus = (event: FocusEvent) => {
-      if (keyboardBlocked(event.target)) cancel()
+      if (keyboardBlocked(event.target, scope?.current)) cancel()
     }
     const visibility = () => {
       if (document.hidden) cancel()
@@ -91,7 +95,7 @@ export function useMovementKeyboard({
       document.removeEventListener('focusin', focus)
       document.removeEventListener('visibilitychange', visibility)
     }
-  }, [enabled])
+  }, [enabled, scope])
 }
 
 export function useSquareKeyboard({

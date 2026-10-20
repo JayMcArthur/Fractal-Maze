@@ -1,3 +1,4 @@
+import { openProofDetails } from './proofControls'
 import { test, expect } from './fixtures'
 import { readFileSync } from 'node:fs'
 
@@ -10,7 +11,7 @@ for (const width of [390, 1440]) {
     await expect(open).toBeEnabled()
     await page.clock.install({ time: new Date('2026-10-20T12:00:00Z') })
     await page.clock.pauseAt(new Date('2026-10-20T12:01:00Z'))
-    const marker = page.getByTestId('source-player-marker')
+    const marker = page.locator('.path-player').getByTestId('source-player-marker')
     const point = [await marker.getAttribute('cx'), await marker.getAttribute('cy')]
     const status = await page.locator('.digital-hud').innerText()
     await open.click()
@@ -18,6 +19,7 @@ for (const width of [390, 1440]) {
     await expect(dialog).toBeVisible()
     await expect(page).toHaveURL(/\/play\/simple-infinite-hop$/)
     await expect(dialog.getByRole('heading', { name: 'Saved claims (0)' })).toBeVisible()
+    await openProofDetails(page)
     await dialog.getByLabel('Repeating word', { exact: true }).fill('A')
     await page.clock.runFor(16)
     await page.keyboard.press('ArrowDown')
@@ -45,6 +47,7 @@ test('a proof built over Play becomes a live move and survives replay export/imp
   await page.goto('play/simple-infinite-hop')
   await page.getByRole('button', { name: 'Open proof notebook', exact: true }).click()
   const dialog = page.getByRole('dialog', { name: 'Proof notebook', exact: true })
+  await openProofDetails(page)
   await dialog.getByLabel('Repeating word', { exact: true }).fill('A')
   const trails = dialog.locator('section.witness')
   await trails.nth(0).getByRole('button', { name: 'enter A → 1', exact: true }).click()
