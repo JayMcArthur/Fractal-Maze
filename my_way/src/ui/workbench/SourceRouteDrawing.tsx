@@ -8,6 +8,7 @@ import { TraceShape } from '../../core/render/svg/TraceShape'
 import { BlockArtwork } from '../../core/render/svg/BlockArtwork'
 import { PathLocationMap } from './PathLocationMap'
 import { copyAddress } from '../../core/pathMaze/copyAddress'
+import { ProofLineLabels } from './ProofLineLabels'
 
 /** Draw the active room and its position within the parent; movement is owned by the canvas. */
 export function SourceRouteDrawing({
@@ -22,6 +23,7 @@ export function SourceRouteDrawing({
   onPointerDown,
   camera,
   trail,
+  showLineLabels,
 }: {
   artwork: MazeArtwork
   model: PathMazeDefinition
@@ -34,6 +36,7 @@ export function SourceRouteDrawing({
   onPointerDown: (event: PointerEvent<SVGSVGElement>) => void
   camera?: number[]
   trail?: ArtworkPoint[][]
+  showLineLabels?: boolean
 }) {
   const width = bounds[2]
   const cell = artwork.blockSize
@@ -64,7 +67,8 @@ export function SourceRouteDrawing({
           <image href={assetUrl(artwork.asset)} width={display.width} height={display.height} />
         )}
         {active.map((trace) => (
-          <g key={trace.id} fill="none" stroke="#ef8634" strokeWidth={cell ? cell * .16 : width / 220} opacity="0.5">
+          <g key={trace.id} fill="none" stroke={showLineLabels ? '#2967be' : '#ef8634'}
+            strokeWidth={cell ? cell * .16 : width / 220} opacity={showLineLabels ? .9 : .5}>
             <TraceShape trace={trace} />
           </g>
         ))}
@@ -73,6 +77,8 @@ export function SourceRouteDrawing({
             fill="none" stroke="#2967be" strokeWidth={cell ? cell * .22 : width / 180}
             strokeLinecap="round" strokeLinejoin="round" pointerEvents="none" />
         ))}
+        {showLineLabels && <ProofLineLabels artwork={artwork} model={model}
+          current={marker.state.path} bounds={bounds} camera={camera ?? bounds} />}
         {moves.map(({ edge }) => {
           const gate = artwork.gates?.find((gate) => gate.edge === edge.id)
           const { action, path: pathLabel } = pathMoveDescription(model, marker.state, edge)

@@ -93,8 +93,9 @@ export function ProofWorkbench({
       <header className="proof-intro">
         {!inPlay && <h2>Your proof notebook</h2>}
         <p>
-          Choose the starting lines. Click a maze to control it with the arrow keys or on-screen
-          arrows. Crossing gates records your trail.
+          Match the starting-line selectors to the labels on each maze. Blue marks the current
+          line. Click a maze to control it with the arrow keys or on-screen arrows. Crossing gates
+          records your trail.
         </p>
         <details className="proof-help">
           <summary>How the proof rules work</summary>

@@ -114,6 +114,7 @@ export function WitnessMaze({
         controls={controls}
         keyboardScope={scope}
         trail={trail}
+        showLineLabels
         onMove={move}
         onWalk={(points) => {
           setView({

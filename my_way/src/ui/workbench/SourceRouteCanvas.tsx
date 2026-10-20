@@ -37,6 +37,7 @@ export function SourceRouteCanvas({
   frame,
   keyboardScope,
   trail,
+  showLineLabels = false,
 }: {
   artwork: MazeArtwork
   busy?: boolean
@@ -50,12 +51,13 @@ export function SourceRouteCanvas({
   frame?: PathPlayFrame
   keyboardScope?: RefObject<HTMLDivElement | null>
   trail?: ArtworkPoint[][]
+  showLineLabels?: boolean
   controls?: ReactNode
   motionPaused?: boolean
   animationMs?: number
 }) {
   const corridors = !!artwork.blockSize
-  const [localView, setLocalView] = useState(true)
+  const [localView, setLocalView] = useState(!showLineLabels)
   const [notice, setNotice] = useState('')
   const { marker, markerRef } = usePathMotion({ artwork, model, current,
     arrivalEdges, frame, motionPaused, animationMs, onMotionChange, onVisibleStateChange })
@@ -117,6 +119,7 @@ export function SourceRouteCanvas({
         display={display}
         corridors={corridors}
         trail={trail}
+        showLineLabels={showLineLabels}
         camera={corridors && localView ? blockCamera(bounds, marker.point, artwork.blockSize!) : undefined}
         moves={moves}
         onMove={onMove}
