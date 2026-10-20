@@ -133,5 +133,9 @@ export function usePathSession(doc: RecursiveMazeDocument, model: PathMazeDefini
     markSaved,
     setAnimating,
     setVisibleState,
+    refreshFrame: () => {
+      const position = session.positions.at(-1)
+      setFrame(position ? { position } : undefined)
+    },
   }
 }

@@ -1,4 +1,4 @@
-import { type ReactNode, useMemo } from 'react'
+import { type ReactNode, useMemo, useState } from 'react'
 import { rulePlayDocument } from '../../app/library/rulePlayDocument'
 import { Link } from 'react-router-dom'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
@@ -11,22 +11,36 @@ import { usePathSession } from './usePathSession'
 import { copyAddress } from '../../core/pathMaze/copyAddress'
 import { PathProofChoices } from './PathProofChoices'
 
+import ProofDialog from './ProofDialog'
+
 export function PathPlayer({
   doc,
-  model,
+  model: initialModel,
   children,
 }: {
   doc: RecursiveMazeDocument
   model: PathMazeDefinition
   children?: ReactNode
 }) {
-  const playable = useMemo(() => rulePlayDocument(doc) ?? doc, [doc])
+  const [model, setModel] = useState(initialModel)
+  const [notebook, setNotebook] = useState(initialModel)
+  const [proofOpen, setProofOpen] = useState(false)
+  const maze = useMemo(() => ({ ...doc, definition: model }), [doc, model])
+  const playable = useMemo(() => rulePlayDocument(maze) ?? maze, [maze])
   const { session, frame, route, animating, current, shown, finished, playArtwork, availableEdges, proofMoves, useProof,
-    onWalk, move, undo, reset, markSaved, setAnimating, setVisibleState } = usePathSession(playable, model)
+    onWalk, move, undo, reset, markSaved, setAnimating, setVisibleState, refreshFrame } = usePathSession(playable, model)
   const pathLabel = model.paths.find((path) => path.id === shown?.path)?.label
   const address = shown ? copyAddress(model, shown) : []
   return (
     <div className="path-play-session">
+      {proofOpen && <ProofDialog title={doc.metadata.title} model={notebook} onChange={setNotebook}
+          claimsInUse={session.moves.some(move => move.kind === 'lemma')}
+          onClose={() => {
+            // Changing proof claims must not replay the previous physical move.
+            refreshFrame()
+            setModel(notebook)
+            setProofOpen(false)
+          }} />}
       <section className="digital-hud" aria-label="Maze position and session status">
         <div className="digital-hud__position">
           <span className={`status-lamp ${finished ? 'is-won' : ''}`} aria-hidden="true" />
@@ -104,7 +118,7 @@ export function PathPlayer({
               </button>
             </div>
             <SaveRouteButton
-              maze={doc}
+              maze={maze}
               playArtwork={playArtwork}
               disabled={animating}
               route={{ type: model.type, ...route, ...(playArtwork?.traces.length ? { physical: session } : {}) }}
@@ -118,9 +132,9 @@ export function PathPlayer({
                   Solve & analyze<span>→</span>
                 </Link>
                 {model.allowedRule !== 'finite' && (
-                  <Link className="control" to={`/workbench/${doc.metadata.id}?tab=proof`}>
-                    Build an infinite proof
-                  </Link>
+                  <button className="control" disabled={animating} onClick={() => setProofOpen(true)}>
+                    Open proof notebook
+                  </button>
                 )}
               </>
             )}

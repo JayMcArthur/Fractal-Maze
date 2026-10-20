@@ -1,3 +1,4 @@
+import { MazeCredits } from './MazeCredits'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
 import { PlayHeader } from './PlayHeader'
 import { MazePlayArea } from './MazePlayArea'
@@ -6,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { catalogIndex } from '../../app/library/catalogIndex'
 import { adjacentMaze } from '../../app/library/mazeViews'
 import { MazeViewSelect } from '../library/MazeViewSelect'
-import { listSolves, saveSolve, saveProject } from '../../app/projects/db'
+import { listSolves, saveSolve } from '../../app/projects/db'
 import type { SolveRecord } from '../../app/projects/db'
 import { usePlayerStore } from '../../app/store/playerSlice'
 import { useSquareKeyboard } from './movementKeys'
@@ -132,17 +133,6 @@ export function SquarePlayer({ doc, replay }: { doc: RecursiveMazeDocument; repl
       <NavBar />
       <main className="player-frame">
         <PlayHeader doc={doc}>
-          {
-            <button
-              className="control"
-              onClick={async () => {
-                await saveProject(doc)
-                navigate(`/editor/${doc.metadata.id}`)
-              }}
-            >
-              Edit
-            </button>
-          }
           <button className="control" onClick={() => setShowImport(true)}>
             Import
           </button>
@@ -318,6 +308,7 @@ export function SquarePlayer({ doc, replay }: { doc: RecursiveMazeDocument; repl
             </aside>
           </div>
         </MazePlayArea>
+        <MazeCredits doc={doc} />
       </main>
 
       {isWon && !replay && (

@@ -2,9 +2,9 @@ import { test, expect } from './fixtures'
 
 const sourceAlice = 'draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png'
 
-test('Wolfram 2 keeps its original solutions while offering only photograph and block views', async ({ page }) => {
-  await page.goto('play/draft-maze-images-mark-j-p-wolf-wolfram-2-jpg')
-  await expect(page.getByLabel('Maze view', { exact: true }).locator('option')).toHaveCount(2)
+test('Wolfram 2 offers its native blocks and keeps all original solutions', async ({ page }) => {
+  await page.goto('play/microchip')
+  await expect(page.getByLabel('Maze view', { exact: true })).toHaveCount(0)
   const replay = page.getByLabel('Maze replay', { exact: true })
   const originals = replay.locator('option[value^="bundled-wire-"]')
   await expect(originals).toHaveCount(11)
@@ -55,7 +55,7 @@ test('replays belong to their maze in Play and never appear in Library or the ma
     page
       .getByLabel('Maze replay', { exact: true })
       .locator('option')
-      .filter({ hasText: 'Source-derived blocks' })
+      .filter({ hasText: 'Earlier source-derived layout' })
   ).toHaveCount(1)
   await expect(
     page
@@ -81,7 +81,7 @@ test('solver filters families and the same fourteen-state Alice PDA produces a l
     1
   )
   await page.getByRole('group', { name: 'Matching mazes' }).getByRole('button').click()
-  await page.getByLabel('Solver maze view').selectOption('alice-in-wonderland')
+  await expect(page.getByLabel('Solver maze view')).toHaveCount(0)
   await expect(page.locator('.pda-solver .session-grid')).toContainText('Path states14')
   await page.getByRole('button', { name: 'Find finite route', exact: true }).click()
   await expect(page.getByRole('status')).toContainText('24 PDA transitions')
@@ -132,7 +132,8 @@ test('author and maze-type filters lead directly to finite search or the proof n
   await page.getByLabel('Solver maze type', { exact: true }).selectOption('corridors')
   await page.getByLabel('Search solver mazes').fill('Alice')
   await page.getByRole('group', { name: 'Matching mazes' }).getByRole('button').click()
-  await expect(page.getByLabel('Solver maze view')).toHaveValue('alice-in-wonderland')
+  await expect(page.getByLabel('Solver maze view')).toHaveCount(0)
+  await expect(page).toHaveURL(/solver\?id=alice-in-wonderland$/)
 })
 
 test('solving a workbench preview saves the current edits instead of loading the old model', async ({

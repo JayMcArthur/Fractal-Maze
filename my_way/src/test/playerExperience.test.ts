@@ -24,7 +24,6 @@ describe('catalog experience', () => {
 
   it('keeps requested Wolfram views and excludes superseded player presentations', () => {
     expect(viewsForMaze('microchip').map((view) => view.label)).toEqual([
-      'Photograph-derived blocks',
       'Block remake',
     ])
     expect(

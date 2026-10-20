@@ -438,8 +438,6 @@ kbd { border: 1px solid currentColor; border-radius: 3px; padding: 1px 5px; opac
 .proof-intro a { font-size: .8rem; text-decoration: underline; }
 .proof-help summary, .proof-advanced summary, .witness-history summary { cursor: pointer; font-size: .8rem; }
 .proof-help p { margin-top: 12px; line-height: 1.6; }
-.proof-period { margin-top: 14px; }
-.proof-period:empty { display: none; }
 .proof-advanced { margin-top: 16px; }
 .proof-advanced .workbench-toolbar { margin-top: 12px; }
 .workbench-exports { position: relative; align-self: center; font-size: .85rem; }
@@ -610,3 +608,39 @@ kbd { border: 1px solid currentColor; border-radius: 3px; padding: 1px 5px; opac
 .maze-cover-picker { padding: 1rem; border: 1px solid var(--line, #405346); border-radius: .75rem; margin-bottom: 1rem; }
 .maze-cover-picker img { display: block; width: 100%; max-height: 14rem; object-fit: contain; margin: .75rem 0; }
 .maze-cover-picker p { font-size: .875rem; margin-top: .75rem; }
+
+/* Proof construction keeps the active maze and its session underneath. */
+.proof-dialog { width: min(1120px, calc(100% - 32px)); max-width: none; max-height: calc(100dvh - 40px); margin: auto; padding: 0; border: 1px solid #cbd1c7; border-radius: 12px; color: var(--ink-dark); background: var(--paper); box-shadow: 0 24px 80px #0006; }
+.proof-dialog[open] { display: flex; flex-direction: column; }
+.proof-dialog::backdrop { background: #090c0bb3; }
+.proof-dialog__header, .proof-dialog__footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 24px; background: var(--paper); flex-shrink: 0; }
+.proof-dialog__header { border-bottom: 1px solid var(--line); }
+.proof-dialog__header h2 { margin: 6px 0; font-size: 1.5rem; font-weight: 800; letter-spacing: -.04em; }
+.proof-dialog__header p:last-child, .proof-dialog__footer p { margin: 0; font-size: .8rem; color: #59645e; }
+.proof-dialog__body { overflow-y: auto; overscroll-behavior: contain; padding: 20px 24px; }
+.proof-dialog__footer { border-top: 1px solid var(--line); }
+.proof-dialog__footer .control { flex-shrink: 0; }
+.proof-dialog label { display: flex; flex-direction: column; gap: 6px; font-size: .78rem; font-weight: 700; color: #59645e; }
+.proof-dialog input:not([type=checkbox]), .proof-dialog select { min-height: 38px; max-width: 100%; padding: 7px 9px; border: 1px solid #cdd5ca; border-radius: 4px; background: #f9faf6; color: #1b241e; }
+.proof-dialog .proof-check { position: sticky; bottom: -20px; border-color: #9ab68d; box-shadow: 0 -4px 16px #1111; }
+.maze-wip { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(240px, .7fr); gap: 32px; align-items: center; margin: 24px 0; }
+.maze-wip > img { width: 100%; max-height: 70dvh; object-fit: contain; border: 1px solid var(--line); border-radius: 7px; }
+.maze-wip h2 { font-size: clamp(1.5rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -.04em; margin: 18px 0 12px; }
+.maze-wip p { color: #59645e; line-height: 1.65; max-width: 36em; }
+@media (max-width: 640px) {
+  .proof-dialog { width: calc(100% - 16px); max-height: calc(100dvh - 16px); }
+  .proof-dialog__header, .proof-dialog__footer { padding: 14px; gap: 10px; }
+  .proof-dialog__header { align-items: start; }
+  .proof-dialog__body { padding: 14px; }
+  .proof-dialog .workbench-card { padding: 14px; }
+  .proof-dialog .witness-grid { grid-template-columns: 1fr; }
+  .proof-dialog .proof-check { bottom: -14px; }
+  .proof-dialog__footer p { font-size: .72rem; }
+  .maze-wip { grid-template-columns: 1fr; gap: 18px; }
+}
+.maze-credits { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 32px; padding: 24px 0; border-top: 1px solid var(--line); color: #59645e; font-size: .8rem; }
+.maze-credits h2 { margin: 0 0 8px; color: var(--ink-dark); font-size: .9rem; font-weight: 750; }
+.maze-credits p { margin: 4px 0; }
+.maze-credits ul { display: flex; flex-wrap: wrap; gap: 12px 20px; margin: 0; padding: 0; list-style: none; align-items: start; max-width: 720px; }
+.maze-credits a { text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.maze-wip .signal-badge { color: #315836; background: #e4eedf; border-color: #b5c8ac; }
