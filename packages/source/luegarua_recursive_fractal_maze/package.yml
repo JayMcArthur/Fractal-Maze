@@ -1,0 +1,21 @@
+format: fmaze-package-v0
+id: luegarua_recursive_fractal_maze
+title: Luegarua Recursive Fractal Maze
+primary_authoring: reference_record
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+provenance:
+  sources:
+    - type: image
+      href: ../../../Maze_Images/Luegarua.webp
+    - type: post
+      href: https://www.reddit.com/r/mazes/comments/12k2v79/recursive_fractal_maze/
+    - type: handwritten_record
+      note: WIP/unverified hand-authored reference record from the provided image.
+  image_observations:
+    - Source image shows a central blue recursive square inside a white outer frame.
+    - Four black circular boundary ports are visible on the top, right, bottom, and left edges.
+    - Black corridors connect boundary ports and central-square ports, but crossings and exact endpoints are hand-drawn and ambiguous.

@@ -1,0 +1,35 @@
+format: fmaze-solution-v0
+id: known
+maze: skeptic_play_1
+logic: ../logic.yml
+expects_goal: true
+
+steps:
+  - transition_id: t_p1_to_B_p3
+  - transition_id: t_p3_to_B_p4
+  - transition_id: t_p4_to_A_p1
+  - transition_id: t_p1_to_A_p2
+  - transition_id: t_A_p2_to_p6
+  - transition_id: t_p6_to_B_p6
+  - transition_id: t_p6_to_A_p2
+  - transition_id: t_A_p2_to_p1
+  - transition_id: t_B_p1_to_p5
+  - transition_id: t_A_p5_to_p2
+  - transition_id: t_B_p2_to_p4
+  - transition_id: t_p4_to_A_p1
+  - transition_id: t_p1_to_A_p2
+  - transition_id: t_A_p2_to_p6
+  - transition_id: t_p6_to_B_p6
+  - transition_id: t_p6_to_A_p2
+  - transition_id: t_A_p2_to_p1
+  - transition_id: t_B_p1_to_p5
+  - transition_id: t_A_p5_to_p2
+  - transition_id: t_B_p2_to_p4
+  - transition_id: t_p4_to_A_p1
+  - transition_id: t_p1_to_A_p2
+  - transition_id: t_A_p2_to_p6
+  - transition_id: t_p6_to_B_p6
+  - transition_id: t_p6_to_A_p2
+  - transition_id: t_A_p2_to_p1
+  - transition_id: t_B_p1_to_p5
+  - transition_id: t_A_p5_to_p2

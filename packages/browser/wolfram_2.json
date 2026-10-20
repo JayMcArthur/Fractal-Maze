@@ -1,0 +1,1623 @@
+{
+  "format": "fmaze-browser-v0",
+  "id": "wolfram_2",
+  "title": "Wolfram #2 Normalized Port Graph",
+  "primary_authoring": "port_graph",
+  "source_root": "packages/source/wolfram_2",
+  "logic": {
+    "format": "fmaze-logic-v0",
+    "id": "wolfram_2",
+    "strategy": "pda_stack",
+    "source_model": "port_graph",
+    "start": "pB",
+    "goals": [
+      "pA"
+    ],
+    "points": [
+      {
+        "id": "p1",
+        "label": "1"
+      },
+      {
+        "id": "p2",
+        "label": "2"
+      },
+      {
+        "id": "p3",
+        "label": "3"
+      },
+      {
+        "id": "p4",
+        "label": "4"
+      },
+      {
+        "id": "p5",
+        "label": "5"
+      },
+      {
+        "id": "p6",
+        "label": "6"
+      },
+      {
+        "id": "p7",
+        "label": "7"
+      },
+      {
+        "id": "p8",
+        "label": "8"
+      },
+      {
+        "id": "p9",
+        "label": "9"
+      },
+      {
+        "id": "p_colon",
+        "label": ":"
+      },
+      {
+        "id": "p_semicolon",
+        "label": ";"
+      },
+      {
+        "id": "p_less",
+        "label": "<"
+      },
+      {
+        "id": "p_equal",
+        "label": "="
+      },
+      {
+        "id": "p_greater",
+        "label": ">"
+      },
+      {
+        "id": "p_question",
+        "label": "?"
+      },
+      {
+        "id": "p_at",
+        "label": "@"
+      },
+      {
+        "id": "pA",
+        "label": "A"
+      },
+      {
+        "id": "pB",
+        "label": "B"
+      },
+      {
+        "id": "pC",
+        "label": "C"
+      }
+    ],
+    "submazes": [
+      {
+        "id": "mA",
+        "label": "A"
+      },
+      {
+        "id": "mB",
+        "label": "B"
+      },
+      {
+        "id": "mC",
+        "label": "C"
+      }
+    ],
+    "ports": [
+      {
+        "id": "p1_enter_mA_p1",
+        "point": "p1",
+        "label": "("
+      },
+      {
+        "id": "mA_p1_exit_p1",
+        "point": "p1",
+        "context": [
+          "mA"
+        ],
+        "label": ")"
+      },
+      {
+        "id": "mC_p1_to_p3",
+        "point": "p1",
+        "context": [
+          "mC"
+        ],
+        "label": "3"
+      },
+      {
+        "id": "p3_to_mC_p1",
+        "point": "p3",
+        "label": "1"
+      },
+      {
+        "id": "mB_p1_to_p4",
+        "point": "p1",
+        "context": [
+          "mB"
+        ],
+        "label": "4"
+      },
+      {
+        "id": "p4_to_mB_p1",
+        "point": "p4",
+        "label": "1"
+      },
+      {
+        "id": "mA_p1_to_p_semicolon",
+        "point": "p1",
+        "context": [
+          "mA"
+        ],
+        "label": ";"
+      },
+      {
+        "id": "p_semicolon_to_mA_p1",
+        "point": "p_semicolon",
+        "label": "1"
+      },
+      {
+        "id": "mB_p1_to_p_question",
+        "point": "p1",
+        "context": [
+          "mB"
+        ],
+        "label": "?"
+      },
+      {
+        "id": "p_question_to_mB_p1",
+        "point": "p_question",
+        "label": "1"
+      },
+      {
+        "id": "mC_p1_to_p_at",
+        "point": "p1",
+        "context": [
+          "mC"
+        ],
+        "label": "@"
+      },
+      {
+        "id": "p_at_to_mC_p1",
+        "point": "p_at",
+        "label": "1"
+      },
+      {
+        "id": "p2_to_mA_p4",
+        "point": "p2",
+        "label": "4"
+      },
+      {
+        "id": "mA_p4_to_p2",
+        "point": "p4",
+        "context": [
+          "mA"
+        ],
+        "label": "2"
+      },
+      {
+        "id": "p3_to_mA_p5",
+        "point": "p3",
+        "label": "5"
+      },
+      {
+        "id": "mA_p5_to_p3",
+        "point": "p5",
+        "context": [
+          "mA"
+        ],
+        "label": "3"
+      },
+      {
+        "id": "p3_to_mB_p7",
+        "point": "p3",
+        "label": "7"
+      },
+      {
+        "id": "mB_p7_to_p3",
+        "point": "p7",
+        "context": [
+          "mB"
+        ],
+        "label": "3"
+      },
+      {
+        "id": "mB_p3_to_p9",
+        "point": "p3",
+        "context": [
+          "mB"
+        ],
+        "label": "9"
+      },
+      {
+        "id": "p9_to_mB_p3",
+        "point": "p9",
+        "label": "3"
+      },
+      {
+        "id": "mA_p3_to_pB",
+        "point": "p3",
+        "context": [
+          "mA"
+        ],
+        "label": "B"
+      },
+      {
+        "id": "pB_to_mA_p3",
+        "point": "pB",
+        "label": "3"
+      },
+      {
+        "id": "mB_p4_to_p5",
+        "point": "p4",
+        "context": [
+          "mB"
+        ],
+        "label": "5"
+      },
+      {
+        "id": "p5_to_mB_p4",
+        "point": "p5",
+        "label": "4"
+      },
+      {
+        "id": "mC_p4_to_p_equal",
+        "point": "p4",
+        "context": [
+          "mC"
+        ],
+        "label": "="
+      },
+      {
+        "id": "p_equal_to_mC_p4",
+        "point": "p_equal",
+        "label": "4"
+      },
+      {
+        "id": "mC_p6_to_p7",
+        "point": "p6",
+        "context": [
+          "mC"
+        ],
+        "label": "7"
+      },
+      {
+        "id": "p7_to_mC_p6",
+        "point": "p7",
+        "label": "6"
+      },
+      {
+        "id": "p6_to_mB_p8",
+        "point": "p6",
+        "label": "8"
+      },
+      {
+        "id": "mB_p8_to_p6",
+        "point": "p8",
+        "context": [
+          "mB"
+        ],
+        "label": "6"
+      },
+      {
+        "id": "mC_p7_to_p_greater",
+        "point": "p7",
+        "context": [
+          "mC"
+        ],
+        "label": ">"
+      },
+      {
+        "id": "p_greater_to_mC_p7",
+        "point": "p_greater",
+        "label": "7"
+      },
+      {
+        "id": "p8_to_mA_p_colon",
+        "point": "p8",
+        "label": ":"
+      },
+      {
+        "id": "mA_p_colon_to_p8",
+        "point": "p_colon",
+        "context": [
+          "mA"
+        ],
+        "label": "8"
+      },
+      {
+        "id": "mA_p8_to_p_semicolon",
+        "point": "p8",
+        "context": [
+          "mA"
+        ],
+        "label": ";"
+      },
+      {
+        "id": "p_semicolon_to_mA_p8",
+        "point": "p_semicolon",
+        "label": "8"
+      },
+      {
+        "id": "mC_p8_to_p_less",
+        "point": "p8",
+        "context": [
+          "mC"
+        ],
+        "label": "<"
+      },
+      {
+        "id": "p_less_to_mC_p8",
+        "point": "p_less",
+        "label": "8"
+      },
+      {
+        "id": "mC_p8_to_p_greater",
+        "point": "p8",
+        "context": [
+          "mC"
+        ],
+        "label": ">"
+      },
+      {
+        "id": "p_greater_to_mC_p8",
+        "point": "p_greater",
+        "label": "8"
+      },
+      {
+        "id": "mA_p8_to_p_question",
+        "point": "p8",
+        "context": [
+          "mA"
+        ],
+        "label": "?"
+      },
+      {
+        "id": "p_question_to_mA_p8",
+        "point": "p_question",
+        "label": "8"
+      },
+      {
+        "id": "mC_p8_to_pA",
+        "point": "p8",
+        "context": [
+          "mC"
+        ],
+        "label": "A"
+      },
+      {
+        "id": "pA_to_mC_p8",
+        "point": "pA",
+        "label": "8"
+      },
+      {
+        "id": "mA_p9_to_p_less",
+        "point": "p9",
+        "context": [
+          "mA"
+        ],
+        "label": "<"
+      },
+      {
+        "id": "p_less_to_mA_p9",
+        "point": "p_less",
+        "label": "9"
+      },
+      {
+        "id": "p_colon_enter_mA_p_colon",
+        "point": "p_colon",
+        "label": "("
+      },
+      {
+        "id": "mA_p_colon_exit_p_colon",
+        "point": "p_colon",
+        "context": [
+          "mA"
+        ],
+        "label": ")"
+      },
+      {
+        "id": "mB_p_colon_to_p_equal",
+        "point": "p_colon",
+        "context": [
+          "mB"
+        ],
+        "label": "="
+      },
+      {
+        "id": "p_equal_to_mB_p_colon",
+        "point": "p_equal",
+        "label": ":"
+      },
+      {
+        "id": "mB_p_colon_to_p_at",
+        "point": "p_colon",
+        "context": [
+          "mB"
+        ],
+        "label": "@"
+      },
+      {
+        "id": "p_at_to_mB_p_colon",
+        "point": "p_at",
+        "label": ":"
+      },
+      {
+        "id": "mA_p3_to_pC",
+        "point": "p3",
+        "context": [
+          "mA"
+        ],
+        "label": "C"
+      },
+      {
+        "id": "pC_to_mA_p3",
+        "point": "pC",
+        "label": "3"
+      },
+      {
+        "id": "mA_p7_to_pC",
+        "point": "p7",
+        "context": [
+          "mA"
+        ],
+        "label": "C"
+      },
+      {
+        "id": "pC_to_mA_p7",
+        "point": "pC",
+        "label": "7"
+      },
+      {
+        "id": "mA_p3_to_p7",
+        "point": "p3",
+        "context": [
+          "mA"
+        ],
+        "label": "7"
+      },
+      {
+        "id": "p7_to_mA_p3",
+        "point": "p7",
+        "label": "3"
+      }
+    ],
+    "transition_groups": [
+      {
+        "id": "g_p1_enter_mA_p1",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_p1_enter_mA_p1",
+          "from_port": "p1_enter_mA_p1",
+          "source": "p1",
+          "target": "mA.p1",
+          "input": "("
+        },
+        "reverse": {
+          "id": "t_mA_p1_exit_p1",
+          "from_port": "mA_p1_exit_p1",
+          "source": "mA.p1",
+          "target": "p1",
+          "input": ")"
+        }
+      },
+      {
+        "id": "g_mC_p1_to_p3",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mC_p1_to_p3",
+          "from_port": "mC_p1_to_p3",
+          "source": "mC.p1",
+          "target": "p3",
+          "input": "3"
+        },
+        "reverse": {
+          "id": "t_p3_to_mC_p1",
+          "from_port": "p3_to_mC_p1",
+          "source": "p3",
+          "target": "mC.p1",
+          "input": "1"
+        }
+      },
+      {
+        "id": "g_mB_p1_to_p4",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mB_p1_to_p4",
+          "from_port": "mB_p1_to_p4",
+          "source": "mB.p1",
+          "target": "p4",
+          "input": "4"
+        },
+        "reverse": {
+          "id": "t_p4_to_mB_p1",
+          "from_port": "p4_to_mB_p1",
+          "source": "p4",
+          "target": "mB.p1",
+          "input": "1"
+        }
+      },
+      {
+        "id": "g_mA_p1_to_p_semicolon",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mA_p1_to_p_semicolon",
+          "from_port": "mA_p1_to_p_semicolon",
+          "source": "mA.p1",
+          "target": "p_semicolon",
+          "input": ";"
+        },
+        "reverse": {
+          "id": "t_p_semicolon_to_mA_p1",
+          "from_port": "p_semicolon_to_mA_p1",
+          "source": "p_semicolon",
+          "target": "mA.p1",
+          "input": "1"
+        }
+      },
+      {
+        "id": "g_mB_p1_to_p_question",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mB_p1_to_p_question",
+          "from_port": "mB_p1_to_p_question",
+          "source": "mB.p1",
+          "target": "p_question",
+          "input": "?"
+        },
+        "reverse": {
+          "id": "t_p_question_to_mB_p1",
+          "from_port": "p_question_to_mB_p1",
+          "source": "p_question",
+          "target": "mB.p1",
+          "input": "1"
+        }
+      },
+      {
+        "id": "g_mC_p1_to_p_at",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mC_p1_to_p_at",
+          "from_port": "mC_p1_to_p_at",
+          "source": "mC.p1",
+          "target": "p_at",
+          "input": "@"
+        },
+        "reverse": {
+          "id": "t_p_at_to_mC_p1",
+          "from_port": "p_at_to_mC_p1",
+          "source": "p_at",
+          "target": "mC.p1",
+          "input": "1"
+        }
+      },
+      {
+        "id": "g_p2_to_mA_p4",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_p2_to_mA_p4",
+          "from_port": "p2_to_mA_p4",
+          "source": "p2",
+          "target": "mA.p4",
+          "input": "4"
+        },
+        "reverse": {
+          "id": "t_mA_p4_to_p2",
+          "from_port": "mA_p4_to_p2",
+          "source": "mA.p4",
+          "target": "p2",
+          "input": "2"
+        }
+      },
+      {
+        "id": "g_p3_to_mA_p5",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_p3_to_mA_p5",
+          "from_port": "p3_to_mA_p5",
+          "source": "p3",
+          "target": "mA.p5",
+          "input": "5"
+        },
+        "reverse": {
+          "id": "t_mA_p5_to_p3",
+          "from_port": "mA_p5_to_p3",
+          "source": "mA.p5",
+          "target": "p3",
+          "input": "3"
+        }
+      },
+      {
+        "id": "g_p3_to_mB_p7",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_p3_to_mB_p7",
+          "from_port": "p3_to_mB_p7",
+          "source": "p3",
+          "target": "mB.p7",
+          "input": "7"
+        },
+        "reverse": {
+          "id": "t_mB_p7_to_p3",
+          "from_port": "mB_p7_to_p3",
+          "source": "mB.p7",
+          "target": "p3",
+          "input": "3"
+        }
+      },
+      {
+        "id": "g_mB_p3_to_p9",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mB_p3_to_p9",
+          "from_port": "mB_p3_to_p9",
+          "source": "mB.p3",
+          "target": "p9",
+          "input": "9"
+        },
+        "reverse": {
+          "id": "t_p9_to_mB_p3",
+          "from_port": "p9_to_mB_p3",
+          "source": "p9",
+          "target": "mB.p3",
+          "input": "3"
+        }
+      },
+      {
+        "id": "g_mA_p3_to_pB",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mA_p3_to_pB",
+          "from_port": "mA_p3_to_pB",
+          "source": "mA.p3",
+          "target": "pB",
+          "input": "B"
+        },
+        "reverse": {
+          "id": "t_pB_to_mA_p3",
+          "from_port": "pB_to_mA_p3",
+          "source": "pB",
+          "target": "mA.p3",
+          "input": "3"
+        }
+      },
+      {
+        "id": "g_mB_p4_to_p5",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mB_p4_to_p5",
+          "from_port": "mB_p4_to_p5",
+          "source": "mB.p4",
+          "target": "p5",
+          "input": "5"
+        },
+        "reverse": {
+          "id": "t_p5_to_mB_p4",
+          "from_port": "p5_to_mB_p4",
+          "source": "p5",
+          "target": "mB.p4",
+          "input": "4"
+        }
+      },
+      {
+        "id": "g_mC_p4_to_p_equal",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mC_p4_to_p_equal",
+          "from_port": "mC_p4_to_p_equal",
+          "source": "mC.p4",
+          "target": "p_equal",
+          "input": "="
+        },
+        "reverse": {
+          "id": "t_p_equal_to_mC_p4",
+          "from_port": "p_equal_to_mC_p4",
+          "source": "p_equal",
+          "target": "mC.p4",
+          "input": "4"
+        }
+      },
+      {
+        "id": "g_mC_p6_to_p7",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mC_p6_to_p7",
+          "from_port": "mC_p6_to_p7",
+          "source": "mC.p6",
+          "target": "p7",
+          "input": "7"
+        },
+        "reverse": {
+          "id": "t_p7_to_mC_p6",
+          "from_port": "p7_to_mC_p6",
+          "source": "p7",
+          "target": "mC.p6",
+          "input": "6"
+        }
+      },
+      {
+        "id": "g_p6_to_mB_p8",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_p6_to_mB_p8",
+          "from_port": "p6_to_mB_p8",
+          "source": "p6",
+          "target": "mB.p8",
+          "input": "8"
+        },
+        "reverse": {
+          "id": "t_mB_p8_to_p6",
+          "from_port": "mB_p8_to_p6",
+          "source": "mB.p8",
+          "target": "p6",
+          "input": "6"
+        }
+      },
+      {
+        "id": "g_mC_p7_to_p_greater",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mC_p7_to_p_greater",
+          "from_port": "mC_p7_to_p_greater",
+          "source": "mC.p7",
+          "target": "p_greater",
+          "input": ">"
+        },
+        "reverse": {
+          "id": "t_p_greater_to_mC_p7",
+          "from_port": "p_greater_to_mC_p7",
+          "source": "p_greater",
+          "target": "mC.p7",
+          "input": "7"
+        }
+      },
+      {
+        "id": "g_p8_to_mA_p_colon",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_p8_to_mA_p_colon",
+          "from_port": "p8_to_mA_p_colon",
+          "source": "p8",
+          "target": "mA.p_colon",
+          "input": ":"
+        },
+        "reverse": {
+          "id": "t_mA_p_colon_to_p8",
+          "from_port": "mA_p_colon_to_p8",
+          "source": "mA.p_colon",
+          "target": "p8",
+          "input": "8"
+        }
+      },
+      {
+        "id": "g_mA_p8_to_p_semicolon",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mA_p8_to_p_semicolon",
+          "from_port": "mA_p8_to_p_semicolon",
+          "source": "mA.p8",
+          "target": "p_semicolon",
+          "input": ";"
+        },
+        "reverse": {
+          "id": "t_p_semicolon_to_mA_p8",
+          "from_port": "p_semicolon_to_mA_p8",
+          "source": "p_semicolon",
+          "target": "mA.p8",
+          "input": "8"
+        }
+      },
+      {
+        "id": "g_mC_p8_to_p_less",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mC_p8_to_p_less",
+          "from_port": "mC_p8_to_p_less",
+          "source": "mC.p8",
+          "target": "p_less",
+          "input": "<"
+        },
+        "reverse": {
+          "id": "t_p_less_to_mC_p8",
+          "from_port": "p_less_to_mC_p8",
+          "source": "p_less",
+          "target": "mC.p8",
+          "input": "8"
+        }
+      },
+      {
+        "id": "g_mC_p8_to_p_greater",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mC_p8_to_p_greater",
+          "from_port": "mC_p8_to_p_greater",
+          "source": "mC.p8",
+          "target": "p_greater",
+          "input": ">"
+        },
+        "reverse": {
+          "id": "t_p_greater_to_mC_p8",
+          "from_port": "p_greater_to_mC_p8",
+          "source": "p_greater",
+          "target": "mC.p8",
+          "input": "8"
+        }
+      },
+      {
+        "id": "g_mA_p8_to_p_question",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mA_p8_to_p_question",
+          "from_port": "mA_p8_to_p_question",
+          "source": "mA.p8",
+          "target": "p_question",
+          "input": "?"
+        },
+        "reverse": {
+          "id": "t_p_question_to_mA_p8",
+          "from_port": "p_question_to_mA_p8",
+          "source": "p_question",
+          "target": "mA.p8",
+          "input": "8"
+        }
+      },
+      {
+        "id": "g_mC_p8_to_pA",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mC_p8_to_pA",
+          "from_port": "mC_p8_to_pA",
+          "source": "mC.p8",
+          "target": "pA",
+          "input": "A"
+        },
+        "reverse": {
+          "id": "t_pA_to_mC_p8",
+          "from_port": "pA_to_mC_p8",
+          "source": "pA",
+          "target": "mC.p8",
+          "input": "8"
+        }
+      },
+      {
+        "id": "g_mA_p9_to_p_less",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mA_p9_to_p_less",
+          "from_port": "mA_p9_to_p_less",
+          "source": "mA.p9",
+          "target": "p_less",
+          "input": "<"
+        },
+        "reverse": {
+          "id": "t_p_less_to_mA_p9",
+          "from_port": "p_less_to_mA_p9",
+          "source": "p_less",
+          "target": "mA.p9",
+          "input": "9"
+        }
+      },
+      {
+        "id": "g_p_colon_enter_mA_p_colon",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_p_colon_enter_mA_p_colon",
+          "from_port": "p_colon_enter_mA_p_colon",
+          "source": "p_colon",
+          "target": "mA.p_colon",
+          "input": "("
+        },
+        "reverse": {
+          "id": "t_mA_p_colon_exit_p_colon",
+          "from_port": "mA_p_colon_exit_p_colon",
+          "source": "mA.p_colon",
+          "target": "p_colon",
+          "input": ")"
+        }
+      },
+      {
+        "id": "g_mB_p_colon_to_p_equal",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mB_p_colon_to_p_equal",
+          "from_port": "mB_p_colon_to_p_equal",
+          "source": "mB.p_colon",
+          "target": "p_equal",
+          "input": "="
+        },
+        "reverse": {
+          "id": "t_p_equal_to_mB_p_colon",
+          "from_port": "p_equal_to_mB_p_colon",
+          "source": "p_equal",
+          "target": "mB.p_colon",
+          "input": ":"
+        }
+      },
+      {
+        "id": "g_mB_p_colon_to_p_at",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mB_p_colon_to_p_at",
+          "from_port": "mB_p_colon_to_p_at",
+          "source": "mB.p_colon",
+          "target": "p_at",
+          "input": "@"
+        },
+        "reverse": {
+          "id": "t_p_at_to_mB_p_colon",
+          "from_port": "p_at_to_mB_p_colon",
+          "source": "p_at",
+          "target": "mB.p_colon",
+          "input": ":"
+        }
+      },
+      {
+        "id": "g_mA_p3_to_pC",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mA_p3_to_pC",
+          "from_port": "mA_p3_to_pC",
+          "source": "mA.p3",
+          "target": "pC",
+          "input": "C"
+        },
+        "reverse": {
+          "id": "t_pC_to_mA_p3",
+          "from_port": "pC_to_mA_p3",
+          "source": "pC",
+          "target": "mA.p3",
+          "input": "3"
+        }
+      },
+      {
+        "id": "g_mA_p7_to_pC",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mA_p7_to_pC",
+          "from_port": "mA_p7_to_pC",
+          "source": "mA.p7",
+          "target": "pC",
+          "input": "C"
+        },
+        "reverse": {
+          "id": "t_pC_to_mA_p7",
+          "from_port": "pC_to_mA_p7",
+          "source": "pC",
+          "target": "mA.p7",
+          "input": "7"
+        }
+      },
+      {
+        "id": "g_mA_p3_to_p7",
+        "direction": "two_way",
+        "forward": {
+          "id": "t_mA_p3_to_p7",
+          "from_port": "mA_p3_to_p7",
+          "source": "mA.p3",
+          "target": "p7",
+          "input": "7"
+        },
+        "reverse": {
+          "id": "t_p7_to_mA_p3",
+          "from_port": "p7_to_mA_p3",
+          "source": "p7",
+          "target": "mA.p3",
+          "input": "3"
+        }
+      }
+    ]
+  },
+  "solutions": [
+    {
+      "format": "fmaze-solution-v0",
+      "id": "current_long",
+      "maze": "wolfram_2",
+      "logic": "../logic.yml",
+      "expects_goal": true,
+      "steps": [
+        {
+          "transition_id": "t_pB_to_mA_p3"
+        },
+        {
+          "transition_id": "t_p3_to_mB_p7"
+        },
+        {
+          "transition_id": "t_p7_to_mC_p6"
+        },
+        {
+          "transition_id": "t_p6_to_mB_p8"
+        },
+        {
+          "transition_id": "t_p8_to_mA_p_colon"
+        },
+        {
+          "transition_id": "t_p_colon_enter_mA_p_colon"
+        },
+        {
+          "transition_id": "t_mA_p_colon_to_p8"
+        },
+        {
+          "transition_id": "t_mA_p8_to_p_semicolon"
+        },
+        {
+          "transition_id": "t_p_semicolon_to_mA_p1"
+        },
+        {
+          "transition_id": "t_mA_p1_exit_p1"
+        },
+        {
+          "transition_id": "t_mB_p1_to_p4"
+        },
+        {
+          "transition_id": "t_mC_p4_to_p_equal"
+        },
+        {
+          "transition_id": "t_p_equal_to_mB_p_colon"
+        },
+        {
+          "transition_id": "t_mB_p_colon_to_p_at"
+        },
+        {
+          "transition_id": "t_p_at_to_mC_p1"
+        },
+        {
+          "transition_id": "t_mC_p1_to_p3"
+        },
+        {
+          "transition_id": "t_mB_p3_to_p9"
+        },
+        {
+          "transition_id": "t_mA_p9_to_p_less"
+        },
+        {
+          "transition_id": "t_p_less_to_mC_p8"
+        },
+        {
+          "transition_id": "t_mC_p8_to_pA"
+        }
+      ]
+    },
+    {
+      "format": "fmaze-solution-v0",
+      "id": "short_repaired",
+      "maze": "wolfram_2",
+      "logic": "../logic.yml",
+      "expects_goal": true,
+      "steps": [
+        {
+          "transition_id": "t_pB_to_mA_p3"
+        },
+        {
+          "transition_id": "t_mA_p3_to_p7"
+        },
+        {
+          "transition_id": "t_p7_to_mC_p6"
+        },
+        {
+          "transition_id": "t_p6_to_mB_p8"
+        },
+        {
+          "transition_id": "t_p8_to_mA_p_colon"
+        },
+        {
+          "transition_id": "t_p_colon_enter_mA_p_colon"
+        },
+        {
+          "transition_id": "t_mA_p_colon_to_p8"
+        },
+        {
+          "transition_id": "t_mA_p8_to_p_semicolon"
+        },
+        {
+          "transition_id": "t_p_semicolon_to_mA_p1"
+        },
+        {
+          "transition_id": "t_mA_p1_exit_p1"
+        },
+        {
+          "transition_id": "t_mB_p1_to_p_question"
+        },
+        {
+          "transition_id": "t_p_question_to_mA_p8"
+        },
+        {
+          "transition_id": "t_p8_to_mA_p_colon"
+        },
+        {
+          "transition_id": "t_mA_p_colon_exit_p_colon"
+        },
+        {
+          "transition_id": "t_mA_p_colon_to_p8"
+        },
+        {
+          "transition_id": "t_mC_p8_to_pA"
+        }
+      ]
+    }
+  ],
+  "auto_graph_layout": {
+    "algorithm": "level-bfs-v1",
+    "spacing": {
+      "x": 120.0,
+      "y": 100.0
+    },
+    "bounds": {
+      "width": 776.0,
+      "height": 500.0
+    },
+    "points": {
+      "p1": {
+        "x": -240.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 0
+      },
+      "p2": {
+        "x": -180.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 0
+      },
+      "p3": {
+        "x": 0.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "p4": {
+        "x": -360.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 0
+      },
+      "p5": {
+        "x": -120.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 1
+      },
+      "p6": {
+        "x": -240.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 1
+      },
+      "p7": {
+        "x": 0.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 2
+      },
+      "p8": {
+        "x": -60.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 1
+      },
+      "p9": {
+        "x": 120.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 3
+      },
+      "pA": {
+        "x": 0.0,
+        "y": 500.0,
+        "level": 5,
+        "column": 0
+      },
+      "pB": {
+        "x": 0.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "pC": {
+        "x": 240.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 4
+      },
+      "p_at": {
+        "x": -120.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 2
+      },
+      "p_colon": {
+        "x": 60.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 2
+      },
+      "p_equal": {
+        "x": 180.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 3
+      },
+      "p_greater": {
+        "x": 0.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 3
+      },
+      "p_less": {
+        "x": 120.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 4
+      },
+      "p_question": {
+        "x": 240.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 5
+      },
+      "p_semicolon": {
+        "x": 360.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 6
+      }
+    },
+    "ports": {
+      "mA_p1_exit_p1": {
+        "x": -212.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 0
+      },
+      "mA_p1_to_p_semicolon": {
+        "x": -222.54228,
+        "y": 221.891268,
+        "level": 2,
+        "column": 0
+      },
+      "mA_p3_to_p7": {
+        "x": 28.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "mA_p3_to_pB": {
+        "x": 17.45772,
+        "y": 121.891268,
+        "level": 1,
+        "column": 0
+      },
+      "mA_p3_to_pC": {
+        "x": -6.230588,
+        "y": 127.297984,
+        "level": 1,
+        "column": 0
+      },
+      "mA_p4_to_p2": {
+        "x": -332.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 0
+      },
+      "mA_p5_to_p3": {
+        "x": -92.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 1
+      },
+      "mA_p7_to_pC": {
+        "x": 28.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 2
+      },
+      "mA_p8_to_p_question": {
+        "x": -32.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 1
+      },
+      "mA_p8_to_p_semicolon": {
+        "x": -42.542280000000005,
+        "y": 421.891268,
+        "level": 4,
+        "column": 1
+      },
+      "mA_p9_to_p_less": {
+        "x": 148.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 3
+      },
+      "mA_p_colon_exit_p_colon": {
+        "x": 88.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 2
+      },
+      "mA_p_colon_to_p8": {
+        "x": 68.65247600000001,
+        "y": 426.629596,
+        "level": 4,
+        "column": 2
+      },
+      "mB_p1_to_p4": {
+        "x": -246.230588,
+        "y": 227.29798399999999,
+        "level": 2,
+        "column": 0
+      },
+      "mB_p1_to_p_question": {
+        "x": -265.227132,
+        "y": 212.148752,
+        "level": 2,
+        "column": 0
+      },
+      "mB_p3_to_p9": {
+        "x": -25.227132,
+        "y": 112.148752,
+        "level": 1,
+        "column": 0
+      },
+      "mB_p4_to_p5": {
+        "x": -360.0,
+        "y": 328.0,
+        "level": 3,
+        "column": 0
+      },
+      "mB_p7_to_p3": {
+        "x": 8.652476,
+        "y": 226.629596,
+        "level": 2,
+        "column": 2
+      },
+      "mB_p8_to_p6": {
+        "x": -66.230588,
+        "y": 427.297984,
+        "level": 4,
+        "column": 1
+      },
+      "mB_p_colon_to_p_at": {
+        "x": 37.347524,
+        "y": 416.45798,
+        "level": 4,
+        "column": 2
+      },
+      "mB_p_colon_to_p_equal": {
+        "x": 37.347524,
+        "y": 383.54202,
+        "level": 4,
+        "column": 2
+      },
+      "mC_p1_to_p3": {
+        "x": -265.227132,
+        "y": 187.851248,
+        "level": 2,
+        "column": 0
+      },
+      "mC_p1_to_p_at": {
+        "x": -246.230588,
+        "y": 172.70201600000001,
+        "level": 2,
+        "column": 0
+      },
+      "mC_p4_to_p_equal": {
+        "x": -388.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 0
+      },
+      "mC_p6_to_p7": {
+        "x": -212.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 1
+      },
+      "mC_p7_to_p_greater": {
+        "x": -22.652476,
+        "y": 216.45798,
+        "level": 2,
+        "column": 2
+      },
+      "mC_p8_to_pA": {
+        "x": -85.227132,
+        "y": 412.148752,
+        "level": 4,
+        "column": 1
+      },
+      "mC_p8_to_p_greater": {
+        "x": -85.227132,
+        "y": 387.851248,
+        "level": 4,
+        "column": 1
+      },
+      "mC_p8_to_p_less": {
+        "x": -66.230588,
+        "y": 372.702016,
+        "level": 4,
+        "column": 1
+      },
+      "p1_enter_mA_p1": {
+        "x": -222.54228,
+        "y": 178.108732,
+        "level": 2,
+        "column": 0
+      },
+      "p2_to_mA_p4": {
+        "x": -152.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 0
+      },
+      "p3_to_mA_p5": {
+        "x": -25.227132,
+        "y": 87.851248,
+        "level": 1,
+        "column": 0
+      },
+      "p3_to_mB_p7": {
+        "x": -6.230588,
+        "y": 72.702016,
+        "level": 1,
+        "column": 0
+      },
+      "p3_to_mC_p1": {
+        "x": 17.45772,
+        "y": 78.108732,
+        "level": 1,
+        "column": 0
+      },
+      "p4_to_mB_p1": {
+        "x": -360.0,
+        "y": 272.0,
+        "level": 3,
+        "column": 0
+      },
+      "p5_to_mB_p4": {
+        "x": -148.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 1
+      },
+      "p6_to_mB_p8": {
+        "x": -268.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 1
+      },
+      "p7_to_mA_p3": {
+        "x": -22.652476,
+        "y": 183.54202,
+        "level": 2,
+        "column": 2
+      },
+      "p7_to_mC_p6": {
+        "x": 8.652476,
+        "y": 173.370404,
+        "level": 2,
+        "column": 2
+      },
+      "p8_to_mA_p_colon": {
+        "x": -42.542280000000005,
+        "y": 378.108732,
+        "level": 4,
+        "column": 1
+      },
+      "p9_to_mB_p3": {
+        "x": 92.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 3
+      },
+      "pA_to_mC_p8": {
+        "x": 28.0,
+        "y": 500.0,
+        "level": 5,
+        "column": 0
+      },
+      "pB_to_mA_p3": {
+        "x": 28.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "pC_to_mA_p3": {
+        "x": 268.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 4
+      },
+      "pC_to_mA_p7": {
+        "x": 212.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 4
+      },
+      "p_at_to_mB_p_colon": {
+        "x": -92.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 2
+      },
+      "p_at_to_mC_p1": {
+        "x": -148.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 2
+      },
+      "p_colon_enter_mA_p_colon": {
+        "x": 68.65247600000001,
+        "y": 373.370404,
+        "level": 4,
+        "column": 2
+      },
+      "p_equal_to_mB_p_colon": {
+        "x": 208.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 3
+      },
+      "p_equal_to_mC_p4": {
+        "x": 152.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 3
+      },
+      "p_greater_to_mC_p7": {
+        "x": 28.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 3
+      },
+      "p_greater_to_mC_p8": {
+        "x": -28.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 3
+      },
+      "p_less_to_mA_p9": {
+        "x": 148.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 4
+      },
+      "p_less_to_mC_p8": {
+        "x": 92.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 4
+      },
+      "p_question_to_mA_p8": {
+        "x": 268.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 5
+      },
+      "p_question_to_mB_p1": {
+        "x": 212.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 5
+      },
+      "p_semicolon_to_mA_p1": {
+        "x": 388.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 6
+      },
+      "p_semicolon_to_mA_p8": {
+        "x": 332.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 6
+      }
+    }
+  },
+  "provenance": {
+    "notes": [
+      "Normalizes the legacy Wolfram",
+      "Includes both 3-to-7 interpretations so the PDA can disambiguate by port instead of visible label."
+    ]
+  }
+}

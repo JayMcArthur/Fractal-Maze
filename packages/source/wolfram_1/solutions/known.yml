@@ -1,0 +1,21 @@
+format: fmaze-solution-v0
+id: known
+maze: wolfram_1
+logic: ../logic.yml
+expects_goal: true
+provenance:
+  notes:
+    - Short depth-two solution from Papers/mathpuzzle.com_fractalmaze.txt.
+    - Address sequence: -, C05, CA29, CA13, CD07, CD17, CH12, CH15, CG01, CG16, C16, +.
+steps:
+  - transition_id: t_start_to_C05
+  - transition_id: t_05_to_A29
+  - transition_id: t_29_to_13
+  - transition_id: t_A13_to_D07
+  - transition_id: t_07_to_17
+  - transition_id: t_D17_to_H12
+  - transition_id: t_12_to_15
+  - transition_id: t_H15_to_G01
+  - transition_id: t_01_to_16
+  - transition_id: t_G16_to_16
+  - transition_id: t_C16_to_plus

@@ -1,0 +1,728 @@
+{
+  "format": "fmaze-browser-v0",
+  "id": "wolfram_0",
+  "title": "Wolfram 0 WIP Port Graph",
+  "primary_authoring": "port_graph",
+  "source_root": "packages/source/wolfram_0",
+  "logic": {
+    "format": "fmaze-logic-v0",
+    "id": "wolfram_0",
+    "strategy": "pda_stack",
+    "source_model": "port_graph",
+    "start": "p8",
+    "goals": [
+      "p1"
+    ],
+    "modeling_status": {
+      "status": "partial",
+      "reason": "Executable WIP hand-authored from the visible eight-terminal Wolfram simple fractal maze. The graph covers the visible wire components and replays a derived solution, but terminal numbering should still be independently checked against the original source image.",
+      "next_step": "Confirm the top-left/top-right boundary labels as terminals 8 and 1, then verify every visible component against the original Wolfram Demonstrations source."
+    },
+    "provenance": {
+      "notes": [
+        "S is modeled as root terminal 8 and F as root terminal 1.",
+        "M is the single recursive child maze visible in the center of each copy.",
+        "Multi-terminal visible junctions are represented by pairwise transitions within the connected component.",
+        "The short solution follows the red solution trace in the Wikimedia SVG reference and the local Wolfram_0 image topology."
+      ]
+    },
+    "points": [
+      {
+        "id": "p1",
+        "label": "1 / F"
+      },
+      {
+        "id": "p2",
+        "label": "2"
+      },
+      {
+        "id": "p3",
+        "label": "3"
+      },
+      {
+        "id": "p4",
+        "label": "4"
+      },
+      {
+        "id": "p5",
+        "label": "5"
+      },
+      {
+        "id": "p6",
+        "label": "6"
+      },
+      {
+        "id": "p7",
+        "label": "7"
+      },
+      {
+        "id": "p8",
+        "label": "8 / S"
+      }
+    ],
+    "submazes": [
+      {
+        "id": "M",
+        "label": "recursive copy"
+      }
+    ],
+    "ports": [
+      {
+        "id": "port_p8_to_Mp7",
+        "point": "p8",
+        "label": "M7",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_Mp7_to_p8",
+        "point": "p7",
+        "context": [
+          "M"
+        ],
+        "label": "8",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_p7_to_Mp6",
+        "point": "p7",
+        "label": "M6",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_Mp6_to_p7",
+        "point": "p6",
+        "context": [
+          "M"
+        ],
+        "label": "7",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_p5_to_p6",
+        "point": "p5",
+        "label": "6",
+        "kind": "same_level_terminal"
+      },
+      {
+        "id": "port_p6_to_p5",
+        "point": "p6",
+        "label": "5",
+        "kind": "same_level_terminal"
+      },
+      {
+        "id": "port_p5_to_Mp5",
+        "point": "p5",
+        "label": "M5",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_Mp5_to_p5",
+        "point": "p5",
+        "context": [
+          "M"
+        ],
+        "label": "5",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_p6_to_Mp5",
+        "point": "p6",
+        "label": "M5",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_Mp5_to_p6",
+        "point": "p5",
+        "context": [
+          "M"
+        ],
+        "label": "6",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_p4_to_Mp3",
+        "point": "p4",
+        "label": "M3",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_Mp3_to_p4",
+        "point": "p3",
+        "context": [
+          "M"
+        ],
+        "label": "4",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_p4_to_Mp4",
+        "point": "p4",
+        "label": "M4",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_Mp4_to_p4",
+        "point": "p4",
+        "context": [
+          "M"
+        ],
+        "label": "4",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_Mp3_to_Mp4",
+        "point": "p3",
+        "context": [
+          "M"
+        ],
+        "label": "M4",
+        "kind": "same_level_terminal"
+      },
+      {
+        "id": "port_Mp4_to_Mp3",
+        "point": "p4",
+        "context": [
+          "M"
+        ],
+        "label": "M3",
+        "kind": "same_level_terminal"
+      },
+      {
+        "id": "port_p2_to_p3",
+        "point": "p2",
+        "label": "3",
+        "kind": "same_level_terminal"
+      },
+      {
+        "id": "port_p3_to_p2",
+        "point": "p3",
+        "label": "2",
+        "kind": "same_level_terminal"
+      },
+      {
+        "id": "port_p1_to_Mp2",
+        "point": "p1",
+        "label": "M2",
+        "kind": "enter_terminal"
+      },
+      {
+        "id": "port_Mp2_to_p1",
+        "point": "p2",
+        "context": [
+          "M"
+        ],
+        "label": "1",
+        "kind": "exit_terminal"
+      },
+      {
+        "id": "port_Mp8_to_Mp1",
+        "point": "p8",
+        "context": [
+          "M"
+        ],
+        "label": "M1",
+        "kind": "same_level_terminal"
+      },
+      {
+        "id": "port_Mp1_to_Mp8",
+        "point": "p1",
+        "context": [
+          "M"
+        ],
+        "label": "M8",
+        "kind": "same_level_terminal"
+      }
+    ],
+    "transition_groups": [
+      {
+        "id": "g_p8_Mp7",
+        "direction": "two_way",
+        "label": "top-left boundary to child 7",
+        "forward": {
+          "id": "t_p8_to_Mp7",
+          "from_port": "port_p8_to_Mp7",
+          "source": "p8",
+          "target": "M.p7",
+          "input": "p8_to_Mp7"
+        },
+        "reverse": {
+          "id": "t_Mp7_to_p8",
+          "from_port": "port_Mp7_to_p8",
+          "source": "M.p7",
+          "target": "p8",
+          "input": "Mp7_to_p8"
+        }
+      },
+      {
+        "id": "g_p7_Mp6",
+        "direction": "two_way",
+        "label": "left-upper boundary to child 6",
+        "forward": {
+          "id": "t_p7_to_Mp6",
+          "from_port": "port_p7_to_Mp6",
+          "source": "p7",
+          "target": "M.p6",
+          "input": "p7_to_Mp6"
+        },
+        "reverse": {
+          "id": "t_Mp6_to_p7",
+          "from_port": "port_Mp6_to_p7",
+          "source": "M.p6",
+          "target": "p7",
+          "input": "Mp6_to_p7"
+        }
+      },
+      {
+        "id": "g_p5_p6",
+        "direction": "two_way",
+        "label": "lower-left same-level junction",
+        "forward": {
+          "id": "t_p5_to_p6",
+          "from_port": "port_p5_to_p6",
+          "source": "p5",
+          "target": "p6",
+          "input": "p5_to_p6"
+        },
+        "reverse": {
+          "id": "t_p6_to_p5",
+          "from_port": "port_p6_to_p5",
+          "source": "p6",
+          "target": "p5",
+          "input": "p6_to_p5"
+        }
+      },
+      {
+        "id": "g_p5_Mp5",
+        "direction": "two_way",
+        "label": "lower-left junction to child 5 from terminal 5",
+        "forward": {
+          "id": "t_p5_to_Mp5",
+          "from_port": "port_p5_to_Mp5",
+          "source": "p5",
+          "target": "M.p5",
+          "input": "p5_to_Mp5"
+        },
+        "reverse": {
+          "id": "t_Mp5_to_p5",
+          "from_port": "port_Mp5_to_p5",
+          "source": "M.p5",
+          "target": "p5",
+          "input": "Mp5_to_p5"
+        }
+      },
+      {
+        "id": "g_p6_Mp5",
+        "direction": "two_way",
+        "label": "lower-left junction to child 5 from terminal 6",
+        "forward": {
+          "id": "t_p6_to_Mp5",
+          "from_port": "port_p6_to_Mp5",
+          "source": "p6",
+          "target": "M.p5",
+          "input": "p6_to_Mp5"
+        },
+        "reverse": {
+          "id": "t_Mp5_to_p6",
+          "from_port": "port_Mp5_to_p6",
+          "source": "M.p5",
+          "target": "p6",
+          "input": "Mp5_to_p6"
+        }
+      },
+      {
+        "id": "g_p4_Mp3",
+        "direction": "two_way",
+        "label": "lower-right junction to child 3",
+        "forward": {
+          "id": "t_p4_to_Mp3",
+          "from_port": "port_p4_to_Mp3",
+          "source": "p4",
+          "target": "M.p3",
+          "input": "p4_to_Mp3"
+        },
+        "reverse": {
+          "id": "t_Mp3_to_p4",
+          "from_port": "port_Mp3_to_p4",
+          "source": "M.p3",
+          "target": "p4",
+          "input": "Mp3_to_p4"
+        }
+      },
+      {
+        "id": "g_p4_Mp4",
+        "direction": "two_way",
+        "label": "lower-right junction to child 4",
+        "forward": {
+          "id": "t_p4_to_Mp4",
+          "from_port": "port_p4_to_Mp4",
+          "source": "p4",
+          "target": "M.p4",
+          "input": "p4_to_Mp4"
+        },
+        "reverse": {
+          "id": "t_Mp4_to_p4",
+          "from_port": "port_Mp4_to_p4",
+          "source": "M.p4",
+          "target": "p4",
+          "input": "Mp4_to_p4"
+        }
+      },
+      {
+        "id": "g_Mp3_Mp4",
+        "direction": "two_way",
+        "label": "lower-right child 3 to child 4 junction",
+        "forward": {
+          "id": "t_Mp3_to_Mp4",
+          "from_port": "port_Mp3_to_Mp4",
+          "source": "M.p3",
+          "target": "M.p4",
+          "input": "Mp3_to_Mp4"
+        },
+        "reverse": {
+          "id": "t_Mp4_to_Mp3",
+          "from_port": "port_Mp4_to_Mp3",
+          "source": "M.p4",
+          "target": "M.p3",
+          "input": "Mp4_to_Mp3"
+        }
+      },
+      {
+        "id": "g_p2_p3",
+        "direction": "two_way",
+        "label": "right-side same-level wire",
+        "forward": {
+          "id": "t_p2_to_p3",
+          "from_port": "port_p2_to_p3",
+          "source": "p2",
+          "target": "p3",
+          "input": "p2_to_p3"
+        },
+        "reverse": {
+          "id": "t_p3_to_p2",
+          "from_port": "port_p3_to_p2",
+          "source": "p3",
+          "target": "p2",
+          "input": "p3_to_p2"
+        }
+      },
+      {
+        "id": "g_p1_Mp2",
+        "direction": "two_way",
+        "label": "top-right boundary to child 2",
+        "forward": {
+          "id": "t_p1_to_Mp2",
+          "from_port": "port_p1_to_Mp2",
+          "source": "p1",
+          "target": "M.p2",
+          "input": "p1_to_Mp2"
+        },
+        "reverse": {
+          "id": "t_Mp2_to_p1",
+          "from_port": "port_Mp2_to_p1",
+          "source": "M.p2",
+          "target": "p1",
+          "input": "Mp2_to_p1"
+        }
+      },
+      {
+        "id": "g_Mp8_Mp1",
+        "direction": "two_way",
+        "label": "top child arch from 8 to 1",
+        "forward": {
+          "id": "t_Mp8_to_Mp1",
+          "from_port": "port_Mp8_to_Mp1",
+          "source": "M.p8",
+          "target": "M.p1",
+          "input": "Mp8_to_Mp1"
+        },
+        "reverse": {
+          "id": "t_Mp1_to_Mp8",
+          "from_port": "port_Mp1_to_Mp8",
+          "source": "M.p1",
+          "target": "M.p8",
+          "input": "Mp1_to_Mp8"
+        }
+      }
+    ]
+  },
+  "solutions": [
+    {
+      "format": "fmaze-solution-v0",
+      "id": "known",
+      "maze": "wolfram_0",
+      "logic": "../logic.yml",
+      "expects_goal": true,
+      "provenance": {
+        "notes": [
+          "WIP solution derived from the visible Wolfram_0 topology and cross-checked against the red solution trace in the Wikimedia SVG reference.",
+          "Address sequence: p8, Mp7, MMp6, MMMp5, MMMp6, MMp7, Mp8, Mp1, MMp2, MMp3, Mp4, Mp3, Mp2, p1."
+        ]
+      },
+      "steps": [
+        {
+          "transition_id": "t_p8_to_Mp7"
+        },
+        {
+          "transition_id": "t_p7_to_Mp6"
+        },
+        {
+          "transition_id": "t_p6_to_Mp5"
+        },
+        {
+          "transition_id": "t_p5_to_p6"
+        },
+        {
+          "transition_id": "t_Mp6_to_p7"
+        },
+        {
+          "transition_id": "t_Mp7_to_p8"
+        },
+        {
+          "transition_id": "t_Mp8_to_Mp1"
+        },
+        {
+          "transition_id": "t_p1_to_Mp2"
+        },
+        {
+          "transition_id": "t_p2_to_p3"
+        },
+        {
+          "transition_id": "t_Mp3_to_p4"
+        },
+        {
+          "transition_id": "t_Mp4_to_Mp3"
+        },
+        {
+          "transition_id": "t_p3_to_p2"
+        },
+        {
+          "transition_id": "t_Mp2_to_p1"
+        }
+      ]
+    }
+  ],
+  "auto_graph_layout": {
+    "algorithm": "level-bfs-v1",
+    "spacing": {
+      "x": 120.0,
+      "y": 100.0
+    },
+    "bounds": {
+      "width": 176.0,
+      "height": 428.0
+    },
+    "points": {
+      "p1": {
+        "x": -60.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "p2": {
+        "x": -60.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 0
+      },
+      "p3": {
+        "x": -60.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 0
+      },
+      "p4": {
+        "x": 0.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 0
+      },
+      "p5": {
+        "x": 60.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 1
+      },
+      "p6": {
+        "x": 60.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 1
+      },
+      "p7": {
+        "x": 60.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 1
+      },
+      "p8": {
+        "x": 0.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      }
+    },
+    "ports": {
+      "port_Mp1_to_Mp8": {
+        "x": -32.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "port_Mp2_to_p1": {
+        "x": -32.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 0
+      },
+      "port_Mp3_to_Mp4": {
+        "x": -32.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 0
+      },
+      "port_Mp3_to_p4": {
+        "x": -74.0,
+        "y": 324.2487,
+        "level": 3,
+        "column": 0
+      },
+      "port_Mp4_to_Mp3": {
+        "x": 28.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 0
+      },
+      "port_Mp4_to_p4": {
+        "x": 0.0,
+        "y": 428.0,
+        "level": 4,
+        "column": 0
+      },
+      "port_Mp5_to_p5": {
+        "x": 88.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 1
+      },
+      "port_Mp5_to_p6": {
+        "x": 60.0,
+        "y": 328.0,
+        "level": 3,
+        "column": 1
+      },
+      "port_Mp6_to_p7": {
+        "x": 88.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 1
+      },
+      "port_Mp7_to_p8": {
+        "x": 88.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 1
+      },
+      "port_Mp8_to_Mp1": {
+        "x": 28.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      },
+      "port_p1_to_Mp2": {
+        "x": -88.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 0
+      },
+      "port_p2_to_p3": {
+        "x": -88.0,
+        "y": 200.0,
+        "level": 2,
+        "column": 0
+      },
+      "port_p3_to_p2": {
+        "x": -74.0,
+        "y": 275.7513,
+        "level": 3,
+        "column": 0
+      },
+      "port_p4_to_Mp3": {
+        "x": -28.0,
+        "y": 400.0,
+        "level": 4,
+        "column": 0
+      },
+      "port_p4_to_Mp4": {
+        "x": 0.0,
+        "y": 372.0,
+        "level": 4,
+        "column": 0
+      },
+      "port_p5_to_Mp5": {
+        "x": 32.0,
+        "y": 300.0,
+        "level": 3,
+        "column": 1
+      },
+      "port_p5_to_p6": {
+        "x": 60.0,
+        "y": 272.0,
+        "level": 3,
+        "column": 1
+      },
+      "port_p6_to_Mp5": {
+        "x": 46.0,
+        "y": 224.24869999999999,
+        "level": 2,
+        "column": 1
+      },
+      "port_p6_to_p5": {
+        "x": 46.0,
+        "y": 175.75130000000001,
+        "level": 2,
+        "column": 1
+      },
+      "port_p7_to_Mp6": {
+        "x": 32.0,
+        "y": 100.0,
+        "level": 1,
+        "column": 1
+      },
+      "port_p8_to_Mp7": {
+        "x": -28.0,
+        "y": 0.0,
+        "level": 0,
+        "column": 0
+      }
+    }
+  },
+  "modeling_status": {
+    "status": "partial",
+    "reason": "Executable WIP hand-authored from the visible eight-terminal Wolfram simple fractal maze. The graph covers the visible wire components and replays a derived solution, but terminal numbering should still be independently checked against the original source image.",
+    "next_step": "Confirm the top-left/top-right boundary labels as terminals 8 and 1, then verify every visible component against the original Wolfram Demonstrations source."
+  },
+  "provenance": {
+    "sources": [
+      {
+        "type": "image",
+        "href": "../../../Maze_Images/Mark_J_P_Wolf/Wolfram_0.jpg"
+      },
+      {
+        "type": "image_source",
+        "href": "http://www.mathpuzzle.com/FractalMazeSimple.gif"
+      },
+      {
+        "type": "vector_reference",
+        "href": "https://commons.wikimedia.org/wiki/File:Wolfram_fractal_maze.svg"
+      },
+      {
+        "type": "pda_notes",
+        "href": "../../../Papers/Fractal_Maze_to_PDA/Fractal_Maze_to_PDA.md"
+      },
+      {
+        "type": "handwritten_record",
+        "note": "WIP executable port graph hand-authored from the visible image and vector reference topology."
+      }
+    ]
+  }
+}

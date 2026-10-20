@@ -1,0 +1,182 @@
+format: fmaze-logic-v0
+id: skeptic_play_1
+strategy: pda_stack
+source_model: port_graph
+start: p1
+goals:
+  - p2
+
+points:
+  - id: p1
+    label: "1"
+  - id: p2
+    label: "2"
+  - id: p3
+    label: "3"
+  - id: p4
+    label: "4"
+  - id: p5
+    label: "5"
+  - id: p6
+    label: "6"
+
+submazes:
+  - id: A
+  - id: B
+
+ports:
+  - id: p1_to_A_p2
+    point: p1
+    label: "2"
+  - id: A_p2_to_p1
+    point: p2
+    context: [A]
+    label: "1"
+  - id: p1_to_B_p3
+    point: p1
+    label: "3"
+  - id: B_p3_to_p1
+    point: p3
+    context: [B]
+    label: "1"
+  - id: A_p1_to_p4
+    point: p1
+    context: [A]
+    label: "4"
+  - id: p4_to_A_p1
+    point: p4
+    label: "1"
+  - id: B_p1_to_p5
+    point: p1
+    context: [B]
+    label: "5"
+  - id: p5_to_B_p1
+    point: p5
+    label: "1"
+  - id: B_p2_to_p4
+    point: p2
+    context: [B]
+    label: "4"
+  - id: p4_to_B_p2
+    point: p4
+    label: "2"
+  - id: p2_to_A_p5
+    point: p2
+    label: "5"
+  - id: A_p5_to_p2
+    point: p5
+    context: [A]
+    label: "2"
+  - id: A_p2_to_p6
+    point: p2
+    context: [A]
+    label: "6"
+  - id: p6_to_A_p2
+    point: p6
+    label: "2"
+  - id: p3_to_B_p4
+    point: p3
+    label: "4"
+  - id: B_p4_to_p3
+    point: p4
+    context: [B]
+    label: "3"
+  - id: p6_to_B_p6
+    point: p6
+    label: "("
+  - id: B_p6_to_p6
+    point: p6
+    context: [B]
+    label: ")"
+
+transitions:
+  - id: t_p1_to_A_p2
+    from_port: p1_to_A_p2
+    source: p1
+    target: A.p2
+    input: "2"
+  - id: t_A_p2_to_p1
+    from_port: A_p2_to_p1
+    source: A.p2
+    target: p1
+    input: "1"
+  - id: t_p1_to_B_p3
+    from_port: p1_to_B_p3
+    source: p1
+    target: B.p3
+    input: "3"
+  - id: t_B_p3_to_p1
+    from_port: B_p3_to_p1
+    source: B.p3
+    target: p1
+    input: "1"
+  - id: t_A_p1_to_p4
+    from_port: A_p1_to_p4
+    source: A.p1
+    target: p4
+    input: "4"
+  - id: t_p4_to_A_p1
+    from_port: p4_to_A_p1
+    source: p4
+    target: A.p1
+    input: "1"
+  - id: t_B_p1_to_p5
+    from_port: B_p1_to_p5
+    source: B.p1
+    target: p5
+    input: "5"
+  - id: t_p5_to_B_p1
+    from_port: p5_to_B_p1
+    source: p5
+    target: B.p1
+    input: "1"
+  - id: t_B_p2_to_p4
+    from_port: B_p2_to_p4
+    source: B.p2
+    target: p4
+    input: "4"
+  - id: t_p4_to_B_p2
+    from_port: p4_to_B_p2
+    source: p4
+    target: B.p2
+    input: "2"
+  - id: t_p2_to_A_p5
+    from_port: p2_to_A_p5
+    source: p2
+    target: A.p5
+    input: "5"
+  - id: t_A_p5_to_p2
+    from_port: A_p5_to_p2
+    source: A.p5
+    target: p2
+    input: "2"
+  - id: t_A_p2_to_p6
+    from_port: A_p2_to_p6
+    source: A.p2
+    target: p6
+    input: "6"
+  - id: t_p6_to_A_p2
+    from_port: p6_to_A_p2
+    source: p6
+    target: A.p2
+    input: "2"
+  - id: t_p3_to_B_p4
+    from_port: p3_to_B_p4
+    source: p3
+    target: B.p4
+    input: "4"
+  - id: t_B_p4_to_p3
+    from_port: B_p4_to_p3
+    source: B.p4
+    target: p3
+    input: "3"
+  - id: t_p6_to_B_p6
+    from_port: p6_to_B_p6
+    source: p6
+    target: B.p6
+    input: "("
+  - id: t_B_p6_to_p6
+    from_port: B_p6_to_p6
+    source: B.p6
+    target: p6
+    input: ")"

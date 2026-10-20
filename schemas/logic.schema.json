@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fractal-maze-lab.local/schemas/logic.schema.json",
+  "title": "Fractal Maze Lab Logic File",
+  "type": "object",
+  "required": ["format", "id", "strategy", "source_model"],
+  "properties": {
+    "format": { "const": "fmaze-logic-v0" },
+    "id": { "$ref": "#/$defs/id" },
+    "strategy": {
+      "enum": ["pda_stack", "coordinate_path", "tiled_port_graph", "proof_rule", "reference_record"]
+    },
+    "source_model": {
+      "enum": ["port_graph", "fractal_block_pattern", "repeated_tile_ports", "proof_rules", "reference_record"]
+    },
+    "start": {
+      "oneOf": [
+        { "$ref": "#/$defs/address" },
+        { "$ref": "#/$defs/boundary_state" },
+        { "$ref": "#/$defs/tiled_state" }
+      ]
+    },
+    "goals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/address" },
+          { "$ref": "#/$defs/boundary_state" },
+          { "$ref": "#/$defs/tiled_state" }
+        ]
+      }
+    },
+    "points": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/named_item" }
+    },
+    "submazes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/named_item" }
+    },
+    "ports": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/port" }
+    },
+    "transitions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/transition" }
+    },
+    "transition_groups": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/transition_group" }
+    },
+    "proof_edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/proof_edge" }
+    },
+    "pattern": { "$ref": "#/$defs/fractal_block_pattern" },
+    "entry": { "$ref": "#/$defs/directed_note" },
+    "goal": { "$ref": "#/$defs/directed_note" },
+    "solver": { "$ref": "#/$defs/solver" },
+    "block_classes": { "$ref": "#/$defs/block_classes" },
+    "modeling_status": { "$ref": "#/$defs/modeling_status" },
+    "provenance": { "type": "object" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:@()#;=-]+$"
+    },
+    "address": {
+      "type": "string",
+      "minLength": 1
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "named_item": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "label": { "type": "string" },
+        "description": { "type": "string" },
+        "provenance": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "port": {
+      "type": "object",
+      "required": ["id", "point"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "point": { "$ref": "#/$defs/id" },
+        "context": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "label": { "type": "string" },
+        "kind": {
+          "enum": ["enter_terminal", "exit_terminal", "same_level_terminal", "boundary", "internal"]
+        },
+        "provenance": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "transition": {
+      "type": "object",
+      "required": ["id", "from_port", "source", "target", "input"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "from_port": { "$ref": "#/$defs/id" },
+        "source": { "$ref": "#/$defs/address" },
+        "target": { "$ref": "#/$defs/address" },
+        "input": { "type": "string" },
+        "label": { "type": "string" },
+        "provenance": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "transition_group": {
+      "type": "object",
+      "required": ["id", "direction", "forward"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "direction": { "enum": ["one_way", "two_way"] },
+        "forward": { "$ref": "#/$defs/transition" },
+        "reverse": { "$ref": "#/$defs/transition" },
+        "label": { "type": "string" },
+        "provenance": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "proof_edge": {
+      "type": "object",
+      "required": ["id", "proof_type", "status", "source", "target", "input", "explanation"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "proof_type": { "enum": ["infinite_hop", "cantor_hop", "cantor_bridge"] },
+        "status": { "enum": ["proved", "assumed", "disproved", "unknown"] },
+        "source": { "$ref": "#/$defs/address" },
+        "target": { "$ref": "#/$defs/address" },
+        "input": { "type": "string" },
+        "enabled_by_default": { "type": "boolean" },
+        "explanation": { "type": "string" },
+        "proof": { "$ref": "#/$defs/proof" },
+        "provenance": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "proof": {
+      "type": "object",
+      "required": ["method", "steps"],
+      "properties": {
+        "method": {
+          "enum": ["infinite_hop", "simplified_infinite_hop", "cantor_hop", "simplified_cantor_hop", "cantor_bridge"]
+        },
+        "summary": { "type": "string" },
+        "variables": {
+          "oneOf": [
+            { "type": "object" },
+            {
+              "type": "array",
+              "items": { "type": "object" }
+            }
+          ]
+        },
+        "obligations": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "presuppositions": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/proof_step" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "proof_step": {
+      "type": "object",
+      "required": ["kind", "source", "target"],
+      "properties": {
+        "kind": { "enum": ["physical", "assumption"] },
+        "source": { "$ref": "#/$defs/address" },
+        "target": { "$ref": "#/$defs/address" },
+        "reason": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "boundary_state": {
+      "type": "object",
+      "required": ["kind", "side"],
+      "properties": {
+        "kind": { "const": "boundary" },
+        "side": { "$ref": "#/$defs/direction" }
+      },
+      "additionalProperties": false
+    },
+    "tiled_state": {
+      "type": "object",
+      "required": ["x", "y", "terminal"],
+      "properties": {
+        "x": { "type": "integer", "minimum": 0 },
+        "y": { "type": "integer", "minimum": 0 },
+        "terminal": { "$ref": "#/$defs/terminal" }
+      },
+      "additionalProperties": false
+    },
+    "terminal": {
+      "type": "string",
+      "pattern": "^[WENSC][0-9]+$"
+    },
+    "direction": {
+      "enum": ["west", "east", "north", "south"]
+    },
+    "fractal_block_pattern": {
+      "type": "object",
+      "required": ["rows"],
+      "properties": {
+        "cell_convention": { "type": "object" },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "enum": [0, 1] }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "directed_note": {
+      "type": "object",
+      "required": ["direction"],
+      "properties": {
+        "direction": { "$ref": "#/$defs/direction" },
+        "description": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "solver": {
+      "type": "object",
+      "properties": {
+        "default_depth_limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "default_state_limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "algorithm": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "block_classes": {
+      "type": "object",
+      "required": ["normal", "nx", "ny", "zero"],
+      "properties": {
+        "normal": { "$ref": "#/$defs/tiled_block_class" },
+        "nx": { "$ref": "#/$defs/tiled_block_class" },
+        "ny": { "$ref": "#/$defs/tiled_block_class" },
+        "zero": { "$ref": "#/$defs/tiled_block_class" }
+      },
+      "additionalProperties": false
+    },
+    "tiled_block_class": {
+      "type": "object",
+      "required": ["edges"],
+      "properties": {
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[WENSC][0-9]+(->|-)[WENSC][0-9]+$"
+          }
+        },
+        "description": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "modeling_status": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "enum": ["reference_only", "planned", "partial", "playable", "solved"]
+        },
+        "reason": { "type": "string" },
+        "next_step": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,60 @@
+format: fmaze-logic-v0
+id: spiral_maze_windischer
+strategy: reference_record
+source_model: reference_record
+modeling_status:
+  status: reference_only
+  reason: >-
+    The recursion-points image is cataloged and was inspected for a
+    hand-authored PDA/port-graph conversion, but the annotations do not give a
+    deterministic transition table or replayable solution without adding
+    unstated assumptions.
+  next_step: >-
+    Recover or author a terminal-by-terminal trace that names the start, goal,
+    six numbered boundary terminals, same-level paths, recursive entry
+    terminals, recursive exit terminals, and any infinite central proof edge.
+provenance:
+  observations:
+    - >-
+      The source image shows two external white arrows: one near the upper-left
+      opening and one near the right-side opening. The image does not label
+      which arrow is the formal start or goal for the package.
+    - >-
+      The recursion-points annotation labels six outer terminals around the
+      spiral: 1 at the left side, 2 near the top, 3 on the right side, 4 at the
+      lower-left side, 5 near the bottom, and 6 at the lower-right side.
+    - >-
+      Colored marks repeat across scales, including blue, cyan, yellow/orange,
+      green, and red marks. These appear to identify homologous recursive
+      terminals, but the image does not state the color-to-terminal mapping.
+    - >-
+      Thick black hand-drawn paths indicate candidate route segments through the
+      outer spiral and at least one inner copy, but they cover corridor
+      boundaries in places and do not identify push, pop, or same-level PDA
+      effects.
+  executable_attempt:
+    result: blocked
+    attempted_model: >-
+      Treat the numbered markings as points p1 through p6 and introduce a
+      single recursive submaze symbol S, with colored marks as candidate ports
+      between root and S contexts.
+    blockers:
+      - >-
+        The annotations do not distinguish same-level corridor moves from
+        recursive entry moves or recursive exit moves; a pda_stack port_graph
+        needs explicit source and target addresses for each transition.
+      - >-
+        Multiple colored marks of the same family occur at different depths, but
+        the image does not give a stable terminal identity for each mark.
+      - >-
+        The thick black path is not enough to derive a complete transition
+        table: it marks a traced route, not all legal ports needed for a
+        reusable executable package.
+      - >-
+        No independent known solution string or ordered transition list is
+        available locally, and the linked mathpuzzle.com post is not accessible
+        from this environment because it is behind request verification.
+      - >-
+        The central infinite spiral region may require a proof edge or a finite
+        recurrence rule, but neither proof obligation nor recurrence invariant
+        is stated by the images.
