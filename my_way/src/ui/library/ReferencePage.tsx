@@ -1,3 +1,4 @@
+import { defaultPlayId } from '../../app/library/mazeViews'
 import { assetUrl } from '../../core/io/assetUrl'
 import { Link, useParams } from 'react-router-dom'
 import references from '../../data/manifests/references.json'
@@ -8,7 +9,8 @@ export function ReferencePage() {
   const { id } = useParams()
   const entry = references.find((reference) => reference.id === id)
   const url = entry ? assetUrl(entry.asset) : ''
-  const playable = entry && (sourcePlayableId(entry.id) ?? entry.playableId)
+  const originalPlay = entry && (sourcePlayableId(entry.id) ?? entry.playableId)
+  const playable = originalPlay && defaultPlayId(originalPlay)
   return (
     <div className="app-page">
       <NavBar />

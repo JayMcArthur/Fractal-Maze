@@ -29,7 +29,7 @@ test('source runs warn on view changes but saving a replay leaves safely', async
     timeout: 12000,
   })
   const dialog = page.waitForEvent('dialog')
-  await page.getByLabel('Maze view', { exact: true }).selectOption('square')
+  await page.getByLabel('Play maze', { exact: true }).selectOption('square')
   await (await dialog).dismiss()
   await expect(page).toHaveURL(/siggy-skeptic-play-1-svg$/)
   const unexpected: string[] = []

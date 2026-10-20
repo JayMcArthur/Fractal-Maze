@@ -7,7 +7,7 @@ export function mazeEntry(id: string, doc: RecursiveMazeDocument | null) {
   const incomplete =
     (model?.type === 'pathPushdown' || model?.type === 'infiniteRule') &&
     (!model.start || !model.goal)
-  return { to: `/${incomplete ? 'workbench' : 'play'}/${id}`, playable: !incomplete }
+  return { to: `/play/${id}`, playable: !incomplete }
 }
 
 export interface MazeView {
@@ -32,16 +32,17 @@ export const mazeFamilies: MazeFamily[] = [
   {
     title: 'Alice and the Fractal Hedge Maze',
     author: 'Mike Earnest',
-    views: [source('mike-earnest-alice-and-the-hedge-maze-png'), grid('alice-in-wonderland')],
+    views: [grid('alice-in-wonderland')],
+    recordings: [source('mike-earnest-alice-and-the-hedge-maze-png', 'Earlier source-derived layout')],
   },
   {
     title: 'Skeptic Play 1',
     author: 'Siggy',
-    views: [
-      source('siggy-skeptic-play-1-svg', 'Original block layout'),
-      source('siggy-skeptic-play-1-steps-svg', 'Annotated block layout'),
-      { ...guide(1), label: 'Guide block layout' },
-      grid('square'),
+    views: [grid('square')],
+    recordings: [
+      source('siggy-skeptic-play-1-svg', 'Earlier source-derived layout'),
+      source('siggy-skeptic-play-1-steps-svg', 'Earlier annotated layout'),
+      guide(1),
     ],
   },
   { title: 'Sierpinski Paths', author: 'Siggy', views: [source('siggy-skeptic-play-2-jpg')] },
@@ -49,11 +50,8 @@ export const mazeFamilies: MazeFamily[] = [
   {
     title: 'Skeptic Play 3',
     author: 'Siggy',
-    views: [
-      { ...guide(5), label: 'Revised block layout' },
-      source('siggy-skeptic-play-3-png', 'Original block layout'),
-      grid('skeptic-play-carpet'),
-    ],
+    views: [grid('skeptic-play-carpet')],
+    recordings: [guide(5), source('siggy-skeptic-play-3-png', 'Earlier source-derived layout')],
   },
   { title: 'Wolfram 0', author: 'Mark J. P. Wolf', views: [source('mark-j-p-wolf-wolfram-0-jpg')] },
   {
@@ -65,8 +63,9 @@ export const mazeFamilies: MazeFamily[] = [
   {
     title: 'Wolfram 2',
     author: 'Mark J. P. Wolf',
-    views: [source('mark-j-p-wolf-wolfram-2-jpg', 'Photograph-derived blocks'), grid('microchip')],
+    views: [grid('microchip')],
     recordings: [
+      source('mark-j-p-wolf-wolfram-2-jpg', 'Earlier photograph-derived layout'),
       { id: 'wolf-wire-original', label: 'Original solutions' },
       source('mark-j-p-wolf-wolfram-2-wires-png', 'Earlier wire drawing'),
       source('mark-j-p-wolf-wolfram-2-nested-png', 'Earlier nested drawing'),
@@ -87,22 +86,18 @@ export const mazeFamilies: MazeFamily[] = [
   {
     title: 'Inner Frame',
     author: 'Matthias Weber',
-    views: [
-      source('the-inner-frame-pdf', 'Room blocks'),
-      grid('matthias-weber'),
-    ],
-    recordings: [{ ...guide(4), label: 'Earlier guide model' }],
+    views: [grid('matthias-weber')],
+    recordings: [source('the-inner-frame-pdf', 'Earlier room layout'), { ...guide(4), label: 'Earlier guide model' }],
   },
   {
     title: 'A Long Path',
     author: 'Jay McArthur',
     views: [
       { ...grid('a-long-path-v4'), label: 'v4 block layout' },
-      source('jay-mcarthur-a-long-path-v6-png', 'v6 block layout'),
+      { ...guide(6), label: 'v6 block layout' },
       { ...grid('a-long-path-v8'), label: 'v8 block layout' },
-      { ...guide(6), label: 'Six-copy block layout' },
-      { ...guide(3), label: 'Eight-copy block layout' },
     ],
+    recordings: [source('jay-mcarthur-a-long-path-v6-png', 'Earlier v6 layout'), guide(3)],
   },
   {
     title: 'Snuke 3', author: 'Snuke', views: [source('snuke-snuke-3-png')],
@@ -115,9 +110,9 @@ export const mazeFamilies: MazeFamily[] = [
   {
     title: 'Windischer spiral',
     author: 'Martin Windischer',
-    views: [
-      source('martin-windischer-windischer-png'),
-      source('martin-windischer-windischer-gif', 'GIF drawing'),
+    views: [source('martin-windischer-windischer-png', 'Original image')],
+    recordings: [
+      source('martin-windischer-windischer-gif', 'Earlier GIF reference'),
       source('martin-windischer-windischer-recursion-jpg', 'Annotated layers'),
     ],
   },
@@ -132,7 +127,13 @@ export const mazeFamilies: MazeFamily[] = [
 ]
 
 export const viewsForMaze = (id: string): MazeView[] =>
-  mazeFamilies.find((family) => family.views.some((view) => view.id === id))?.views ?? []
+  mazeFamilies.find((family) => [...family.views, ...(family.recordings ?? [])].some((view) => view.id === id))?.views ?? []
+
+/** Public links select the native layout while recordings retain their original IDs. */
+export function defaultPlayId(id: string): string {
+  if (id === 'draft-maze-images-jay-mcarthur-a-long-path-v6-png') return 'pda-guide-6'
+  return viewsForMaze(id)[0]?.id ?? id
+}
 
 export function replayViewsForMaze(id: string): MazeView[] {
   const family = mazeFamilies.find((family) =>
@@ -145,16 +146,8 @@ const alternateIds = new Set(
   mazeFamilies.flatMap((family) => family.views.slice(1).map((view) => view.id))
 )
 // Superseded presentations remain loadable for saved documents and replay snapshots.
-const retiredViews = new Set([
-  'ports-snuke_no3',
-  'ports-snuke_no4',
-  'wolf-wire-original',
-  'pda-guide-2',
-  'pda-guide-4',
-  'draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg',
-  'draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png',
-  'draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png',
-])
+const retiredViews = new Set(mazeFamilies.flatMap(family => (family.recordings ?? []).map(view => view.id)))
+
 export const mazeCatalog: IndexedMaze[] = catalogIndex
   .filter((entry) => !alternateIds.has(entry.id) && !retiredViews.has(entry.id))
   .map((entry) => ({

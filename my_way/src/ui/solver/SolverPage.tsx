@@ -236,9 +236,7 @@ function SolveWorkspace({
       </header>
       {binding?.sourceId && (
         <p className="workbench-help">
-          This view shares a verified PDA with{' '}
-          {views.find((view) => view.id === binding.sourceId)?.label}. Geometry controls where each
-          transition happens.
+          This block remake uses a verified PDA. Geometry controls where each transition happens.
         </p>
       )}
       {views.length > 1 && (

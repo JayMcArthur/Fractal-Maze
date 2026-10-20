@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import type { CatalogEntry } from '../../app/library/catalog'
+import { replayViewsForMaze } from '../../app/library/mazeViews'
 import { catalogIndex } from '../../app/library/catalogIndex'
 import { assetUrl } from '../../core/io/assetUrl'
 import type { SolveRecord } from '../../app/projects/db'
@@ -25,12 +26,14 @@ export function MazeCard({
   onCoverClick: () => void
 }) {
   const preview = catalogIndex.find((maze) => maze.id === entry.id)?.preview
+  const source = replayViewsForMaze(entry.id).find(view => view.id.startsWith('draft-maze-images-'))
+  const cover = catalogIndex.find(view => view.id === source?.id)?.preview.asset ?? preview?.asset
   const details = savedDoc ? savedCardDetails(savedDoc) : preview!
   const metadata = savedDoc?.metadata ?? entry
   const title = savedDoc ? metadata.title : entry.title
   const pathModel =
     details.definitionType === 'pathPushdown' || details.definitionType === 'infiniteRule'
-  const to = `/${details.playable ? 'play' : 'workbench'}/${entry.id}`
+  const to = `/play/${entry.id}`
 
   return (
     <article className="library-card">
@@ -40,10 +43,10 @@ export function MazeCard({
         ) : savedDoc ? (
           <CardPreview doc={savedDoc} />
         ) : (
-          <img src={assetUrl(preview!.asset)} alt={title} loading="lazy" />
+          <img src={assetUrl(cover!)} alt={title} loading="lazy" />
         )}
         <span className="library-card__launch">
-          {details.playable ? 'Enter maze' : 'Review conversion'} <b aria-hidden="true">→</b>
+          {details.playable ? 'Enter maze' : 'View WIP'} <b aria-hidden="true">→</b>
         </span>
         {solve && <span className="library-card__solved">Solved · {solve.bestMoves} moves</span>}
       </Link>
@@ -120,7 +123,7 @@ function MazeCardActions({
     <div className="library-card__actions">
       <button className="control" onClick={onCoverClick}>Cover image</button>
       <Link className="control" to={to}>
-        {details.playable ? 'Play' : 'Review conversion'}
+        {details.playable ? 'Play' : 'View WIP'}
       </Link>
       {details.playable && (
         <Link

@@ -4,7 +4,7 @@ import references from '../../data/manifests/references.json'
 import { referenceDraftId, sourcePlayableId } from '../../app/library/catalogIndex'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { mazeCatalog, viewsForMaze } from '../../app/library/mazeViews'
+import { defaultPlayId, mazeCatalog, viewsForMaze } from '../../app/library/mazeViews'
 import { authorCollections } from '../../app/library/authorCollections'
 import { saveProject, listProjects, listSolves } from '../../app/projects/db'
 import type { ProjectRecord, SolveRecord } from '../../app/projects/db'
@@ -205,7 +205,7 @@ export function LibraryPage() {
                     </Link>
                     <Link className="control" to={`/workbench/${referenceDraftId(entry.id) ?? entry.id}`}>Review WIP / trace</Link>
                     {(sourcePlayableId(entry.id) ?? entry.playableId) && (
-                      <Link className="control" to={`/play/${sourcePlayableId(entry.id) ?? entry.playableId}`}>
+                      <Link className="control" to={`/play/${defaultPlayId((sourcePlayableId(entry.id) ?? entry.playableId)!)}`}>
                         Play version
                       </Link>
                     )}

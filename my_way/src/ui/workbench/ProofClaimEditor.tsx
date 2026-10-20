@@ -65,8 +65,6 @@ export function ProofClaimEditor({
             </select>
           </label>
         ))}
-      </div>
-      <div className="workbench-toolbar proof-period">
         {claim.rule === 'infiniteHop' && (
           <label>
             Repeating copies

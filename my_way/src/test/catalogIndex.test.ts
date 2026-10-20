@@ -13,6 +13,7 @@ it('keeps every Library entry, original cover, review and launch decision curren
     const doc = loadCatalogMaze(entry.id)!, model = doc.definition
     expect(preview.definitionType).toBe(model.type)
     expect(preview.playable).toBe(mazeEntry(entry.id, doc).playable)
+    expect(mazeEntry(entry.id, doc).to).toBe(`/play/${entry.id}`)
     expect(preview.review).toBe('review' in model ? model.review : null)
     expect(existsSync(`public/${preview.asset}`)).toBe(true)
     if (doc.artwork?.asset) expect(preview.asset).toBe(doc.artwork.asset)
@@ -35,7 +36,7 @@ it('binds every reference Play link to its real source gates and preserves unbou
 
 it('keeps the earlier Inner Frame guide in recordings without presenting it as the source maze', () => {
   const id = 'draft-maze-images-the-inner-frame-pdf'
-  expect(viewsForMaze(id).map(view => view.id)).toEqual([id, 'matthias-weber'])
+  expect(viewsForMaze(id).map(view => view.id)).toEqual(['matthias-weber'])
   expect(replayViewsForMaze(id).map(view => view.id)).toContain('pda-guide-4')
   expect(mazeCatalog.some(entry => entry.id === 'pda-guide-4')).toBe(false)
 })

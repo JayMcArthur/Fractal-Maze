@@ -3,7 +3,7 @@ import { viewsForMaze } from '../../app/library/mazeViews'
 
 export function MazeViewSelect({ id, play = false }: { id: string; play?: boolean }) {
   const navigate = useNavigate(), views = viewsForMaze(id)
-  if (views.length < 2) return null
+  if (views.length < 2 || !views.some(view => view.id === id)) return null
   return <label className="maze-view-select">
     <span>Maze view</span>
     <select className="control" aria-label="Maze view" value={id}

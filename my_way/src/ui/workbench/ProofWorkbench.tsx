@@ -39,7 +39,11 @@ export function ProofWorkbench({
   model,
   document,
   onChange,
+  inPlay = false,
+  claimsInUse = false,
 }: {
+  inPlay?: boolean
+  claimsInUse?: boolean
   model: PathMazeDefinition
   document?: RecursiveMazeDocument
   onChange: (model: PathMazeDefinition) => void
@@ -54,7 +58,7 @@ export function ProofWorkbench({
   return (
     <div className="proof-workbench">
       <header className="proof-intro">
-        <h2>Your proof notebook</h2>
+        {!inPlay && <h2>Your proof notebook</h2>}
         <p>Choose the lines to connect, build the trails, then check your proof.</p>
         <details className="proof-help">
           <summary>How the proof rules work</summary>
@@ -143,6 +147,7 @@ export function ProofWorkbench({
       {accepted.length > 0 && <ProvenConnections claims={accepted} />}
       <section className="workbench-card">
         <h2>Saved claims ({model.claims.length})</h2>
+        {claimsInUse && <p>Undo the proof moves in your run before revising saved claims.</p>}
 
         {model.claims.length === 0 && <p className="workbench-help">No saved proofs yet.</p>}
         {model.claims.map((saved, savedIndex) => (
@@ -161,6 +166,7 @@ export function ProofWorkbench({
             />
             <button
               className="control"
+              disabled={claimsInUse}
               onClick={() => {
                 onChange({
                   ...model,
@@ -173,6 +179,7 @@ export function ProofWorkbench({
             </button>
             <button
               className="control"
+              disabled={claimsInUse}
               onClick={() =>
                 onChange({ ...model, claims: model.claims.filter((item) => item.id !== saved.id) })
               }

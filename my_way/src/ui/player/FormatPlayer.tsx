@@ -1,8 +1,9 @@
+import { MazeCredits } from './MazeCredits'
 import { PlayHeader } from './PlayHeader'
 import { MazePlayArea } from './MazePlayArea'
 import { TourPlayer } from './TourPlayer'
 import { useMemo, useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { mazeEntry } from '../../app/library/mazeViews'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
 import { saveProject } from '../../app/projects/db'
@@ -15,6 +16,7 @@ import { geometricPlayDocument } from '../../app/library/geometricPlayDocument'
 import { wirePlayDocument } from '../../app/library/wirePlayDocument'
 import { RepeatedPlayer } from './RepeatedPlayer'
 import { PathPlayer } from '../workbench/PathPlayer'
+import { MazeWip } from './MazeWip'
 import { MazeViewSelect } from '../library/MazeViewSelect'
 
 export function FormatPlayer({ doc: original }: { doc: RecursiveMazeDocument }) {
@@ -30,7 +32,6 @@ export function FormatPlayer({ doc: original }: { doc: RecursiveMazeDocument }) 
   const [exporting, setExporting] = useState(false)
   const [saveStatus, setSaveStatus] = useState('Save to library')
   const launch = mazeEntry(doc.metadata.id, doc)
-  if (!launch.playable) return <Navigate to={launch.to} replace />
   return (
     <div className="app-page">
       <NavBar />
@@ -54,7 +55,7 @@ export function FormatPlayer({ doc: original }: { doc: RecursiveMazeDocument }) 
           </button>
         </PlayHeader>
         <MazeViewSelect id={doc.metadata.id} play />
-        <MazePlayArea doc={doc}>
+        {!launch.playable ? <MazeWip doc={doc} /> : <MazePlayArea doc={doc}>
           {doc.representationType === 'recursiveTour' && <TourPlayer doc={doc} />}
           {doc.representationType === 'graphLabeled' && <GraphPlayer doc={doc} />}
           {doc.representationType === 'blockRecursive' && (
@@ -70,7 +71,8 @@ export function FormatPlayer({ doc: original }: { doc: RecursiveMazeDocument }) 
           {(doc.definition.type === 'infiniteRule' || doc.definition.type === 'pathPushdown') && (
             <PathPlayer doc={doc} model={doc.definition} />
           )}
-        </MazePlayArea>
+        </MazePlayArea>}
+        <MazeCredits doc={original} />
       </main>
       {exporting && <ExportDialog doc={draft} onClose={() => setExporting(false)} />}
     </div>
