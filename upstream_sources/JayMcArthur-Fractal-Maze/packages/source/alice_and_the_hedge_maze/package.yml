@@ -1,0 +1,19 @@
+format: fmaze-package-v0
+id: alice_and_the_hedge_maze
+title: Alice and the Hedge Maze Derived Port Graph
+primary_authoring: port_graph
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+provenance:
+  sources:
+    - type: package_logic
+      href: logic.yml
+    - type: image
+      href: ../../../Maze_Images/Mike_Earnest/Alice_and_the_Hedge_Maze.png
+    - type: post
+      href: https://puzzling.stackexchange.com/questions/37675/alice-and-the-fractal-hedge-maze
+    - type: derived_hand_conversion
+      note: WIP executable Port Graph derived into the package logic; needs playtest verification.

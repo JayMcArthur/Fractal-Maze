@@ -1,0 +1,982 @@
+[
+  {
+    "id": "sierpinski",
+    "title": "Sierpinski corridor maze",
+    "author": "Orel Cosseron",
+    "width": 1440,
+    "route": "/play/sierpinski",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "a-long-path-v4",
+    "title": "A Long Path",
+    "author": "Jay McArthur",
+    "width": 1440,
+    "route": "/play/a-long-path-v4",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "block-maze",
+    "title": "Block Maze",
+    "author": "Orelcosseron",
+    "width": 1440,
+    "route": "/play/block-maze",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "1611103791037:0.9096318422296219",
+    "title": "Easy - Noke Lieu",
+    "author": "",
+    "width": 1440,
+    "route": "/play/1611103791037:0.9096318422296219",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "1695993784968:0.6965701909885131",
+    "title": "Tsat - Cubist",
+    "author": "",
+    "width": 1440,
+    "route": "/play/1695993784968:0.6965701909885131",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "backlot",
+    "title": "Backlot",
+    "author": "Chris Yao",
+    "width": 1440,
+    "route": "/play/backlot",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "ports-koteitan",
+    "title": "Koteitan recursive ports",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/ports-koteitan",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "koteitan-block",
+    "title": "Omeometo \u2014 fractal block maze",
+    "author": "Omeometo / Koteitan player",
+    "width": 1440,
+    "route": "/play/koteitan-block",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-directed-example",
+    "title": "Repeated directed maze \u2014 13-step example",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-directed-example",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "portal-connections",
+    "title": "Portal connections",
+    "author": "",
+    "width": 1440,
+    "route": "/play/portal-connections",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "koteitan-block-3",
+    "title": "Koteitan block pattern \u2014 3\u00d73",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/koteitan-block-3",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "koteitan-block-5",
+    "title": "Koteitan block pattern \u2014 5\u00d75",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/koteitan-block-5",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-cp6",
+    "title": "Counter pump \u2014 6 terminals",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-cp6",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp2-3",
+    "title": "Counter pump \u2014 cp2-3 (atomic)",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-atomic-cp2-3",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp2-4",
+    "title": "Counter pump \u2014 cp2-4 (atomic)",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-atomic-cp2-4",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp2-5",
+    "title": "Counter pump \u2014 cp2-5 (atomic)",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-atomic-cp2-5",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp2-6",
+    "title": "Counter pump \u2014 cp2-6 (atomic)",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-atomic-cp2-6",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp3-2",
+    "title": "Counter pump \u2014 cp3-2 (atomic)",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-atomic-cp3-2",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp3-3",
+    "title": "Counter pump \u2014 cp3-3 (atomic)",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-atomic-cp3-3",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp3-4",
+    "title": "Counter pump \u2014 cp3-4 (atomic)",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-atomic-cp3-4",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-md3",
+    "title": "Minsky doubling \u2014 3 stages",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-atomic-md3",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-md4",
+    "title": "Minsky doubling \u2014 4 stages",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-atomic-md4",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-md5",
+    "title": "Minsky doubling \u2014 5 stages",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-atomic-md5",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-penta",
+    "title": "Pentation maze",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-atomic-penta",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp-n3-godel",
+    "title": "Three-register counter pump \u2014 compiled (WIP)",
+    "author": "Koteitan",
+    "width": 1440,
+    "route": "/play/repeated-atomic-cp-n3-godel",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "pda-guide-5",
+    "title": "Skeptic Play 3",
+    "author": "Siggy",
+    "width": 1440,
+    "route": "/play/pda-guide-5",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-martin-windischer-windischer-png",
+    "title": "Windischer spiral",
+    "author": "Martin Windischer",
+    "width": 1440,
+    "route": "/workbench/draft-maze-images-martin-windischer-windischer-png",
+    "playable": false,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "proof-maze-images-siggy-first-cantor-svg",
+    "title": "First Cantor",
+    "author": "Siggy",
+    "width": 1440,
+    "route": "/play/proof-maze-images-siggy-first-cantor-svg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "proof-maze-images-siggy-infinite-descent-svg",
+    "title": "Infinite Descent",
+    "author": "Siggy",
+    "width": 1440,
+    "route": "/play/proof-maze-images-siggy-infinite-descent-svg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "proof-maze-images-siggy-simple-cantor-maze-svg",
+    "title": "Simple Cantor Maze",
+    "author": "Siggy",
+    "width": 1440,
+    "route": "/play/proof-maze-images-siggy-simple-cantor-maze-svg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-siggy-skeptic-play-1-svg",
+    "title": "Skeptic Play 1",
+    "author": "Siggy",
+    "width": 1440,
+    "route": "/play/draft-maze-images-siggy-skeptic-play-1-svg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-geocaching-easter-13-10-png",
+    "title": "Geocaching \u2014 Easter 13-#10",
+    "author": "Amurielagi",
+    "width": 1440,
+    "route": "/play/draft-maze-images-geocaching-easter-13-10-png",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-3-png",
+    "title": "Snuke 3",
+    "author": "Snuke",
+    "width": 1440,
+    "route": "/play/draft-maze-images-snuke-snuke-3-png",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-4-png",
+    "title": "Snuke 4",
+    "author": "Snuke",
+    "width": 1440,
+    "route": "/play/draft-maze-images-snuke-snuke-4-png",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+    "title": "Wolfram 0",
+    "author": "Mark J. P. Wolf",
+    "width": 1440,
+    "route": "/play/draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-luegarua-webp",
+    "title": "Luegaria",
+    "author": "Luegarua",
+    "width": 1440,
+    "route": "/play/draft-maze-images-luegarua-webp",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-siggy-skeptic-play-2-jpg",
+    "title": "Sierpinski Paths",
+    "author": "Siggy",
+    "width": 1440,
+    "route": "/play/draft-maze-images-siggy-skeptic-play-2-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+    "title": "Wolfram 2",
+    "author": "Mark J. P. Wolf",
+    "width": 1440,
+    "route": "/play/draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+    "title": "Wolfram 1",
+    "author": "Mark J. P. Wolf",
+    "width": 1440,
+    "route": "/play/draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-2-jpg",
+    "title": "Snuke 2",
+    "author": "Snuke",
+    "width": 1440,
+    "route": "/play/draft-maze-images-snuke-snuke-2-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-1-jpg",
+    "title": "Snuke 1",
+    "author": "Snuke",
+    "width": 1440,
+    "route": "/play/draft-maze-images-snuke-snuke-1-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-daedalus-1-gif",
+    "title": "Daedalus 1",
+    "author": "Walter D. Pullen",
+    "width": 1440,
+    "route": "/play/draft-maze-images-daedalus-1-gif",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+    "title": "Daedalus 3",
+    "author": "Ed Pegg Jr",
+    "width": 1440,
+    "route": "/play/draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+    "title": "Daedalus 2 / Numb3rs",
+    "author": "Ed Pegg Jr",
+    "width": 1440,
+    "route": "/play/draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+    "title": "Alice and the Fractal Hedge Maze",
+    "author": "Mike Earnest",
+    "width": 1440,
+    "route": "/play/draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-the-inner-frame-pdf",
+    "title": "Inner Frame",
+    "author": "Matthias Weber",
+    "width": 1440,
+    "route": "/play/draft-maze-images-the-inner-frame-pdf",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-mike-earnest-berkly-jpg",
+    "title": "Berkly",
+    "author": "Mike Earnest",
+    "width": 1440,
+    "route": "/play/draft-maze-images-mike-earnest-berkly-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "simple-infinite-hop",
+    "title": "Simple infinite hop",
+    "author": "Rule examples after Siggy",
+    "width": 1440,
+    "route": "/play/simple-infinite-hop",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "simple-nested-infinite-hop",
+    "title": "Simple nested infinite hop",
+    "author": "Rule examples after Siggy",
+    "width": 1440,
+    "route": "/play/simple-nested-infinite-hop",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "sierpinski",
+    "title": "Sierpinski corridor maze",
+    "author": "Orel Cosseron",
+    "width": 390,
+    "route": "/play/sierpinski",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "a-long-path-v4",
+    "title": "A Long Path",
+    "author": "Jay McArthur",
+    "width": 390,
+    "route": "/play/a-long-path-v4",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "block-maze",
+    "title": "Block Maze",
+    "author": "Orelcosseron",
+    "width": 390,
+    "route": "/play/block-maze",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "1611103791037:0.9096318422296219",
+    "title": "Easy - Noke Lieu",
+    "author": "",
+    "width": 390,
+    "route": "/play/1611103791037:0.9096318422296219",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "1695993784968:0.6965701909885131",
+    "title": "Tsat - Cubist",
+    "author": "",
+    "width": 390,
+    "route": "/play/1695993784968:0.6965701909885131",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "backlot",
+    "title": "Backlot",
+    "author": "Chris Yao",
+    "width": 390,
+    "route": "/play/backlot",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "ports-koteitan",
+    "title": "Koteitan recursive ports",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/ports-koteitan",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "koteitan-block",
+    "title": "Omeometo \u2014 fractal block maze",
+    "author": "Omeometo / Koteitan player",
+    "width": 390,
+    "route": "/play/koteitan-block",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-directed-example",
+    "title": "Repeated directed maze \u2014 13-step example",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-directed-example",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "portal-connections",
+    "title": "Portal connections",
+    "author": "",
+    "width": 390,
+    "route": "/play/portal-connections",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "koteitan-block-3",
+    "title": "Koteitan block pattern \u2014 3\u00d73",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/koteitan-block-3",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "koteitan-block-5",
+    "title": "Koteitan block pattern \u2014 5\u00d75",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/koteitan-block-5",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-cp6",
+    "title": "Counter pump \u2014 6 terminals",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-cp6",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp2-3",
+    "title": "Counter pump \u2014 cp2-3 (atomic)",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-atomic-cp2-3",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp2-4",
+    "title": "Counter pump \u2014 cp2-4 (atomic)",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-atomic-cp2-4",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp2-5",
+    "title": "Counter pump \u2014 cp2-5 (atomic)",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-atomic-cp2-5",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp2-6",
+    "title": "Counter pump \u2014 cp2-6 (atomic)",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-atomic-cp2-6",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp3-2",
+    "title": "Counter pump \u2014 cp3-2 (atomic)",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-atomic-cp3-2",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp3-3",
+    "title": "Counter pump \u2014 cp3-3 (atomic)",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-atomic-cp3-3",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp3-4",
+    "title": "Counter pump \u2014 cp3-4 (atomic)",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-atomic-cp3-4",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-md3",
+    "title": "Minsky doubling \u2014 3 stages",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-atomic-md3",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-md4",
+    "title": "Minsky doubling \u2014 4 stages",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-atomic-md4",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-md5",
+    "title": "Minsky doubling \u2014 5 stages",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-atomic-md5",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-penta",
+    "title": "Pentation maze",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-atomic-penta",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "repeated-atomic-cp-n3-godel",
+    "title": "Three-register counter pump \u2014 compiled (WIP)",
+    "author": "Koteitan",
+    "width": 390,
+    "route": "/play/repeated-atomic-cp-n3-godel",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "pda-guide-5",
+    "title": "Skeptic Play 3",
+    "author": "Siggy",
+    "width": 390,
+    "route": "/play/pda-guide-5",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-martin-windischer-windischer-png",
+    "title": "Windischer spiral",
+    "author": "Martin Windischer",
+    "width": 390,
+    "route": "/workbench/draft-maze-images-martin-windischer-windischer-png",
+    "playable": false,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "proof-maze-images-siggy-first-cantor-svg",
+    "title": "First Cantor",
+    "author": "Siggy",
+    "width": 390,
+    "route": "/play/proof-maze-images-siggy-first-cantor-svg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "proof-maze-images-siggy-infinite-descent-svg",
+    "title": "Infinite Descent",
+    "author": "Siggy",
+    "width": 390,
+    "route": "/play/proof-maze-images-siggy-infinite-descent-svg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "proof-maze-images-siggy-simple-cantor-maze-svg",
+    "title": "Simple Cantor Maze",
+    "author": "Siggy",
+    "width": 390,
+    "route": "/play/proof-maze-images-siggy-simple-cantor-maze-svg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-siggy-skeptic-play-1-svg",
+    "title": "Skeptic Play 1",
+    "author": "Siggy",
+    "width": 390,
+    "route": "/play/draft-maze-images-siggy-skeptic-play-1-svg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-geocaching-easter-13-10-png",
+    "title": "Geocaching \u2014 Easter 13-#10",
+    "author": "Amurielagi",
+    "width": 390,
+    "route": "/play/draft-maze-images-geocaching-easter-13-10-png",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-3-png",
+    "title": "Snuke 3",
+    "author": "Snuke",
+    "width": 390,
+    "route": "/play/draft-maze-images-snuke-snuke-3-png",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-4-png",
+    "title": "Snuke 4",
+    "author": "Snuke",
+    "width": 390,
+    "route": "/play/draft-maze-images-snuke-snuke-4-png",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+    "title": "Wolfram 0",
+    "author": "Mark J. P. Wolf",
+    "width": 390,
+    "route": "/play/draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-luegarua-webp",
+    "title": "Luegaria",
+    "author": "Luegarua",
+    "width": 390,
+    "route": "/play/draft-maze-images-luegarua-webp",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-siggy-skeptic-play-2-jpg",
+    "title": "Sierpinski Paths",
+    "author": "Siggy",
+    "width": 390,
+    "route": "/play/draft-maze-images-siggy-skeptic-play-2-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+    "title": "Wolfram 2",
+    "author": "Mark J. P. Wolf",
+    "width": 390,
+    "route": "/play/draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+    "title": "Wolfram 1",
+    "author": "Mark J. P. Wolf",
+    "width": 390,
+    "route": "/play/draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-2-jpg",
+    "title": "Snuke 2",
+    "author": "Snuke",
+    "width": 390,
+    "route": "/play/draft-maze-images-snuke-snuke-2-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-1-jpg",
+    "title": "Snuke 1",
+    "author": "Snuke",
+    "width": 390,
+    "route": "/play/draft-maze-images-snuke-snuke-1-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-daedalus-1-gif",
+    "title": "Daedalus 1",
+    "author": "Walter D. Pullen",
+    "width": 390,
+    "route": "/play/draft-maze-images-daedalus-1-gif",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+    "title": "Daedalus 3",
+    "author": "Ed Pegg Jr",
+    "width": 390,
+    "route": "/play/draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+    "title": "Daedalus 2 / Numb3rs",
+    "author": "Ed Pegg Jr",
+    "width": 390,
+    "route": "/play/draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+    "title": "Alice and the Fractal Hedge Maze",
+    "author": "Mike Earnest",
+    "width": 390,
+    "route": "/play/draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-the-inner-frame-pdf",
+    "title": "Inner Frame",
+    "author": "Matthias Weber",
+    "width": 390,
+    "route": "/play/draft-maze-images-the-inner-frame-pdf",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "draft-maze-images-mike-earnest-berkly-jpg",
+    "title": "Berkly",
+    "author": "Mike Earnest",
+    "width": 390,
+    "route": "/play/draft-maze-images-mike-earnest-berkly-jpg",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "simple-infinite-hop",
+    "title": "Simple infinite hop",
+    "author": "Rule examples after Siggy",
+    "width": 390,
+    "route": "/play/simple-infinite-hop",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "id": "simple-nested-infinite-hop",
+    "title": "Simple nested infinite hop",
+    "author": "Rule examples after Siggy",
+    "width": 390,
+    "route": "/play/simple-nested-infinite-hop",
+    "playable": true,
+    "horizontalOverflow": false,
+    "pageErrors": []
+  }
+]

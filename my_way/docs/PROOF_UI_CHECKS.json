@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-10",
+  "unitTests": {
+    "files": 29,
+    "passed": 229
+  },
+  "productionBrowser": {
+    "passed": 66,
+    "baseURL": "http://127.0.0.1:5175/Fractal-Maze/"
+  },
+  "lint": "passed",
+  "build": "passed",
+  "warnings": [
+    "Existing catalog/artwork/replay chunks exceed Vite size warning threshold."
+  ],
+  "regressions": [
+    "Proof construction/revision/undo on phone with advanced controls collapsed; exports remain within viewport.",
+    "Joint Cantor, nested infinite, setup trails, checked claims and proof-assisted replay.",
+    "Omeometo keys after touch, cell-relative marker and whole-maze context.",
+    "Skeptic Play 1 SVG nested displayed depth 0\u21921\u21922\u21921\u21920 under a frozen clock.",
+    "Sierpinski compound crossing preserves/imports both transitions and skips point helpers in live Play.",
+    "One-way arrows remain directed."
+  ],
+  "limitations": [
+    "Omeometo currently plays a finite expansion, initially depth five.",
+    "Earlier Play refinements continue in PLAY_REFINEMENT_PLAN.md."
+  ]
+}

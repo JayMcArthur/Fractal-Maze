@@ -1,0 +1,55 @@
+{
+  "format": "fmaze-browser-v0",
+  "id": "berkly",
+  "title": "Berkly",
+  "primary_authoring": "reference_record",
+  "source_root": "packages/source/berkly",
+  "logic": {
+    "format": "fmaze-logic-v0",
+    "id": "berkly",
+    "strategy": "reference_record",
+    "source_model": "reference_record",
+    "modeling_status": {
+      "status": "reference_only",
+      "reason": "WIP/unverified image-only record. The image suggests a recursive maze with two labeled submazes, but the visible colored traces do not determine a complete port graph or a replayable solution with confidence.",
+      "next_step": "Locate a higher-resolution source or author a terminal-by-terminal trace that distinguishes walls, crossings, branch points, and the roles of submazes 1 and 2."
+    },
+    "provenance": {
+      "authoring_status": "WIP/unverified reference record.",
+      "observed_structure": [
+        "Start is drawn near the upper middle of the outer maze.",
+        "Finish is drawn near the lower middle between recursive blocks 1 and 2.",
+        "Two large recursive blocks are labeled 1 and 2.",
+        "Multiple colored routes are visible, but they overlap walls and each other in places."
+      ],
+      "unresolved_questions": [
+        "Are blocks 1 and 2 both copies of the whole maze, or are they distinct submaze types?",
+        "Which colored trace, if any, is the intended solution path?",
+        "Which apparent line crossings are connected junctions and which are visual overpasses or unrelated traces?",
+        "What are the exact terminal pairings at the boundaries of blocks 1 and 2?"
+      ]
+    }
+  },
+  "modeling_status": {
+    "status": "reference_only",
+    "reason": "WIP/unverified image-only record. The image suggests a recursive maze with two labeled submazes, but the visible colored traces do not determine a complete port graph or a replayable solution with confidence.",
+    "next_step": "Locate a higher-resolution source or author a terminal-by-terminal trace that distinguishes walls, crossings, branch points, and the roles of submazes 1 and 2."
+  },
+  "provenance": {
+    "sources": [
+      {
+        "type": "image",
+        "href": "../../../Maze_Images/Mike_Earnest/Berkly.jpg"
+      },
+      {
+        "type": "handwritten_record",
+        "note": "WIP/unverified hand-authored reference record from the source image."
+      }
+    ],
+    "image_observations": [
+      "Source image shows Start and Finish labels plus two recursive blocks labeled 1 and 2.",
+      "Red, green, blue, and purple traces appear to mark candidate paths through the outer maze and recursive blocks.",
+      "The rendered image is low-resolution enough that line crossings, shared corridors, and terminal locations are not fully reliable."
+    ]
+  }
+}

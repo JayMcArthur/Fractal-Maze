@@ -1,0 +1,131 @@
+{
+  "captures": [
+    {
+      "file": "pda.png",
+      "title": "Guide PDA and source drawing",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/pda-guide-1",
+      "overflow": false
+    },
+    {
+      "file": "svg.png",
+      "title": "First Cantor: exact SVG and connected-path labels",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/proof-maze-images-siggy-first-cantor-svg",
+      "overflow": false
+    },
+    {
+      "file": "infinite.png",
+      "title": "Infinite Descent: source SVG and infinite-hop model",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/proof-maze-images-siggy-infinite-descent-svg",
+      "overflow": false
+    },
+    {
+      "file": "hedge.png",
+      "title": "Alice and the Hedge Maze: WIP corridor traces",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+      "overflow": false
+    },
+    {
+      "file": "geocaching.png",
+      "title": "Geocaching: restored source artwork",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/draft-maze-images-geocaching-easter-13-10-png",
+      "overflow": false
+    },
+    {
+      "file": "v6.png",
+      "title": "Jay\u2019s six-copy layout and parameterized PDA",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/pda-guide-6",
+      "overflow": false
+    },
+    {
+      "file": "proof-empty.png",
+      "title": "Cantor proof notebook starts empty",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/proof-maze-images-siggy-simple-cantor-maze-svg?tab=proof",
+      "overflow": false
+    },
+    {
+      "file": "analysis.png",
+      "title": "Choose a PDA or infinite-rule workspace",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/analysis",
+      "overflow": false
+    },
+    {
+      "file": "library.png",
+      "title": "Library with WIP conversions",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/library",
+      "overflow": false
+    },
+    {
+      "file": "guide.png",
+      "title": "Guide including tracing and proof construction",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/docs",
+      "overflow": false
+    },
+    {
+      "file": "builder.png",
+      "title": "Builder with tracing entry point",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/editor/square",
+      "overflow": false
+    },
+    {
+      "file": "proof-checked.png",
+      "title": "Manually constructed Cantor witness: checked under its movement rules",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/proof-maze-images-siggy-simple-cantor-maze-svg?tab=proof",
+      "overflow": false
+    },
+    {
+      "file": "proof-saved.png",
+      "title": "Saved checked lemma and a new empty claim",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/proof-maze-images-siggy-simple-cantor-maze-svg?tab=proof",
+      "overflow": false
+    },
+    {
+      "file": "wolf-partial.png",
+      "title": "Wolfram guide example ends inside A\u2192B: inspectable partial route",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/pda-guide-2?tab=play",
+      "overflow": false
+    },
+    {
+      "file": "replay.png",
+      "title": "Saved partial path replay with explicit stack",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/replay/be644421-1787-434f-a4b3-fafd16fc69d0",
+      "overflow": false
+    },
+    {
+      "file": "phone-trace.png",
+      "title": "Phone: source-coordinate tracing",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/proof-maze-images-siggy-first-cantor-svg",
+      "overflow": false
+    },
+    {
+      "file": "phone-proof.png",
+      "title": "Phone: notebook and source maze",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/proof-maze-images-siggy-simple-cantor-maze-svg?tab=proof",
+      "overflow": false
+    },
+    {
+      "file": "phone-play.png",
+      "title": "Phone: finite player and search",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/workbench/pda-guide-1?tab=play",
+      "overflow": false
+    },
+    {
+      "file": "phone-library.png",
+      "title": "Phone: library controls",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/library",
+      "overflow": false
+    },
+    {
+      "file": "phone-guide.png",
+      "title": "Phone: guide",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/docs",
+      "overflow": false
+    },
+    {
+      "file": "phone-builder.png",
+      "title": "Phone: builder tools",
+      "url": "http://127.0.0.1:5175/Fractal-Maze/editor/square",
+      "overflow": false
+    }
+  ],
+  "pageErrors": []
+}

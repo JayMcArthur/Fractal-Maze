@@ -1,0 +1,679 @@
+[
+  {
+    "id": "alice-in-wonderland",
+    "title": "Alice and the Fractal Hedge Maze",
+    "type": "squareRecursive",
+    "status": "solution",
+    "detail": "Corridor components and balanced PDA closure; every restored move checked by the native resolver.",
+    "visited": 477414,
+    "replays": [
+      "bundled-alice-in-wonderland"
+    ]
+  },
+  {
+    "id": "sierpinski",
+    "title": "Sierpinski",
+    "type": "squareRecursive",
+    "status": "solution",
+    "replays": [
+      "bundled-sierpinski"
+    ]
+  },
+  {
+    "id": "microchip",
+    "title": "Microchip",
+    "type": "squareRecursive",
+    "status": "solution",
+    "replays": [
+      "bundled-microchip"
+    ]
+  },
+  {
+    "id": "square",
+    "title": "Square",
+    "type": "squareRecursive",
+    "status": "solution",
+    "detail": "Corridor components and balanced PDA closure; every restored move checked by the native resolver.",
+    "visited": 494344,
+    "replays": [
+      "bundled-square"
+    ]
+  },
+  {
+    "id": "a-long-path-v4",
+    "title": "A Long Path v4",
+    "type": "squareRecursive",
+    "status": "solution",
+    "detail": "Corridor components and balanced PDA closure; every restored move checked by the native resolver.",
+    "visited": 440340,
+    "replays": [
+      "bundled-a-long-path-v4"
+    ]
+  },
+  {
+    "id": "a-long-path-v8",
+    "title": "A Long Path v8",
+    "type": "squareRecursive",
+    "status": "solution",
+    "detail": "Balanced PDA witness expanded to 3,540 legal grid moves. Returning onto the surface trophy now completes the maze.",
+    "replays": [
+      "bundled-a-long-path-v8"
+    ],
+    "moves": 3540
+  },
+  {
+    "id": "matthias-weber",
+    "title": "Fractal Maze",
+    "type": "squareRecursive",
+    "status": "solution",
+    "replays": [
+      "bundled-matthias-weber"
+    ]
+  },
+  {
+    "id": "skeptic-play-carpet",
+    "title": "Carpet",
+    "type": "squareRecursive",
+    "status": "solution",
+    "detail": "Corridor components and balanced PDA closure; every restored move checked by the native resolver.",
+    "visited": 446728,
+    "replays": [
+      "bundled-skeptic-play-carpet"
+    ]
+  },
+  {
+    "id": "block-maze",
+    "title": "Block Maze",
+    "type": "squareRecursive",
+    "status": "no-finite-route",
+    "detail": "No finite balanced route under the current corridor rules (11 PDA states, 58 connections). No recursion-depth cutoff was used."
+  },
+  {
+    "id": "backlot",
+    "title": "Backlot",
+    "type": "recursiveTour",
+    "status": "solution",
+    "replays": [
+      "bundled-backlot"
+    ]
+  },
+  {
+    "id": "wolf-wire-original",
+    "title": "Mark J. P. Wolf \u2014 original wire maze",
+    "type": "legacyWire",
+    "status": "solution",
+    "replays": [
+      "bundled-wire-1",
+      "bundled-wire-2",
+      "bundled-wire-3",
+      "bundled-wire-4",
+      "bundled-wire-5",
+      "bundled-wire-6",
+      "bundled-wire-7",
+      "bundled-wire-8",
+      "bundled-wire-9",
+      "bundled-wire-10",
+      "bundled-wire-11"
+    ]
+  },
+  {
+    "id": "ports-koteitan",
+    "title": "Koteitan recursive ports",
+    "type": "recursivePorts",
+    "status": "solution",
+    "replays": [
+      "bundled-ports-koteitan"
+    ]
+  },
+  {
+    "id": "ports-snuke_no3",
+    "title": "Snuke fractal maze 3",
+    "type": "recursivePorts",
+    "status": "solution",
+    "replays": [
+      "bundled-ports-snuke_no3"
+    ]
+  },
+  {
+    "id": "ports-snuke_no4",
+    "title": "Snuke fractal maze 4",
+    "type": "recursivePorts",
+    "status": "solution",
+    "replays": [
+      "bundled-ports-snuke_no4"
+    ]
+  },
+  {
+    "id": "koteitan-block",
+    "title": "Omeometo \u2014 fractal block maze",
+    "type": "blockRecursive",
+    "status": "solution",
+    "replays": [
+      "bundled-koteitan-block"
+    ]
+  },
+  {
+    "id": "repeated-directed-example",
+    "title": "Repeated directed maze \u2014 13-step example",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-directed-example"
+    ]
+  },
+  {
+    "id": "portal-connections",
+    "title": "Portal connections",
+    "type": "graphLabeled",
+    "status": "solution",
+    "replays": [
+      "bundled-portal-connections"
+    ]
+  },
+  {
+    "id": "koteitan-block-3",
+    "title": "Koteitan block pattern \u2014 3\u00d73",
+    "type": "blockRecursive",
+    "status": "solution",
+    "detail": "Permitted bottom/top white base cells; finite detail-2 witness checked through exact recursive movement and replay import.",
+    "replays": [
+      "bundled-koteitan-block-3"
+    ]
+  },
+  {
+    "id": "koteitan-block-5",
+    "title": "Koteitan block pattern \u2014 5\u00d75",
+    "type": "blockRecursive",
+    "status": "solution",
+    "detail": "Permitted bottom/top white base cells; finite detail-5 witness checked through exact recursive movement and replay import.",
+    "replays": [
+      "bundled-koteitan-block-5"
+    ]
+  },
+  {
+    "id": "repeated-cp6",
+    "title": "Counter pump \u2014 6 terminals",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-cp6"
+    ]
+  },
+  {
+    "id": "repeated-md3",
+    "title": "Minsky doubling \u2014 3 stages",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-md3"
+    ]
+  },
+  {
+    "id": "repeated-md4",
+    "title": "Minsky doubling \u2014 4 stages",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-md4"
+    ]
+  },
+  {
+    "id": "repeated-md5",
+    "title": "Minsky doubling \u2014 5 stages",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-md5"
+    ]
+  },
+  {
+    "id": "repeated-atomic-cp2-3",
+    "title": "Counter pump \u2014 cp2-3 (atomic)",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-atomic-cp2-3"
+    ]
+  },
+  {
+    "id": "repeated-atomic-cp2-4",
+    "title": "Counter pump \u2014 cp2-4 (atomic)",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-atomic-cp2-4"
+    ]
+  },
+  {
+    "id": "repeated-atomic-cp2-5",
+    "title": "Counter pump \u2014 cp2-5 (atomic)",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-atomic-cp2-5"
+    ]
+  },
+  {
+    "id": "repeated-atomic-cp2-6",
+    "title": "Counter pump \u2014 cp2-6 (atomic)",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-atomic-cp2-6"
+    ]
+  },
+  {
+    "id": "repeated-atomic-cp3-2",
+    "title": "Counter pump \u2014 cp3-2 (atomic)",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-atomic-cp3-2"
+    ]
+  },
+  {
+    "id": "repeated-atomic-md3",
+    "title": "Minsky doubling \u2014 3 stages (atomic)",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-atomic-md3"
+    ]
+  },
+  {
+    "id": "repeated-atomic-md4",
+    "title": "Minsky doubling \u2014 4 stages (atomic)",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-atomic-md4"
+    ]
+  },
+  {
+    "id": "repeated-atomic-md5",
+    "title": "Minsky doubling \u2014 5 stages (atomic)",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-atomic-md5"
+    ]
+  },
+  {
+    "id": "repeated-atomic-penta",
+    "title": "Pentation maze",
+    "type": "repeatedDirected",
+    "status": "bounded",
+    "detail": "Repeated BFS: coordinate 65536, 1500000 states.",
+    "visited": 1500000
+  },
+  {
+    "id": "pda-guide-1",
+    "title": "Skeptic Play 1",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-pda-guide-1"
+    ]
+  },
+  {
+    "id": "pda-guide-2",
+    "title": "Wolfram 2 \u2014 guide conversion",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-pda-guide-2"
+    ]
+  },
+  {
+    "id": "pda-guide-3",
+    "title": "Jay McArthur \u2014 eight-copy PDA",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-pda-guide-3"
+    ]
+  },
+  {
+    "id": "pda-guide-4",
+    "title": "Inner Frame \u2014 guide PDA",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-pda-guide-4"
+    ]
+  },
+  {
+    "id": "pda-guide-5",
+    "title": "Skeptic Play 3 \u2014 revised drawing",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-pda-guide-5"
+    ]
+  },
+  {
+    "id": "pda-guide-6",
+    "title": "Jay McArthur \u2014 A Long Path v6",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-pda-guide-6"
+    ]
+  },
+  {
+    "id": "draft-maze-images-martin-windischer-windischer-gif",
+    "title": "Windischer",
+    "type": "infiniteRule",
+    "status": "unbound",
+    "detail": "Source endpoints and recursive gate topology are not yet bound."
+  },
+  {
+    "id": "draft-maze-images-martin-windischer-windischer-png",
+    "title": "Windischer",
+    "type": "infiniteRule",
+    "status": "unbound",
+    "detail": "Source endpoints and recursive gate topology are not yet bound."
+  },
+  {
+    "id": "draft-maze-images-martin-windischer-windischer-recursion-jpg",
+    "title": "Windischer Recursion",
+    "type": "infiniteRule",
+    "status": "unbound",
+    "detail": "Source endpoints and recursive gate topology are not yet bound."
+  },
+  {
+    "id": "proof-maze-images-siggy-first-cantor-svg",
+    "title": "First Cantor",
+    "type": "infiniteRule",
+    "status": "proof-solution",
+    "detail": "Joint Cantor certificate from permitted surface gate 6, checked by the production rules.",
+    "replays": [
+      "bundled-proof-maze-images-siggy-first-cantor-svg"
+    ]
+  },
+  {
+    "id": "proof-maze-images-siggy-infinite-descent-svg",
+    "title": "Infinite Descent",
+    "type": "infiniteRule",
+    "status": "proof-solution",
+    "detail": "Matched setup trails and shared repeating word checked by the production infinite-hop rules.",
+    "replays": [
+      "bundled-proof-maze-images-siggy-infinite-descent-svg"
+    ]
+  },
+  {
+    "id": "proof-maze-images-siggy-simple-cantor-maze-svg",
+    "title": "Simple Cantor Maze",
+    "type": "infiniteRule",
+    "status": "proof-solution",
+    "replays": [
+      "bundled-proof-maze-images-siggy-simple-cantor-maze-svg"
+    ]
+  },
+  {
+    "id": "draft-maze-images-siggy-skeptic-play-1-svg",
+    "title": "Skeptic Play 1 \u2014 source SVG",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-siggy-skeptic-play-1-svg"
+    ]
+  },
+  {
+    "id": "draft-maze-images-siggy-skeptic-play-1-steps-svg",
+    "title": "Skeptic Play 1 \u2014 annotated routes",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-siggy-skeptic-play-1-steps-svg"
+    ]
+  },
+  {
+    "id": "draft-maze-images-geocaching-easter-13-10-png",
+    "title": "Geocaching Easter 13-#10",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-geocaching-easter-13-10-png"
+    ]
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-3-png",
+    "title": "Snuke 3",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-snuke-snuke-3-png"
+    ]
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-4-png",
+    "title": "Snuke 4",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-snuke-snuke-4-png"
+    ]
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-0-jpg",
+    "title": "Wolfram 0",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-mark-j-p-wolf-wolfram-0-jpg"
+    ]
+  },
+  {
+    "id": "draft-maze-images-luegarua-webp",
+    "title": "Luegarua",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-luegarua-webp"
+    ]
+  },
+  {
+    "id": "draft-maze-images-siggy-skeptic-play-3-png",
+    "title": "Skeptic Play 3",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-siggy-skeptic-play-3-png"
+    ]
+  },
+  {
+    "id": "draft-maze-images-siggy-skeptic-play-2-jpg",
+    "title": "Skeptic Play 2",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-siggy-skeptic-play-2-jpg"
+    ]
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png",
+    "title": "Wolfram 2 \u2014 Wires",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-mark-j-p-wolf-wolfram-2-wires-png"
+    ]
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png",
+    "title": "Wolfram 2 \u2014 Nested",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-mark-j-p-wolf-wolfram-2-nested-png"
+    ]
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-2-jpg",
+    "title": "Wolfram 2",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-mark-j-p-wolf-wolfram-2-jpg"
+    ]
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-gif",
+    "title": "Wolfram 1",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-mark-j-p-wolf-wolfram-1-gif"
+    ]
+  },
+  {
+    "id": "draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
+    "title": "Wolfram 1 \u2014 Solution",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-mark-j-p-wolf-wolfram-1-solution-jpg"
+    ]
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-2-jpg",
+    "title": "Snuke 2",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-snuke-snuke-2-jpg"
+    ]
+  },
+  {
+    "id": "draft-maze-images-snuke-snuke-1-jpg",
+    "title": "Snuke 1",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-snuke-snuke-1-jpg"
+    ]
+  },
+  {
+    "id": "draft-maze-images-daedalus-1-gif",
+    "title": "Daedalus 1",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-daedalus-1-gif"
+    ]
+  },
+  {
+    "id": "draft-maze-images-ed-pegg-jr-daedalus-3-gif",
+    "title": "Daedalus 3",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-ed-pegg-jr-daedalus-3-gif"
+    ]
+  },
+  {
+    "id": "draft-maze-images-ed-pegg-jr-daedalus-2-jpg",
+    "title": "Daedalus 2",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-ed-pegg-jr-daedalus-2-jpg"
+    ]
+  },
+  {
+    "id": "draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+    "title": "Alice and the Hedge Maze",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png"
+    ]
+  },
+  {
+    "id": "draft-maze-images-the-inner-frame-pdf",
+    "title": "Inner Frame \u2014 source rooms",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-the-inner-frame-pdf"
+    ]
+  },
+  {
+    "id": "draft-maze-images-jay-mcarthur-a-long-path-v6-png",
+    "title": "Jay McArthur \u2014 A Long Path v6",
+    "type": "pathPushdown",
+    "status": "solution",
+    "replays": [
+      "bundled-draft-maze-images-jay-mcarthur-a-long-path-v6-png"
+    ]
+  },
+  {
+    "id": "simple-infinite-hop",
+    "title": "Simple infinite hop",
+    "type": "infiniteRule",
+    "status": "proof-solution",
+    "replays": [
+      "bundled-simple-infinite-hop"
+    ]
+  },
+  {
+    "id": "simple-nested-infinite-hop",
+    "title": "Simple nested infinite hop",
+    "type": "infiniteRule",
+    "status": "proof-solution",
+    "replays": [
+      "bundled-simple-nested-infinite-hop"
+    ]
+  },
+  {
+    "id": "1611103791037:0.9096318422296219",
+    "title": "Easy - Noke Lieu",
+    "type": "geometricRecursive",
+    "status": "no-finite-route",
+    "detail": "No finite route under the current geometric corridor and surface-finish rules. Production PDA closure uses no recursion-depth cutoff; original source intent remains subject to review."
+  },
+  {
+    "id": "1695993784968:0.6965701909885131",
+    "title": "Tsat - Cubist",
+    "type": "geometricRecursive",
+    "status": "solution",
+    "replays": [
+      "bundled-1695993784968:0.6965701909885131"
+    ]
+  },
+  {
+    "id": "draft-maze-images-mike-earnest-berkly-jpg",
+    "title": "Berkly",
+    "type": "pathPushdown",
+    "status": "no-finite-route",
+    "detail": "Closed balanced PDA relation excludes the surface finish under the current WIP transcription."
+  },
+  {
+    "id": "repeated-atomic-cp3-3",
+    "title": "Counter pump \u2014 cp3-3 (atomic)",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-atomic-cp3-3"
+    ]
+  },
+  {
+    "id": "repeated-atomic-cp-n3-godel",
+    "title": "Three-register counter pump \u2014 compiled (WIP)",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-atomic-cp-n3-godel"
+    ]
+  },
+  {
+    "id": "repeated-atomic-cp3-4",
+    "title": "Counter pump \u2014 cp3-4 (atomic)",
+    "type": "repeatedDirected",
+    "status": "solution",
+    "replays": [
+      "bundled-repeated-atomic-cp3-4"
+    ]
+  }
+]

@@ -1,0 +1,389 @@
+[
+  {
+    "id": "maze-images-daedalus-1-gif",
+    "title": "Daedalus 1",
+    "author": "Walter D. Pullen",
+    "asset": "references/Maze_Images/Daedalus_1.gif",
+    "source": "Maze_Images/Daedalus_1.gif",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-ed-pegg-jr-daedalus-2-jpg",
+    "title": "Daedalus 2",
+    "author": "Ed Pegg Jr",
+    "asset": "references/Maze_Images/Ed_Pegg_Jr/Daedalus_2.jpg",
+    "source": "Maze_Images/Ed_Pegg_Jr/Daedalus_2.jpg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-ed-pegg-jr-daedalus-3-gif",
+    "title": "Daedalus 3",
+    "author": "Ed Pegg Jr",
+    "asset": "references/Maze_Images/Ed_Pegg_Jr/Daedalus_3.gif",
+    "source": "Maze_Images/Ed_Pegg_Jr/Daedalus_3.gif",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-geocaching-easter-13-10-png",
+    "title": "Geocaching Easter 13-#10",
+    "author": "Amurielagi",
+    "asset": "references/Maze_Images/Geocaching_Easter_13-10.png",
+    "source": "Maze_Images/Geocaching_Easter_13-#10.png",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-jay-mcarthur-a-long-path-v6-png",
+    "title": "Jay McArthur \u2014 A Long Path v6",
+    "author": "Jay McArthur",
+    "asset": "references/Maze_Images/Jay_McArthur_-_A_Long_Path_v6.png",
+    "source": "Maze_Images/Jay_McArthur_-_A_Long_Path_v6.png",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-luegarua-webp",
+    "title": "Luegarua",
+    "author": "Luegarua",
+    "asset": "references/Maze_Images/Luegarua.webp",
+    "source": "Maze_Images/Luegarua.webp",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-mark-j-p-wolf-wolfram-0-jpg",
+    "title": "Wolfram 0",
+    "author": "Mark J. P. Wolf",
+    "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_0.jpg",
+    "source": "Maze_Images/Mark_J_P_Wolf/Wolfram_0.jpg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-mark-j-p-wolf-wolfram-1-gif",
+    "title": "Wolfram 1",
+    "author": "Mark J. P. Wolf",
+    "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_1.gif",
+    "source": "Maze_Images/Mark_J_P_Wolf/Wolfram_1.gif",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-mark-j-p-wolf-wolfram-1-solution-jpg",
+    "title": "Wolfram 1 \u2014 Solution",
+    "author": "Mark J. P. Wolf",
+    "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_1_-_Solution.jpg",
+    "source": "Maze_Images/Mark_J_P_Wolf/Wolfram_1_-_Solution.jpg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-mark-j-p-wolf-wolfram-2-jpg",
+    "title": "Wolfram 2",
+    "author": "Mark J. P. Wolf",
+    "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2.jpg",
+    "source": "Maze_Images/Mark_J_P_Wolf/Wolfram_2.jpg",
+    "kind": "Maze artwork",
+    "playableId": "wolf-wire-original"
+  },
+  {
+    "id": "maze-images-mark-j-p-wolf-wolfram-2-nested-png",
+    "title": "Wolfram 2 \u2014 Nested",
+    "author": "Mark J. P. Wolf",
+    "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Nested.png",
+    "source": "Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Nested.png",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-mark-j-p-wolf-wolfram-2-wires-png",
+    "title": "Wolfram 2 \u2014 Wires",
+    "author": "Mark J. P. Wolf",
+    "asset": "references/Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Wires.png",
+    "source": "Maze_Images/Mark_J_P_Wolf/Wolfram_2_-_Wires.png",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-martin-windischer-windischer-gif",
+    "title": "Windischer",
+    "author": "Martin Windischer",
+    "asset": "references/Maze_Images/Martin_Windischer/Windischer.gif",
+    "source": "Maze_Images/Martin_Windischer/Windischer.gif",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-martin-windischer-windischer-png",
+    "title": "Windischer",
+    "author": "Martin Windischer",
+    "asset": "references/Maze_Images/Martin_Windischer/Windischer.png",
+    "source": "Maze_Images/Martin_Windischer/Windischer.png",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-martin-windischer-windischer-recursion-jpg",
+    "title": "Windischer Recursion",
+    "author": "Martin Windischer",
+    "asset": "references/Maze_Images/Martin_Windischer/Windischer_Recursion.jpg",
+    "source": "Maze_Images/Martin_Windischer/Windischer_Recursion.jpg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-mike-earnest-alice-and-the-hedge-maze-png",
+    "title": "Alice and the Hedge Maze",
+    "author": "Mike Earnest",
+    "asset": "references/Maze_Images/Mike_Earnest/Alice_and_the_Hedge_Maze.png",
+    "source": "Maze_Images/Mike_Earnest/Alice_and_the_Hedge_Maze.png",
+    "kind": "Maze artwork",
+    "playableId": "alice-in-wonderland"
+  },
+  {
+    "id": "maze-images-mike-earnest-berkly-jpg",
+    "title": "Berkly",
+    "author": "Mike Earnest",
+    "asset": "references/Maze_Images/Mike_Earnest/Berkly.jpg",
+    "source": "Maze_Images/Mike_Earnest/Berkly.jpg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-siggy-first-cantor-svg",
+    "title": "First Cantor",
+    "author": "Siggy",
+    "asset": "references/Maze_Images/Siggy/First_Cantor.svg",
+    "source": "Maze_Images/Siggy/First_Cantor.svg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-siggy-infinite-descent-svg",
+    "title": "Infinite Descent",
+    "author": "Siggy",
+    "asset": "references/Maze_Images/Siggy/Infinite_Descent.svg",
+    "source": "Maze_Images/Siggy/Infinite_Descent.svg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-siggy-simple-cantor-maze-svg",
+    "title": "Simple Cantor Maze",
+    "author": "Siggy",
+    "asset": "references/Maze_Images/Siggy/Simple_Cantor_Maze.svg",
+    "source": "Maze_Images/Siggy/Simple_Cantor_Maze.svg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-siggy-skeptic-play-1-jpg",
+    "title": "Skeptic Play 1",
+    "author": "Siggy",
+    "asset": "references/Maze_Images/Siggy/Skeptic_Play_1.jpg",
+    "source": "Maze_Images/Siggy/Skeptic_Play_1.jpg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-siggy-skeptic-play-1-svg",
+    "title": "Skeptic Play 1",
+    "author": "Siggy",
+    "asset": "references/Maze_Images/Siggy/Skeptic_Play_1.svg",
+    "source": "Maze_Images/Siggy/Skeptic_Play_1.svg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-siggy-skeptic-play-1-steps-svg",
+    "title": "Skeptic Play 1 Steps",
+    "author": "Siggy",
+    "asset": "references/Maze_Images/Siggy/Skeptic_Play_1_Steps.svg",
+    "source": "Maze_Images/Siggy/Skeptic_Play_1_Steps.svg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-siggy-skeptic-play-2-jpg",
+    "title": "Skeptic Play 2",
+    "author": "Siggy",
+    "asset": "references/Maze_Images/Siggy/Skeptic_Play_2.jpg",
+    "source": "Maze_Images/Siggy/Skeptic_Play_2.jpg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-siggy-skeptic-play-3-png",
+    "title": "Skeptic Play 3",
+    "author": "Siggy",
+    "asset": "references/Maze_Images/Siggy/Skeptic_Play_3.png",
+    "source": "Maze_Images/Siggy/Skeptic_Play_3.png",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-siggy-skeptic-play-3-alt-png",
+    "title": "Skeptic Play 3 Alt",
+    "author": "Siggy",
+    "asset": "references/Maze_Images/Siggy/Skeptic_Play_3_Alt.png",
+    "source": "Maze_Images/Siggy/Skeptic_Play_3_Alt.png",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-the-inner-frame-pdf",
+    "title": "The Inner Frame",
+    "author": "Matthias Weber",
+    "asset": "references/Maze_Images/The_Inner_Frame.pdf",
+    "source": "Maze_Images/The_Inner_Frame.pdf",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-snuke-snuke-1-jpg",
+    "title": "Snuke 1",
+    "author": "Snuke",
+    "asset": "references/Maze_Images/snuke/Snuke_1.jpg",
+    "source": "Maze_Images/snuke/Snuke_1.jpg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-snuke-snuke-2-jpg",
+    "title": "Snuke 2",
+    "author": "Snuke",
+    "asset": "references/Maze_Images/snuke/Snuke_2.jpg",
+    "source": "Maze_Images/snuke/Snuke_2.jpg",
+    "kind": "Maze artwork",
+    "playableId": null
+  },
+  {
+    "id": "maze-images-snuke-snuke-3-png",
+    "title": "Snuke 3",
+    "author": "Snuke",
+    "asset": "references/Maze_Images/snuke/Snuke_3.png",
+    "source": "Maze_Images/snuke/Snuke_3.png",
+    "kind": "Maze artwork",
+    "playableId": "ports-snuke_no3"
+  },
+  {
+    "id": "maze-images-snuke-snuke-4-png",
+    "title": "Snuke 4",
+    "author": "Snuke",
+    "asset": "references/Maze_Images/snuke/Snuke_4.png",
+    "source": "Maze_Images/snuke/Snuke_4.png",
+    "kind": "Maze artwork",
+    "playableId": "ports-snuke_no4"
+  },
+  {
+    "id": "papers-fractal-maze-to-pda-graph-solution-png",
+    "title": "Graph Solution",
+    "author": "Collection",
+    "asset": "references/Papers/Fractal_Maze_to_PDA/Graph_Solution.png",
+    "source": "Papers/Fractal_Maze_to_PDA/Graph_Solution.png",
+    "kind": "Research diagram",
+    "playableId": null
+  },
+  {
+    "id": "papers-fractal-maze-to-pda-sp-1-actions-jpg",
+    "title": "SP 1 \u2014 Actions",
+    "author": "Collection",
+    "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_Actions.jpg",
+    "source": "Papers/Fractal_Maze_to_PDA/SP_1_-_Actions.jpg",
+    "kind": "Research diagram",
+    "playableId": null
+  },
+  {
+    "id": "papers-fractal-maze-to-pda-sp-1-m1-png",
+    "title": "SP 1 \u2014 M1",
+    "author": "Collection",
+    "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_M1.png",
+    "source": "Papers/Fractal_Maze_to_PDA/SP_1_-_M1.png",
+    "kind": "Research diagram",
+    "playableId": null
+  },
+  {
+    "id": "papers-fractal-maze-to-pda-sp-1-m2-png",
+    "title": "SP 1 \u2014 M2",
+    "author": "Collection",
+    "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_M2.png",
+    "source": "Papers/Fractal_Maze_to_PDA/SP_1_-_M2.png",
+    "kind": "Research diagram",
+    "playableId": null
+  },
+  {
+    "id": "papers-fractal-maze-to-pda-sp-1-m3-png",
+    "title": "SP 1 \u2014 M3",
+    "author": "Collection",
+    "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_M3.png",
+    "source": "Papers/Fractal_Maze_to_PDA/SP_1_-_M3.png",
+    "kind": "Research diagram",
+    "playableId": null
+  },
+  {
+    "id": "papers-fractal-maze-to-pda-sp-1-m4-png",
+    "title": "SP 1 \u2014 M4",
+    "author": "Collection",
+    "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_M4.png",
+    "source": "Papers/Fractal_Maze_to_PDA/SP_1_-_M4.png",
+    "kind": "Research diagram",
+    "playableId": null
+  },
+  {
+    "id": "papers-fractal-maze-to-pda-sp-1-m5-png",
+    "title": "SP 1 \u2014 M5",
+    "author": "Collection",
+    "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_M5.png",
+    "source": "Papers/Fractal_Maze_to_PDA/SP_1_-_M5.png",
+    "kind": "Research diagram",
+    "playableId": null
+  },
+  {
+    "id": "papers-fractal-maze-to-pda-sp-1-turing-machine-png",
+    "title": "SP 1 \u2014 Turing Machine",
+    "author": "Collection",
+    "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_Turing_Machine.png",
+    "source": "Papers/Fractal_Maze_to_PDA/SP_1_-_Turing_Machine.png",
+    "kind": "Research diagram",
+    "playableId": null
+  },
+  {
+    "id": "papers-fractal-maze-to-pda-sp-1-whole-graph-png",
+    "title": "SP 1 \u2014 Whole Graph",
+    "author": "Collection",
+    "asset": "references/Papers/Fractal_Maze_to_PDA/SP_1_-_Whole_Graph.png",
+    "source": "Papers/Fractal_Maze_to_PDA/SP_1_-_Whole_Graph.png",
+    "kind": "Research diagram",
+    "playableId": null
+  },
+  {
+    "id": "papers-fractal-maze-to-pda-skeptic-play-1-jpg",
+    "title": "Skeptic Play 1",
+    "author": "Collection",
+    "asset": "references/Papers/Fractal_Maze_to_PDA/Skeptic_Play_1.jpg",
+    "source": "Papers/Fractal_Maze_to_PDA/Skeptic_Play_1.jpg",
+    "kind": "Research diagram",
+    "playableId": null
+  },
+  {
+    "id": "source-backlot",
+    "title": "Backlot",
+    "author": "Chris Yao",
+    "asset": "references/source-assets/backlot-grid.png",
+    "source": "https://puzzles.mit.edu/2020/puzzle/backlot/",
+    "kind": "Maze artwork",
+    "playableId": "backlot"
+  },
+  {
+    "id": "source-omeometo-block",
+    "title": "Omeometo \u2014 fractal block maze",
+    "author": "Omeometo",
+    "asset": "references/source-assets/omeometo-block.png",
+    "source": "https://omeometo.hatenablog.com/entry/2018/12/28/155549",
+    "kind": "Maze artwork",
+    "playableId": "koteitan-block"
+  }
+]

@@ -1,0 +1,14 @@
+format: fmaze-package-v0
+id: koteitan_fractal_block_default
+title: Koteitan Fractal Block Maze Default
+primary_authoring: fractal_block_pattern
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+provenance:
+  source:
+    kind: github_repository
+    url: https://github.com/koteitan/fractalblockmaze
+  notes:
+    - Default 4x4 generating pattern from main.js.
+    - The solver follows the v1.11-style bounded coordinate-path search.

@@ -1,0 +1,1590 @@
+{
+  "executedAt": "2026-10-12T17:51:59.202Z",
+  "scope": "All authored production TypeScript in src, excluding src/test",
+  "files": 224,
+  "maxCyclomatic": 21,
+  "maxSourceLines": 556,
+  "explicitAnyUnknown": 0,
+  "violations": [],
+  "lintErrors": [],
+  "measurements": [
+    {
+      "file": "src/App.tsx",
+      "sourceLines": 87,
+      "maxCyclomatic": 2,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/authorCollections.ts",
+      "sourceLines": 10,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/bundledReplays.ts",
+      "sourceLines": 29,
+      "maxCyclomatic": 8,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/catalog.ts",
+      "sourceLines": 295,
+      "maxCyclomatic": 6,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/catalogIndex.ts",
+      "sourceLines": 21,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/geometricPlayDocument.ts",
+      "sourceLines": 10,
+      "maxCyclomatic": 2,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/index.ts",
+      "sourceLines": 1,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/loadCatalogDocument.ts",
+      "sourceLines": 29,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/longPathArtwork.ts",
+      "sourceLines": 128,
+      "maxCyclomatic": 16,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/mazeViews.ts",
+      "sourceLines": 183,
+      "maxCyclomatic": 8,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/pathCatalog.ts",
+      "sourceLines": 248,
+      "maxCyclomatic": 10,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/pathDocument.ts",
+      "sourceLines": 47,
+      "maxCyclomatic": 2,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/playPDA.ts",
+      "sourceLines": 25,
+      "maxCyclomatic": 7,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/portPlayDocument.ts",
+      "sourceLines": 46,
+      "maxCyclomatic": 17,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/proofExamples.ts",
+      "sourceLines": 74,
+      "maxCyclomatic": 1,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/rulePlayDocument.ts",
+      "sourceLines": 25,
+      "maxCyclomatic": 12,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/library/wirePlayDocument.ts",
+      "sourceLines": 11,
+      "maxCyclomatic": 2,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/projects/db.ts",
+      "sourceLines": 153,
+      "maxCyclomatic": 5,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/projects/index.ts",
+      "sourceLines": 2,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/projects/loadMazeDocument.ts",
+      "sourceLines": 8,
+      "maxCyclomatic": 2,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/store/editorSlice.ts",
+      "sourceLines": 352,
+      "maxCyclomatic": 11,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/store/importSlice.ts",
+      "sourceLines": 16,
+      "maxCyclomatic": 1,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/store/index.ts",
+      "sourceLines": 5,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/store/playerSlice.ts",
+      "sourceLines": 166,
+      "maxCyclomatic": 7,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/store/replaySlice.ts",
+      "sourceLines": 61,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/app/store/solverSlice.ts",
+      "sourceLines": 126,
+      "maxCyclomatic": 11,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/blockMaze/grid.ts",
+      "sourceLines": 96,
+      "maxCyclomatic": 10,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/blockMaze/recursivePosition.ts",
+      "sourceLines": 83,
+      "maxCyclomatic": 11,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/blockMaze/recursiveReplay.ts",
+      "sourceLines": 29,
+      "maxCyclomatic": 13,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/index.ts",
+      "sourceLines": 20,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/AdapterInterface.ts",
+      "sourceLines": 15,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/adapters/amurielagiAdapter.ts",
+      "sourceLines": 51,
+      "maxCyclomatic": 5,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/adapters/fmazeAdapter.ts",
+      "sourceLines": 37,
+      "maxCyclomatic": 6,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/adapters/index.ts",
+      "sourceLines": 5,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/adapters/koteitanAdapter.ts",
+      "sourceLines": 127,
+      "maxCyclomatic": 11,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/adapters/orelMazeAdapter.ts",
+      "sourceLines": 283,
+      "maxCyclomatic": 21,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/adapters/pathPDAAdapter.ts",
+      "sourceLines": 24,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/adapters/repeatedAdapter.ts",
+      "sourceLines": 91,
+      "maxCyclomatic": 14,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/assetUrl.ts",
+      "sourceLines": 5,
+      "maxCyclomatic": 2,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/detectFormat.ts",
+      "sourceLines": 27,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/downloadFile.ts",
+      "sourceLines": 10,
+      "maxCyclomatic": 2,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/formats/index.ts",
+      "sourceLines": 1,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/shareUrl.ts",
+      "sourceLines": 38,
+      "maxCyclomatic": 7,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/io/staticRoute.ts",
+      "sourceLines": 8,
+      "maxCyclomatic": 6,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/RecursiveMazeDocument.ts",
+      "sourceLines": 56,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/annotation.ts",
+      "sourceLines": 9,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/blockExpansion.ts",
+      "sourceLines": 11,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/blockRecursive.ts",
+      "sourceLines": 15,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/geometricRecursive.ts",
+      "sourceLines": 38,
+      "maxCyclomatic": 10,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/graphLabeled.ts",
+      "sourceLines": 22,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/pathMaze.ts",
+      "sourceLines": 105,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/playerState.ts",
+      "sourceLines": 28,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/recursivePorts.ts",
+      "sourceLines": 39,
+      "maxCyclomatic": 13,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/recursiveTour.ts",
+      "sourceLines": 29,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/renderConfig.ts",
+      "sourceLines": 17,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/repeatedDirected.ts",
+      "sourceLines": 84,
+      "maxCyclomatic": 8,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/solverInterface.ts",
+      "sourceLines": 34,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/model/squareRecursive.ts",
+      "sourceLines": 53,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/pathMaze/artworkDisplayGeometry.ts",
+      "sourceLines": 12,
+      "maxCyclomatic": 5,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/pathMaze/artworkRoutes.ts",
+      "sourceLines": 250,
+      "maxCyclomatic": 17,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/pathMaze/balancedEndpoints.ts",
+      "sourceLines": 46,
+      "maxCyclomatic": 5,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/pathMaze/balancedSearch.ts",
+      "sourceLines": 96,
+      "maxCyclomatic": 18,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/pathMaze/connectionInput.ts",
+      "sourceLines": 47,
+      "maxCyclomatic": 14,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/pathMaze/copyAddress.ts",
+      "sourceLines": 6,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/pathMaze/exportPDA.ts",
+      "sourceLines": 59,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/pathMaze/importPDA.ts",
+      "sourceLines": 86,
+      "maxCyclomatic": 20,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/pathMaze/proofs.ts",
+      "sourceLines": 249,
+      "maxCyclomatic": 17,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/pathMaze/traversal.ts",
+      "sourceLines": 151,
+      "maxCyclomatic": 11,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/pathMaze/validateArtwork.ts",
+      "sourceLines": 78,
+      "maxCyclomatic": 19,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/pathMaze/validation.ts",
+      "sourceLines": 156,
+      "maxCyclomatic": 21,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/blockArtwork.ts",
+      "sourceLines": 112,
+      "maxCyclomatic": 11,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/geometricArtwork.ts",
+      "sourceLines": 90,
+      "maxCyclomatic": 13,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/geometricPDA.ts",
+      "sourceLines": 66,
+      "maxCyclomatic": 6,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/matchPDA.ts",
+      "sourceLines": 119,
+      "maxCyclomatic": 14,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/pathGeometry.ts",
+      "sourceLines": 34,
+      "maxCyclomatic": 15,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/pathLayout.ts",
+      "sourceLines": 120,
+      "maxCyclomatic": 19,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/pathMovement.ts",
+      "sourceLines": 54,
+      "maxCyclomatic": 10,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/pathSession.ts",
+      "sourceLines": 196,
+      "maxCyclomatic": 13,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/pda.worker.ts",
+      "sourceLines": 35,
+      "maxCyclomatic": 8,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/portPDA.ts",
+      "sourceLines": 68,
+      "maxCyclomatic": 11,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/proofMovement.ts",
+      "sourceLines": 105,
+      "maxCyclomatic": 20,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/ruleArtwork.ts",
+      "sourceLines": 96,
+      "maxCyclomatic": 6,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/simpleHopArtwork.ts",
+      "sourceLines": 77,
+      "maxCyclomatic": 21,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/sourceWalking.ts",
+      "sourceLines": 194,
+      "maxCyclomatic": 12,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/squareArtwork.ts",
+      "sourceLines": 67,
+      "maxCyclomatic": 5,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/play/squarePDA.ts",
+      "sourceLines": 377,
+      "maxCyclomatic": 21,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/recursiveTour/movement.ts",
+      "sourceLines": 121,
+      "maxCyclomatic": 8,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/recursiveTour/validation.ts",
+      "sourceLines": 119,
+      "maxCyclomatic": 19,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/canvas/BlockRecursiveRenderer.ts",
+      "sourceLines": 34,
+      "maxCyclomatic": 6,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/canvas/CanvasRenderer.ts",
+      "sourceLines": 205,
+      "maxCyclomatic": 14,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/canvas/index.ts",
+      "sourceLines": 2,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/canvas/recursiveBlockScene.ts",
+      "sourceLines": 107,
+      "maxCyclomatic": 18,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/canvas/squareCamera.ts",
+      "sourceLines": 49,
+      "maxCyclomatic": 9,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/svg/BlockArtwork.tsx",
+      "sourceLines": 71,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/svg/CorridorArtwork.tsx",
+      "sourceLines": 87,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/svg/GeometricRenderer.tsx",
+      "sourceLines": 26,
+      "maxCyclomatic": 2,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/svg/GraphLabeledRenderer.tsx",
+      "sourceLines": 35,
+      "maxCyclomatic": 9,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/svg/RepeatedRenderer.tsx",
+      "sourceLines": 102,
+      "maxCyclomatic": 17,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/svg/TourRenderer.tsx",
+      "sourceLines": 137,
+      "maxCyclomatic": 17,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/svg/TraceShape.tsx",
+      "sourceLines": 9,
+      "maxCyclomatic": 2,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/render/svg/index.ts",
+      "sourceLines": 1,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/ReplayDocument.ts",
+      "sourceLines": 26,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/geometricReplaySession.ts",
+      "sourceLines": 26,
+      "maxCyclomatic": 7,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/importReplay.ts",
+      "sourceLines": 180,
+      "maxCyclomatic": 20,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/nativeReplay.ts",
+      "sourceLines": 167,
+      "maxCyclomatic": 14,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/nativeRouteValidation.ts",
+      "sourceLines": 47,
+      "maxCyclomatic": 11,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/normalizeReplay.ts",
+      "sourceLines": 18,
+      "maxCyclomatic": 2,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/pathSessionValidation.ts",
+      "sourceLines": 127,
+      "maxCyclomatic": 20,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/portReplaySession.ts",
+      "sourceLines": 27,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/proofReplay.ts",
+      "sourceLines": 21,
+      "maxCyclomatic": 12,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/repeatedProgressions.ts",
+      "sourceLines": 88,
+      "maxCyclomatic": 15,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/repeatedReplay.ts",
+      "sourceLines": 158,
+      "maxCyclomatic": 19,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/replayFrame.ts",
+      "sourceLines": 34,
+      "maxCyclomatic": 8,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/replayWriter.ts",
+      "sourceLines": 63,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/replay/routeHistory.ts",
+      "sourceLines": 14,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/solver/common/geometricMovement.ts",
+      "sourceLines": 21,
+      "maxCyclomatic": 7,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/solver/common/graphTraversal.ts",
+      "sourceLines": 13,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/solver/common/index.ts",
+      "sourceLines": 1,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/solver/common/movementResolver.ts",
+      "sourceLines": 192,
+      "maxCyclomatic": 13,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/solver/depthBounded/DepthBoundedSolver.ts",
+      "sourceLines": 43,
+      "maxCyclomatic": 14,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/solver/depthBounded/index.ts",
+      "sourceLines": 1,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/solver/traversal/TraversalSolver.ts",
+      "sourceLines": 39,
+      "maxCyclomatic": 12,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/solver/traversal/index.ts",
+      "sourceLines": 1,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/solver/traversal/portSolver.ts",
+      "sourceLines": 37,
+      "maxCyclomatic": 8,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/solver/traversal/repeatedSolver.ts",
+      "sourceLines": 22,
+      "maxCyclomatic": 10,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/validate/ValidationResult.ts",
+      "sourceLines": 13,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/validate/configureValidation.ts",
+      "sourceLines": 5,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/validate/documentHeader.ts",
+      "sourceLines": 11,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/validate/index.ts",
+      "sourceLines": 2,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/validate/nativeValidation.ts",
+      "sourceLines": 116,
+      "maxCyclomatic": 21,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/validate/solvabilityCheck.ts",
+      "sourceLines": 55,
+      "maxCyclomatic": 7,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/validate/squareValidation.ts",
+      "sourceLines": 138,
+      "maxCyclomatic": 12,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/validate/validateMaze.ts",
+      "sourceLines": 187,
+      "maxCyclomatic": 20,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/workers/blockWorker.ts",
+      "sourceLines": 5,
+      "maxCyclomatic": 1,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/workers/index.ts",
+      "sourceLines": 1,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/workers/repeatedWorker.ts",
+      "sourceLines": 6,
+      "maxCyclomatic": 1,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/core/workers/solverWorker.ts",
+      "sourceLines": 62,
+      "maxCyclomatic": 10,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/main.tsx",
+      "sourceLines": 20,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/HomePage.tsx",
+      "sourceLines": 185,
+      "maxCyclomatic": 1,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/components/CopyAddress.tsx",
+      "sourceLines": 20,
+      "maxCyclomatic": 5,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/components/DragDropZone.tsx",
+      "sourceLines": 77,
+      "maxCyclomatic": 5,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/components/ExportDialog.tsx",
+      "sourceLines": 167,
+      "maxCyclomatic": 9,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/components/HUD.tsx",
+      "sourceLines": 59,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/components/ImportDialog.tsx",
+      "sourceLines": 206,
+      "maxCyclomatic": 18,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/components/MazeCanvas.tsx",
+      "sourceLines": 72,
+      "maxCyclomatic": 12,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/components/NavBar.tsx",
+      "sourceLines": 78,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/components/SquareMazeCanvas.tsx",
+      "sourceLines": 122,
+      "maxCyclomatic": 16,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/components/TouchPad.tsx",
+      "sourceLines": 22,
+      "maxCyclomatic": 1,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/components/index.ts",
+      "sourceLines": 4,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/editor/BuildPage.tsx",
+      "sourceLines": 33,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/editor/EditorPage.tsx",
+      "sourceLines": 265,
+      "maxCyclomatic": 18,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/editor/EditorSVGOverlay.tsx",
+      "sourceLines": 265,
+      "maxCyclomatic": 6,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/editor/ValidationOverlay.tsx",
+      "sourceLines": 54,
+      "maxCyclomatic": 6,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/editor/index.ts",
+      "sourceLines": 1,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/editor/panels/BlocksPanel.tsx",
+      "sourceLines": 142,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/editor/panels/LinksPanel.tsx",
+      "sourceLines": 153,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/editor/panels/MetadataPanel.tsx",
+      "sourceLines": 75,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/editor/panels/PlayerPanel.tsx",
+      "sourceLines": 106,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/editor/panels/StructurePanel.tsx",
+      "sourceLines": 52,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/editor/panels/TeleportersPanel.tsx",
+      "sourceLines": 99,
+      "maxCyclomatic": 14,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/library/CatalogCopyButton.tsx",
+      "sourceLines": 38,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/library/LibraryMazeCard.tsx",
+      "sourceLines": 145,
+      "maxCyclomatic": 14,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/library/LibraryPage.tsx",
+      "sourceLines": 270,
+      "maxCyclomatic": 12,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/library/MazeViewSelect.tsx",
+      "sourceLines": 15,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/library/ReferencePage.tsx",
+      "sourceLines": 56,
+      "maxCyclomatic": 9,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/library/index.ts",
+      "sourceLines": 1,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/mazeFamily.ts",
+      "sourceLines": 12,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/BlockNavigation.tsx",
+      "sourceLines": 45,
+      "maxCyclomatic": 19,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/BlockPlayer.tsx",
+      "sourceLines": 132,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/FormatPlayer.tsx",
+      "sourceLines": 78,
+      "maxCyclomatic": 9,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/GraphPlayer.tsx",
+      "sourceLines": 51,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/MazePlayArea.tsx",
+      "sourceLines": 63,
+      "maxCyclomatic": 10,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/PlayHeader.tsx",
+      "sourceLines": 50,
+      "maxCyclomatic": 5,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/PlayerPage.tsx",
+      "sourceLines": 84,
+      "maxCyclomatic": 14,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/RecursiveBlockCanvas.tsx",
+      "sourceLines": 31,
+      "maxCyclomatic": 5,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/RepeatedPlayer.tsx",
+      "sourceLines": 195,
+      "maxCyclomatic": 12,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/SquarePlayer.tsx",
+      "sourceLines": 373,
+      "maxCyclomatic": 21,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/TourPlayer.tsx",
+      "sourceLines": 270,
+      "maxCyclomatic": 8,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/index.ts",
+      "sourceLines": 1,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/movementKeys.ts",
+      "sourceLines": 76,
+      "maxCyclomatic": 12,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/useRecursiveBlockSession.ts",
+      "sourceLines": 77,
+      "maxCyclomatic": 11,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/player/useRunGuard.ts",
+      "sourceLines": 30,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/replay/BlockReplay.tsx",
+      "sourceLines": 44,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/replay/MazeReplayBar.tsx",
+      "sourceLines": 139,
+      "maxCyclomatic": 8,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/replay/PathReplay.tsx",
+      "sourceLines": 118,
+      "maxCyclomatic": 21,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/replay/RepeatedReplay.tsx",
+      "sourceLines": 22,
+      "maxCyclomatic": 1,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/replay/ReplayPage.tsx",
+      "sourceLines": 40,
+      "maxCyclomatic": 7,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/replay/ReplayPlayback.tsx",
+      "sourceLines": 266,
+      "maxCyclomatic": 20,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/replay/SaveRouteButton.tsx",
+      "sourceLines": 63,
+      "maxCyclomatic": 7,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/replay/index.ts",
+      "sourceLines": 1,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/solver/CorridorSolvePanel.tsx",
+      "sourceLines": 274,
+      "maxCyclomatic": 14,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/solver/PDASolvePanel.tsx",
+      "sourceLines": 260,
+      "maxCyclomatic": 10,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/solver/SolverPage.tsx",
+      "sourceLines": 312,
+      "maxCyclomatic": 12,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/solver/index.ts",
+      "sourceLines": 1,
+      "maxCyclomatic": 0,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/ArtworkAnchors.tsx",
+      "sourceLines": 66,
+      "maxCyclomatic": 7,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/ArtworkView.tsx",
+      "sourceLines": 48,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/CantorGroupEditor.tsx",
+      "sourceLines": 107,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/ConnectionTextEntry.tsx",
+      "sourceLines": 30,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/InfiniteConvergence.tsx",
+      "sourceLines": 70,
+      "maxCyclomatic": 10,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/PathEndpointsEditor.tsx",
+      "sourceLines": 100,
+      "maxCyclomatic": 5,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/PathInputControls.tsx",
+      "sourceLines": 57,
+      "maxCyclomatic": 5,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/PathLocationMap.tsx",
+      "sourceLines": 40,
+      "maxCyclomatic": 11,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/PathMazeDrawing.tsx",
+      "sourceLines": 92,
+      "maxCyclomatic": 13,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/PathModelEditor.tsx",
+      "sourceLines": 334,
+      "maxCyclomatic": 15,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/PathPlayer.tsx",
+      "sourceLines": 142,
+      "maxCyclomatic": 17,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/PathProofChoices.tsx",
+      "sourceLines": 48,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/PathRouteControls.tsx",
+      "sourceLines": 40,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/ProofClaimEditor.tsx",
+      "sourceLines": 144,
+      "maxCyclomatic": 6,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/ProofWorkbench.tsx",
+      "sourceLines": 414,
+      "maxCyclomatic": 17,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/ProvenConnections.tsx",
+      "sourceLines": 37,
+      "maxCyclomatic": 6,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/SaveProofReplay.tsx",
+      "sourceLines": 25,
+      "maxCyclomatic": 8,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/SavedProofEvidence.tsx",
+      "sourceLines": 43,
+      "maxCyclomatic": 9,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/SourcePlayControls.tsx",
+      "sourceLines": 77,
+      "maxCyclomatic": 11,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/SourceRouteCanvas.tsx",
+      "sourceLines": 182,
+      "maxCyclomatic": 16,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/SourceRouteDrawing.tsx",
+      "sourceLines": 151,
+      "maxCyclomatic": 12,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/TraceEditor.tsx",
+      "sourceLines": 425,
+      "maxCyclomatic": 21,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/WitnessRoute.tsx",
+      "sourceLines": 42,
+      "maxCyclomatic": 6,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/WorkbenchPage.tsx",
+      "sourceLines": 556,
+      "maxCyclomatic": 21,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/artworkImport.ts",
+      "sourceLines": 35,
+      "maxCyclomatic": 4,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/copyAddress.ts",
+      "sourceLines": 6,
+      "maxCyclomatic": 3,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/svgTraceImport.ts",
+      "sourceLines": 80,
+      "maxCyclomatic": 17,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/useArtworkAnchors.ts",
+      "sourceLines": 77,
+      "maxCyclomatic": 14,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/usePathMotion.ts",
+      "sourceLines": 170,
+      "maxCyclomatic": 19,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    },
+    {
+      "file": "src/ui/workbench/usePathSession.ts",
+      "sourceLines": 154,
+      "maxCyclomatic": 11,
+      "overLimit": [],
+      "explicitAnyUnknown": 0
+    }
+  ],
+  "unmeasured": [
+    "Cognitive complexity",
+    "Halstead Difficulty",
+    "Instrumented statement/branch/function/line coverage",
+    "CRAP",
+    "Mutation survival",
+    "Dead code analysis",
+    "Duplication analysis",
+    "Python script complexity"
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "executedAt": "2026-10-11T00:49:37.661032+00:00",
+  "unit": {
+    "command": "npm test",
+    "files": 32,
+    "passed": 279
+  },
+  "browser": {
+    "command": "PLAYWRIGHT_BASE_URL=http://127.0.0.1:5176/Fractal-Maze/ npm run test:browser",
+    "passed": 76,
+    "production": true
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "warning": "Large catalog, artwork and bundled replay chunks"
+  },
+  "lint": {
+    "passed": true,
+    "maxAllowedCyclomatic": 21,
+    "files": [
+      {
+        "file": "src/core/pathMaze/artworkRoutes.ts",
+        "maxCyclomatic": 17,
+        "sourceLines": 242,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/play/pathLayout.ts",
+        "maxCyclomatic": 19,
+        "sourceLines": 102,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/play/pathSession.ts",
+        "maxCyclomatic": 10,
+        "sourceLines": 132,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/play/sourceWalking.ts",
+        "maxCyclomatic": 12,
+        "sourceLines": 109,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/replay/importReplay.ts",
+        "maxCyclomatic": 18,
+        "sourceLines": 197,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/replay/nativeReplay.ts",
+        "maxCyclomatic": 11,
+        "sourceLines": 134,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/replay/pathSessionValidation.ts",
+        "maxCyclomatic": 16,
+        "sourceLines": 119,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/replay/ReplayPlayback.tsx",
+        "maxCyclomatic": 21,
+        "sourceLines": 324,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/replay/SaveRouteButton.tsx",
+        "maxCyclomatic": 6,
+        "sourceLines": 63,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/workbench/PathMazeDrawing.tsx",
+        "maxCyclomatic": 12,
+        "sourceLines": 85,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/workbench/PathPlayer.tsx",
+        "maxCyclomatic": 18,
+        "sourceLines": 130,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/workbench/SourcePlayControls.tsx",
+        "maxCyclomatic": 10,
+        "sourceLines": 73,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/workbench/SourceRouteCanvas.tsx",
+        "maxCyclomatic": 15,
+        "sourceLines": 173,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/workbench/SourceRouteDrawing.tsx",
+        "maxCyclomatic": 10,
+        "sourceLines": 146,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/workbench/usePathMotion.ts",
+        "maxCyclomatic": 13,
+        "sourceLines": 163,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/workbench/usePathSession.ts",
+        "maxCyclomatic": 11,
+        "sourceLines": 129,
+        "explicitAnyUnknown": 0
+      }
+    ],
+    "maximumCyclomatic": 21,
+    "maximumSourceLines": 324,
+    "explicitAnyUnknown": 0
+  },
+  "geometry": {
+    "boundViews": 28,
+    "sourceAndBlockFirstWalkAndCrossingImport": true,
+    "fourCrossingHistoryProjectionAndImport": true,
+    "cellStepAndDirectedStrokeChecks": true
+  },
+  "captures": {
+    "gallery": "screenshots/orthogonal-blocks/index.html",
+    "count": 8,
+    "pageErrors": 0,
+    "horizontalOverflow": 0
+  },
+  "unmeasured": [
+    "Cognitive complexity",
+    "Halstead difficulty",
+    "Statement, branch, function and line coverage",
+    "CRAP score",
+    "Mutation survival",
+    "Full dead-code analysis",
+    "Duplication analysis"
+  ],
+  "remaining": [
+    "Exhaustive physical histories at every bound gate and all-family visual coverage",
+    "Imported stack replacement/root-rule cutover",
+    "Unbounded Omeometo recursion",
+    "Unresolved source topology and full proof/solution coverage",
+    "Final security/performance/static-host completion audit"
+  ]
+}

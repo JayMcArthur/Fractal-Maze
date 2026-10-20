@@ -1,0 +1,153 @@
+/* Color palette. Dark-mode values are computed from the light values with
+ * the convert_pixel function of https://github.com/koteitan/darkmode. */
+
+:root {
+  /* Page chrome */
+  --bg-page: #f5f5f5;
+  --text: #000000;
+  --text-muted: #555555;
+  --text-dim: #999999;
+  --error: #c0392b;
+  --border-subtle: #aaaaaa;
+  --border: #cccccc;
+
+  /* Button */
+  --button-bg: #3498db;
+  --button-bg-hover: #2980b9;
+  --button-text: #ffffff;
+
+  /* Canvas */
+  --canvas-bg: #ffffff;
+  --block-grid: #bbbbbb;
+  --block-grid-light: #dddddd;
+  --axis-num: #999999;
+  --axis-label: #888888;
+
+  /* Maze drawing */
+  --stroke: #000000;
+  --junction: #000000;
+
+  /* Path / markers */
+  --path: #FF0000;
+  --start: #27ae60;
+  --goal: #c0392b;
+  --marker-current: #2980b9;
+  --marker-text: #ffffff;
+
+  /* Simple view (x,y only) */
+  --simple-start: #0000ff;
+  --simple-end: #ff0000;
+}
+
+:root.darkmode,
+body.darkmode {
+  --bg-page: #0a0a0a;
+  --text: #ffffff;
+  --text-muted: #aaaaaa;
+  --text-dim: #666666;
+  --error: #d8857c;
+  --border-subtle: #555555;
+  --border: #333333;
+
+  --button-bg: #247cb6;
+  --button-bg-hover: #3194d6;
+  --button-text: #000000;
+
+  --canvas-bg: #000000;
+  --block-grid: #444444;
+  --block-grid-light: #222222;
+  --axis-num: #666666;
+  --axis-label: #777777;
+
+  --stroke: #ffffff;
+  --junction: #ffffff;
+
+  --path: #FF0000;
+  --start: #5ed892;
+  --goal: #d8857c;
+  --marker-current: #3194d6;
+  --marker-text: #000000;
+
+  --simple-start: #7f7fff;
+  --simple-end: #ff7f7f;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  background: var(--bg-page);
+  color: var(--text);
+}
+h1 { font-size: 20px; margin: 0 0 12px; }
+.fields { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+.field { display: flex; flex-direction: column; min-width: 0; max-width: 100%; }
+.field label { font-weight: bold; margin-bottom: 3px; font-size: 14px; }
+textarea {
+  font-family: monospace;
+  font-size: 13px;
+  padding: 6px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  background: var(--canvas-bg);
+  color: var(--text);
+}
+#maze-input, #answer-input {
+  width: 640px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+#maze-input { height: 100px; }
+#answer-input { height: 50px; }
+button {
+  padding: 5px 5px;
+  font-size: 14px;
+  cursor: pointer;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 4px;
+  min-width: 90px;
+}
+button:hover { background: var(--button-bg-hover); }
+select {
+  font-size: 14px;
+  padding: 4px 6px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  background: var(--canvas-bg);
+  color: var(--text);
+}
+select option { background: var(--canvas-bg); color: var(--text); }
+body.mobile-mode .pan-zoom-hint { display: block; margin-top: 2px; }
+.button-row { display: flex; flex-wrap: wrap; gap: 5px 5px; align-items: center; }
+.button-row .preset-label { margin-left: 12px; }
+.preset-status { font-size: 12px; color: var(--error); }
+.preset-status:empty { display: none; }
+body.mobile-mode .button-row button { flex: 1 1 calc(50% - 5px); min-width: 0; }
+body.mobile-mode .button-row .preset-label { flex: 1 1 100%; margin-left: 0; margin-top: 4px; }
+/* Keep each checkbox and its caption on the same line; wrap between
+ * labels instead of inside them when the screen is narrow. */
+label:has(> input[type="checkbox"]) { display: inline-block; white-space: nowrap; }
+.legend { margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+.legend span { margin-right: 14px; }
+.legend .swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-right: 3px;
+}
+.canvas-wrap {
+  border: 1px solid var(--border);
+  background: var(--canvas-bg);
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+/* Swatches bound to CSS variables so darkmode auto-updates them. */
+.sw-path  { background: var(--path); }
+.sw-start { background: var(--start); }
+.sw-goal  { background: var(--goal); }
+.sw-simple-start { background: var(--simple-start); }
+.sw-simple-end   { background: var(--simple-end); }

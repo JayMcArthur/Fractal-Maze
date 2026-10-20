@@ -1,0 +1,117 @@
+{
+  "executedAt": "2026-10-12T15:17:16.997767+00:00",
+  "base": "e891838aae53e0cc6568faea1171764417867a35",
+  "head": "e891838aae53e0cc6568faea1171764417867a35",
+  "dirty": true,
+  "scope": "Local validation in the retained worktree; no merge or deployment.",
+  "currentApp": {
+    "unitTests": 432,
+    "unitFiles": 40,
+    "productionBrowserWorkflows": 129,
+    "staticHostingChecks": 100,
+    "sharedReplays": 77,
+    "sharedVariants": 67,
+    "finalLayoutFollowup": {
+      "unitTests": 26,
+      "unitFiles": 3,
+      "productionBrowserWorkflows": 24,
+      "scope": "After aligning the two simple proof layouts, the affected rule/author/proof/player/Build/replay workflows were rerun on the final production build."
+    },
+    "streamCodecTests": 4,
+    "lint": true,
+    "pagesBuild": true,
+    "rootBuild": true,
+    "diffCheck": true,
+    "staticHostingScope": "Pages/root mount and worker checks ran after catalog partition and cp3-4 publication, before the final proof-example geometry alignment.",
+    "productionBrowserScope": "Full suite ran after catalog partition and cp3-4 publication; final geometry is covered by the affected-workflow followup.",
+    "selectedLoaderFollowup": {
+      "unitTests": 3,
+      "passed": true,
+      "scope": "Canonical assets, concurrent clones and retry/error cases; title mutation uses the actual metadata field."
+    }
+  },
+  "historical": {
+    "commit": "1b3124221e3085a00b8d7144ac363d8da2a15ef7",
+    "restoredFiles": 119,
+    "exactArchivedFiles": 221,
+    "pythonTests": 80,
+    "browserLogicTests": 28,
+    "svelteUIBuilt": false
+  },
+  "sourceRecovery": {
+    "mazeId": "repeated-atomic-cp3-4",
+    "sourceInstructions": 20256567,
+    "physicalMoves": 40511987,
+    "storedMoves": 5185,
+    "runs": 587,
+    "everyExpandedMoveChecked": true
+  },
+  "loading": [
+    {
+      "route": "",
+      "beforeDecodedScriptBytes": 454627,
+      "afterDecodedScriptBytes": 454374,
+      "reductionPercent": 0.1,
+      "selectedDocuments": []
+    },
+    {
+      "route": "library",
+      "beforeDecodedScriptBytes": 493837,
+      "afterDecodedScriptBytes": 493577,
+      "reductionPercent": 0.1,
+      "selectedDocuments": []
+    },
+    {
+      "route": "play/alice-in-wonderland",
+      "beforeDecodedScriptBytes": 3884746,
+      "afterDecodedScriptBytes": 824846,
+      "reductionPercent": 78.8,
+      "selectedDocuments": [
+        "/Fractal-Maze/mazes/25b6d784e450225380ed496aff9ac6b2c7bc65eec88d5784be4c4bb22af6baaf.json"
+      ]
+    },
+    {
+      "route": "play/1695993784968:0.6965701909885131",
+      "beforeDecodedScriptBytes": 3884746,
+      "afterDecodedScriptBytes": 824846,
+      "reductionPercent": 78.8,
+      "selectedDocuments": [
+        "/Fractal-Maze/mazes/fe8559da5a54c0d73ee6617761394d80d3ea2714fd491fb6a8834a7ada029c2a.json"
+      ]
+    }
+  ],
+  "homePreviewUnchanged": true,
+  "dependencyAudit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "quality": {
+    "files": 220,
+    "maxCyclomatic": 21,
+    "explicitAnyUnknown": 0,
+    "violations": [],
+    "lintErrors": [],
+    "unmeasured": [
+      "Cognitive complexity",
+      "Halstead Difficulty",
+      "Instrumented statement/branch/function/line coverage",
+      "CRAP",
+      "Mutation survival",
+      "Dead code analysis",
+      "Duplication analysis",
+      "Python script complexity"
+    ]
+  },
+  "remaining": [
+    "Windischer travel surface/gate topology/limit crossing remain unbound; semantic clarification pending.",
+    "Block Maze, Noke Lieu and Berkly have checked finite-model negatives; original source intent/transcription remains unresolved.",
+    "Supplied Pentation initial_a=4 source did not halt within 10 million instructions; no complete replay is published.",
+    "Original v6 image mapping remains explicitly deferred; its six-copy block model is playable.",
+    "Historical free-text arrow editor and old YAML/browser-package format support are restored as reference code, not active app features.",
+    "Full richer-model equivalence, exhaustive source fidelity/proof usability and final twelve-requirement audit remain open."
+  ]
+}

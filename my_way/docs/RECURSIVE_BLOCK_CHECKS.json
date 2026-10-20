@@ -1,0 +1,167 @@
+{
+  "executedAt": "2026-10-11T01:39:48.122Z",
+  "unit": {
+    "command": "npm test",
+    "files": 33,
+    "passed": 288
+  },
+  "browser": {
+    "command": "PLAYWRIGHT_BASE_URL=http://127.0.0.1:5176/Fractal-Maze/ npm run test:browser",
+    "passed": 80,
+    "production": true
+  },
+  "build": {
+    "command": "npm run build -- --base=/Fractal-Maze/",
+    "passed": true,
+    "warning": "Large catalog, artwork and bundled replay chunks"
+  },
+  "lint": {
+    "command": "npm run lint",
+    "passed": true,
+    "files": [
+      {
+        "file": "src/app/library/catalog.ts",
+        "maxCyclomatic": 6,
+        "sourceLines": 292,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/blockMaze/recursivePosition.ts",
+        "maxCyclomatic": 11,
+        "sourceLines": 83,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/blockMaze/recursiveReplay.ts",
+        "maxCyclomatic": 13,
+        "sourceLines": 29,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/render/canvas/recursiveBlockScene.ts",
+        "maxCyclomatic": 18,
+        "sourceLines": 107,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/replay/importReplay.ts",
+        "maxCyclomatic": 20,
+        "sourceLines": 206,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/core/replay/nativeReplay.ts",
+        "maxCyclomatic": 17,
+        "sourceLines": 151,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/player/BlockNavigation.tsx",
+        "maxCyclomatic": 19,
+        "sourceLines": 45,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/player/BlockPlayer.tsx",
+        "maxCyclomatic": 3,
+        "sourceLines": 132,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/player/RecursiveBlockCanvas.tsx",
+        "maxCyclomatic": 5,
+        "sourceLines": 31,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/player/useRecursiveBlockSession.ts",
+        "maxCyclomatic": 11,
+        "sourceLines": 77,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/replay/BlockReplay.tsx",
+        "maxCyclomatic": 4,
+        "sourceLines": 44,
+        "explicitAnyUnknown": 0
+      },
+      {
+        "file": "src/ui/replay/ReplayPlayback.tsx",
+        "maxCyclomatic": 21,
+        "sourceLines": 329,
+        "explicitAnyUnknown": 0
+      }
+    ],
+    "maxAllowedCyclomatic": 21
+  },
+  "movement": {
+    "contract": "Exact radix coordinates; aligned boundary carry; black-prefix copy address; display-independent history",
+    "fixedRecursionCap": false,
+    "finiteSearchGridMaxWidth": 2048,
+    "exhaustiveSmallGridModels": [
+      "koteitan-block",
+      "koteitan-block-3",
+      "koteitan-block-5"
+    ],
+    "exhaustiveSmallGridDetails": [
+      1,
+      2,
+      3
+    ],
+    "exactBoundaryDepthChecked": 80,
+    "zoomReverseUnitsChecked": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "originalSolutionMoves": 1756,
+    "originalSolutionDetail": 5,
+    "originalSolutionActualMaxCopyDepth": 4
+  },
+  "recordings": {
+    "newFormat": "fractalBlock: exact x/y radix digits and per-move detail",
+    "existingFormat": "blockRecursive finite-grid recordings preserve their original export",
+    "contracts": [
+      "export/import",
+      "exact detour trimming",
+      "nonadjacent rejection",
+      "small-payload oversized-detail rejection"
+    ]
+  },
+  "screenshots": {
+    "gallery": "screenshots/recursive-block/index.html",
+    "captures": 8,
+    "widths": [
+      1440,
+      390
+    ],
+    "pageErrors": 0,
+    "horizontalOverflow": 0,
+    "deepWitnessIndex": 226
+  },
+  "unmeasured": [
+    "cognitive complexity",
+    "Halstead difficulty",
+    "instrumented statements/branches/functions/lines coverage",
+    "CRAP",
+    "mutation testing",
+    "complete dead-code analysis",
+    "complete duplication analysis"
+  ],
+  "remaining": [
+    "ordinary-PDA equivalence for the variable-coordinate model",
+    "Windischer and other source interpretation gaps",
+    "missing solutions and complete proof construction",
+    "every-family movement/replay/visual audit",
+    "security/performance and both static-host final checks"
+  ],
+  "inventoryCorrection": {
+    "command": "npm test -- src/test/sharedSolutions.test.ts",
+    "passed": 28,
+    "corrections": [
+      "Windischer remains unbound and in scope; skip applied to v6",
+      "Two block pattern templates lack endpoints; not bounded search failures"
+    ]
+  }
+}

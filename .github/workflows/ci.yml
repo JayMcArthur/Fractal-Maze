@@ -1,41 +1,57 @@
-name: CI
+name: CI and Pages
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  python:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Install Python deps
-        run: pip install pyyaml jsonschema
-      - name: Run unittest
-        run: python3 -m unittest discover -s tests -v
-
-  web:
+  build-and-test:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: web
+        working-directory: my_way
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version-file: my_way/.node-version
           cache: npm
-          cache-dependency-path: web/package-lock.json
+          cache-dependency-path: my_way/package-lock.json
       - run: npm ci
-      - run: npm test
+      - run: npm audit --omit=dev
+      - run: npm run lint
+      - run: npm test -- --maxWorkers=2
       - run: npm run build
-      - uses: actions/upload-artifact@v4
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: Browser workflows
+        run: npm run test:browser -- --workers=2
+      - uses: actions/upload-pages-artifact@v3
         with:
-          name: workbench-dist
-          path: web/dist
-          retention-days: 7
+          path: my_way/dist
+
+  deploy:
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

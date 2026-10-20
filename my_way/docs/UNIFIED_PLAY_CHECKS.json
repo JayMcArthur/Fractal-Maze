@@ -1,0 +1,753 @@
+{
+  "date": "2026-10-10",
+  "unitTests": 236,
+  "productionBrowserWorkflows": 71,
+  "build": "pass (Pages and root website)",
+  "lint": "pass",
+  "sourcePlayers": {
+    "players": 28,
+    "drawnRoutes": 6378,
+    "pageErrors": [],
+    "overflow": 0
+  },
+  "replays": {
+    "bundles": 70,
+    "uniqueIds": 70,
+    "validated": 59,
+    "wire": 11,
+    "partial": [],
+    "failures": []
+  },
+  "hosting": [
+    {
+      "host": "http://127.0.0.1:8791/Fractal-Maze/",
+      "route": "",
+      "refresh": false,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8791/Fractal-Maze/",
+      "route": "",
+      "refresh": true,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8791/Fractal-Maze/",
+      "route": "solver?id=alice-in-wonderland",
+      "refresh": false,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8791/Fractal-Maze/",
+      "route": "solver?id=alice-in-wonderland",
+      "refresh": true,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8791/Fractal-Maze/",
+      "route": "play/alice-in-wonderland",
+      "refresh": false,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8791/Fractal-Maze/",
+      "route": "play/alice-in-wonderland",
+      "refresh": true,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8791/Fractal-Maze/",
+      "route": "play/alice-in-wonderland?replay=bundled-alice-in-wonderland",
+      "refresh": false,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8791/Fractal-Maze/",
+      "route": "play/alice-in-wonderland?replay=bundled-alice-in-wonderland",
+      "refresh": true,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8791/Fractal-Maze/",
+      "route": "workbench/simple-infinite-hop?tab=proof",
+      "refresh": false,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8791/Fractal-Maze/",
+      "route": "workbench/simple-infinite-hop?tab=proof",
+      "refresh": true,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8792/",
+      "route": "",
+      "refresh": false,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8792/",
+      "route": "",
+      "refresh": true,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8792/",
+      "route": "solver?id=alice-in-wonderland",
+      "refresh": false,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8792/",
+      "route": "solver?id=alice-in-wonderland",
+      "refresh": true,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8792/",
+      "route": "play/alice-in-wonderland",
+      "refresh": false,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8792/",
+      "route": "play/alice-in-wonderland",
+      "refresh": true,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8792/",
+      "route": "play/alice-in-wonderland?replay=bundled-alice-in-wonderland",
+      "refresh": false,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8792/",
+      "route": "play/alice-in-wonderland?replay=bundled-alice-in-wonderland",
+      "refresh": true,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8792/",
+      "route": "workbench/simple-infinite-hop?tab=proof",
+      "refresh": false,
+      "errors": [],
+      "csp": []
+    },
+    {
+      "host": "http://127.0.0.1:8792/",
+      "route": "workbench/simple-infinite-hop?tab=proof",
+      "refresh": true,
+      "errors": [],
+      "csp": []
+    }
+  ],
+  "scope": {
+    "files": [
+      {
+        "file": "src/App.tsx",
+        "lines": 87,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 2
+      },
+      {
+        "file": "src/app/library/mazeViews.ts",
+        "lines": 182,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 8
+      },
+      {
+        "file": "src/app/library/playPDA.ts",
+        "lines": 22,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 8
+      },
+      {
+        "file": "src/app/library/portPlayDocument.ts",
+        "lines": 43,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 17
+      },
+      {
+        "file": "src/app/store/playerSlice.ts",
+        "lines": 166,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 7
+      },
+      {
+        "file": "src/core/pathMaze/balancedSearch.ts",
+        "lines": 106,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 15
+      },
+      {
+        "file": "src/core/pathMaze/validation.ts",
+        "lines": 152,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 19
+      },
+      {
+        "file": "src/core/play/matchPDA.ts",
+        "lines": 119,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 14
+      },
+      {
+        "file": "src/core/play/pathMovement.ts",
+        "lines": 47,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 7
+      },
+      {
+        "file": "src/core/play/pda.worker.ts",
+        "lines": 33,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 7
+      },
+      {
+        "file": "src/core/play/portPDA.ts",
+        "lines": 94,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 5
+      },
+      {
+        "file": "src/core/play/sourceWalking.ts",
+        "lines": 183,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 12
+      },
+      {
+        "file": "src/core/play/squarePDA.ts",
+        "lines": 377,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 21
+      },
+      {
+        "file": "src/core/render/canvas/CanvasRenderer.ts",
+        "lines": 205,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 14
+      },
+      {
+        "file": "src/core/render/svg/CorridorArtwork.tsx",
+        "lines": 87,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 4
+      },
+      {
+        "file": "src/core/render/svg/PortRenderer.tsx",
+        "lines": 37,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 4
+      },
+      {
+        "file": "src/core/render/svg/TraceShape.tsx",
+        "lines": 9,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 2
+      },
+      {
+        "file": "src/core/replay/ReplayDocument.ts",
+        "lines": 23,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 0
+      },
+      {
+        "file": "src/core/replay/importReplay.ts",
+        "lines": 179,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 19
+      },
+      {
+        "file": "src/core/replay/nativeReplay.ts",
+        "lines": 123,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 10
+      },
+      {
+        "file": "src/core/replay/replayWriter.ts",
+        "lines": 63,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 3
+      },
+      {
+        "file": "src/core/solver/common/movementResolver.ts",
+        "lines": 192,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 13
+      },
+      {
+        "file": "src/main.tsx",
+        "lines": 20,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 0
+      },
+      {
+        "file": "src/ui/HomePage.tsx",
+        "lines": 181,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 1
+      },
+      {
+        "file": "src/ui/components/CopyAddress.tsx",
+        "lines": 20,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 5
+      },
+      {
+        "file": "src/ui/components/HUD.tsx",
+        "lines": 59,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 3
+      },
+      {
+        "file": "src/ui/components/NavBar.tsx",
+        "lines": 78,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 4
+      },
+      {
+        "file": "src/ui/editor/BuildPage.tsx",
+        "lines": 33,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 3
+      },
+      {
+        "file": "src/ui/library/LibraryMazeCard.tsx",
+        "lines": 119,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 16
+      },
+      {
+        "file": "src/ui/library/LibraryPage.tsx",
+        "lines": 270,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 12
+      },
+      {
+        "file": "src/ui/player/BlockNavigation.tsx",
+        "lines": 196,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 21
+      },
+      {
+        "file": "src/ui/player/BlockPlayer.tsx",
+        "lines": 132,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 3
+      },
+      {
+        "file": "src/ui/player/BlockRouteCanvas.tsx",
+        "lines": 101,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 7
+      },
+      {
+        "file": "src/ui/player/FormatPlayer.tsx",
+        "lines": 119,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 12
+      },
+      {
+        "file": "src/ui/player/GeometricPlayer.tsx",
+        "lines": 71,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 5
+      },
+      {
+        "file": "src/ui/player/GraphPlayer.tsx",
+        "lines": 51,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 4
+      },
+      {
+        "file": "src/ui/player/MazePlayArea.tsx",
+        "lines": 69,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 11
+      },
+      {
+        "file": "src/ui/player/PlayHeader.tsx",
+        "lines": 50,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 5
+      },
+      {
+        "file": "src/ui/player/PlayerPage.tsx",
+        "lines": 83,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 15
+      },
+      {
+        "file": "src/ui/player/PortPlayer.tsx",
+        "lines": 217,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 9
+      },
+      {
+        "file": "src/ui/player/RepeatedPlayer.tsx",
+        "lines": 197,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 12
+      },
+      {
+        "file": "src/ui/player/SquarePlayer.tsx",
+        "lines": 373,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 21
+      },
+      {
+        "file": "src/ui/player/TourPlayer.tsx",
+        "lines": 270,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 8
+      },
+      {
+        "file": "src/ui/player/movementKeys.ts",
+        "lines": 76,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 12
+      },
+      {
+        "file": "src/ui/player/useRunGuard.ts",
+        "lines": 30,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 3
+      },
+      {
+        "file": "src/ui/replay/BlockReplay.tsx",
+        "lines": 40,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 1
+      },
+      {
+        "file": "src/ui/replay/MazeReplayBar.tsx",
+        "lines": 139,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 8
+      },
+      {
+        "file": "src/ui/replay/ReplayPage.tsx",
+        "lines": 40,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 7
+      },
+      {
+        "file": "src/ui/replay/ReplayPlayback.tsx",
+        "lines": 317,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 18
+      },
+      {
+        "file": "src/ui/replay/SaveRouteButton.tsx",
+        "lines": 57,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 4
+      },
+      {
+        "file": "src/ui/solver/CorridorSolvePanel.tsx",
+        "lines": 274,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 14
+      },
+      {
+        "file": "src/ui/solver/PDASolvePanel.tsx",
+        "lines": 269,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 19
+      },
+      {
+        "file": "src/ui/solver/SolverPage.tsx",
+        "lines": 311,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 12
+      },
+      {
+        "file": "src/ui/workbench/ArtworkView.tsx",
+        "lines": 45,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 2
+      },
+      {
+        "file": "src/ui/workbench/InfiniteConvergence.tsx",
+        "lines": 66,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 7
+      },
+      {
+        "file": "src/ui/workbench/PathInputControls.tsx",
+        "lines": 57,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 5
+      },
+      {
+        "file": "src/ui/workbench/PathPlayer.tsx",
+        "lines": 214,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 21
+      },
+      {
+        "file": "src/ui/workbench/ProofClaimEditor.tsx",
+        "lines": 144,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 6
+      },
+      {
+        "file": "src/ui/workbench/ProofWorkbench.tsx",
+        "lines": 414,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 17
+      },
+      {
+        "file": "src/ui/workbench/ProvenConnections.tsx",
+        "lines": 37,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 6
+      },
+      {
+        "file": "src/ui/workbench/SaveProofReplay.tsx",
+        "lines": 25,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 8
+      },
+      {
+        "file": "src/ui/workbench/SourceRouteCanvas.tsx",
+        "lines": 299,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 20
+      },
+      {
+        "file": "src/ui/workbench/SourceRouteDrawing.tsx",
+        "lines": 174,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 8
+      },
+      {
+        "file": "src/ui/workbench/TraceEditor.tsx",
+        "lines": 425,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 21
+      },
+      {
+        "file": "src/ui/workbench/WorkbenchPage.tsx",
+        "lines": 553,
+        "explicitAny": 0,
+        "explicitUnknown": 0,
+        "maxCyclomatic": 20
+      },
+      {
+        "file": "src/index.css",
+        "lines": 606
+      }
+    ],
+    "maxCyclomatic": 21,
+    "maxLines": 606,
+    "explicitAny": 0,
+    "explicitUnknown": 0
+  },
+  "unmeasured": [
+    "cognitive complexity",
+    "Halstead difficulty",
+    "CRAP",
+    "instrumented coverage",
+    "mutation testing",
+    "complete dead-code analysis",
+    "complete duplication analysis"
+  ],
+  "limitations": [
+    "Source interpretations remain WIP; 11 non-deferred variants have no verified shared solution.",
+    "Windischer\u2019s three drawings remain unbound; its exact gate topology and limit-crossing interpretation are unresolved.",
+    "Omeometo uses a selected finite expansion. Corridor rendering is not an authored orthogonal block remake.",
+    "Genuine imported stack-symbol replacement or different-root port rules retain the exact native engine.",
+    "The unspecific center X issue was not independently reproduced; confirmed helper transitions and all bound-source first-gate/undo markers are checked.",
+    "Large on-demand catalog/artwork/replay chunks retain build warnings.",
+    "Changing between different maze documents resets the run with a warning for unfinished play. Source/corridor display changes within one source document retain position."
+  ],
+  "layout": {
+    "captures": [
+      {
+        "file": "inner-frame-after-desktop.png",
+        "title": "Inner Frame flat joins",
+        "width": 1440,
+        "route": "play/matthias-weber"
+      },
+      {
+        "file": "wolfram-zero-desktop.png",
+        "title": "Wolfram 0 finish",
+        "width": 1440,
+        "route": "play/draft-maze-images-mark-j-p-wolf-wolfram-0-jpg"
+      },
+      {
+        "file": "omeometo-after-desktop.png",
+        "title": "Omeometo local view",
+        "width": 1440,
+        "route": "play/koteitan-block"
+      },
+      {
+        "file": "sp1-depth-two-desktop.png",
+        "title": "Skeptic Play 1 at depth two",
+        "width": 1440,
+        "route": "play/draft-maze-images-siggy-skeptic-play-1-svg"
+      },
+      {
+        "file": "snuke-corridors-desktop.png",
+        "title": "Snuke 3 in copy L",
+        "width": 1440,
+        "route": "play/draft-maze-images-snuke-snuke-3-png"
+      },
+      {
+        "file": "koteitan-corridors-desktop.png",
+        "title": "Koteitan corridor player",
+        "width": 1440,
+        "route": "play/ports-koteitan"
+      },
+      {
+        "file": "inner-frame-after-phone.png",
+        "title": "Inner Frame flat joins",
+        "width": 390,
+        "route": "play/matthias-weber"
+      },
+      {
+        "file": "wolfram-zero-phone.png",
+        "title": "Wolfram 0 finish",
+        "width": 390,
+        "route": "play/draft-maze-images-mark-j-p-wolf-wolfram-0-jpg"
+      },
+      {
+        "file": "omeometo-after-phone.png",
+        "title": "Omeometo local view",
+        "width": 390,
+        "route": "play/koteitan-block"
+      },
+      {
+        "file": "sp1-depth-two-phone.png",
+        "title": "Skeptic Play 1 at depth two",
+        "width": 390,
+        "route": "play/draft-maze-images-siggy-skeptic-play-1-svg"
+      },
+      {
+        "file": "snuke-corridors-phone.png",
+        "title": "Snuke 3 in copy L",
+        "width": 390,
+        "route": "play/draft-maze-images-snuke-snuke-3-png"
+      },
+      {
+        "file": "koteitan-corridors-phone.png",
+        "title": "Koteitan corridor player",
+        "width": 390,
+        "route": "play/ports-koteitan"
+      }
+    ],
+    "pageErrors": [],
+    "overflow": 0
+  },
+  "unitTestFiles": 30,
+  "postRefactorFocusedBrowserWorkflows": 16,
+  "canvasPixelComparison": {
+    "views": [
+      "Alice",
+      "Square",
+      "Microchip",
+      "Inner Frame"
+    ],
+    "result": "before/after PNGs byte-for-byte identical"
+  },
+  "runtimeDependencyAudit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "replayDiscoverability": {
+    "documentVariants": 74,
+    "libraryEntries": 49,
+    "sharedReplaysReachable": 70,
+    "wolframOriginalWireOptions": 11,
+    "wolframCurrentViewOptions": 2,
+    "sierpinskiHasIndependentEntry": true
+  }
+}

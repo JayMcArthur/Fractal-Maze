@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Repeated Maze Visualizer</title>
+<style>
+body { font-family: sans-serif; margin: 20px; background: #f5f5f5; }
+h1 { font-size: 20px; margin: 0 0 12px; }
+.fields { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+.field { display: flex; flex-direction: column; }
+.field label { font-weight: bold; margin-bottom: 3px; font-size: 14px; }
+textarea { font-family: monospace; font-size: 13px; padding: 6px; border: 1px solid #aaa; border-radius: 3px; }
+#maze-input { width: 640px; height: 50px; }
+#answer-input { width: 640px; height: 50px; }
+button { padding: 7px 22px; font-size: 14px; cursor: pointer; background: #3498db; color: #fff; border: none; border-radius: 4px; }
+button:hover { background: #2980b9; }
+.legend { margin-top: 8px; font-size: 12px; color: #555; }
+.legend span { margin-right: 14px; }
+.legend .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: middle; margin-right: 3px; }
+.canvas-wrap { border: 1px solid #ccc; background: #fff; margin-top: 10px; max-width: 100%; }
+canvas { display: block; width: 100%; height: auto; }
+</style>
+</head>
+<body>
+<h1>Repeated Maze Visualizer</h1>
+<div class="fields">
+  <div class="field">
+    <label for="maze-input">Maze:</label>
+    <textarea id="maze-input">normal: E0->S0, E1->E0, W0->E0, W1->W0, W1->N1, W1->S1, N0->E1, N0->S1, N1->W0, N1->W1, S0->W0, S1->E0, S1->E1, S1->W0; nx: (none); ny: N0->N1</textarea>
+  </div>
+  <div class="field">
+    <label for="answer-input">Answer:</label>
+    <textarea id="answer-input">(0,1,E0) -> (1,1,E0) -> (1,0,N0) -> (1,0,N1) -> (1,1,E1) -> (2,1,N1) -> (2,2,E1) -> (3,2,N1) -> (2,3,E0) -> (2,2,N0) -> (1,3,E0) -> (1,2,N0) -> (1,1,N1) -> (0,1,E1)</textarea>
+  </div>
+</div>
+<div style="margin-bottom: 8px;">
+  <label><input type="checkbox" id="chk-normal" checked> normal</label>
+  <label style="margin-left: 12px;"><input type="checkbox" id="chk-simple"> x,y only</label>
+</div>
+<button id="draw-btn">Draw Maze</button>
+<div id="normal-section">
+  <div class="legend">
+    <span><span class="swatch" style="background:#e63946"></span>Path</span>
+    <span><span class="swatch" style="background:#27ae60"></span>Start</span>
+    <span><span class="swatch" style="background:#c0392b"></span>Goal</span>
+  </div>
+  <div id="canvas-wrap" class="canvas-wrap"><canvas id="canvas"></canvas></div>
+</div>
+<div id="simple-section" style="display:none;">
+  <div class="legend">
+    <span><span class="swatch" style="background:#0000ff"></span>Start</span>
+    <span><span class="swatch" style="background:#ff0000"></span>End</span>
+    <span>Color: Blue → Red</span>
+  </div>
+  <div id="canvas-wrap-simple" class="canvas-wrap"><canvas id="canvas-simple"></canvas></div>
+</div>
+
+<script>
+/* Base sizes (at scale=1, these correspond to the "2x" design) */
+const BASE_CELL = 240;
+const BASE_MARGIN = 100;
+
+/* ---- Parsing ---- */
+
+function parseTermName(s) {
+  s = s.trim();
+  return { dir: s[0], idx: parseInt(s.substring(1)) };
+}
+
+function parseMaze(text) {
+  /* Strip "Maze:" prefix and any "Path length: N" lines */
+  text = text.replace(/^maze:\s*/i, '').trim();
+  text = text.replace(/^path\s+length:\s*\d+.*$/gim, '').trim();
+  const result = { normal: [], nx: [], ny: [] };
+  const sections = text.split(';');
+  for (const sec of sections) {
+    const t = sec.trim();
+    const ci = t.indexOf(':');
+    if (ci < 0) continue;
+    const type = t.substring(0, ci).trim().toLowerCase();
+    const body = t.substring(ci + 1).trim();
+    if (body === '(none)' || !body) continue;
+    const ports = body.split(',').map(p => {
+      const parts = p.trim().split('->');
+      if (parts.length !== 2) return null;
+      return { src: parseTermName(parts[0]), dst: parseTermName(parts[1]) };
+    }).filter(p => p !== null);
+    if (type === 'normal') result.normal = ports;
+    else if (type === 'nx') result.nx = ports;
+    else if (type === 'ny') result.ny = ports;
+  }
+  return result;
+}
+
+function parsePath(text) {
+  /* Strip "Path:" prefix and "Path length: N" lines */
+  text = text.replace(/^path\s+length:\s*\d+.*$/gim, '').trim();
+  text = text.replace(/^path:\s*/i, '').trim();
+  if (!text) return [];
+  const parts = text.split('->');
+  return parts.map(p => {
+    const m = p.trim().match(/\((-?\d+),(-?\d+),([A-Z])(\d+)\)/);
+    if (!m) return null;
+    return { x: parseInt(m[1]), y: parseInt(m[2]), dir: m[3], idx: parseInt(m[4]) };
+  }).filter(s => s !== null);
+}
+
+function detectNterm(maze, path) {
+  let nterm = 2;
+  for (const ports of [maze.normal, maze.nx, maze.ny])
+    for (const p of ports)
+      nterm = Math.max(nterm, p.src.idx + 1, p.dst.idx + 1);
+  for (const s of path)
+    nterm = Math.max(nterm, s.idx + 1);
+  return nterm;
+}
+
+/* ---- Geometry helpers ---- */
+
+function termLocalPos(dir, idx, nterm, cellSize) {
+  const t = cellSize * (idx + 1) / (nterm + 1);
+  switch (dir) {
+    case 'E': return { x: cellSize, y: t };
+    case 'W': return { x: 0, y: t };
+    case 'N': return { x: t, y: 0 };
+    case 'S': return { x: t, y: cellSize };
+  }
+}
+
+function termInsetPos(dir, idx, nterm) {
+  const p = termLocalPos(dir, idx, nterm);
+  switch (dir) {
+    case 'E': return { x: p.x - INSET, y: p.y };
+    case 'W': return { x: p.x + INSET, y: p.y };
+    case 'N': return { x: p.x, y: p.y + INSET };
+    case 'S': return { x: p.x, y: p.y - INSET };
+  }
+}
+
+/* ---- Arrow drawing ---- */
+
+function drawArrow(ctx, x1, y1, x2, y2, color, lw) {
+  const hl = 12 * lw;
+  const angle = Math.atan2(y2 - y1, x2 - x1);
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  ctx.lineWidth = lw;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - hl * Math.cos(angle - 0.15), y2 - hl * Math.sin(angle - 0.15));
+  ctx.lineTo(x2 - hl * Math.cos(angle + 0.15), y2 - hl * Math.sin(angle + 0.15));
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawCurvedArrow(ctx, x1, y1, x2, y2, bulge, color, lw) {
+  const dx = x2 - x1, dy = y2 - y1;
+  const len = Math.sqrt(dx * dx + dy * dy) || 1;
+  const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+  /* perpendicular: (-dy, dx) normalized, then flip with negative bulge to go outside */
+  const cpx = mx + bulge * (-dy) / len;
+  const cpy = my + bulge * dx / len;
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  ctx.lineWidth = lw;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.quadraticCurveTo(cpx, cpy, x2, y2);
+  ctx.stroke();
+  const hl = 12 * lw;
+  const tx = 2 * (x2 - cpx), ty = 2 * (y2 - cpy);
+  const angle = Math.atan2(ty, tx);
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - hl * Math.cos(angle - 0.15), y2 - hl * Math.sin(angle - 0.15));
+  ctx.lineTo(x2 - hl * Math.cos(angle + 0.15), y2 - hl * Math.sin(angle + 0.15));
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawCurvedArrowCP(ctx, x1, y1, x2, y2, cpx, cpy, color, lw) {
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  ctx.lineWidth = lw;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.quadraticCurveTo(cpx, cpy, x2, y2);
+  ctx.stroke();
+  const hl = 12 * lw;
+  const tx = 2 * (x2 - cpx), ty = 2 * (y2 - cpy);
+  const angle = Math.atan2(ty, tx);
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - hl * Math.cos(angle - 0.15), y2 - hl * Math.sin(angle - 0.15));
+  ctx.lineTo(x2 - hl * Math.cos(angle + 0.15), y2 - hl * Math.sin(angle + 0.15));
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+/* ---- Grid bounds ---- */
+
+function computeBounds(path) {
+  if (path.length > 0) {
+    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    for (const s of path) {
+      minX = Math.min(minX, s.x, s.x + (s.dir === 'E' ? 1 : 0));
+      maxX = Math.max(maxX, s.x, s.x + (s.dir === 'E' ? 1 : 0));
+      minY = Math.min(minY, s.y, s.y + (s.dir === 'N' ? 1 : 0));
+      maxY = Math.max(maxY, s.y, s.y + (s.dir === 'N' ? 1 : 0));
+    }
+    return { minX, maxX, minY, maxY };
+  }
+  return { minX: 0, maxX: 3, minY: 0, maxY: 3 };
+}
+
+/* ---- Setup canvas with grid and axis labels ---- */
+
+function setupCanvas(canvasId, wrapId, bounds) {
+  const { minX, maxX, minY, maxY } = bounds;
+  const cols = maxX - minX + 1;
+  const rows = maxY - minY + 1;
+  const canvas = document.getElementById(canvasId);
+  const wrap = document.getElementById(wrapId);
+  const idealW = BASE_MARGIN * 2 + cols * BASE_CELL;
+  const availW = wrap.parentElement.clientWidth - 4;
+  const scale = Math.min(1, availW / idealW);
+  const CELL = BASE_CELL * scale;
+  const MARGIN = BASE_MARGIN * scale;
+  const S = scale;
+
+  canvas.width = MARGIN * 2 + cols * CELL;
+  canvas.height = MARGIN * 2 + rows * CELL;
+  const ctx = canvas.getContext('2d');
+
+  function bpos(bx, by) {
+    return { x: MARGIN + (bx - minX) * CELL, y: MARGIN + (maxY - by) * CELL };
+  }
+
+  /* Clear */
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  /* Grid cells */
+  for (let bx = minX; bx <= maxX; bx++) {
+    for (let by = minY; by <= maxY; by++) {
+      const bp = bpos(bx, by);
+      ctx.strokeStyle = '#bbb';
+      ctx.lineWidth = 2 * S;
+      ctx.strokeRect(bp.x, bp.y, CELL, CELL);
+    }
+  }
+
+  /* Axis labels */
+  ctx.fillStyle = '#888';
+  ctx.font = `${22 * S}px sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  for (let bx = minX; bx <= maxX; bx++) {
+    const bp = bpos(bx, minY);
+    ctx.fillText(bx, bp.x + CELL / 2, bp.y - 4 * S + (maxY - minY + 1) * CELL + MARGIN * 0.6);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let by = minY; by <= maxY; by++) {
+    const bp = bpos(minX, by);
+    ctx.fillText(by, bp.x - 6 * S, bp.y + CELL / 2);
+  }
+
+  return { ctx, bpos, CELL, MARGIN, S };
+}
+
+/* ---- Draw normal view ---- */
+
+function drawNormal(maze, path, nterm, bounds) {
+  const { ctx, bpos, CELL, MARGIN, S } = setupCanvas('canvas', 'canvas-wrap', bounds);
+  const { minX, maxX, minY, maxY } = bounds;
+
+  function statePos(s) {
+    const bp = bpos(s.x, s.y);
+    const tp = termLocalPos(s.dir, s.idx, nterm, CELL);
+    return { x: bp.x + tp.x, y: bp.y + tp.y };
+  }
+
+  /* Normal port arrows inside each block */
+  for (let bx = minX; bx <= maxX; bx++) {
+    for (let by = minY; by <= maxY; by++) {
+      if (bx < 1 || by < 1) continue;
+      const bp = bpos(bx, by);
+      for (const port of maze.normal) {
+        const from = termLocalPos(port.src.dir, port.src.idx, nterm, CELL);
+        const to = termLocalPos(port.dst.dir, port.dst.idx, nterm, CELL);
+        const fx = bp.x + from.x, fy = bp.y + from.y;
+        const tx = bp.x + to.x, ty = bp.y + to.y;
+        if (port.src.dir === port.dst.dir) {
+          const mx = (fx + tx) / 2, my = (fy + ty) / 2;
+          const off = 30 * S;
+          let cpx = mx, cpy = my;
+          switch (port.src.dir) {
+            case 'E': cpx = mx - off; break;
+            case 'W': cpx = mx + off; break;
+            case 'N': cpy = my + off; break;
+            case 'S': cpy = my - off; break;
+          }
+          drawCurvedArrowCP(ctx, fx, fy, tx, ty, cpx, cpy, '#000', 2 * S);
+        } else {
+          drawArrow(ctx, fx, fy, tx, ty, '#000', 2 * S);
+        }
+      }
+    }
+  }
+
+  /* nx port arrows */
+  for (let by = minY; by <= maxY; by++) {
+    if (by < 1) continue;
+    const bp = bpos(0, by);
+    for (const port of maze.nx) {
+      const from = termLocalPos('E', port.src.idx, nterm, CELL);
+      const to = termLocalPos('E', port.dst.idx, nterm, CELL);
+      const fx = bp.x + from.x, fy = bp.y + from.y;
+      const tx = bp.x + to.x, ty = bp.y + to.y;
+      const mx = (fx + tx) / 2, my = (fy + ty) / 2;
+      const cpx = mx - 30 * S, cpy = my;
+      drawCurvedArrowCP(ctx, fx, fy, tx, ty, cpx, cpy, '#000', 2 * S);
+    }
+  }
+
+  /* ny port arrows */
+  for (let bx = minX; bx <= maxX; bx++) {
+    if (bx < 1) continue;
+    const bp = bpos(bx, 0);
+    for (const port of maze.ny) {
+      const from = termLocalPos('N', port.src.idx, nterm, CELL);
+      const to = termLocalPos('N', port.dst.idx, nterm, CELL);
+      const fx = bp.x + from.x, fy = bp.y + from.y;
+      const tx = bp.x + to.x, ty = bp.y + to.y;
+      const mx = (fx + tx) / 2, my = (fy + ty) / 2;
+      const cpx = mx, cpy = my + 30 * S;
+      drawCurvedArrowCP(ctx, fx, fy, tx, ty, cpx, cpy, '#000', 2 * S);
+    }
+  }
+
+  /* Start and Goal markers */
+  const startState = { x: 0, y: 1, dir: 'E', idx: 0 };
+  const goalState  = { x: 0, y: 1, dir: 'E', idx: 1 };
+  const startPos = statePos(startState);
+  const goalPos  = statePos(goalState);
+  for (const {pos, label, color} of [
+    {pos: startPos, label: 'Start', color: '#27ae60'},
+    {pos: goalPos,  label: 'Goal',  color: '#c0392b'}
+  ]) {
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, 12 * S, 0, 2 * Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.fillStyle = color;
+    ctx.font = `bold ${20 * S}px sans-serif`;
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(label, pos.x - 18 * S, pos.y);
+  }
+
+  /* Path line */
+  if (path.length > 1) {
+    ctx.save();
+    ctx.strokeStyle = '#e63946';
+    ctx.lineWidth = 6 * S;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    let p0 = statePos(path[0]);
+    ctx.moveTo(p0.x, p0.y);
+    for (let i = 1; i < path.length; i++) {
+      const p = statePos(path[i]);
+      ctx.lineTo(p.x, p.y);
+    }
+    ctx.stroke();
+    ctx.restore();
+
+    /* Step number circles */
+    for (let i = 0; i < path.length; i++) {
+      const p = statePos(path[i]);
+      const r = ((i >= 100) ? 26 : 20) * S;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r, 0, 2 * Math.PI);
+      ctx.fillStyle = (i === 0) ? '#27ae60' : (i === path.length - 1) ? '#c0392b' : '#2980b9';
+      ctx.fill();
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 3 * S;
+      ctx.stroke();
+      ctx.fillStyle = '#fff';
+      ctx.font = `bold ${(r > 20 * S ? 18 : 20) * S}px sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(i.toString(), p.x, p.y);
+    }
+  }
+}
+
+/* ---- Draw simple (x,y only) view ---- */
+
+function drawSimple(path, bounds) {
+  const { minX, maxX, minY, maxY } = bounds;
+  const cols = maxX - minX + 1;
+  const rows = maxY - minY + 1;
+  const CELL = 16;
+  const PAD = 20;
+  const canvas = document.getElementById('canvas-simple');
+  canvas.width = PAD * 2 + cols * CELL;
+  canvas.height = PAD * 2 + rows * CELL;
+  const ctx = canvas.getContext('2d');
+
+  function bpos(bx, by) {
+    return { x: PAD + (bx - minX) * CELL, y: PAD + (maxY - by) * CELL };
+  }
+
+  /* Clear */
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  /* Grid */
+  ctx.strokeStyle = '#ddd';
+  ctx.lineWidth = 1;
+  for (let bx = minX; bx <= maxX; bx++) {
+    for (let by = minY; by <= maxY; by++) {
+      const bp = bpos(bx, by);
+      ctx.strokeRect(bp.x, bp.y, CELL, CELL);
+    }
+  }
+
+  /* Axis labels */
+  ctx.fillStyle = '#999';
+  ctx.font = '9px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  for (let bx = minX; bx <= maxX; bx++) {
+    const bp = bpos(bx, minY);
+    ctx.fillText(bx, bp.x + CELL / 2, bp.y + CELL + 2);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let by = minY; by <= maxY; by++) {
+    const bp = bpos(minX, by);
+    ctx.fillText(by, bp.x - 3, bp.y + CELL / 2);
+  }
+
+  /* Path lines: gradient B->R, 1px */
+  if (path.length > 1) {
+    ctx.lineWidth = 1;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    for (let i = 0; i < path.length - 1; i++) {
+      const t = i / (path.length - 1);
+      const r = Math.round(t * 255);
+      const b = Math.round((1 - t) * 255);
+      ctx.strokeStyle = `rgb(${r},0,${b})`;
+      const p1 = bpos(path[i].x, path[i].y);
+      const p2 = bpos(path[i + 1].x, path[i + 1].y);
+      ctx.beginPath();
+      ctx.moveTo(p1.x + CELL / 2, p1.y + CELL / 2);
+      ctx.lineTo(p2.x + CELL / 2, p2.y + CELL / 2);
+      ctx.stroke();
+    }
+    /* Start dot (blue) and end dot (red) */
+    const sp = bpos(path[0].x, path[0].y);
+    ctx.beginPath();
+    ctx.arc(sp.x + CELL / 2, sp.y + CELL / 2, 3, 0, 2 * Math.PI);
+    ctx.fillStyle = '#0000ff';
+    ctx.fill();
+    const ep = bpos(path[path.length - 1].x, path[path.length - 1].y);
+    ctx.beginPath();
+    ctx.arc(ep.x + CELL / 2, ep.y + CELL / 2, 3, 0, 2 * Math.PI);
+    ctx.fillStyle = '#ff0000';
+    ctx.fill();
+  }
+}
+
+/* ---- Main draw ---- */
+
+function draw() {
+  const maze = parseMaze(document.getElementById('maze-input').value);
+  const path = parsePath(document.getElementById('answer-input').value);
+  const nterm = detectNterm(maze, path);
+  const bounds = computeBounds(path);
+  const showNormal = document.getElementById('chk-normal').checked;
+  const showSimple = document.getElementById('chk-simple').checked;
+
+  document.getElementById('normal-section').style.display = showNormal ? '' : 'none';
+  document.getElementById('simple-section').style.display = showSimple ? '' : 'none';
+
+  if (showNormal) drawNormal(maze, path, nterm, bounds);
+  if (showSimple) drawSimple(path, bounds);
+}
+
+/* Auto-split: if maze textarea contains "Path:", move that part to answer textarea */
+function splitMazeInput() {
+  const mazeEl = document.getElementById('maze-input');
+  const answerEl = document.getElementById('answer-input');
+  const lines = mazeEl.value.split('\n');
+  let pathIdx = -1;
+  for (let i = 0; i < lines.length; i++) {
+    const t = lines[i].trim();
+    if (/^Path:/i.test(t) && !/^Path\s+length:/i.test(t)) {
+      pathIdx = i;
+      break;
+    }
+  }
+  if (pathIdx < 0) return;
+  const mazeLines = lines.slice(0, pathIdx)
+    .filter(l => !/^Path\s+length:/i.test(l.trim()));
+  const pathFirst = lines[pathIdx].replace(/^Path:\s*/i, '').trim();
+  const pathRest = lines.slice(pathIdx + 1).join('\n').trim();
+  const pathPart = (pathFirst + (pathRest ? ' ' + pathRest : '')).trim();
+  mazeEl.value = mazeLines.join('\n').trim();
+  if (pathPart) answerEl.value = pathPart;
+}
+
+document.getElementById('maze-input').addEventListener('input', splitMazeInput);
+
+function onResize() { draw(); }
+function toggleVisibility() {
+  document.getElementById('normal-section').style.display =
+    document.getElementById('chk-normal').checked ? '' : 'none';
+  document.getElementById('simple-section').style.display =
+    document.getElementById('chk-simple').checked ? '' : 'none';
+}
+
+document.getElementById('draw-btn').addEventListener('click', draw);
+document.getElementById('chk-normal').addEventListener('change', toggleVisibility);
+document.getElementById('chk-simple').addEventListener('change', toggleVisibility);
+window.addEventListener('load', draw);
+window.addEventListener('resize', onResize);
+</script>
+</body>
+</html>

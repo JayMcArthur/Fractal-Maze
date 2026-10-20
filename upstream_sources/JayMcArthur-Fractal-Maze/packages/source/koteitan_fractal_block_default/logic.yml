@@ -1,0 +1,28 @@
+format: fmaze-logic-v0
+id: koteitan_fractal_block_default
+strategy: coordinate_path
+source_model: fractal_block_pattern
+start:
+  kind: boundary
+  side: south
+goals:
+  - kind: boundary
+    side: north
+pattern:
+  cell_convention:
+    0: white_open
+    1: black_recursive
+  rows:
+    - [1, 0, 1, 1]
+    - [0, 1, 0, 1]
+    - [1, 0, 1, 1]
+    - [1, 1, 0, 0]
+entry:
+  direction: north
+  description: Enter from the lower edge and search upward.
+goal:
+  direction: north
+  description: Solved when movement exits over the upper edge.
+solver:
+  default_depth_limit: 5
+  algorithm: bounded_coordinate_path_bfs

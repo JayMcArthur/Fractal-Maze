@@ -1,0 +1,668 @@
+{
+  "executedAt": "2026-10-11T05:36:20.718189+00:00",
+  "sourceHash": "2267a89b5f03362fa4b0ba262924de56a8550aa711ab265a1524f203736ff546",
+  "paths": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "A",
+    "B"
+  ],
+  "copies": [
+    "A",
+    "B"
+  ],
+  "start": {
+    "path": "4",
+    "address": []
+  },
+  "goal": {
+    "path": "8",
+    "address": []
+  },
+  "connections": 32,
+  "gateAnchors": [
+    {
+      "edge": "A-0-enter",
+      "side": "from",
+      "path": "5",
+      "point": [
+        201,
+        348
+      ]
+    },
+    {
+      "edge": "A-0-enter",
+      "side": "to",
+      "path": "1",
+      "point": [
+        198,
+        64
+      ]
+    },
+    {
+      "edge": "A-0-exit",
+      "side": "from",
+      "path": "1",
+      "point": [
+        198,
+        64
+      ]
+    },
+    {
+      "edge": "A-0-exit",
+      "side": "to",
+      "path": "5",
+      "point": [
+        201,
+        348
+      ]
+    },
+    {
+      "edge": "A-1-enter",
+      "side": "from",
+      "path": "4",
+      "point": [
+        321,
+        348
+      ]
+    },
+    {
+      "edge": "A-1-enter",
+      "side": "to",
+      "path": "2",
+      "point": [
+        708,
+        64
+      ]
+    },
+    {
+      "edge": "A-1-exit",
+      "side": "from",
+      "path": "2",
+      "point": [
+        708,
+        64
+      ]
+    },
+    {
+      "edge": "A-1-exit",
+      "side": "to",
+      "path": "4",
+      "point": [
+        321,
+        348
+      ]
+    },
+    {
+      "edge": "A-2-enter",
+      "side": "from",
+      "path": "2",
+      "point": [
+        373,
+        397
+      ]
+    },
+    {
+      "edge": "A-2-enter",
+      "side": "to",
+      "path": "A",
+      "point": [
+        843,
+        210
+      ]
+    },
+    {
+      "edge": "A-2-exit",
+      "side": "from",
+      "path": "A",
+      "point": [
+        843,
+        210
+      ]
+    },
+    {
+      "edge": "A-2-exit",
+      "side": "to",
+      "path": "2",
+      "point": [
+        373,
+        397
+      ]
+    },
+    {
+      "edge": "A-3-enter",
+      "side": "from",
+      "path": "6",
+      "point": [
+        373,
+        518
+      ]
+    },
+    {
+      "edge": "A-3-enter",
+      "side": "to",
+      "path": "9",
+      "point": [
+        843,
+        715
+      ]
+    },
+    {
+      "edge": "A-3-exit",
+      "side": "from",
+      "path": "9",
+      "point": [
+        843,
+        715
+      ]
+    },
+    {
+      "edge": "A-3-exit",
+      "side": "to",
+      "path": "6",
+      "point": [
+        373,
+        518
+      ]
+    },
+    {
+      "edge": "A-4-enter",
+      "side": "from",
+      "path": "A",
+      "point": [
+        319,
+        567
+      ]
+    },
+    {
+      "edge": "A-4-enter",
+      "side": "to",
+      "path": "3",
+      "point": [
+        699,
+        848
+      ]
+    },
+    {
+      "edge": "A-4-exit",
+      "side": "from",
+      "path": "3",
+      "point": [
+        699,
+        848
+      ]
+    },
+    {
+      "edge": "A-4-exit",
+      "side": "to",
+      "path": "A",
+      "point": [
+        319,
+        567
+      ]
+    },
+    {
+      "edge": "A-5-enter",
+      "side": "from",
+      "path": "9",
+      "point": [
+        197,
+        567
+      ]
+    },
+    {
+      "edge": "A-5-enter",
+      "side": "to",
+      "path": "1",
+      "point": [
+        188,
+        848
+      ]
+    },
+    {
+      "edge": "A-5-exit",
+      "side": "from",
+      "path": "1",
+      "point": [
+        188,
+        848
+      ]
+    },
+    {
+      "edge": "A-5-exit",
+      "side": "to",
+      "path": "9",
+      "point": [
+        197,
+        567
+      ]
+    },
+    {
+      "edge": "A-6-enter",
+      "side": "from",
+      "path": "8",
+      "point": [
+        147,
+        516
+      ]
+    },
+    {
+      "edge": "A-6-enter",
+      "side": "to",
+      "path": "B",
+      "point": [
+        48,
+        707
+      ]
+    },
+    {
+      "edge": "A-6-exit",
+      "side": "from",
+      "path": "B",
+      "point": [
+        48,
+        707
+      ]
+    },
+    {
+      "edge": "A-6-exit",
+      "side": "to",
+      "path": "8",
+      "point": [
+        147,
+        516
+      ]
+    },
+    {
+      "edge": "A-7-enter",
+      "side": "from",
+      "path": "B",
+      "point": [
+        147,
+        397
+      ]
+    },
+    {
+      "edge": "A-7-enter",
+      "side": "to",
+      "path": "7",
+      "point": [
+        48,
+        199
+      ]
+    },
+    {
+      "edge": "A-7-exit",
+      "side": "from",
+      "path": "7",
+      "point": [
+        48,
+        199
+      ]
+    },
+    {
+      "edge": "A-7-exit",
+      "side": "to",
+      "path": "B",
+      "point": [
+        147,
+        397
+      ]
+    },
+    {
+      "edge": "B-0-enter",
+      "side": "from",
+      "path": "7",
+      "point": [
+        556,
+        352
+      ]
+    },
+    {
+      "edge": "B-0-enter",
+      "side": "to",
+      "path": "1",
+      "point": [
+        198,
+        64
+      ]
+    },
+    {
+      "edge": "B-0-exit",
+      "side": "from",
+      "path": "1",
+      "point": [
+        198,
+        64
+      ]
+    },
+    {
+      "edge": "B-0-exit",
+      "side": "to",
+      "path": "7",
+      "point": [
+        556,
+        352
+      ]
+    },
+    {
+      "edge": "B-1-enter",
+      "side": "from",
+      "path": "2",
+      "point": [
+        679,
+        352
+      ]
+    },
+    {
+      "edge": "B-1-enter",
+      "side": "to",
+      "path": "2",
+      "point": [
+        708,
+        64
+      ]
+    },
+    {
+      "edge": "B-1-exit",
+      "side": "from",
+      "path": "2",
+      "point": [
+        708,
+        64
+      ]
+    },
+    {
+      "edge": "B-1-exit",
+      "side": "to",
+      "path": "2",
+      "point": [
+        679,
+        352
+      ]
+    },
+    {
+      "edge": "B-2-enter",
+      "side": "from",
+      "path": "B",
+      "point": [
+        729,
+        400
+      ]
+    },
+    {
+      "edge": "B-2-enter",
+      "side": "to",
+      "path": "A",
+      "point": [
+        843,
+        210
+      ]
+    },
+    {
+      "edge": "B-2-exit",
+      "side": "from",
+      "path": "A",
+      "point": [
+        843,
+        210
+      ]
+    },
+    {
+      "edge": "B-2-exit",
+      "side": "to",
+      "path": "B",
+      "point": [
+        729,
+        400
+      ]
+    },
+    {
+      "edge": "B-3-enter",
+      "side": "from",
+      "path": "9",
+      "point": [
+        729,
+        521
+      ]
+    },
+    {
+      "edge": "B-3-enter",
+      "side": "to",
+      "path": "9",
+      "point": [
+        843,
+        715
+      ]
+    },
+    {
+      "edge": "B-3-exit",
+      "side": "from",
+      "path": "9",
+      "point": [
+        843,
+        715
+      ]
+    },
+    {
+      "edge": "B-3-exit",
+      "side": "to",
+      "path": "9",
+      "point": [
+        729,
+        521
+      ]
+    },
+    {
+      "edge": "B-4-enter",
+      "side": "from",
+      "path": "3",
+      "point": [
+        674,
+        570
+      ]
+    },
+    {
+      "edge": "B-4-enter",
+      "side": "to",
+      "path": "3",
+      "point": [
+        699,
+        848
+      ]
+    },
+    {
+      "edge": "B-4-exit",
+      "side": "from",
+      "path": "3",
+      "point": [
+        699,
+        848
+      ]
+    },
+    {
+      "edge": "B-4-exit",
+      "side": "to",
+      "path": "3",
+      "point": [
+        674,
+        570
+      ]
+    },
+    {
+      "edge": "B-5-enter",
+      "side": "from",
+      "path": "3",
+      "point": [
+        555,
+        570
+      ]
+    },
+    {
+      "edge": "B-5-enter",
+      "side": "to",
+      "path": "1",
+      "point": [
+        188,
+        848
+      ]
+    },
+    {
+      "edge": "B-5-exit",
+      "side": "from",
+      "path": "1",
+      "point": [
+        188,
+        848
+      ]
+    },
+    {
+      "edge": "B-5-exit",
+      "side": "to",
+      "path": "3",
+      "point": [
+        555,
+        570
+      ]
+    },
+    {
+      "edge": "B-6-enter",
+      "side": "from",
+      "path": "6",
+      "point": [
+        507,
+        518
+      ]
+    },
+    {
+      "edge": "B-6-enter",
+      "side": "to",
+      "path": "B",
+      "point": [
+        48,
+        707
+      ]
+    },
+    {
+      "edge": "B-6-exit",
+      "side": "from",
+      "path": "B",
+      "point": [
+        48,
+        707
+      ]
+    },
+    {
+      "edge": "B-6-exit",
+      "side": "to",
+      "path": "6",
+      "point": [
+        507,
+        518
+      ]
+    },
+    {
+      "edge": "B-7-enter",
+      "side": "from",
+      "path": "5",
+      "point": [
+        507,
+        398
+      ]
+    },
+    {
+      "edge": "B-7-enter",
+      "side": "to",
+      "path": "7",
+      "point": [
+        48,
+        199
+      ]
+    },
+    {
+      "edge": "B-7-exit",
+      "side": "from",
+      "path": "7",
+      "point": [
+        48,
+        199
+      ]
+    },
+    {
+      "edge": "B-7-exit",
+      "side": "to",
+      "path": "5",
+      "point": [
+        507,
+        398
+      ]
+    }
+  ],
+  "closedRelation": {
+    "1": [
+      "1"
+    ],
+    "2": [
+      "2",
+      "8"
+    ],
+    "3": [
+      "3",
+      "5",
+      "7",
+      "9"
+    ],
+    "4": [
+      "4"
+    ],
+    "5": [
+      "3",
+      "5",
+      "7",
+      "9"
+    ],
+    "6": [
+      "6",
+      "A",
+      "B"
+    ],
+    "7": [
+      "3",
+      "5",
+      "7",
+      "9"
+    ],
+    "8": [
+      "2",
+      "8"
+    ],
+    "9": [
+      "3",
+      "5",
+      "7",
+      "9"
+    ],
+    "A": [
+      "6",
+      "A",
+      "B"
+    ],
+    "B": [
+      "6",
+      "A",
+      "B"
+    ]
+  },
+  "surfaceGoalExcluded": true,
+  "productionValid": true,
+  "productionBalancedWitness": null,
+  "interpretation": "Colored and black wires are followed; interior crossings retain their declared wire. Eight clockwise pins for each unrotated copy.",
+  "scope": "Independent closed balanced relation excludes the finish for the current surface-to-surface finite-only transcription. All 64 declared gate anchors lie on their named traces. No original-author impossibility claim, cross-wire junction or infinite center rule is inferred."
+}

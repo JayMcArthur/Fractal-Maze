@@ -1,0 +1,83 @@
+[
+  {
+    "id": "alice-in-wonderland",
+    "title": "Alice and the Fractal Hedge Maze",
+    "author": "Mike Earnest (adapted by Orelcosseron)",
+    "source": "https://puzzling.stackexchange.com/questions/37675/alice-and-the-fractal-hedge-maze",
+    "file": "1_-_alice_in_wonderland.maze",
+    "representationType": "squareRecursive",
+    "tags": ["classic", "beginner"]
+  },
+  {
+    "id": "sierpinski",
+    "title": "Sierpinski",
+    "author": "Orelcosseron",
+    "source": null,
+    "file": "2_-_sierpinski.maze",
+    "representationType": "squareRecursive",
+    "tags": ["fractal", "sierpinski"]
+  },
+  {
+    "id": "microchip",
+    "title": "Microchip",
+    "author": "Orelcosseron",
+    "source": null,
+    "file": "3_-_microchip.maze",
+    "representationType": "squareRecursive",
+    "tags": ["intermediate"]
+  },
+  {
+    "id": "square",
+    "title": "Square",
+    "author": "Orelcosseron",
+    "source": null,
+    "file": "4_-_square.maze",
+    "representationType": "squareRecursive",
+    "tags": ["simple", "square"]
+  },
+  {
+    "id": "a-long-path-v4",
+    "title": "A Long Path v4",
+    "author": "Jay McArthur",
+    "source": null,
+    "file": "5_-_Jay_McArthur_-_A_Long_Path_v4.maze",
+    "representationType": "squareRecursive",
+    "tags": ["long-path", "original"]
+  },
+  {
+    "id": "a-long-path-v8",
+    "title": "A Long Path v8",
+    "author": "Jay McArthur",
+    "source": null,
+    "file": "6_-_Jay_McArthur_-_A_Long_Path_v8.maze",
+    "representationType": "squareRecursive",
+    "tags": ["long-path", "original", "hard"]
+  },
+  {
+    "id": "matthias-weber",
+    "title": "Fractal Maze",
+    "author": "Matthias Weber",
+    "source": null,
+    "file": "7_-_Matthias_Weber_-_Fractal_Maze.maze",
+    "representationType": "squareRecursive",
+    "tags": ["intermediate"]
+  },
+  {
+    "id": "skeptic-play-carpet",
+    "title": "Carpet",
+    "author": "Skeptic Play",
+    "source": null,
+    "file": "8_-_Skeptic_Play_-_Carpet.maze",
+    "representationType": "squareRecursive",
+    "tags": ["carpet", "fractal"]
+  },
+  {
+    "id": "block-maze",
+    "title": "Block Maze",
+    "author": "Orelcosseron",
+    "source": null,
+    "file": "9_-_Block_Maze.maze",
+    "representationType": "squareRecursive",
+    "tags": ["blocks", "intermediate"]
+  }
+]

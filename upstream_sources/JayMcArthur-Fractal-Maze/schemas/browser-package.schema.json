@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fractal-maze-lab.local/schemas/browser-package.schema.json",
+  "title": "Fractal Maze Lab Browser Package",
+  "description": "Generated JSON artifact produced from a validated Source Package. Inlines logic, solutions, visual mapping, and an optional deterministic auto graph layout so the static browser workbench can render a maze without re-loading YAML.",
+  "type": "object",
+  "required": ["format", "id", "title", "primary_authoring", "source_root", "logic"],
+  "properties": {
+    "format": { "const": "fmaze-browser-v0" },
+    "id": { "$ref": "#/$defs/id" },
+    "title": { "type": "string", "minLength": 1 },
+    "primary_authoring": {
+      "enum": ["port_graph", "fractal_block_pattern", "repeated_tile_ports", "reference_record"]
+    },
+    "source_root": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Repository-relative path to the original Source Package directory."
+    },
+    "logic": {
+      "type": "object",
+      "description": "Pass-through of the validated logic.yml document."
+    },
+    "solutions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/inlined_solution" }
+    },
+    "visual": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "object" }
+      ],
+      "description": "Pass-through of the visual.yml document when one is referenced by the manifest."
+    },
+    "visual_assets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/visual_asset" },
+      "description": "Resolved asset hrefs for static browser fetch; one entry per visual asset, with the package-root-relative href rewritten to a repo-relative URL."
+    },
+    "auto_graph_layout": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/auto_graph_layout" }
+      ]
+    },
+    "modeling_status": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "object" }
+      ]
+    },
+    "provenance": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "object" }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:-]+$"
+    },
+    "inlined_solution": {
+      "type": "object",
+      "required": ["id", "format", "steps"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "format": { "const": "fmaze-solution-v0" },
+        "maze": { "type": "string" },
+        "logic": { "type": "string" },
+        "expects_goal": { "type": "boolean" },
+        "steps": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "visual_checkpoints": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "provenance": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "visual_asset": {
+      "type": "object",
+      "required": ["id", "href", "media_type"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "href": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repository-relative path; the browser app fetches assets from this path."
+        },
+        "media_type": { "type": "string", "minLength": 1 },
+        "role": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "auto_graph_layout": {
+      "type": "object",
+      "required": ["algorithm", "points", "ports"],
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Identifier of the layout algorithm; the browser may key visual variants off this."
+        },
+        "spacing": {
+          "type": "object",
+          "properties": {
+            "x": { "type": "number", "exclusiveMinimum": 0 },
+            "y": { "type": "number", "exclusiveMinimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "bounds": {
+          "type": "object",
+          "required": ["width", "height"],
+          "properties": {
+            "width": { "type": "number", "minimum": 0 },
+            "height": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "points": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/laid_point" }
+        },
+        "ports": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/laid_point" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "laid_point": {
+      "type": "object",
+      "required": ["x", "y"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "level": { "type": "integer", "minimum": 0 },
+        "column": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,15 @@
+*.o
+tools/gen-maze/repeated-maze
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+
+# Temp
+tmp/
+commit-msg.txt
+
+# Results (search output)
+results/

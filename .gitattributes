@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# Preserve the recovered historical snapshot byte for byte.
+upstream_sources/JayMcArthur-Fractal-Maze/** -text whitespace=-blank-at-eol,-blank-at-eof

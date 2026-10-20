@@ -1,0 +1,247 @@
+{
+  "cases": 16,
+  "failures": [],
+  "scope": "Snuke 1\u20134 initial source/block presentation on desktop/phone. Movement and longer histories are checked separately.",
+  "checks": [
+    {
+      "maze": "draft-maze-images-snuke-snuke-1-jpg",
+      "width": 390,
+      "style": "corridors",
+      "capture": "snuke-1-390-corridors.png",
+      "frame": {
+        "point": [
+          715,
+          140.625
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-1-jpg",
+      "width": 390,
+      "style": "source",
+      "capture": "snuke-1-390-source.png",
+      "frame": {
+        "point": [
+          706.41,
+          135.36
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-2-jpg",
+      "width": 390,
+      "style": "corridors",
+      "capture": "snuke-2-390-corridors.png",
+      "frame": {
+        "point": [
+          800,
+          58.75
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-2-jpg",
+      "width": 390,
+      "style": "source",
+      "capture": "snuke-2-390-source.png",
+      "frame": {
+        "point": [
+          800,
+          50
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-3-png",
+      "width": 390,
+      "style": "corridors",
+      "capture": "snuke-3-390-corridors.png",
+      "frame": {
+        "point": [
+          243.75,
+          60.9375
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-3-png",
+      "width": 390,
+      "style": "source",
+      "capture": "snuke-3-390-source.png",
+      "frame": {
+        "point": [
+          250,
+          60
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-4-png",
+      "width": 390,
+      "style": "corridors",
+      "capture": "snuke-4-390-corridors.png",
+      "frame": {
+        "point": [
+          234.375,
+          70.3125
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-4-png",
+      "width": 390,
+      "style": "source",
+      "capture": "snuke-4-390-source.png",
+      "frame": {
+        "point": [
+          225,
+          60
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-1-jpg",
+      "width": 1440,
+      "style": "corridors",
+      "capture": "snuke-1-1440-corridors.png",
+      "frame": {
+        "point": [
+          715,
+          140.625
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-1-jpg",
+      "width": 1440,
+      "style": "source",
+      "capture": "snuke-1-1440-source.png",
+      "frame": {
+        "point": [
+          706.41,
+          135.36
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-2-jpg",
+      "width": 1440,
+      "style": "corridors",
+      "capture": "snuke-2-1440-corridors.png",
+      "frame": {
+        "point": [
+          800,
+          58.75
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-2-jpg",
+      "width": 1440,
+      "style": "source",
+      "capture": "snuke-2-1440-source.png",
+      "frame": {
+        "point": [
+          800,
+          50
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-3-png",
+      "width": 1440,
+      "style": "corridors",
+      "capture": "snuke-3-1440-corridors.png",
+      "frame": {
+        "point": [
+          243.75,
+          60.9375
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-3-png",
+      "width": 1440,
+      "style": "source",
+      "capture": "snuke-3-1440-source.png",
+      "frame": {
+        "point": [
+          250,
+          60
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-4-png",
+      "width": 1440,
+      "style": "corridors",
+      "capture": "snuke-4-1440-corridors.png",
+      "frame": {
+        "point": [
+          234.375,
+          70.3125
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "maze": "draft-maze-images-snuke-snuke-4-png",
+      "width": 1440,
+      "style": "source",
+      "capture": "snuke-4-1440-source.png",
+      "frame": {
+        "point": [
+          225,
+          60
+        ],
+        "inView": true
+      },
+      "pageErrors": [],
+      "horizontalOverflow": false
+    }
+  ]
+}

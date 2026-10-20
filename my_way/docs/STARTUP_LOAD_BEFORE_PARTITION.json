@@ -1,0 +1,628 @@
+{
+  "executedAt": "2026-10-12T14:14:25.854057+00:00",
+  "base": "http://127.0.0.1:5176/Fractal-Maze/",
+  "scope": "Fresh browser context per route; production preview with no user interaction. Resource Timing body sizes include module preloads. Local preview transfer and duration do not represent compressed hosting or real user-network performance.",
+  "checks": [
+    {
+      "route": "",
+      "pageErrors": [],
+      "scriptCount": 7,
+      "scriptDecodedBytes": 454627,
+      "scriptTransferBytes": 147954,
+      "resources": [
+        {
+          "resource": "/Fractal-Maze/assets/index-DZBHbgRO.js",
+          "initiator": "script",
+          "transferBytes": 137535,
+          "encodedBytes": 137235,
+          "decodedBytes": 433454,
+          "durationMs": 29.5
+        },
+        {
+          "resource": "/Fractal-Maze/assets/index-CM3aQ9uF.css",
+          "initiator": "link",
+          "transferBytes": 14124,
+          "encodedBytes": 13824,
+          "decodedBytes": 61923,
+          "durationMs": 12.100000008940697
+        },
+        {
+          "resource": "/Fractal-Maze/assets/HomePage-CxIL8vTV.js",
+          "initiator": "script",
+          "transferBytes": 2602,
+          "encodedBytes": 2302,
+          "decodedBytes": 5910,
+          "durationMs": 8.200000002980232
+        },
+        {
+          "resource": "/Fractal-Maze/assets/NavBar-Dn61-Zsq.js",
+          "initiator": "script",
+          "transferBytes": 893,
+          "encodedBytes": 593,
+          "decodedBytes": 1390,
+          "durationMs": 7.5999999940395355
+        },
+        {
+          "resource": "/Fractal-Maze/assets/SquareMazeCanvas-CZplHFPi.js",
+          "initiator": "script",
+          "transferBytes": 3085,
+          "encodedBytes": 2785,
+          "decodedBytes": 6751,
+          "durationMs": 8.099999994039536
+        },
+        {
+          "resource": "/Fractal-Maze/assets/movementResolver-DcadjaNq.js",
+          "initiator": "script",
+          "transferBytes": 1074,
+          "encodedBytes": 774,
+          "decodedBytes": 2017,
+          "durationMs": 8
+        },
+        {
+          "resource": "/Fractal-Maze/assets/1_-_alice_in_wonderland-CGcrZyHm.js",
+          "initiator": "script",
+          "transferBytes": 2343,
+          "encodedBytes": 2043,
+          "decodedBytes": 4983,
+          "durationMs": 8.099999994039536
+        },
+        {
+          "resource": "/Fractal-Maze/assets/assetUrl-D6BiRKpX.js",
+          "initiator": "script",
+          "transferBytes": 422,
+          "encodedBytes": 122,
+          "decodedBytes": 122,
+          "durationMs": 5.600000008940697
+        },
+        {
+          "resource": "/Fractal-Maze/favicon.svg",
+          "initiator": "other",
+          "transferBytes": 530,
+          "encodedBytes": 230,
+          "decodedBytes": 230,
+          "durationMs": 2
+        }
+      ],
+      "previewHash": "d6ad253d592f036f0f9b0eac6ac09abdaa8e37dc9f99e863c4eae312d7602b7b"
+    },
+    {
+      "route": "library",
+      "pageErrors": [],
+      "scriptCount": 8,
+      "scriptDecodedBytes": 493837,
+      "scriptTransferBytes": 152096,
+      "resources": [
+        {
+          "resource": "/Fractal-Maze/assets/index-DZBHbgRO.js",
+          "initiator": "script",
+          "transferBytes": 137535,
+          "encodedBytes": 137235,
+          "decodedBytes": 433454,
+          "durationMs": 30.700000002980232
+        },
+        {
+          "resource": "/Fractal-Maze/assets/index-CM3aQ9uF.css",
+          "initiator": "link",
+          "transferBytes": 14124,
+          "encodedBytes": 13824,
+          "decodedBytes": 61923,
+          "durationMs": 12.400000005960464
+        },
+        {
+          "resource": "/Fractal-Maze/assets/LibraryPage-By-GTAi5.js",
+          "initiator": "script",
+          "transferBytes": 4059,
+          "encodedBytes": 3759,
+          "decodedBytes": 10778,
+          "durationMs": 9
+        },
+        {
+          "resource": "/Fractal-Maze/assets/catalogIndex-C2991c6t.js",
+          "initiator": "script",
+          "transferBytes": 4586,
+          "encodedBytes": 4286,
+          "decodedBytes": 32729,
+          "durationMs": 6.899999991059303
+        },
+        {
+          "resource": "/Fractal-Maze/assets/assetUrl-D6BiRKpX.js",
+          "initiator": "script",
+          "transferBytes": 422,
+          "encodedBytes": 122,
+          "decodedBytes": 122,
+          "durationMs": 5.600000008940697
+        },
+        {
+          "resource": "/Fractal-Maze/assets/MazeViewSelect-zLjon9kl.js",
+          "initiator": "script",
+          "transferBytes": 859,
+          "encodedBytes": 559,
+          "decodedBytes": 559,
+          "durationMs": 5.5999999940395355
+        },
+        {
+          "resource": "/Fractal-Maze/assets/mazeViews-CTuIc97F.js",
+          "initiator": "script",
+          "transferBytes": 1849,
+          "encodedBytes": 1549,
+          "decodedBytes": 3968,
+          "durationMs": 6.899999991059303
+        },
+        {
+          "resource": "/Fractal-Maze/assets/references-DKvoQwGL.js",
+          "initiator": "script",
+          "transferBytes": 1893,
+          "encodedBytes": 1593,
+          "decodedBytes": 10837,
+          "durationMs": 7
+        },
+        {
+          "resource": "/Fractal-Maze/assets/NavBar-Dn61-Zsq.js",
+          "initiator": "script",
+          "transferBytes": 893,
+          "encodedBytes": 593,
+          "decodedBytes": 1390,
+          "durationMs": 8.200000002980232
+        },
+        {
+          "resource": "/Fractal-Maze/favicon.svg",
+          "initiator": "other",
+          "transferBytes": 530,
+          "encodedBytes": 230,
+          "decodedBytes": 230,
+          "durationMs": 1.7000000029802322
+        },
+        {
+          "resource": "/Fractal-Maze/references/Maze_Images/Geocaching_Easter_13-10.png",
+          "initiator": "img",
+          "transferBytes": 9198,
+          "encodedBytes": 8898,
+          "decodedBytes": 8898,
+          "durationMs": 9
+        },
+        {
+          "resource": "/Fractal-Maze/references/source-assets/backlot-grid.png",
+          "initiator": "img",
+          "transferBytes": 23021,
+          "encodedBytes": 22721,
+          "decodedBytes": 22721,
+          "durationMs": 7.700000002980232
+        },
+        {
+          "resource": "/Fractal-Maze/references/Maze_Images/Ed_Pegg_Jr/Daedalus_3.gif",
+          "initiator": "img",
+          "transferBytes": 24339,
+          "encodedBytes": 24039,
+          "decodedBytes": 24039,
+          "durationMs": 8.299999997019768
+        },
+        {
+          "resource": "/Fractal-Maze/references/Maze_Images/Ed_Pegg_Jr/Daedalus_2.jpg",
+          "initiator": "img",
+          "transferBytes": 70008,
+          "encodedBytes": 69708,
+          "decodedBytes": 69708,
+          "durationMs": 8.899999991059303
+        }
+      ]
+    },
+    {
+      "route": "play/alice-in-wonderland",
+      "pageErrors": [],
+      "scriptCount": 23,
+      "scriptDecodedBytes": 3884746,
+      "scriptTransferBytes": 797817,
+      "resources": [
+        {
+          "resource": "/Fractal-Maze/assets/index-DZBHbgRO.js",
+          "initiator": "script",
+          "transferBytes": 137535,
+          "encodedBytes": 137235,
+          "decodedBytes": 433454,
+          "durationMs": 26.099999994039536
+        },
+        {
+          "resource": "/Fractal-Maze/assets/index-CM3aQ9uF.css",
+          "initiator": "link",
+          "transferBytes": 14124,
+          "encodedBytes": 13824,
+          "decodedBytes": 61923,
+          "durationMs": 10.5
+        },
+        {
+          "resource": "/Fractal-Maze/assets/PlayerPage-CPijYw3p.js",
+          "initiator": "script",
+          "transferBytes": 15849,
+          "encodedBytes": 15549,
+          "decodedBytes": 47964,
+          "durationMs": 8.799999997019768
+        },
+        {
+          "resource": "/Fractal-Maze/assets/ExportDialog-CeFAejms.js",
+          "initiator": "script",
+          "transferBytes": 1837,
+          "encodedBytes": 1537,
+          "decodedBytes": 4134,
+          "durationMs": 6.4000000059604645
+        },
+        {
+          "resource": "/Fractal-Maze/assets/react-BGLhEPWB.js",
+          "initiator": "script",
+          "transferBytes": 953,
+          "encodedBytes": 653,
+          "decodedBytes": 653,
+          "durationMs": 12
+        },
+        {
+          "resource": "/Fractal-Maze/assets/downloadFile-D0UgRBhy.js",
+          "initiator": "script",
+          "transferBytes": 740,
+          "encodedBytes": 440,
+          "decodedBytes": 440,
+          "durationMs": 12.899999991059303
+        },
+        {
+          "resource": "/Fractal-Maze/assets/catalog-Dg8-qoDp.js",
+          "initiator": "script",
+          "transferBytes": 236771,
+          "encodedBytes": 236471,
+          "decodedBytes": 1690406,
+          "durationMs": 74.70000000298023
+        },
+        {
+          "resource": "/Fractal-Maze/assets/1_-_alice_in_wonderland-CGcrZyHm.js",
+          "initiator": "script",
+          "transferBytes": 2343,
+          "encodedBytes": 2043,
+          "decodedBytes": 4983,
+          "durationMs": 15.400000005960464
+        },
+        {
+          "resource": "/Fractal-Maze/assets/6_-_Jay_McArthur_-_A_Long_Path_v8-DKIbRonC.js",
+          "initiator": "script",
+          "transferBytes": 952,
+          "encodedBytes": 652,
+          "decodedBytes": 1692,
+          "durationMs": 15.599999994039536
+        },
+        {
+          "resource": "/Fractal-Maze/assets/pathCatalog-C5PbSl-5.js",
+          "initiator": "script",
+          "transferBytes": 351142,
+          "encodedBytes": 350842,
+          "decodedBytes": 1556080,
+          "durationMs": 78
+        },
+        {
+          "resource": "/Fractal-Maze/assets/MazeCanvas-iHixp7ia.js",
+          "initiator": "script",
+          "transferBytes": 17394,
+          "encodedBytes": 17094,
+          "decodedBytes": 46433,
+          "durationMs": 18.899999991059303
+        },
+        {
+          "resource": "/Fractal-Maze/assets/SquareMazeCanvas-CZplHFPi.js",
+          "initiator": "script",
+          "transferBytes": 3085,
+          "encodedBytes": 2785,
+          "decodedBytes": 6751,
+          "durationMs": 16.799999997019768
+        },
+        {
+          "resource": "/Fractal-Maze/assets/movementResolver-DcadjaNq.js",
+          "initiator": "script",
+          "transferBytes": 1074,
+          "encodedBytes": 774,
+          "decodedBytes": 2017,
+          "durationMs": 19.399999991059303
+        },
+        {
+          "resource": "/Fractal-Maze/assets/assetUrl-D6BiRKpX.js",
+          "initiator": "script",
+          "transferBytes": 422,
+          "encodedBytes": 122,
+          "decodedBytes": 122,
+          "durationMs": 19.099999994039536
+        },
+        {
+          "resource": "/Fractal-Maze/assets/graphTraversal-Dc3ocIqk.js",
+          "initiator": "script",
+          "transferBytes": 545,
+          "encodedBytes": 245,
+          "decodedBytes": 245,
+          "durationMs": 22.600000008940697
+        },
+        {
+          "resource": "/Fractal-Maze/assets/playPDA-CWCVU91_.js",
+          "initiator": "script",
+          "transferBytes": 865,
+          "encodedBytes": 565,
+          "decodedBytes": 565,
+          "durationMs": 25.299999997019768
+        },
+        {
+          "resource": "/Fractal-Maze/assets/mazeViews-CTuIc97F.js",
+          "initiator": "script",
+          "transferBytes": 1849,
+          "encodedBytes": 1549,
+          "decodedBytes": 3968,
+          "durationMs": 26
+        },
+        {
+          "resource": "/Fractal-Maze/assets/catalogIndex-C2991c6t.js",
+          "initiator": "script",
+          "transferBytes": 4586,
+          "encodedBytes": 4286,
+          "decodedBytes": 32729,
+          "durationMs": 27.100000008940697
+        },
+        {
+          "resource": "/Fractal-Maze/assets/bundledReplays-gxwrgArh.js",
+          "initiator": "script",
+          "transferBytes": 6171,
+          "encodedBytes": 5871,
+          "decodedBytes": 21904,
+          "durationMs": 27.19999998807907
+        },
+        {
+          "resource": "/Fractal-Maze/assets/NavBar-Dn61-Zsq.js",
+          "initiator": "script",
+          "transferBytes": 893,
+          "encodedBytes": 593,
+          "decodedBytes": 1390,
+          "durationMs": 32.400000005960464
+        },
+        {
+          "resource": "/Fractal-Maze/assets/importReplay-DmJaG5FF.js",
+          "initiator": "script",
+          "transferBytes": 4133,
+          "encodedBytes": 3833,
+          "decodedBytes": 10545,
+          "durationMs": 32.70000000298023
+        },
+        {
+          "resource": "/Fractal-Maze/assets/PathPlayer-D1AOXCMb.js",
+          "initiator": "script",
+          "transferBytes": 5046,
+          "encodedBytes": 4746,
+          "decodedBytes": 12544,
+          "durationMs": 32.599999994039536
+        },
+        {
+          "resource": "/Fractal-Maze/assets/wirePlayDocument-B57iki4t.js",
+          "initiator": "script",
+          "transferBytes": 2773,
+          "encodedBytes": 2473,
+          "decodedBytes": 5168,
+          "durationMs": 32.1000000089407
+        },
+        {
+          "resource": "/Fractal-Maze/assets/MazeViewSelect-zLjon9kl.js",
+          "initiator": "script",
+          "transferBytes": 859,
+          "encodedBytes": 559,
+          "decodedBytes": 559,
+          "durationMs": 34.29999999701977
+        },
+        {
+          "resource": "/Fractal-Maze/favicon.svg",
+          "initiator": "other",
+          "transferBytes": 530,
+          "encodedBytes": 230,
+          "decodedBytes": 230,
+          "durationMs": 21.799999997019768
+        }
+      ]
+    },
+    {
+      "route": "play/1695993784968:0.6965701909885131",
+      "pageErrors": [],
+      "scriptCount": 23,
+      "scriptDecodedBytes": 3884746,
+      "scriptTransferBytes": 797817,
+      "resources": [
+        {
+          "resource": "/Fractal-Maze/assets/index-DZBHbgRO.js",
+          "initiator": "script",
+          "transferBytes": 137535,
+          "encodedBytes": 137235,
+          "decodedBytes": 433454,
+          "durationMs": 46.29999999701977
+        },
+        {
+          "resource": "/Fractal-Maze/assets/index-CM3aQ9uF.css",
+          "initiator": "link",
+          "transferBytes": 14124,
+          "encodedBytes": 13824,
+          "decodedBytes": 61923,
+          "durationMs": 8.899999991059303
+        },
+        {
+          "resource": "/Fractal-Maze/assets/PlayerPage-CPijYw3p.js",
+          "initiator": "script",
+          "transferBytes": 15849,
+          "encodedBytes": 15549,
+          "decodedBytes": 47964,
+          "durationMs": 7
+        },
+        {
+          "resource": "/Fractal-Maze/assets/ExportDialog-CeFAejms.js",
+          "initiator": "script",
+          "transferBytes": 1837,
+          "encodedBytes": 1537,
+          "decodedBytes": 4134,
+          "durationMs": 6
+        },
+        {
+          "resource": "/Fractal-Maze/assets/react-BGLhEPWB.js",
+          "initiator": "script",
+          "transferBytes": 953,
+          "encodedBytes": 653,
+          "decodedBytes": 653,
+          "durationMs": 11.5
+        },
+        {
+          "resource": "/Fractal-Maze/assets/downloadFile-D0UgRBhy.js",
+          "initiator": "script",
+          "transferBytes": 740,
+          "encodedBytes": 440,
+          "decodedBytes": 440,
+          "durationMs": 11.400000005960464
+        },
+        {
+          "resource": "/Fractal-Maze/assets/catalog-Dg8-qoDp.js",
+          "initiator": "script",
+          "transferBytes": 236771,
+          "encodedBytes": 236471,
+          "decodedBytes": 1690406,
+          "durationMs": 77.80000001192093
+        },
+        {
+          "resource": "/Fractal-Maze/assets/1_-_alice_in_wonderland-CGcrZyHm.js",
+          "initiator": "script",
+          "transferBytes": 2343,
+          "encodedBytes": 2043,
+          "decodedBytes": 4983,
+          "durationMs": 11.5
+        },
+        {
+          "resource": "/Fractal-Maze/assets/6_-_Jay_McArthur_-_A_Long_Path_v8-DKIbRonC.js",
+          "initiator": "script",
+          "transferBytes": 952,
+          "encodedBytes": 652,
+          "decodedBytes": 1692,
+          "durationMs": 11.399999991059303
+        },
+        {
+          "resource": "/Fractal-Maze/assets/pathCatalog-C5PbSl-5.js",
+          "initiator": "script",
+          "transferBytes": 351142,
+          "encodedBytes": 350842,
+          "decodedBytes": 1556080,
+          "durationMs": 78.20000000298023
+        },
+        {
+          "resource": "/Fractal-Maze/assets/MazeCanvas-iHixp7ia.js",
+          "initiator": "script",
+          "transferBytes": 17394,
+          "encodedBytes": 17094,
+          "decodedBytes": 46433,
+          "durationMs": 16.200000002980232
+        },
+        {
+          "resource": "/Fractal-Maze/assets/SquareMazeCanvas-CZplHFPi.js",
+          "initiator": "script",
+          "transferBytes": 3085,
+          "encodedBytes": 2785,
+          "decodedBytes": 6751,
+          "durationMs": 20.400000005960464
+        },
+        {
+          "resource": "/Fractal-Maze/assets/movementResolver-DcadjaNq.js",
+          "initiator": "script",
+          "transferBytes": 1074,
+          "encodedBytes": 774,
+          "decodedBytes": 2017,
+          "durationMs": 21
+        },
+        {
+          "resource": "/Fractal-Maze/assets/assetUrl-D6BiRKpX.js",
+          "initiator": "script",
+          "transferBytes": 422,
+          "encodedBytes": 122,
+          "decodedBytes": 122,
+          "durationMs": 19.200000002980232
+        },
+        {
+          "resource": "/Fractal-Maze/assets/graphTraversal-Dc3ocIqk.js",
+          "initiator": "script",
+          "transferBytes": 545,
+          "encodedBytes": 245,
+          "decodedBytes": 245,
+          "durationMs": 20.799999997019768
+        },
+        {
+          "resource": "/Fractal-Maze/assets/playPDA-CWCVU91_.js",
+          "initiator": "script",
+          "transferBytes": 865,
+          "encodedBytes": 565,
+          "decodedBytes": 565,
+          "durationMs": 23.700000002980232
+        },
+        {
+          "resource": "/Fractal-Maze/assets/mazeViews-CTuIc97F.js",
+          "initiator": "script",
+          "transferBytes": 1849,
+          "encodedBytes": 1549,
+          "decodedBytes": 3968,
+          "durationMs": 29.200000002980232
+        },
+        {
+          "resource": "/Fractal-Maze/assets/catalogIndex-C2991c6t.js",
+          "initiator": "script",
+          "transferBytes": 4586,
+          "encodedBytes": 4286,
+          "decodedBytes": 32729,
+          "durationMs": 29.299999997019768
+        },
+        {
+          "resource": "/Fractal-Maze/assets/bundledReplays-gxwrgArh.js",
+          "initiator": "script",
+          "transferBytes": 6171,
+          "encodedBytes": 5871,
+          "decodedBytes": 21904,
+          "durationMs": 29.400000005960464
+        },
+        {
+          "resource": "/Fractal-Maze/assets/NavBar-Dn61-Zsq.js",
+          "initiator": "script",
+          "transferBytes": 893,
+          "encodedBytes": 593,
+          "decodedBytes": 1390,
+          "durationMs": 30.200000002980232
+        },
+        {
+          "resource": "/Fractal-Maze/assets/importReplay-DmJaG5FF.js",
+          "initiator": "script",
+          "transferBytes": 4133,
+          "encodedBytes": 3833,
+          "decodedBytes": 10545,
+          "durationMs": 36.20000000298023
+        },
+        {
+          "resource": "/Fractal-Maze/assets/PathPlayer-D1AOXCMb.js",
+          "initiator": "script",
+          "transferBytes": 5046,
+          "encodedBytes": 4746,
+          "decodedBytes": 12544,
+          "durationMs": 36.20000000298023
+        },
+        {
+          "resource": "/Fractal-Maze/assets/wirePlayDocument-B57iki4t.js",
+          "initiator": "script",
+          "transferBytes": 2773,
+          "encodedBytes": 2473,
+          "decodedBytes": 5168,
+          "durationMs": 35.599999994039536
+        },
+        {
+          "resource": "/Fractal-Maze/assets/MazeViewSelect-zLjon9kl.js",
+          "initiator": "script",
+          "transferBytes": 859,
+          "encodedBytes": 559,
+          "decodedBytes": 559,
+          "durationMs": 34.900000005960464
+        },
+        {
+          "resource": "/Fractal-Maze/favicon.svg",
+          "initiator": "other",
+          "transferBytes": 530,
+          "encodedBytes": 230,
+          "decodedBytes": 230,
+          "durationMs": 24.100000008940697
+        }
+      ]
+    }
+  ]
+}

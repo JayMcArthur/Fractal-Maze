@@ -1,0 +1,31 @@
+{
+  "captures": [
+    {
+      "file": "koteitan-play-1440.png",
+      "mode": "play",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "file": "koteitan-solution-1440.png",
+      "mode": "solution",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "file": "koteitan-play-390.png",
+      "mode": "play",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "file": "koteitan-solution-390.png",
+      "mode": "solution",
+      "width": 390,
+      "overflow": false
+    }
+  ],
+  "pageErrors": [],
+  "production": true,
+  "solutionAtDrawnFinish": true
+}

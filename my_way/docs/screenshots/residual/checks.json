@@ -1,0 +1,30 @@
+[
+  {
+    "name": "wind-library",
+    "title": "Windischer: conversion review from Library",
+    "route": "http://127.0.0.1:5175/Fractal-Maze/library",
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "name": "wind-library-phone",
+    "title": "Windischer: phone Library review action",
+    "route": "http://127.0.0.1:5175/Fractal-Maze/library",
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "name": "wind-review-phone",
+    "title": "Windischer: incomplete Play URL opens its WIP workspace",
+    "route": "http://127.0.0.1:5175/Fractal-Maze/workbench/draft-maze-images-martin-windischer-windischer-png",
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "name": "guide-phone",
+    "title": "Guide: current player flows and primary research links",
+    "route": "http://127.0.0.1:5175/Fractal-Maze/docs",
+    "errors": [],
+    "overflow": false
+  }
+]

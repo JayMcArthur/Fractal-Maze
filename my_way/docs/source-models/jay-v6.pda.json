@@ -1,0 +1,1108 @@
+{
+  "format": "path-pda/1",
+  "review": "wip",
+  "semantics": "Nondeterministic finite path traversal; empty input is epsilon; push arrays are bottom-to-top.",
+  "states": [
+    {
+      "id": "1",
+      "label": "1",
+      "color": "#222222",
+      "helper": false
+    },
+    {
+      "id": "2",
+      "label": "2",
+      "color": "#222222",
+      "helper": false
+    },
+    {
+      "id": "3",
+      "label": "3",
+      "color": "#222222",
+      "helper": false
+    },
+    {
+      "id": "4",
+      "label": "4",
+      "color": "#222222",
+      "helper": false
+    },
+    {
+      "id": "5",
+      "label": "5",
+      "color": "#222222",
+      "helper": false
+    },
+    {
+      "id": "6",
+      "label": "6",
+      "color": "#222222",
+      "helper": false
+    },
+    {
+      "id": "7",
+      "label": "7",
+      "color": "#222222",
+      "helper": false
+    }
+  ],
+  "inputAlphabet": [
+    "(",
+    ")",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7"
+  ],
+  "stackAlphabet": [
+    "\u22a5",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "bottom": "\u22a5",
+  "start": {
+    "path": "1",
+    "address": []
+  },
+  "goal": {
+    "path": "7",
+    "address": []
+  },
+  "alternateGoals": null,
+  "acceptance": "Any declared finish path at its exact copy address; surface acceptance requires only the bottom marker.",
+  "transitions": [
+    {
+      "from": "1",
+      "input": "(",
+      "pop": "\u22a5",
+      "push": [
+        "\u22a5",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-0-in"
+    },
+    {
+      "from": "1",
+      "input": "(",
+      "pop": "A",
+      "push": [
+        "A",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-0-in"
+    },
+    {
+      "from": "1",
+      "input": "(",
+      "pop": "B",
+      "push": [
+        "B",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-0-in"
+    },
+    {
+      "from": "1",
+      "input": "(",
+      "pop": "C",
+      "push": [
+        "C",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-0-in"
+    },
+    {
+      "from": "1",
+      "input": "(",
+      "pop": "D",
+      "push": [
+        "D",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-0-in"
+    },
+    {
+      "from": "1",
+      "input": "(",
+      "pop": "E",
+      "push": [
+        "E",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-0-in"
+    },
+    {
+      "from": "1",
+      "input": "(",
+      "pop": "F",
+      "push": [
+        "F",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-0-in"
+    },
+    {
+      "from": "1",
+      "input": ")",
+      "pop": "A",
+      "push": [],
+      "to": "1",
+      "source": "edge-0-out"
+    },
+    {
+      "from": "2",
+      "input": "1",
+      "pop": "\u22a5",
+      "push": [
+        "\u22a5",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-1-in"
+    },
+    {
+      "from": "2",
+      "input": "1",
+      "pop": "A",
+      "push": [
+        "A",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-1-in"
+    },
+    {
+      "from": "2",
+      "input": "1",
+      "pop": "B",
+      "push": [
+        "B",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-1-in"
+    },
+    {
+      "from": "2",
+      "input": "1",
+      "pop": "C",
+      "push": [
+        "C",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-1-in"
+    },
+    {
+      "from": "2",
+      "input": "1",
+      "pop": "D",
+      "push": [
+        "D",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-1-in"
+    },
+    {
+      "from": "2",
+      "input": "1",
+      "pop": "E",
+      "push": [
+        "E",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-1-in"
+    },
+    {
+      "from": "2",
+      "input": "1",
+      "pop": "F",
+      "push": [
+        "F",
+        "A"
+      ],
+      "to": "1",
+      "source": "edge-1-in"
+    },
+    {
+      "from": "1",
+      "input": "2",
+      "pop": "A",
+      "push": [],
+      "to": "2",
+      "source": "edge-1-out"
+    },
+    {
+      "from": "3",
+      "input": "1",
+      "pop": "\u22a5",
+      "push": [
+        "\u22a5",
+        "B"
+      ],
+      "to": "1",
+      "source": "edge-2-in"
+    },
+    {
+      "from": "3",
+      "input": "1",
+      "pop": "A",
+      "push": [
+        "A",
+        "B"
+      ],
+      "to": "1",
+      "source": "edge-2-in"
+    },
+    {
+      "from": "3",
+      "input": "1",
+      "pop": "B",
+      "push": [
+        "B",
+        "B"
+      ],
+      "to": "1",
+      "source": "edge-2-in"
+    },
+    {
+      "from": "3",
+      "input": "1",
+      "pop": "C",
+      "push": [
+        "C",
+        "B"
+      ],
+      "to": "1",
+      "source": "edge-2-in"
+    },
+    {
+      "from": "3",
+      "input": "1",
+      "pop": "D",
+      "push": [
+        "D",
+        "B"
+      ],
+      "to": "1",
+      "source": "edge-2-in"
+    },
+    {
+      "from": "3",
+      "input": "1",
+      "pop": "E",
+      "push": [
+        "E",
+        "B"
+      ],
+      "to": "1",
+      "source": "edge-2-in"
+    },
+    {
+      "from": "3",
+      "input": "1",
+      "pop": "F",
+      "push": [
+        "F",
+        "B"
+      ],
+      "to": "1",
+      "source": "edge-2-in"
+    },
+    {
+      "from": "1",
+      "input": "3",
+      "pop": "B",
+      "push": [],
+      "to": "3",
+      "source": "edge-2-out"
+    },
+    {
+      "from": "4",
+      "input": "1",
+      "pop": "\u22a5",
+      "push": [
+        "\u22a5",
+        "C"
+      ],
+      "to": "1",
+      "source": "edge-3-in"
+    },
+    {
+      "from": "4",
+      "input": "1",
+      "pop": "A",
+      "push": [
+        "A",
+        "C"
+      ],
+      "to": "1",
+      "source": "edge-3-in"
+    },
+    {
+      "from": "4",
+      "input": "1",
+      "pop": "B",
+      "push": [
+        "B",
+        "C"
+      ],
+      "to": "1",
+      "source": "edge-3-in"
+    },
+    {
+      "from": "4",
+      "input": "1",
+      "pop": "C",
+      "push": [
+        "C",
+        "C"
+      ],
+      "to": "1",
+      "source": "edge-3-in"
+    },
+    {
+      "from": "4",
+      "input": "1",
+      "pop": "D",
+      "push": [
+        "D",
+        "C"
+      ],
+      "to": "1",
+      "source": "edge-3-in"
+    },
+    {
+      "from": "4",
+      "input": "1",
+      "pop": "E",
+      "push": [
+        "E",
+        "C"
+      ],
+      "to": "1",
+      "source": "edge-3-in"
+    },
+    {
+      "from": "4",
+      "input": "1",
+      "pop": "F",
+      "push": [
+        "F",
+        "C"
+      ],
+      "to": "1",
+      "source": "edge-3-in"
+    },
+    {
+      "from": "1",
+      "input": "4",
+      "pop": "C",
+      "push": [],
+      "to": "4",
+      "source": "edge-3-out"
+    },
+    {
+      "from": "5",
+      "input": "1",
+      "pop": "\u22a5",
+      "push": [
+        "\u22a5",
+        "D"
+      ],
+      "to": "1",
+      "source": "edge-4-in"
+    },
+    {
+      "from": "5",
+      "input": "1",
+      "pop": "A",
+      "push": [
+        "A",
+        "D"
+      ],
+      "to": "1",
+      "source": "edge-4-in"
+    },
+    {
+      "from": "5",
+      "input": "1",
+      "pop": "B",
+      "push": [
+        "B",
+        "D"
+      ],
+      "to": "1",
+      "source": "edge-4-in"
+    },
+    {
+      "from": "5",
+      "input": "1",
+      "pop": "C",
+      "push": [
+        "C",
+        "D"
+      ],
+      "to": "1",
+      "source": "edge-4-in"
+    },
+    {
+      "from": "5",
+      "input": "1",
+      "pop": "D",
+      "push": [
+        "D",
+        "D"
+      ],
+      "to": "1",
+      "source": "edge-4-in"
+    },
+    {
+      "from": "5",
+      "input": "1",
+      "pop": "E",
+      "push": [
+        "E",
+        "D"
+      ],
+      "to": "1",
+      "source": "edge-4-in"
+    },
+    {
+      "from": "5",
+      "input": "1",
+      "pop": "F",
+      "push": [
+        "F",
+        "D"
+      ],
+      "to": "1",
+      "source": "edge-4-in"
+    },
+    {
+      "from": "1",
+      "input": "5",
+      "pop": "D",
+      "push": [],
+      "to": "5",
+      "source": "edge-4-out"
+    },
+    {
+      "from": "6",
+      "input": "1",
+      "pop": "\u22a5",
+      "push": [
+        "\u22a5",
+        "E"
+      ],
+      "to": "1",
+      "source": "edge-5-in"
+    },
+    {
+      "from": "6",
+      "input": "1",
+      "pop": "A",
+      "push": [
+        "A",
+        "E"
+      ],
+      "to": "1",
+      "source": "edge-5-in"
+    },
+    {
+      "from": "6",
+      "input": "1",
+      "pop": "B",
+      "push": [
+        "B",
+        "E"
+      ],
+      "to": "1",
+      "source": "edge-5-in"
+    },
+    {
+      "from": "6",
+      "input": "1",
+      "pop": "C",
+      "push": [
+        "C",
+        "E"
+      ],
+      "to": "1",
+      "source": "edge-5-in"
+    },
+    {
+      "from": "6",
+      "input": "1",
+      "pop": "D",
+      "push": [
+        "D",
+        "E"
+      ],
+      "to": "1",
+      "source": "edge-5-in"
+    },
+    {
+      "from": "6",
+      "input": "1",
+      "pop": "E",
+      "push": [
+        "E",
+        "E"
+      ],
+      "to": "1",
+      "source": "edge-5-in"
+    },
+    {
+      "from": "6",
+      "input": "1",
+      "pop": "F",
+      "push": [
+        "F",
+        "E"
+      ],
+      "to": "1",
+      "source": "edge-5-in"
+    },
+    {
+      "from": "1",
+      "input": "6",
+      "pop": "E",
+      "push": [],
+      "to": "6",
+      "source": "edge-5-out"
+    },
+    {
+      "from": "7",
+      "input": "1",
+      "pop": "\u22a5",
+      "push": [
+        "\u22a5",
+        "F"
+      ],
+      "to": "1",
+      "source": "edge-6-in"
+    },
+    {
+      "from": "7",
+      "input": "1",
+      "pop": "A",
+      "push": [
+        "A",
+        "F"
+      ],
+      "to": "1",
+      "source": "edge-6-in"
+    },
+    {
+      "from": "7",
+      "input": "1",
+      "pop": "B",
+      "push": [
+        "B",
+        "F"
+      ],
+      "to": "1",
+      "source": "edge-6-in"
+    },
+    {
+      "from": "7",
+      "input": "1",
+      "pop": "C",
+      "push": [
+        "C",
+        "F"
+      ],
+      "to": "1",
+      "source": "edge-6-in"
+    },
+    {
+      "from": "7",
+      "input": "1",
+      "pop": "D",
+      "push": [
+        "D",
+        "F"
+      ],
+      "to": "1",
+      "source": "edge-6-in"
+    },
+    {
+      "from": "7",
+      "input": "1",
+      "pop": "E",
+      "push": [
+        "E",
+        "F"
+      ],
+      "to": "1",
+      "source": "edge-6-in"
+    },
+    {
+      "from": "7",
+      "input": "1",
+      "pop": "F",
+      "push": [
+        "F",
+        "F"
+      ],
+      "to": "1",
+      "source": "edge-6-in"
+    },
+    {
+      "from": "1",
+      "input": "7",
+      "pop": "F",
+      "push": [],
+      "to": "7",
+      "source": "edge-6-out"
+    },
+    {
+      "from": "2",
+      "input": "(",
+      "pop": "\u22a5",
+      "push": [
+        "\u22a5",
+        "B"
+      ],
+      "to": "2",
+      "source": "edge-7-in"
+    },
+    {
+      "from": "2",
+      "input": "(",
+      "pop": "A",
+      "push": [
+        "A",
+        "B"
+      ],
+      "to": "2",
+      "source": "edge-7-in"
+    },
+    {
+      "from": "2",
+      "input": "(",
+      "pop": "B",
+      "push": [
+        "B",
+        "B"
+      ],
+      "to": "2",
+      "source": "edge-7-in"
+    },
+    {
+      "from": "2",
+      "input": "(",
+      "pop": "C",
+      "push": [
+        "C",
+        "B"
+      ],
+      "to": "2",
+      "source": "edge-7-in"
+    },
+    {
+      "from": "2",
+      "input": "(",
+      "pop": "D",
+      "push": [
+        "D",
+        "B"
+      ],
+      "to": "2",
+      "source": "edge-7-in"
+    },
+    {
+      "from": "2",
+      "input": "(",
+      "pop": "E",
+      "push": [
+        "E",
+        "B"
+      ],
+      "to": "2",
+      "source": "edge-7-in"
+    },
+    {
+      "from": "2",
+      "input": "(",
+      "pop": "F",
+      "push": [
+        "F",
+        "B"
+      ],
+      "to": "2",
+      "source": "edge-7-in"
+    },
+    {
+      "from": "2",
+      "input": ")",
+      "pop": "B",
+      "push": [],
+      "to": "2",
+      "source": "edge-7-out"
+    },
+    {
+      "from": "3",
+      "input": "(",
+      "pop": "\u22a5",
+      "push": [
+        "\u22a5",
+        "C"
+      ],
+      "to": "3",
+      "source": "edge-8-in"
+    },
+    {
+      "from": "3",
+      "input": "(",
+      "pop": "A",
+      "push": [
+        "A",
+        "C"
+      ],
+      "to": "3",
+      "source": "edge-8-in"
+    },
+    {
+      "from": "3",
+      "input": "(",
+      "pop": "B",
+      "push": [
+        "B",
+        "C"
+      ],
+      "to": "3",
+      "source": "edge-8-in"
+    },
+    {
+      "from": "3",
+      "input": "(",
+      "pop": "C",
+      "push": [
+        "C",
+        "C"
+      ],
+      "to": "3",
+      "source": "edge-8-in"
+    },
+    {
+      "from": "3",
+      "input": "(",
+      "pop": "D",
+      "push": [
+        "D",
+        "C"
+      ],
+      "to": "3",
+      "source": "edge-8-in"
+    },
+    {
+      "from": "3",
+      "input": "(",
+      "pop": "E",
+      "push": [
+        "E",
+        "C"
+      ],
+      "to": "3",
+      "source": "edge-8-in"
+    },
+    {
+      "from": "3",
+      "input": "(",
+      "pop": "F",
+      "push": [
+        "F",
+        "C"
+      ],
+      "to": "3",
+      "source": "edge-8-in"
+    },
+    {
+      "from": "3",
+      "input": ")",
+      "pop": "C",
+      "push": [],
+      "to": "3",
+      "source": "edge-8-out"
+    },
+    {
+      "from": "4",
+      "input": "(",
+      "pop": "\u22a5",
+      "push": [
+        "\u22a5",
+        "D"
+      ],
+      "to": "4",
+      "source": "edge-9-in"
+    },
+    {
+      "from": "4",
+      "input": "(",
+      "pop": "A",
+      "push": [
+        "A",
+        "D"
+      ],
+      "to": "4",
+      "source": "edge-9-in"
+    },
+    {
+      "from": "4",
+      "input": "(",
+      "pop": "B",
+      "push": [
+        "B",
+        "D"
+      ],
+      "to": "4",
+      "source": "edge-9-in"
+    },
+    {
+      "from": "4",
+      "input": "(",
+      "pop": "C",
+      "push": [
+        "C",
+        "D"
+      ],
+      "to": "4",
+      "source": "edge-9-in"
+    },
+    {
+      "from": "4",
+      "input": "(",
+      "pop": "D",
+      "push": [
+        "D",
+        "D"
+      ],
+      "to": "4",
+      "source": "edge-9-in"
+    },
+    {
+      "from": "4",
+      "input": "(",
+      "pop": "E",
+      "push": [
+        "E",
+        "D"
+      ],
+      "to": "4",
+      "source": "edge-9-in"
+    },
+    {
+      "from": "4",
+      "input": "(",
+      "pop": "F",
+      "push": [
+        "F",
+        "D"
+      ],
+      "to": "4",
+      "source": "edge-9-in"
+    },
+    {
+      "from": "4",
+      "input": ")",
+      "pop": "D",
+      "push": [],
+      "to": "4",
+      "source": "edge-9-out"
+    },
+    {
+      "from": "5",
+      "input": "(",
+      "pop": "\u22a5",
+      "push": [
+        "\u22a5",
+        "E"
+      ],
+      "to": "5",
+      "source": "edge-10-in"
+    },
+    {
+      "from": "5",
+      "input": "(",
+      "pop": "A",
+      "push": [
+        "A",
+        "E"
+      ],
+      "to": "5",
+      "source": "edge-10-in"
+    },
+    {
+      "from": "5",
+      "input": "(",
+      "pop": "B",
+      "push": [
+        "B",
+        "E"
+      ],
+      "to": "5",
+      "source": "edge-10-in"
+    },
+    {
+      "from": "5",
+      "input": "(",
+      "pop": "C",
+      "push": [
+        "C",
+        "E"
+      ],
+      "to": "5",
+      "source": "edge-10-in"
+    },
+    {
+      "from": "5",
+      "input": "(",
+      "pop": "D",
+      "push": [
+        "D",
+        "E"
+      ],
+      "to": "5",
+      "source": "edge-10-in"
+    },
+    {
+      "from": "5",
+      "input": "(",
+      "pop": "E",
+      "push": [
+        "E",
+        "E"
+      ],
+      "to": "5",
+      "source": "edge-10-in"
+    },
+    {
+      "from": "5",
+      "input": "(",
+      "pop": "F",
+      "push": [
+        "F",
+        "E"
+      ],
+      "to": "5",
+      "source": "edge-10-in"
+    },
+    {
+      "from": "5",
+      "input": ")",
+      "pop": "E",
+      "push": [],
+      "to": "5",
+      "source": "edge-10-out"
+    },
+    {
+      "from": "6",
+      "input": "(",
+      "pop": "\u22a5",
+      "push": [
+        "\u22a5",
+        "F"
+      ],
+      "to": "6",
+      "source": "edge-11-in"
+    },
+    {
+      "from": "6",
+      "input": "(",
+      "pop": "A",
+      "push": [
+        "A",
+        "F"
+      ],
+      "to": "6",
+      "source": "edge-11-in"
+    },
+    {
+      "from": "6",
+      "input": "(",
+      "pop": "B",
+      "push": [
+        "B",
+        "F"
+      ],
+      "to": "6",
+      "source": "edge-11-in"
+    },
+    {
+      "from": "6",
+      "input": "(",
+      "pop": "C",
+      "push": [
+        "C",
+        "F"
+      ],
+      "to": "6",
+      "source": "edge-11-in"
+    },
+    {
+      "from": "6",
+      "input": "(",
+      "pop": "D",
+      "push": [
+        "D",
+        "F"
+      ],
+      "to": "6",
+      "source": "edge-11-in"
+    },
+    {
+      "from": "6",
+      "input": "(",
+      "pop": "E",
+      "push": [
+        "E",
+        "F"
+      ],
+      "to": "6",
+      "source": "edge-11-in"
+    },
+    {
+      "from": "6",
+      "input": "(",
+      "pop": "F",
+      "push": [
+        "F",
+        "F"
+      ],
+      "to": "6",
+      "source": "edge-11-in"
+    },
+    {
+      "from": "6",
+      "input": ")",
+      "pop": "F",
+      "push": [],
+      "to": "6",
+      "source": "edge-11-out"
+    }
+  ],
+  "notes": [
+    "Author clarification: follow the black routes, start at the top and exit at the bottom. The solution uses the same recurrence as v4/v8.",
+    "A\u2013F run counterclockwise from the top: green, yellow, orange, red, purple, blue. WIP: confirm this placement against the intended drawing.",
+    "The compressed black center is mapped into separate PDA channels. Overlapping traces there do not permit switching paths.",
+    "The image omits numbered outer pins for the internal paths. Copy arrivals use labeled path representatives; review these and the center bends before marking the conversion reviewed."
+  ]
+}

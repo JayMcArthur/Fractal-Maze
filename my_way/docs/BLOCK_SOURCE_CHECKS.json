@@ -1,0 +1,166 @@
+{
+  "executedAt": "2026-10-11T04:31:51.720942+00:00",
+  "unit": {
+    "files": 34,
+    "passed": 306
+  },
+  "productionBrowser": {
+    "passed": 95,
+    "baseURL": "http://127.0.0.1:5176/Fractal-Maze/",
+    "verification": "95-workflow full suite plus three affected workflows after the final proof-label refinement"
+  },
+  "lint": "passed",
+  "builds": {
+    "Pages": "passed",
+    "rootWebsite": "passed",
+    "warnings": [
+      "Large catalog/artwork/replay chunks remain on demand"
+    ]
+  },
+  "replays": {
+    "bundles": 74,
+    "variants": 64,
+    "uniqueIds": 74,
+    "validated": 63,
+    "wire": 11,
+    "partial": [],
+    "failures": []
+  },
+  "newSolutions": [
+    {
+      "id": "koteitan-block-3",
+      "start": [
+        1,
+        2
+      ],
+      "goal": [
+        2,
+        0
+      ],
+      "detail": 2,
+      "moves": 9
+    },
+    {
+      "id": "koteitan-block-5",
+      "start": [
+        4,
+        4
+      ],
+      "goal": [
+        3,
+        0
+      ],
+      "detail": 5,
+      "moves": 3979
+    }
+  ],
+  "sourceContract": "The original permits bottom entry and top exit; Play chooses open base cells on those edges. No substitution or adjacency rule changed.",
+  "offlineSearch": {
+    "maxGridWidth": 3125,
+    "browserFiniteGridLimit": 2048,
+    "publishedFormat": "fractalBlock exact-coordinate states and per-move details",
+    "productionImport": "passed"
+  },
+  "familyPresentation": {
+    "families": 49,
+    "captures": 98,
+    "widths": [
+      1440,
+      390
+    ],
+    "failures": 0,
+    "pageErrors": 0,
+    "horizontalOverflow": 0,
+    "boardSheetsInspected": 14,
+    "scope": "Initial default views and unbound source workspaces, not every route or alternate layout"
+  },
+  "staticHosting": {
+    "checks": 40,
+    "mounts": [
+      "/Fractal-Maze/",
+      "/"
+    ],
+    "workerCheckedOnBothMounts": true,
+    "pageErrors": 0,
+    "cspViolations": 0
+  },
+  "dependencies": {
+    "runtimeKnownVulnerabilities": 0,
+    "allKnownVulnerabilities": 0
+  },
+  "remaining": [
+    "Six variants still lack a verified shared solution; Block Maze and Easy\u2013Noke Lieu have checked negative results under current finite rules, with original author interpretation still requiring review",
+    "Windischer source topology remains unbound; v6 image mapping remains deferred by request",
+    "Native geometric Play still needs the canonical PDA/block cutover; richer register, coordinate, graph and tour models need representation review",
+    "All 32 identified proof-enabled Cantor gates now pass; broader arbitrary-history/source-fidelity and proof/model integration audits remain open",
+    "A full original-request completion, optimization and security audit remains open"
+  ],
+  "sourcePointerSweep": {
+    "players": 28,
+    "clicks": 56,
+    "pageErrors": 0,
+    "markerVisibleAndWithinView": true,
+    "scope": "Catalog-start original-drawing center and top-left X-area clicks; deeper histories remain unaudited",
+    "report": "SOURCE_POINTER_CHECKS.json"
+  },
+  "blockDefaults": {
+    "documents": 28,
+    "cases": 56,
+    "crossings": 224,
+    "pointerClicks": 112,
+    "scope": "Default block view, up to four legal compound crossings, source switch, center/corner clicks, switch back.",
+    "report": "BLOCK_DEFAULT_CHECKS.json"
+  },
+  "registerFraming": {
+    "documents": 17,
+    "frames": 400,
+    "scope": "Every register document at start; shared replays sampled at extrema, terminal types and regular steps.",
+    "report": "REPEATED_CAMERA_CHECKS.json"
+  },
+  "motionRegressions": [
+    "Layout selection and canonical session projection happen in one event; first walks use the selected geometry and undo restores recorded position",
+    "Rejected physical walks do not animate",
+    "Static movement instructions remove a measured 19px control-height change",
+    "Busy state guards keyboard, pointer and touch input before animation begins",
+    "Disconnected one-way departures are rejected and their controls disabled",
+    "Opposite arrows use reversible block bends; directed interior crossings stay separate",
+    "Coincident block prefixes project using the recorded onward crossing; invalid projections cannot drop a crossing"
+  ],
+  "originalLibraryCovers": {
+    "families": 25,
+    "checks": 50,
+    "failures": 0,
+    "report": "LIBRARY_COVER_CHECKS.json",
+    "scope": "Fresh canonical cards with image assets; saved overrides and asset-less diagrams excluded"
+  },
+  "finiteGateAudit": {
+    "documents": 28,
+    "gates": 1320,
+    "covered": 1288,
+    "crossings": 21246,
+    "walks": 19249,
+    "projections": 23822,
+    "replayImports": 5152,
+    "scope": "Declared finite PDA gate approaches, helper grouping, alternating physical layouts and replay import; not source fidelity, proof-enabled reachability or production UI.",
+    "report": "SOURCE_GATE_CHECKS.json"
+  },
+  "directedPresentation": {
+    "cases": 16,
+    "failures": 0,
+    "report": "DIRECTED_PLAY_CHECKS.json"
+  },
+  "liveProofAudit": "LIVE_PROOF_CHECKS.json",
+  "proofGateAudit": {
+    "documents": 2,
+    "gates": 32,
+    "covered": 32,
+    "walks": 196,
+    "crossings": 152,
+    "proofActions": 78,
+    "projections": 230,
+    "replayImports": 128,
+    "sourceHash": "f2a1a1a5af14df8de1b3b570e439fbe393efb84206df1dfaa576b03cf75fbeb0",
+    "sourceChangedDuringAudit": false,
+    "failures": []
+  }
+}

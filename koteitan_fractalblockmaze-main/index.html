@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head><title>fractal block maze</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<script type="text/javascript" src="./exarray.js"></script>
+<script type="text/javascript" src="./exmath.js"></script>
+<script type="text/javascript" src="./matrix.js"></script>
+<script type="text/javascript" src="./excanvas.js"></script>
+<script type="text/javascript" src="./event.js"></script>
+<script type="text/javascript" src="./main.js"></script>
+<script type="text/javascript" src="./mazesolver.js"></script>
+<style><!--
+  h1{text-align:center}
+  h2{text-align:center}
+  body{font-family:Segoe UI; color:black; background-color:white}  
+  a{color:black;border-style:none;text-decoration:underline}
+  a:link{color:black;border-style:none;text-decoration:underline}
+  a:visited{color:black;border-style:none;text-decoration:underline}
+  a:hover{color:black;border-color:none;text-decoration:underline}
+  address{text-align:right;font-style:normal}
+  .tdbutton{border-width:1px;border-style:solid;border-color:white;height:30px;width:30px}
+  hr{border-style:solid}
+  canvas{padding:0px;margin:0px}
+  .console{font-family:MS Gothic;color:white;background-color:black}
+  --></style>
+</head>
+<body>
+<h1>fractal block maze</h1>
+<p style="text-align:center">
+<form name="form0" style="text-align:center">
+<table align="center">
+  <tr>
+    <td>unit:</td>
+    <td><input type=text id='unit' size=2 style="text-align:right"></td>
+    <td><input type=button value=- onclick="javascript:onchangeunit(-1);"></td>
+    <td><input type=button value=+ onclick="javascript:onchangeunit(+1);"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>draw depth:</td>
+    <td><input type=text id='drawdepth' size=2 style="text-align:right"></td>
+    <td><input type=button value=- onclick="javascript:onchangedrawdepth(-1);"></td>
+    <td><input type=button value=+ onclick="javascript:onchangedrawdepth(+1);"></td>
+    <td><input type=button value="zoom out" onclick="javascript:zoomout();"></td>
+  </tr>
+  <tr>
+    <td>solver depth:</td>
+    <td><input type=text id='usersolverdepth'  size=2 style="text-align:right"></td>
+    <td><input type=button value=- onclick="javascript:onchangeusersolverdepth(-1);"></td>
+    <td><input type=button value=+ onclick="javascript:onchangeusersolverdepth(+1);"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>solver status:</td>
+    <td><input type=text value='solving...' id='solverstt' size=20 style="text-align:left"></td>
+    <td><input type=button value=pause onclick="javascript:onclickpause();"></td>
+    <td><input type=button value=reset onclick="javascript:onclickreset();"></td>
+    <td></td>
+  </tr>
+</table>
+</form></p>
+<p style="text-align:center">
+<canvas id="outcanvas" width=600px height=600px style="border-style:none;text-align:center"></canvas>
+</p>
+<address id="address">fractal block maze version <span id="versiondisplay"></span><br>
+programmed by <a href='https://twitter.com/koteitan/status/1565991297919332353'>koteitan</a> code at <a href='https://github.com/koteitan/fractalblockmaze/'>github</a><br>
+inspired by omeometo, "<a href="https://omeometo.hatenablog.com/entry/2018/12/28/155549">fractal maze とか</a>", omeometoの日記, 2018.12.28. (in Japanese)
+<div id="changelog"></div><br clear='all'>
+<div id="knownbugs"></div><br clear='all'>
+</address>
+<textarea id="debug" cols=50 rows=10 style='display:none'></textarea>
+<script type="text/javascript" src="./version.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+[
+  {
+    "file": "player-desktop.png",
+    "route": "play/alice-in-wonderland",
+    "title": "Alice player",
+    "errors": []
+  },
+  {
+    "file": "player-mobile.png",
+    "route": "play/alice-in-wonderland",
+    "title": "Alice phone",
+    "errors": []
+  },
+  {
+    "file": "library.png",
+    "route": "library",
+    "title": "Full collection",
+    "errors": []
+  },
+  {
+    "file": "editor.png",
+    "route": "editor/alice-in-wonderland",
+    "title": "Alice editor",
+    "errors": []
+  },
+  {
+    "file": "editor-mobile.png",
+    "route": "editor/alice-in-wonderland",
+    "title": "Editor phone",
+    "errors": []
+  },
+  {
+    "file": "block.png",
+    "route": "play/koteitan-block",
+    "title": "Black-cell substitution",
+    "errors": []
+  },
+  {
+    "file": "repeated.png",
+    "route": "play/repeated-directed-example",
+    "title": "Directed repeated maze",
+    "errors": []
+  },
+  {
+    "file": "graph.png",
+    "route": "play/portal-connections",
+    "title": "Declared portal connections",
+    "errors": []
+  },
+  {
+    "file": "orel-1.png",
+    "route": "play/alice-in-wonderland",
+    "title": "Alice and the Fractal Hedge Maze",
+    "errors": []
+  },
+  {
+    "file": "orel-2.png",
+    "route": "play/sierpinski",
+    "title": "Sierpinski",
+    "errors": []
+  },
+  {
+    "file": "orel-3.png",
+    "route": "play/microchip",
+    "title": "Microchip",
+    "errors": []
+  },
+  {
+    "file": "orel-4.png",
+    "route": "play/square",
+    "title": "Square",
+    "errors": []
+  },
+  {
+    "file": "orel-5.png",
+    "route": "play/a-long-path-v4",
+    "title": "A Long Path v4",
+    "errors": []
+  },
+  {
+    "file": "orel-6.png",
+    "route": "play/a-long-path-v8",
+    "title": "A Long Path v8",
+    "errors": []
+  },
+  {
+    "file": "orel-7.png",
+    "route": "play/matthias-weber",
+    "title": "Fractal Maze",
+    "errors": []
+  },
+  {
+    "file": "orel-8.png",
+    "route": "play/skeptic-play-carpet",
+    "title": "Carpet",
+    "errors": []
+  },
+  {
+    "file": "orel-9.png",
+    "route": "play/block-maze",
+    "title": "Block Maze",
+    "errors": []
+  },
+  {
+    "file": "geometric-1.png",
+    "route": "play/1611103791037:0.9096318422296219",
+    "title": "Easy - Noke Lieu",
+    "errors": []
+  },
+  {
+    "file": "geometric-2.png",
+    "route": "play/1611103797081:0.515861093172634",
+    "title": "Alice fractal hedge maze - Mark Earnest",
+    "errors": []
+  },
+  {
+    "file": "geometric-3.png",
+    "route": "play/1611103986854:0.13932327156430646",
+    "title": "Circular maze - trivialknot",
+    "errors": []
+  },
+  {
+    "file": "geometric-4.png",
+    "route": "play/1611104942261:0.9591263235662271",
+    "title": "Maze 2 - Mark J. P. Wolf",
+    "errors": []
+  },
+  {
+    "file": "geometric-5.png",
+    "route": "play/1611268129134:0.4658219264206578",
+    "title": "Fractal Tomb",
+    "errors": []
+  },
+  {
+    "file": "geometric-6.png",
+    "route": "play/1611352169897:0.12342278495620107",
+    "title": "Walls and carpets - trivialknot",
+    "errors": []
+  },
+  {
+    "file": "geometric-7.png",
+    "route": "play/1611422244970:0.1936128021014305",
+    "title": "Sierpinski Paths - trivialknot",
+    "errors": []
+  },
+  {
+    "file": "geometric-8.png",
+    "route": "play/1611435584430:0.2644481969023782",
+    "title": "Geocaching - Easter 13-#10",
+    "errors": []
+  },
+  {
+    "file": "geometric-9.png",
+    "route": "play/1695830650438:0.062165258536797996",
+    "title": "Numb3rs - Killer Chat",
+    "errors": []
+  },
+  {
+    "file": "geometric-10.png",
+    "route": "play/1695993784968:0.6965701909885131",
+    "title": "Tsat - Cubist",
+    "errors": []
+  },
+  {
+    "file": "geometric-11.png",
+    "route": "play/1696020622363:0.3113521896180822",
+    "title": "Recursive Fractal Maze - Luegaria",
+    "errors": []
+  },
+  {
+    "file": "geometric-12.png",
+    "route": "play/1696690190498:0.33207289334061585",
+    "title": "Fractal Maze - Mark J P Wolf",
+    "errors": []
+  },
+  {
+    "file": "replay.png",
+    "title": "Saved replay at final step",
+    "errors": []
+  }
+]

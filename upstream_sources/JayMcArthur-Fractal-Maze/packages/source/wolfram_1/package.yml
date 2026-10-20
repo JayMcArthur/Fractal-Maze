@@ -1,0 +1,28 @@
+format: fmaze-package-v0
+id: wolfram_1
+title: Wolfram 1 WIP Port Graph
+primary_authoring: port_graph
+
+logic:
+  href: logic.yml
+  format: fmaze-logic-v0
+
+solutions:
+  - id: known
+    href: solutions/known.yml
+    format: fmaze-solution-v0
+
+provenance:
+  sources:
+    - type: image
+      href: ../../../Maze_Images/Mark_J_P_Wolf/Wolfram_1.gif
+    - type: solution_image
+      href: ../../../Maze_Images/Mark_J_P_Wolf/Wolfram_1_-_Solution.jpg
+    - type: image_source
+      href: http://www.mathpuzzle.com/FractalMaze.gif
+    - type: local_solver_notes
+      href: ../../../Papers/mathpuzzle.com_fractalmaze.txt
+    - type: pda_notes
+      href: ../../../Papers/Fractal_Maze_to_PDA/Fractal_Maze_to_PDA.md
+    - type: handwritten_record
+      note: WIP executable port graph; provenance and modeling notes remain unverified against the image.

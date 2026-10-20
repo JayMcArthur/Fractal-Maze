@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repeated Maze Visualizer</title>
+<script>
+/* localStorage namespace helpers.  Every key of this app lives under
+ * "repeated-maze:".  Reads fall back to the legacy un-namespaced key,
+ * writes always go to the new key.  Legacy keys are never removed.
+ * Defined here (first script of the file) so both the FOUC guard below
+ * and the main script further down go through the same accessors. */
+var LS_NS = 'repeated-maze';
+var LS_LEGACY = { state: 'repeated-maze-state' };  /* new name -> old key */
+function lsKey(name) {
+  return LS_NS + ':' + name;
+}
+function lsLoadRaw(name) {
+  try {
+    const raw = localStorage.getItem(lsKey(name));
+    if (raw !== null) return raw;
+    if (LS_LEGACY[name]) return localStorage.getItem(LS_LEGACY[name]);
+  } catch (e) {}
+  return null;
+}
+function lsSaveRaw(name, value) {
+  try { localStorage.setItem(lsKey(name), value); } catch (e) {}
+}
+function lsRemove(name) {
+  /* Only the namespaced key is removed; the legacy key is left alone. */
+  try { localStorage.removeItem(lsKey(name)); } catch (e) {}
+}
+function lsRemoveAll() {
+  /* Remove every key under the "repeated-maze:" namespace.  Legacy
+   * keys are left alone, as above. */
+  try {
+    const prefix = LS_NS + ':';
+    const keys = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k !== null && k.startsWith(prefix)) keys.push(k);
+    }
+    for (const k of keys) localStorage.removeItem(k);
+  } catch (e) {}
+}
+
+/* Apply the darkmode class to <html> before stylesheets render, so the
+ * saved-off darkmode users never see a white flash on page load. URL
+ * query param (?darkmode=0|1) overrides the persisted state. */
+try {
+  let _dark = true;  /* initial default: dark mode ON */
+  const _params = new URLSearchParams(window.location.search);
+  if (_params.has('darkmode')) {
+    _dark = _params.get('darkmode') === '1';
+  } else if (!/(^|[?&])reset(=|&|$)/.test(window.location.search)) {
+    const _saved = lsLoadRaw('state');
+    if (_saved) {
+      try {
+        const _st = JSON.parse(_saved);
+        /* Only honour darkmode from a versioned-1 state.  Versionless
+         * (older format) falls through to the initial default below. */
+        if (_st && _st.version === 1 && _st.checkboxes) {
+          _dark = !!_st.checkboxes['chk-darkmode'];
+        }
+      } catch (e) {}
+    }
+  }
+  if (_dark) document.documentElement.classList.add('darkmode');
+} catch (e) {}
+</script>
+<link rel="stylesheet" href="style.css">
+<style>canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; image-rendering: crisp-edges; }</style>
+</head>
+<body>
+<h1>Repeated Maze Visualizer <span style="font-size:12px;color:var(--text-dim)">v2.44</span><!-- tracePortCells step cap scales with grid (cp3-2 long-port fix) --></h1>
+<div class="fields">
+  <div class="field">
+    <label for="maze-input">Maze:</label>
+    <textarea id="maze-input">normal: W0-N0, S0-W2, W2-S1, N1-W1; nx: (none); ny: (none)</textarea>
+  </div>
+  <div class="field">
+    <label for="answer-input">Answer:</label>
+    <textarea id="answer-input">(0,1,E0) -> (1,1,N0) -> (0,2,E2) -> (1,1,N1) -> (0,1,E1)</textarea>
+  </div>
+</div>
+<div style="margin-bottom: 8px;">
+  <label><input type="checkbox" id="chk-normal" checked> normal graph</label>
+  <label style="margin-left: 12px;"><input type="checkbox" id="chk-simple"> x,y only graph</label>
+  <label style="margin-left: 12px;"><input type="checkbox" id="chk-diagonal"> diagonal</label>
+  <label style="margin-left: 12px;"><input type="checkbox" id="chk-answer-path" checked> answer path</label>
+  <label style="margin-left: 12px;"><input type="checkbox" id="chk-step"> step</label>
+  <label style="margin-left: 12px;"><input type="checkbox" id="chk-darkmode"> darkmode</label>
+</div>
+<div class="button-row">
+  <button id="draw-btn">Draw Maze</button>
+  <button id="solve-btn">Solve Maze</button>
+  <button id="save-img-btn">Save Image</button>
+  <button id="copy-url-btn">Copy Link</button>
+  <button id="reset-btn">Reset</button>
+  <label class="preset-label">Preset: <select id="preset-select">
+    <option value="">(select)</option>
+    <option value="clear">clear</option>
+    <option value="cp2-3">counter pump cp2-3</option>
+    <option value="cp2-4">counter pump cp2-4</option>
+    <option value="cp2-5">counter pump cp2-5</option>
+    <option value="cp2-6">counter pump cp2-6</option>
+    <option value="md3">minsky doubling md3</option>
+    <option value="md4">minsky doubling md4</option>
+    <option value="md5">minsky doubling md5</option>
+    <option value="cp3-2">counter pump cp3-2</option>
+  </select></label>
+  <span id="preset-status" class="preset-status" role="status"></span>
+  <span id="dbg-canvas-size" style="font-size: 12px; color: var(--text-dim);"></span>
+</div>
+<div id="normal-section">
+  <div class="legend">
+    <span><span class="swatch sw-path"></span>Path</span>
+    <span><span class="swatch sw-start"></span>Start</span>
+    <span><span class="swatch sw-goal"></span>Goal</span>
+    <span class="pan-zoom-hint" style="color:var(--text-dim);">Pan/zoom: mouse drag/wheel or swipe/pinch</span>
+  </div>
+  <div id="canvas-wrap" class="canvas-wrap"><canvas id="canvas"></canvas></div>
+</div>
+<div id="simple-section" style="display:none;">
+  <div class="legend">
+    <span><span class="swatch sw-simple-start"></span>Start</span>
+    <span><span class="swatch sw-simple-end"></span>End</span>
+    <span>Color: Blue → Red</span>
+  </div>
+  <div id="canvas-wrap-simple" class="canvas-wrap"><canvas id="canvas-simple"></canvas></div>
+</div>
+
+<script src="lee/prng.js"></script>
+<script src="lee/check_equivalence.js"></script>
+<script src="lee/insert_map.js"></script>
+<script src="lee/lee_algorithm.js"></script>
+<script src="lee/index_adapter.js"></script>
+<script>
+/* Base sizes (at scale=1, these correspond to the "2x" design) */
+const BASE_CELL = 240;
+const BASE_MARGIN = 100;
+
+/* Internal debug switches (no UI). Flip to false at release. */
+const DEBUG_SHOW_SUBBLOCK_GRID = false;
+const DEBUG_LOG_ANSWER_PATH = false;
+const DEBUG_SHOW_CANVAS_SIZE = false;
+
+/* Canvas pan/zoom viewport. Set by mouse handlers; setupCanvas uses
+ * viewState when .userControlled is true, otherwise fits to path bounds. */
+let viewState = { cx: 0, cy: 0, zoom: 1, userControlled: false };
+let simpleViewState = { cx: 0, cy: 0, zoom: 1, userControlled: false };
+
+/* Read a CSS custom property (e.g. color('stroke') -> value of --stroke).
+ * Reads from <body> so that body.darkmode overrides propagate. */
+function color(name) {
+  return getComputedStyle(document.body)
+    .getPropertyValue('--' + name).trim();
+}
+
+/* ---- Parsing ---- */
+
+function parseTermName(s) {
+  s = s.trim();
+  return { dir: s[0], idx: parseInt(s.substring(1)) };
+}
+
+function parseMaze(text) {
+  /* Strip "Maze:" prefix and any "Path length: N" lines */
+  text = text.replace(/^maze:\s*/i, '').trim();
+  text = text.replace(/^path\s+length:\s*\d+.*$/gim, '').trim();
+  const result = { normal: [], nx: [], ny: [], zero: [] };
+  const sections = text.split(';');
+  for (const sec of sections) {
+    const t = sec.trim();
+    const ci = t.indexOf(':');
+    if (ci < 0) continue;
+    const type = t.substring(0, ci).trim().toLowerCase();
+    const body = t.substring(ci + 1).trim();
+    if (body === '(none)' || !body) continue;
+    const ports = body.split(',').map(p => {
+      const t = p.trim();
+      const isDirected = t.includes('->');
+      const parts = isDirected ? t.split('->') : t.split('-');
+      if (parts.length !== 2) return null;
+      return {
+        src: parseTermName(parts[0]),
+        dst: parseTermName(parts[1]),
+        directed: isDirected,
+      };
+    }).filter(p => p !== null);
+    if (type === 'normal') result.normal = ports;
+    else if (type === 'nx') result.nx = ports;
+    else if (type === 'ny') result.ny = ports;
+    else if (type === 'zero') result.zero = ports;
+  }
+  return result;
+}
+
+/* Pick the port set that applies at block (bx, by). */
+function portsAtBlock(maze, bx, by) {
+  if (bx === 0 && by === 0) return maze.zero || [];
+  if (bx === 0)             return maze.nx   || [];
+  if (by === 0)             return maze.ny   || [];
+  return maze.normal || [];
+}
+
+function parsePath(text) {
+  /* Strip "Path:" prefix and "Path length: N" lines */
+  text = text.replace(/^path\s+length:\s*\d+.*$/gim, '').trim();
+  text = text.replace(/^path:\s*/i, '').trim();
+  if (!text) return [];
+  const parts = text.split('->');
+  return parts.map(p => {
+    const m = p.trim().match(/\((-?\d+),(-?\d+),([A-Z])(\d+)\)/);
+    if (!m) return null;
+    return { x: parseInt(m[1]), y: parseInt(m[2]), dir: m[3], idx: parseInt(m[4]) };
+  }).filter(s => s !== null);
+}
+
+function detectNterm(maze, path) {
+  let nterm = 2;
+  for (const ports of [maze.normal, maze.nx, maze.ny, maze.zero])
+    for (const p of (ports || [])) {
+      if (p.src.dir !== 'C') nterm = Math.max(nterm, p.src.idx + 1);
+      if (p.dst.dir !== 'C') nterm = Math.max(nterm, p.dst.idx + 1);
+    }
+  for (const s of path)
+    if (s.dir !== 'C') nterm = Math.max(nterm, s.idx + 1);
+  return nterm;
+}
+
+/* C subterminals live in their own namespace, distinct from W/E/N/S.
+ * Their count drives the angular spacing on the cell-centre circle, so
+ * detect them separately from the wall-side nterm. */
+function detectNCterm(maze, path) {
+  let n = 2;
+  for (const ports of [maze.normal, maze.nx, maze.ny, maze.zero])
+    for (const p of (ports || [])) {
+      if (p.src.dir === 'C') n = Math.max(n, p.src.idx + 1);
+      if (p.dst.dir === 'C') n = Math.max(n, p.dst.idx + 1);
+    }
+  for (const s of path)
+    if (s.dir === 'C') n = Math.max(n, s.idx + 1);
+  return n;
+}
+
+/* ---- Geometry helpers ---- */
+
+function termLocalPos(dir, idx, nterm, cellSize, nCterm) {
+  if (dir === 'C') {
+    /* Place C0..C[nCterm-1] on a circle of radius cellSize*(3/8)
+     * centred on the cell, starting at angle 3pi/4 and advancing
+     * clockwise so C0 lands in the upper-left quadrant. nCterm is the
+     * count of distinct C indices in the maze; falls back to nterm if
+     * not provided (legacy callers). */
+    const n = nCterm != null ? nCterm : nterm;
+    if (n <= 1) return { x: cellSize / 2, y: cellSize / 2 };
+    const r = cellSize * 3 / 8;
+    const theta = (3 * Math.PI / 4) + (2 * Math.PI * idx / n);
+    return {
+      x: cellSize / 2 + r * Math.cos(theta),
+      y: cellSize / 2 + r * Math.sin(theta),
+    };
+  }
+  const t = cellSize * (idx + 1) / (nterm + 1);
+  switch (dir) {
+    case 'E': return { x: cellSize, y: t };
+    case 'W': return { x: 0, y: t };
+    case 'N': return { x: t, y: 0 };
+    case 'S': return { x: t, y: cellSize };
+  }
+}
+
+function termInsetPos(dir, idx, nterm) {
+  const p = termLocalPos(dir, idx, nterm);
+  switch (dir) {
+    case 'E': return { x: p.x - INSET, y: p.y };
+    case 'W': return { x: p.x + INSET, y: p.y };
+    case 'N': return { x: p.x, y: p.y + INSET };
+    case 'S': return { x: p.x, y: p.y - INSET };
+  }
+}
+
+/* ---- Orthogonal port routing ---- */
+
+/*
+ * routeBlockPorts -- compute orthogonal polyline routes for all normal ports.
+ *
+ * Algorithm (from diagonal2.md): deterministic collision-free routing (v1.0).
+ * 1. Count ports per side. Assign channel indices per terminal.
+ * 2. Adjacent → L-bend (no middle channel). Opposite/Same → Z-bend (mH/mV).
+ * 3. Pre-compute grid size: nR = 1+pW+pE+mH+1, nC = 1+pN+pS+mV+1.
+ * 4. Route: L-bend at channel intersection, Z/U-bend via dedicated middle channel.
+ * 5. No collision search or grid expansion needed — overlaps cannot occur.
+ * 6. termPos display-only alignment: E[i].y = W[i].y, S[i].x = N[i].x.
+ *
+ * Returns array of polylines (each is [{x,y}] in block-local coordinates).
+ */
+function routeBlockPorts(ports, nterm, cellSize) {
+  /* Delegated to lee/index_adapter.js (diagonal.md + Lee algorithm). */
+  return buildBlockSubgrid(ports, nterm, cellSize);
+}
+
+
+/* ---- Edge / Arrow drawing ---- */
+
+function drawLine(ctx, x1, y1, x2, y2, color, lw) {
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = lw;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawArrow(ctx, x1, y1, x2, y2, color, lw) {
+  const hl = 12 * lw;
+  const angle = Math.atan2(y2 - y1, x2 - x1);
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  ctx.lineWidth = lw;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - hl * Math.cos(angle - 0.15), y2 - hl * Math.sin(angle - 0.15));
+  ctx.lineTo(x2 - hl * Math.cos(angle + 0.15), y2 - hl * Math.sin(angle + 0.15));
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawCurvedLine(ctx, x1, y1, x2, y2, cpx, cpy, color, lw) {
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = lw;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.quadraticCurveTo(cpx, cpy, x2, y2);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawCurvedArrowCP(ctx, x1, y1, x2, y2, cpx, cpy, color, lw) {
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  ctx.lineWidth = lw;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.quadraticCurveTo(cpx, cpy, x2, y2);
+  ctx.stroke();
+  const hl = 12 * lw;
+  const tx = 2 * (x2 - cpx), ty = 2 * (y2 - cpy);
+  const angle = Math.atan2(ty, tx);
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - hl * Math.cos(angle - 0.15), y2 - hl * Math.sin(angle - 0.15));
+  ctx.lineTo(x2 - hl * Math.cos(angle + 0.15), y2 - hl * Math.sin(angle + 0.15));
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+/* ---- Grid bounds ---- */
+
+function computeBounds(path) {
+  if (path.length > 0) {
+    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    for (const s of path) {
+      minX = Math.min(minX, s.x, s.x + (s.dir === 'E' ? 1 : 0));
+      maxX = Math.max(maxX, s.x, s.x + (s.dir === 'E' ? 1 : 0));
+      minY = Math.min(minY, s.y, s.y + (s.dir === 'N' ? 1 : 0));
+      maxY = Math.max(maxY, s.y, s.y + (s.dir === 'N' ? 1 : 0));
+    }
+    return { minX, maxX, minY, maxY };
+  }
+  return { minX: 0, maxX: 3, minY: 0, maxY: 3 };
+}
+
+/* Default visible window for the main (normal) view: always the 4x4
+ * blocks (0,0)..(3,3). The origin (bottom-left of block (0,0)) is pinned
+ * to the canvas's bottom-left corner by setupCanvas; user can pan/zoom
+ * to navigate anywhere from there. */
+function computeDefaultNormalBounds(_path) {
+  return { minX: 0, maxX: 3, minY: 0, maxY: 3 };
+}
+
+/* ---- Setup canvas with grid and axis labels ---- */
+
+function setupCanvas(canvasId, wrapId, bounds) {
+  const canvas = document.getElementById(canvasId);
+  const wrap = document.getElementById(wrapId);
+  const availW = wrap.parentElement.clientWidth - 4;
+
+  const isMain = canvasId === 'canvas';
+  let minX, maxX, minY, maxY, scale, cssW, cssH;
+  let viewCenterPx = null;          /* { x, y } pixel at viewState.cx/cy */
+
+  if (isMain) {
+    /* Main canvas always runs in viewport mode. Canvas CSS width fills
+     * the container; height follows the remaining window height so the
+     * canvas stays visible without scrolling. */
+    cssW = availW;
+    /* Page (not viewport) offset: a viewport offset goes negative once the
+     * page is scrolled, which grew the canvas on every redraw and pushed
+     * the content below it (the x,y-only graph) away while dragging. */
+    const wrapTop = wrap.getBoundingClientRect().top + window.scrollY;
+    const availH = Math.max(200, Math.floor(window.innerHeight - wrapTop - 40));
+    /* Mobile fallback: when the remaining window height is too short for
+     * the maze to be usable, make the canvas square (= width) so the user
+     * can still see the grid, even if it overflows below the viewport. */
+    const isMobile = availH < 300;
+    cssH = isMobile ? cssW : availH;
+    document.body.classList.toggle('mobile-mode', isMobile);
+    if (!viewState.userControlled) {
+      const sCols = bounds.maxX - bounds.minX + 1;
+      const seedZoom = cssW / (sCols * BASE_CELL);
+      const seedCell = BASE_CELL * seedZoom;
+      viewState = {
+        /* Default pan: shift the bottom-left corner from block (0,0)
+         * to block (-0.5, -0.5) so Start/Goal subterminals at the
+         * outer edge of (0,0) are not clipped against the canvas
+         * border. */
+        cx: (bounds.minX + bounds.maxX + 1) / 2 - 0.5,
+        /* cy pinned so bpos(_, bounds.minY).y + CELL === cssH:
+         *   cssH/2 + (cy - bounds.minY) * CELL === cssH - CELL
+         *   cy = bounds.minY + cssH/(2*CELL) - 1
+         * then shift by -0.5 for the same Start/Goal-visible reason. */
+        cy: bounds.minY + cssH / (2 * seedCell) - 1.5,
+        zoom: seedZoom,
+        userControlled: false,
+      };
+    }
+    scale = viewState.zoom;
+    const CELL_tmp = BASE_CELL * scale;
+    const halfColBlocks = (cssW / 2) / CELL_tmp;
+    const halfRowBlocks = (cssH / 2) / CELL_tmp;
+    minX = Math.floor(viewState.cx - halfColBlocks) - 1;
+    maxX = Math.ceil(viewState.cx + halfColBlocks) + 1;
+    minY = Math.floor(viewState.cy - halfRowBlocks) - 1;
+    maxY = Math.ceil(viewState.cy + halfRowBlocks) + 1;
+    viewCenterPx = { x: cssW / 2, y: cssH / 2 };
+  } else {
+    /* Non-main canvases (e.g. future overlays): keep the old auto-fit. */
+    minX = bounds.minX; maxX = bounds.maxX;
+    minY = bounds.minY; maxY = bounds.maxY;
+    const cols = maxX - minX + 1;
+    const rows = maxY - minY + 1;
+    const idealW = BASE_MARGIN * 2 + cols * BASE_CELL;
+    scale = Math.min(1, availW / idealW);
+    cssW = BASE_MARGIN * 2 * scale + cols * BASE_CELL * scale;
+    cssH = BASE_MARGIN * 2 * scale + rows * BASE_CELL * scale;
+  }
+
+  const CELL = BASE_CELL * scale;
+  const MARGIN = BASE_MARGIN * scale;
+  const S = scale;
+
+  const dpr = window.devicePixelRatio || 1;
+  canvas.style.width = cssW + 'px';
+  canvas.style.height = cssH + 'px';
+  canvas.width = Math.round(cssW * dpr);
+  canvas.height = Math.round(cssH * dpr);
+  if (isMain && DEBUG_SHOW_CANVAS_SIZE) {
+    const el = document.getElementById('dbg-canvas-size');
+    if (el) el.textContent = 'canvas: ' + Math.round(cssW) + ' x ' + Math.round(cssH)
+      + ' css, dpr=' + dpr + ', win=' + window.innerWidth + 'x' + window.innerHeight;
+  }
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.imageSmoothingEnabled = false;
+
+  function bpos(bx, by) {
+    if (viewCenterPx) {
+      return {
+        x: viewCenterPx.x + (bx - viewState.cx) * CELL,
+        y: viewCenterPx.y - (by - viewState.cy) * CELL,
+      };
+    }
+    return { x: MARGIN + (bx - minX) * CELL, y: MARGIN + (maxY - by) * CELL };
+  }
+
+  /* Crisp 1-pixel primitives via fillRect (no anti-aliasing).
+   * Endpoint-based to guarantee the corner pixel is shared by the two
+   * meeting segments even when the subblock centre is at a non-integer
+   * coordinate (fixes the 1-dot overshoot at L-corners). */
+  const px = Math.round;
+  function hlineBetween(x1, y, x2) {
+    const a = px(Math.min(x1, x2)), b = px(Math.max(x1, x2));
+    ctx.fillRect(a, px(y), b - a + 1, 1);
+  }
+  function vlineBetween(x, y1, y2) {
+    const a = px(Math.min(y1, y2)), b = px(Math.max(y1, y2));
+    ctx.fillRect(px(x), a, 1, b - a + 1);
+  }
+  function rectOutline(x, y, w, h) {
+    const xi = px(x), yi = px(y);
+    const wi = Math.max(1, px(x + w) - xi);
+    const hi = Math.max(1, px(y + h) - yi);
+    ctx.fillRect(xi, yi, wi, 1);          /* top */
+    ctx.fillRect(xi, yi + hi - 1, wi, 1); /* bottom */
+    ctx.fillRect(xi, yi, 1, hi);          /* left */
+    ctx.fillRect(xi + wi - 1, yi, 1, hi); /* right */
+  }
+
+  /* Clear */
+  ctx.fillStyle = color('canvas-bg');
+  ctx.fillRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+
+  /* Grid cells — 1-pixel outline via fillRect (no AA). */
+  ctx.fillStyle = color('block-grid');
+  for (let bx = minX; bx <= maxX; bx++) {
+    for (let by = minY; by <= maxY; by++) {
+      const bp = bpos(bx, by);
+      rectOutline(bp.x, bp.y, CELL, CELL);
+    }
+  }
+
+  /* Axis labels. In viewport mode we anchor labels to the canvas edges
+   * (bottom for columns, left for rows) so they stay visible regardless
+   * of pan/zoom. */
+  ctx.fillStyle = color('axis-label');
+  ctx.font = `${22 * S}px sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  const labelColY = viewCenterPx ? cssH - 4 * S
+    : bpos(minX, minY).y - 4 * S + (maxY - minY + 1) * CELL + MARGIN * 0.6;
+  for (let bx = minX; bx <= maxX; bx++) {
+    const bp = bpos(bx, minY);
+    ctx.fillText(bx, bp.x + CELL / 2, labelColY);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  const labelRowX = viewCenterPx ? 22 * S : bpos(minX, maxY).x - 6 * S;
+  for (let by = minY; by <= maxY; by++) {
+    const bp = bpos(minX, by);
+    ctx.fillText(by, labelRowX, bp.y + CELL / 2);
+  }
+
+  return { ctx, bpos, CELL, MARGIN, S, hlineBetween, vlineBetween, rectOutline,
+           visMinX: minX, visMaxX: maxX, visMinY: minY, visMaxY: maxY };
+}
+
+/* ---- Draw normal view ---- */
+
+function drawNormal(maze, path, nterm, bounds, diagonal, nCterm) {
+  const setup = setupCanvas('canvas', 'canvas-wrap', bounds);
+  const { ctx, bpos, CELL, MARGIN, S, hlineBetween, vlineBetween } = setup;
+  /* Visible block range (respects pan/zoom viewState). All per-block
+   * iterations below use these instead of raw path bounds so off-screen
+   * blocks are skipped. */
+  const minX = setup.visMinX, maxX = setup.visMaxX;
+  const minY = setup.visMinY, maxY = setup.visMaxY;
+
+  /* Arrowhead policy is driven by maze syntax:
+   *   all '-'   → no arrowheads
+   *   any '->'  → directed ports get an arrow at dst; undirected ports
+   *               ("-" in a mixed-syntax maze) get arrows at both ends.
+   */
+  const allPorts = (maze.normal || []).concat(maze.nx || [], maze.ny || []);
+  const hasDirected = allPorts.some(p => p.directed);
+  function arrowCfg(port) {
+    if (!hasDirected) return { src: false, dst: false };
+    if (port.directed) return { src: false, dst: true };
+    return { src: true, dst: true };
+  }
+  /* Stroke-only arrowhead "V" (no shaft) at (tx, ty) along angle `ang`. */
+  function arrowheadV(tx, ty, ang, col) {
+    const hl = 8 * S;
+    const spread = Math.PI / 6;
+    ctx.save();
+    ctx.strokeStyle = col;
+    ctx.lineWidth = 1;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    ctx.moveTo(tx - hl * Math.cos(ang - spread), ty - hl * Math.sin(ang - spread));
+    ctx.lineTo(tx, ty);
+    ctx.lineTo(tx - hl * Math.cos(ang + spread), ty - hl * Math.sin(ang + spread));
+    ctx.stroke();
+    ctx.restore();
+  }
+  const DIR_ANG = { E: 0, W: Math.PI, N: -Math.PI / 2, S: Math.PI / 2 };
+
+  /* Compute grid-aligned terminal positions and routes for this maze.
+   * Sequential per-block routing (normal -> nx -> ny -> zero) produces
+   * one subgrid per block-type, all sharing the same dimensions and
+   * subterminal coords.  Each block's subgrid carries only its own
+   * port lines, so drawing each block-type uses its own subgrid. */
+  let gridTermPos = null;
+  let gridResult = null;
+  let gridResultsByBt = null;
+  if (!diagonal) {
+    gridResultsByBt = buildSequentialBlockSubgrids(maze, nterm, CELL);
+    gridResult = gridResultsByBt.normal;
+    gridTermPos = gridResult.termPos;
+  }
+  const portInfo = gridResult ? gridResult.portInfo || [] : [];
+  /* Map (bx, by) -> block-type. (0,0)=zero, (0,y>0)=nx, (x>0,0)=ny,
+   * (x>0,y>0)=normal. */
+  function blockTypeOf(bx, by) {
+    if (bx <= 0 && by <= 0) return 'zero';
+    if (bx <= 0) return 'nx';
+    if (by <= 0) return 'ny';
+    return 'normal';
+  }
+
+  /* Per-path-segment endpoint resolver: picks the subterminal position
+   * the specific port actually uses, so the answer path visually lands
+   * on the Lee-routed subport (not the first-subterm representative). */
+  const OPP = { E: 'W', W: 'E', N: 'S', S: 'N' };
+  const DELTA = { E: [1, 0], W: [-1, 0], N: [0, 1], S: [0, -1] };
+  function segmentPortEnds(sA, sB) {
+    if (!gridResultsByBt) return null;
+    const aOwn = { x: sA.x, y: sA.y };
+    const aOther = { x: sA.x + DELTA[sA.dir][0], y: sA.y + DELTA[sA.dir][1] };
+    const bOwn = { x: sB.x, y: sB.y };
+    const bOther = { x: sB.x + DELTA[sB.dir][0], y: sB.y + DELTA[sB.dir][1] };
+    const eq = (p, q) => p.x === q.x && p.y === q.y;
+
+    /* Build candidate (B, aDir, bDir) tuples in priority order. The
+     * first candidate whose block-type's portInfo contains a matching
+     * port wins. Case 4 (both states in same block) is tried first so
+     * a same-direction port like Nx-Ny in zero is preferred over a
+     * spurious "both cross to same neighbor" interpretation. */
+    const candidates = [];
+    /* Case 4: both states in the same block (port lives in B = aOwn). */
+    if (eq(aOwn, bOwn)) candidates.push({ B: aOwn,   aDir: sA.dir,      bDir: sB.dir       });
+    /* Case 1: sA crosses to sB's block via wall (port lives in B = aOther = bOwn). */
+    if (eq(aOther, bOwn)) candidates.push({ B: aOther, aDir: OPP[sA.dir], bDir: sB.dir       });
+    /* Case 2: sB crosses to sA's block. */
+    if (eq(aOwn, bOther)) candidates.push({ B: aOwn,   aDir: sA.dir,      bDir: OPP[sB.dir]  });
+    /* Case 3: both cross into the SAME neighbor block (excluding the
+     * same-block degenerate which is already covered by case 4). */
+    if (eq(aOther, bOther) && !eq(aOwn, bOwn))
+      candidates.push({ B: aOther, aDir: OPP[sA.dir], bDir: OPP[sB.dir] });
+    if (candidates.length === 0) return null;
+
+    for (const cand of candidates) {
+      const B = cand.B;
+      if (B.x < 0 || B.y < 0) continue;
+      const bt = blockTypeOf(B.x, B.y);
+      const gr = gridResultsByBt[bt];
+      if (!gr || !gr.portInfo) continue;
+      const piList = gr.portInfo;
+      const aTerm = { dir: cand.aDir, idx: sA.idx };
+      const bTerm = { dir: cand.bDir, idx: sB.idx };
+      for (let pi = 0; pi < piList.length; pi++) {
+        const pp = piList[pi];
+        const srcMatchesA = pp.srcDir === aTerm.dir && pp.srcIdx === aTerm.idx;
+        const dstMatchesB = pp.dstDir === bTerm.dir && pp.dstIdx === bTerm.idx;
+        const srcMatchesB = pp.srcDir === bTerm.dir && pp.srcIdx === bTerm.idx;
+        const dstMatchesA = pp.dstDir === aTerm.dir && pp.dstIdx === aTerm.idx;
+        if (srcMatchesA && dstMatchesB) return { B, aPos: pp.src, bPos: pp.dst, answerSegments: pp.answerSegments, answerSegmentsGrid: pp.answerSegmentsGrid, answerSegmentsLabels: pp.answerSegmentsLabels, answerSegmentsKind: pp.answerSegmentsKind, branchStubs: pp.branchStubs, branchStubsGrid: pp.branchStubsGrid, branchStubsKind: pp.branchStubsKind, reversed: false };
+        if (srcMatchesB && dstMatchesA) return { B, aPos: pp.dst, bPos: pp.src, answerSegments: pp.answerSegments, answerSegmentsGrid: pp.answerSegmentsGrid, answerSegmentsLabels: pp.answerSegmentsLabels, answerSegmentsKind: pp.answerSegmentsKind, branchStubs: pp.branchStubs, branchStubsGrid: pp.branchStubsGrid, branchStubsKind: pp.branchStubsKind, reversed: true };
+      }
+    }
+    return null;
+  }
+
+  function statePos(s) {
+    const bp = bpos(s.x, s.y);
+    /* When the block (s.x, s.y) sits in a sequential-routed block,
+     * use that block-type's termPos so the answer-path endpoint
+     * lands on the same y/x the Lee subgrid actually uses. */
+    if (gridResultsByBt) {
+      const bt = blockTypeOf(s.x, s.y);
+      const tp = gridResultsByBt[bt] && gridResultsByBt[bt].termPos;
+      if (tp) {
+        if (s.dir === 'E') {
+          const wk = 'W' + s.idx;
+          if (tp[wk]) return { x: bp.x + CELL, y: bp.y + tp[wk].y };
+        } else if (s.dir === 'N') {
+          const sk = 'S' + s.idx;
+          if (tp[sk]) return { x: bp.x + tp[sk].x, y: bp.y };
+        } else if (s.dir === 'W') {
+          const k = 'W' + s.idx;
+          if (tp[k]) return { x: bp.x + tp[k].x, y: bp.y + tp[k].y };
+        } else if (s.dir === 'S') {
+          const k = 'S' + s.idx;
+          if (tp[k]) return { x: bp.x + tp[k].x, y: bp.y + tp[k].y };
+        }
+      }
+    }
+    const tp = termLocalPos(s.dir, s.idx, nterm, CELL, nCterm);
+    return { x: bp.x + tp.x, y: bp.y + tp.y };
+  }
+
+  /* Inner cell-centre position for a state's subterm cell.  Used to
+   * extend wall-traversal answer-path segments from one block's
+   * subterm cell centre across the boundary to the sibling block's
+   * subterm cell centre — otherwise statePos returns identical
+   * boundary pixels for both sides and the segment is invisible. */
+  function statePosInner(s) {
+    const bp = bpos(s.x, s.y);
+    if (gridResultsByBt) {
+      const bt = blockTypeOf(s.x, s.y);
+      const gr = gridResultsByBt[bt];
+      const tp = gr && gr.termPos;
+      if (tp && gr.nC && gr.nR) {
+        const cellW = CELL / gr.nC;
+        const cellH = CELL / gr.nR;
+        if (s.dir === 'N') {
+          const sk = 'S' + s.idx;
+          if (tp[sk]) return { x: bp.x + tp[sk].x, y: bp.y + cellH / 2 };
+        } else if (s.dir === 'S') {
+          const sk = 'S' + s.idx;
+          if (tp[sk]) return { x: bp.x + tp[sk].x, y: bp.y + CELL - cellH / 2 };
+        } else if (s.dir === 'W') {
+          const k = 'W' + s.idx;
+          if (tp[k]) return { x: bp.x + cellW / 2, y: bp.y + tp[k].y };
+        } else if (s.dir === 'E') {
+          const wk = 'W' + s.idx;
+          if (tp[wk]) return { x: bp.x + CELL - cellW / 2, y: bp.y + tp[wk].y };
+        }
+      }
+    }
+    return statePos(s);
+  }
+
+  /* Draw a single port edge (diagonal: line or arrow) */
+  function drawPortDiag(fx, fy, tx, ty, sameDir, dirChar, arrSrc, arrDst) {
+    if (sameDir) {
+      const mx = (fx + tx) / 2, my = (fy + ty) / 2;
+      const off = 30 * S;
+      let cpx = mx, cpy = my;
+      switch (dirChar) {
+        case 'E': cpx = mx - off; break;
+        case 'W': cpx = mx + off; break;
+        case 'N': cpy = my + off; break;
+        case 'S': cpy = my - off; break;
+      }
+      drawCurvedLine(ctx, fx, fy, tx, ty, cpx, cpy, color('stroke'), 1);
+      if (arrDst) arrowheadV(tx, ty, Math.atan2(ty - cpy, tx - cpx), color('stroke'));
+      if (arrSrc) arrowheadV(fx, fy, Math.atan2(fy - cpy, fx - cpx), color('stroke'));
+    } else {
+      drawLine(ctx, fx, fy, tx, ty, color('stroke'), 1);
+      if (arrDst) arrowheadV(tx, ty, Math.atan2(ty - fy, tx - fx), color('stroke'));
+      if (arrSrc) arrowheadV(fx, fy, Math.atan2(fy - ty, fx - tx), color('stroke'));
+    }
+  }
+
+  /* Pixel budget check: when sub-blocks shrink below ~2 CSS pixels the
+   * fillRect path produces visible gaps/collisions. Fall back to a
+   * 1-pixel antialiased stroke so the line stays visually continuous. */
+  const gridSG = gridResult && gridResult.nC && gridResult.nR
+    ? Math.min(CELL / gridResult.nC, CELL / gridResult.nR)
+    : CELL;
+  const crisp = gridSG >= 2;
+
+  /* Draw polyline through waypoints — axis-aligned only. Use fillRect when
+   * there is enough pixel budget; else stroke with AA. */
+  function drawPolyline(pts, ox, oy) {
+    if (pts.length < 2) return;
+    if (crisp) {
+      ctx.fillStyle = color('stroke');
+      for (let i = 1; i < pts.length; i++) {
+        const a = pts[i - 1], b = pts[i];
+        const ax = ox + a.x, ay = oy + a.y;
+        const bx = ox + b.x, by = oy + b.y;
+        if (Math.abs(ay - by) < 0.5) hlineBetween(ax, ay, bx);
+        else if (Math.abs(ax - bx) < 0.5) vlineBetween(ax, ay, by);
+      }
+    } else {
+      ctx.save();
+      ctx.strokeStyle = color('stroke');
+      ctx.lineWidth = 1;
+      ctx.lineCap = 'butt';
+      ctx.beginPath();
+      ctx.moveTo(ox + pts[0].x, oy + pts[0].y);
+      for (let i = 1; i < pts.length; i++) ctx.lineTo(ox + pts[i].x, oy + pts[i].y);
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  /* Normal port edges inside each block */
+  if (!diagonal) {
+    /* Undirected: orthogonal routing with sub-block grid.
+     * Sequential routing produced one subgrid per block-type; each
+     * block (normal/nx/ny/zero) is drawn from its own subgrid so each
+     * block shows only its own ports, but all subgrids share the same
+     * dimensions and subterminal cell coords. */
+    const sgR = gridResult.nR, sgC = gridResult.nC;
+    const sgCW = CELL / sgC, sgRH = CELL / sgR;
+    /* Subblock boundaries — dotted interior lines (debug only). */
+    if (DEBUG_SHOW_SUBBLOCK_GRID) {
+      for (let bx = minX; bx <= maxX; bx++) {
+        for (let by = minY; by <= maxY; by++) {
+          if (bx < 0 || by < 0) continue;
+          const bp = bpos(bx, by);
+          ctx.save();
+          ctx.strokeStyle = color('block-grid-light');
+          ctx.lineWidth = 1;
+          ctx.setLineDash([2 * S, 2 * S]);
+          ctx.beginPath();
+          for (let c = 1; c < sgC; c++) {
+            const x = bp.x + c * sgCW;
+            ctx.moveTo(x, bp.y); ctx.lineTo(x, bp.y + CELL);
+          }
+          for (let r = 1; r < sgR; r++) {
+            const y = bp.y + r * sgRH;
+            ctx.moveTo(bp.x, y); ctx.lineTo(bp.x + CELL, y);
+          }
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+    }
+    for (let bx = minX; bx <= maxX; bx++) {
+      for (let by = minY; by <= maxY; by++) {
+        if (bx < 0 || by < 0) continue;
+        const bt = blockTypeOf(bx, by);
+        const gr = gridResultsByBt[bt];
+        if (!gr) continue;
+        const subgrid = gr.subgrid;
+        const junctions = gr.junctions || [];
+        const bp = bpos(bx, by);
+        ctx.fillStyle = color('stroke');
+        if (!crisp) {
+          ctx.strokeStyle = color('stroke');
+          ctx.lineWidth = 1;
+          ctx.lineCap = 'butt';
+        }
+        for (let r = 0; r < sgR; r++) {
+          for (let c = 0; c < sgC; c++) {
+            const shape = subgrid[r][c];
+            if (shape === ' ') continue;
+            const cx = bp.x + (c + 0.5) * sgCW;
+            const cy = bp.y + (r + 0.5) * sgRH;
+            const hw = sgCW / 2, hh = sgRH / 2;
+            if (crisp) {
+              if ('─┘┐┼┬┴┤'.includes(shape)) hlineBetween(cx - hw, cy, cx); /* left */
+              if ('─└┌┼┬┴├'.includes(shape)) hlineBetween(cx, cy, cx + hw); /* right */
+              if ('│└┘┼┴├┤'.includes(shape)) vlineBetween(cx, cy - hh, cy); /* up */
+              if ('│┌┐┼┬├┤'.includes(shape)) vlineBetween(cx, cy, cy + hh); /* down */
+            } else {
+              ctx.beginPath();
+              if ('─┘┐┼┬┴┤'.includes(shape)) { ctx.moveTo(cx - hw, cy); ctx.lineTo(cx, cy); }
+              if ('─└┌┼┬┴├'.includes(shape)) { ctx.moveTo(cx, cy); ctx.lineTo(cx + hw, cy); }
+              if ('│└┘┼┴├┤'.includes(shape)) { ctx.moveTo(cx, cy - hh); ctx.lineTo(cx, cy); }
+              if ('│┌┐┼┬├┤'.includes(shape)) { ctx.moveTo(cx, cy); ctx.lineTo(cx, cy + hh); }
+              ctx.stroke();
+            }
+          }
+        }
+        /* Junction dots */
+        for (const j of junctions) {
+          ctx.beginPath();
+          ctx.arc(bp.x + j.x, bp.y + j.y, 3 * S, 0, 2 * Math.PI);
+          ctx.fillStyle = color('stroke');
+          ctx.fill();
+        }
+      }
+    }
+  } else {
+    /* Diagonal mode: straight/curved lines directly between terminals,
+     * picking the per-block port set so nx / ny / zero are drawn the
+     * same way as normal — just inside their own (0,y) / (x,0) / (0,0)
+     * cells. */
+    for (let bx = minX; bx <= maxX; bx++) {
+      for (let by = minY; by <= maxY; by++) {
+        if (bx < 0 || by < 0) continue;
+        const bp = bpos(bx, by);
+        for (const port of portsAtBlock(maze, bx, by)) {
+          const from = termLocalPos(port.src.dir, port.src.idx, nterm, CELL, nCterm);
+          const to = termLocalPos(port.dst.dir, port.dst.idx, nterm, CELL, nCterm);
+          const a = arrowCfg(port);
+          drawPortDiag(bp.x + from.x, bp.y + from.y, bp.x + to.x, bp.y + to.y,
+                   port.src.dir === port.dst.dir, port.src.dir, a.src, a.dst);
+        }
+      }
+    }
+  }
+
+  /* Orthogonal-mode arrowhead overlay on every block-type's port
+   * terminals (when the maze declares any directed port). Places a
+   * "V" at each block edge subterminal position, pointing outward. */
+  if (!diagonal && hasDirected && gridResultsByBt) {
+    for (let bx = minX; bx <= maxX; bx++) {
+      for (let by = minY; by <= maxY; by++) {
+        if (bx < 0 || by < 0) continue;
+        const bt = blockTypeOf(bx, by);
+        const gr = gridResultsByBt[bt];
+        if (!gr || !gr.portInfo) continue;
+        const portList = maze[bt] || [];
+        const bp = bpos(bx, by);
+        gr.portInfo.forEach((pp) => {
+          const port = portList.find(q =>
+            (q.src.dir === pp.srcDir && q.src.idx === pp.srcIdx &&
+             q.dst.dir === pp.dstDir && q.dst.idx === pp.dstIdx) ||
+            (q.src.dir === pp.dstDir && q.src.idx === pp.dstIdx &&
+             q.dst.dir === pp.srcDir && q.dst.idx === pp.srcIdx));
+          if (!port) return;
+          const a = arrowCfg(port);
+          if (a.src) arrowheadV(bp.x + pp.src.x, bp.y + pp.src.y, DIR_ANG[pp.srcDir], color('stroke'));
+          if (a.dst) arrowheadV(bp.x + pp.dst.x, bp.y + pp.dst.y, DIR_ANG[pp.dstDir], color('stroke'));
+        });
+      }
+    }
+  }
+
+  /* C-involved ports (cell-centre subterminals) fall back to diagonal
+   * lines in every block-type — Lee's subgrid only handles wall
+   * (W/E/N/S) subterminals.  Wall-only ports in normal/nx/ny/zero
+   * blocks are drawn from their respective subgrids in the loop above. */
+  if (!diagonal) {
+    for (let bx = minX; bx <= maxX; bx++) {
+      for (let by = minY; by <= maxY; by++) {
+        if (bx < 0 || by < 0) continue;
+        const bp = bpos(bx, by);
+        for (const port of portsAtBlock(maze, bx, by)) {
+          if (port.src.dir !== 'C' && port.dst.dir !== 'C') continue;
+          const from = termLocalPos(port.src.dir, port.src.idx, nterm, CELL, nCterm);
+          const to = termLocalPos(port.dst.dir, port.dst.idx, nterm, CELL, nCterm);
+          const a = arrowCfg(port);
+          drawPortDiag(bp.x + from.x, bp.y + from.y, bp.x + to.x, bp.y + to.y,
+                   port.src.dir === port.dst.dir, port.src.dir, a.src, a.dst);
+        }
+      }
+    }
+  }
+
+  /* Start and Goal markers placed outside the block so they do not
+   * overlap the terminal on the normal-port side:
+   *   Goal  ←|
+   *   Start →|
+   * Each is an arrow touching the block edge at the terminal, with the
+   * label just further outside. Start arrow points into the maze; Goal
+   * arrow points out of it. */
+  const startState = { x: 0, y: 0, dir: 'W', idx: 0 };
+  const goalState  = { x: 0, y: 0, dir: 'W', idx: 1 };
+  const startPos = statePos(startState);
+  const goalPos  = statePos(goalState);
+  const arrowLen = 36 * S;
+  const labelGap = 6 * S;
+  const headLen = 9 * S;
+  function arrowShape(fx, fy, tx, ty, col) {
+    const ang = Math.atan2(ty - fy, tx - fx);
+    const spread = Math.PI / 6;  /* 30° either side of the shaft */
+    ctx.save();
+    ctx.strokeStyle = col;
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    ctx.moveTo(fx, fy);
+    ctx.lineTo(tx, ty);
+    ctx.moveTo(tx - headLen * Math.cos(ang - spread), ty - headLen * Math.sin(ang - spread));
+    ctx.lineTo(tx, ty);
+    ctx.lineTo(tx - headLen * Math.cos(ang + spread), ty - headLen * Math.sin(ang + spread));
+    ctx.stroke();
+    ctx.restore();
+  }
+  ctx.save();
+  ctx.font = `bold ${16 * S}px sans-serif`;
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  /* Start: tail outside, arrowhead at the block edge (points right). */
+  arrowShape(startPos.x - arrowLen, startPos.y, startPos.x, startPos.y, color('start'));
+  ctx.fillStyle = color('start');
+  ctx.fillText('Start', startPos.x - arrowLen - labelGap, startPos.y);
+  /* Goal: tail at the block edge, arrowhead outside (points left). */
+  arrowShape(goalPos.x, goalPos.y, goalPos.x - arrowLen, goalPos.y, color('goal'));
+  ctx.fillStyle = color('goal');
+  ctx.fillText('Goal', goalPos.x - arrowLen - labelGap, goalPos.y);
+  ctx.restore();
+
+  /* Path line — L-bend segments drawn at 1 pixel via fillRect (crisp)
+   * with an AA-stroke fallback when the canvas is too small. Skip the
+   * entire answer-path pass (line, stubs, arrowheads, step circles) when
+   * the "answer path" checkbox is off, but keep the maze blocks visible. */
+  const showAnswerPath = document.getElementById('chk-answer-path').checked;
+  if (showAnswerPath && path.length > 1) {
+    if (crisp) {
+      ctx.fillStyle = color('path');
+    } else {
+      /* Set the strokeStyle once; each polyline below begins/strokes
+       * its own sub-path so a curve or arrowhead beginPath in any
+       * iteration cannot clobber accumulated geometry — that bug
+       * caused the answer path to disappear in cp3-2 when low zoom
+       * forced non-crisp mode. */
+      ctx.save();
+      ctx.strokeStyle = color('path');
+      ctx.lineWidth = 1;
+      ctx.lineCap = 'butt';
+    }
+    const fmtState = s => '(' + s.x + ',' + s.y + ',' + s.dir + s.idx + ')';
+    const fmtPt = pt => '( ' + Math.round(pt.x) + ',' + Math.round(pt.y) + ' )';
+    for (let i = 1; i < path.length; i++) {
+      const ends = segmentPortEnds(path[i - 1], path[i]);
+      const dbgLines = [];
+      /* Segment polylines for this answer-path step. Each sub-polyline
+       * is drawn independently so a branch-subport detour produces a
+       * visible gap over the sub-terminal cell (per diagonal.md spec). */
+      let polylines;
+      let polylinesGrid;   /* 1:1 with polylines, each point = subgrid (c,r) or null */
+      let polylinesLabels; /* 1:1 with polylines, each entry is length = segments (points-1) */
+      let polylinesKind;   /* 1:1 with polylines: 'src-branch' | 'main' | 'dst-branch' */
+      let prev, p;
+      if (ends) {
+        const bp = bpos(ends.B.x, ends.B.y);
+        prev = { x: bp.x + ends.aPos.x, y: bp.y + ends.aPos.y };
+        p    = { x: bp.x + ends.bPos.x, y: bp.y + ends.bPos.y };
+        if (diagonal || !ends.answerSegments || !ends.answerSegments.length) {
+          polylines = [[prev, p]];
+          polylinesGrid = [[null, null]];
+          polylinesLabels = [['polyline']];
+          polylinesKind = ['main'];
+        } else {
+          let segs = ends.answerSegments;
+          let segsGrid = ends.answerSegmentsGrid || segs.map(s => s.map(() => null));
+          let segsLabels = ends.answerSegmentsLabels
+            || segs.map(s => new Array(Math.max(0, s.length - 1)).fill('polyline'));
+          let segsKind = ends.answerSegmentsKind || segs.map(() => 'main');
+          if (ends.reversed) {
+            segs = segs.slice().reverse().map(s => s.slice().reverse());
+            segsGrid = segsGrid.slice().reverse().map(s => s.slice().reverse());
+            segsLabels = segsLabels.slice().reverse().map(s => s.slice().reverse());
+            segsKind = segsKind.slice().reverse();
+          }
+          polylines = segs.map(s => s.map(q => ({ x: bp.x + q.x, y: bp.y + q.y })));
+          polylinesGrid = segsGrid;
+          polylinesLabels = segsLabels;
+          polylinesKind = segsKind;
+        }
+      } else {
+        /* No Lee-routed portInfo entry for this step (e.g. C-subterm
+         * port, nx/ny/zero block traversal).  Draw a direct diagonal
+         * segment regardless of orthogonal/diagonal mode — orthogonal
+         * routing only applies to the wall-subterm ports the Lee
+         * subgrid actually owns. */
+        prev = statePos(path[i - 1]);
+        p    = statePos(path[i]);
+        const sa = path[i - 1], sb = path[i];
+        const sameSideCurve =
+          diagonal &&
+          sa.x === sb.x && sa.y === sb.y &&
+          sa.dir === sb.dir && sa.dir !== 'C';
+        if (sameSideCurve) {
+          /* Same-side port (E0-E1 etc.): mirror drawPortDiag's curve
+           * so the answer path overlays the curved port instead of
+           * cutting straight across the cell. */
+          const mx = (prev.x + p.x) / 2, my = (prev.y + p.y) / 2;
+          const off = 30 * S;
+          let cpx = mx, cpy = my;
+          switch (sa.dir) {
+            case 'E': cpx = mx - off; break;
+            case 'W': cpx = mx + off; break;
+            case 'N': cpy = my + off; break;
+            case 'S': cpy = my - off; break;
+          }
+          drawCurvedLine(ctx, prev.x, prev.y, p.x, p.y, cpx, cpy, color('path'), 1);
+          dbgLines.push('curve' + fmtPt(prev) + '->' + fmtPt(p) + ' // polyline');
+          if (hasDirected) {
+            const ang = Math.atan2(p.y - cpy, p.x - cpx);
+            const spread = Math.PI / 6;
+            const hl = Math.max(6, 10 * S);
+            ctx.save();
+            ctx.strokeStyle = color('path');
+            ctx.lineWidth = 1;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.beginPath();
+            ctx.moveTo(p.x - hl * Math.cos(ang - spread), p.y - hl * Math.sin(ang - spread));
+            ctx.lineTo(p.x, p.y);
+            ctx.lineTo(p.x - hl * Math.cos(ang + spread), p.y - hl * Math.sin(ang + spread));
+            ctx.stroke();
+            ctx.restore();
+          }
+          polylines = [];
+          polylinesGrid = [];
+          polylinesLabels = [];
+          polylinesKind = [];
+        } else {
+          polylines = [[prev, p]];
+          polylinesGrid = [[null, null]];
+          polylinesLabels = [['polyline']];
+          polylinesKind = ['main'];
+        }
+      }
+      const fmtSb = sb => sb ? ' for sb(' + sb.c + ',' + sb.r + ')' : '';
+      const fmtBk = bk => bk ? ' in b(' + bk.x + ',' + bk.y + ')' : '';
+      const logLine = (a, b, tag, sb, bk) =>
+        dbgLines.push('line' + fmtPt(a) + '->' + fmtPt(b) + (tag ? ' // ' + tag + fmtSb(sb) + fmtBk(bk) : ''));
+      const tagOf = l =>
+        l === 't'  ? 'branch subport(t )' :
+        l === 'sp' ? 'branch subport(sp)' :
+        l === 'st' ? 'branch subport(st)' :
+                     'polyline';
+      if (crisp) {
+        const drawSeg = (a, b) => {
+          if (Math.abs(a.y - b.y) < 0.5) hlineBetween(a.x, a.y, b.x);
+          else if (Math.abs(a.x - b.x) < 0.5) vlineBetween(a.x, a.y, b.y);
+          else {
+            ctx.save();
+            ctx.strokeStyle = color('path');
+            ctx.lineWidth = 1;
+            ctx.lineCap = 'butt';
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+            ctx.restore();
+          }
+        };
+        for (let pi = 0; pi < polylines.length; pi++) {
+          const wp = polylines[pi], wg = polylinesGrid[pi], wl = polylinesLabels[pi];
+          for (let w = 1; w < wp.length; w++) { drawSeg(wp[w - 1], wp[w]); logLine(wp[w - 1], wp[w], tagOf(wl[w - 1]), wg[w - 1], ends && ends.B); }
+        }
+      } else {
+        for (let pi = 0; pi < polylines.length; pi++) {
+          const wp = polylines[pi], wg = polylinesGrid[pi], wl = polylinesLabels[pi];
+          if (wp.length >= 2) {
+            ctx.beginPath();
+            ctx.moveTo(wp[0].x, wp[0].y);
+            for (let w = 1; w < wp.length; w++) ctx.lineTo(wp[w].x, wp[w].y);
+            ctx.stroke();
+          }
+          for (let w = 1; w < wp.length; w++) logLine(wp[w - 1], wp[w], tagOf(wl[w - 1]), wg[w - 1], ends && ends.B);
+        }
+      }
+      /* (Line B stubs are now the last/first segment of the branch
+       * polylines in 9-1c — no separate stub-drawing pass here.) */
+      /* When the maze declares any directed port, stamp an arrowhead at
+       * each path segment endpoint, aligned with the final waypoint
+       * approach direction. */
+      const lastPoly = polylines.length ? polylines[polylines.length - 1] : null;
+      if (hasDirected && lastPoly && lastPoly.length >= 2) {
+        const from = lastPoly[lastPoly.length - 2];
+        const to = lastPoly[lastPoly.length - 1];
+        if (Math.abs(from.x - to.x) + Math.abs(from.y - to.y) > 0.5) {
+          const ang = Math.atan2(to.y - from.y, to.x - from.x);
+          const spread = Math.PI / 6;
+          const hl = Math.max(6, 10 * S);
+          ctx.save();
+          ctx.strokeStyle = color('path');
+          ctx.fillStyle = color('path');
+          ctx.lineWidth = 1;
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          ctx.beginPath();
+          const av1 = { x: to.x - hl * Math.cos(ang - spread), y: to.y - hl * Math.sin(ang - spread) };
+          const av2 = { x: to.x - hl * Math.cos(ang + spread), y: to.y - hl * Math.sin(ang + spread) };
+          ctx.moveTo(av1.x, av1.y);
+          ctx.lineTo(to.x, to.y);
+          ctx.lineTo(av2.x, av2.y);
+          ctx.stroke();
+          ctx.restore();
+          const lastGrid = polylinesGrid[polylinesGrid.length - 1];
+          const endSb = lastGrid && lastGrid[lastGrid.length - 1];
+          logLine(av1, to, 'arrowhead', endSb, ends && ends.B);
+          logLine(to, av2, 'arrowhead', endSb, ends && ends.B);
+        }
+      }
+      if (DEBUG_LOG_ANSWER_PATH) {
+        console.log('draw path for ' + fmtState(path[i - 1]) + ' -> ' + fmtState(path[i]));
+        for (const line of dbgLines) console.log('  ' + line);
+      }
+    }
+    if (!crisp) { ctx.restore(); }
+
+    /* Step number circles (disable via [ ] step).
+     * Anchor each circle at the terminal representative position
+     * (statePos). A state denotes a TERMINAL boundary, so even when the
+     * incoming/outgoing ports use different subterminals of that terminal,
+     * the step label belongs with the terminal itself. */
+    const showStep = document.getElementById('chk-step').checked;
+    if (showStep) for (let i = 0; i < path.length; i++) {
+      const p = statePos(path[i]);
+      const r = ((i >= 100) ? 26 : 20) * S;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r, 0, 2 * Math.PI);
+      ctx.fillStyle = (i === 0) ? color('start') : (i === path.length - 1) ? color('goal') : color('marker-current');
+      ctx.fill();
+      ctx.strokeStyle = color('canvas-bg');
+      ctx.lineWidth = 3 * S;
+      ctx.stroke();
+      ctx.fillStyle = color('marker-text');
+      ctx.font = `bold ${(r > 20 * S ? 18 : 20) * S}px sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(i.toString(), p.x, p.y);
+    }
+  }
+
+}
+
+/* ---- Draw simple (x,y only) view ---- */
+
+function drawSimple(path, bounds) {
+  const { minX, maxX, minY, maxY } = bounds;
+  const cols = maxX - minX + 1;
+  const rows = maxY - minY + 1;
+  const BASE_CELL_S = 16;
+  const PAD = 20;
+  const canvas = document.getElementById('canvas-simple');
+  const wrap = document.getElementById('canvas-wrap-simple');
+  const ctx = canvas.getContext('2d');
+
+  /* Canvas width = container; height is fixed (4x the old 200px minimum)
+   * so it never depends on the scroll position.  Pan / zoom only changes
+   * the viewport contents, not the canvas. */
+  const SIMPLE_CANVAS_H = 800;
+  const availW = wrap.parentElement.clientWidth - 4;
+  const cssW = availW;
+  const cssH = SIMPLE_CANVAS_H;
+  canvas.style.width = cssW + 'px';
+  canvas.style.height = cssH + 'px';
+  canvas.width = cssW;
+  canvas.height = cssH;
+  if (!simpleViewState.userControlled) {
+    /* Default view: a fixed 10x10 window centred on (5, 5), regardless
+     * of path bounds.  User can pan/zoom from there. */
+    const FIXED_SPAN = 10;
+    const seedZoom = Math.min(
+      (cssW - 2 * PAD) / (FIXED_SPAN * BASE_CELL_S),
+      (cssH - 2 * PAD) / (FIXED_SPAN * BASE_CELL_S),
+    );
+    simpleViewState = {
+      cx: FIXED_SPAN / 2,
+      cy: FIXED_SPAN / 2,
+      zoom: seedZoom,
+      userControlled: false,
+    };
+  }
+  const CELL = BASE_CELL_S * simpleViewState.zoom;
+  const viewCenterPx = { x: cssW / 2, y: cssH / 2 };
+
+  function bpos(bx, by) {
+    return {
+      x: viewCenterPx.x + (bx - simpleViewState.cx) * CELL,
+      y: viewCenterPx.y - (by - simpleViewState.cy) * CELL,
+    };
+  }
+
+  /* Visible block range */
+  const halfCols = (cssW / 2) / CELL;
+  const halfRows = (cssH / 2) / CELL;
+  const visMinX = Math.max(0, Math.floor(simpleViewState.cx - halfCols) - 1);
+  const visMaxX = Math.ceil(simpleViewState.cx + halfCols) + 1;
+  const visMinY = Math.max(0, Math.floor(simpleViewState.cy - halfRows) - 1);
+  const visMaxY = Math.ceil(simpleViewState.cy + halfRows) + 1;
+
+  /* Clear */
+  ctx.fillStyle = color('canvas-bg');
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  /* Grid — 1-pixel fillRect outline (no AA). */
+  ctx.fillStyle = color('block-grid-light');
+  for (let bx = visMinX; bx <= visMaxX; bx++) {
+    for (let by = visMinY; by <= visMaxY; by++) {
+      const bp = bpos(bx, by);
+      const xi = Math.round(bp.x), yi = Math.round(bp.y);
+      ctx.fillRect(xi, yi, CELL, 1);
+      ctx.fillRect(xi, yi + CELL - 1, CELL, 1);
+      ctx.fillRect(xi, yi, 1, CELL);
+      ctx.fillRect(xi + CELL - 1, yi, 1, CELL);
+    }
+  }
+
+  /* Axis labels (anchored at canvas edges so they stay visible during pan) */
+  ctx.fillStyle = color('axis-num');
+  ctx.font = '9px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  const labelColY = cssH - 2;
+  for (let bx = visMinX; bx <= visMaxX; bx++) {
+    const bp = bpos(bx, 0);
+    ctx.fillText(bx, bp.x + CELL / 2, labelColY);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  const labelRowX = 12;
+  for (let by = visMinY; by <= visMaxY; by++) {
+    const bp = bpos(0, by);
+    ctx.fillText(by, labelRowX, bp.y + CELL / 2);
+  }
+
+  /* Path lines: gradient B->R, 1px */
+  if (path.length > 1) {
+    ctx.lineWidth = 1;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    for (let i = 0; i < path.length - 1; i++) {
+      const t = i / (path.length - 1);
+      const r = Math.round(t * 255);
+      const b = Math.round((1 - t) * 255);
+      ctx.strokeStyle = `rgb(${r},0,${b})`;
+      const p1 = bpos(path[i].x, path[i].y);
+      const p2 = bpos(path[i + 1].x, path[i + 1].y);
+      ctx.beginPath();
+      ctx.moveTo(p1.x + CELL / 2, p1.y + CELL / 2);
+      ctx.lineTo(p2.x + CELL / 2, p2.y + CELL / 2);
+      ctx.stroke();
+    }
+    /* Start dot (blue) and end dot (red) */
+    const sp = bpos(path[0].x, path[0].y);
+    ctx.beginPath();
+    ctx.arc(sp.x + CELL / 2, sp.y + CELL / 2, 3, 0, 2 * Math.PI);
+    ctx.fillStyle = color('simple-start');
+    ctx.fill();
+    const ep = bpos(path[path.length - 1].x, path[path.length - 1].y);
+    ctx.beginPath();
+    ctx.arc(ep.x + CELL / 2, ep.y + CELL / 2, 3, 0, 2 * Math.PI);
+    ctx.fillStyle = color('simple-end');
+    ctx.fill();
+  }
+}
+
+/* ---- BFS Maze Solver (JS port of solver.c) ----
+ *
+ * Canonical state (x, y, dir, idx) with dir in {'E', 'N'}. A block's W[n]
+ * becomes canonical E[n] of its left neighbour; S[n] becomes canonical
+ * N[n] of the block below. Start = (0, 1, E, 0), Goal = (0, 1, E, 1).
+ */
+/* No canonicalization in the (*1) format -- state.dir keeps the
+ * original W/E/N/S/C terminal direction. */
+function toCanonical(bx, by, tdir, tidx) {
+  return { x: bx, y: by, dir: tdir, idx: tidx };
+}
+/* Build adjacency list tables from a parsed maze. Undirected ports (the
+ * "A-B" syntax) add both directions; directed ports keep the source
+ * orientation only. */
+function buildSolverIndex(maze) {
+  function build(ports) {
+    const adj = new Map();
+    function add(s, d) {
+      const k = s.dir + s.idx;
+      if (!adj.has(k)) adj.set(k, []);
+      adj.get(k).push({ dir: d.dir, idx: d.idx });
+    }
+    for (const p of (ports || [])) {
+      add(p.src, p.dst);
+      if (!p.directed) add(p.dst, p.src);
+    }
+    return adj;
+  }
+  return {
+    normal: build(maze.normal),
+    nx:     build(maze.nx),
+    ny:     build(maze.ny),
+    zero:   build(maze.zero),
+  };
+}
+const _CROSS_DIR = {
+  W: { dx: -1, dy: 0, opp: 'E' },
+  E: { dx:  1, dy: 0, opp: 'W' },
+  N: { dx:  0, dy: 1, opp: 'S' },
+  S: { dx:  0, dy:-1, opp: 'N' },
+};
+function blockTypesAt(x, y) {
+  /* Catch-all rules are duplicated into every set; read only the set
+   * matching the block.  Corner (0,0) is its own `zero` set. */
+  if (x === 0 && y === 0) return ['zero'];
+  if (x === 0)            return ['nx'];
+  if (y === 0)            return ['ny'];
+  return ['normal'];
+}
+function getSolverNeighbors(s, idx) {
+  const out = [];
+  const seen = new Set();
+  for (const bt of blockTypesAt(s.x, s.y)) {
+    for (const d of (idx[bt].get(s.dir + s.idx) || [])) {
+      const k = d.dir + d.idx;
+      if (seen.has(k)) continue;
+      seen.add(k);
+      out.push({ x: s.x, y: s.y, dir: d.dir, idx: d.idx });
+    }
+  }
+  const cross = _CROSS_DIR[s.dir];
+  if (cross) {
+    const nx = s.x + cross.dx, ny = s.y + cross.dy;
+    if (nx >= 0 && ny >= 0)
+      out.push({ x: nx, y: ny, dir: cross.opp, idx: s.idx });
+  }
+  return out;
+}
+/* BFS from (0,0,W,0) to (0,0,W,1). Returns an array of states along the
+ * shortest path, or null if unreachable within MAX_STATES. */
+function solveMaze(maze) {
+  const idx = buildSolverIndex(maze);
+  const start = { x: 0, y: 0, dir: 'W', idx: 0 };
+  const goal  = { x: 0, y: 0, dir: 'W', idx: 1 };
+  const keyOf = s => s.x + ',' + s.y + ',' + s.dir + s.idx;
+  const visited = new Set([keyOf(start)]);
+  const queue = [{ state: start, parent: -1 }];
+  const MAX_STATES = 20_000_000;
+  let goalIdx = -1;
+  for (let head = 0; head < queue.length && queue.length < MAX_STATES; head++) {
+    const cur = queue[head].state;
+    if (cur.x === goal.x && cur.y === goal.y && cur.dir === goal.dir && cur.idx === goal.idx) {
+      goalIdx = head; break;
+    }
+    for (const ns of getSolverNeighbors(cur, idx)) {
+      const k = keyOf(ns);
+      if (visited.has(k)) continue;
+      visited.add(k);
+      queue.push({ state: ns, parent: head });
+    }
+  }
+  if (goalIdx < 0) return null;
+  const path = [];
+  for (let i = goalIdx; i >= 0; i = queue[i].parent) path.unshift(queue[i].state);
+  return path;
+}
+function formatSolverPath(path) {
+  return path.map(s => '(' + s.x + ',' + s.y + ',' + s.dir + s.idx + ')').join(' -> ');
+}
+
+/* ---- Main draw ---- */
+
+function draw() {
+  const maze = parseMaze(document.getElementById('maze-input').value);
+  const path = parsePath(document.getElementById('answer-input').value);
+  const nterm = detectNterm(maze, path);
+  const nCterm = detectNCterm(maze, path);
+  const bounds = computeBounds(path);
+  const showNormal = document.getElementById('chk-normal').checked;
+  const showSimple = document.getElementById('chk-simple').checked;
+
+  document.getElementById('normal-section').style.display = showNormal ? '' : 'none';
+  document.getElementById('simple-section').style.display = showSimple ? '' : 'none';
+
+  const diagonal = document.getElementById('chk-diagonal').checked;
+  /* drawNormal starts at a fixed 4x4 default window (user can pan/zoom
+   * from there); drawSimple keeps the full-path bounds so the xy-only
+   * overview still shows the whole path. */
+  const normalBounds = computeDefaultNormalBounds(path);
+  if (showNormal) drawNormal(maze, path, nterm, normalBounds, diagonal, nCterm);
+  if (showSimple) drawSimple(path, bounds);
+}
+
+/* ---- Debug helpers (console-only) ----
+ * debugcircle(x, y, r): stamp a red hollow circle at canvas CSS coords.
+ * debugclear(): erase all debug circles by redrawing the whole view.
+ */
+window.debugcircle = function (x, y, r) {
+  const canvas = document.getElementById('canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.save();
+  ctx.strokeStyle = '#ff00ff';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, 2 * Math.PI);
+  ctx.stroke();
+  ctx.restore();
+};
+window.debugclear = function () { draw(); };
+
+/* Auto-split: if maze textarea contains "Path:", move that part to answer textarea */
+function splitMazeInput() {
+  const mazeEl = document.getElementById('maze-input');
+  const answerEl = document.getElementById('answer-input');
+  const lines = mazeEl.value.split('\n');
+  let pathIdx = -1;
+  for (let i = 0; i < lines.length; i++) {
+    const t = lines[i].trim();
+    if (/^Path:/i.test(t) && !/^Path\s+length:/i.test(t)) {
+      pathIdx = i;
+      break;
+    }
+  }
+  if (pathIdx < 0) return;
+  const mazeLines = lines.slice(0, pathIdx)
+    .filter(l => !/^Path\s+length:/i.test(l.trim()));
+  const pathFirst = lines[pathIdx].replace(/^Path:\s*/i, '').trim();
+  const pathRest = lines.slice(pathIdx + 1).join('\n').trim();
+  const pathPart = (pathFirst + (pathRest ? ' ' + pathRest : '')).trim();
+  mazeEl.value = mazeLines.join('\n').trim();
+  if (pathPart) answerEl.value = pathPart;
+}
+
+document.getElementById('maze-input').addEventListener('input', splitMazeInput);
+
+function onResize() { draw(); }
+function toggleVisibility() {
+  document.getElementById('normal-section').style.display =
+    document.getElementById('chk-normal').checked ? '' : 'none';
+  document.getElementById('simple-section').style.display =
+    document.getElementById('chk-simple').checked ? '' : 'none';
+}
+
+document.getElementById('draw-btn').addEventListener('click', () => {
+  /* Reset viewport to auto-fit whenever the user explicitly redraws. */
+  viewState.userControlled = false;
+  draw();
+  saveState();
+});
+
+/* ---- Solve Maze: BFS to answer textarea ---- */
+document.getElementById('solve-btn').addEventListener('click', () => {
+  const maze = parseMaze(document.getElementById('maze-input').value);
+  const btn = document.getElementById('solve-btn');
+  const prev = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Solving...';
+  /* Defer to the next frame so the button state repaints before the
+   * (potentially slow) BFS starts. */
+  requestAnimationFrame(() => {
+    let path = null;
+    try { path = solveMaze(maze); } catch (e) { console.error('solver error:', e); }
+    btn.disabled = false; btn.textContent = prev;
+    if (!path) { alert('No solution found (or too large).'); return; }
+    document.getElementById('answer-input').value = formatSolverPath(path);
+    document.getElementById('chk-answer-path').checked = true;
+    draw();
+    saveState();
+  });
+});
+
+/* ---- Canvas pan (drag) and zoom (wheel) ---- */
+(function initCanvasMouse() {
+  const canvas = document.getElementById('canvas');
+  let dragStart = null;
+  canvas.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    const cxOld = viewState.cx, cyOld = viewState.cy, zOld = viewState.zoom;
+    /* Block coord under mouse before zoom. */
+    const bxAt = cxOld + (mx - rect.width / 2) / (BASE_CELL * zOld);
+    const byAt = cyOld - (my - rect.height / 2) / (BASE_CELL * zOld);
+    const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+    let zNew = zOld * factor;
+    zNew = Math.max(0.05, Math.min(8, zNew));
+    /* Keep mouse anchor: choose cx/cy so (bxAt, byAt) still maps to (mx, my). */
+    const CELLnew = BASE_CELL * zNew;
+    viewState.zoom = zNew;
+    viewState.cx = bxAt - (mx - rect.width / 2) / CELLnew;
+    viewState.cy = byAt + (my - rect.height / 2) / CELLnew;
+    viewState.userControlled = true;
+    draw();
+    saveState();
+  }, { passive: false });
+  canvas.addEventListener('mousedown', (e) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    dragStart = { x: e.clientX, y: e.clientY, cx: viewState.cx, cy: viewState.cy };
+    canvas.style.cursor = 'grabbing';
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (!dragStart) return;
+    const CELL = BASE_CELL * viewState.zoom;
+    viewState.cx = dragStart.cx - (e.clientX - dragStart.x) / CELL;
+    viewState.cy = dragStart.cy + (e.clientY - dragStart.y) / CELL;
+    viewState.userControlled = true;
+    draw();
+  });
+  window.addEventListener('mouseup', () => {
+    if (dragStart) { dragStart = null; canvas.style.cursor = ''; saveState(); }
+  });
+
+  /* ---- Touch: 1-finger swipe = pan, 2-finger pinch = zoom ---- */
+  let touchState = null;      /* { mode: 'pan'|'pinch', ...anchor state } */
+  function touchPoint(t) {
+    const rect = canvas.getBoundingClientRect();
+    return { x: t.clientX - rect.left, y: t.clientY - rect.top, rect };
+  }
+  canvas.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      const p = touchPoint(e.touches[0]);
+      touchState = { mode: 'pan', startX: p.x, startY: p.y, cx: viewState.cx, cy: viewState.cy };
+      e.preventDefault();
+    } else if (e.touches.length === 2) {
+      const p1 = touchPoint(e.touches[0]), p2 = touchPoint(e.touches[1]);
+      const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
+      const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+      const CELL = BASE_CELL * viewState.zoom;
+      /* Block coord at the initial pinch midpoint, so zoom stays anchored. */
+      const bxAt = viewState.cx + (mx - p1.rect.width / 2) / CELL;
+      const byAt = viewState.cy - (my - p1.rect.height / 2) / CELL;
+      touchState = { mode: 'pinch', startDist: dist, startZoom: viewState.zoom, bxAt, byAt };
+      e.preventDefault();
+    }
+  }, { passive: false });
+  canvas.addEventListener('touchmove', (e) => {
+    if (!touchState) return;
+    if (touchState.mode === 'pan' && e.touches.length >= 1) {
+      const p = touchPoint(e.touches[0]);
+      const CELL = BASE_CELL * viewState.zoom;
+      viewState.cx = touchState.cx - (p.x - touchState.startX) / CELL;
+      viewState.cy = touchState.cy + (p.y - touchState.startY) / CELL;
+      viewState.userControlled = true;
+      draw();
+      e.preventDefault();
+    } else if (touchState.mode === 'pinch' && e.touches.length >= 2) {
+      const p1 = touchPoint(e.touches[0]), p2 = touchPoint(e.touches[1]);
+      const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
+      const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+      let zNew = touchState.startZoom * (dist / touchState.startDist);
+      zNew = Math.max(0.05, Math.min(8, zNew));
+      const CELLnew = BASE_CELL * zNew;
+      viewState.zoom = zNew;
+      /* Keep the original block point under the current midpoint. */
+      viewState.cx = touchState.bxAt - (mx - p1.rect.width / 2) / CELLnew;
+      viewState.cy = touchState.byAt + (my - p1.rect.height / 2) / CELLnew;
+      viewState.userControlled = true;
+      draw();
+      e.preventDefault();
+    }
+  }, { passive: false });
+  canvas.addEventListener('touchend', (e) => {
+    if (e.touches.length === 0) {
+      if (touchState) { touchState = null; saveState(); }
+    } else if (e.touches.length === 1 && touchState && touchState.mode === 'pinch') {
+      /* Lifting one finger out of a pinch: continue as pan from the
+       * remaining finger without a coordinate jump. */
+      const p = touchPoint(e.touches[0]);
+      touchState = { mode: 'pan', startX: p.x, startY: p.y, cx: viewState.cx, cy: viewState.cy };
+    }
+  });
+  canvas.addEventListener('touchcancel', () => {
+    if (touchState) { touchState = null; saveState(); }
+  });
+  /* Disable native touch panning/zooming on the canvas so swipe/pinch
+   * reach our handlers instead of scrolling the page. */
+  canvas.style.touchAction = 'none';
+})();
+
+/* ---- Simple-view canvas pan / zoom (mirrors the main canvas) ---- */
+(function initSimpleCanvasMouse() {
+  const canvas = document.getElementById('canvas-simple');
+  if (!canvas) return;
+  const BASE = 16;
+  let dragStart = null;
+  canvas.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    const cxOld = simpleViewState.cx, cyOld = simpleViewState.cy, zOld = simpleViewState.zoom;
+    const bxAt = cxOld + (mx - rect.width / 2) / (BASE * zOld);
+    const byAt = cyOld - (my - rect.height / 2) / (BASE * zOld);
+    const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+    let zNew = zOld * factor;
+    zNew = Math.max(0.05, Math.min(8, zNew));
+    const CELLnew = BASE * zNew;
+    simpleViewState.zoom = zNew;
+    simpleViewState.cx = bxAt - (mx - rect.width / 2) / CELLnew;
+    simpleViewState.cy = byAt + (my - rect.height / 2) / CELLnew;
+    simpleViewState.userControlled = true;
+    draw();
+  }, { passive: false });
+  canvas.addEventListener('mousedown', (e) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    dragStart = { x: e.clientX, y: e.clientY, cx: simpleViewState.cx, cy: simpleViewState.cy };
+    canvas.style.cursor = 'grabbing';
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (!dragStart) return;
+    const CELL = BASE * simpleViewState.zoom;
+    simpleViewState.cx = dragStart.cx - (e.clientX - dragStart.x) / CELL;
+    simpleViewState.cy = dragStart.cy + (e.clientY - dragStart.y) / CELL;
+    simpleViewState.userControlled = true;
+    draw();
+  });
+  window.addEventListener('mouseup', () => {
+    if (dragStart) { dragStart = null; canvas.style.cursor = ''; }
+  });
+
+  let touchState = null;
+  function tp(t) {
+    const rect = canvas.getBoundingClientRect();
+    return { x: t.clientX - rect.left, y: t.clientY - rect.top, rect };
+  }
+  canvas.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      const p = tp(e.touches[0]);
+      touchState = { mode: 'pan', startX: p.x, startY: p.y, cx: simpleViewState.cx, cy: simpleViewState.cy };
+      e.preventDefault();
+    } else if (e.touches.length === 2) {
+      const p1 = tp(e.touches[0]), p2 = tp(e.touches[1]);
+      const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
+      const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+      const CELL = BASE * simpleViewState.zoom;
+      const bxAt = simpleViewState.cx + (mx - p1.rect.width / 2) / CELL;
+      const byAt = simpleViewState.cy - (my - p1.rect.height / 2) / CELL;
+      touchState = { mode: 'pinch', startDist: dist, startZoom: simpleViewState.zoom, bxAt, byAt };
+      e.preventDefault();
+    }
+  }, { passive: false });
+  canvas.addEventListener('touchmove', (e) => {
+    if (!touchState) return;
+    if (touchState.mode === 'pan' && e.touches.length >= 1) {
+      const p = tp(e.touches[0]);
+      const CELL = BASE * simpleViewState.zoom;
+      simpleViewState.cx = touchState.cx - (p.x - touchState.startX) / CELL;
+      simpleViewState.cy = touchState.cy + (p.y - touchState.startY) / CELL;
+      simpleViewState.userControlled = true;
+      draw();
+      e.preventDefault();
+    } else if (touchState.mode === 'pinch' && e.touches.length >= 2) {
+      const p1 = tp(e.touches[0]), p2 = tp(e.touches[1]);
+      const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
+      const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+      let zNew = touchState.startZoom * (dist / touchState.startDist);
+      zNew = Math.max(0.05, Math.min(8, zNew));
+      const CELLnew = BASE * zNew;
+      simpleViewState.zoom = zNew;
+      simpleViewState.cx = touchState.bxAt - (mx - p1.rect.width / 2) / CELLnew;
+      simpleViewState.cy = touchState.byAt + (my - p1.rect.height / 2) / CELLnew;
+      simpleViewState.userControlled = true;
+      draw();
+      e.preventDefault();
+    }
+  }, { passive: false });
+  canvas.addEventListener('touchend', (e) => {
+    if (e.touches.length === 0) touchState = null;
+    else if (e.touches.length === 1 && touchState && touchState.mode === 'pinch') {
+      const p = tp(e.touches[0]);
+      touchState = { mode: 'pan', startX: p.x, startY: p.y, cx: simpleViewState.cx, cy: simpleViewState.cy };
+    }
+  });
+  canvas.addEventListener('touchcancel', () => { touchState = null; });
+  canvas.style.touchAction = 'none';
+})();
+
+/* ---- Preset dropdown (file-backed mazes under ./maze/) ---- */
+const PRESETS = {
+  clear: null,
+  'cp2-3': 'maze/counter-pump/cp2-3.maze',
+  'cp2-4': 'maze/counter-pump/cp2-4.maze',
+  'cp2-5': 'maze/counter-pump/cp2-5.maze',
+  'cp2-6': 'maze/counter-pump/cp2-6.maze',
+  md3:     'maze/minsky-doubling/md3.maze',
+  md4:     'maze/minsky-doubling/md4.maze',
+  md5:     'maze/minsky-doubling/md5.maze',
+  'cp3-2': 'maze/counter-pump-3/cp3-2.maze',
+};
+/* Show (or clear, with '') the preset load error next to the dropdown. */
+function setPresetStatus(msg) {
+  const el = document.getElementById('preset-status');
+  if (el) el.textContent = msg;
+}
+async function loadPreset(key) {
+  const mazeEl = document.getElementById('maze-input');
+  const answerEl = document.getElementById('answer-input');
+  setPresetStatus('');
+  if (key === 'clear') {
+    mazeEl.value = '';
+    answerEl.value = '';
+  } else if (PRESETS[key]) {
+    try {
+      const res = await fetch(PRESETS[key]);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      mazeEl.value = await res.text();
+      answerEl.value = '';
+      splitMazeInput();
+    } catch (e) {
+      console.error('preset "' + key + '" failed to load:', e);
+      /* Browsers block fetch() of local files, so a file:// page can
+       * never load presets; say so instead of only the raw error. */
+      const hint = window.location.protocol === 'file:'
+        ? ' (presets cannot be loaded from a file:// page; open it over http://)'
+        : '';
+      setPresetStatus('Failed to load preset "' + key + '" from '
+        + PRESETS[key] + ': ' + (e && e.message ? e.message : e) + hint);
+      return;
+    }
+  } else {
+    return;
+  }
+  /* Reflect the loaded preset in the dropdown so both query-param and
+   * user-driven loads keep the select in sync with the current state. */
+  const sel = document.getElementById('preset-select');
+  if (sel && [...sel.options].some(o => o.value === key)) sel.value = key;
+  /* Reset viewport and turn off step/answer-path per preset rule. */
+  viewState.userControlled = false;
+  document.getElementById('chk-answer-path').checked = false;
+  document.getElementById('chk-step').checked = false;
+  saveState();
+  draw();
+}
+document.getElementById('preset-select').addEventListener('change', (e) => {
+  const key = e.target.value;
+  if (!key) return;
+  loadPreset(key);
+});
+
+/* ---- Save Image (canvas -> maze.png) ---- */
+document.getElementById('save-img-btn').addEventListener('click', () => {
+  const canvas = document.getElementById('canvas');
+  if (!canvas) return;
+  canvas.toBlob((blob) => {
+    if (!blob) return;
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'maze.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, 'image/png');
+});
+
+/* ---- Copy Link: build URL with current UI state as query params ---- */
+const QUERY_CB_MAP = {
+  normal: 'chk-normal',
+  darkmode: 'chk-darkmode',
+  diagonal: 'chk-diagonal',
+  xyonly: 'chk-simple',
+};
+
+/* Compress/decompress text for shorter shareable URLs (mazez/answerz
+ * params). Uses the native CompressionStream (deflate-raw) and base64url
+ * without padding. Returns null when the API is unavailable, in which
+ * case callers fall back to plain 'maze'/'answer' params. */
+async function compressTextForUrl(str) {
+  if (typeof CompressionStream === 'undefined') return null;
+  try {
+    const cs = new CompressionStream('deflate-raw');
+    const writer = cs.writable.getWriter();
+    writer.write(new TextEncoder().encode(str));
+    writer.close();
+    const buf = await new Response(cs.readable).arrayBuffer();
+    const bytes = new Uint8Array(buf);
+    let bin = '';
+    for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  } catch (e) { return null; }
+}
+
+async function decompressTextFromUrl(b64) {
+  if (typeof DecompressionStream === 'undefined') return null;
+  try {
+    let s = b64.replace(/-/g, '+').replace(/_/g, '/');
+    while (s.length % 4) s += '=';
+    const bin = atob(s);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    const ds = new DecompressionStream('deflate-raw');
+    const writer = ds.writable.getWriter();
+    writer.write(bytes);
+    writer.close();
+    const buf = await new Response(ds.readable).arrayBuffer();
+    return new TextDecoder().decode(buf);
+  } catch (e) { return null; }
+}
+document.getElementById('copy-url-btn').addEventListener('click', async () => {
+  const url = new URL(window.location.href);
+  url.search = '';
+  const maze = document.getElementById('maze-input').value;
+  const answer = document.getElementById('answer-input').value;
+  /* Use compressed *z params when they end up noticeably shorter than the
+   * plain value (and CompressionStream is available); otherwise stay with
+   * the plain 'maze'/'answer' params the v2.11 release shipped. */
+  async function setTextParam(name, value) {
+    if (value === '') { url.searchParams.set(name, 'empty'); return; }
+    const z = await compressTextForUrl(value);
+    if (z && z.length + 8 < value.length) {
+      url.searchParams.set(name + 'z', z);
+    } else {
+      url.searchParams.set(name, value);
+    }
+  }
+  await setTextParam('maze', maze);
+  await setTextParam('answer', answer);
+  for (const [key, cbId] of Object.entries(QUERY_CB_MAP)) {
+    const el = document.getElementById(cbId);
+    if (el.checked !== CHECKBOX_DEFAULTS[cbId]) {
+      url.searchParams.set(key, el.checked ? '1' : '0');
+    }
+  }
+  if (viewState && viewState.userControlled) {
+    const round = v => Math.round(v * 1000) / 1000;
+    url.searchParams.set('pan', round(viewState.cx) + ',' + round(viewState.cy));
+    url.searchParams.set('zoom', String(round(viewState.zoom)));
+  }
+  const str = url.toString();
+  (navigator.clipboard && navigator.clipboard.writeText)
+    ? navigator.clipboard.writeText(str).catch(() => window.prompt('Copy this URL', str))
+    : window.prompt('Copy this URL', str);
+});
+/* Reset: wipe this app's localStorage and reload through the ?reset
+ * path, which seeds the initial preset and strips the param again. */
+document.getElementById('reset-btn').addEventListener('click', () => {
+  if (!window.confirm('Reset the maze, answer, view and settings saved in this browser?')) return;
+  lsRemoveAll();
+  window.location.href = window.location.pathname + '?reset';
+});
+document.getElementById('chk-normal').addEventListener('change', toggleVisibility);
+document.getElementById('chk-simple').addEventListener('change', toggleVisibility);
+document.getElementById('chk-diagonal').addEventListener('change', draw);
+document.getElementById('chk-step').addEventListener('change', draw);
+document.getElementById('chk-answer-path').addEventListener('change', draw);
+
+/* ---- localStorage persistence ---- */
+const STORAGE_VERSION = 1;
+const TEXTAREA_IDS = ['maze-input', 'answer-input'];
+const CHECKBOX_IDS = ['chk-normal', 'chk-simple', 'chk-diagonal', 'chk-step', 'chk-answer-path', 'chk-darkmode'];
+const CHECKBOX_DEFAULTS = {
+  'chk-normal': true,
+  'chk-simple': false,
+  'chk-diagonal': false,
+  'chk-step': false,
+  'chk-answer-path': true,
+  'chk-darkmode': true,
+};
+/* Initial state applied when localStorage is missing/versionless or
+ * the page is loaded with ?reset.  cp2-4 maze + a sample answer path
+ * + the default checkbox layout (normal+answer+darkmode on,
+ * simple+diagonal+step off). */
+const INITIAL_PRESET = 'cp2-4';
+const INITIAL_CHECKBOX_VALUES = CHECKBOX_DEFAULTS;
+const INITIAL_ANSWER = '(0,0,W0) -> (0,0,N2) -> (0,0,E3) -> (1,0,W3) -> (1,0,E4) -> (2,0,W4) -> (2,0,E5) -> (3,0,W5) -> (3,0,E6) -> (4,0,W6) -> (4,0,N9) -> (4,1,S9) -> (4,1,N10) -> (4,2,S10) -> (4,2,N11) -> (4,3,S11) -> (4,3,N12) -> (4,4,S12) -> (4,4,W13) -> (3,4,E13) -> (3,4,N9) -> (3,5,S9) -> (3,5,N10) -> (3,6,S10) -> (3,6,N11) -> (3,7,S11) -> (3,7,N12) -> (3,8,S12) -> (3,8,W13) -> (2,8,E13) -> (2,8,N9) -> (2,9,S9) -> (2,9,N10) -> (2,10,S10) -> (2,10,N11) -> (2,11,S11) -> (2,11,N12) -> (2,12,S12) -> (2,12,W13) -> (1,12,E13) -> (1,12,N9) -> (1,13,S9) -> (1,13,N10) -> (1,14,S10) -> (1,14,N11) -> (1,15,S11) -> (1,15,N12) -> (1,16,S12) -> (1,16,W13) -> (0,16,E13) -> (0,16,S14) -> (0,15,N14) -> (0,15,E13) -> (0,15,S14) -> (0,14,N14) -> (0,14,E13) -> (0,14,S14) -> (0,13,N14) -> (0,13,E13) -> (0,13,S14) -> (0,12,N14) -> (0,12,E13) -> (0,12,S14) -> (0,11,N14) -> (0,11,E13) -> (0,11,S14) -> (0,10,N14) -> (0,10,E13) -> (0,10,S14) -> (0,9,N14) -> (0,9,E13) -> (0,9,S14) -> (0,8,N14) -> (0,8,E13) -> (0,8,S14) -> (0,7,N14) -> (0,7,E13) -> (0,7,S14) -> (0,6,N14) -> (0,6,E13) -> (0,6,S14) -> (0,5,N14) -> (0,5,E13) -> (0,5,S14) -> (0,4,N14) -> (0,4,E13) -> (0,4,S14) -> (0,3,N14) -> (0,3,E13) -> (0,3,S14) -> (0,2,N14) -> (0,2,E13) -> (0,2,S14) -> (0,1,N14) -> (0,1,E13) -> (0,1,S14) -> (0,0,N14) -> (0,0,N9) -> (0,0,W1)';
+
+function applyDarkmode() {
+  /* Toggle on <html> so the inline head script and this runtime toggle
+   * target the same node. body inherits the CSS variables via cascade. */
+  document.documentElement.classList.toggle(
+    'darkmode',
+    document.getElementById('chk-darkmode').checked
+  );
+}
+
+/* Try to restore a versioned state.  Returns true on success.  A
+ * versionless or wrong-version blob is ignored — the caller should
+ * fall back to applyInitialState() to seed defaults. */
+function loadState() {
+  const raw = lsLoadRaw('state');
+  if (!raw) return false;
+  let state;
+  try { state = JSON.parse(raw); } catch (e) { return false; }
+  if (!state || state.version !== STORAGE_VERSION) return false;
+  if (state.textareas) {
+    for (const id of TEXTAREA_IDS) {
+      if (typeof state.textareas[id] === 'string') {
+        document.getElementById(id).value = state.textareas[id];
+      }
+    }
+  }
+  if (state.checkboxes) {
+    for (const id of CHECKBOX_IDS) {
+      if (typeof state.checkboxes[id] === 'boolean') {
+        document.getElementById(id).checked = state.checkboxes[id];
+      }
+    }
+  }
+  if (state.view && typeof state.view.zoom === 'number') {
+    viewState = {
+      cx: state.view.cx,
+      cy: state.view.cy,
+      zoom: state.view.zoom,
+      userControlled: true,
+    };
+  }
+  return true;
+}
+
+function saveState() {
+  const state = { version: STORAGE_VERSION, textareas: {}, checkboxes: {} };
+  for (const id of TEXTAREA_IDS) state.textareas[id] = document.getElementById(id).value;
+  for (const id of CHECKBOX_IDS) state.checkboxes[id] = document.getElementById(id).checked;
+  if (viewState && viewState.userControlled) {
+    state.view = { cx: viewState.cx, cy: viewState.cy, zoom: viewState.zoom };
+  }
+  lsSaveRaw('state', JSON.stringify(state));
+}
+
+/* Seed the page with the initial preset + checkbox defaults.  Used
+ * when localStorage is missing/versionless or ?reset is present. */
+async function applyInitialState() {
+  await loadPreset(INITIAL_PRESET);
+  /* loadPreset clears the answer textarea; populate it with the
+   * sample path provided as the initial default. */
+  const ansEl = document.getElementById('answer-input');
+  if (ansEl) ansEl.value = INITIAL_ANSWER;
+  /* loadPreset forces chk-answer-path / chk-step off and saves;
+   * override here so the initial defaults win. */
+  for (const id of CHECKBOX_IDS) {
+    if (id in INITIAL_CHECKBOX_VALUES) {
+      document.getElementById(id).checked = INITIAL_CHECKBOX_VALUES[id];
+    }
+  }
+  saveState();
+}
+
+/* Decide whether to restore from storage or seed initial state. */
+const _resetRequested = /(^|[?&])reset(=|&|$)/.test(window.location.search);
+if (_resetRequested) {
+  lsRemove('state');
+  /* Strip the `reset` param from the URL so reloading or sharing the
+   * page doesn't keep wiping localStorage on every revisit.  All
+   * other query params are preserved. */
+  try {
+    const _u = new URL(window.location.href);
+    _u.searchParams.delete('reset');
+    history.replaceState(null, '', _u.pathname + (_u.searchParams.toString() ? '?' + _u.searchParams.toString() : '') + _u.hash);
+  } catch (e) {}
+}
+const initialPromise = (_resetRequested || !loadState())
+  ? applyInitialState()
+  : Promise.resolve();
+
+/* Apply URL query params over any restored/default state. Supported keys:
+ *   maze=<text|empty>, answer=<text|empty>,
+ *   normal=0|1, darkmode=0|1, diagonal=0|1, xyonly=0|1.
+ * Presence overrides; missing keys fall back to localStorage/defaults. */
+async function applyQueryParams() {
+  let params;
+  try { params = new URLSearchParams(window.location.search); } catch (e) { return; }
+  /* preset=<key> takes over the whole text/view state: load the file,
+   * clear viewport, force step/answer-path off — then return so the
+   * later text/pan/zoom overrides from the URL don't clobber it. */
+  if (params.has('preset')) {
+    await loadPreset(params.get('preset'));
+    return;
+  }
+  /* Textareas: prefer compressed *z param (new, short URLs) over the
+   * plain one (old v2.11 format stays accepted). */
+  const textMap = { maze: 'maze-input', answer: 'answer-input' };
+  for (const [k, id] of Object.entries(textMap)) {
+    if (params.has(k + 'z')) {
+      const t = await decompressTextFromUrl(params.get(k + 'z'));
+      if (t != null) document.getElementById(id).value = t;
+    } else if (params.has(k)) {
+      const v = params.get(k);
+      document.getElementById(id).value = v === 'empty' ? '' : v;
+    }
+  }
+  for (const [k, id] of Object.entries(QUERY_CB_MAP)) {
+    if (params.has(k)) {
+      document.getElementById(id).checked = params.get(k) === '1';
+    }
+  }
+  if (params.has('pan') || params.has('zoom')) {
+    const parts = (params.get('pan') || ',').split(',').map(parseFloat);
+    const cx = isFinite(parts[0]) ? parts[0] : viewState.cx;
+    const cy = isFinite(parts[1]) ? parts[1] : viewState.cy;
+    const z = parseFloat(params.get('zoom'));
+    const zoom = isFinite(z) ? z : viewState.zoom;
+    viewState = { cx, cy, zoom, userControlled: true };
+  }
+}
+/* Run query-param overrides AFTER initialPromise so a fresh load (no
+ * localStorage / ?reset) settles on the initial preset before any
+ * URL params layer on top.  When loadState() succeeds, initialPromise
+ * is already resolved so this collapses to the legacy behaviour. */
+const queryParamsReady = initialPromise.then(applyQueryParams);
+
+/* Apply restored state to the UI. Dark mode / visibility are set
+ * after the initial state lands so darkmode reflects the initial
+ * defaults; textareas that depend on async decompression redraw
+ * after the queryParamsReady promise resolves. */
+initialPromise.then(() => {
+  applyDarkmode();
+  toggleVisibility();
+});
+queryParamsReady.then(() => draw());
+
+/* Save on blur for textareas, on change for checkboxes. */
+for (const id of TEXTAREA_IDS) {
+  document.getElementById(id).addEventListener('blur', saveState);
+}
+for (const id of CHECKBOX_IDS) {
+  document.getElementById(id).addEventListener('change', saveState);
+}
+document.getElementById('chk-darkmode').addEventListener('change', () => {
+  applyDarkmode();
+  draw();
+});
+
+/* Observe the canvas container so the first draw happens once layout has
+ * assigned the parent a non-zero width (avoids blank initial render when
+ * wrap.parentElement.clientWidth is still 0 at the load event). */
+if (typeof ResizeObserver !== 'undefined') {
+  const ro = new ResizeObserver(() => draw());
+  ro.observe(document.getElementById('canvas-wrap').parentElement);
+} else {
+  window.addEventListener('load', () => requestAnimationFrame(draw));
+}
+/* Window height changes (e.g. browser resize, devtools open) don't
+ * always fire ResizeObserver on the container — redraw on resize too. */
+window.addEventListener('resize', () => draw());
+</script>
+</body>
+</html>

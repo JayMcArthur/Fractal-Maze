@@ -1,0 +1,126 @@
+{
+  "scope": "Bounded first-match Haskell trace checked against actual simplified atomic maze ports. Compiler boundary conventions and nondeterministic maze alternatives are not assumed equivalent.",
+  "checks": [
+    {
+      "id": "cp3-3",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump-3/cp3-3-2d.hs",
+      "sourceHash": "83f6d724857d21c700e3d32ac35fe0ef910f4a27ee5183b6feca6566b9dbe454",
+      "mazeHash": "3030fe7ac0aa34aac3601772d900907bca5be14f3c2e28c23da31314dc89d772",
+      "sourceSteps": 615746,
+      "legalMazeMoves": 1230549,
+      "maxCoordinate": 27000,
+      "start": [
+        0,
+        0,
+        "W0"
+      ],
+      "limit": 700000,
+      "result": "halt",
+      "stoppedState": [
+        0,
+        0,
+        1
+      ],
+      "terminal": "W1",
+      "trimmedMoves": 1230549,
+      "inputHash": "83f6d724857d21c700e3d32ac35fe0ef910f4a27ee5183b6feca6566b9dbe454",
+      "inputNewlines": "LF"
+    },
+    {
+      "id": "cp-n3-godel",
+      "source": "upstream_sources/koteitan-repeated-maze/tools/nd-to-2d/examples/cp_n3.hs",
+      "sourceHash": "9d4c42d68566f30170a4551ca9aa860d3416e2332ef9d4f09955499816e4d91c",
+      "mazeHash": "ae00050041b5b6a11d2cc4a48f8eaaf8b714ed43a4ba112d9ecf4702f760f45d",
+      "sourceSteps": 615737,
+      "legalMazeMoves": 1230573,
+      "maxCoordinate": 27000,
+      "start": [
+        0,
+        0,
+        "W0"
+      ],
+      "limit": 700000,
+      "result": "halt",
+      "stoppedState": [
+        0,
+        0,
+        1
+      ],
+      "terminal": "W1",
+      "trimmedMoves": 1230573,
+      "inputHash": "ec59e30d3dfa371f1fa43dfe2931358615e5ba8db3d19eaa76f657b66acf3513",
+      "configuredGoal": [
+        0,
+        0,
+        "W1"
+      ],
+      "inputNewlines": "LF"
+    },
+    {
+      "id": "cp3-2",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump-3/cp3-2-2d.hs",
+      "sourceHash": "1c45ef9cf7e0d42a97f67a09306608e1bf49abb607373dae3f3b91e19cc195f6",
+      "mazeHash": "4d87d2fc911a1940c45d6d07757b10955b4d2350992d14d24b08432e0260f560",
+      "sourceSteps": 16597,
+      "legalMazeMoves": 32783,
+      "maxCoordinate": 900,
+      "start": [
+        0,
+        0,
+        "W0"
+      ],
+      "limit": 300000,
+      "result": "halt",
+      "stoppedState": [
+        0,
+        0,
+        1
+      ],
+      "terminal": "W1"
+    },
+    {
+      "id": "cp3-4",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/counter-pump-3/cp3-4-2d.hs",
+      "sourceHash": "2f3c626851748b47c23d520b04069a3799566ca7b6bfab20704d192ea7b6b0bb",
+      "mazeHash": "9aef33ec406793eaee54e27a7925108602e5d1ff3ac20c3de8c099e834b47660",
+      "sourceSteps": 20256567,
+      "legalMazeMoves": 40511987,
+      "maxCoordinate": 810000,
+      "start": [
+        0,
+        0,
+        "W0"
+      ],
+      "limit": 30000000,
+      "result": "halt",
+      "stoppedState": [
+        0,
+        0,
+        1
+      ],
+      "terminal": "W1"
+    },
+    {
+      "id": "penta",
+      "source": "upstream_sources/koteitan-repeated-maze/maze/penta/penta.hs",
+      "sourceHash": "b163c684cae7c6bea126b2373a959ca9b32b11158e2d1d7f05321ad8ca9f212a",
+      "mazeHash": "6d59938b17a338f862e788269ceb8b3d627acd9adb14d0060ceaf1d0065c017d",
+      "sourceSteps": 10000000,
+      "legalMazeMoves": 20538770,
+      "maxCoordinate": 1756920,
+      "start": [
+        0,
+        0,
+        "W0"
+      ],
+      "limit": 10000000,
+      "result": "source-step-limit",
+      "stoppedState": [
+        818385,
+        469267,
+        37
+      ],
+      "terminal": "E37"
+    }
+  ]
+}

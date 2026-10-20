@@ -1,0 +1,50 @@
+{
+  "format": "fmaze-browser-v0",
+  "id": "daedalus_2",
+  "title": "Daedalus 2",
+  "primary_authoring": "reference_record",
+  "source_root": "packages/source/daedalus_2",
+  "logic": {
+    "format": "fmaze-logic-v0",
+    "id": "daedalus_2",
+    "strategy": "reference_record",
+    "source_model": "reference_record",
+    "modeling_status": {
+      "status": "planned",
+      "reason": "WIP/unverified reference record. The available source is a compressed black-and-white image of a smaller recursive circuit maze; the package has not yet separated visual wire crossings from actual junctions or confirmed numbered block terminal order.",
+      "next_step": "Obtain or redraw a high-contrast source, trace the complete terminal netlist for blocks 1 through 3, confirm minus/plus semantics inside recursive copies, then encode as pda_stack Port Graph logic only after a replay reaches the plus terminal."
+    },
+    "provenance": {
+      "notes": [
+        "Image shows numbered recursive blocks 1, 2, and 3 plus minus/plus terminals.",
+        "The JPEG blur makes contact and junction extraction unsafe without manual verification or a cleaner source.",
+        "No local replay path or solver netlist for this puzzle was found in the checked repository notes."
+      ]
+    }
+  },
+  "modeling_status": {
+    "status": "planned",
+    "reason": "WIP/unverified reference record. The available source is a compressed black-and-white image of a smaller recursive circuit maze; the package has not yet separated visual wire crossings from actual junctions or confirmed numbered block terminal order.",
+    "next_step": "Obtain or redraw a high-contrast source, trace the complete terminal netlist for blocks 1 through 3, confirm minus/plus semantics inside recursive copies, then encode as pda_stack Port Graph logic only after a replay reaches the plus terminal."
+  },
+  "provenance": {
+    "sources": [
+      {
+        "type": "image",
+        "href": "../../../Maze_Images/Ed_Pegg_Jr/Daedalus_2.jpg"
+      },
+      {
+        "type": "post",
+        "href": "http://numb3rs.wolfram.com/406/"
+      },
+      {
+        "type": "package_notes",
+        "href": "NOTES.md"
+      },
+      {
+        "type": "handwritten_record",
+        "note": "WIP/unverified reference record; executable port graph is not derived."
+      }
+    ]
+  }
+}

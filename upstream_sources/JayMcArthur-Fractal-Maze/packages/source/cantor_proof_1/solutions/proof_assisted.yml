@@ -1,0 +1,11 @@
+format: fmaze-solution-v0
+id: proof_assisted
+maze: cantor_proof_1
+logic: ../logic.yml
+expects_goal: true
+
+steps:
+  - transition_id: t_p1_to_p2
+  - prove_edge_id: pe_cantor_p2_to_p3
+  - proof_edge_id: pe_cantor_p2_to_p3
+  - transition_id: t_p3_to_p4

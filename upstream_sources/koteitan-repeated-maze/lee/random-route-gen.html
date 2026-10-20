@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>random_route_gen visual test</title>
+<script src="prng.js"></script>
+<script src="draw_map.js"></script>
+<script src="random_route_gen.js"></script>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 1.5rem; }
+  h1 { font-size: 1.2rem; }
+  .row { display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap; }
+  .panel { border: 1px solid #ddd; padding: 0.6rem 0.8rem; border-radius: 4px; background: #fafafa; }
+  .panel h2 { margin: 0 0 0.4rem 0; font-size: 0.95rem; }
+  textarea { font-family: "Menlo", "Consolas", monospace; font-size: 14px;
+             width: 40ch; height: 25em; white-space: pre; overflow: auto;
+             border: 1px solid #bbb; padding: 0.5em; background: white; }
+  canvas { background: white; border: 1px solid #ddd; }
+  label { font-size: 0.9rem; margin-right: 0.8rem; }
+  input[type=number] { width: 4rem; padding: 0.1rem 0.3rem; }
+  button { padding: 0.35rem 0.9rem; font-size: 0.95rem; cursor: pointer; }
+  .controls { margin-bottom: 0.8rem; padding: 0.5rem 0.8rem; background: #f0f4f8;
+              border-radius: 4px; }
+  .port-list { font-family: "Menlo", monospace; font-size: 0.82rem;
+               max-width: 40ch; overflow: auto; }
+  .port-list div { margin: 0.15rem 0; }
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>random_route_gen + draw_map visual test</h1>
+<p>Press "Generate" to run <code>random_route_gen(W, H, N)</code> and render
+both the canvas (via <code>draw_map</code>) and a monospace ASCII view.
+Visually confirm the two match.</p>
+
+<div class="controls">
+  <label>W <input type="number" id="in-W" value="12" min="2" max="80"></label>
+  <label>H <input type="number" id="in-H" value="10" min="2" max="80"></label>
+  <label>N (turns) <input type="number" id="in-N" value="8" min="1" max="200"></label>
+  <label>seed <input type="number" id="in-seed" placeholder="empty = random" style="width:10rem"></label>
+  <button id="btn-gen">Run (use seed)</button>
+  <button id="btn-re">Re-roll (new random seed)</button>
+  <span>used seed: <code id="used-seed">-</code></span>
+</div>
+
+<div class="row">
+  <div class="panel">
+    <h2>Canvas (draw_map)</h2>
+    <canvas id="cv"></canvas>
+  </div>
+  <div class="panel">
+    <h2>Monospace ASCII</h2>
+    <textarea id="ta" readonly spellcheck="false"></textarea>
+  </div>
+  <div class="panel">
+    <h2>Terminals &amp; Ports</h2>
+    <div id="ports" class="port-list"></div>
+  </div>
+</div>
+
+<script>
+function renderAscii(W, H, T, m) {
+  const grid = [];
+  for (let y = 0; y < H; y++) {
+    const row = [];
+    for (let x = 0; x < W; x++) row.push(m[x][y] || ' ');
+    grid.push(row);
+  }
+  // Top header: x-axis indices (one char each, uses last digit).
+  const hdr = '   ' + Array.from({length: W}, (_, x) => String(x % 10)).join('');
+  const sep = '   ' + '-'.repeat(W);
+  const lines = [hdr, sep];
+  for (let y = 0; y < H; y++) {
+    lines.push(String(y).padStart(2, ' ') + '|' + grid[y].join(''));
+  }
+  return lines.join('\n');
+}
+
+function renderPorts(T, P) {
+  const container = document.getElementById('ports');
+  container.innerHTML = '';
+  const h = document.createElement('div');
+  h.textContent = `Terminals: ${T.length}, Ports: ${P.length}`;
+  h.style.fontWeight = 'bold';
+  container.appendChild(h);
+  P.forEach((p, i) => {
+    const s = T[p.s], e = T[p.e];
+    const d = document.createElement('div');
+    d.textContent =
+      `P${i+1}: s=T${p.s}(${s.x},${s.y},d=${s.dx},${s.dy})  ` +
+      `e=T${p.e}(${e.x},${e.y},d=${e.dx},${e.dy})`;
+    container.appendChild(d);
+  });
+}
+
+let current = null;
+
+// Resolve the seed to use: if the user typed a number into #in-seed, honor it;
+// if empty (or reroll=true), pick a random 32-bit seed. Either way, display it.
+function resolveSeed(forceReroll) {
+  const box = document.getElementById('in-seed');
+  let seed;
+  if (!forceReroll && box.value.trim() !== '') {
+    seed = parseInt(box.value, 10) | 0;
+  } else {
+    seed = (Math.random() * 0x100000000) >>> 0;
+    box.value = seed; // reflect the used seed back into the input
+  }
+  document.getElementById('used-seed').textContent = seed;
+  return seed;
+}
+
+function run(forceReroll) {
+  const W = parseInt(document.getElementById('in-W').value, 10);
+  const H = parseInt(document.getElementById('in-H').value, 10);
+  const N = parseInt(document.getElementById('in-N').value, 10);
+  const seed = resolveSeed(forceReroll === true);
+  const rng = mulberry32(seed);
+  const res = random_route_gen(W, H, N, rng);
+  current = res;
+  draw_map(res.W, res.H, res.T, res.m, { canvas: document.getElementById('cv'), cellSize: 30, padding: 10, P: res.P });
+  document.getElementById('ta').value = renderAscii(res.W, res.H, res.T, res.m);
+  renderPorts(res.T, res.P);
+}
+
+document.getElementById('btn-gen').addEventListener('click', function () { run(false); });
+document.getElementById('btn-re').addEventListener('click', function () { run(true); });
+
+// Initial run: random seed on first load
+run(true);
+</script>
+</body>
+</html>

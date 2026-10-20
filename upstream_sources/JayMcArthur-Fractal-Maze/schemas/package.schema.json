@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fractal-maze-lab.local/schemas/package.schema.json",
+  "title": "Fractal Maze Lab Source Package Manifest",
+  "type": "object",
+  "required": ["format", "id", "title", "primary_authoring", "logic"],
+  "properties": {
+    "format": { "const": "fmaze-package-v0" },
+    "id": { "$ref": "#/$defs/id" },
+    "title": { "type": "string", "minLength": 1 },
+    "primary_authoring": {
+      "enum": ["port_graph", "fractal_block_pattern", "repeated_tile_ports", "reference_record"]
+    },
+    "logic": { "$ref": "#/$defs/file_ref_logic" },
+    "visual": { "$ref": "#/$defs/file_ref_visual" },
+    "solutions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/file_ref_solution" }
+    },
+    "provenance": { "type": "object" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:-]+$"
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "file_ref_logic": {
+      "type": "object",
+      "required": ["href", "format"],
+      "properties": {
+        "href": { "$ref": "#/$defs/path" },
+        "format": { "const": "fmaze-logic-v0" }
+      },
+      "additionalProperties": false
+    },
+    "file_ref_visual": {
+      "type": "object",
+      "required": ["href", "format"],
+      "properties": {
+        "href": { "$ref": "#/$defs/path" },
+        "format": { "const": "fmaze-visual-v0" }
+      },
+      "additionalProperties": false
+    },
+    "file_ref_solution": {
+      "type": "object",
+      "required": ["id", "href", "format"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "href": { "$ref": "#/$defs/path" },
+        "format": { "const": "fmaze-solution-v0" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

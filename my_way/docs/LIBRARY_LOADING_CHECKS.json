@@ -1,0 +1,101 @@
+{
+  "executedAt": "2026-10-11T06:39:41.964098+00:00",
+  "scope": "Metadata/static covers for all catalog variants and reference routes; saved projects still render actual documents. Cold production Library measurement and author/view/import/copy behavior. Does not close source interpretations, register solutions or full-goal review.",
+  "sourceHashes": {
+    "src/app/library/catalogIndex.ts": "3696e9438f5b7591d1a29ed7c6c77ae40a5a5125527a5bbe8b486d77b0376e01",
+    "src/app/library/mazeViews.ts": "a95fb054470f73a716ea92d1ebda5b43f1153db47794ebcd16514b88e43ae93d",
+    "src/app/library/pathCatalog.ts": "f26ecc92d6de834924733a87a3e830bcbf05bdaaa4a328c43bd8cd6ddcb0635d",
+    "src/ui/library/LibraryMazeCard.tsx": "d8574cd2d522ed7cf56e8a0f3b057cefa26b86926a75a140cc8cb0840c09c529",
+    "src/ui/library/LibraryPage.tsx": "a8b2c86dfcc85ee1322afbdc1b1ccdd788bc9d65abd555538ab7da40fc64c78a",
+    "src/ui/library/CatalogCopyButton.tsx": "1666d82e3f9e232914d63f41faded34792a3479610d74e79c57f4fd5045900b7",
+    "src/ui/library/ReferencePage.tsx": "955deea5789771e04a8ee3d32da70e80049223cbff9055537e1b6cdbdd291e77",
+    "src/ui/workbench/WorkbenchPage.tsx": "d417b464a7e0c931d3a1e774921eeccdca0f0d98abed620d70d8730dc9ed03fd",
+    "scripts/prepare-library-index.py": "19b93b1c4a42e71547da4ea197b2b47dfade66d285e58a754ed50edecef052b2",
+    "src/data/manifests/library-index.json": "6f8309f276ab7061e4729b8d372d03054e17b9fd6bb9e33a3d4cc47e673bd37d"
+  },
+  "inventory": {
+    "variants": 74,
+    "families": 49,
+    "referenceBindings": 43,
+    "originalCovers": 38,
+    "rendererCovers": 36,
+    "indexBytes": 45726
+  },
+  "startup": [
+    {
+      "route": "",
+      "beforeDecodedJavaScript": 450585,
+      "afterDecodedJavaScript": 450618,
+      "reductionPercent": -0.01,
+      "beforeDecodedResources": 512738,
+      "afterDecodedResources": 512771
+    },
+    {
+      "route": "library",
+      "beforeDecodedJavaScript": 3753755,
+      "afterDecodedJavaScript": 489346,
+      "reductionPercent": 86.96,
+      "beforeDecodedResources": 5664269,
+      "afterDecodedResources": 676865
+    },
+    {
+      "route": "play/alice-in-wonderland",
+      "beforeDecodedJavaScript": 3844353,
+      "afterDecodedJavaScript": 3876941,
+      "reductionPercent": -0.85,
+      "beforeDecodedResources": 3906506,
+      "afterDecodedResources": 3939094
+    },
+    {
+      "route": "play/1695993784968:0.6965701909885131",
+      "beforeDecodedJavaScript": 3844353,
+      "afterDecodedJavaScript": 3876941,
+      "reductionPercent": -0.85,
+      "beforeDecodedResources": 3906506,
+      "afterDecodedResources": 3939094
+    }
+  ],
+  "homeBitmapIdentical": true,
+  "verification": {
+    "unitTests": 400,
+    "unitFiles": 37,
+    "unitLog": "/tmp/fractal-library-index-full-unit.log",
+    "productionBrowserWorkflows": 107,
+    "browserLog": "/tmp/fractal-library-index-full-production-browser.log",
+    "devWorkflows": 20,
+    "devLog": "/tmp/fractal-library-index-dev-browser.log",
+    "staticHostingChecks": 72,
+    "hostingLog": "/tmp/fractal-library-index-static-hosting.log",
+    "decodedCovers": 98,
+    "coverLog": "/tmp/fractal-library-index-covers.log",
+    "pagesBuild": "/tmp/fractal-library-index-pages-build.log",
+    "rootBuild": "/tmp/fractal-library-index-root-build.log",
+    "lint": "/tmp/fractal-library-index-final-lint.log",
+    "runtimeAudit": "/tmp/fractal-current-runtime-audit.json",
+    "completeDependencyAudit": "/tmp/fractal-current-full-audit.json",
+    "knownVulnerabilities": 0
+  },
+  "quality": {
+    "files": 210,
+    "maxCyclomatic": 21,
+    "maxSourceLines": 557,
+    "explicitAnyUnknown": 0,
+    "violations": [],
+    "unmeasured": [
+      "Cognitive complexity",
+      "Halstead Difficulty",
+      "Instrumented statement/branch/function/line coverage",
+      "CRAP",
+      "Mutation survival",
+      "Dead code analysis",
+      "Duplication analysis",
+      "Python script complexity"
+    ]
+  },
+  "limitations": [
+    "Local preview Resource Timing sizes are not real-user network timings or compressed deployment sizes.",
+    "Cold Play still loads the full catalog; its new small card index adds about 33 KB while Library avoids those models.",
+    "Saved-project previews intentionally load their actual renderer.",
+    "Source WIP mappings, four register solutions, richer-model contracts, proof usability and the full original-request audit remain open."
+  ]
+}

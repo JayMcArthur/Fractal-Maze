@@ -1,0 +1,146 @@
+import { expect, test } from './fixtures'
+import { readFileSync } from 'node:fs'
+
+const alice = 'play/draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png'
+
+async function point(marker: import('@playwright/test').Locator) {
+  return [Number(await marker.getAttribute('cx')), Number(await marker.getAttribute('cy'))]
+}
+
+test('one-way block movement disables the disconnected return gate', async ({ page }) => {
+  await page.clock.install()
+  await page.goto('play/draft-maze-images-snuke-snuke-2-jpg')
+  const marker = page.getByTestId('source-player-marker')
+  await expect(marker).toBeVisible()
+  const start = await point(marker)
+  const alternative = page.getByRole('button', { name: 'Enter L → path Port 1', exact: true })
+  const connected = page.getByRole('button', { name: 'Enter L → path Port 0', exact: true })
+  await expect(alternative).toBeEnabled()
+  await page.keyboard.press('ArrowLeft')
+  await page.clock.runFor(6000)
+  const branch = await point(marker)
+  expect(branch).not.toEqual(start)
+  await expect(alternative).toBeDisabled()
+  await expect(connected).toBeEnabled()
+  await connected.click()
+  await page.clock.runFor(6000)
+  await expect(page.locator('.digital-hud__metrics > div').filter({ hasText: 'Depth' }).locator('dd')).toHaveText('1')
+  await page.getByRole('button', { name: 'Undo move', exact: true }).click()
+  expect(await point(marker)).toEqual(branch)
+  await page.getByRole('button', { name: 'Undo move', exact: true }).click()
+  expect(await point(marker)).toEqual(start)
+})
+
+test('a nested Snuke branch retains its path, depth and physical position through undo', async ({ page }) => {
+  await page.clock.install()
+  await page.goto('play/draft-maze-images-snuke-snuke-1-jpg')
+  for (const path of [1, 2, 3]) {
+    await page.getByRole('button', { name: `Enter A → path Port ${path}`, exact: true }).click()
+    await page.clock.runFor(6000)
+  }
+  const marker = page.getByTestId('source-player-marker')
+  const start = await point(marker)
+  await page.keyboard.press('ArrowRight')
+  await page.clock.runFor(6000)
+  const departure = await point(marker)
+  expect(departure).not.toEqual(start)
+  await page.getByRole('button', { name: 'Walk → path Port 2', exact: true }).click()
+  await page.clock.runFor(6000)
+  const metrics = page.locator('.digital-hud__metrics > div')
+  await expect(metrics.filter({ hasText: 'Depth' }).locator('dd')).toHaveText('3')
+  await expect(metrics.filter({ hasText: 'Path' }).locator('dd')).toHaveText('Port 2')
+  await page.getByRole('button', { name: 'Undo move', exact: true }).click()
+  await expect(metrics.filter({ hasText: 'Path' }).locator('dd')).toHaveText('Port 3')
+  expect(await point(marker)).toEqual(departure)
+  await page.getByRole('button', { name: 'Undo move', exact: true }).click()
+  expect(await point(marker)).toEqual(start)
+})
+
+test('a block walk supports undo, restart and immutable replay export/import', async ({ page }) => {
+  await page.goto(alice)
+  const marker = page.getByTestId('source-player-marker')
+  await expect(marker).toBeVisible()
+  const start = await point(marker)
+  await page.keyboard.press('ArrowRight')
+  await expect(page.getByRole('button', { name: 'Undo move', exact: true })).toBeEnabled()
+  const target = await point(marker)
+  expect(target).not.toEqual(start)
+  await page.getByRole('button', { name: 'Undo move', exact: true }).click()
+  expect(await point(marker)).toEqual(start)
+  await page.keyboard.press('ArrowRight')
+  await page.getByRole('button', { name: 'Restart path', exact: true }).click()
+  expect(await point(marker)).toEqual(start)
+  await page.keyboard.press('ArrowRight')
+  await page.getByRole('button', { name: 'Save & play replay', exact: true }).click()
+  await expect(page.locator('.replay-timeline')).toContainText('Step 0 of 1')
+  const download = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Export replay', exact: true }).click()
+  const file = (await (await download).path())!
+  const replay = JSON.parse(readFileSync(file, 'utf8'))
+  expect(replay.nativeRoute.states).toHaveLength(1)
+  expect(replay.nativeRoute.edges).toEqual([])
+  expect(replay.nativeRoute.physical.moves[0].kind).toBe('walk')
+  expect(replay.nativeRoute.physical.positions[1].point).toEqual(target)
+  expect(replay.playArtwork.blockSize).toBeGreaterThan(0)
+  await page.getByRole('button', { name: 'Play replay', exact: true }).click()
+  await expect(marker).toHaveAttribute('cx', String(target[0]))
+  await expect(marker).toHaveAttribute('cy', String(target[1]))
+  await page.getByLabel('Import replay', { exact: true }).setInputFiles(file)
+  await page.getByRole('button', { name: 'Seek to end', exact: true }).click()
+  await expect(marker).toHaveAttribute('cx', String(target[0]))
+  await expect(marker).toHaveAttribute('cy', String(target[1]))
+})
+
+test('a block key advances one cell, updates the overview and undoes the physical step', async ({
+  page,
+}) => {
+  await page.goto('play/draft-maze-images-snuke-snuke-3-png')
+  const board = page.locator('.source-artwork').first()
+  const marker = page.getByTestId('source-player-marker')
+  await expect(board.locator('.block-maze-artwork').first()).toBeVisible()
+  await expect(page.getByLabel('Display style')).toHaveCount(0)
+  const point = async () => [
+    Number(await marker.getAttribute('cx')),
+    Number(await marker.getAttribute('cy')),
+  ]
+  const start = await point()
+  const cell = Number(
+    await board.locator('.block-maze-artwork').first().getAttribute('data-cell-size')
+  )
+  const overview = page.getByTestId('overview-player-marker')
+  const oldOverviewY = await overview.getAttribute('cy')
+  await page.keyboard.press('ArrowDown')
+  await expect.poll(async () => (await point())[1]).toBe(start[1] + cell)
+  await expect(page.getByLabel('Display style')).toHaveCount(0)
+  expect(await point()).toEqual([start[0], start[1] + cell])
+  expect(await overview.getAttribute('cy')).not.toBe(oldOverviewY)
+  await page.getByRole('button', { name: 'Undo move', exact: true }).click()
+  await expect.poll(point).toEqual(start)
+  await expect(page.getByRole('button', { name: 'Save & play replay', exact: true })).toBeDisabled()
+})
+
+test('the last recorded block walk can pause and resume before its endpoint', async ({ page }) => {
+  await page.clock.install({ time: new Date('2026-10-10T12:00:00Z') })
+  await page.goto(alice)
+  const marker = page.getByTestId('source-player-marker')
+  await expect(marker).toBeVisible()
+  await page.clock.pauseAt(new Date('2026-10-10T12:01:00Z'))
+  await page.keyboard.press('ArrowRight')
+  await page.clock.runFor(2000)
+  const target = await point(marker)
+  await page.getByRole('button', { name: 'Save & play replay', exact: true }).click()
+  await expect(page.locator('.replay-timeline')).toContainText('Step 0 of 1')
+  await page.getByLabel('Speed').selectOption('0.5')
+  await page.getByRole('button', { name: 'Step forward', exact: true }).click()
+  await page.clock.runFor(16)
+  await expect(page.getByRole('button', { name: 'Pause replay', exact: true })).toBeVisible()
+  const before = await point(marker)
+  expect(before).not.toEqual(target)
+  await page.getByRole('button', { name: 'Pause replay', exact: true }).click()
+  await page.clock.runFor(1500)
+  expect(await point(marker)).toEqual(before)
+  await page.getByRole('button', { name: 'Play replay', exact: true }).click()
+  await page.clock.runFor(2000)
+  expect(await point(marker)).toEqual(target)
+  await expect(page.getByRole('button', { name: 'Play replay', exact: true })).toBeVisible()
+})
