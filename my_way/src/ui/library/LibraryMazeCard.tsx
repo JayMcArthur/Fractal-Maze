@@ -125,24 +125,24 @@ function MazeCardActions({
       <Link className="control" to={to}>
         {details.playable ? 'Play' : 'View WIP'}
       </Link>
-      {details.playable && (
-        <Link
-          className="control"
-          to={
-            details.definitionType === 'recursiveTour'
-              ? `/play/${entry.id}`
-              : pathModel
-                ? `/workbench/${entry.id}`
-                : `/editor/${entry.id}`
-          }
-        >
-          {details.definitionType === 'squareRecursive'
-            ? 'Edit'
-            : details.definitionType === 'blockRecursive'
-              ? 'Edit pattern'
-              : 'Inspect'}
-        </Link>
-      )}
+      <Link
+        className="control"
+        to={
+          details.definitionType === 'recursiveTour'
+            ? `/play/${entry.id}`
+            : pathModel
+              ? `/workbench/${entry.id}`
+              : `/editor/${entry.id}`
+        }
+      >
+        {!details.playable
+          ? 'Edit draft'
+          : details.definitionType === 'squareRecursive'
+          ? 'Edit'
+          : details.definitionType === 'blockRecursive'
+            ? 'Edit pattern'
+            : 'Inspect'}
+      </Link>
       {!pathModel && (
         <Link className="control" to={`/workbench/${entry.id}`}>
           Convert artwork
