@@ -41,7 +41,11 @@ export function mazeCredits(doc: RecursiveMazeDocument) {
     addSource(reference.source)
     links.set(assetUrl(reference.asset), `Original artwork · ${reference.title}`)
   }
-  if (doc.artwork?.asset && !originals.some((reference) => reference.asset === doc.artwork!.asset))
+  if (
+    doc.artwork?.asset &&
+    !doc.artwork.asset.startsWith('data:') &&
+    !originals.some((reference) => reference.asset === doc.artwork!.asset)
+  )
     links.set(assetUrl(doc.artwork.asset), 'Original artwork')
   const author = [
     ...new Set(

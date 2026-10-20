@@ -15,5 +15,6 @@ it('credits native remakes with original authors, drawings and their source prog
 it('does not turn imported non-web source metadata into an executable credit link', () => {
   const original = loadCatalogMaze('alice-in-wonderland')!
   const doc = { ...original, metadata: { ...original.metadata, id: 'imported-credit', source: 'javascript:alert(1)' } }
-  expect(mazeCredits(doc).links.some(link => link.href.startsWith('javascript:'))).toBe(false)
+  doc.artwork = { ...loadCatalogMaze('draft-maze-images-mike-earnest-alice-and-the-hedge-maze-png')!.artwork!, asset: 'data:text/html,<script>alert(1)</script>' }
+  expect(mazeCredits(doc).links.some(link => /^(javascript:|data:)/i.test(link.href))).toBe(false)
 })
