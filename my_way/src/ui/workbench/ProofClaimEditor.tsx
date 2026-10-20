@@ -59,7 +59,7 @@ export function ProofClaimEditor({
             >
               {model.paths.map((path) => (
                 <option key={path.id} value={path.id}>
-                  {path.label}
+                  Line {path.label}
                 </option>
               ))}
             </select>

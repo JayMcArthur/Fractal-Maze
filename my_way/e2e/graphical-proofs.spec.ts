@@ -9,6 +9,32 @@ async function descend(board: Locator) {
   await expect(board.locator('.witness-maze__position')).toContainText('Depth 1')
 }
 
+test('dense proof boards keep their line labels separate on phone and desktop', async ({ page }) => {
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 1000 })
+    await page.goto('play/proof-maze-images-siggy-infinite-descent-svg')
+    await page.getByRole('button', { name: 'Open proof notebook', exact: true }).click()
+    const dialog = page.getByRole('dialog', { name: 'Proof notebook', exact: true })
+    const boards = dialog.locator('.witness-maze')
+    await expect(boards).toHaveCount(2)
+    for (const board of await boards.all()) {
+      const labels = board.locator('.proof-line-label')
+      await expect(labels).toHaveCount(6)
+      const boxes = await labels.evaluateAll(elements => elements.map(element => {
+        const { x, y, width, height } = element.getBoundingClientRect()
+        return { x, y, width, height }
+      }))
+      for (const [i, box] of boxes.entries()) {
+        for (const other of boxes.slice(i + 1)) {
+          expect(box.x >= other.x + other.width || other.x >= box.x + box.width ||
+            box.y >= other.y + other.height || other.y >= box.y + box.height).toBe(true)
+        }
+      }
+    }
+    await dialog.getByRole('button', { name: 'Return to maze', exact: true }).click()
+  }
+})
+
 for (const width of [390, 1440]) {
   test(`two maze boards construct, check and use a hop without typing a period at ${width}px`, async ({
     page,
@@ -28,7 +54,16 @@ for (const width of [390, 1440]) {
       right.getByRole('img', { name: 'Playable source maze routes', exact: true })
     ).toBeVisible()
     await expect(dialog.getByLabel('Repeating word', { exact: true })).not.toBeVisible()
+    await expect(left.getByLabel('Local view', { exact: true })).not.toBeChecked()
+    await expect(left.getByRole('img', { name: 'Line 1, current line', exact: true })).toBeVisible()
+    await expect(left.getByRole('img', { name: 'Line 2', exact: true })).toBeVisible()
+    await expect(right.getByRole('img', { name: 'Line 2, current line', exact: true })).toBeVisible()
+    await dialog.getByLabel('Claim from path', { exact: true }).selectOption('2')
+    await expect(left.getByRole('img', { name: 'Line 2, current line', exact: true })).toBeVisible()
+    await expect(left.getByRole('img', { name: 'Line 1', exact: true })).toBeVisible()
+    await dialog.getByLabel('Claim from path', { exact: true }).selectOption('1')
     await descend(left)
+    await expect(left.getByRole('img', { name: 'Line 1, current line', exact: true })).toBeVisible()
     await expect(right.locator('.witness-maze__position')).toContainText('Depth 0')
     await expect(live).toHaveAttribute('cx', point[0]!)
     await expect(live).toHaveAttribute('cy', point[1]!)

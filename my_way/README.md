@@ -39,6 +39,8 @@ searches. A bounded search failure does not prove a maze impossible.
 
 **Proof notebook** opens over the current path-maze run. For an infinite hop,
 choose the left and right starting lines and move through the two block mazes.
+Each board opens on the full layout with matching line labels; blue highlights
+its current line. Enable **Local view** to follow movement more closely.
 Click a board to control it with the keyboard, or use its arrows and gates.
 The notebook detects the common repeating copies from both recorded trails.
 Use **Start repetition here** to mark finite setup routes before the repeating part.
