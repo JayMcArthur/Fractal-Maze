@@ -12,7 +12,7 @@ import {
   type PathPlayFrame,
   type PathSession,
 } from '../../core/play/pathSession'
-import { createBlockArtwork } from '../../core/play/blockArtwork'
+import { compactBlockArtwork } from '../../core/play/compactBlockArtwork'
 import type { ArtworkPoint } from '../../core/pathMaze/artworkRoutes'
 import { availableMoves } from '../../core/pathMaze/traversal'
 import { availableProofMoves, proofCrossing, type CheckedProofStep } from '../../core/play/proofMovement'
@@ -22,7 +22,7 @@ import { useRunGuard } from '../player/useRunGuard'
 export function usePathSession(doc: RecursiveMazeDocument, model: PathMazeDefinition) {
   const playArtwork = useMemo(() => doc.artwork && model.start &&
     doc.artwork.traces.some(trace => trace.path === model.start!.path)
-      ? createBlockArtwork(doc.artwork, model) : doc.artwork, [doc.artwork, model])
+      ? compactBlockArtwork(doc.artwork, model) : doc.artwork, [doc.artwork, model])
   const [session, setSession] = useState(() => initialPathSession(model, playArtwork))
   const [frame, setFrame] = useState<PathPlayFrame | undefined>(() =>
     session.positions.length ? { position: session.positions[0] } : undefined

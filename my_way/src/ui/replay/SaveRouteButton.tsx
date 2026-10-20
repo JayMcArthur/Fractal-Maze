@@ -4,6 +4,8 @@ import { saveReplay } from '../../app/projects/db'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
 import { buildNativeReplay, nativeRouteStepCount, type NativeRoute } from '../../core/replay/nativeReplay'
 import type { MazeArtwork } from '../../core/model/pathMaze'
+import { compactBlockArtwork } from '../../core/play/compactBlockArtwork'
+import { pathRouteSession } from '../../core/play/pathSession'
 
 export function SaveRouteButton({
   maze,
@@ -29,9 +31,22 @@ export function SaveRouteButton({
     setBusy(true)
     setError('')
     try {
+      const model = maze.definition
+      const path =
+        (route.type === 'pathPushdown' || route.type === 'infiniteRule') &&
+        (model.type === 'pathPushdown' || model.type === 'infiniteRule')
+      const artwork = playArtwork ?? (
+        path && !route.physical && maze.artwork?.traces.some(trace => trace.path === model.start?.path)
+          ? compactBlockArtwork(maze.artwork, model)
+          : undefined
+      )
+      const recorded =
+        path && artwork && !route.physical
+          ? { ...route, physical: pathRouteSession(model, artwork, route, complete) }
+          : route
       const id = crypto.randomUUID(),
-        doc = buildNativeReplay(maze, route, source, complete)
-      if (playArtwork) doc.playArtwork = structuredClone(playArtwork)
+        doc = buildNativeReplay(maze, recorded, source, complete)
+      if (artwork) doc.playArtwork = structuredClone(artwork)
       await saveReplay({
         id,
         mazeId: maze.metadata.id,

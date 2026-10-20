@@ -46,7 +46,9 @@ run stay fixed until those moves are undone. The notebook begins empty.
 
 Square controls: arrows, WASD, IJKL or on-screen arrows; Z to undo, R to restart,
 H for help and F for fullscreen. Path blocks support keyboard/touch walking,
-stopping at junctions and copy gates. Unfinished runs warn before leaving.
+stopping at junctions and copy gates. Hold a direction key to keep moving or
+retrying that direction; release it to stop. Opening a dialog, editing a field
+or leaving the window cancels the hold. Unfinished runs warn before leaving.
 
 ## Movement architecture
 

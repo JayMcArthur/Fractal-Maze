@@ -27,6 +27,21 @@ to the logical transitions; returning to the same physical position trims a
 loop. `usePathSession` owns the interactive session, animation and unfinished-run
 guard. Saving records the logical route and physical witness together.
 
+`core/play/compactBlockArtwork.ts` shortens long straight corridors for new path
+runs and solver previews. Strictly increasing axis maps remove whole grid strips
+while keeping feature levels distinct. Traces, gates, copy frames, view bounds
+and endpoints move together. An axis reduction is rejected if it changes a gate's
+direction or breaks an existing aligned copy port. The logical PDA is unchanged;
+native grids and coordinate-based models keep their own dimensions. Newly saved
+solutions retain the compact physical witness and `playArtwork`, separately from
+the original maze snapshot. Existing recordings keep their recorded layout.
+
+Keyboard-driven players share `useMovementKeyboard`: one immediate step, then
+retries after 250 ms and every 120 ms while held. An animation may finish after
+release; no further attempts are scheduled. Release, blur, hidden pages, editable
+focus, dialogs, disabled play and unmount cancel the hold. Timers use the latest
+movement callback so successive moves retain the current position and copy stack.
+
 Square corridors retain their native grid for cell movement. `squarePlayPDA`
 compiles connected corridors and uses a source PDA only after verifying its
 correspondence to the grid. Play's store and Solve use that same binding. Hiding

@@ -5,7 +5,7 @@ import type { BlockRecursiveDefinition, BlockProvidedRoute } from '../../core/mo
 import { blockDepthLimit, type BlockSearch } from '../../core/blockMaze/grid'
 import type { DirectionBit } from '../../core/model/squareRecursive'
 import { appendRouteState } from '../../core/replay/routeHistory'
-import { keyToDirection } from './movementKeys'
+import { useMovementKeyboard } from './movementKeys'
 import { initialBlockPosition, moveRecursiveBlock, gridBlockPosition, recursiveBlockAddress,
   recursiveBlockKey, recursiveBlockWon } from '../../core/blockMaze/recursivePosition'
 import type { RecursiveBlockRoute } from '../../core/blockMaze/recursiveReplay'
@@ -38,16 +38,7 @@ export function useRecursiveBlockSession(doc: RecursiveMazeDocument, depth: numb
     setHistory({ type: 'fractalBlock', states, details }); setStep(states.length - 1); setSource('human')
     setStatus(recursiveBlockWon(def, next) ? 'Finish reached.' : 'Moved one visible cell.')
   }, [ready, won, solving, def, current, visibleDetail, history, step])
-  useEffect(() => {
-    const handler = (event: KeyboardEvent) => {
-      if (event.repeat || event.ctrlKey || event.metaKey || event.altKey ||
-        (event.target as HTMLElement).closest('input,select,textarea') || document.querySelector('[role="dialog"]')) return
-      const direction = keyToDirection(event.key)
-      if (direction !== null) { event.preventDefault(); move(direction) }
-    }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [move])
+  useMovementKeyboard({ enabled: ready && !won && !solving, move })
   const load = (route: BlockProvidedRoute) => {
     const states = route.states.map(cell => gridBlockPosition(def.unit, cell, route.depth))
     setHistory({ type: 'fractalBlock', states, details: states.slice(1).map(() => route.depth) })

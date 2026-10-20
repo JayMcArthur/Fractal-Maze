@@ -1,5 +1,5 @@
 import { SourceRouteDrawing } from './SourceRouteDrawing'
-import { useCallback, useEffect, useState, type ReactNode } from 'react'
+import { useCallback, useState, type ReactNode } from 'react'
 import type { MazeArtwork, PathMazeDefinition, PathState } from '../../core/model/pathMaze'
 import {
   artworkRoute,
@@ -14,7 +14,7 @@ import {
 } from '../../core/pathMaze/traversal'
 import { SourcePlayControls } from './SourcePlayControls'
 import { walkSource, sourceGateDirection } from '../../core/play/sourceWalking'
-import { keyToDirection } from '../player/movementKeys'
+import { useMovementKeyboard } from '../player/movementKeys'
 import type { DirectionBit } from '../../core/model/squareRecursive'
 import { artworkDisplayGeometry } from '../../core/pathMaze/artworkDisplayGeometry'
 import { blockCamera } from '../../core/play/blockArtwork'
@@ -97,29 +97,7 @@ export function SourceRouteCanvas({
     },
     [onMove, busy, current, model, artwork, width, onWalk, markerRef]
   )
-  useEffect(() => {
-    if (!onMove) return
-    const keydown = (event: KeyboardEvent) => {
-      if (
-        event.repeat ||
-        event.ctrlKey ||
-        event.metaKey ||
-        event.altKey ||
-        event.target instanceof HTMLInputElement ||
-        event.target instanceof HTMLSelectElement ||
-        event.target instanceof HTMLTextAreaElement ||
-        document.querySelector('[role="dialog"]')
-      )
-        return
-      const direction = keyToDirection(event.key)
-      if (direction !== null) {
-        event.preventDefault()
-        walk(direction)
-      }
-    }
-    window.addEventListener('keydown', keydown)
-    return () => window.removeEventListener('keydown', keydown)
-  }, [onMove, walk])
+  useMovementKeyboard({ enabled: !!onMove, move: walk })
   const moves =
     onMove && !busy && sameState(marker.state, current)
       ? availableMoves(model, current).filter(({ edge }) => pathCrossing(model, artwork, marker, edge.id))
