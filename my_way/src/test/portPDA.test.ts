@@ -1,7 +1,7 @@
+import { compilePlayDocument } from '../app/library/compilePlayDocument'
 import { expect, it } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { loadCatalogMaze } from '../app/library/catalog'
-import { portPlayDocument } from '../app/library/portPlayDocument'
 import { portPathState } from '../core/play/portPDA'
 import { portMoves, portStateKey } from '../core/model/recursivePorts'
 import { availableMoves, stateKey, sameState } from '../core/pathMaze/traversal'
@@ -30,7 +30,7 @@ it('all bundled port players preserve every directed transition through four lev
     const doc = loadCatalogMaze(id)!,
       def = doc.definition
     if (def.type !== 'recursivePorts') throw new Error('Expected port fixture')
-    const converted = portPlayDocument(doc)!,
+    const converted = compilePlayDocument(doc),
       model = converted.definition
     if (model.type !== 'pathPushdown') throw new Error('Expected playable PDA')
     const queue = [def.start],
@@ -55,7 +55,7 @@ it('all bundled port players preserve every directed transition through four lev
 })
 
 it('generated Koteitan corridor layouts export and import as a playable PDA snapshot', () => {
-  const doc = portPlayDocument(loadCatalogMaze('ports-koteitan')!)!
+  const doc = compilePlayDocument(loadCatalogMaze('ports-koteitan')!)
   const model = doc.definition
   if (model.type !== 'pathPushdown') throw new Error('Expected playable PDA')
   expect(validateMaze(doc).issues.filter((issue) => issue.severity === 'error')).toEqual([])
@@ -92,7 +92,7 @@ it('compiles every imported replacement, directed exit and root identity through
 it('keeps a root-changing crossing at depth zero and exports its complete physical witness', () => {
   const doc = loadCatalogMaze('ports-koteitan')!
   doc.definition = replacement
-  const converted = portPlayDocument(doc)!
+  const converted = compilePlayDocument(doc)
   if (converted.definition.type !== 'pathPushdown') throw new Error('Expected playable PDA')
   const model = converted.definition, artwork = converted.artwork!
   expect(validateMaze(converted).issues.filter(issue => issue.severity === 'error')).toEqual([])
@@ -128,7 +128,7 @@ it('plays every bundled port solution with canonical source/block positions and 
     const replay = importReplay(readFileSync(`public/${bundle.asset}`, 'utf8'))
     if (replay.maze.definition.type !== 'recursivePorts' || replay.nativeRoute?.type !== 'recursivePorts')
       throw new Error('Expected old port recording')
-    const maze = portPlayDocument(replay.maze)!
+    const maze = compilePlayDocument(replay.maze)
     if (maze.definition.type !== 'pathPushdown') throw new Error('Expected playable PDA')
     const physical = portReplaySession(replay.maze.definition, maze.definition, maze.artwork!, replay.nativeRoute.states)
     expect(physical.moves).toHaveLength(replay.nativeRoute.states.length - 1)
@@ -143,9 +143,9 @@ it('an edited Snuke transition is compiled from its actual rules instead of the 
   const doc = structuredClone(loadCatalogMaze('ports-snuke_no3')!)
   if (doc.definition.type !== 'recursivePorts') throw new Error('Expected port fixture')
   const native = doc.definition
-  const original = portPlayDocument(doc)!
+  const original = compilePlayDocument(doc)
   doc.definition.rules[0][4] = 2
-  const edited = portPlayDocument(doc)!
+  const edited = compilePlayDocument(doc)
   expect(edited.definition).not.toBe(original.definition)
   expect(edited.artwork?.asset).toBe('')
   if (edited.definition.type !== 'pathPushdown') throw new Error('Expected playable PDA')

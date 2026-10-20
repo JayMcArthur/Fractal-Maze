@@ -1,8 +1,8 @@
+import { compilePlayDocument } from '../app/library/compilePlayDocument'
 import { expect, it } from 'vitest'
 import { readFileSync } from 'node:fs'
 import collection from '../data/mazes/geometric-collection.json'
 import { importGeometricCollection, amurielagiExportAdapter } from '../core/io/adapters/amurielagiAdapter'
-import { geometricPlayDocument } from '../app/library/geometricPlayDocument'
 import { compileGeometricPDA, geometricPathState } from '../core/play/geometricPDA'
 import { geometricArtwork } from '../core/play/geometricArtwork'
 import { geometricChoices, geometricMove, geometricStart } from '../core/solver/common/geometricMovement'
@@ -23,7 +23,7 @@ const documents = importGeometricCollection(collection)
 
 it('all twelve geometric imports keep their original source and exact floor cells in the block player', () => {
   for (const [index, doc] of documents.entries()) {
-    const converted = geometricPlayDocument(doc)!
+    const converted = compilePlayDocument(doc)
     expect(validateMaze(converted).issues.filter(issue => issue.severity === 'error')).toEqual([])
     expect(JSON.parse(amurielagiExportAdapter.export(doc))[0]).toEqual(collection[index])
     expect(converted.metadata.id).toBe(doc.metadata.id)
@@ -133,7 +133,7 @@ it('plays archived geometric solutions on the physical PDA without dropping thei
     const original = importReplay(readFileSync(`public/${bundle.asset}`, 'utf8'))
     if (original.maze.definition.type !== 'geometricRecursive' || original.nativeRoute?.type !== 'geometricRecursive')
       throw new Error('Expected geometric recording')
-    const maze = geometricPlayDocument(original.maze)!
+    const maze = compilePlayDocument(original.maze)
     if (maze.definition.type !== 'pathPushdown') throw new Error('Expected compiled PDA')
     const physical = geometricReplaySession(original.maze.definition.maze, maze.definition,
       maze.artwork!, original.nativeRoute)

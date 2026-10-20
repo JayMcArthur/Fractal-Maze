@@ -1,3 +1,4 @@
+import { prepareReplay } from '../../app/library/prepareReplay'
 import type { PlayerPosition } from '../../core/model/playerState'
 import { BlockReplay } from './BlockReplay'
 import { PathReplay } from './PathReplay'
@@ -10,45 +11,11 @@ import { useEffect, useMemo, useState } from 'react'
 import { useReplayStore } from '../../app/store/replaySlice'
 import { downloadFile } from '../../core/io/downloadFile'
 import { MazeCanvas } from '../components/MazeCanvas'
-import type { PathMazeDefinition } from '../../core/model/pathMaze'
 import type { ReplayDocument } from '../../core/replay/ReplayDocument'
 import { GraphLabeledRenderer } from '../../core/render/svg/GraphLabeledRenderer'
-import { sessionPathRoute, pathRouteSession } from '../../core/play/pathSession'
-import { portReplaySession } from '../../core/replay/portReplaySession'
-import { portPlayDocument } from '../../app/library/portPlayDocument'
-import { geometricPlayDocument } from '../../app/library/geometricPlayDocument'
-import { geometricReplaySession } from '../../core/replay/geometricReplaySession'
-import { rulePlayDocument } from '../../app/library/rulePlayDocument'
 
 export function ReplayPlayback({ doc: original }: { doc: ReplayDocument }) {
-  const doc = useMemo(() => {
-    const route = original.nativeRoute
-    if (route && (route.type === 'pathPushdown' || route.type === 'infiniteRule') && !original.playArtwork) {
-      const maze = rulePlayDocument(original.maze)
-      if (maze) return { ...original, maze }
-    }
-    if (route?.type === 'geometricRecursive' && original.maze.definition.type === 'geometricRecursive') {
-      const maze = geometricPlayDocument(original.maze)!
-      const model = maze.definition as PathMazeDefinition
-      const physical = geometricReplaySession(original.maze.definition.maze, model, maze.artwork!, route)
-      return { ...original, maze,
-        nativeRoute: { type: 'pathPushdown' as const, ...sessionPathRoute(physical), physical } }
-    }
-    if (route && (route.type === 'pathPushdown' || route.type === 'infiniteRule') &&
-      route.proofSteps && !route.physical && original.maze.artwork?.traces.length) {
-      const model = original.maze.definition as PathMazeDefinition
-      const physical = pathRouteSession(model, original.playArtwork ?? original.maze.artwork, route)
-      return { ...original, nativeRoute: { ...route, physical },
-        metrics: { ...original.metrics, totalMoves: physical.moves.length } }
-    }
-    if (original.nativeRoute?.type !== 'recursivePorts' || original.maze.definition.type !== 'recursivePorts')
-      return original
-    const maze = portPlayDocument(original.maze)!
-    const model = maze.definition as PathMazeDefinition
-    const physical = portReplaySession(original.maze.definition, model, maze.artwork!, original.nativeRoute.states)
-    return { ...original, maze,
-      nativeRoute: { type: 'pathPushdown' as const, ...sessionPathRoute(physical), physical } }
-  }, [original])
+  const doc = useMemo(() => prepareReplay(original), [original])
   const [sourceMoving, setSourceMoving] = useState(false)
   const [motionPaused, setMotionPaused] = useState(false)
   const {

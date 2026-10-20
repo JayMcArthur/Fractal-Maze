@@ -126,8 +126,8 @@ PROJECT = r"""async audit => {
   const {sameState}=await import('/Fractal-Maze/src/core/pathMaze/traversal.ts');
   const {buildNativeReplay}=await import('/Fractal-Maze/src/core/replay/nativeReplay.ts');
   const {importReplay}=await import('/Fractal-Maze/src/core/replay/importReplay.ts');
-  const {wirePlayDocument}=await import('/Fractal-Maze/src/app/library/wirePlayDocument.ts');
-  const doc=wirePlayDocument(loadCatalogMaze('wolf-wire-original')),model=doc.definition;
+  const {compilePlayDocument}=await import('/Fractal-Maze/src/app/library/compilePlayDocument.ts');
+  const doc=compilePlayDocument(loadCatalogMaze('wolf-wire-original')),model=doc.definition;
   const clockwise=[[1,0],[2,0],[3,0],[4,0],[5,1],[5,2],[5,3],[5,4],[4,5],[3,5],[2,5],[1,5],[0,4],[0,3],[0,2],[0,1]];
   const artwork={asset:'',width:25,height:25,bounds:[0,0,25,25],frames:audit.frames,
     traces:audit.paths.map((trace,index)=>({id:'native-'+index,path:trace.path,color:model.paths.find(path=>path.id===trace.path).color,points:trace.points})),

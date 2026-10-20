@@ -1,7 +1,7 @@
+import { compilePlayDocument } from '../app/library/compilePlayDocument'
 import { expect, it } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { loadCatalogMaze } from '../app/library/catalog'
-import { wirePlayDocument } from '../app/library/wirePlayDocument'
 import { bundledReplays } from '../app/library/bundledReplays'
 import { fmazeImportAdapter, fmazeExportAdapter } from '../core/io/adapters/fmazeAdapter'
 import { importReplay } from '../core/replay/importReplay'
@@ -11,13 +11,13 @@ import { validateMaze } from '../core/validate/validateMaze'
 it('keeps the original wire document export while Play uses Wolfram 2’s physical PDA', () => {
   const original = loadCatalogMaze('wolf-wire-original')!
   const before = structuredClone(original)
-  const playing = wirePlayDocument(original)!
+  const playing = compilePlayDocument(original)
   expect(validateMaze(playing).valid).toBe(true)
   expect(playing.metadata).toEqual(original.metadata)
   expect(playing.definition).toEqual(loadCatalogMaze('draft-maze-images-mark-j-p-wolf-wolfram-2-jpg')!.definition)
   expect(fmazeImportAdapter.import(fmazeExportAdapter.export(original))).toEqual(before)
   expect(original).toEqual(before)
-  expect(wirePlayDocument(playing)).toBeNull()
+  expect(compilePlayDocument(playing)).toBe(playing)
 })
 
 it.each(bundledReplays.filter(bundle => bundle.mazeId === 'wolf-wire-original'))(

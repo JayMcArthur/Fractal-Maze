@@ -22,8 +22,7 @@ export function HomePage() {
               through infinity.
             </h1>
             <p>
-              Explore recursive mazes on their original drawings or block remakes. Every colored
-              copy takes you deeper into the same puzzle.
+              Explore recursive block mazes. Each colored copy leads deeper into the same puzzle.
             </p>
             <div className="button-row">
               <Link className="control control--primary" to="/play/alice-in-wonderland">
@@ -53,8 +52,8 @@ export function HomePage() {
             <span>01 / Play</span>
             <h2>Choose a maze</h2>
             <p>
-              Browse the authors. Pick a source drawing or a block view, then explore its nested
-              copies.
+              Choose a maze and explore its nested copies. Original drawings remain available
+              as covers and references.
             </p>
           </Link>
           <Link to="/solver">
@@ -77,13 +76,11 @@ export function HomePage() {
           <h2>How to play</h2>
           <div className="home-instructions">
             <p>
-              <strong>Move.</strong> Use arrows, WASD, IJKL or direction buttons. On a source
-              drawing, one press follows the route to its next junction or gate. Press again to
-              choose where to go.
+              <strong>Move.</strong> Use arrows, WASD, IJKL or the direction buttons.
             </p>
             <p>
-              <strong>Enter a copy.</strong> Cross a colored block or an image gate. Your copy stack
-              shows where you are; Undo returns to the previous move.
+              <strong>Enter a copy.</strong> Cross a colored copy boundary. The depth display shows
+              how far inside you are; Undo returns to the previous move.
             </p>
             <p>
               <strong>Watch a solution.</strong> Choose a replay in the bar beneath the maze. Play,
@@ -109,14 +106,13 @@ export function HomePage() {
             <summary>Images, PDAs and infinite proofs</summary>
             <p>
               A connected corridor is one PDA state. Entering a copy pushes its name onto the stack,
-              and leaving it pops that name. Verified source drawings and block mappings share those
-              transitions; their geometry determines where you walk.
+              and leaving it pops that name. The block layout shows these paths and the places
+              where you can cross between copies.
             </p>
             <p>
-              WIP conversions retain their source images and editable connections. Review crossings
-              and gates before relying on their topology. Balanced PDA search decides finite surface
-              routes in the declared model. Infinite and Cantor movement use separate checked
-              witnesses in the proof notebook.
+              Use original drawings as references when making block layouts. The solver checks
+              finite paths through the declared model. Infinite and Cantor movement require
+              separate checked witnesses in the proof notebook.
             </p>
             <Link className="control" to="/solver?type=infinite">
               Choose an infinite maze
@@ -129,9 +125,9 @@ export function HomePage() {
             <summary>Other maze rules</summary>
             <p>
               Backlot is a recursive grid tour: satisfy each studio’s dots and row/column counts
-              without crossing or retracing. Omeometo expands a block pattern into a finite grid,
-              with movement and search at the chosen expansion depth. Repeated directed mazes and
-              recursive ports retain their native connection rules.
+              without crossing or retracing. Omeometo keeps your exact position as you explore
+              smaller copies; zoom changes the view. Repeated directed mazes use terminal and
+              coordinate rules.
             </p>
             <div className="button-row">
               <Link className="control" to="/play/backlot">

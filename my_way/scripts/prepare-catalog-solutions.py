@@ -212,12 +212,12 @@ async def main(selected_type=None, selected_maze=None):
             if d['type'] == 'geometricRecursive':
                 result = await page.evaluate('''async row => {
                   const {loadCatalogMaze}=await import('/Fractal-Maze/src/app/library/catalog.ts');
-                  const {geometricPlayDocument}=await import('/Fractal-Maze/src/app/library/geometricPlayDocument.ts');
+                  const {compilePlayDocument}=await import('/Fractal-Maze/src/app/library/compilePlayDocument.ts');
                   const {balancedPathSearch}=await import('/Fractal-Maze/src/core/pathMaze/balancedSearch.ts');
                   const {geometricStart,geometricMove}=await import('/Fractal-Maze/src/core/solver/common/geometricMovement.ts');
                   const {geometricPathState}=await import('/Fractal-Maze/src/core/play/geometricPDA.ts');
                   const {sameState}=await import('/Fractal-Maze/src/core/pathMaze/traversal.ts');
-                  const original=loadCatalogMaze(row.id),model=geometricPlayDocument(original).definition;
+                  const original=loadCatalogMaze(row.id),model=compilePlayDocument(original).definition;
                   const witness=balancedPathSearch(model);
                   if(!witness)return {status:'no-finite-route',detail:'No finite route under the current geometric corridor and surface-finish rules. Production PDA closure uses no recursion-depth cutoff; original source intent remains subject to review.'};
                   const maze=original.definition.maze,states=[geometricStart(maze)],gates=[];

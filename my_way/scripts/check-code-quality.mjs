@@ -24,7 +24,7 @@ const measurements = results.map(result => {
     maxCyclomatic: Math.max(0, ...complexities.map(measurement => measurement.value)),
     overLimit: complexities.filter(measurement => measurement.value > 21), explicitAnyUnknown }
 })
-const violations = measurements.filter(measurement => measurement.overLimit.length || measurement.explicitAnyUnknown)
+const violations = measurements.filter(measurement => measurement.overLimit.length || measurement.explicitAnyUnknown || measurement.sourceLines >= 1000)
 const lintErrors = results.flatMap(result => result.messages.filter(message => message.severity === 2)
   .map(message => ({ file: relative(process.cwd(), result.filePath), ...message })))
 const report = { executedAt: new Date().toISOString(),
@@ -37,5 +37,5 @@ const report = { executedAt: new Date().toISOString(),
     'CRAP', 'Mutation survival', 'Dead code analysis', 'Duplication analysis', 'Python script complexity'] }
 writeFileSync(process.argv[2] ?? 'docs/CODE_QUALITY_CHECKS.json', JSON.stringify(report, null, 2) + '\n')
 console.log(JSON.stringify({ files: report.files, maxCyclomatic: report.maxCyclomatic,
-  explicitAnyUnknown: report.explicitAnyUnknown, violations: violations.length, lintErrors: lintErrors.length }))
+  maxSourceLines: report.maxSourceLines, explicitAnyUnknown: report.explicitAnyUnknown, violations: violations.length, lintErrors: lintErrors.length }))
 if (violations.length || lintErrors.length) process.exitCode = 1

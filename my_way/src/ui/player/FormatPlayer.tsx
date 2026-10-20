@@ -1,3 +1,4 @@
+import { compilePlayDocument } from '../../app/library/compilePlayDocument'
 import { MazeCredits } from './MazeCredits'
 import { PlayHeader } from './PlayHeader'
 import { MazePlayArea } from './MazePlayArea'
@@ -11,9 +12,6 @@ import { NavBar } from '../components/NavBar'
 import { ExportDialog } from '../components/ExportDialog'
 import { GraphPlayer } from './GraphPlayer'
 import { BlockPlayer } from './BlockPlayer'
-import { portPlayDocument } from '../../app/library/portPlayDocument'
-import { geometricPlayDocument } from '../../app/library/geometricPlayDocument'
-import { wirePlayDocument } from '../../app/library/wirePlayDocument'
 import { RepeatedPlayer } from './RepeatedPlayer'
 import { PathPlayer } from '../workbench/PathPlayer'
 import { MazeWip } from './MazeWip'
@@ -21,14 +19,7 @@ import { MazeViewSelect } from '../library/MazeViewSelect'
 
 export function FormatPlayer({ doc: original }: { doc: RecursiveMazeDocument }) {
   const [draft, setDraft] = useState(original)
-  const doc = useMemo(
-    () =>
-      geometricPlayDocument(original) ??
-      portPlayDocument(original) ??
-      wirePlayDocument(original) ??
-      original,
-    [original]
-  )
+  const doc = useMemo(() => compilePlayDocument(original), [original])
   const [exporting, setExporting] = useState(false)
   const [saveStatus, setSaveStatus] = useState('Save to library')
   const launch = mazeEntry(doc.metadata.id, doc)
