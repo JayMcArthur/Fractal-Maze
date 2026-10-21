@@ -43,15 +43,15 @@ export function LinksPanel({ def, store }: LinksPanelProps) {
     <div className="flex flex-col gap-4 text-sm">
       {/* Exits */}
       <div className="flex flex-col gap-2">
-        <label className="text-gray-300 font-semibold">Exits</label>
-        {def.exits.length === 0 && <p className="text-gray-500 text-xs">No exits.</p>}
+        <label className="text-muted font-semibold">Exits</label>
+        {def.exits.length === 0 && <p className="text-muted text-xs">No exits.</p>}
         {def.exits.map((e) => (
-          <div key={e.name} className="flex items-center gap-2 bg-gray-700 rounded px-2 py-1">
-            <span className="text-green-300 font-mono w-8">{e.name}</span>
-            <span className="text-gray-400 text-xs">dir:{e.direction} ({e.row},{e.col})</span>
+          <div key={e.name} className="flex items-center gap-2 surface-muted rounded px-2 py-1">
+            <span className="text-success font-mono w-8">{e.name}</span>
+            <span className="text-muted text-xs">dir:{e.direction} ({e.row},{e.col})</span>
             <button
               onClick={() => store.removeExit(e.name)}
-              className="ml-auto text-red-400 hover:text-red-300 text-xs"
+              className="ml-auto text-danger text-xs"
             >
               ×
             </button>
@@ -65,12 +65,12 @@ export function LinksPanel({ def, store }: LinksPanelProps) {
             placeholder="Exit name"
             value={exitName}
             onChange={(e) => setExitName(e.target.value)}
-            className="col-span-2 bg-gray-700 text-white rounded px-2 py-1"
+            className="col-span-2 surface-muted text-ink rounded px-2 py-1"
           />
           <select
             value={exitDir}
             onChange={(e) => setExitDir(parseInt(e.target.value) as DirectionBit)}
-            className="bg-gray-700 text-white rounded px-2 py-1"
+            className="surface-muted text-ink rounded px-2 py-1"
           >
             {DIR_OPTS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
           </select>
@@ -78,35 +78,35 @@ export function LinksPanel({ def, store }: LinksPanelProps) {
             <input
               type="number" placeholder="row" value={exitRow}
               onChange={(e) => setExitRow(parseInt(e.target.value) || 0)}
-              className="w-1/2 bg-gray-700 text-white rounded px-2 py-1"
+              className="w-1/2 surface-muted text-ink rounded px-2 py-1"
             />
             <input
               type="number" placeholder="col" value={exitCol}
               onChange={(e) => setExitCol(parseInt(e.target.value) || 0)}
-              className="w-1/2 bg-gray-700 text-white rounded px-2 py-1"
+              className="w-1/2 surface-muted text-ink rounded px-2 py-1"
             />
           </div>
         </div>
         <button
           onClick={addExit}
-          className="px-3 py-1 bg-green-700 hover:bg-green-600 text-white rounded"
+          className="px-3 py-1 action-primary text-ink rounded"
         >
           Add Exit
         </button>
       </div>
 
       {/* Links */}
-      <div className="flex flex-col gap-2 border-t border-gray-700 pt-3">
-        <label className="text-gray-300 font-semibold">Links</label>
-        {def.links.length === 0 && <p className="text-gray-500 text-xs">No links.</p>}
+      <div className="flex flex-col gap-2 border-t border-subtle pt-3">
+        <label className="text-muted font-semibold">Links</label>
+        {def.links.length === 0 && <p className="text-muted text-xs">No links.</p>}
         {def.links.map((l, i) => (
-          <div key={i} className="flex items-center gap-2 bg-gray-700 rounded px-2 py-1">
-            <span className="text-orange-300 font-mono text-xs">
+          <div key={i} className="flex items-center gap-2 surface-muted rounded px-2 py-1">
+            <span className="text-warning font-mono text-xs">
               ({l.row},{l.col}) → {l.blockPath.join('+')}:{l.exitName}
             </span>
             <button
               onClick={() => store.removeLink(l.row, l.col)}
-              className="ml-auto text-red-400 hover:text-red-300 text-xs"
+              className="ml-auto text-danger text-xs"
             >
               ×
             </button>
@@ -119,12 +119,12 @@ export function LinksPanel({ def, store }: LinksPanelProps) {
             type="text" placeholder="Block path (A or A+B)"
             value={linkBlock}
             onChange={(e) => setLinkBlock(e.target.value.toUpperCase())}
-            className="bg-gray-700 text-white rounded px-2 py-1"
+            className="surface-muted text-ink rounded px-2 py-1"
           />
           <select
             value={linkExit}
             onChange={(e) => setLinkExit(e.target.value)}
-            className="bg-gray-700 text-white rounded px-2 py-1"
+            className="surface-muted text-ink rounded px-2 py-1"
           >
             <option value="">Exit name…</option>
             {def.exits.map((e) => <option key={e.name} value={e.name}>{e.name}</option>)}
@@ -132,18 +132,18 @@ export function LinksPanel({ def, store }: LinksPanelProps) {
           <input
             type="number" placeholder="row" value={linkRow}
             onChange={(e) => setLinkRow(parseInt(e.target.value) || 0)}
-            className="bg-gray-700 text-white rounded px-2 py-1"
+            className="surface-muted text-ink rounded px-2 py-1"
           />
           <input
             type="number" placeholder="col" value={linkCol}
             onChange={(e) => setLinkCol(parseInt(e.target.value) || 0)}
-            className="bg-gray-700 text-white rounded px-2 py-1"
+            className="surface-muted text-ink rounded px-2 py-1"
           />
         </div>
         <button
           onClick={addLink}
           disabled={!linkBlock || !linkExit}
-          className="px-3 py-1 bg-orange-700 hover:bg-orange-600 disabled:opacity-40 text-white rounded"
+          className="px-3 py-1 action-warning  disabled:opacity-40 text-ink rounded"
         >
           Add Link
         </button>

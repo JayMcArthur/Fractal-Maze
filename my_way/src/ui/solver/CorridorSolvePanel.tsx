@@ -82,11 +82,11 @@ export function CorridorSolvePanel({ mazeDoc }: { mazeDoc: RecursiveMazeDocument
   }
 
   const statusColor: Record<string, string> = {
-    idle: 'text-gray-400',
-    running: 'text-yellow-400',
-    solved: 'text-green-400',
-    unsolvable: 'text-red-400',
-    timeout: 'text-orange-400',
+    idle: 'text-muted',
+    running: 'text-warning',
+    solved: 'text-success',
+    unsolvable: 'text-danger',
+    timeout: 'text-warning',
   }
 
   return (
@@ -95,33 +95,33 @@ export function CorridorSolvePanel({ mazeDoc }: { mazeDoc: RecursiveMazeDocument
         {/* Left: config panel */}
         <div className="flex flex-col gap-4">
           {/* Config */}
-          <div className="bg-gray-800 rounded-lg p-4">
+          <div className="surface-panel rounded-lg p-4">
             <h2 className="font-semibold mb-3">Config</h2>
             <div className="flex flex-col gap-2 text-sm">
               <label className="flex items-center justify-between">
-                <span className="text-gray-300">Strategy</span>
+                <span className="text-muted">Strategy</span>
                 <select
                   value={config.strategy}
                   onChange={(e) => setConfig({ strategy: e.target.value as 'bfs' | 'iddfs' })}
-                  className="bg-gray-700 border border-gray-600 rounded px-2 py-1"
+                  className="surface-muted border border-subtle rounded px-2 py-1"
                 >
                   <option value="bfs">BFS</option>
                   <option value="iddfs">IDDFS</option>
                 </select>
               </label>
               <label className="flex items-center justify-between">
-                <span className="text-gray-300">Max Depth</span>
+                <span className="text-muted">Max Depth</span>
                 <input
                   type="number"
                   min={1}
                   max={20}
                   value={config.maxDepth}
                   onChange={(e) => setConfig({ maxDepth: Number(e.target.value) })}
-                  className="bg-gray-700 border border-gray-600 rounded px-2 py-1 w-20 text-right"
+                  className="surface-muted border border-subtle rounded px-2 py-1 w-20 text-right"
                 />
               </label>
               <label className="flex items-center justify-between">
-                <span className="text-gray-300">Max Nodes</span>
+                <span className="text-muted">Max Nodes</span>
                 <input
                   type="number"
                   min={100}
@@ -129,11 +129,11 @@ export function CorridorSolvePanel({ mazeDoc }: { mazeDoc: RecursiveMazeDocument
                   step={1000}
                   value={config.maxNodes}
                   onChange={(e) => setConfig({ maxNodes: Number(e.target.value) })}
-                  className="bg-gray-700 border border-gray-600 rounded px-2 py-1 w-28 text-right"
+                  className="surface-muted border border-subtle rounded px-2 py-1 w-28 text-right"
                 />
               </label>
               <label className="flex items-center justify-between">
-                <span className="text-gray-300">Timeout (ms)</span>
+                <span className="text-muted">Timeout (ms)</span>
                 <input
                   type="number"
                   min={500}
@@ -141,7 +141,7 @@ export function CorridorSolvePanel({ mazeDoc }: { mazeDoc: RecursiveMazeDocument
                   step={500}
                   value={config.timeoutMs}
                   onChange={(e) => setConfig({ timeoutMs: Number(e.target.value) })}
-                  className="bg-gray-700 border border-gray-600 rounded px-2 py-1 w-28 text-right"
+                  className="surface-muted border border-subtle rounded px-2 py-1 w-28 text-right"
                 />
               </label>
             </div>
@@ -152,14 +152,14 @@ export function CorridorSolvePanel({ mazeDoc }: { mazeDoc: RecursiveMazeDocument
             <button
               onClick={handleStart}
               disabled={status === 'running'}
-              className="flex-1 px-4 py-2 bg-blue-600 rounded hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+              className="flex-1 px-4 py-2 action-primary rounded  disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
             >
               {status === 'running' ? 'Solving…' : 'Start'}
             </button>
             {status === 'running' && (
               <button
                 onClick={cancelSolve}
-                className="px-4 py-2 bg-red-700 rounded hover:bg-red-600"
+                className="px-4 py-2 action-danger rounded "
               >
                 Cancel
               </button>
@@ -167,36 +167,36 @@ export function CorridorSolvePanel({ mazeDoc }: { mazeDoc: RecursiveMazeDocument
           </div>
 
           {/* Progress */}
-          <div className="bg-gray-800 rounded-lg p-4">
+          <div className="surface-panel rounded-lg p-4">
             <h2 className="font-semibold mb-2">Status</h2>
             <div className="text-sm flex flex-col gap-1">
               <div className="flex justify-between">
-                <span className="text-gray-400">Status</span>
-                <span className={statusColor[status] ?? 'text-gray-300'}>
+                <span className="text-muted">Status</span>
+                <span className={statusColor[status] ?? 'text-muted'}>
                   {status === 'unsolvable' ? 'No route within limits' : status}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Nodes explored</span>
+                <span className="text-muted">Nodes explored</span>
                 <span>{nodesExplored.toLocaleString()}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Current depth</span>
+                <span className="text-muted">Current depth</span>
                 <span>{depth}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Elapsed</span>
+                <span className="text-muted">Elapsed</span>
                 <span>{(elapsedMs / 1000).toFixed(1)}s</span>
               </div>
-              {errorMessage && <div className="text-orange-400 text-xs mt-1">{errorMessage}</div>}
+              {errorMessage && <div className="text-warning text-xs mt-1">{errorMessage}</div>}
             </div>
           </div>
 
           {/* Solution */}
           {status === 'solved' && foundPath && (
-            <div className="bg-gray-800 rounded-lg p-4">
-              <h2 className="font-semibold mb-2 text-green-400">Solution Found</h2>
-              <p className="text-sm text-gray-300 mb-3">{foundPath.length} steps</p>
+            <div className="surface-panel rounded-lg p-4">
+              <h2 className="font-semibold mb-2 text-success">Solution Found</h2>
+              <p className="text-sm text-muted mb-3">{foundPath.length} steps</p>
               <div className="flex flex-col gap-2">
                 <button
                   className="control control--primary"
@@ -208,7 +208,7 @@ export function CorridorSolvePanel({ mazeDoc }: { mazeDoc: RecursiveMazeDocument
                   Play solution
                 </button>
                 {replayId ? (
-                  <p className="text-sm text-green-400">
+                  <p className="text-sm text-success">
                     Replay saved.{' '}
                     <Link to={`/play/${mazeDoc.metadata.id}`} className="underline">
                       View maze replays →
@@ -232,7 +232,7 @@ export function CorridorSolvePanel({ mazeDoc }: { mazeDoc: RecursiveMazeDocument
                       const text = fmazeExportAdapter.export(mazeDoc)
                       downloadFile(text, `${mazeDoc.metadata.title}.fmaze`, 'application/json')
                     }}
-                    className="w-full px-4 py-2 bg-gray-600 rounded hover:bg-gray-500 text-sm"
+                    className="w-full px-4 py-2 surface-muted rounded  text-sm"
                   >
                     Export .fmaze
                   </button>
@@ -242,8 +242,8 @@ export function CorridorSolvePanel({ mazeDoc }: { mazeDoc: RecursiveMazeDocument
           )}
 
           {(status === 'unsolvable' || status === 'timeout') && (
-            <div className="bg-gray-800 rounded-lg p-4 border border-red-700">
-              <p className="text-red-400 text-sm">
+            <div className="surface-panel rounded-lg p-4 border border-danger">
+              <p className="text-danger text-sm">
                 {status === 'timeout'
                   ? 'Solver timed out. Try increasing the timeout or reducing depth.'
                   : 'No solution found within the given limits. This does not prove an unbounded recursive maze unsolvable.'}
@@ -256,7 +256,7 @@ export function CorridorSolvePanel({ mazeDoc }: { mazeDoc: RecursiveMazeDocument
         <div className="flex flex-col items-center gap-4">
           {
             <div
-              className="border-2 border-gray-600 rounded overflow-auto"
+              className="border-2 border-subtle rounded overflow-auto"
               style={{ maxHeight: '420px', maxWidth: '100%' }}
             >
               <MazeCanvas

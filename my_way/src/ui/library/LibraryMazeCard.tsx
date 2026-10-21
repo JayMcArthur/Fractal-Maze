@@ -121,8 +121,7 @@ function MazeCardActions({
 }) {
   return (
     <div className="library-card__actions">
-      <button className="control" onClick={onCoverClick}>Cover image</button>
-      <Link className="control" to={to}>
+      <Link className="control control--primary" to={to}>
         {details.playable ? 'Play' : 'View WIP'}
       </Link>
       <Link
@@ -143,6 +142,7 @@ function MazeCardActions({
             ? 'Edit pattern'
             : 'Inspect'}
       </Link>
+      <button className="control" onClick={onCoverClick}>Cover image</button>
       {!pathModel && (
         <Link className="control" to={`/workbench/${entry.id}`}>
           Convert artwork

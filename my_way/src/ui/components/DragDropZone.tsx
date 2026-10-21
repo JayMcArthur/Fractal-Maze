@@ -28,9 +28,9 @@ export function DragDropZone({ children, onImport }: DragDropZoneProps) {
   }, [])
 
   const handleDrop = useCallback((e: DragEvent) => {
+    setDragOver(false)
     if (e.defaultPrevented) return
     e.preventDefault()
-    setDragOver(false)
     const file = e.dataTransfer?.files[0]
     if (!file) return
     setPendingFile(file)
@@ -51,10 +51,10 @@ export function DragDropZone({ children, onImport }: DragDropZoneProps) {
   return (
     <>
       {dragOver && !showImport && (
-        <div className="fixed inset-0 bg-blue-900/40 border-4 border-blue-400 border-dashed z-50 pointer-events-none flex items-center justify-center">
-          <div className="bg-gray-800 rounded-xl px-8 py-6 text-center shadow-2xl pointer-events-none">
-            <p className="text-2xl font-bold text-white">Drop maze file to import</p>
-            <p className="text-blue-300 text-sm mt-1">.maze · .fmaze · block/gate .json · repeated .txt</p>
+        <div className="fixed inset-0 notice-info border-4 border-info border-dashed z-50 pointer-events-none flex items-center justify-center">
+          <div className="surface-panel rounded-xl px-8 py-6 text-center shadow-2xl pointer-events-none">
+            <p className="text-2xl font-bold text-ink">Drop maze file to import</p>
+            <p className="text-info text-sm mt-1">.maze · .fmaze · block/gate .json · repeated .txt</p>
           </div>
         </div>
       )}

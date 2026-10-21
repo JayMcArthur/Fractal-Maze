@@ -1,0 +1,94 @@
+.workbench-source, .model-editor, .proof-workbench { display: grid; gap: 16px; min-width: 0; }
+.proof-workbench { max-width: 1080px; margin: 0 auto; gap: 16px; }
+.proof-intro h2 { margin: 0 0 6px; font-size: 1.4rem; font-weight: 800; }
+.proof-intro p { font-size: .86rem; margin: 0 0 10px; line-height: 1.65; color: var(--muted); }
+.proof-intro a { font-size: .8rem; text-decoration: underline; }
+.proof-help summary, .proof-advanced summary, .witness-history summary { cursor: pointer; font-size: .8rem; }
+.proof-help p { margin-top: 12px; line-height: 1.6; }
+.proof-advanced { margin-top: 16px; }
+.proof-advanced .workbench-toolbar { margin-top: 12px; }
+.witness-history { margin-top: 12px; }
+.witness-current strong { overflow-wrap: anywhere; min-width: 0; }
+.proof-step { font-size: 1.1rem; font-weight: 800; margin: 6px 0 -4px; }
+.witness-grid.witness-grid--single { grid-template-columns: 1fr; }
+.witness-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.proof-setup-toggle { flex-direction: row; align-items: center; margin-top: 16px; }
+.witness-setup { border-bottom: 1px solid var(--line); margin: 16px 0; padding-bottom: 12px; }
+.convergence ol { padding-left: 20px; overflow-wrap: anywhere; font-size: .85rem; }
+.convergence h3 { font-size: .9rem; }
+.witness-current { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 12px; color: #263b29; background: #edf3e6; border: 1px solid #d4dfcb; border-radius: 7px; }
+.witness-current span { font-size: .75rem; color: #596b50; }
+.witness-steps { padding: 12px 0 12px 28px; max-height: 300px; overflow: auto; margin: 8px 0; }
+.witness-steps li { padding: 5px 0; font-size: .8rem; }
+.witness-steps li span { margin-left: 14px; color: var(--muted); font-size: .7rem; }
+.witness-choices { display: flex; flex-wrap: wrap; gap: 7px; margin: 12px 0; max-height: 330px; overflow: auto; }
+.proof-check { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.proof-valid { color: #306432 !important; }
+.proof-invalid { color: #9e3a28 !important; }
+.saved-claim { padding: 12px 0; border-top: 1px solid #dde3d5; }
+.saved-proof-evidence { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; margin: 16px 0; }
+.saved-proof-evidence > p { grid-column: 1 / -1; }
+.companion-row { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; padding: 15px 0; border-top: 1px solid #e0e6d8; }
+.companion-row input { max-width: 160px; }
+.path-controls .witness-choices { display: grid; gap: 6px; max-height: 240px; overflow: auto; }
+.path-controls .witness-choices .control { justify-content: flex-start; text-align: left; }
+.source-movement-controls .witness-choices { flex: 1; min-width: 180px; }
+.proof-dialog { width: min(1120px, calc(100% - 32px)); max-width: none; max-height: calc(100dvh - 40px); margin: auto; padding: 0; border: 1px solid #cbd1c7; color: var(--ink-dark); border-color: #c9d5c3; border-radius: 16px; background: var(--paper); box-shadow: 0 24px 80px #0005; }
+.proof-dialog[open] { display: flex; flex-direction: column; }
+.proof-dialog::backdrop { background: #090c0bb3; }
+.proof-dialog .app-dialog__header, .proof-dialog .app-dialog__footer { display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; padding: 18px 24px; gap: 16px; background: var(--surface); }
+.proof-dialog .app-dialog__header { border-bottom: 1px solid var(--line); }
+.proof-dialog .app-dialog__header h2 { margin: 6px 0; letter-spacing: -.04em; font-size: 1.4rem; font-weight: 750; line-height: 1.25; }
+.proof-dialog .app-dialog__header p:last-child, .proof-dialog .app-dialog__footer p { margin: 0; font-size: .8rem; line-height: 1.55; color: var(--muted); }
+.proof-dialog .app-dialog__footer { border-top: 1px solid var(--line); }
+.proof-dialog .app-dialog__footer .control { flex-shrink: 0; }
+.proof-dialog label:not(:has(> input[type=checkbox])):not(:has(> input[type=radio])) { display: flex; flex-direction: column; gap: 6px; font-size: .78rem; font-weight: 700; color: #59645e; }
+.proof-dialog input:not([type=checkbox]), .proof-dialog select { min-height: 38px; max-width: 100%; padding: 7px 9px; border: 1px solid #cdd5ca; border-radius: 4px; background: #f9faf6; color: #1b241e; }
+.proof-dialog .proof-check { position: sticky; top: -20px; z-index: 2; border-color: #abc29e; box-shadow: 0 3px 12px #1e362b0d; padding: 12px 16px; }
+.witness-maze { min-width: 0; border: 2px solid transparent; padding: 10px; border-radius: 10px; background: #edf2e6; }
+.witness-maze:focus-within { border-color: #2967be; outline: none; }
+.witness-maze__position { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: .8rem; padding: 4px 2px 12px; }
+.witness-maze .source-artwork { max-height: 280px; min-height: 180px; }
+.witness-maze .source-route-help { font-size: .72rem; }
+.witness-maze .source-route-player { min-width: 0; }
+.witness-maze .source-movement-controls { flex-wrap: wrap; }
+.witness-text-steps { margin: 12px 0; font-size: .8rem; }
+.witness-text-steps summary { cursor: pointer; }
+.witness-text-steps .witness-choices { margin-top: 10px; }
+.path-proof-actions { position: fixed; z-index: 30; inset: auto 16px 16px; width: fit-content; max-width: calc(100% - 32px); margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 10px 14px; border: 1px solid #8fa58d; border-radius: 12px; background: var(--surface); border-color: #abc29e; box-shadow: 0 6px 24px #1e362b22; }
+.path-proof-actions > span { font-size: .76rem; font-weight: 700; color: #405643; }
+.path-proof-actions .control { background: #244e41; color: #fff; border-color: #244e41; }
+.path-play-session:has(.path-proof-actions) { padding-bottom: 90px; }
+
+.witness .witness-current { padding: 6px 10px; margin-top: 8px; font-size: .78rem; }
+
+.proof-connection > .workbench-toolbar { display: grid; align-items: end; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.proof-connection > .workbench-toolbar label { min-width: 0; }
+.proof-setup-toggle, .proof-dialog .proof-setup-toggle { display: flex; flex-direction: row; align-items: center; gap: 10px; }
+.proof-dialog .source-display-style { flex-direction: row; }
+.proof-dialog .witness-maze .source-route-help { line-height: 1.55; }
+.proof-dialog .app-dialog__body { overflow-y: auto; overscroll-behavior: contain; padding: 20px 24px; scrollbar-gutter: stable; }
+.proof-dialog .proof-advanced { margin-top: 8px; padding-top: 0; border-top: 0; }
+.proof-check > p { flex: 1 1 250px; margin: 0; }
+.witness-goal { min-height: 2.5em; }
+.saved-claim h3 { margin: 0 0 8px; font-size: .95rem; }
+.proof-workbench label:not(:has(> input[type=checkbox])):not(:has(> input[type=radio])) { display: flex; flex-direction: column; gap: 7px; color: var(--muted); font-size: .8rem; font-weight: 650; }
+@media (max-width: 780px) { .source-movement-controls .witness-choices { min-width: 140px; } }
+@media (max-width: 640px) {
+  .proof-dialog { width: calc(100% - 16px); max-height: calc(100dvh - 16px); border-color: #c9d5c3; border-radius: 16px; background: var(--paper); box-shadow: 0 24px 80px #0005; }
+  .proof-dialog .app-dialog__header, .proof-dialog .app-dialog__footer { padding: 18px 24px; gap: 16px; background: var(--surface); }
+  .proof-dialog .app-dialog__header { align-items: start; }
+  .proof-dialog .app-dialog__body { padding: 14px; }
+  .proof-dialog .workbench-card { padding: 14px; }
+  .proof-dialog .witness-grid { grid-template-columns: 1fr; }
+  .proof-dialog .proof-check { top: -14px; border-color: #abc29e; box-shadow: 0 3px 12px #1e362b0d; padding: 12px 16px; }
+  .proof-dialog .app-dialog__footer p { font-size: .72rem; }
+}
+@media (max-width: 600px) {
+  .witness-grid { grid-template-columns: 1fr; }
+  .proof-connection .proof-rule-picker { grid-column: 1 / -1; } .proof-dialog .app-dialog__footer { align-items: flex-start; } .proof-dialog .app-dialog__footer p { flex: 1; } .proof-dialog .app-dialog__header h2 { font-size: 1.3rem; } .proof-connection > .workbench-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .proof-connection > .workbench-toolbar label { width: auto; } .proof-check > .control { flex: 1 1 auto; } .proof-dialog .app-dialog__header, .proof-dialog .app-dialog__footer { padding: 16px; }
+}
+
+@media(max-width: 780px) { .witness-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.proof-dialog .proof-connection { padding: 14px; }

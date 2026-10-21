@@ -8,6 +8,7 @@ import { defaultPlayId, mazeCatalog, viewsForMaze } from '../../app/library/maze
 import { authorCollections } from '../../app/library/authorCollections'
 import { saveProject, listProjects, listSolves } from '../../app/projects/db'
 import type { ProjectRecord, SolveRecord } from '../../app/projects/db'
+import { Dialog } from '../components/Dialog'
 import { ImportDialog } from '../components/ImportDialog'
 import { NavBar } from '../components/NavBar'
 import { MazeCoverPicker } from '../components/MazeCoverPicker'
@@ -116,7 +117,7 @@ export function LibraryPage() {
           </div>
         </header>
 
-        {coverError && <p role="alert">{coverError}</p>}
+        {coverError && !coverDoc && <p role="alert">{coverError}</p>}
         <div className="collection-tabs" aria-label="Library collections">
           <button
             className={collection === 'mazes' ? 'control control--primary' : 'control'}
@@ -173,7 +174,7 @@ export function LibraryPage() {
         {collection === 'references' ? (
           <section aria-label="Reference artwork" className="author-collections">
             {referenceGroups.map((group) => <section className="author-collection" key={group.author} aria-label={group.author}>
-              <div className="section-heading"><h2>{group.author}</h2><span>{group.entries.length} references</span></div>
+              <div className="section-heading"><h2>{group.author}</h2><span>{group.entries.length} {group.entries.length === 1 ? 'reference' : 'references'}</span></div>
               <div className="library-grid">{group.entries.map((entry) => (
                 <article className="library-card" key={entry.id}>
                   <Link className="library-card__preview" to={`/reference/${entry.id}`}>
@@ -217,7 +218,7 @@ export function LibraryPage() {
         ) : filtered.length ? (
           <section aria-label="Maze library" className="author-collections">
             {groups.map((group) => <section className="author-collection" key={group.author} aria-label={group.author}>
-              <div className="section-heading"><h2>{group.author}</h2><span>{group.entries.length} mazes</span></div>
+              <div className="section-heading"><h2>{group.author}</h2><span>{group.entries.length} {group.entries.length === 1 ? 'maze' : 'mazes'}</span></div>
               <div className="library-grid">{group.entries.map((entry) => (
               <MazeCard
                 key={entry.id}
@@ -276,23 +277,21 @@ export function LibraryPage() {
       </main>
 
       {coverDoc && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-          <div role="dialog" aria-modal="true" aria-label={`Cover for ${coverDoc.metadata.title}`}
-            className="bg-gray-800 rounded-xl w-full max-w-lg p-6">
-            <MazeCoverPicker cover={coverDoc.metadata.cover} onChange={cover =>
-              setCoverDoc({ ...coverDoc, metadata: { ...coverDoc.metadata, cover } })} />
-            <div className="button-row">
-              <button className="control" onClick={() => setCoverDoc(undefined)}>Cancel</button>
+        <Dialog title={`Cover for ${coverDoc.metadata.title}`} onClose={() => setCoverDoc(undefined)}
+          footer={<>
+            <button className="control" onClick={() => setCoverDoc(undefined)}>Cancel</button>
               <button className="control control--primary" onClick={() => {
                 void saveProject({ ...coverDoc, metadata: { ...coverDoc.metadata, updatedAt: new Date().toISOString() } })
                   .then(() => listProjects()).then(setProjects).then(() => setCoverDoc(undefined))
                   .catch((failure: Error) => setCoverError(failure.message))
               }}>Save cover</button>
-            </div>
-            {coverError && <p role="alert">{coverError}</p>}
-          </div>
-        </div>
+          </>}>
+            <MazeCoverPicker cover={coverDoc.metadata.cover} onChange={cover =>
+              setCoverDoc({ ...coverDoc, metadata: { ...coverDoc.metadata, cover } })} />
+          {coverError && <p role="alert" className="text-danger">{coverError}</p>}
+        </Dialog>
       )}
+
       {showImport && (
         <ImportDialog
           onImport={(doc) => {

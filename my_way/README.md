@@ -92,6 +92,9 @@ Removing a custom cover restores the original/default preview.
 Projects, covers and recordings live in the browser's IndexedDB. Export files
 before clearing site data or moving to another browser.
 
+[Interface surface styles](docs/VISUAL_SYSTEM.md) describes the shared visual rules
+and the generated reference used for the current presentation.
+
 ## Verification
 
 ```bash

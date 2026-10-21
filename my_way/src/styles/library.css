@@ -1,0 +1,85 @@
+.author-collections { display: grid; gap: 38px; }
+.author-collection > .section-heading { padding-bottom: 12px; border-bottom: 1px solid var(--line); margin-bottom: 18px; }
+.author-collection > .section-heading h2 { font-size: 1.35rem; margin: 0; }
+.author-collection > .section-heading span { font-size: .8rem; color: var(--muted); }
+.library-heading__stats small { display: block; margin-top: 5px; color: var(--muted); font: 700 .6rem/1 sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+.library-toolbar { position: sticky; top: 62px; z-index: 20; display: flex; align-items: end; border-bottom: 1px solid var(--line); margin: 0 0 28px; padding: 16px; gap: 14px; background: rgba(247,248,240,.97); border: 1px solid var(--line); border-radius: var(--radius); }
+.search-field, .select-field, .maze-select { display: grid; gap: 5px; }
+.search-field > span, .select-field > span, .maze-select > span { font: 700 .61rem/1 ui-monospace, monospace; font-family: inherit; font-size: .75rem; letter-spacing: .02em; text-transform: none; color: var(--muted); }
+.search-field { min-width: min(300px, 35vw); flex: 1 1 280px; }
+.select-field { min-width: 160px; }
+.search-field input, .select-field select, .maze-select select { border-radius: var(--radius); color: var(--ink-dark); height: 42px; border: 1px solid #bccab9; padding: 0 12px; background: var(--surface); box-shadow: none; width: 100%; min-width: 0; }
+.library-toolbar__count { color: var(--muted); font: 700 .7rem ui-monospace, monospace; font-family: inherit; font-size: .76rem; margin: 0 0 12px auto; white-space: nowrap; }
+.library-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.library-card:hover { border-color: #9bb299; box-shadow: 0 5px 18px rgba(25,45,31,.08); }
+.library-card__preview canvas, .library-card__preview .maze-viewport { width: 100% !important; height: 100% !important; object-fit: contain; }
+.library-card__preview::after { content: ""; position: absolute; inset: 0; pointer-events: none; box-shadow: none; }
+.library-card:hover .library-card__launch { opacity: 1; transform: translateY(0); }
+.library-card__solved { position: absolute; left: 9px; top: 9px; z-index: 2; padding: 6px 8px; border: 1px solid rgba(200,255,77,.5); border-radius: 3px; color: var(--signal); background: rgba(6,10,8,.86); font: 700 .62rem ui-monospace, monospace; text-transform: uppercase; }
+.library-card__body h2 { letter-spacing: -.025em; line-height: 1.25; margin: 8px 0; font-size: 1.18rem; }
+.library-card__body > div > p:last-child { margin: 0; color: var(--muted); font-size: .8rem; }
+.library-card__type { align-self: flex-start; padding-top: 8px; border-top: 1px solid var(--line); color: #6c756f; font: 700 .62rem ui-monospace, monospace; font-family: inherit; font-size: .76rem; text-transform: none; }
+.replay-shelf { margin-top: 62px; padding-top: 28px; border-top: 1px solid var(--line); }
+.section-heading h2 { margin: 5px 0 18px; font-size: 1.7rem; letter-spacing: -.04em; }
+.maze-select select { width: 100%; height: 40px; font-weight: 750; }
+
+.library-card__preview { position: relative; aspect-ratio: 16 / 10; place-items: center; overflow: hidden; display: grid; background: #edf0e7; border-bottom: 1px solid var(--line); }
+.library-card__preview > svg { width: 100%; height: 100%; }
+
+.library-heading { align-items: center; }
+.library-heading__stats { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; min-width: 0; gap: 12px; }
+.library-heading__stats strong { min-width: 72px; font: 800 1.6rem/1 ui-monospace, monospace; display: block; font-size: 1.4rem; border-left: 0; border-right: 1px solid var(--line); padding: 8px 20px 8px 0; }
+.library-card { min-width: 0; overflow: hidden; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); transition: border-color .16s ease, box-shadow .16s ease; }
+.library-card__body { display: flex; flex-direction: column; justify-content: space-between; flex: 1; padding: 20px; gap: 12px; min-height: 150px; }
+.library-card__actions { flex-wrap: wrap; margin-top: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0 20px 20px; align-items: stretch; }
+.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.collection-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.library-card__preview img { width: 100%; height: 100%; object-fit: contain; }
+.reference-heading { margin: 28px 0; }
+.reference-heading h1 { margin: 10px 0; line-height: 1.2; font-size: clamp(1.8rem, 4vw, 2.8rem); }
+.reference-heading p { color: #526057; }
+.reference-frame img { display: block; max-width: 100%; max-height: 85vh; margin: auto; border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: var(--surface); }
+.reference-frame iframe { width: 100%; height: 80vh; border: 1px solid var(--line); }
+.library-card__preview > canvas, .library-card__preview > svg, .library-card__preview > img { position: absolute; inset: 0; margin: auto; width: 100% !important; height: 100% !important; object-fit: contain; }
+
+.maze-view-select { display: grid; gap: 6px; min-width: 0; margin: 0 20px 16px; font-size: .8rem; }
+.maze-view-select select { width: 100%; min-width: 0; text-overflow: ellipsis; }
+.maze-view-select small { color: var(--muted); }
+.format-frame > .maze-view-select, .player-frame > .maze-view-select { margin: 0 0 16px; max-width: 36rem; }
+
+.maze-cover-picker { margin-bottom: 1rem; padding: 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.maze-cover-picker img { display: block; width: 100%; max-height: 14rem; object-fit: contain; margin: .75rem 0; }
+.maze-cover-picker p { font-size: .875rem; margin-top: .75rem; color: var(--muted); line-height: 1.6; }
+.library-card__actions .control { width: 100%; white-space: normal; text-align: center; }
+.library-card .maze-kicker { line-height: 1.6; letter-spacing: .07em; }
+.library-card:focus-within { border-color: #7d9b7e; }
+.library-card:focus-within .library-card__launch { opacity: 1; transform: none; }
+.library-card__launch { position: absolute; right: 10px; bottom: 10px; z-index: 2; padding: 7px 9px; border-radius: 3px; font-size: .7rem; font-weight: 800; opacity: 0; transform: translateY(4px); transition: .16s ease; background: var(--accent); color: #fff; }
+.reference-heading .button-row { margin-top: 18px; }
+.review-badge { align-self: flex-start; line-height: 1.4; }
+@media(min-width: 960px) {
+  .author-collection .library-grid:has(> .library-card:only-child) { grid-template-columns: minmax(0, 1fr); }
+  .author-collection .library-card:only-child { display: grid; grid-template-columns: 260px minmax(0, 1fr) 240px; }
+  .author-collection .library-card:only-child .library-card__preview { grid-column: 1; grid-row: 1 / span 2; aspect-ratio: auto; min-height: 240px; border-bottom: 0; border-right: 1px solid var(--line); }
+  .author-collection .library-card:only-child .library-card__body { grid-column: 2; grid-row: 1; min-height: 0; }
+  .author-collection .library-card:only-child .maze-view-select { grid-column: 2; grid-row: 2; }
+  .author-collection .library-card:only-child .library-card__actions { grid-column: 3; grid-row: 1 / span 2; align-self: center; padding: 20px; margin: 0; }
+}
+
+@media (max-width: 1080px) {
+  .library-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 780px) {
+  .search-field, .select-field { min-width: calc(50% - 6px); flex: 1; }
+  .library-toolbar__count { width: 100%; font-family: inherit; font-size: .76rem; margin: 0 0 12px auto; white-space: nowrap; } .library-toolbar { position: static; align-items: stretch; flex-wrap: wrap; margin: 0 0 28px; padding: 16px; gap: 14px; background: rgba(247,248,240,.97); border: 1px solid var(--line); border-radius: var(--radius); top: 62px; } .library-heading__stats { width: 100%; min-width: 0; gap: 12px; justify-content: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .library-grid { grid-template-columns: 1fr; }
+  .library-heading__stats { flex-wrap: wrap; min-width: 0; gap: 12px; }
+  .library-heading__stats .control { flex: 1; }
+  .search-field, .select-field { min-width: 100%; }
+}
+
+.maze-cover-picker [role=alert] { color: #9b3c2f; }

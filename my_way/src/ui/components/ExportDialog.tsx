@@ -1,3 +1,4 @@
+import { Dialog } from './Dialog'
 /**
  * Export dialog: choose format and download maze file.
  */
@@ -53,31 +54,21 @@ export function ExportDialog({ doc, onClose }: ExportDialogProps) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-      <div className="bg-gray-800 rounded-xl w-full max-w-md shadow-2xl flex flex-col gap-4 p-6">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-white">Export Maze</h2>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-white text-2xl leading-none"
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-
+    <Dialog title="Export Maze" onClose={onClose} footer={<>
+      <button className="control" onClick={onClose}>Cancel</button>
+      <button className="control control--primary" onClick={handleDownload}>Download</button>
+    </>}>
         {/* Maze info */}
-        <div className="bg-gray-700 rounded p-3">
-          <p className="font-semibold text-white">{doc.metadata.title}</p>
+        <div className="surface-muted rounded p-3">
+          <p className="font-semibold text-ink">{doc.metadata.title}</p>
           {doc.metadata.author && (
-            <p className="text-gray-400 text-sm">by {doc.metadata.author}</p>
+            <p className="text-muted text-sm">by {doc.metadata.author}</p>
           )}
         </div>
 
         {/* Format selector */}
         <div className="flex flex-col gap-2">
-          <label className="text-gray-300 text-sm font-semibold">Format</label>
+          <label className="text-muted text-sm font-semibold">Format</label>
           <div className="flex flex-col gap-2">
             <label className="flex items-start gap-3 cursor-pointer">
               <input
@@ -89,8 +80,8 @@ export function ExportDialog({ doc, onClose }: ExportDialogProps) {
                 className="mt-1"
               />
               <div>
-                <p className="text-white font-medium">.fmaze (canonical)</p>
-                <p className="text-gray-400 text-xs">
+                <p className="text-ink font-medium">.fmaze (canonical)</p>
+                <p className="text-muted text-xs">
                   Full JSON round-trip. Preserves all data. Recommended.
                 </p>
               </div>
@@ -108,8 +99,8 @@ export function ExportDialog({ doc, onClose }: ExportDialogProps) {
                 className="mt-1"
               />
               <div>
-                <p className="text-white font-medium">.maze (Orel compatible)</p>
-                <p className="text-gray-400 text-xs">
+                <p className="text-ink font-medium">.maze (Orel compatible)</p>
+                <p className="text-muted text-xs">
                   Text format compatible with Orelcosseron Python player.
                   {!canExportOrel && ' (squareRecursive only)'}
                 </p>
@@ -120,48 +111,32 @@ export function ExportDialog({ doc, onClose }: ExportDialogProps) {
 
         {(doc.representationType === 'geometricRecursive' || doc.representationType === 'repeatedDirected') && <label className="flex gap-3"><input type="radio" name="format" checked={format === 'source'} onChange={() => setFormat('source')} />{doc.representationType === 'geometricRecursive' ? 'FRACTAL-MAZE.v2 (original path and gate data)' : 'Directed-port text (Koteitan compatible)'}</label>}
         {/* Share URL */}
-        <div className="border-t border-gray-700 pt-3">
-          <p className="text-gray-300 text-sm font-semibold mb-2">Share Link</p>
+        <div className="border-t border-subtle pt-3">
+          <p className="text-muted text-sm font-semibold mb-2">Share Link</p>
           <button
             onClick={handleShare}
-            className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-white rounded text-sm"
+            className="px-3 py-1.5 surface-muted text-ink rounded text-sm"
           >
             Generate share URL
           </button>
           {shareError && (
-            <p className="text-yellow-400 text-xs mt-1">
+            <p className="text-warning text-xs mt-1">
               Maze too large to encode in a URL. Use file export instead.
             </p>
           )}
           {shareUrl && (
             <div className="mt-2">
-              <p className="text-green-400 text-xs mb-1">Copied to clipboard!</p>
+              <p className="text-success text-xs mb-1">Share link ready</p>
               <input
                 readOnly
                 value={shareUrl}
-                className="w-full bg-gray-900 text-gray-300 text-xs px-2 py-1 rounded border border-gray-600 font-mono"
+                className="w-full surface-page text-muted text-xs px-2 py-1 rounded border border-subtle font-mono"
                 onClick={(e) => (e.target as HTMLInputElement).select()}
               />
             </div>
           )}
         </div>
 
-        {/* Actions */}
-        <div className="flex gap-3 justify-end">
-          <button
-            onClick={onClose}
-            className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleDownload}
-            className="px-4 py-2 bg-green-700 hover:bg-green-600 text-white rounded font-semibold"
-          >
-            Download
-          </button>
-        </div>
-      </div>
-    </div>
+    </Dialog>
   )
 }

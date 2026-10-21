@@ -53,6 +53,8 @@ export function NavBar() {
           className="instrument-nav__toggle"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
         >
           {open ? 'Close' : 'Menu'}
         </button>
@@ -60,7 +62,7 @@ export function NavBar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="instrument-nav__mobile">
+        <div className="instrument-nav__mobile" id="mobile-navigation">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.to}

@@ -30,15 +30,17 @@ export function ReferencePage() {
                   ? 'Original artwork for a maze with an interactive version in the collection.'
                   : 'Review its WIP path/PDA conversion beside this original artwork. Uncertain crossings and gates remain editable.'}
               </p>
+              <div className="button-row">
               {playable && (
                 <Link className="control control--primary" to={`/play/${playable}`}>
                   Play this maze →
                 </Link>
               )}
-              <Link className="control control--primary" to={`/workbench/${referenceDraftId(entry.id) ?? entry.id}`}>Review WIP / trace artwork →</Link>
+              <Link className="control" to={`/workbench/${referenceDraftId(entry.id) ?? entry.id}`}>Review WIP / trace artwork →</Link>
               <a className="control" href={url} target="_blank" rel="noreferrer">
                 Open original file ↗
               </a>
+              </div>
             </header>
             {entry.asset.endsWith('.pdf') ? (
               <iframe src={url} title={entry.title} />
@@ -50,7 +52,7 @@ export function ReferencePage() {
             <p className="format-note">Source: {entry.source}</p>
           </>
         ) : (
-          <h1>Reference not found</h1>
+          <section className="empty-state"><h1>Reference not found</h1><p>This artwork is not in the collection.</p></section>
         )}
       </main>
     </div>
