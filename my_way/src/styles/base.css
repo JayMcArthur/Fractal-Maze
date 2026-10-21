@@ -33,7 +33,7 @@
 }
 
 * { box-sizing: border-box; }
-html { min-width: 320px; background: var(--paper); }
+html { min-width: 320px; background: var(--paper); scroll-padding-top: 78px; }
 body {
   margin: 0;
   min-width: 320px;
