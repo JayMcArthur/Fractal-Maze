@@ -62,7 +62,7 @@
 
 .witness .witness-current { padding: 6px 10px; margin-top: 8px; font-size: .78rem; }
 
-.proof-connection > .workbench-toolbar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.proof-connection > .workbench-toolbar { display: grid; align-items: end; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .proof-connection > .workbench-toolbar label { min-width: 0; }
 .proof-setup-toggle, .proof-dialog .proof-setup-toggle { display: flex; flex-direction: row; align-items: center; gap: 10px; }
 .proof-dialog .source-display-style { flex-direction: row; }
