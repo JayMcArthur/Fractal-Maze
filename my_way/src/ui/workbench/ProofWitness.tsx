@@ -60,7 +60,28 @@ export function ProofWitness({
       className={phase === 'setup' ? 'witness-setup' : 'workbench-card witness'}
       aria-label={heading}
     >
-      <h2>{heading}</h2>
+      <div className="witness-heading">
+        <h2>{heading}</h2>
+        <div className="button-row">
+          <button
+            className="control"
+            aria-label="Undo witness step"
+            disabled={!steps.length}
+            onClick={() => onChange(steps.slice(0, -1))}
+          >
+            Undo
+          </button>
+          <button
+            className="control"
+            aria-label="Clear witness"
+            disabled={!steps.length}
+            onClick={() => onChange([])}
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+      <p className="witness-goal">{goal}</p>
       {infinite && claim.setup && onSetupChange && (
         <ProofWitness
           artwork={artwork}
@@ -85,20 +106,12 @@ export function ProofWitness({
       ) : (
         proofControls
       )}
-      {infinite && onSetupChange && typeof side !== 'number' && (
-        <button
-          className="control"
-          disabled={!steps.length}
-          onClick={() => onSetupChange([...(claim.setup?.[side] ?? []), ...steps], true)}
-        >
-          Start repetition here
-        </button>
+      {!board && (
+        <div className="witness-current">
+          <span>Now</span>
+          <strong>{stateLabel(current)}</strong>
+        </div>
       )}
-      <p className="witness-goal">{goal}</p>
-      <div className="witness-current">
-        <span>Now</span>
-        <strong>{stateLabel(current)}</strong>
-      </div>
       {traced.error && (
         <p className="proof-invalid" role="alert">
           {traced.error}
@@ -112,11 +125,17 @@ export function ProofWitness({
           <WitnessRoute model={model} states={traced.states} steps={steps} error={null} />
         </details>
       )}
-      <details
-        className="witness-text-steps"
-        open={!drawing || phase === 'setup' || ['cantorHop', 'connection'].includes(claim.rule)}
-      >
+      <details className="witness-text-steps" open={!drawing || phase === 'setup'}>
         <summary>Advanced · choose a connection by name</summary>
+        {infinite && onSetupChange && typeof side !== 'number' && (
+          <button
+            className="control"
+            disabled={!steps.length}
+            onClick={() => onSetupChange([...(claim.setup?.[side] ?? []), ...steps], true)}
+          >
+            Start repetition here
+          </button>
+        )}
         <div className="witness-choices">
           {choices.filter((choice) => choice.step.kind === 'edge').map(choiceButton)}
         </div>
@@ -126,18 +145,6 @@ export function ProofWitness({
           No legal step at this address. Review the connections or undo a step.
         </p>
       )}
-      <div className="button-row">
-        <button
-          className="control"
-          disabled={!steps.length}
-          onClick={() => onChange(steps.slice(0, -1))}
-        >
-          Undo witness step
-        </button>
-        <button className="control" disabled={!steps.length} onClick={() => onChange([])}>
-          Clear witness
-        </button>
-      </div>
     </section>
   )
 }
@@ -224,7 +231,7 @@ function witnessData(
   const infinite = infiniteWitness(model, claim, accepted, side)
   const goal = claim.period.length
     ? `Repeat to ${stateLabel(infinite.target)}`
-    : `Return to path ${model.paths.find((path) => path.id === infinite.anchor.path)?.label} in a deeper copy.`
+    : `Return to Line ${model.paths.find((path) => path.id === infinite.anchor.path)?.label} inside a deeper copy.`
   return {
     start: infinite.anchor,
     steps: claim[side],

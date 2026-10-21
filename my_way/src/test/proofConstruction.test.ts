@@ -5,6 +5,7 @@ import { checkClaim, checkedClaims } from '../core/pathMaze/proofs'
 import { connectionsFromPairs } from '../core/pathMaze/traversal'
 import { buildNativeReplay } from '../core/replay/nativeReplay'
 import { importReplay } from '../core/replay/importReplay'
+import { checkProofDraft } from '../ui/workbench/checkProofDraft'
 import { inferInfinitePeriod } from '../core/pathMaze/inferInfinitePeriod'
 import { pathDocs } from '../app/library/pathCatalog'
 import solutions from '../data/mazes/catalog-solutions.json'
@@ -81,5 +82,27 @@ describe('generalized infinite proof construction', () => {
     expect(importReplay(JSON.stringify(replay)).status).toBe('complete')
     ;(replay.maze.definition as PathMazeDefinition).claims[0].period = ['B']
     expect(() => importReplay(JSON.stringify(replay))).toThrow('unchecked connection')
+  })
+})
+
+describe('graphical proof checking', () => {
+  it('keeps the inferred word in the same certificate that was checked', () => {
+    const original = { ...setupProof(), period: [] }
+    const checked = checkProofDraft(model(), original, [])
+    expect(checked.result.valid).toBe(true)
+    expect(checked.claim.period).toEqual(['B', 'A', 'C'])
+    expect(checkClaim(model(), checked.claim).valid).toBe(true)
+    expect(original.period).toEqual([])
+  })
+  it('names the unfinished side and rejects different descents without accepting a guessed word', () => {
+    const draft: ProofClaim = { ...setupProof(), period: [], first: [], second: [] }
+    expect(checkProofDraft(model(), draft, []).result.message).toContain('Left trail')
+    draft.first = setupProof().first
+    expect(checkProofDraft(model(), draft, []).result.message).toContain('Right trail')
+    draft.second = steps(5, 1, 3)
+    const checked = checkProofDraft(model(), draft, [])
+    expect(checked.result.valid).toBe(false)
+    expect(checked.result.message).toContain('same repeating word')
+    expect(checked.claim.period).toEqual([])
   })
 })

@@ -72,12 +72,12 @@ for (const width of [390, 1440]) {
       dialog.getByRole('status').filter({ hasText: 'Repeating copies: A.' })
     ).toBeVisible()
     const check = dialog.getByRole('button', { name: 'Check my proof', exact: true })
+    await check.scrollIntoViewIfNeeded()
     const bounds = (await check.boundingBox())!
     expect(bounds.y).toBeGreaterThanOrEqual(0)
     expect(bounds.y + bounds.height).toBeLessThan(1000)
     await check.click()
     await expect(dialog.locator('.proof-valid')).toBeVisible()
-    await dialog.getByRole('button', { name: 'Save checked claim', exact: true }).click()
     await dialog.getByRole('button', { name: 'Return to maze', exact: true }).click()
     const use = page.getByRole('button', { name: 'Use proof → path 2', exact: true })
     await expect(use).toBeInViewport()
@@ -131,6 +131,7 @@ test('different descents cannot be submitted as a matching repetition', async ({
   await right.getByRole('button', { name: /^Enter A to path / }).click()
   await dialog.getByRole('button', { name: 'Check my proof', exact: true }).click()
   await expect(dialog.locator('.proof-invalid')).toContainText('same repeating word')
+  await expect(dialog.getByRole('heading', { name: 'Saved claims (0)', exact: true })).toBeVisible()
   await expect(dialog.getByRole('button', { name: 'Save checked claim', exact: true })).toHaveCount(
     0
   )
@@ -151,6 +152,7 @@ test('marking both repeat anchors infers the setup scope and keeps its certifica
   ]
   for (const board of boards) {
     await descend(board)
+    await board.locator(':scope > .witness-text-steps > summary').click()
     await board.getByRole('button', { name: 'Start repetition here', exact: true }).click()
   }
   for (const board of boards) {
@@ -161,7 +163,6 @@ test('marking both repeat anchors infers the setup scope and keeps its certifica
   await expect(dialog.getByLabel('Repeating word', { exact: true })).not.toBeVisible()
   await dialog.getByRole('button', { name: 'Check my proof', exact: true }).click()
   await expect(dialog.locator('.proof-valid')).toBeVisible()
-  await dialog.getByRole('button', { name: 'Save checked claim', exact: true }).click()
   await dialog.getByRole('button', { name: 'Return to maze', exact: true }).click()
   await page.getByRole('button', { name: 'Use proof → path 2', exact: true }).click()
   await expect(page.locator('.path-controls [role=status]')).toHaveText('Finish reached.')
@@ -188,7 +189,6 @@ test('a saved connection can be reused from the graphical boards to build a nest
   await descend(left)
   await descend(right)
   await dialog.getByRole('button', { name: 'Check my proof', exact: true }).click()
-  await dialog.getByRole('button', { name: 'Save checked claim', exact: true }).click()
   await left.getByRole('button', { name: 'Use checked claim 1', exact: true }).click()
   await expect(left.locator('.witness-maze__position')).toContainText('Path 2')
   await left.getByRole('button', { name: 'Enter B to path 1', exact: true }).click()
@@ -196,7 +196,6 @@ test('a saved connection can be reused from the graphical boards to build a nest
   await expect(dialog.getByRole('status').filter({ hasText: 'Repeating copies: B.' })).toBeVisible()
   await dialog.getByRole('button', { name: 'Check my proof', exact: true }).click()
   await expect(dialog.locator('.proof-valid')).toBeVisible()
-  await dialog.getByRole('button', { name: 'Save checked claim', exact: true }).click()
   await expect(dialog.getByRole('heading', { name: 'Saved claims (2)', exact: true })).toBeVisible()
   await dialog.getByRole('button', { name: 'Return to maze', exact: true }).click()
   await page.getByRole('button', { name: 'Use proof → path 3', exact: true }).click()

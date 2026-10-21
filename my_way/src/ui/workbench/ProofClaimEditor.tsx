@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import type { PathMazeDefinition, ProofClaim } from '../../core/model/pathMaze'
 import { parseCopyWord } from './copyAddress'
 
@@ -11,32 +12,8 @@ export function ProofClaimEditor({
   onChange: (patch: Partial<ProofClaim>) => void
 }) {
   return (
-    <section className="workbench-card proof-connection">
-      <h2>1. Choose the connection</h2>
+    <section className="proof-connection" aria-label="Connection endpoints">
       <div className="workbench-toolbar">
-        <label className="proof-rule-picker">
-          Proof rule
-          <select
-            aria-label="Proof rule"
-            value={claim.rule}
-            onChange={(event) =>
-              onChange({
-                rule: event.target.value as ProofClaim['rule'],
-                first: [],
-                second: [],
-                companions: [],
-                setup: undefined,
-              })
-            }
-          >
-            <option value="finite">Finite route</option>
-            {model.allowedRule !== 'finite' && (
-              <option value="connection">Route using checked claims</option>
-            )}
-            {model.allowedRule !== 'finite' && <option value="infiniteHop">Infinite hop</option>}
-            {model.allowedRule === 'cantorHop' && <option value="cantorHop">Cantor hop</option>}
-          </select>
-        </label>
         {(['from', 'to'] as const).map((key) => (
           <label key={key}>
             {claim.rule === 'infiniteHop'
@@ -66,84 +43,133 @@ export function ProofClaimEditor({
           </label>
         ))}
       </div>
-      {claim.rule === 'infiniteHop' && (
-        <p className="workbench-help" role="status">
-          {claim.period.length
-            ? `Repeating copies: ${claim.period.join(' → ')}. Both trails will be checked before this connection can be used.`
-            : 'Return both trails to their starting lines inside deeper copies.'}
-        </p>
+    </section>
+  )
+}
+
+export function ProofOptions({
+  model,
+  claim,
+  onChange,
+  inPlay,
+  children,
+}: {
+  model: PathMazeDefinition
+  claim: ProofClaim
+  onChange: (patch: Partial<ProofClaim>) => void
+  inPlay: boolean
+  children?: ReactNode
+}) {
+  return (
+    <details className="proof-advanced">
+      <summary>Proof options and help</summary>
+      {(!inPlay || model.allowedRule === 'cantorHop') && (
+        <label>
+          Proof rule
+          <select
+            aria-label="Proof rule"
+            value={claim.rule}
+            onChange={(event) =>
+              onChange({
+                rule: event.target.value as ProofClaim['rule'],
+                first: [],
+                second: [],
+                companions: [],
+                setup: undefined,
+                period: [],
+              })
+            }
+          >
+            {model.allowedRule === 'finite' && <option value="finite">Finite route</option>}
+            {!inPlay && model.allowedRule !== 'finite' && (
+              <option value="connection">Route using checked claims (authoring)</option>
+            )}
+            {model.allowedRule !== 'finite' && <option value="infiniteHop">Infinite hop</option>}
+            {model.allowedRule === 'cantorHop' && <option value="cantorHop">Cantor hop</option>}
+          </select>
+        </label>
       )}
-      <details className="proof-advanced">
-        <summary>Advanced · copy addresses</summary>
-        <div className="workbench-toolbar">
-          {claim.rule === 'infiniteHop' && (
-            <label>
-              Repeating copies
-              <input
-                aria-label="Repeating word"
-                value={claim.period.join(' ')}
-                placeholder="For example: B A C"
-                onChange={(event) =>
-                  onChange({ period: parseCopyWord(event.target.value, model.copies) })
-                }
-              />
-            </label>
-          )}
-          {(['from', 'to'] as const).map((key) => (
-            <label key={key}>
-              {key === 'from' ? 'From copy address' : 'To copy address'}
-              <input
-                aria-label={`Claim ${key} address`}
-                value={claim[key].address.join(' ')}
-                placeholder="Empty = surface"
-                onChange={(event) =>
-                  onChange({
-                    [key]: {
-                      ...claim[key],
-                      address: parseCopyWord(event.target.value, model.copies),
-                    },
-                    first: [],
-                    second: [],
-                  })
-                }
-              />
-            </label>
-          ))}
+      <div className="workbench-toolbar">
+        {claim.rule === 'infiniteHop' && (
           <label>
-            Shared starting copy
+            Repeating copies
             <input
-              aria-label="Claim scope"
-              value={claim.scope.join(' ')}
-              placeholder="Empty = surface"
+              aria-label="Repeating word"
+              value={claim.period.join(' ')}
+              placeholder="For example: B A C"
               onChange={(event) =>
-                onChange({
-                  scope: parseCopyWord(event.target.value, model.copies),
-                })
+                onChange({ period: parseCopyWord(event.target.value, model.copies) })
               }
             />
           </label>
-        </div>
-        <p className="workbench-help">
-          Leave addresses empty to start at the surface. The shared starting copy is the prefix of
-          the limit address that both trails approach.
-        </p>
-        {claim.rule === 'infiniteHop' && (
-          <label className="proof-setup-toggle">
+        )}
+        {(['from', 'to'] as const).map((key) => (
+          <label key={key}>
+            {key === 'from' ? 'From copy address' : 'To copy address'}
             <input
-              type="checkbox"
-              checked={!!claim.setup}
+              aria-label={`Claim ${key} address`}
+              value={claim[key].address.join(' ')}
+              placeholder="Empty = surface"
               onChange={(event) =>
                 onChange({
-                  setup: event.target.checked ? { first: [], second: [] } : undefined,
+                  [key]: {
+                    ...claim[key],
+                    address: parseCopyWord(event.target.value, model.copies),
+                  },
                   first: [],
                   second: [],
                 })
               }
             />
-            Build setup trails before the repeating part
           </label>
-        )}
-      </details>
-    </section>
+        ))}
+        <label>
+          Shared starting copy
+          <input
+            aria-label="Claim scope"
+            value={claim.scope.join(' ')}
+            placeholder="Empty = surface"
+            onChange={(event) =>
+              onChange({
+                scope: parseCopyWord(event.target.value, model.copies),
+              })
+            }
+          />
+        </label>
+      </div>
+      <p className="workbench-help">
+        Leave addresses empty to start at the surface. The shared starting copy is the prefix of the
+        limit address that both trails approach.
+      </p>
+      {claim.rule === 'infiniteHop' && (
+        <label className="proof-setup-toggle">
+          <input
+            type="checkbox"
+            checked={!!claim.setup}
+            onChange={(event) =>
+              onChange({
+                setup: event.target.checked ? { first: [], second: [] } : undefined,
+                first: [],
+                second: [],
+              })
+            }
+          />
+          Build setup trails before the repeating part
+        </label>
+      )}
+      {children}
+      <p className="workbench-help">
+        Blue marks the current line. Use the arrows or click a gate to cross into another copy.
+        Infinite hops need two trails repeating toward the same limit. Cantor hops may use their
+        connection hypothesis only inside a strictly deeper copy.
+      </p>
+      <a
+        href="https://freethoughtblogs.com/atrivialknot/2023/10/21/infinite-fractal-mazes/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Read Siggy’s movement rules ↗
+      </a>
+    </details>
   )
 }

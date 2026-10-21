@@ -125,6 +125,7 @@ test('Cantor notebook starts empty and checks only a witness constructed by the 
   await expect(page.locator('.proof-check [role=status]')).toContainText(
     'Build the required witness routes'
   )
+  await openProofDetails(page)
   for (const move of [
     'enter A → 1',
     'Use descendant hypothesis',
@@ -139,7 +140,6 @@ test('Cantor notebook starts empty and checks only a witness constructed by the 
   await expect(page.locator('.proof-check [role=status]')).toContainText(
     'Derivation checked under Cantor-hop rules'
   )
-  await page.getByRole('button', { name: 'Save checked claim' }).click()
   await page.getByRole('button', { name: 'Save workbench' }).click()
   await expect(page.getByText('Saved to library', { exact: true })).toBeVisible()
   await page.reload()
@@ -168,7 +168,6 @@ test('nested infinite-hop witnesses use a previously checked lemma', async ({ pa
   await second.getByRole('button', { name: 'enter A → 2', exact: true }).click()
   await page.getByRole('button', { name: 'Check my proof' }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('infinite-hop rules')
-  await page.getByRole('button', { name: 'Save checked claim' }).click()
   await openProofDetails(page)
   await page.getByLabel('Repeating word').fill('B')
   await first.getByRole('button', { name: 'Use checked claim 1', exact: true }).click()
@@ -176,7 +175,6 @@ test('nested infinite-hop witnesses use a previously checked lemma', async ({ pa
   await second.getByRole('button', { name: 'enter B → 3', exact: true }).click()
   await page.getByRole('button', { name: 'Check my proof' }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('infinite-hop rules')
-  await page.getByRole('button', { name: 'Save checked claim' }).click()
   await expect(page.getByRole('heading', { name: 'Saved claims (2)' })).toBeVisible()
 })
 
@@ -249,14 +247,15 @@ test('proof and trace controls fit a phone screen', async ({ page }) => {
 
 test('unfinished proof witnesses persist across modes and reload', async ({ page }) => {
   await page.goto(`workbench/${cantor}?tab=proof`)
+  await openProofDetails(page)
   await page.getByRole('button', { name: 'enter A → 1', exact: true }).click()
   await page.getByRole('button', { name: 'Save workbench' }).click()
   await expect(page.getByText('Saved to library', { exact: true })).toBeVisible()
   await page.getByRole('tab', { name: 'Trace & PDA', exact: true }).click()
   await page.getByRole('tab', { name: 'Proof notebook', exact: true }).click()
-  await expect(page.locator('.witness-current strong')).toHaveText('A · 1')
+  await expect(page.locator('.witness-maze__position strong')).toHaveText('Surface ← A')
   await page.reload()
-  await expect(page.locator('.witness-current strong')).toHaveText('A · 1')
+  await expect(page.locator('.witness-maze__position strong')).toHaveText('Surface ← A')
   await expect(page.getByRole('heading', { name: 'Saved claims (0)' })).toBeVisible()
 })
 
@@ -356,6 +355,7 @@ test('joint Cantor hypotheses require a separate completed witness for every dec
   await page.getByText('Related connections · optional', { exact: true }).click()
   await page.getByRole('button', { name: 'Add related connection' }).click()
   await page.getByLabel('Related 2 to path').selectOption('3')
+  await openProofDetails(page)
   const first = page.locator('.witness').nth(0),
     related = page.locator('.witness').nth(1)
   for (const move of ['enter A → 2', 'Use descendant hypothesis 2', 'exit A → 2'])
@@ -368,6 +368,5 @@ test('joint Cantor hypotheses require a separate completed witness for every dec
     await related.getByRole('button', { name: move, exact: true }).click()
   await page.getByRole('button', { name: 'Check my proof' }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('Cantor-hop rules')
-  await page.getByRole('button', { name: 'Save checked claim' }).click()
   await expect(page.getByRole('heading', { name: 'Saved claims (1)' })).toBeVisible()
 })

@@ -10,7 +10,6 @@ test('a manually checked infinite connection is usable in live Play', async ({ p
     await witnesses.nth(0).getByRole('button', { name: 'enter A → 1', exact: true }).click()
     await witnesses.nth(1).getByRole('button', { name: 'enter A → 2', exact: true }).click()
     await page.getByRole('button', { name: 'Check my proof', exact: true }).click()
-    await page.getByRole('button', { name: 'Save checked claim', exact: true }).click()
   }
   await expect(page.getByRole('heading', { name: 'Saved claims (2)' })).toBeVisible()
   await page.getByRole('tab', { name: 'Play preview', exact: true }).click()
