@@ -120,14 +120,14 @@ export function EditorPage() {
     return (
       <div className="app-page min-h-screen flex flex-col">
         <NavBar />
-        <div className="empty-state flex-1">
+        <main className="empty-state flex-1">
           <span aria-hidden="true">⌁</span>
           <h1>{loadResult?.error ? 'Maze unavailable' : 'Preparing workshop'}</h1>
           <p>{loadResult?.error ?? 'Loading the editable maze document…'}</p>
           <Link className="control" to="/library">
             Open library
           </Link>
-        </div>
+        </main>
       </div>
     )
   }
@@ -136,19 +136,19 @@ export function EditorPage() {
   const validation = validateMaze(doc)
 
   return (
-    <div className="editor-page min-h-screen bg-gray-900 text-white flex flex-col">
+    <div className="editor-page min-h-screen surface-page text-ink flex flex-col">
       <NavBar />
       {/* Top bar */}
-      <header className="bg-gray-800 border-b border-gray-700 px-4 py-2 flex items-center gap-3 flex-wrap">
+      <header className="surface-panel border-b border-subtle px-4 py-2 flex items-center gap-3 flex-wrap">
         <span className="maze-kicker">Maze workshop</span>
-        <span className="text-white font-semibold truncate max-w-xs">{doc.metadata.title}</span>
+        <span className="text-ink font-semibold truncate max-w-xs">{doc.metadata.title}</span>
 
         <div className="editor-actions ml-auto flex gap-2 items-center">
           {/* Undo/redo */}
           <button
             onClick={() => store.undo()}
             disabled={undoStack.length === 0}
-            className="px-2 py-1 bg-gray-700 hover:bg-gray-600 disabled:opacity-30 rounded text-sm"
+            className="px-2 py-1 surface-muted disabled:opacity-30 rounded text-sm"
             title="Undo (Ctrl+Z)"
           >
             ↩
@@ -156,7 +156,7 @@ export function EditorPage() {
           <button
             onClick={() => store.redo()}
             disabled={redoStack.length === 0}
-            className="px-2 py-1 bg-gray-700 hover:bg-gray-600 disabled:opacity-30 rounded text-sm"
+            className="px-2 py-1 surface-muted disabled:opacity-30 rounded text-sm"
             title="Redo (Ctrl+Y)"
           >
             ↪
@@ -165,13 +165,7 @@ export function EditorPage() {
           {/* Save */}
           <button
             onClick={handleSave}
-            className={`px-3 py-1 rounded text-sm font-semibold ${
-              saveStatus === 'saved'
-                ? 'bg-green-700 text-white'
-                : saveStatus === 'error'
-                  ? 'bg-red-700 text-white'
-                  : 'bg-blue-600 hover:bg-blue-500 text-white'
-            }`}
+            className={`control ${saveStatus === 'error' ? 'action-danger' : 'control--primary'}`}
           >
             {saveStatus === 'saved' ? '✓ Saved' : saveStatus === 'error' ? '✗ Error' : 'Save'}
           </button>
@@ -179,7 +173,7 @@ export function EditorPage() {
           {/* Export */}
           <button
             onClick={() => setShowExport(true)}
-            className="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded text-sm"
+            className="px-3 py-1 surface-muted rounded text-sm"
           >
             Export
           </button>
@@ -194,7 +188,7 @@ export function EditorPage() {
               setPendingDoc(doc)
               navigate('/play/imported')
             }}
-            className="px-3 py-1 bg-purple-700 hover:bg-purple-600 rounded text-sm"
+            className="px-3 py-1 action-secondary rounded text-sm"
           >
             Preview ▶
           </button>
@@ -203,15 +197,15 @@ export function EditorPage() {
 
       <div className="editor-body flex flex-1 overflow-hidden">
         {/* Mode toolbar */}
-        <nav className="editor-tools bg-gray-800 border-r border-gray-700 flex flex-col pt-4 px-2 gap-1 w-28 flex-shrink-0">
+        <nav className="editor-tools surface-panel border-r border-subtle flex flex-col pt-4 px-2 gap-1 w-28 flex-shrink-0">
           {MODES.map((m) => (
             <button
               key={m.id}
               onClick={() => store.setMode(m.id)}
               className={`px-2 py-2 rounded text-sm font-semibold text-center ${
                 mode === m.id
-                  ? 'bg-blue-700 text-white'
-                  : 'text-gray-400 hover:bg-gray-700 hover:text-white'
+                  ? 'action-primary text-ink'
+                  : 'text-muted '
               }`}
             >
               {m.label}
@@ -220,8 +214,8 @@ export function EditorPage() {
         </nav>
 
         {/* Canvas area */}
-        <main className="editor-field flex-1 overflow-auto bg-gray-950 flex items-start justify-center p-6">
-          <div className="relative inline-block border-2 border-gray-600 rounded">
+        <main className="editor-field flex-1 overflow-auto surface-inset flex items-start justify-center p-6">
+          <div className="relative inline-block border-2 border-subtle rounded">
             <MazeCanvas doc={doc} maxDepth={1} showBlockLabels={true} showBreadcrumbs={false} />
             <EditorSVGOverlay
               def={def}
@@ -234,7 +228,7 @@ export function EditorPage() {
         </main>
 
         {/* Right panel */}
-        <aside className="editor-inspector w-72 bg-gray-800 border-l border-gray-700 flex flex-col overflow-y-auto">
+        <aside className="editor-inspector w-72 surface-panel border-l border-subtle flex flex-col overflow-y-auto">
           <div className="p-4 flex flex-col gap-4">
             {/* Mode panel */}
             {mode === 'structure' && <StructurePanel def={def} store={store} />}
@@ -251,8 +245,8 @@ export function EditorPage() {
             {mode === 'metadata' && <MetadataPanel doc={doc} store={store} />}
 
             {/* Validation */}
-            <div className="border-t border-gray-700 pt-4">
-              <p className="text-gray-400 text-xs font-semibold uppercase mb-2">Validation</p>
+            <div className="border-t border-subtle pt-4">
+              <p className="text-muted text-xs font-semibold uppercase mb-2">Validation</p>
               <ValidationOverlay result={validation} />
             </div>
           </div>

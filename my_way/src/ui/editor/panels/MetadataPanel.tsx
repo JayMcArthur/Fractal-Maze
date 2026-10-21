@@ -16,34 +16,34 @@ export function MetadataPanel({ doc, store }: MetadataPanelProps) {
     <div className="flex flex-col gap-3 text-sm">
       <MazeCoverPicker cover={metadata.cover} onChange={cover => store.updateMetadata({ cover })} />
       <label className="flex flex-col gap-1">
-        <span className="text-gray-300 font-semibold">Title</span>
+        <span className="text-muted font-semibold">Title</span>
         <input
           type="text"
           value={metadata.title}
           onChange={(e) => store.updateMetadata({ title: e.target.value })}
-          className="bg-gray-700 text-white rounded px-2 py-1"
+          className="surface-muted text-ink rounded px-2 py-1"
         />
       </label>
       <label className="flex flex-col gap-1">
-        <span className="text-gray-400">Author</span>
+        <span className="text-muted">Author</span>
         <input
           type="text"
           value={metadata.author ?? ''}
           onChange={(e) => store.updateMetadata({ author: e.target.value || undefined })}
-          className="bg-gray-700 text-white rounded px-2 py-1"
+          className="surface-muted text-ink rounded px-2 py-1"
         />
       </label>
       <label className="flex flex-col gap-1">
-        <span className="text-gray-400">Source URL</span>
+        <span className="text-muted">Source URL</span>
         <input
           type="text"
           value={metadata.source ?? ''}
           onChange={(e) => store.updateMetadata({ source: e.target.value || undefined })}
-          className="bg-gray-700 text-white rounded px-2 py-1"
+          className="surface-muted text-ink rounded px-2 py-1"
         />
       </label>
       <label className="flex flex-col gap-1">
-        <span className="text-gray-400">Tags (comma-separated)</span>
+        <span className="text-muted">Tags (comma-separated)</span>
         <input
           type="text"
           value={metadata.tags.join(', ')}
@@ -55,19 +55,19 @@ export function MetadataPanel({ doc, store }: MetadataPanelProps) {
                 .filter(Boolean),
             })
           }
-          className="bg-gray-700 text-white rounded px-2 py-1"
+          className="surface-muted text-ink rounded px-2 py-1"
         />
       </label>
       <label className="flex flex-col gap-1">
-        <span className="text-gray-400">License</span>
+        <span className="text-muted">License</span>
         <input
           type="text"
           value={metadata.license ?? ''}
           onChange={(e) => store.updateMetadata({ license: e.target.value || undefined })}
-          className="bg-gray-700 text-white rounded px-2 py-1"
+          className="surface-muted text-ink rounded px-2 py-1"
         />
       </label>
-      <div className="text-gray-600 text-xs border-t border-gray-700 pt-2 flex flex-col gap-0.5">
+      <div className="text-muted text-xs border-t border-subtle pt-2 flex flex-col gap-0.5">
         <span>ID: {metadata.id}</span>
         <span>Created: {new Date(metadata.createdAt).toLocaleString()}</span>
         <span>Updated: {new Date(metadata.updatedAt).toLocaleString()}</span>

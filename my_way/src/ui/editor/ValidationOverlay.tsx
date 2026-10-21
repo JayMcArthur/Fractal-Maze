@@ -5,21 +5,21 @@ interface ValidationOverlayProps {
 }
 
 const SEVERITY_CLASS = {
-  error: 'text-red-400',
-  warning: 'text-yellow-400',
-  info: 'text-blue-400',
+  error: 'text-danger',
+  warning: 'text-warning',
+  info: 'text-info',
 }
 
 const SEVERITY_BADGE = {
-  error: 'bg-red-900 text-red-300',
-  warning: 'bg-yellow-900 text-yellow-300',
-  info: 'bg-blue-900 text-blue-300',
+  error: 'notice-danger text-danger',
+  warning: 'notice-warning text-warning',
+  info: 'notice-info text-info',
 }
 
 export function ValidationOverlay({ result }: ValidationOverlayProps) {
   if (result.issues.length === 0) {
     return (
-      <div className="flex items-center gap-2 text-green-400 text-sm">
+      <div className="flex items-center gap-2 text-success text-sm">
         <span>✓</span>
         <span>Maze is valid</span>
       </div>
@@ -29,10 +29,10 @@ export function ValidationOverlay({ result }: ValidationOverlayProps) {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-2 text-sm">
-        <span className={result.valid ? 'text-yellow-400' : 'text-red-400'}>
+        <span className={result.valid ? 'text-warning' : 'text-danger'}>
           {result.valid ? '⚠' : '✗'}
         </span>
-        <span className={result.valid ? 'text-yellow-300' : 'text-red-300'}>
+        <span className={result.valid ? 'text-warning' : 'text-danger'}>
           {result.valid ? 'Valid with warnings' : 'Invalid maze'}
         </span>
       </div>
@@ -44,7 +44,7 @@ export function ValidationOverlay({ result }: ValidationOverlayProps) {
             </span>
             <span className={SEVERITY_CLASS[issue.severity]}>{issue.message}</span>
             {issue.location && (
-              <span className="text-gray-600 font-mono ml-auto flex-shrink-0">{issue.location}</span>
+              <span className="text-muted font-mono ml-auto flex-shrink-0">{issue.location}</span>
             )}
           </div>
         ))}

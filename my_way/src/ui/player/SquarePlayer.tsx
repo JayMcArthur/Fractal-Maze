@@ -1,3 +1,4 @@
+import { Dialog } from '../components/Dialog'
 import { MazeCredits } from './MazeCredits'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
 import { PlayHeader } from './PlayHeader'
@@ -312,29 +313,8 @@ export function SquarePlayer({ doc, replay }: { doc: RecursiveMazeDocument; repl
       </main>
 
       {isWon && !replay && (
-        <div
-          className="victory-layer"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="victory-title"
-        >
-          <div className="victory-card">
-            <div className="victory-mark" aria-hidden="true">
-              <i />
-              <i />
-              <i />
-              <i />
-            </div>
-            <p className="maze-kicker">Exit reached</p>
-            <h2 id="victory-title">Maze escaped.</h2>
-            <p>
-              {moveCount} moves · {Math.round(elapsedMs / 100) / 10}s · depth{' '}
-              {Math.max(...history.map((action) => action.to.blockStack.length - 1), 0)}
-            </p>
-            {bestMoves === moveCount && (
-              <strong className="personal-best">New personal best</strong>
-            )}
-            <div className="button-row">
+        <Dialog title="Maze escaped." eyebrow="Exit reached" className="victory-dialog"
+          footer={<div className="button-row">
               <button className="control control--primary" onClick={reset}>
                 Run it again
               </button>
@@ -344,9 +324,12 @@ export function SquarePlayer({ doc, replay }: { doc: RecursiveMazeDocument; repl
               <button className="control" onClick={() => goAdjacent(1)}>
                 Next maze
               </button>
-            </div>
-          </div>
-        </div>
+          </div>}>
+          <div className="victory-mark" aria-hidden="true"><i /><i /><i /><i /></div>
+          <p>Moves: {moveCount} · {Math.round(elapsedMs / 100) / 10}s · depth{' '}
+            {Math.max(...history.map(action => action.to.blockStack.length - 1), 0)}</p>
+          {bestMoves === moveCount && <strong className="personal-best">New personal best</strong>}
+        </Dialog>
       )}
 
       {showImport && (

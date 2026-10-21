@@ -1,0 +1,65 @@
+{
+  "formatVersion": "1.0",
+  "metadata": {
+    "id": "surface-win",
+    "title": "Small UI test maze",
+    "author": "UI test fixture",
+    "tags": [
+      "test"
+    ],
+    "createdAt": "2026-10-20T00:00:00Z",
+    "updatedAt": "2026-10-20T00:00:00Z"
+  },
+  "representationType": "squareRecursive",
+  "definition": {
+    "type": "squareRecursive",
+    "tileSize": 50,
+    "colors": {
+      "outside": "#82be38",
+      "background": "#477f1e",
+      "path": "#b77c44",
+      "line": "#ff0000"
+    },
+    "grid": {
+      "rows": 2,
+      "cols": 2,
+      "cells": [
+        4,
+        1,
+        0,
+        0
+      ]
+    },
+    "blocks": [],
+    "links": [],
+    "exits": [],
+    "teleporters": [],
+    "player": {
+      "row": 0,
+      "col": 0,
+      "color": "#2344be"
+    },
+    "trophies": [
+      {
+        "row": 0,
+        "col": 1,
+        "color": "#ffd34a"
+      }
+    ]
+  },
+  "renderConfig": {
+    "preferredRenderer": "auto",
+    "maxDepth": 3,
+    "showBreadcrumbs": true,
+    "showBlockLabels": true,
+    "animationSpeed": "normal",
+    "colorScheme": "default"
+  },
+  "solverConfig": {
+    "maxDepth": 10,
+    "maxNodes": 100000,
+    "timeoutMs": 30000,
+    "strategy": "bfs"
+  },
+  "annotations": []
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Navigate, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { loadReplay } from '../../app/projects/db'
 import { bundledReplays } from '../../app/library/bundledReplays'
 import { NavBar } from '../components/NavBar'
@@ -34,6 +34,7 @@ export function ReplayPage() {
       <NavBar />
       <main className="empty-state empty-state--page">
         <h1>{result?.error ?? 'Opening replay…'}</h1>
+        {result?.error && <Link className="control" to="/library">Open library</Link>}
       </main>
     </div>
   )

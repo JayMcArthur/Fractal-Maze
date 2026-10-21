@@ -1,0 +1,29 @@
+
+.build-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.build-choice { display: flex; flex-direction: column; align-items: flex-start; border: 1px solid var(--line); padding: 28px; background: var(--surface); border-radius: 12px; box-shadow: var(--shadow); }
+.build-choice--create { background: #f1f5eb; border-top: 1px solid #afc3a6; }
+.build-choice h2 { margin: 12px 0; letter-spacing: -.03em; line-height: 1.25; font-size: 1.45rem; }
+.build-choice p { color: var(--muted); line-height: 1.65; margin: 0 0 24px; max-width: 48ch; }
+.build-choice .control { margin-top: auto; }
+.home-hero { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 40px; padding: 18px 0 48px; }
+.home-hero h1 { margin: 16px 0 22px; font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.1; letter-spacing: -.045em; }
+.home-hero p:not(.maze-kicker) { color: #526052; font-size: 1.08rem; line-height: 1.7; max-width: 480px; }
+.home-maze-preview { display: grid; place-items: center; min-width: 0; padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: #edf1e7; }
+.home-actions { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+.home-actions > a { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 26px; }
+.home-actions > a:hover { border-color: #638467; }
+.home-actions span { font: 650 .75rem ui-monospace, monospace; color: #55715a; }
+.home-actions h2 { margin: 12px 0; font-size: 1.35rem; line-height: 1.3; }
+.home-actions p, .home-instructions p, .home-details p { color: #526052; line-height: 1.7; }
+.home-learn { margin: 48px 0 32px; }
+.home-learn h2 { font-size: 1.6rem; margin-bottom: 20px; }
+.home-instructions { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; }
+.home-instructions strong { display: block; color: #223d2a; }
+.home-details details { border-top: 1px solid var(--line); padding: 20px 0; }
+.home-details summary { cursor: pointer; font-weight: 700; }
+
+.home-maze-preview .maze-viewport, .solver-preview .maze-viewport { max-width: 100%; }
+.home-maze-preview canvas, .solver-preview canvas { max-width: 100%; height: auto !important; }
+@media (max-width: 780px) { .path-player, .pda-solver, .home-hero { grid-template-columns: 1fr; } .home-hero { gap: 40px; padding: 18px 0 48px; } .home-actions, .home-instructions { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .build-choices { grid-template-columns: 1fr; } .build-choice { padding: 28px; background: var(--surface); border-radius: 12px; box-shadow: var(--shadow); } .home-hero { padding-top: 0; gap: 40px; padding: 18px 0 48px; } .home-hero h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.1; letter-spacing: -.045em; } }
+

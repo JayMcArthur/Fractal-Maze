@@ -41,9 +41,9 @@ export function BlocksPanel({ def, selectedBlock, store }: BlocksPanelProps) {
     <div className="flex flex-col gap-4">
       {/* Block list */}
       <div className="flex flex-col gap-1">
-        <label className="text-gray-300 text-sm font-semibold">Blocks</label>
+        <label className="text-muted text-sm font-semibold">Blocks</label>
         {def.blocks.length === 0 && (
-          <p className="text-gray-500 text-xs">No blocks yet.</p>
+          <p className="text-muted text-xs">No blocks yet.</p>
         )}
         {def.blocks.map((b) => (
           <button
@@ -51,8 +51,8 @@ export function BlocksPanel({ def, selectedBlock, store }: BlocksPanelProps) {
             onClick={() => store.selectBlock(b.name === selectedBlock ? null : b.name)}
             className={`flex items-center gap-2 px-3 py-1.5 rounded text-sm text-left ${
               b.name === selectedBlock
-                ? 'bg-blue-700 text-white'
-                : 'bg-gray-700 text-gray-200 hover:bg-gray-600'
+                ? 'action-primary text-ink'
+                : 'surface-muted text-muted '
             }`}
           >
             <span
@@ -60,7 +60,7 @@ export function BlocksPanel({ def, selectedBlock, store }: BlocksPanelProps) {
               style={{ backgroundColor: b.color }}
             />
             <span className="font-mono font-bold">{b.name}</span>
-            <span className="text-gray-400 text-xs ml-auto">
+            <span className="text-muted text-xs ml-auto">
               {b.width}×{b.height} @ ({b.row},{b.col})
             </span>
           </button>
@@ -75,13 +75,13 @@ export function BlocksPanel({ def, selectedBlock, store }: BlocksPanelProps) {
           onChange={(e) => setNewName(e.target.value.slice(0, 3).toUpperCase())}
           onKeyDown={(e) => e.key === 'Enter' && addBlock()}
           placeholder="Name (e.g. A)"
-          className="flex-1 bg-gray-700 text-white rounded px-2 py-1 text-sm font-mono"
+          className="flex-1 surface-muted text-ink rounded px-2 py-1 text-sm font-mono"
           maxLength={3}
         />
         <button
           onClick={addBlock}
           disabled={!newName.trim() || def.blocks.some((b) => b.name === newName.trim().toUpperCase())}
-          className="px-3 py-1 bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white rounded text-sm"
+          className="px-3 py-1 action-primary disabled:opacity-40 text-ink rounded text-sm"
         >
           Add
         </button>
@@ -89,12 +89,12 @@ export function BlocksPanel({ def, selectedBlock, store }: BlocksPanelProps) {
 
       {/* Selected block editor */}
       {block && (
-        <div className="flex flex-col gap-3 border-t border-gray-700 pt-3">
+        <div className="flex flex-col gap-3 border-t border-subtle pt-3">
           <div className="flex justify-between items-center">
-            <span className="text-white font-bold">Block {block.name}</span>
+            <span className="text-ink font-bold">Block {block.name}</span>
             <button
               onClick={() => { store.removeBlock(block.name); store.selectBlock(null) }}
-              className="text-red-400 hover:text-red-300 text-xs"
+              className="text-danger text-xs"
             >
               Remove
             </button>
@@ -102,7 +102,7 @@ export function BlocksPanel({ def, selectedBlock, store }: BlocksPanelProps) {
           <div className="grid grid-cols-2 gap-2 text-sm">
             {(['row', 'col', 'width', 'height'] as const).map((field) => (
               <label key={field} className="flex flex-col gap-1">
-                <span className="text-gray-400 text-xs capitalize">{field}</span>
+                <span className="text-muted text-xs capitalize">{field}</span>
                 <input
                   type="number"
                   min={field === 'width' || field === 'height' ? 1 : 0}
@@ -110,13 +110,13 @@ export function BlocksPanel({ def, selectedBlock, store }: BlocksPanelProps) {
                   onChange={(e) =>
                     store.updateBlock(block.name, { [field]: parseInt(e.target.value) || 0 })
                   }
-                  className="bg-gray-700 text-white rounded px-2 py-1"
+                  className="surface-muted text-ink rounded px-2 py-1"
                 />
               </label>
             ))}
           </div>
           <label className="flex flex-col gap-1">
-            <span className="text-gray-400 text-xs">Color</span>
+            <span className="text-muted text-xs">Color</span>
             <div className="flex gap-2 flex-wrap">
               {BLOCK_COLORS.map((c) => (
                 <button

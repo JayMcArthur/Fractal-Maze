@@ -26,9 +26,9 @@ export function TeleportersPanel({
     col + dc * reach >= 0 &&
     col + dc * reach < def.grid.cols
   return (
-    <section className="flex flex-col gap-2 text-sm border-t border-gray-700 pt-3">
+    <section className="flex flex-col gap-2 text-sm border-t border-subtle pt-3">
       <h2 className="font-semibold">Teleporters</h2>
-      <p className="text-xs text-gray-400">
+      <p className="text-xs text-muted">
         Jump along a direction from the chosen cell. Reach is the number of cells to travel.
       </p>
       {def.teleporters.map((tel) => (
@@ -59,7 +59,7 @@ export function TeleportersPanel({
           <label className="flex flex-col gap-1" key={String(name)}>
             {String(name)}
             <input
-              className="bg-gray-700 rounded px-2 py-1 w-full"
+              className="surface-muted rounded px-2 py-1 w-full"
               aria-label={`Teleporter ${name}`}
               type="number"
               min={name === 'Reach' ? 1 : 0}
@@ -72,7 +72,7 @@ export function TeleportersPanel({
         <label className="flex flex-col gap-1">
           Direction
           <select
-            className="bg-gray-700 rounded px-2 py-1"
+            className="surface-muted rounded px-2 py-1"
             aria-label="Teleporter direction"
             value={direction}
             onChange={(event) => setDirection(Number(event.target.value) as DirectionBit)}
@@ -92,7 +92,7 @@ export function TeleportersPanel({
         Add teleporter
       </button>
       {!valid && (
-        <p className="text-xs text-gray-400">Choose a start and destination inside the grid.</p>
+        <p className="text-xs text-muted">Choose a start and destination inside the grid.</p>
       )}
     </section>
   )
