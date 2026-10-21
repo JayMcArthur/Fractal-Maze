@@ -31,6 +31,9 @@ Tailwind's color names to a different theme.
 
 - Cream page, warm light panels, dark forest navigation, green primary actions.
   Blue identifies the current proof corridor. Maze colors remain domain data.
+- Use `--font-ui` in component font shorthands. Mixing a shorthand with a later
+  `font-family: inherit` override can produce invalid optimized CSS. Review
+  typography against the production preview; browser checks protect label hierarchy.
 - Use one clear primary action in each region. Keep related secondary actions
   aligned with it, with consistent padding and borders.
 - Regular controls are at least 40px high, 44px on narrow screens. Inputs/selects
