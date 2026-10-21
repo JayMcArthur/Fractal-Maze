@@ -1,4 +1,3 @@
-
 .player-frame { margin: 0 auto; width: min(1240px, calc(100% - 40px)); padding: 24px 0 40px; }
 .player-selector { display: grid; align-items: end; grid-template-columns: auto minmax(180px, 260px) auto minmax(140px, 1fr) auto; gap: 10px; margin-bottom: 20px; }
 .player-title { min-width: 0; padding: 0 14px; }
@@ -31,8 +30,8 @@
 .rail-panel__heading .maze-kicker { color: var(--muted); }
 .rail-panel h2 { margin: 4px 0 0; font-size: 1rem; letter-spacing: -.02em; }
 .session-grid { display: grid; grid-template-columns: 1fr 1fr; margin: 0 0 12px; background: var(--line); gap: 1px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
-.session-grid div { min-width: 0; background: #f2f5ed; padding: 10px; }
-.session-grid dt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font-size: .7rem; }
+.session-grid div { display: grid; grid-template-rows: 1fr auto; min-width: 0; background: #f2f5ed; padding: 10px; }
+.session-grid dt { white-space: normal; color: var(--muted); font-size: .7rem; }
 .session-grid dd { margin: 5px 0 0; overflow: hidden; font: 750 .76rem ui-monospace, monospace; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-dark); font-size: .84rem; }
 .control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 .rail-panel .control { box-shadow: none; color: var(--ink-dark); border-color: #bccab9; background: var(--surface); }
@@ -119,7 +118,7 @@
 .maze-replay-bar > p { flex-basis: 100%; margin: 0; color: var(--muted); font-size: .8rem; }
 .replay-import { cursor: pointer; }
 .embedded-replay { max-width: 880px; margin: auto; }
-.path-controls { padding: 18px; background: var(--surface); border-color: var(--line); color: var(--ink-dark); }
+.path-controls { display: grid; align-content: start; gap: 12px; padding: 18px; background: var(--surface); border-color: var(--line); color: var(--ink-dark); }
 .path-controls h2 { font-size: 1.15rem; }
 .path-controls .path-search, .path-controls .path-search label { min-width: 0; }
 .path-controls .path-search { display: flex; flex-wrap: wrap; }
@@ -216,3 +215,9 @@
 
 
 .maze-stage:fullscreen canvas { max-height: calc(100svh - 48px); }
+
+.path-controls .rail-panel__heading { margin-bottom: 0; }
+.path-controls > .control { width: 100%; }
+
+.maze-field-feedback.maze-transition--enterBlock { box-shadow: inset 0 0 80px rgba(94,217,255,.24); animation: field-feedback .3s ease-out; }
+.maze-field-feedback.maze-transition--exitBlock, .maze-field-feedback.maze-transition--undo { box-shadow: inset 0 0 80px rgba(189,150,255,.22); animation: field-feedback .28s ease-out; }

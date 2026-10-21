@@ -93,12 +93,15 @@ export function ProofWorkbench({
       <header className="proof-intro">
         {!inPlay && <h2>Your proof notebook</h2>}
         <p>
-          Match the starting-line selectors to the labels on each maze. Blue marks the current
-          line. Click a maze to control it with the arrow keys or on-screen arrows. Crossing gates
-          records your trail.
+          Choose the lines below, then follow the blue paths.
         </p>
         <details className="proof-help">
           <summary>How the proof rules work</summary>
+          <p>
+            Match the starting lines to the labels on each maze. Blue marks the current line.
+            Click a maze to control it with the arrow keys or on-screen arrows. Crossing gates
+            records your trail. Repeating copies are detected from the trails you build.
+          </p>
           <p>
             A finite route uses ordinary moves. For an infinite hop, both trails must repeat toward
             the same limit. A Cantor hop may use its connection hypothesis only inside a strictly

@@ -70,11 +70,11 @@ export function ProofClaimEditor({
         <p className="workbench-help" role="status">
           {claim.period.length
             ? `Repeating copies: ${claim.period.join(' → ')}. Both trails will be checked before this connection can be used.`
-            : 'Move each trail back to its starting line inside deeper copies. Their shared repetition is detected from the routes you build.'}
+            : 'Return both trails to their starting lines inside deeper copies.'}
         </p>
       )}
       <details className="proof-advanced">
-        <summary>Advanced · copy addresses and shared starting copy</summary>
+        <summary>Advanced · copy addresses</summary>
         <div className="workbench-toolbar">
           {claim.rule === 'infiniteHop' && (
             <label>

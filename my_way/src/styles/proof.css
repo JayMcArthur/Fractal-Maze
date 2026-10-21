@@ -1,6 +1,5 @@
-
 .workbench-source, .model-editor, .proof-workbench { display: grid; gap: 16px; min-width: 0; }
-.proof-workbench { max-width: 1080px; margin: 0 auto; gap: 20px; }
+.proof-workbench { max-width: 1080px; margin: 0 auto; gap: 16px; }
 .proof-intro h2 { margin: 0 0 6px; font-size: 1.4rem; font-weight: 800; }
 .proof-intro p { font-size: .86rem; margin: 0 0 10px; line-height: 1.65; color: var(--muted); }
 .proof-intro a { font-size: .8rem; text-decoration: underline; }
@@ -69,7 +68,7 @@
 .proof-dialog .source-display-style { flex-direction: row; }
 .proof-dialog .witness-maze .source-route-help { line-height: 1.55; }
 .proof-dialog .app-dialog__body { overflow-y: auto; overscroll-behavior: contain; padding: 20px 24px; scrollbar-gutter: stable; }
-.proof-dialog .proof-advanced { padding-top: 14px; border-top: 1px solid var(--line); }
+.proof-dialog .proof-advanced { margin-top: 8px; padding-top: 0; border-top: 0; }
 .proof-check > p { flex: 1 1 250px; margin: 0; }
 .witness-goal { min-height: 2.5em; }
 .saved-claim h3 { margin: 0 0 8px; font-size: .95rem; }
@@ -91,3 +90,5 @@
 }
 
 @media(max-width: 780px) { .witness-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.proof-dialog .proof-connection { padding: 14px; }

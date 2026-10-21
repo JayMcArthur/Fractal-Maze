@@ -1,5 +1,3 @@
-
-
 .editor-body { display: grid; grid-template-columns: 112px minmax(0,1fr) 288px; }
 .editor-field canvas { max-width: 100%; height: auto !important; }
 .editor-actions { flex-wrap: wrap; min-width: 0; max-width: 100%; }
@@ -53,4 +51,3 @@
 }
 @media (max-width: 780px) { .solver-maze-results { grid-template-columns: repeat(2, minmax(0,1fr)); max-height: 280px; gap: 10px; padding: 2px; } .corridor-solver > div { grid-template-columns: minmax(0, 1fr); } .pda-solver { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 560px) { .solver-maze-results { grid-template-columns: 1fr; max-height: 280px; gap: 10px; padding: 2px; } }
-

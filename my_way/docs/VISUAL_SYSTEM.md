@@ -33,14 +33,13 @@ Tailwind's color names to a different theme.
   Blue identifies the current proof corridor. Maze colors remain domain data.
 - Use one clear primary action in each region. Keep related secondary actions
   aligned with it, with consistent padding and borders.
-- Regular controls are at least40px high,44px on narrow screens. Inputs/selects
+- Regular controls are at least 40px high, 44px on narrow screens. Inputs/selects
   keep readable text and flexible widths. Checkbox/radio controls stay beside
   their labels. Avoid styling them as ordinary text fields.
 - Use `Dialog` for modal focus containment, Escape handling, focus restoration,
   background scroll locking, fixed header/footer and a scrollable body. The finish
   dialog retains its restart/save/next actions and cannot be dismissed without
-  taking one of those actions. Proofs
-  keep their large paired-board layout inside the same dialog structure.
+  taking one of those actions. Proofs keep their large paired-board layout inside the same dialog structure.
 - Keep titles, control labels, status and credits readable at phone widths.
   Scroll long lists within their owning panel; avoid horizontal page scrolling.
 - Do not scale or redraw maze geometry as a styling fix. Canvas/SVG aspect ratios,

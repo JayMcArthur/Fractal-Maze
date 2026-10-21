@@ -1,7 +1,3 @@
-
-
-.maze-field-feedback.maze-transition--enterBlock { box-shadow: inset 0 0 80px rgba(94,217,255,.24); animation: field-feedback .3s ease-out; }
-.maze-field-feedback.maze-transition--exitBlock, .maze-field-feedback.maze-transition--undo { box-shadow: inset 0 0 80px rgba(189,150,255,.22); animation: field-feedback .28s ease-out; }
 .workbench-frame { margin: auto; width: min(1400px, calc(100% - 48px)); padding: 32px 0 64px; }
 .workbench-heading { display: flex; justify-content: space-between; align-items: start; gap: 24px; margin-bottom: 18px; }
 .workbench-heading h1 { letter-spacing: -.045em; margin: 7px 0; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.2; font-weight: 750; }
@@ -21,8 +17,8 @@
 .connection-text-entry { margin-top: 18px; }
 .connection-text-entry > label { display: grid; gap: 6px; margin: 12px 0; }
 .connection-text-entry textarea { width: 100%; padding: 10px; border: 1px solid #b7c7b3; border-radius: 4px; font: .85rem ui-monospace, monospace; }
-:is(.workbench-frame, .path-controls, .analysis-frame) label:not(:has(> input[type=checkbox])):not(:has(> input[type=radio])) { display: flex; flex-direction: column; gap: 6px; font-size: .74rem; font-weight: 700; color: #59645e; }
-.workbench-frame input:not([type=checkbox]):not([type=range]):not([type=color]), .workbench-frame select, .path-controls input, .analysis-frame select { border: 1px solid #cdd5ca; border-radius: 4px; background: #f9faf6; color: #1b241e; min-height: 37px; padding: 7px 9px; max-width: 100%; }
+:is(.workbench-frame, .path-controls) label:not(:has(> input[type=checkbox])):not(:has(> input[type=radio])) { display: flex; flex-direction: column; gap: 6px; font-size: .74rem; font-weight: 700; color: #59645e; }
+.workbench-frame input:not([type=checkbox]):not([type=range]):not([type=color]), .workbench-frame select, .path-controls input { border: 1px solid #cdd5ca; border-radius: 4px; background: #f9faf6; color: #1b241e; min-height: 37px; padding: 7px 9px; max-width: 100%; }
 .workbench-frame select { max-width: 300px; }
 .workbench-help { color: #67776b; font-size: .78rem; line-height: 1.55; }
 .trace-editor { border: 1px solid #d5dacd; min-width: 0; background: var(--surface); border-color: var(--line); border-radius: 12px; padding: 18px; }
@@ -72,4 +68,3 @@
   .path-row > button { grid-column: 2 / 4; }
   .workbench-source .source-selector select { width: 100%; } .path-row { grid-template-columns: 78px minmax(0, 1fr) auto; } .workbench-frame { padding-top: 24px; padding: 32px 0 64px; width: calc(100% - 28px); } .workbench-toolbar { align-items: stretch; } .workbench-toolbar > label { width: 100%; } .workbench-toolbar input, .workbench-toolbar select { width: 100%; } .workbench-tabs > button { flex: 1 1 140px; } .workbench-tabs > button:last-child { margin-left: 0; } .frame-row input { width: 100%; } .frame-row label { flex: 1 1 100px; }
 }
-

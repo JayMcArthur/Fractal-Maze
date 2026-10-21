@@ -11,9 +11,8 @@ for (const width of [390, 1440]) {
     const dialog = page.getByRole('dialog', { name: 'Import Maze', exact: true })
     await expect(dialog).toBeVisible()
     await expect(dialog.getByRole('button', { name: 'Load Maze', exact: true })).toBeDisabled()
-    await dialog.getByLabel('Choose maze file', { exact: true }).focus()
     const choosing = page.waitForEvent('filechooser')
-    await page.keyboard.press('Enter')
+    await dialog.getByLabel('Choose maze file', { exact: true }).press('Enter')
     await (await choosing).setFiles({
       name: 'bad.fmaze', mimeType: 'application/json', buffer: Buffer.from('broken maze'),
     })
