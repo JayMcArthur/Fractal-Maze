@@ -54,7 +54,6 @@ test('a proof built over Play becomes a live move and survives replay export/imp
   await trails.nth(1).getByRole('button', { name: 'enter A → 2', exact: true }).click()
   await dialog.getByRole('button', { name: 'Check my proof', exact: true }).click()
   await expect(dialog.locator('.proof-valid')).toBeVisible()
-  await dialog.getByRole('button', { name: 'Save checked claim', exact: true }).click()
   await dialog.getByRole('button', { name: 'Return to maze', exact: true }).click()
   await page.getByRole('button', { name: 'Use proof → path 2', exact: true }).click()
   await expect(page.locator('.path-controls [role=status]')).toHaveText('Finish reached.')

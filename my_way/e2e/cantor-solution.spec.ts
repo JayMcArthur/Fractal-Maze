@@ -18,6 +18,9 @@ const obligations = [
 ]
 
 async function buildWitness(panel: Locator, steps: ProofStep[], pairs = source.pairs) {
+  for (const details of await panel.locator('.witness-text-steps').all()) {
+    if (await details.getAttribute('open') === null) await details.locator(':scope > summary').click()
+  }
   for (const step of steps) {
     let label: string
     if (step.kind === 'edge') {
@@ -122,7 +125,6 @@ test('the original Cantor solution can be constructed using only the notebook co
   for (const [index, pair] of certificate.companions!.entries()) await buildWitness(panels.nth(index + 1), pair.witness)
   await page.getByRole('button', { name: 'Check my proof', exact: true }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('Derivation checked under Cantor-hop rules')
-  await page.getByRole('button', { name: 'Save checked claim', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Saved claims (1)' })).toBeVisible()
   await playCheckedProof(page, '12')
 })
@@ -172,12 +174,11 @@ test('the twelve-copy Infinite Descent repetition can be constructed on both sid
   }
   await buildWitness(panels.nth(0).locator(':scope > .witness-text-steps .witness-choices'), descent.first, descentSource.pairs)
   await page.getByRole('button', { name: 'Check my proof', exact: true }).click()
-  await expect(page.locator('.proof-check [role=status]')).toContainText('Complete both trails')
+  await expect(page.locator('.proof-check [role=status]')).toContainText('Right trail')
   await buildWitness(panels.nth(1).locator(':scope > .witness-text-steps .witness-choices'), descent.second, descentSource.pairs)
   await expect(page.getByLabel('Repeating word', { exact: true })).toHaveValue(descent.period.join(' '))
   await page.getByRole('button', { name: 'Check my proof', exact: true }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('Derivation checked under infinite-hop rules')
-  await page.getByRole('button', { name: 'Save checked claim', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Saved claims (1)' })).toBeVisible()
   await playCheckedProof(page, '6')
 })

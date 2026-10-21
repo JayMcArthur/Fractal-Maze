@@ -43,8 +43,9 @@ Each board opens on the full layout with matching line labels; blue highlights
 its current line. Enable **Local view** to follow movement more closely.
 Click a board to control it with the keyboard, or use its arrows and gates.
 The notebook detects the common repeating copies from both recorded trails.
-Use **Start repetition here** to mark finite setup routes before the repeating part.
-Check and save the connection, then return to Play; a **Use proof** action stays
+For setup routes, open a trail’s advanced controls and use **Start repetition here**.
+**Check my proof**, directly below the boards, validates and saves a successful connection
+in one action. Incomplete trails get a correction naming the side to finish. Return to Play; a **Use proof** action stays
 visible when that checked connection can be followed. Saved connections can also
 be reused while building another witness. Advanced controls retain explicit copy
 addresses and certificate editing. Cantor groups still require every related

@@ -24,7 +24,7 @@ export function InfiniteConvergence({
   const word = (address: string[]) => address.join(' → ') || 'surface'
   return (
     <section className="workbench-card convergence" aria-label="Infinite trail comparison">
-      <h2>{saved ? 'Repeating trails' : '3. Compare the repeating trails'}</h2>
+      <h2>Repeating trails</h2>
       {claim.period.length > 0 && (
         <p>
           <strong>Limit address:</strong> {claim.scope.length > 0 ? `${word(claim.scope)} → ` : ''}(

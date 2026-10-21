@@ -151,7 +151,7 @@ export function SourceRouteCanvas({
         }}
       />
       <SourcePlayControls notice={notice} walking={busy} playable={!!onMove}
-        instruction={keyboardScope ? 'Follow the corridors, or click a gate to enter the next copy.' : undefined}
+        showInstructions={!keyboardScope}
         blocks={corridors} localView={localView}
         onLocalViewChange={setLocalView} onDirection={walk} controls={controls} />
     </div>

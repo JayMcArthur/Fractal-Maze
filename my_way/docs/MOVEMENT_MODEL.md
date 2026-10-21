@@ -72,7 +72,10 @@ become certificate steps. Focus scopes keyboard holds to one board, while the
 underlying live run remains blocked by the dialog. `inferInfinitePeriod` derives
 the inserted copy word from both witness endpoints, including setup tails, then
 rechecks the candidate with `checkClaim`. It never searches for witness routes or
-weakens the checker. Marking a repeat anchor derives the common setup scope;
+weakens the checker. Checking a graphical draft retains its inferred word in the
+validated certificate and saves only a successful result. Ordinary finite and composed
+route certificates remain authoring concepts; Play offers infinite/Cantor proofs.
+Marking a repeat anchor derives the common setup scope;
 explicit scope/period editing remains available for general certificates. Existing
 saved claims provide reusable proof connections; Cantor assumptions retain their
 strict descendant requirements. A fixed Play action exposes only physically
