@@ -1,6 +1,5 @@
-import { SaveProofReplay } from './SaveProofReplay'
-import { ProvenConnections } from './ProvenConnections'
-import { SavedProofEvidence } from './SavedProofEvidence'
+import { ProofCheckPanel } from './ProofCheckPanel'
+import { SavedProofClaims } from './SavedProofClaims'
 import { InfiniteConvergence } from './InfiniteConvergence'
 import { ProofWitness } from './ProofWitness'
 import { inferInfinitePeriod } from '../../core/pathMaze/inferInfinitePeriod'
@@ -18,7 +17,6 @@ import type {
 import { checkedClaims, traceWitness } from '../../core/pathMaze/proofs'
 import type { ProofCheck } from '../../core/pathMaze/proofs'
 import { checkProofDraft } from './checkProofDraft'
-import { stateLabel } from '../../core/pathMaze/traversal'
 import type { RecursiveMazeDocument } from '../../core/model/RecursiveMazeDocument'
 
 const emptyClaim = (model: PathMazeDefinition): ProofClaim => ({
@@ -153,95 +151,37 @@ export function ProofWorkbench({
           />
         ))}
       </div>
-      <section className="workbench-card proof-check" aria-label="Check connection">
-        <button
-          className="control control--primary"
-          onClick={() => {
-            const next = checkProofDraft(model, claim, accepted)
-            setChecked(next)
-            if (next.result.valid)
-              onChange({
-                ...model,
-                claims: [...model.claims, next.claim],
-                draftClaim: emptyClaim(model),
-              })
-          }}
-        >
-          Check my proof
-        </button>
-        {checked && (
-          <p role="status" className={checked.result.valid ? 'proof-valid' : 'proof-invalid'}>
-            {checked.result.valid
-              ? inPlay
-                ? 'Connection saved. Return to the maze to use it.'
-                : `${checked.result.message} Connection saved.`
-              : checked.result.message}
-          </p>
-        )}
-        {!checked && claim.rule === 'infiniteHop' && claim.period.length > 0 && (
-          <p role="status">Repeating copies: {claim.period.join(' → ')}.</p>
-        )}
-        {document && checked && (
-          <SaveProofReplay
-            document={document}
-            model={model}
-            claim={checked.claim}
-            result={checked.result}
-          />
-        )}
-      </section>
+      <ProofCheckPanel
+        model={model}
+        claim={claim}
+        checked={checked}
+        document={document}
+        inPlay={inPlay}
+        onCheck={() => {
+          const next = checkProofDraft(model, claim, accepted)
+          setChecked(next)
+          if (next.result.valid)
+            onChange({
+              ...model,
+              claims: [...model.claims, next.claim],
+              draftClaim: emptyClaim(model),
+            })
+        }}
+      />
       <ProofOptions model={model} claim={claim} onChange={change} inPlay={inPlay}>
         {claim.rule === 'infiniteHop' && claim.period.length > 0 && (
           <InfiniteConvergence model={model} claim={claim} accepted={accepted} />
         )}
       </ProofOptions>
-      {accepted.length > 0 && <ProvenConnections claims={accepted} />}
-      <section className="proof-saved">
-        <h2>Saved claims ({model.claims.length})</h2>
-        {claimsInUse && <p>Undo the proof moves in your run before revising saved claims.</p>}
-
-        {model.claims.length === 0 && <p className="workbench-help">No saved proofs yet.</p>}
-        {model.claims.map((saved, savedIndex) => (
-          <details className="saved-claim" key={saved.id}>
-            <summary>
-              {accepted.some((lemma) => lemma.id === saved.id) ? 'Checked' : 'Needs revision'} ·{' '}
-              {saved.rule} · {stateLabel(saved.from)} {saved.rule === 'finite' ? '→' : '↔'}{' '}
-              {stateLabel(saved.to)}
-            </summary>
-            <SavedProofEvidence
-              model={model}
-              claim={saved}
-              accepted={accepted.filter((lemma) =>
-                model.claims.slice(0, savedIndex).some((previous) => previous.id === lemma.id)
-              )}
-            />
-            <button
-              className="control"
-              disabled={claimsInUse}
-              onClick={() => {
-                setChecked(null)
-                onChange({
-                  ...model,
-                  claims: model.claims.filter((item) => item.id !== saved.id),
-                  draftClaim: saved,
-                })
-              }}
-            >
-              Revise claim
-            </button>
-            <button
-              className="control"
-              disabled={claimsInUse}
-              onClick={() => {
-                setChecked(null)
-                onChange({ ...model, claims: model.claims.filter((item) => item.id !== saved.id) })
-              }}
-            >
-              Delete claim
-            </button>
-          </details>
-        ))}
-      </section>
+      <SavedProofClaims
+        model={model}
+        accepted={accepted}
+        claimsInUse={claimsInUse}
+        onChange={(next) => {
+          setChecked(null)
+          onChange(next)
+        }}
+      />
     </div>
   )
 }
