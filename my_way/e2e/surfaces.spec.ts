@@ -92,4 +92,27 @@ for (const width of [390, 1440]) {
     await expect(dialog.getByRole('button', { name: 'Return to maze', exact: true })).toBeInViewport()
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   })
+
+  test(`library typography keeps labels distinct from field values at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 1000 })
+    await page.goto('library')
+    const field = page.getByRole('region', { name: 'Maze filters', exact: true }).locator('.search-field')
+    const fonts = await field.evaluate(label => {
+      const caption = getComputedStyle(label.querySelector('span')!)
+      const input = getComputedStyle(label.querySelector('input')!)
+      return {
+        labelSize: parseFloat(caption.fontSize), inputSize: parseFloat(input.fontSize),
+        labelWeight: parseFloat(caption.fontWeight), inputWeight: parseFloat(input.fontWeight),
+      }
+    })
+    expect(fonts.labelSize).toBeLessThan(fonts.inputSize)
+    expect(fonts.labelWeight).toBeGreaterThan(fonts.inputWeight)
+    const card = page.locator('.library-card').first()
+    const hierarchy = await card.evaluate(card => ({
+      caption: parseFloat(getComputedStyle(card.querySelector('.library-card__type')!).fontSize),
+      author: parseFloat(getComputedStyle(card.querySelector('.library-card__body > div > p:last-child')!).fontSize),
+    }))
+    expect(hierarchy.caption).toBeLessThan(hierarchy.author)
+  })
+
 }
