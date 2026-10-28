@@ -27,20 +27,52 @@ export function PathPlayer({
   const [proofOpen, setProofOpen] = useState(false)
   const maze = useMemo(() => ({ ...doc, definition: model }), [doc, model])
   const playable = useMemo(() => rulePlayDocument(maze) ?? maze, [maze])
-  const { session, frame, route, animating, current, shown, finished, playArtwork, availableEdges, proofMoves, useProof,
-    onWalk, move, undo, reset, markSaved, setAnimating, setVisibleState, refreshFrame } = usePathSession(playable, model)
+  const {
+    session,
+    frame,
+    route,
+    animating,
+    current,
+    shown,
+    finished,
+    playArtwork,
+    availableEdges,
+    proofMoves,
+    followProof,
+    onWalk,
+    move,
+    undo,
+    reset,
+    markSaved,
+    setAnimating,
+    setVisibleState,
+    refreshFrame,
+  } = usePathSession(playable, model)
   const pathLabel = model.paths.find((path) => path.id === shown?.path)?.label
   const address = shown ? copyAddress(model, shown) : []
   return (
     <div className="path-play-session">
-      {proofOpen && <ProofDialog title={doc.metadata.title} model={notebook} artwork={playArtwork} onChange={setNotebook}
-          claimsInUse={session.moves.some(move => move.kind === 'lemma')}
+      {proofOpen && (
+        <ProofDialog
+          title={doc.metadata.title}
+          model={notebook}
+          artwork={playArtwork}
+          onChange={setNotebook}
+          claimsInUse={session.moves.some((move) => move.kind === 'lemma')}
+          position={finished ? undefined : session.positions.at(-1)}
+          onFollow={(step) => {
+            followProof(notebook, step)
+            setModel(notebook)
+            setProofOpen(false)
+          }}
           onClose={() => {
             // Changing proof claims must not replay the previous physical move.
             refreshFrame()
             setModel(notebook)
             setProofOpen(false)
-          }} />}
+          }}
+        />
+      )}
       <section className="digital-hud" aria-label="Maze position and session status">
         <div className="digital-hud__position">
           <span className={`status-lamp ${finished ? 'is-won' : ''}`} aria-hidden="true" />
@@ -67,8 +99,13 @@ export function PathPlayer({
       {!finished && proofMoves.length > 0 && (
         <aside className="path-proof-actions" aria-label="Available proof moves">
           <span>Checked connection</span>
-          <PathProofChoices model={model} current={current} moves={proofMoves}
-            busy={animating} onMove={useProof} />
+          <PathProofChoices
+            model={model}
+            current={current}
+            moves={proofMoves}
+            busy={animating}
+            onMove={(step) => followProof(model, step)}
+          />
         </aside>
       )}
       <div className="path-player player-layout">
@@ -84,13 +121,13 @@ export function PathPlayer({
             onVisibleStateChange={setVisibleState}
             onWalk={onWalk}
             controls={
-                <PathMoveChoices
+              <PathMoveChoices
                 model={model}
                 current={current}
                 busy={animating || finished}
                 availableEdges={availableEdges}
                 onMove={move}
-                />
+              />
             }
           />
         </div>
@@ -124,7 +161,11 @@ export function PathPlayer({
               maze={maze}
               playArtwork={playArtwork}
               disabled={animating}
-              route={{ type: model.type, ...route, ...(playArtwork?.traces.length ? { physical: session } : {}) }}
+              route={{
+                type: model.type,
+                ...route,
+                ...(playArtwork?.traces.length ? { physical: session } : {}),
+              }}
               source="human"
               complete={finished}
               onSaved={markSaved}
@@ -135,7 +176,11 @@ export function PathPlayer({
                   Solve & analyze<span>→</span>
                 </Link>
                 {model.allowedRule !== 'finite' && (
-                  <button className="control" disabled={animating} onClick={() => setProofOpen(true)}>
+                  <button
+                    className="control"
+                    disabled={animating}
+                    onClick={() => setProofOpen(true)}
+                  >
                     Open proof notebook
                   </button>
                 )}

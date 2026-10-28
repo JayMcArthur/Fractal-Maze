@@ -58,7 +58,7 @@ test('two setup trails repeat at one scope, compose a solution and replay its ch
   )
   await page.getByRole('button', { name: 'Check my proof' }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('infinite-hop rules')
-  await expect(page.getByText('Proven connections (1)', { exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Connections (1)', exact: true })).toBeVisible()
   await openProofDetails(page)
   await page.getByLabel('Proof rule').selectOption('connection')
   await page.getByRole('button', { name: 'Use checked claim 1', exact: true }).click()
@@ -88,7 +88,7 @@ test('shared solutions are visible on a fresh browser and proof examples do not 
   await page.getByRole('button', { name: 'Seek to end' }).click()
   await expect(page.locator('.replay-proof')).toBeVisible()
   await page.goto('workbench/proof-maze-images-siggy-simple-cantor-maze-svg?tab=proof')
-  await expect(page.getByRole('heading', { name: 'Saved claims (0)' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Connections (0)' })).toBeVisible()
 })
 
 test('the original wire import uses the shared block controls', async ({
@@ -142,7 +142,7 @@ test('proof view keeps graphical trails usable with histories and address settin
   await page.getByRole('button', { name: 'Check my proof' }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('infinite-hop rules')
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-  await page.locator('.saved-claim > summary').click()
+  await page.locator('.saved-claim > details > summary').click()
   await page.getByRole('button', { name: 'Revise claim' }).click()
   await expect(page.getByLabel('Repeating word')).toHaveValue('A')
   await expect(left.locator('.witness-maze__position')).toContainText('Surface ← A')

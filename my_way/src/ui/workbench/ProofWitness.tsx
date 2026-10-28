@@ -24,7 +24,9 @@ export function ProofWitness({
   phase = 'cycle',
   onSetupChange,
   artwork,
+  onSelectStart,
 }: {
+  onSelectStart?: (path: string) => void
   artwork?: MazeArtwork
   model: PathMazeDefinition
   claim: ProofClaim
@@ -97,6 +99,7 @@ export function ProofWitness({
         <WitnessMaze
           model={model}
           artwork={board}
+          onSelectStart={onSelectStart}
           controls={proofControls}
           start={start}
           current={current}

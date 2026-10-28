@@ -4,7 +4,6 @@ import { TouchPad } from '../components/TouchPad'
 
 export function SourcePlayControls({
   notice,
-  walking,
   playable,
   blocks,
   localView,
@@ -14,7 +13,6 @@ export function SourcePlayControls({
   showInstructions = true,
 }: {
   notice: string
-  walking: boolean
   playable: boolean
   blocks: boolean
   localView: boolean
@@ -49,7 +47,7 @@ export function SourcePlayControls({
       )}
       {playable && (
         <div className="source-movement-controls">
-          <TouchPad onDirection={onDirection} disabled={walking} />
+          <TouchPad onDirection={onDirection} />
           {controls}
         </div>
       )}

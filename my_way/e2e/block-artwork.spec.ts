@@ -29,9 +29,8 @@ test('movement keeps the instruction row and direction controls in place', async
   await page.clock.pauseAt(new Date('2026-10-10T12:01:00Z'))
   const height = (await help.boundingBox())!.height
   await page.getByRole('button', { name: 'Enter A → path 7', exact: true }).click()
-  await expect(page.getByRole('button', { name: 'Move north', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Move north', exact: true })).toBeEnabled()
   await expect(page.getByLabel('Display style')).toHaveCount(0)
-  await page.keyboard.press('ArrowRight')
   await page.clock.runFor(20)
   await expect(moving).toBeDisabled()
   expect((await help.boundingBox())!.height).toBe(height)

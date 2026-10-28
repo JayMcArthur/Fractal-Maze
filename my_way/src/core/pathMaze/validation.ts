@@ -10,6 +10,7 @@ export const proofStepSchema = z.object({
   reverse: z.boolean(),
 })
 const claimSchema = z.object({
+  name: z.string().trim().min(1).max(80).optional(),
   id: z.string().min(1),
   rule: z.enum(['finite', 'infiniteHop', 'cantorHop', 'connection']),
   from: state,
@@ -123,7 +124,7 @@ export function validatePathMaze(def: PathMazeDefinition): ValidationIssue[] {
   const paths = new Set(def.paths.map((path) => path.id))
   const copies = new Set(def.copies)
   const error = (code: string, message: string) => issues.push({ severity: 'error', code, message })
-  if (def.surfaceSymbols?.some(symbol => !copies.has(symbol)))
+  if (def.surfaceSymbols?.some((symbol) => !copies.has(symbol)))
     error('PATH_SURFACE', 'Surface symbols must belong to the stack alphabet.')
   if (
     paths.size !== def.paths.length ||

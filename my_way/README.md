@@ -9,13 +9,13 @@ Original programs and drawings remain source references and maze covers.
 From `my_way`:
 
 ```bash
-nix develop path:. --command npm ci
-nix develop path:. --command npm run dev
+nix develop . --command npm ci
+nix develop . --command npm run dev
 ```
 
 The locked Nix environment provides Node 22.23.3, Chromium and the Python tools
 used for offline checks. Prefix noninteractive build/test commands with
-`nix develop path:. --command` too. Other hosts use the exact Node version in
+`nix develop . --command` too. Other hosts use the exact Node version in
 `.node-version`, then `npm ci`. Open the Vite URL at `/Fractal-Maze/`.
 
 ## Play and solve
@@ -38,15 +38,15 @@ also support grid BFS/IDDFS. Coordinate/pattern families retain their native
 searches. A bounded search failure does not prove a maze impossible.
 
 **Proof notebook** opens over the current path-maze run. For an infinite hop,
-choose the left and right starting lines and move through the two block mazes.
+choose **Choose starting line** on each board and select its numbered line, then move through the two block mazes. The dropdowns provide the same selection.
 Each board opens on the full layout with matching line labels; blue highlights
 its current line. Enable **Local view** to follow movement more closely.
 Click a board to control it with the keyboard, or use its arrows and gates.
-The notebook detects the common repeating copies from both recorded trails.
+Routes record as you move. **Finish recording** pauses a route; **Resume recording** lets you extend it. The notebook detects the common repeating copies from both recorded trails.
 For setup routes, open a trail’s advanced controls and use **Start repetition here**.
 **Check my proof**, directly below the boards, validates and saves a successful connection
-in one action. Incomplete trails get a correction naming the side to finish. Return to Play; a **Use proof** action stays
-visible when that checked connection can be followed. Saved connections can also
+in one action. Incomplete trails get a correction naming the side to finish.
+**Connections** cards can be named and have a **Follow** action when reachable from the live position, without leaving the notebook first. Checked infinite hops show the shared limit (ε) and actual repeating copies; this is a view of the checked rule, not an extra maze level. A **Follow** action also stays visible in Play. Saved connections can also
 be reused while building another witness. Advanced controls retain explicit copy
 addresses and certificate editing. Cantor groups still require every related
 witness. Claims used by a run remain fixed until their moves are undone, and
@@ -56,7 +56,7 @@ Square controls: arrows, WASD, IJKL or on-screen arrows; Z to undo, R to restart
 H for help and F for fullscreen. Path blocks support keyboard/touch walking,
 stopping at junctions and copy gates. Hold a direction key to keep moving or
 retrying that direction; release it to stop. Opening a dialog, editing a field
-or leaving the window cancels the hold. Unfinished runs warn before leaving.
+or leaving the window cancels the hold. A quick direction press during path motion queues one turn; the latest press replaces it. Copy entry/exit zoom preserves player size and respects reduced-motion preferences. Unfinished runs warn before leaving.
 
 ## Movement architecture
 
@@ -99,10 +99,10 @@ and the generated reference used for the current presentation.
 ## Verification
 
 ```bash
-nix develop path:. --command npm test -- --maxWorkers=2
-nix develop path:. --command npm run lint
-nix develop path:. --command npm run build
-nix develop path:. --command npm run test:browser -- --workers=2
+nix develop . --command npm test -- --maxWorkers=2
+nix develop . --command npm run lint
+nix develop . --command npm run build
+nix develop . --command npm run test:browser -- --workers=2
 ```
 
 The local browser suite starts Vite on port 5174. CI tests the production build.

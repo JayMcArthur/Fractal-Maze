@@ -38,7 +38,7 @@ async function buildWitness(panel: Locator, steps: ProofStep[], pairs = source.p
 
 async function playCheckedProof(page: Page, finish: string) {
   await page.getByRole('tab', { name: 'Play preview', exact: true }).click()
-  await page.getByRole('button', { name: `Use proof → path ${finish}`, exact: true }).click()
+  await page.getByRole('button', { name: `Follow → Line ${finish}`, exact: true }).click()
   await expect(page.locator('.path-controls [role=status]')).toHaveText('Finish reached.')
   await expect(page.getByTestId('source-player-marker')).toBeVisible()
   await page.evaluate(() => window.scrollTo(0, 0))
@@ -46,7 +46,7 @@ async function playCheckedProof(page: Page, finish: string) {
   await expect(page.locator('.path-controls [role=status]')).toHaveText('Finish reached.')
   await page.getByRole('button', { name: 'Undo move', exact: true }).click()
   await expect(page.locator('.path-controls [role=status]')).not.toHaveText('Finish reached.')
-  await page.getByRole('button', { name: `Use proof → path ${finish}`, exact: true }).click()
+  await page.getByRole('button', { name: `Follow → Line ${finish}`, exact: true }).click()
   await expect(page.locator('.path-controls [role=status]')).toHaveText('Finish reached.')
   await page.getByRole('button', { name: 'Save & play replay', exact: true }).click()
   await page.getByRole('combobox', { name: 'Speed', exact: true }).selectOption('0.5')
@@ -104,7 +104,7 @@ test('First Cantor shared solution exposes every joint witness without filling t
   await page.getByRole('button', { name: 'Seek to end', exact: true }).click()
   await expect(page.locator('.saved-proof-witness')).toHaveCount(4)
   await page.goto(`workbench/${id}?tab=proof`)
-  await expect(page.getByRole('heading', { name: 'Saved claims (0)' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Connections (0)' })).toBeVisible()
 })
 
 test('the original Cantor solution can be constructed using only the notebook controls', async ({ page }) => {
@@ -125,7 +125,7 @@ test('the original Cantor solution can be constructed using only the notebook co
   for (const [index, pair] of certificate.companions!.entries()) await buildWitness(panels.nth(index + 1), pair.witness)
   await page.getByRole('button', { name: 'Check my proof', exact: true }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('Derivation checked under Cantor-hop rules')
-  await expect(page.getByRole('heading', { name: 'Saved claims (1)' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Connections (1)' })).toBeVisible()
   await playCheckedProof(page, '12')
 })
 
@@ -163,7 +163,7 @@ test('the twelve-copy Infinite Descent repetition can be constructed on both sid
   test.setTimeout(45000)
   await page.setViewportSize({ width: 1440, height: 1000 })
   await page.goto(`workbench/${descentId}?tab=proof`)
-  await expect(page.getByRole('heading', { name: 'Saved claims (0)' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Connections (0)' })).toBeVisible()
   await openProofDetails(page)
   await page.getByLabel('Claim scope', { exact: true }).fill(descent.scope.join(' '))
   await openProofDetails(page)
@@ -179,6 +179,6 @@ test('the twelve-copy Infinite Descent repetition can be constructed on both sid
   await expect(page.getByLabel('Repeating word', { exact: true })).toHaveValue(descent.period.join(' '))
   await page.getByRole('button', { name: 'Check my proof', exact: true }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('Derivation checked under infinite-hop rules')
-  await expect(page.getByRole('heading', { name: 'Saved claims (1)' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Connections (1)' })).toBeVisible()
   await playCheckedProof(page, '6')
 })

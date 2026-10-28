@@ -1,17 +1,9 @@
 import { SourceRouteDrawing } from './SourceRouteDrawing'
 import { useCallback, useState, type ReactNode, type RefObject } from 'react'
 import type { MazeArtwork, PathMazeDefinition, PathState } from '../../core/model/pathMaze'
-import {
-  artworkRoute,
-  distance,
-  nearestTracePoint,
-} from '../../core/pathMaze/artworkRoutes'
+import { artworkRoute, distance, nearestTracePoint } from '../../core/pathMaze/artworkRoutes'
 import type { ArtworkPoint } from '../../core/pathMaze/artworkRoutes'
-import {
-  availableMoves,
-  sameState,
-  reachesGoal,
-} from '../../core/pathMaze/traversal'
+import { availableMoves, sameState, reachesGoal } from '../../core/pathMaze/traversal'
 import { SourcePlayControls } from './SourcePlayControls'
 import { walkSource, sourceGateDirection } from '../../core/play/sourceWalking'
 import { useMovementKeyboard } from '../player/movementKeys'
@@ -38,6 +30,7 @@ export function SourceRouteCanvas({
   keyboardScope,
   trail,
   showLineLabels = false,
+  onSelectPath,
 }: {
   artwork: MazeArtwork
   busy?: boolean
@@ -52,6 +45,7 @@ export function SourceRouteCanvas({
   keyboardScope?: RefObject<HTMLDivElement | null>
   trail?: ArtworkPoint[][]
   showLineLabels?: boolean
+  onSelectPath?: (path: string) => void
   controls?: ReactNode
   motionPaused?: boolean
   animationMs?: number
@@ -59,15 +53,27 @@ export function SourceRouteCanvas({
   const corridors = !!artwork.blockSize
   const [localView, setLocalView] = useState(!showLineLabels)
   const [notice, setNotice] = useState('')
-  const { marker, markerRef } = usePathMotion({ artwork, model, current,
-    arrivalEdges, frame, motionPaused, animationMs, onMotionChange, onVisibleStateChange })
+  const { marker, markerRef, moving, copyCamera, zoomingCopy } = usePathMotion({
+    artwork,
+    model,
+    current,
+    arrivalEdges,
+    frame,
+    motionPaused,
+    animationMs,
+    onMotionChange,
+    onVisibleStateChange,
+    localView,
+  })
+  const blocked = busy || moving
   const display = artworkDisplayGeometry(artwork)
-  const bounds = artwork.views?.find(view => view.paths.includes(marker.state.path))?.bounds ?? display.bounds
+  const bounds =
+    artwork.views?.find((view) => view.paths.includes(marker.state.path))?.bounds ?? display.bounds
   const width = bounds[2]
 
   const walk = useCallback(
     (direction: DirectionBit) => {
-      if (!onMove || busy || !sameState(markerRef.current.state, current)) return
+      if (!onMove || blocked || !sameState(markerRef.current.state, current)) return
       const point = markerRef.current.point
       const gate = availableMoves(model, current).find(({ edge }) => {
         const drawn = artwork.gates?.find((gate) => gate.edge === edge.id)
@@ -101,16 +107,23 @@ export function SourceRouteCanvas({
           'No single route matches that direction. Choose another direction, or click the route you want.'
         )
     },
-    [onMove, busy, current, model, artwork, width, onWalk, markerRef]
+    [onMove, blocked, current, model, artwork, width, onWalk, markerRef]
   )
-  useMovementKeyboard({ enabled: !!onMove, move: walk, scope: keyboardScope })
+  const requestMove = useMovementKeyboard({
+    enabled: !!onMove && !onSelectPath,
+    busy: blocked,
+    move: walk,
+    scope: keyboardScope,
+  })
   const moves =
-    onMove && !busy && sameState(marker.state, current)
-      ? availableMoves(model, current).filter(({ edge }) => pathCrossing(model, artwork, marker, edge.id))
+    onMove && !blocked && !onSelectPath && sameState(marker.state, current)
+      ? availableMoves(model, current).filter(({ edge }) =>
+          pathCrossing(model, artwork, marker, edge.id)
+        )
       : []
   const active = artwork.traces.filter((trace) => trace.path === marker.state.path)
   return (
-    <div className="source-route-player">
+    <div className="source-route-player" data-copy-transition={zoomingCopy}>
       <SourceRouteDrawing
         artwork={artwork}
         model={model}
@@ -120,17 +133,28 @@ export function SourceRouteCanvas({
         corridors={corridors}
         trail={trail}
         showLineLabels={showLineLabels}
-        camera={corridors && localView ? blockCamera(bounds, marker.point, artwork.blockSize!) : undefined}
+        onSelectPath={onSelectPath}
+        zooming={!!zoomingCopy}
+        camera={
+          copyCamera ??
+          (corridors && localView && !onSelectPath
+            ? blockCamera(bounds, marker.point, artwork.blockSize!)
+            : undefined)
+        }
         moves={moves}
         onMove={onMove}
         onPointerDown={(event) => {
-          if (!onMove || busy || event.target instanceof SVGCircleElement) return
+          if (!onMove || blocked || onSelectPath || event.target instanceof SVGCircleElement) return
           const matrix = event.currentTarget.getScreenCTM()
           if (!matrix) return
           const p = new DOMPoint(event.clientX, event.clientY).matrixTransform(matrix.inverse())
           const gate = moves.find(({ edge }) => {
             const drawn = artwork.gates?.find((gate) => gate.edge === edge.id)
-            return drawn && distance(drawn.from, [p.x, p.y]) <= (artwork.blockSize ? artwork.blockSize * .5 : width / 65)
+            return (
+              drawn &&
+              distance(drawn.from, [p.x, p.y]) <=
+                (artwork.blockSize ? artwork.blockSize * 0.5 : width / 65)
+            )
           })
           if (gate) {
             setNotice('')
@@ -150,10 +174,16 @@ export function SourceRouteCanvas({
             )
         }}
       />
-      <SourcePlayControls notice={notice} walking={busy} playable={!!onMove}
+      <SourcePlayControls
+        notice={notice}
+        playable={!!onMove && !onSelectPath}
         showInstructions={!keyboardScope}
-        blocks={corridors} localView={localView}
-        onLocalViewChange={setLocalView} onDirection={walk} controls={controls} />
+        blocks={corridors}
+        localView={localView}
+        onLocalViewChange={setLocalView}
+        onDirection={requestMove}
+        controls={controls}
+      />
     </div>
   )
 }

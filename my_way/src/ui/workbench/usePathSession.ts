@@ -15,14 +15,24 @@ import {
 import { compactBlockArtwork } from '../../core/play/compactBlockArtwork'
 import type { ArtworkPoint } from '../../core/pathMaze/artworkRoutes'
 import { availableMoves } from '../../core/pathMaze/traversal'
-import { availableProofMoves, proofCrossing, type CheckedProofStep } from '../../core/play/proofMovement'
+import {
+  availableProofMoves,
+  proofCrossing,
+  type CheckedProofStep,
+} from '../../core/play/proofMovement'
 import { useRunGuard } from '../player/useRunGuard'
 
 /** Canonical play history owns both PDA transitions and movement within a path. */
 export function usePathSession(doc: RecursiveMazeDocument, model: PathMazeDefinition) {
-  const playArtwork = useMemo(() => doc.artwork && model.start &&
-    doc.artwork.traces.some(trace => trace.path === model.start!.path)
-      ? compactBlockArtwork(doc.artwork, model) : doc.artwork, [doc.artwork, model])
+  const playArtwork = useMemo(
+    () =>
+      doc.artwork &&
+      model.start &&
+      doc.artwork.traces.some((trace) => trace.path === model.start!.path)
+        ? compactBlockArtwork(doc.artwork, model)
+        : doc.artwork,
+    [doc.artwork, model]
+  )
   const [session, setSession] = useState(() => initialPathSession(model, playArtwork))
   const [frame, setFrame] = useState<PathPlayFrame | undefined>(() =>
     session.positions.length ? { position: session.positions[0] } : undefined
@@ -32,12 +42,21 @@ export function usePathSession(doc: RecursiveMazeDocument, model: PathMazeDefini
   const [visibleState, setVisibleState] = useState<PathState | null>(model.start)
   const current = session.positions.at(-1)?.state,
     finished = !animating && pathSessionFinished(model, playArtwork, session.positions.at(-1))
-  const availableEdges = useMemo(() => current ? availableMoves(model, current)
-    .filter(({ edge }) => pathCrossing(model, playArtwork, session.positions.at(-1)!, edge.id))
-    .map(({ edge }) => edge.id) : [], [current, model, playArtwork, session])
-  const proofMoves = useMemo(() => current
-    ? availableProofMoves(model, playArtwork, session.positions.at(-1)!) : [],
-    [current, model, playArtwork, session])
+  const availableEdges = useMemo(
+    () =>
+      current
+        ? availableMoves(model, current)
+            .filter(({ edge }) =>
+              pathCrossing(model, playArtwork, session.positions.at(-1)!, edge.id)
+            )
+            .map(({ edge }) => edge.id)
+        : [],
+    [current, model, playArtwork, session]
+  )
+  const proofMoves = useMemo(
+    () => (current ? availableProofMoves(model, playArtwork, session.positions.at(-1)!) : []),
+    [current, model, playArtwork, session]
+  )
   const markSaved = useRunGuard(session.moves.length > 0 && !finished, session)
   const commit = useCallback((next: PathSession, motion: PathPlayFrame) => {
     setSession(next)
@@ -65,13 +84,19 @@ export function usePathSession(doc: RecursiveMazeDocument, model: PathMazeDefini
     },
     [current, animating, finished, model, playArtwork, session, commit]
   )
-  const useProof = useCallback((step: CheckedProofStep) => {
-    if (!current || animating || finished) return
-    const crossing = proofCrossing(model, playArtwork, session.positions.at(-1)!, step)
-    if (crossing) commit(appendSessionMove(session, crossing.move, crossing.position), {
-      from: session.positions.at(-1), move: crossing.move, position: crossing.position,
-    })
-  }, [current, animating, finished, model, playArtwork, session, commit])
+  const followProof = useCallback(
+    (checkedModel: PathMazeDefinition, step: CheckedProofStep) => {
+      if (!current || animating || finished) return
+      const crossing = proofCrossing(checkedModel, playArtwork, session.positions.at(-1)!, step)
+      if (crossing)
+        commit(appendSessionMove(session, crossing.move, crossing.position), {
+          from: session.positions.at(-1),
+          move: crossing.move,
+          position: crossing.position,
+        })
+    },
+    [current, animating, finished, playArtwork, session, commit]
+  )
   const undo = useCallback(() => {
     if (animating) return
     const next = undoPathSession(session)
@@ -125,7 +150,7 @@ export function usePathSession(doc: RecursiveMazeDocument, model: PathMazeDefini
     playArtwork,
     availableEdges,
     proofMoves,
-    useProof,
+    followProof,
     onWalk,
     move,
     undo,

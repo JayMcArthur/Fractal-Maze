@@ -27,7 +27,7 @@ export function ProofCheckPanel({
         <p role="status" className={checked.result.valid ? 'proof-valid' : 'proof-invalid'}>
           {checked.result.valid
             ? inPlay
-              ? 'Connection saved. Return to the maze to use it.'
+              ? 'Connection saved. Follow it from the Connections card.'
               : `${checked.result.message} Connection saved.`
             : checked.result.message}
         </p>
