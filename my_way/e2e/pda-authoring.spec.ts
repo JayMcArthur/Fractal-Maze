@@ -118,7 +118,7 @@ test('an imported PDA supports user-built ABC setup and BAC repetition, with the
   await expect(page.getByTestId('source-player-marker')).toBeVisible()
   const id = new URL(page.url()).pathname.split('/play/')[1]
   await page.goto(`workbench/${id}?tab=proof`)
-  await expect(page.getByText('No saved proofs yet.', { exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Connections (0)', exact: true })).toBeVisible()
   await openProofDetails(page)
   await page.getByLabel('Build setup trails before the repeating part').check()
   await openProofDetails(page)

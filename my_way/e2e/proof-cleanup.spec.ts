@@ -32,12 +32,12 @@ for (const width of [390, 1440]) {
       await board.getByRole('button', { name: /^Enter A to path / }).click()
     }
     await check.click()
-    await expect(dialog.locator('.proof-valid')).toContainText('saved')
+    await expect(dialog.locator('.proof-check .proof-valid')).toContainText('saved')
     await expect(
       dialog.getByRole('button', { name: 'Save checked claim', exact: true })
     ).toHaveCount(0)
     await dialog.getByRole('button', { name: 'Return to maze', exact: true }).click()
-    await page.getByRole('button', { name: 'Use proof → path 2', exact: true }).click()
+    await page.getByRole('button', { name: 'Follow → Line 2', exact: true }).click()
     await expect(page.locator('.path-controls [role=status]')).toHaveText('Finish reached.')
   })
 }

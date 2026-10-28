@@ -34,7 +34,7 @@ export function PathProofChoices({
           disabled={busy}
           onClick={() => onMove(move.step)}
         >
-          Use proof → path {model.paths.find((path) => path.id === position.state.path)?.label}
+          Follow → Line {model.paths.find((path) => path.id === position.state.path)?.label}
           {!sameState({ ...current, path: position.state.path }, position.state) && (
             <>
               {' '}

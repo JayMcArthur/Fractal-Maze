@@ -119,6 +119,11 @@ test('long block motion takes time proportional to distance and replay waits for
   await page.getByRole('button', { name: 'Enter A → path 2', exact: true }).click()
   await page.clock.runFor(2000)
   await expect(page.getByRole('button', { name: 'Undo move', exact: true })).toBeDisabled()
+  const markerBeforeViewChange = await page.getByTestId('source-player-marker').getAttribute('cx')
+  await page.getByLabel('Local view', { exact: true }).uncheck()
+  await page.clock.runFor(16)
+  // Switching the camera must not restart the recorded departure at its beginning.
+  expect(Number(await page.getByTestId('source-player-marker').getAttribute('cx'))).toBeGreaterThanOrEqual(Number(markerBeforeViewChange))
   await expect(page.locator('.digital-hud__metrics').getByText('0', { exact: true })).toBeVisible()
   await page.clock.runFor(12000)
   await expect(page.getByRole('button', { name: 'Undo move', exact: true })).toBeEnabled()

@@ -28,6 +28,7 @@ export interface ProofStep {
   reverse: boolean
 }
 export interface ProofClaim {
+  name?: string
   id: string
   rule: InfiniteRule | 'connection'
   from: PathState

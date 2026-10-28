@@ -11,9 +11,9 @@ test('a manually checked infinite connection is usable in live Play', async ({ p
     await witnesses.nth(1).getByRole('button', { name: 'enter A → 2', exact: true }).click()
     await page.getByRole('button', { name: 'Check my proof', exact: true }).click()
   }
-  await expect(page.getByRole('heading', { name: 'Saved claims (2)' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Connections (2)' })).toBeVisible()
   await page.getByRole('tab', { name: 'Play preview', exact: true }).click()
-  const connection = page.getByRole('button', { name: 'Use proof → path 2', exact: true })
+  const connection = page.getByRole('button', { name: 'Follow → Line 2', exact: true })
   await expect(connection).toHaveCount(1)
   await connection.click()
   await expect(page.locator('.path-controls [role=status]')).toHaveText('Finish reached.')

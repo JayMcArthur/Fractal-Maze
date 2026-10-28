@@ -7,7 +7,11 @@ import type {
 } from '../../core/model/pathMaze'
 import type { ArtworkPoint } from '../../core/pathMaze/artworkRoutes'
 import { pathArrivalPoint, pathMotionRoutes } from '../../core/play/pathGeometry'
-import { pathCrossing, type PathPlayPosition } from '../../core/play/pathSession'
+import {
+  pathCrossing,
+  type PathPlayFrame,
+  type PathPlayPosition,
+} from '../../core/play/pathSession'
 import { SourceRouteCanvas } from './SourceRouteCanvas'
 import { CopyAddress } from '../components/CopyAddress'
 import { copyAddress } from '../../core/pathMaze/copyAddress'
@@ -22,7 +26,9 @@ export function WitnessMaze({
   steps,
   onChange,
   controls,
+  onSelectStart,
 }: {
+  onSelectStart?: (path: string) => void
   model: PathMazeDefinition
   artwork: MazeArtwork
   start: PathState
@@ -31,6 +37,15 @@ export function WitnessMaze({
   onChange: (steps: ProofStep[]) => void
   controls?: ReactNode
 }) {
+  const [mode, setMode] = useState<'recording' | 'paused' | 'choosing'>('recording')
+  const beforeSelection = useRef<'recording' | 'paused'>('recording')
+  const chooseStart = () => {
+    if (mode === 'choosing') setMode(beforeSelection.current)
+    else {
+      beforeSelection.current = mode
+      setMode('choosing')
+    }
+  }
   const scope = useRef<HTMLDivElement>(null)
   const drawing = useMemo(
     () => ({
@@ -56,10 +71,12 @@ export function WitnessMaze({
     steps: ProofStep[]
     position: PathPlayPosition
     trail: ArtworkPoint[][]
+    frame: PathPlayFrame
   } | null>(null)
   const owned = view?.steps === steps && sameState(view.position.state, current) ? view : null
   const position = owned?.position ?? initial
-  const frame = useMemo(() => ({ position }), [position])
+  const snapped = useMemo(() => ({ position }), [position])
+  const frame = owned?.frame ?? snapped
   const trail = owned?.trail ?? []
   const move = (id: string) => {
     const crossing = pathCrossing(walkingModel, drawing, position, id)
@@ -84,6 +101,7 @@ export function WitnessMaze({
     setView({
       steps: next,
       position: crossing.position,
+      frame: { ...crossing, from: position },
       trail: [
         ...(sameCopy ? [...trail, ...(motion.departure ? [motion.departure] : [])] : []),
         ...(motion.arrivalMotion ? [motion.arrivalMotion] : []),
@@ -99,6 +117,33 @@ export function WitnessMaze({
       aria-label="Maze movement controls"
       onPointerDownCapture={() => scope.current?.focus({ preventScroll: true })}
     >
+      <div className="witness-recording">
+        <span role="status">
+          {mode === 'choosing'
+            ? 'Choose a numbered line in the maze.'
+            : mode === 'recording'
+              ? 'Recording your route'
+              : 'Route paused'}
+        </span>
+        <div className="button-row">
+          {onSelectStart && (
+            <button className="control" aria-pressed={mode === 'choosing'} onClick={chooseStart}>
+              {mode === 'choosing' ? 'Cancel selection' : 'Choose starting line'}
+            </button>
+          )}
+          <button
+            className="control"
+            aria-pressed={mode === 'recording'}
+            onClick={() => setMode(mode === 'recording' ? 'paused' : 'recording')}
+          >
+            {mode === 'recording'
+              ? 'Finish recording'
+              : steps.length
+                ? 'Resume recording'
+                : 'Record route'}
+          </button>
+        </div>
+      </div>
       <div className="witness-maze__position">
         <span>
           Path {model.paths.find((path) => path.id === position.state.path)?.label} · Depth{' '}
@@ -115,14 +160,31 @@ export function WitnessMaze({
         keyboardScope={scope}
         trail={trail}
         showLineLabels
-        onMove={move}
-        onWalk={(points) => {
-          setView({
-            steps,
-            position: { state: position.state, point: points.at(-1)! },
-            trail: [...trail, points],
-          })
-        }}
+        onMove={mode === 'recording' ? move : undefined}
+        onSelectPath={
+          mode === 'choosing' && onSelectStart
+            ? (path) => {
+                onSelectStart(path)
+                setMode('recording')
+              }
+            : undefined
+        }
+        onWalk={
+          mode === 'recording'
+            ? (points) => {
+                setView({
+                  steps,
+                  position: { state: position.state, point: points.at(-1)! },
+                  trail: [...trail, points],
+                  frame: {
+                    position: { state: position.state, point: points.at(-1)! },
+                    from: position,
+                    move: { kind: 'walk', points },
+                  },
+                })
+              }
+            : undefined
+        }
       />
     </div>
   )

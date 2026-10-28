@@ -1,3 +1,6 @@
+import type { PathPlayPosition } from '../../core/play/pathSession'
+import { availableProofMoves, type CheckedProofStep } from '../../core/play/proofMovement'
+import { selectProofStart } from './selectProofStart'
 import { ProofCheckPanel } from './ProofCheckPanel'
 import { SavedProofClaims } from './SavedProofClaims'
 import { InfiniteConvergence } from './InfiniteConvergence'
@@ -37,7 +40,11 @@ export function ProofWorkbench({
   inPlay = false,
   claimsInUse = false,
   artwork,
+  position,
+  onFollow,
 }: {
+  position?: PathPlayPosition
+  onFollow?: (step: CheckedProofStep) => void
   artwork?: MazeArtwork
   inPlay?: boolean
   claimsInUse?: boolean
@@ -95,85 +102,95 @@ export function ProofWorkbench({
   }
   return (
     <div className="proof-workbench">
-      {!inPlay && <h2>Your proof notebook</h2>}
-      <p className="proof-instruction">
-        {claim.rule === 'infiniteHop'
-          ? 'Use arrows or click gates to follow each blue line into deeper copies. Both trails must repeat.'
-          : claim.rule === 'cantorHop'
-            ? 'Connect the two lines, using the hypothesis only inside deeper copies.'
-            : 'Build a route between these lines.'}
-      </p>
-      <ProofClaimEditor model={model} claim={claim} onChange={change} />
-      {claim.rule === 'cantorHop' && (
-        <details className="workbench-card" open={(claim.companions?.length ?? 0) > 0}>
-          <summary>Related connections · optional</summary>
-          <CantorGroupEditor model={model} claim={claim} onChange={change} />
-        </details>
-      )}
-      <div
-        className={`witness-grid${claim.rule !== 'infiniteHop' && !claim.companions?.length ? ' witness-grid--single' : ''}`}
-      >
-        <ProofWitness
-          artwork={drawing}
+      <div className="proof-draft">
+        {!inPlay && <h2>Your proof notebook</h2>}
+        <p className="proof-instruction">
+          {claim.rule === 'infiniteHop'
+            ? 'Use arrows or click gates to follow each blue line into deeper copies. Both trails must repeat.'
+            : claim.rule === 'cantorHop'
+              ? 'Connect the two lines, using the hypothesis only inside deeper copies.'
+              : 'Build a route between these lines.'}
+        </p>
+        <ProofClaimEditor model={model} claim={claim} onChange={change} />
+        {claim.rule === 'cantorHop' && (
+          <details className="workbench-card" open={(claim.companions?.length ?? 0) > 0}>
+            <summary>Related connections · optional</summary>
+            <CantorGroupEditor model={model} claim={claim} onChange={change} />
+          </details>
+        )}
+        <div
+          className={`witness-grid${claim.rule !== 'infiniteHop' && !claim.companions?.length ? ' witness-grid--single' : ''}`}
+        >
+          <ProofWitness
+            artwork={drawing}
+            model={model}
+            claim={claim}
+            accepted={accepted}
+            key={`${claim.id}:first`}
+            side="first"
+            onSelectStart={(path) =>
+              change(selectProofStart(claim, 'from', { ...claim.from, path }))
+            }
+            onChange={(steps) => change({ first: steps })}
+            onSetupChange={(steps, chooseScope) => changeSetup('first', steps, chooseScope)}
+          />
+          {claim.rule === 'infiniteHop' && (
+            <ProofWitness
+              artwork={drawing}
+              model={model}
+              claim={claim}
+              accepted={accepted}
+              key={`${claim.id}:second`}
+              side="second"
+              onSelectStart={(path) => change(selectProofStart(claim, 'to', { ...claim.to, path }))}
+              onChange={(steps) => change({ second: steps })}
+              onSetupChange={(steps, chooseScope) => changeSetup('second', steps, chooseScope)}
+            />
+          )}
+          {(claim.companions ?? []).map((pair, index) => (
+            <ProofWitness
+              key={pair.id}
+              artwork={drawing}
+              model={model}
+              claim={claim}
+              accepted={accepted}
+              side={index}
+              onChange={(steps) =>
+                change({
+                  companions: claim.companions!.map((item) =>
+                    item.id === pair.id ? { ...item, witness: steps } : item
+                  ),
+                })
+              }
+            />
+          ))}
+        </div>
+        <ProofCheckPanel
           model={model}
           claim={claim}
-          accepted={accepted}
-          side="first"
-          onChange={(steps) => change({ first: steps })}
-          onSetupChange={(steps, chooseScope) => changeSetup('first', steps, chooseScope)}
-        />
-        {claim.rule === 'infiniteHop' && (
-          <ProofWitness
-            artwork={drawing}
-            model={model}
-            claim={claim}
-            accepted={accepted}
-            side="second"
-            onChange={(steps) => change({ second: steps })}
-            onSetupChange={(steps, chooseScope) => changeSetup('second', steps, chooseScope)}
-          />
-        )}
-        {(claim.companions ?? []).map((pair, index) => (
-          <ProofWitness
-            key={pair.id}
-            artwork={drawing}
-            model={model}
-            claim={claim}
-            accepted={accepted}
-            side={index}
-            onChange={(steps) =>
-              change({
-                companions: claim.companions!.map((item) =>
-                  item.id === pair.id ? { ...item, witness: steps } : item
-                ),
+          checked={checked}
+          document={document}
+          inPlay={inPlay}
+          onCheck={() => {
+            const next = checkProofDraft(model, claim, accepted)
+            setChecked(next)
+            if (next.result.valid)
+              onChange({
+                ...model,
+                claims: [...model.claims, next.claim],
+                draftClaim: emptyClaim(model),
               })
-            }
-          />
-        ))}
+          }}
+        />
+        <ProofOptions model={model} claim={claim} onChange={change} inPlay={inPlay}>
+          {claim.rule === 'infiniteHop' && claim.period.length > 0 && (
+            <InfiniteConvergence model={model} claim={claim} accepted={accepted} />
+          )}
+        </ProofOptions>
       </div>
-      <ProofCheckPanel
-        model={model}
-        claim={claim}
-        checked={checked}
-        document={document}
-        inPlay={inPlay}
-        onCheck={() => {
-          const next = checkProofDraft(model, claim, accepted)
-          setChecked(next)
-          if (next.result.valid)
-            onChange({
-              ...model,
-              claims: [...model.claims, next.claim],
-              draftClaim: emptyClaim(model),
-            })
-        }}
-      />
-      <ProofOptions model={model} claim={claim} onChange={change} inPlay={inPlay}>
-        {claim.rule === 'infiniteHop' && claim.period.length > 0 && (
-          <InfiniteConvergence model={model} claim={claim} accepted={accepted} />
-        )}
-      </ProofOptions>
       <SavedProofClaims
+        moves={position ? availableProofMoves(model, drawing, position) : []}
+        onFollow={onFollow}
         model={model}
         accepted={accepted}
         claimsInUse={claimsInUse}

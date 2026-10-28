@@ -117,7 +117,7 @@ test('Cantor notebook starts empty and checks only a witness constructed by the 
   page,
 }) => {
   await page.goto(`workbench/${cantor}?tab=proof`)
-  await expect(page.getByRole('heading', { name: 'Saved claims (0)' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Connections (0)' })).toBeVisible()
   await expect(
     page.getByRole('button', { name: 'Use descendant hypothesis', exact: true })
   ).toHaveCount(0)
@@ -143,9 +143,9 @@ test('Cantor notebook starts empty and checks only a witness constructed by the 
   await page.getByRole('button', { name: 'Save workbench' }).click()
   await expect(page.getByText('Saved to library', { exact: true })).toBeVisible()
   await page.reload()
-  await expect(page.getByRole('heading', { name: 'Saved claims (1)' })).toBeVisible()
-  await expect(page.locator('.saved-claim > summary')).toContainText('Checked')
-  await page.locator('.saved-claim > summary').click()
+  await expect(page.getByRole('heading', { name: 'Connections (1)' })).toBeVisible()
+  await expect(page.locator('.saved-claim > span')).toContainText('Checked')
+  await page.locator('.saved-claim > details > summary').click()
   await expect(page.locator('.saved-claim .witness-steps li')).toHaveCount(7)
   await expect(
     page.locator('.saved-claim').getByText('Descendant hypothesis', { exact: true })
@@ -154,7 +154,7 @@ test('Cantor notebook starts empty and checks only a witness constructed by the 
   await page.getByText('8 PDA transitions · inspect and remove', { exact: true }).click()
   await page.getByRole('button', { name: 'Remove transition edge-0-in', exact: true }).click()
   await page.getByRole('tab', { name: 'Proof notebook' }).click()
-  await expect(page.locator('.saved-claim > summary')).toContainText('Needs revision')
+  await expect(page.locator('.saved-claim > span')).toContainText('Needs revision')
 })
 
 test('nested infinite-hop witnesses use a previously checked lemma', async ({ page }) => {
@@ -175,7 +175,7 @@ test('nested infinite-hop witnesses use a previously checked lemma', async ({ pa
   await second.getByRole('button', { name: 'enter B → 3', exact: true }).click()
   await page.getByRole('button', { name: 'Check my proof' }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('infinite-hop rules')
-  await expect(page.getByRole('heading', { name: 'Saved claims (2)' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Connections (2)' })).toBeVisible()
 })
 
 test('native drawings become separate WIP conversions without overwriting the original maze', async ({
@@ -256,7 +256,7 @@ test('unfinished proof witnesses persist across modes and reload', async ({ page
   await expect(page.locator('.witness-maze__position strong')).toHaveText('Surface ← A')
   await page.reload()
   await expect(page.locator('.witness-maze__position strong')).toHaveText('Surface ← A')
-  await expect(page.getByRole('heading', { name: 'Saved claims (0)' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Connections (0)' })).toBeVisible()
 })
 
 test('clearing every trace remains cleared after saving and reopening', async ({ page }) => {
@@ -368,5 +368,5 @@ test('joint Cantor hypotheses require a separate completed witness for every dec
     await related.getByRole('button', { name: move, exact: true }).click()
   await page.getByRole('button', { name: 'Check my proof' }).click()
   await expect(page.locator('.proof-check [role=status]')).toContainText('Cantor-hop rules')
-  await expect(page.getByRole('heading', { name: 'Saved claims (1)' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Connections (1)' })).toBeVisible()
 })

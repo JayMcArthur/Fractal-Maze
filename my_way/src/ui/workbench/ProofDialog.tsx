@@ -1,5 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Dialog } from '../components/Dialog'
+import type { PathPlayPosition } from '../../core/play/pathSession'
+import type { CheckedProofStep } from '../../core/play/proofMovement'
 import type { MazeArtwork, PathMazeDefinition } from '../../core/model/pathMaze'
 import { checkedClaims } from '../../core/pathMaze/proofs'
 const ProofWorkbench = lazy(() =>
@@ -13,7 +15,11 @@ export default function ProofDialog({
   onChange,
   onClose,
   artwork,
+  position,
+  onFollow,
 }: {
+  position?: PathPlayPosition
+  onFollow: (step: CheckedProofStep) => void
   title: string
   claimsInUse: boolean
   model: PathMazeDefinition
@@ -32,7 +38,7 @@ export default function ProofDialog({
         <>
           <p>
             {checkedClaims(model).length
-              ? 'Your checked connections are ready. Return to the maze to use the highlighted proof action.'
+              ? 'Follow a checked connection from its card, or return to keep exploring.'
               : 'Check below the trails to save a connection.'}
           </p>
           <button className="control control--primary" onClick={onClose}>
@@ -44,6 +50,8 @@ export default function ProofDialog({
       <Suspense fallback={<p role="status">Opening proof notebook…</p>}>
         <ProofWorkbench
           model={model}
+          position={position}
+          onFollow={onFollow}
           artwork={artwork}
           onChange={onChange}
           inPlay

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import type { PathMazeDefinition, ProofClaim } from '../../core/model/pathMaze'
+import { selectProofStart } from './selectProofStart'
 import { parseCopyWord } from './copyAddress'
 
 export function ProofClaimEditor({
@@ -27,11 +28,7 @@ export function ProofClaimEditor({
               aria-label={`Claim ${key} path`}
               value={claim[key].path}
               onChange={(event) =>
-                onChange({
-                  [key]: { ...claim[key], path: event.target.value },
-                  first: [],
-                  second: [],
-                })
+                onChange(selectProofStart(claim, key, { ...claim[key], path: event.target.value }))
               }
             >
               {model.paths.map((path) => (
@@ -111,14 +108,12 @@ export function ProofOptions({
               value={claim[key].address.join(' ')}
               placeholder="Empty = surface"
               onChange={(event) =>
-                onChange({
-                  [key]: {
+                onChange(
+                  selectProofStart(claim, key, {
                     ...claim[key],
                     address: parseCopyWord(event.target.value, model.copies),
-                  },
-                  first: [],
-                  second: [],
-                })
+                  })
+                )
               }
             />
           </label>
