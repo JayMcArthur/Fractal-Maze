@@ -6,3 +6,7 @@ __pycache__/
 web/dist/
 web/.svelte-kit/
 web/.vite/
+
+# Windows download metadata
+*:Zone.Identifier
+*Zone.Identifier

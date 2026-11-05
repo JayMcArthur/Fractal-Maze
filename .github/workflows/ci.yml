@@ -22,6 +22,17 @@ jobs:
         working-directory: my_way
     steps:
       - uses: actions/checkout@v4
+      - name: Reject Windows download metadata
+        working-directory: .
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          import sys
+          paths = subprocess.check_output(['git', 'ls-files', '-z']).decode('utf-8', 'surrogateescape').split('\0')
+          metadata = [path for path in paths if path.casefold().endswith((':zone.identifier', '\uf03azone.identifier'))]
+          if metadata:
+              sys.exit('Windows download metadata must not be tracked:\n' + '\n'.join(metadata))
+          PY
       - uses: actions/setup-node@v4
         with:
           node-version-file: my_way/.node-version
